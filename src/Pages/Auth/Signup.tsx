@@ -13,7 +13,7 @@ interface SignUpFormData {
   password: string;
 }
 const Signup: React.FC = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const {
@@ -25,11 +25,19 @@ const Signup: React.FC = () => {
   const onSubmit = async (data: SignUpFormData) => {
     setIsCreatingAccount(true);
     console.log(data);
-    createUser(data.email, data.password).then((res: { data: any }) => {
-      console.log(res.data);
-      setIsCreatingAccount(false);
-      navigate("/");
-    });
+    createUser(data.email, data.password)
+      .then(async (res: { data: any }) => {
+        console.log(res.data);
+
+        await updateUserProfile(data.name);
+
+        setIsCreatingAccount(false);
+        navigate("/");
+      })
+      .catch((error: any) => {
+        console.error("Error creating user:", error);
+        setIsCreatingAccount(false);
+      });
   };
   return (
     <div className="w-full h-screen flex">
