@@ -74,17 +74,7 @@ const Signup: React.FC = () => {
                 className="input-lg rounded-lg border-b-4 hover:border-b-teal-500 duration-500 outline-none bg-[#F7FBFF]"
               />
             </div>
-            <div className="form-control w-full">
-              <label htmlFor="photo" className="text-xl font-semibold py-1">
-                Profile Picture
-              </label>
-              <input
-                type="file"
-                {...register("photo", { required: "Photo is required" })}
-                accept="image/*"
-                className="input-lg border-b-4 hover:border-b-teal-500 duration-500 outline-none bg-[#F7FBFF] mt-1 p-2 border rounded-md w-full"
-              />
-            </div>
+           
             <div className="form-control w-full">
               <label htmlFor="email" className="text-xl font-semibold py-1">
                 Email
