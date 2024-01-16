@@ -12,7 +12,11 @@ const Navbar = () => {
     <li>
       <NavLink
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/"
       >
@@ -22,7 +26,11 @@ const Navbar = () => {
     <li>
       <NavLink
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/Job"
       >
@@ -32,7 +40,11 @@ const Navbar = () => {
     <li>
       <NavLink
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/Item1"
       >
@@ -42,7 +54,11 @@ const Navbar = () => {
     <li>
       <NavLink
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/blogs"
       >
@@ -52,7 +68,11 @@ const Navbar = () => {
     <li>
       <NavLink
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/Contact"
       >
@@ -121,11 +141,18 @@ const Navbar = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
-                  <div className="w-10 rounded-full">
-                    <img
-                      alt="Tailwind CSS Navbar component"
-                      src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    />
+                  <div className="w-20 rounded-full">
+                    {user.photoURL ? (
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user.photoURL}
+                      />
+                    ) : (
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      />
+                    )}
                   </div>
                 </div>
                 <ul
@@ -165,7 +192,7 @@ const Navbar = () => {
               //   if user doesn't Exist
               <button className="cta flex items-center">
                 <span>
-                  <Link to="/Login">Login</Link>
+                  <Link to="/login">Login</Link>
                 </span>
                 <svg width="15px" height="10px" viewBox="0 0 13 10">
                   <path d="M1,5 L11,5"></path>

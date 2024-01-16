@@ -35,8 +35,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   const createUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => userCredential.user);
   };
+  
 
   const signInUser = (email: string, password: string): Promise<any> => {
     setLoading(true);

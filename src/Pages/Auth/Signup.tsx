@@ -25,20 +25,20 @@ const Signup: React.FC = () => {
   const onSubmit = async (data: SignUpFormData) => {
     setIsCreatingAccount(true);
     console.log(data);
-    createUser(data.email, data.password)
-      .then(async (res: { data: any }) => {
-        console.log(res.data);
-
-        await updateUserProfile(data.name);
-
-        setIsCreatingAccount(false);
-        navigate("/");
-      })
-      .catch((error: any) => {
-        console.error("Error creating user:", error);
-        setIsCreatingAccount(false);
-      });
+    try {
+      const userCredential = await createUser(data.email, data.password);
+      console.log(userCredential);
+  
+      await updateUserProfile(data.name);
+  
+      setIsCreatingAccount(false);
+      navigate("/");
+    } catch (error: any) {
+      console.error("Error creating user:", error);
+      setIsCreatingAccount(false);
+    }
   };
+  
   return (
     <div className="w-full h-screen flex">
       {/* form Div */}
