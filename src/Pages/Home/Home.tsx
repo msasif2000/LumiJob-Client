@@ -1,16 +1,15 @@
+import Banner from "../../component/Banner/Banner";
 import Navbar from "../Navbar/Navbar";
 import PopularJobs from "./PopularJobs/PopularJobs";
 
-
-
 const Home = () => {
-    return (
-        <div>
-           <Navbar></Navbar>
-            <h1 className="text-5xl font-bold" >WELcome To </h1>
-            <PopularJobs></PopularJobs>
-        </div>
-    );
+  return (
+    <div>
+      <Navbar></Navbar>
+      <Banner />
+      <PopularJobs></PopularJobs>
+    </div>
+  );
 };
 
 export default Home;
