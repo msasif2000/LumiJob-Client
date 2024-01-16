@@ -1,19 +1,23 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import auth from "../config/Firebase.config";
 
 const GoogleProvider = new GoogleAuthProvider();
+const GithubProvider = new GithubAuthProvider();
 
 interface ThemeInfo {
   googleSignIn: () => Promise<void>;
+  githubSignIn: () => Promise<void>;
   loading: boolean;
   signInUser: (email: string, password: string) => Promise<void>;
   setLoading: (loading: boolean) => void;
@@ -46,6 +50,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const googleSignIn = (): Promise<any> => {
     setLoading(true);
     return signInWithPopup(auth, GoogleProvider);
+  };
+
+  const githubSignIn = (): Promise<any> => {
+    setLoading(true);
+    return signInWithRedirect(auth, GithubProvider);
   };
 
   const passwordReset = (email: string): Promise<any> => {
@@ -87,6 +96,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     logOut,
     createUser,
     passwordReset,
+    githubSignIn,
   };
 
   return (
