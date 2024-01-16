@@ -15,6 +15,7 @@ const Navbar = () => {
         <li><NavLink className="mr-2 font-semibold text-lg" to='/blog' >blog</NavLink></li>,
         <li><NavLink className="mr-2 font-semibold text-lg" to='/Contact' >Contact</NavLink></li>,
         
+        
     ];
 
     return (

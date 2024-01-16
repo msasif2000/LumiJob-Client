@@ -1,4 +1,5 @@
 import Navbar from "../Navbar/Navbar";
+import Step from "../Step_Set/Step";
 
 
 
@@ -6,7 +7,8 @@ const Home = () => {
     return (
         <div>
            <Navbar></Navbar>
-            <h1 className="text-5xl font-bold" >WELcome To </h1>
+            
+            <Step></Step>
         </div>
     );
 };
