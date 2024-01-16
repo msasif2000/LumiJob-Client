@@ -21,6 +21,9 @@ const Signup: React.FC = () => {
 
   const onSubmit = async (data: SignUpFormData) => {
     console.log(data);
+
+    // for uploading user images and profile creation
+
     // try {
     //   setIsCreatingAccount(true);
     //   const { name, photo, email, password } = data;
@@ -44,6 +47,7 @@ const Signup: React.FC = () => {
     // } finally {
     //   setIsCreatingAccount(false);
     // }
+
   };
   return (
     <div className="w-full h-screen flex">
