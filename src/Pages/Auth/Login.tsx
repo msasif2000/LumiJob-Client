@@ -1,10 +1,11 @@
 import React from "react";
 import LoginArt from "../../assets/Login Art.svg";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SocialLogin from "./SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 interface LoginData {
   email: string;
@@ -12,6 +13,8 @@ interface LoginData {
 }
 
 const Login: React.FC = () => {
+  const { signInUser } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -21,8 +24,14 @@ const Login: React.FC = () => {
   const onSubmit = (data: LoginData) => {
     try {
       toast.success("Login Successful");
+      signInUser(data.email, data.password).then((res: { data: any }) => {
+        console.log(res.data);
+        toast.success("Login Successful");
+        navigate("/");
+      });
       console.log(data);
     } catch (error) {
+      toast.error("Login Failed");
       console.log(error);
     }
   };
@@ -87,15 +96,15 @@ const Login: React.FC = () => {
           </form>
           <div className="divider divider-neutral">Or</div>
           {/* Social Login Section */}
-          <SocialLogin/>
+          <SocialLogin />
 
           <div className="flex justify-between text-xl">
-          <p>Dont have an account?</p>
-          <Link to="/signup">
-            <p className="hover:text-green-500 cursor-pointer text-violet-400 font-semibold underline">
-              Sign up
-            </p>
-          </Link>
+            <p>Dont have an account?</p>
+            <Link to="/signup">
+              <p className="hover:text-green-500 cursor-pointer text-violet-400 font-semibold underline">
+                Sign up
+              </p>
+            </Link>
           </div>
         </div>
       </div>
