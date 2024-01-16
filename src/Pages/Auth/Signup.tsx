@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import SignupArt from "../../assets/Art (1).svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 interface SignUpFormData {
   name: string;
@@ -12,6 +13,8 @@ interface SignUpFormData {
   password: string;
 }
 const Signup: React.FC = () => {
+  const { createUser } = useAuth();
+  const navigate = useNavigate();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const {
     register,
@@ -20,46 +23,24 @@ const Signup: React.FC = () => {
   } = useForm<SignUpFormData>();
 
   const onSubmit = async (data: SignUpFormData) => {
+    setIsCreatingAccount(true);
     console.log(data);
-
-    // for uploading user images and profile creation
-
-    // try {
-    //   setIsCreatingAccount(true);
-    //   const { name, photo, email, password } = data;
-    //   const photoRef = ref(storage, `photo/${name}-photo.jpg`);
-    //   await uploadBytes(photoRef, photo[0]);
-    //   const imageURL = await getDownloadURL(photoRef);
-
-    //   await createUser(email, password);
-    //   await updateUser(name, imageURL);
-
-    //   const userInfo = { name, profile: imageURL, email, password };
-    //   axiosPublic.post('/users', userInfo).then((res) => {
-    //     if (res.data.insertedId) {
-    //       toast.success('Account created successfully');
-    //     } else {
-    //       toast.warn('Something went wrong');
-    //     }
-    //   });
-    // } catch (error) {
-    //   toast.error(error.message);
-    // } finally {
-    //   setIsCreatingAccount(false);
-    // }
-
+    createUser(data.email, data.password).then((res: { data: any }) => {
+      console.log(res.data);
+      setIsCreatingAccount(false);
+      navigate("/");
+    });
   };
   return (
     <div className="w-full h-screen flex">
-     
       {/* form Div */}
       <div className="w-1/2 flex flex-col items-center justify-center">
         <div className="w-full px-36">
           <div className="space-y-6">
             <h1 className="text-5xl font-semibold">Hey There</h1>
             <p className="text-2xl text-gray-500 pb-3">
-              Create an account and start you career journey with us & recruiters from
-              all around globe.
+              Create an account and start you career journey with us &
+              recruiters from all around globe.
             </p>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 w-full">
@@ -74,7 +55,7 @@ const Signup: React.FC = () => {
                 className="input-lg rounded-lg border-b-4 hover:border-b-teal-500 duration-500 outline-none bg-[#F7FBFF]"
               />
             </div>
-           
+
             <div className="form-control w-full">
               <label htmlFor="email" className="text-xl font-semibold py-1">
                 Email
@@ -131,12 +112,11 @@ const Signup: React.FC = () => {
                 </p>
               </Link>
             </div>
-            
           </form>
         </div>
       </div>
-       {/* image div */}
-       <div className="w-1/2 object-cover m-4">
+      {/* image div */}
+      <div className="w-1/2 object-cover m-4">
         <img
           src={SignupArt}
           className="w-full h-full object-cover rounded-xl"

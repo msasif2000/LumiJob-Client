@@ -28,7 +28,7 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<any>(null); // You should replace `any` with the actual user type
+  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   const createUser = (email: string, password: string): Promise<any> => {
