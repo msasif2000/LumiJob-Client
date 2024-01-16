@@ -1,8 +1,12 @@
+import Navbar from "../Navbar/Navbar";
+
+
 
 const Home = () => {
     return (
         <div>
-            WELcome
+           <Navbar></Navbar>
+            <h1 className="text-5xl font-bold" >WELcome To </h1>
         </div>
     );
 };
