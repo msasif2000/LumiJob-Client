@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import ThemeProvider from "./providers/ThemeProvider";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Main from "./Layout/Main";
@@ -31,6 +31,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
