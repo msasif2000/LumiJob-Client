@@ -3,6 +3,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -19,6 +20,7 @@ interface ThemeInfo {
   user: any;
   logOut: () => Promise<void>;
   createUser: (email: string, password: string) => Promise<void>;
+  passwordReset: (email: string) => Promise<void>;
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -46,6 +48,20 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     return signInWithPopup(auth, GoogleProvider);
   };
 
+  const passwordReset = (email: string): Promise<any> => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log("Password reset email sent");
+      })
+      .catch((error) => {
+        console.error("Error sending password reset email", error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   const logOut = (): Promise<void> => {
     return signOut(auth);
   };
@@ -70,6 +86,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     user,
     logOut,
     createUser,
+    passwordReset,
   };
 
   return (
