@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SocialLogin from "./SocialLogin";
 
 interface LoginData {
   email: string;
@@ -29,8 +30,8 @@ const Login: React.FC = () => {
   return (
     <div className="w-full h-screen flex">
       {/* form div */}
-      <div className="w-1/2">
-        <div className="p-40 space-y-10">
+      <div className="w-1/2 flex items-center justify-center">
+        <div className="px-40  space-y-10">
           <h1 className="text-5xl font-semibold">
             Welcome Back <span className="text-5xl">👋🏻</span>
           </h1>
@@ -41,7 +42,7 @@ const Login: React.FC = () => {
           {/* from starts here */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="form-control w-full">
-              <label htmlFor="email" className="font-bold text-lg py-2">
+              <label htmlFor="email" className="font-bold text-lg ">
                 Email
               </label>
               <input
@@ -52,7 +53,7 @@ const Login: React.FC = () => {
               />
             </div>
             <div className="form-control w-full">
-              <label htmlFor="password" className="font-bold text-lg py-2">
+              <label htmlFor="password" className="font-bold text-lg ">
                 Password
               </label>
               <input
@@ -73,18 +74,29 @@ const Login: React.FC = () => {
                 <p className="text-red-500">{errors.password.message}</p>
               )}
             </div>
+            <div className="flex justify-end">
+              <p className="hover:text-red-500 cursor-pointer text-violet-400 font-semibold">
+                Forgot Password?
+              </p>
+            </div>
             <input
               type="submit"
               value="Sign in"
               className="btn btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500 "
             />
-            <div className="flex justify-between">
-              <p>Dont have an account?</p>
-              <Link to="/signUp">
-                <p className="underline text-green-300">SignUp</p>
-              </Link>
-            </div>
           </form>
+          <div className="divider divider-neutral">Or</div>
+          {/* Social Login Section */}
+          <SocialLogin/>
+
+          <div className="flex justify-between text-xl">
+          <p>Dont have an account?</p>
+          <Link to="/signup">
+            <p className="hover:text-green-500 cursor-pointer text-violet-400 font-semibold">
+              Sign up
+            </p>
+          </Link>
+          </div>
         </div>
       </div>
 
