@@ -43,7 +43,7 @@ const TopNews = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-[#F2F8F5] pb-10">
+    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
       <div className="max-w-screen-2xl mx-auto">
         <h1 className="text-6xl font-bold py-10">Featured Articles</h1>
         <div className="grid grid-cols-4 gap-5">
