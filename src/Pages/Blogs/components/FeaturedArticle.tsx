@@ -12,7 +12,7 @@ interface BlogData {
     readTime: string;
   }
 
-const TopNews = () => {
+const FeaturedArticle = () => {
   const axiosPublic = useAxiosPublic();
   const [datas, setData] = useState<BlogData[] | null>(null);
 
@@ -51,7 +51,7 @@ const TopNews = () => {
             slicedData.map((item: any, idx: Key | null | undefined) => {
               return (
                 <Link
-                  to={`/blogs/${item.id}`}
+                  to={`/insights/${item.id}`}
                   key={idx}
                   className={`${
                     idx === 0
@@ -125,4 +125,4 @@ const TopNews = () => {
   );
 };
 
-export default TopNews;
+export default FeaturedArticle;

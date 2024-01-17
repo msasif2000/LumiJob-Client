@@ -3,8 +3,8 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Auth/Login";
 import Signup from "../Pages/Auth/Signup";
-import Blogs from "../Pages/Blogs/Blogs";
-import BlogDetails from "../Pages/Blogs/components/BlogDetails";
+import Insights from "../Pages/Blogs/Insights";
+import ArticleDetails from "../Pages/Blogs/components/ArticleDetails";
 
 export const router = createBrowserRouter([
     {
@@ -24,12 +24,12 @@ export const router = createBrowserRouter([
           element: <Signup />,
         },
         {
-          path: "/blogs",
-          element: <Blogs/>
+          path: "/insights",
+          element:<Insights/>
         },
         {
-          path: "/blogs/:id",
-          element: <BlogDetails/>
+          path: "/insights/:id",
+          element:<ArticleDetails/>
         },
       ],
     },
