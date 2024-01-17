@@ -43,7 +43,7 @@ const TopNews = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-[#F2F8F5]">
+    <div className="min-h-screen  bg-[#F2F8F5] pb-10">
       <div className="max-w-screen-2xl mx-auto">
         <h1 className="text-6xl font-bold py-10">Featured Articles</h1>
         <div className="grid grid-cols-4 gap-5">
@@ -65,7 +65,7 @@ const TopNews = () => {
                         {idx === 0 ? (
                           <img
                             src={item.img}
-                            className=" w-full h-[490px] p-2"
+                            className=" w-full h-[490px] p-2 rounded-2xl"
                             alt=""
                           />
                         ) : (
@@ -89,7 +89,7 @@ const TopNews = () => {
                           <p>{item.date}</p>
                           <p>{item.readTime} read</p>
                         </div>
-                      <div className="bg-white p-2 space-y-2">
+                      <div className={`${idx === 0? 'h-[234px] bg-white p-2': "bg-white p-2 space-y-2"}`}>
                         {idx === 0 ? (
                           <h1 className="text-3xl font-semibold">
                             {item.title}
@@ -103,7 +103,7 @@ const TopNews = () => {
                         {idx === 0 ? (
                           <>
                             <p>
-                              {truncateDetails(item.details, 70)}{" "}
+                              {truncateDetails(item.details, 80)}{" "}
                               <span className="text-[#4965E1] font-semibold">
                                 {" "}
                                 ...read more
