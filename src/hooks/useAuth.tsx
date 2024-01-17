@@ -3,6 +3,7 @@ import { ThemeContext } from "../providers/ThemeProvider";
 
 interface AuthContextType {
   googleSignIn: () => Promise<void>;
+  githubSignIn: () => Promise<void>;
   loading: boolean;
   signInUser: (email: string, password: string) => Promise<void>;
   setLoading: (loading: boolean) => void;
