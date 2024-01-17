@@ -6,31 +6,76 @@ const Navbar = () => {
   // To Do : user set AuthProvider
   // To Do : All Link NavLink or Link Seta Valid link
 
-  const {user, logOut} = useAuth()
+  const { user, logOut } = useAuth();
 
   const Linking: JSX.Element[] = [
     <li>
-      <NavLink className="mr-2 font-semibold text-lg" to="/">
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
+        }
+        to="/"
+      >
         Home
       </NavLink>
     </li>,
     <li>
-      <NavLink className="mr-2 font-semibold text-lg" to="/Job">
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
+        }
+        to="/Job"
+      >
         Job
       </NavLink>
     </li>,
     <li>
-      <NavLink className="mr-2 font-semibold text-lg" to="/Item1">
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
+        }
+        to="/Item1"
+      >
         Item 1
       </NavLink>
     </li>,
     <li>
-      <NavLink className="mr-2 font-semibold text-lg" to="/blog">
-        blog
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
+        }
+        to="/blogs"
+      >
+        Blogs
       </NavLink>
     </li>,
     <li>
-      <NavLink className="mr-2 font-semibold text-lg" to="/Contact">
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
+        }
+        to="/Contact"
+      >
         Contact
       </NavLink>
     </li>,
@@ -96,11 +141,18 @@ const Navbar = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
-                  <div className="w-10 rounded-full">
-                    <img
-                      alt="Tailwind CSS Navbar component"
-                      src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    />
+                  <div className="w-20 rounded-full">
+                    {user.photoURL ? (
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user.photoURL}
+                      />
+                    ) : (
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      />
+                    )}
                   </div>
                 </div>
                 <ul
@@ -128,8 +180,7 @@ const Navbar = () => {
                   <li>
                     <button
                       className="mr-2 font-semibold text-lg"
-                      onClick={()=>logOut()}
-                      
+                      onClick={() => logOut()}
                     >
                       Logout
                     </button>
@@ -141,7 +192,7 @@ const Navbar = () => {
               //   if user doesn't Exist
               <button className="cta flex items-center">
                 <span>
-                  <Link to="/Login">Login</Link>
+                  <Link to="/login">Login</Link>
                 </span>
                 <svg width="15px" height="10px" viewBox="0 0 13 10">
                   <path d="M1,5 L11,5"></path>

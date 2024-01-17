@@ -9,6 +9,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import auth from "../config/Firebase.config";
 
@@ -25,6 +26,7 @@ interface ThemeInfo {
   logOut: () => Promise<void>;
   createUser: (email: string, password: string) => Promise<void>;
   passwordReset: (email: string) => Promise<void>;
+  updateUserProfile: (name: string) => Promise<void>;
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -39,8 +41,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   const createUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => userCredential.user);
   };
+  
 
   const signInUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
@@ -87,6 +91,28 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     };
   }, [user]);
 
+  
+  const updateUserProfile = (name: string): Promise<void> => {
+    setLoading(true);
+    const user = auth.currentUser;
+    if (user) {
+      return updateProfile(user, {
+        displayName: name,
+      })
+        .then(() => {
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error updating user profile:", error);
+          setLoading(false);
+        });
+    } else {
+      console.error("No authenticated user found.");
+      setLoading(false);
+      return Promise.reject("No authenticated user found.");
+    }
+  };
+
   const themeInfo: ThemeInfo = {
     googleSignIn,
     loading,
@@ -97,6 +123,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     createUser,
     passwordReset,
     githubSignIn,
+    updateUserProfile
   };
 
   return (
