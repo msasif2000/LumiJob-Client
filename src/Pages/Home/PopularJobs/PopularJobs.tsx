@@ -1,13 +1,23 @@
 import { useEffect, useState } from "react";
 import JobCards from "./JobCards";
 
+interface Job {
+  _id?: string;
+  picture: string;
+  platform: string;
+  title: string;
+  post_time: string;
+  description: string;
+  // Add other properties of your job object here
+}
+
 const PopularJobs = () => {
-  const [popularJobs, setPopularJobs] = useState([]);
+  const [popularJobs, setPopularJobs] = useState<Job[]>([]);
 
   useEffect(() => {
     fetch("popular.json")
       .then((res) => res.json())
-      .then((data) => setPopularJobs(data));
+      .then((data: Job[]) => setPopularJobs(data));
   }, []);
 
   return (
@@ -20,8 +30,8 @@ const PopularJobs = () => {
           The most updated platform about jobs that are open
         </p>
         <div className="grid md:grid-cols-4 gap-5">
-          {popularJobs.map((job) => (
-            <JobCards key={job.id} job={job}></JobCards>
+          {popularJobs?.map((job) => (
+            <JobCards key={job._id} job={job}></JobCards>
           ))}
         </div>
       </div>

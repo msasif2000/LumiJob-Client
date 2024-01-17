@@ -1,74 +1,98 @@
 [
-    {
-      "id": 1,
-      "platform": "Adobe",
-      "sector": "Design",
-      "title": "UI Designer",
-      "description": "Develop and maintain software applications, write code, and troubleshoot problems.",
-      "requirements": ["Bachelor's degree in Computer Science", "Programming skills in Java, Python, or C++", "Experience with software development life cycle"],
-      "location": "Various",
-      "salary": "$80,000 - $120,000 per year",
-      "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
-      "post_time": "1 day ago"
-    },
-    {
-      "id": 2,
-      "platform": "Microsoft",
-      "sector": "Software Development",
-      "title": "Software Developer",
-      "description": "Create and modify computer programs, collaborate with team members, and troubleshoot software issues.",
-      "requirements": ["Bachelor's degree in Computer Science or related field", "Proficiency in programming languages like Java or C#", "Knowledge of software development methodologies"],
-      "location": "Redmond, WA",
-      "salary": "$90,000 - $130,000 per year",
-      "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
-      "post_time": "4 days ago"
-    },
-    {
-      "id": 3,
-      "platform": "Google",
-      "sector": "Data Science",
-      "title": "Data Analyst",
-      "description": "Collect, process, and analyze data to help companies make informed business decisions.",
-      "requirements": ["Bachelor's degree in Statistics, Mathematics, or related field", "Experience with data analysis tools like Python or R", "Strong analytical and problem-solving skills"],
-      "location": "Mountain View, CA",
-      "salary": "$85,000 - $110,000 per year",
-      "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
-      "post_time": "1 month ago"
-    },
-    {
-      "id": 4,
-      "platform": "Amazon",
-      "sector": "Logistics",
-      "title": "Supply Chain Manager",
-      "description": "Optimize supply chain processes, manage inventory, and ensure timely delivery of products.",
-      "requirements": ["Bachelor's degree in Logistics, Supply Chain Management, or related field", "Experience in supply chain operations", "Strong organizational and communication skills"],
-      "location": "Seattle, WA",
-      "salary": "$100,000 - $130,000 per year",
-      "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
-      "post_time": "6 days ago"
-    },
-    {
-      "id": 5,
-      "platform": "Facebook",
-      "sector": "Social Media",
-      "title": "Social Media Manager",
-      "description": "Develop and implement social media strategies, create engaging content, and analyze performance metrics.",
-      "requirements": ["Bachelor's degree in Marketing, Communications, or related field", "Experience in social media management", "Creative thinking and excellent communication skills"],
-      "location": "Menlo Park, CA",
-      "salary": "$70,000 - $90,000 per year",
-      "post_time": "6 hour ago",
-      "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png"
-    },
-    {
-      "id": 6,
-      "platform": "Apple",
-      "sector": "Hardware Engineering",
-      "title": "Hardware Engineer",
-      "description": "Design and develop hardware components for electronic devices, conduct tests, and collaborate with cross-functional teams.",
-      "requirements": ["Bachelor's or Master's degree in Electrical Engineering or related field", "Experience in hardware design", "Knowledge of CAD tools"],
-      "location": "Cupertino, CA",
-      "salary": "$95,000 - $120,000 per year",
-      "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
-      "post_time": "2 days ago"
-    }
-  ]
+  {
+    "_id": "1",
+    "platform": "Adobe",
+    "sector": "Design",
+    "title": "UI Designer",
+    "description": "Develop and maintain software applications, write code, and troubleshoot problems.",
+    "requirements": [
+      "Bachelor's degree in Computer Science",
+      "Programming skills in Java, Python, or C++",
+      "Experience with software development life cycle"
+    ],
+    "location": "Various",
+    "salary": "$80,000 - $120,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "1 day ago"
+  },
+  {
+    "_id": "2",
+    "platform": "Microsoft",
+    "sector": "Software Development",
+    "title": "Software Developer",
+    "description": "Create and modify computer programs, collaborate with team members, and troubleshoot software issues.",
+    "requirements": [
+      "Bachelor's degree in Computer Science or related field",
+      "Proficiency in programming languages like Java or C#",
+      "Knowledge of software development methodologies"
+    ],
+    "location": "Redmond, WA",
+    "salary": "$90,000 - $130,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "4 days ago"
+  },
+  {
+    "_id": "3",
+    "platform": "Google",
+    "sector": "Data Science",
+    "title": "Data Analyst",
+    "description": "Collect, process, and analyze data to help companies make informed business decisions.",
+    "requirements": [
+      "Bachelor's degree in Statistics, Mathematics, or related field",
+      "Experience with data analysis tools like Python or R",
+      "Strong analytical and problem-solving skills"
+    ],
+    "location": "Mountain View, CA",
+    "salary": "$85,000 - $110,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "1 month ago"
+  },
+  {
+    "_id": "4",
+    "platform": "Amazon",
+    "sector": "Logistics",
+    "title": "Supply Chain Manager",
+    "description": "Optimize supply chain processes, manage inventory, and ensure timely delivery of products.",
+    "requirements": [
+      "Bachelor's degree in Logistics, Supply Chain Management, or related field",
+      "Experience in supply chain operations",
+      "Strong organizational and communication skills"
+    ],
+    "location": "Seattle, WA",
+    "salary": "$100,000 - $130,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "6 days ago"
+  },
+  {
+    "_id": "5",
+    "platform": "Facebook",
+    "sector": "Social Media",
+    "title": "Social Media Manager",
+    "description": "Develop and implement social media strategies, create engaging content, and analyze performance metrics.",
+    "requirements": [
+      "Bachelor's degree in Marketing, Communications, or related field",
+      "Experience in social media management",
+      "Creative thinking and excellent communication skills"
+    ],
+    "location": "Menlo Park, CA",
+    "salary": "$70,000 - $90,000 per year",
+    "post_time": "6 hour ago",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png"
+  },
+  {
+    "_id": "6",
+    "platform": "Apple",
+    "sector": "Hardware Engineering",
+    "title": "Hardware Engineer",
+    "description": "Design and develop hardware components for electronic devices, conduct tests, and collaborate with cross-functional teams.",
+    "requirements": [
+      "Bachelor's or Master's degree in Electrical Engineering or related field",
+      "Experience in hardware design",
+      "Knowledge of CAD tools"
+    ],
+    "location": "Cupertino, CA",
+    "salary": "$95,000 - $120,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "2 days ago"
+  }
+]
