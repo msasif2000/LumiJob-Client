@@ -5,7 +5,7 @@ import TopNews from "./components/TopNews";
 const Blogs = () => {
     return (
         <div className="Background">
-            <Navbar color={'bg-[#F2F8F5]'}/>
+            <Navbar color={'bg-gradient-to-r from-[#EEF8F1] from-5% via-[#D0FBD0] via-20% to-[#E7F9F3] to-45% ...'}/>
             <Hero/>
             <TopNews/>
             
