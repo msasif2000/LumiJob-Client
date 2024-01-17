@@ -85,6 +85,10 @@ const TopNews = () => {
                           </p>
                         )}
                       </figure>
+                       <div className="flex justify-between font-bold text-gray-400 px-2">
+                          <p>{item.date}</p>
+                          <p>{item.readTime} read</p>
+                        </div>
                       <div className="bg-white p-2 space-y-2">
                         {idx === 0 ? (
                           <h1 className="text-3xl font-semibold">
@@ -95,14 +99,11 @@ const TopNews = () => {
                             {item.title}
                           </h1>
                         )}
-                        <div className="flex justify-between font-bold text-gray-400">
-                          <p>{item.date}</p>
-                          <p>{item.readTime} read</p>
-                        </div>
+                       
                         {idx === 0 ? (
                           <>
                             <p>
-                              {truncateDetails(item.details, 120)}{" "}
+                              {truncateDetails(item.details, 70)}{" "}
                               <span className="text-[#4965E1] font-semibold">
                                 {" "}
                                 ...read more
