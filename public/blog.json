@@ -1,7 +1,7 @@
 [
     {
       "id": 1,
-      "img": "https://example.com/image1.jpg",
+      "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
       "title": "Exploring the Future of Artificial Intelligence",
       "category": "AI",
       "date": "2024-01-20",
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "img": "https://example.com/image2.jpg",
+      "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
       "title": "The Rise of Remote Work in the Tech Industry",
       "category": "Remote Work",
       "date": "2024-01-19",
@@ -19,7 +19,7 @@
     },
     {
       "id": 3,
-      "img": "https://example.com/image3.jpg",
+      "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
       "title": "Navigating Cybersecurity Challenges in Modern Businesses",
       "category": "Cybersecurity",
       "date": "2024-01-18",
@@ -28,7 +28,7 @@
     },
     {
       "id": 4,
-      "img": "https://example.com/image4.jpg",
+      "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
       "title": "The Impact of Quantum Computing on Data Analytics",
       "category": "Quantum Computing",
       "date": "2024-01-17",
@@ -37,7 +37,7 @@
     },
     {
       "id": 5,
-      "img": "https://example.com/image5.jpg",
+      "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
       "title": "Emerging Trends in Mobile App Development",
       "category": "Mobile Development",
       "date": "2024-01-16",
@@ -46,7 +46,7 @@
     },
     {
         "id": 6,
-        "img": "https://example.com/image6.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "Building Scalable Microservices Architecture",
         "category": "Microservices",
         "date": "2024-01-15",
@@ -55,7 +55,7 @@
       },
       {
         "id": 7,
-        "img": "https://example.com/image7.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "Demystifying Blockchain Technology",
         "category": "Blockchain",
         "date": "2024-01-14",
@@ -64,7 +64,7 @@
       },
       {
         "id": 8,
-        "img": "https://example.com/image8.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Future of Augmented Reality in Tech",
         "category": "Augmented Reality",
         "date": "2024-01-13",
@@ -73,7 +73,7 @@
       },
       {
         "id": 9,
-        "img": "https://example.com/image9.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "Introduction to DevOps Practices in Software Development",
         "category": "DevOps",
         "date": "2024-01-12",
@@ -82,7 +82,7 @@
       },
       {
         "id": 10,
-        "img": "https://example.com/image10.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "Challenges and Opportunities in Cloud Computing",
         "category": "Cloud Computing",
         "date": "2024-01-11",
@@ -91,7 +91,7 @@
       },
       {
         "id": 11,
-        "img": "https://example.com/image11.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "Exploring the World of Artificial Intelligence",
         "category": "Artificial Intelligence",
         "date": "2024-01-10",
@@ -100,7 +100,7 @@
       },
       {
         "id": 12,
-        "img": "https://example.com/image12.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Impact of 5G Technology on the Future of Connectivity",
         "category": "5G Technology",
         "date": "2024-01-09",
@@ -109,7 +109,7 @@
       },
       {
         "id": 13,
-        "img": "https://example.com/image13.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Evolution of Cybersecurity in Modern Technology",
         "category": "Cybersecurity",
         "date": "2024-01-08",
@@ -118,7 +118,7 @@
       },
       {
         "id": 14,
-        "img": "https://example.com/image14.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Role of Data Science in Shaping Business Strategies",
         "category": "Data Science",
         "date": "2024-01-07",
@@ -127,7 +127,7 @@
       },
       {
         "id": 15,
-        "img": "https://example.com/image15.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Future of Quantum Computing and its Applications",
         "category": "Quantum Computing",
         "date": "2024-01-06",
@@ -136,7 +136,7 @@
       },
       {
         "id": 16,
-        "img": "https://example.com/image16.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Rise of Augmented Reality in Modern Industries",
         "category": "Augmented Reality",
         "date": "2024-01-05",
@@ -145,7 +145,7 @@
       },
       {
         "id": 17,
-        "img": "https://example.com/image17.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "Blockchain Technology: Revolutionizing the Financial Sector",
         "category": "Blockchain",
         "date": "2024-01-04",
@@ -154,7 +154,7 @@
       },
       {
         "id": 18,
-        "img": "https://example.com/image18.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Future of Internet of Things (IoT) in Smart Homes",
         "category": "Internet of Things",
         "date": "2024-01-03",
@@ -163,7 +163,7 @@
       },
       {
         "id": 19,
-        "img": "https://example.com/image19.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "Emerging Trends in Mobile App Development",
         "category": "Mobile App Development",
         "date": "2024-01-02",
@@ -172,7 +172,7 @@
       },
       {
         "id": 20,
-        "img": "https://example.com/image19.jpg",
+        "img": "https://i.postimg.cc/SNxcWf0S/blogImg.png",
         "title": "The Impact of Remote Work on the Tech Industry",
         "category": "Remote Work",
         "date": "2024-01-02",
