@@ -15,6 +15,7 @@
     "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
     "post_time": "1 day ago"
   },
+
   {
     "_id": "2",
     "platform": "Microsoft",
@@ -94,5 +95,22 @@
     "salary": "$95,000 - $120,000 per year",
     "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
     "post_time": "2 days ago"
+  },
+
+  {
+    "_id": "7",
+    "platform": "Adobe Illustrator",
+    "sector": "Design",
+    "title": "UI Designer",
+    "description": "Develop and maintain software applications, write code, and troubleshoot problems.",
+    "requirements": [
+      "Bachelor's degree in Computer Science",
+      "Programming skills in Java, Python, or C++",
+      "Experience with software development life cycle"
+    ],
+    "location": "Various",
+    "salary": "$80,000 - $120,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "1 day ago"
   }
 ]
