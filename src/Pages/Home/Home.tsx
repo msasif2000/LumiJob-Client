@@ -1,6 +1,7 @@
 import Banner from "../../component/Banner/Banner";
 import Footer from "../../component/Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import Step from "../Step_Set/Step";
 import PopularJobs from "./PopularJobs/PopularJobs";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
     <div>
       <Navbar></Navbar>
       <Banner />
+      <Step></Step>
       <PopularJobs></PopularJobs>
       <Footer/>
     </div>
