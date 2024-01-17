@@ -1,25 +1,31 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   updateProfile,
 } from "firebase/auth";
 import auth from "../config/Firebase.config";
 
 const GoogleProvider = new GoogleAuthProvider();
+const GithubProvider = new GithubAuthProvider();
 
 interface ThemeInfo {
   googleSignIn: () => Promise<void>;
+  githubSignIn: () => Promise<void>;
   loading: boolean;
   signInUser: (email: string, password: string) => Promise<void>;
   setLoading: (loading: boolean) => void;
   user: any;
   logOut: () => Promise<void>;
   createUser: (email: string, password: string) => Promise<void>;
+  passwordReset: (email: string) => Promise<void>;
   updateUserProfile: (name: string) => Promise<void>;
 }
 
@@ -50,6 +56,24 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     return signInWithPopup(auth, GoogleProvider);
   };
 
+  const githubSignIn = (): Promise<any> => {
+    setLoading(true);
+    return signInWithRedirect(auth, GithubProvider);
+  };
+
+  const passwordReset = (email: string): Promise<any> => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log("Password reset email sent");
+      })
+      .catch((error) => {
+        console.error("Error sending password reset email", error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   const logOut = (): Promise<void> => {
     return signOut(auth);
@@ -97,6 +121,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     user,
     logOut,
     createUser,
+    passwordReset,
+    githubSignIn,
     updateUserProfile
   };
 
