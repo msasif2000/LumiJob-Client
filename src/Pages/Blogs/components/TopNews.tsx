@@ -1,19 +1,29 @@
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 
+interface BlogData {
+    id: number;
+    img: string;
+    title: string;
+    category: string;
+    date: string;
+    details: string;
+    readTime: string;
+  }
+
 const TopNews = () => {
   const axiosPublic = useAxiosPublic();
-  const [datas, setData] = useState();
+  const [datas, setData] = useState<BlogData[] | null>(null);
 
   useEffect(() => {
-    axiosPublic.get("../../../../public/blog.json").then((res) => {
-      console.log(res.data);
+    axiosPublic.get("/blog.json").then((res) => {
+   
       setData(res.data);
     });
   }, []);
 
-  const shuffleArray = (array) => {
+  const shuffleArray = (array: any) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -38,17 +48,18 @@ const TopNews = () => {
         <h1 className="text-6xl font-bold py-10">Featured Articles</h1>
         <div className="grid grid-cols-4 gap-5">
           {slicedData &&
-            slicedData.map((item: any, idx) => {
+            slicedData.map((item: any, idx: Key | null | undefined) => {
               return (
-                <Link to={`/blogs/${item.id}`}  className={`${
+                <Link
+                  to={`/blogs/${item.id}`}
+                  key={idx}
+                  className={`${
                     idx === 0
                       ? "col-span-2 row-span-2"
                       : "col-span-1 row-span-1"
-                  }`}>
-                  <div
-                    key={idx}
-                   
-                  >
+                  }`}
+                >
+                  <div>
                     <div className=" p-2 bg-white hover:shadow-xl duration-700">
                       <figure className="relative">
                         {idx === 0 ? (
