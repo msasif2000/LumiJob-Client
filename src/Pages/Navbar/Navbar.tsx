@@ -64,9 +64,9 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             ? "font-black underline text-lg"
             : "text-lg"
         }
-        to="/blogs"
+        to="/insights"
       >
-        Blogs
+        Insights
       </NavLink>
     </li>,
     <li  key="Contact">

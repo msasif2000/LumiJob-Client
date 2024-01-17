@@ -3,7 +3,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import Navbar from "../../Navbar/Navbar";
 
-const BlogDetails = () => {
+const ArticleDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const [datas, setData] = useState([]);
@@ -73,4 +73,4 @@ const BlogDetails = () => {
   );
 };
 
-export default BlogDetails;
+export default ArticleDetails;
