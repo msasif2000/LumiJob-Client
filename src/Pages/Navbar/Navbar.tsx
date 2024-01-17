@@ -1,8 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
+ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 
-const Navbar = () => {
+interface NavbarProps {
+  color: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ color }) => {
   // To Do : user set AuthProvider
   // To Do : All Link NavLink or Link Seta Valid link
 
@@ -81,9 +85,12 @@ const Navbar = () => {
     </li>,
   ];
 
+  // for dynamic bg color of navbar
+  const bgColor = color ? color : "bg-white";
+
   return (
-    <div>
-      <div className="navbar bg-base-100 w-11/12 mx-auto">
+    <div className={bgColor}>
+      <div className="navbar w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
