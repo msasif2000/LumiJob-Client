@@ -1,7 +1,7 @@
 import Banner from "../../component/Banner/Banner";
 import Footer from "../../component/Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import Step from "../Step_Set/Step";
+import Step from "./Step_Set/Step";
 import PopularJobs from "./PopularJobs/PopularJobs";
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
       <Banner />
       <Step></Step>
       <PopularJobs></PopularJobs>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

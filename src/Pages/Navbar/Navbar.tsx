@@ -3,7 +3,7 @@ import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 
 interface NavbarProps {
-  color: string;
+  color?: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const { user, logOut } = useAuth();
 
   const Linking: JSX.Element[] = [
-    <li  key="home">
+    <li key="home">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Home
       </NavLink>
     </li>,
-    <li  key="Job">
+    <li key="Job">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Job
       </NavLink>
     </li>,
-    <li  key="Item1">
+    <li key="Item1">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Item 1
       </NavLink>
     </li>,
-    <li  key="Blogs">
+    <li key="Blogs">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -69,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Insights
       </NavLink>
     </li>,
-    <li  key="Contact">
+    <li key="Contact">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
