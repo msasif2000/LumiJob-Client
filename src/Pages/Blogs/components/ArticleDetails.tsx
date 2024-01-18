@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import Navbar from "../../Navbar/Navbar";
+import Nodata from "./err/Nodata";
 
 const ArticleDetails = () => {
   const { id } = useParams();
@@ -66,7 +67,7 @@ const ArticleDetails = () => {
             </div>
           </div>
         ) : (
-          <p>Blog post not found</p>
+          <Nodata/>
         )}
       </div>
     </>
