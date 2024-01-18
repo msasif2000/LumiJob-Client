@@ -11,6 +11,7 @@ interface BlogData {
     details: string;
     readTime: string;
   }
+  
 
 const FeaturedArticle = () => {
   const axiosPublic = useAxiosPublic();

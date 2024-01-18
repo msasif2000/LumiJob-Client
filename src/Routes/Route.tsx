@@ -5,6 +5,7 @@ import Login from "../Pages/Auth/Login";
 import Signup from "../Pages/Auth/Signup";
 import Insights from "../Pages/Blogs/Insights";
 import ArticleDetails from "../Pages/Blogs/components/ArticleDetails";
+import Contact from "../Pages/Contact/Contact";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         {
           path: "/insights/:id",
           element:<ArticleDetails/>
+        },
+        {
+          path: "/contact",
+          element: <Contact/>
         },
       ],
     },
