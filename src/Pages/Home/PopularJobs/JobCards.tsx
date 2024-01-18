@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+
 interface Job {
   picture: string;
   platform: string;
   title: string;
   post_time: string;
   description: string;
+  _id : number;
 }
 
 interface JobCardsProps {
@@ -11,7 +14,7 @@ interface JobCardsProps {
 }
 
 const JobCards: React.FC<JobCardsProps> = ({ job }) => {
-  const { picture, platform, title, post_time, description } = job;
+  const { picture, platform, title, post_time, description, _id } = job;
 
   const inputString = description;
   const wordsArray = inputString.split(" ");
@@ -33,10 +36,10 @@ const JobCards: React.FC<JobCardsProps> = ({ job }) => {
         <h2 className=" font-semibold">{title}</h2>
         <p className="text-xs opacity-80">{shortDescription}...</p>
       </div>
-      <button className="mt-6 text-sm px-6 py-1 rounded-sm text-[#4864E1] border-2 border-[#4864E1] hover:bg-[#4864E1] hover:text-white">
+      <Link to={`/details/${_id}`}><button className="mt-6 text-sm px-6 py-1 rounded-sm text-[#4864E1] border-2 border-[#4864E1] hover:bg-[#4864E1] hover:text-white">
         {" "}
         Apply Now
-      </button>
+      </button></Link>
     </div>
   );
 };

@@ -24,6 +24,8 @@ const PopularJobs = () => {
       .then((data: Job[]) => setPopularJobs(data));
   }, []);
 
+  // console.log(popularJobs)
+
   const filterJob = popularJobs.filter(
     (job) => job.sector == popularJobs[tabIndex].sector
   );
