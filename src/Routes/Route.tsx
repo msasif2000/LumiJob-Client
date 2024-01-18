@@ -6,11 +6,13 @@ import Signup from "../Pages/Auth/Signup";
 import Insights from "../Pages/Blogs/Insights";
 import ArticleDetails from "../Pages/Blogs/components/ArticleDetails";
 import Contact from "../Pages/Contact/Contact";
+import NotFound from "../component/err & loading/NotFound";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <NotFound/>,
       children: [
         {
           path: "/",
