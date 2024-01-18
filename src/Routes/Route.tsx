@@ -7,6 +7,7 @@ import Insights from "../Pages/Blogs/Insights";
 import ArticleDetails from "../Pages/Blogs/components/ArticleDetails";
 import Contact from "../Pages/Contact/Contact";
 import NotFound from "../component/err & loading/NotFound";
+import JobsDetails from "../Pages/JobDetails/JobsDetails";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,11 @@ export const router = createBrowserRouter([
         {
           path: "/contact",
           element: <Contact/>
+        },
+        {
+          path: "/details/:id",
+          element: <JobsDetails></JobsDetails>,
+          loader: () => fetch(`/popular.json`)
         },
       ],
     },
