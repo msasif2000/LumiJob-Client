@@ -7,10 +7,13 @@ import yellow from '../../../assets/GlowShadow/Yellow.svg';
 
 const Hero = () => {
   return (
-    <div className="min-h-screen bg-[#F2F8F5] relative overflow-hidden">
-      <div className="max-w-screen-2xl mx-auto">
-        <div className="space-y-20 relative z-30">
-          <h1 className="text-[120px] font-bold pt-20 relative z-30">
+    <div className="h-[440px] md:h-[560px] lg:min-h-screen bg-[#F2F8F5] relative overflow-hidden">
+      <div className="max-w-screen-2xl mx-auto lg:px-4">
+        <div className="space-y-10 lg:space-y-20 relative z-30">
+          <h1 className="hidden xl:block text-[120px] font-bold pt-20 relative z-30">
+            News, Seminars & <br /> Insides of Tech <br /> Fields.
+          </h1>
+          <h1 className="xl:hidden block text-3xl md:text-7xl px-3 font-bold pt-10 relative z-30">
             News, Seminars & <br /> Insides of Tech <br /> Fields.
           </h1>
           <img src={green} alt="blogBg" className="absolute -left-52 -top-72 w-[1000px]" />
@@ -19,7 +22,7 @@ const Hero = () => {
           <img src={purple} alt="blogBg" className="absolute -right-96 top-5 w-[1000px]" />
          
           
-          <p className="text-xl font-bold relative z-30">
+          <p className="text-xs px-3 md:text-lg lg:px-0 lg:text-xl lg:font-bold relative z-30">
           Discover cutting-edge advancements in rapidly growing industries. Stay updated on groundbreaking technologies and job opportunities. Secure your ideal tech position with real-time insights into industry progress and job openings. Stay at the forefront of the dynamic and ever-evolving tech landscape, ensuring you're well-informed and positioned for success in this fast-paced and innovative field.
           </p>
         </div>
