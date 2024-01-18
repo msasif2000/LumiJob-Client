@@ -35,7 +35,7 @@ const Contact = () => {
                 <div className="max-w-screen-xl mx-auto">
 
                     <div>
-                        <div className="text-center mt-5 ">
+                        <div className="text-center pt-5 ">
                             <h3 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center mb-4 lg:mb-5">
                                 Contact <span className="text-[#4869DD]">Us</span>
                             </h3>

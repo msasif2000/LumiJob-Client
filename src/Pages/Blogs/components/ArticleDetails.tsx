@@ -45,10 +45,10 @@ const ArticleDetails = () => {
       <div className="fixed w-full">
         <Navbar color={""} />
       </div>
-      <div className="max-w-screen-2xl mx-auto py-20">
+      <div className="max-w-screen-2xl mx-auto py-20 lg:px-3">
         {item ? (
-          <div className="flex">
-            <div className="flex flex-col w-1/4 space-y-5 fixed">
+          <div className="lg:flex">
+            <div className="flex flex-col lg:w-1/4 space-y-5 lg:fixed pb-10 lg:pb-0 px-3 lg:px-0">
               <img src={item.img} className="w-full" alt="" />
               <h2 className="text-3xl font-bold">
                 {capitalizeFirstLetter(item.title)}
@@ -59,7 +59,7 @@ const ArticleDetails = () => {
               </div>
             </div>
             {/* article */}
-            <div className="w-3/4 ml-[530px]">
+            <div className="lg:w-3/4 lg:ml-[530px] px-3 lg:px-0">
               <p className="text-2xl" style={{ whiteSpace: "pre-line" }}>
                 {capitalizeFirstLetter(addLineGapAfter200Words(item.details))}
               </p>
