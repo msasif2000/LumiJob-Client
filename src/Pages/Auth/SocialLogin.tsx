@@ -52,7 +52,7 @@ const SocialLogin: React.FC = () => {
       <div>
         <button
           onClick={() => handleGoogleSignin()}
-          className="btn w-full bg-[#F3F9FA] text-lg hover:bg-green-400"
+          className="btn md:btn-lg w-full bg-[#F3F9FA] text-lg hover:bg-green-400"
         >
           <FaGoogle /> Google
         </button>
@@ -60,7 +60,7 @@ const SocialLogin: React.FC = () => {
       <div>
         <button
           onClick={() => handleGithubSignin()}
-          className="btn w-full bg-[#F3F9FA] text-lg hover:bg-green-400"
+          className="btn md:btn-lg w-full bg-[#F3F9FA] text-lg hover:bg-green-400"
         >
           <FaGithub /> Github
         </button>
