@@ -1,12 +1,11 @@
-import axios from 'axios'
+import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: '' 
-    // add link of server inside 'https://lumi-job-server.vercel.app'
-})
+  baseURL: "https://lumi-job-server.vercel.app",
+});
 
-const useAxiosPublic = () =>{
-    return axiosPublic;
-}
+const useAxiosPublic = () => {
+  return axiosPublic;
+};
 
 export default useAxiosPublic;

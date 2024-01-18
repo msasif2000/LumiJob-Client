@@ -1,6 +1,8 @@
 import { Key, useEffect, useState } from "react";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 interface BlogData {
   id: number;
@@ -13,11 +15,10 @@ interface BlogData {
 }
 
 const FeaturedArticle = () => {
-  const axiosPublic = useAxiosPublic();
   const [datas, setData] = useState<BlogData[] | null>(null);
 
   useEffect(() => {
-    axiosPublic.get("/blog.json").then((res) => {
+    axios.get("/blog.json").then((res) => {
       setData(res.data);
     });
   }, []);
@@ -42,7 +43,7 @@ const FeaturedArticle = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
+    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10" >
       <div className="max-w-screen-2xl mx-auto lg:px-4">
         <h1 className="text-3xl px-3 lg:px-0 lg:text-6xl font-bold py-10">
           Featured Articles
