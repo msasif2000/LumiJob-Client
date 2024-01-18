@@ -1,4 +1,4 @@
- import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 
@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const { user, logOut } = useAuth();
 
   const Linking: JSX.Element[] = [
-    <li>
+    <li  key="home">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Home
       </NavLink>
     </li>,
-    <li>
+    <li  key="Job">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Job
       </NavLink>
     </li>,
-    <li>
+    <li  key="Item1">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Item 1
       </NavLink>
     </li>,
-    <li>
+    <li  key="Blogs">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -64,12 +64,12 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             ? "font-black underline text-lg"
             : "text-lg"
         }
-        to="/blogs"
+        to="/insights"
       >
-        Blogs
+        Insights
       </NavLink>
     </li>,
-    <li>
+    <li  key="Contact">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
@@ -131,9 +131,9 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
               Apply Now
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                   d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                 ></path>
               </svg>
             </button>
@@ -164,7 +164,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                  className="mt-3 z-50 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
                   <li>
                     <NavLink

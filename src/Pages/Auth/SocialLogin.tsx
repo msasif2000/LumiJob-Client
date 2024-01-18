@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const SocialLogin: React.FC = () => {
-  const { googleSignIn } = useAuth();
+  const { googleSignIn, githubSignIn } = useAuth();
   //   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
@@ -29,10 +29,22 @@ const SocialLogin: React.FC = () => {
   };
 
   const handleGithubSignin = () => {
-    // Will add function after i get it in provider
+    githubSignIn().then((res) => {
+      console.log(res);
 
-    console.log("github clicked");
-    navigate("/");
+      // post user to database
+      // const userInfo = {
+      //   email: res?.email,
+      //   name: res?.displayName,
+      //   profile: res?.photoURL,
+      // };
+
+      // axiosPublic.post("/users", userInfo).then((res) => {
+      //   console.log(res.data);
+      // });
+
+      navigate("/");
+  })
   };
 
   return (

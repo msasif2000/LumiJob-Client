@@ -99,7 +99,7 @@ const Login: React.FC = () => {
           <SocialLogin />
 
           <div className="flex justify-between text-xl">
-            <p>Dont have an account?</p>
+            <p>Don't have an account?</p>
             <Link to="/signup">
               <p className="hover:text-green-500 cursor-pointer text-violet-400 font-semibold underline">
                 Sign up

@@ -3,13 +3,17 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Auth/Login";
 import Signup from "../Pages/Auth/Signup";
-import Blogs from "../Pages/Blogs/Blogs";
+import Insights from "../Pages/Blogs/Insights";
+import ArticleDetails from "../Pages/Blogs/components/ArticleDetails";
+import Contact from "../Pages/Contact/Contact";
+import NotFound from "../component/err & loading/NotFound";
 import JobsDetails from "../Pages/JobDetails/JobsDetails";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <NotFound/>,
       children: [
         {
           path: "/",
@@ -24,8 +28,21 @@ export const router = createBrowserRouter([
           element: <Signup />,
         },
         {
-          path: "/blogs",
-          element: <Blogs/>
+          path: "/insights",
+          element:<Insights/>
+        },
+        {
+          path: "/insights/:id",
+          element:<ArticleDetails/>
+        },
+        {
+          path: "/contact",
+          element: <Contact/>
+        },
+        {
+          path: "/details/:id",
+          element: <JobsDetails></JobsDetails>,
+          loader: () => fetch(`/popular.json`)
         },
         {
           path: "/details/:id",

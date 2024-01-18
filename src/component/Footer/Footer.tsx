@@ -100,14 +100,14 @@ const Footer = () => {
                     <Link
                         to="/"
                         target="_blank"
-                        className="rounded-full hover:text-white bg-black text-white duration-200 p-3"
+                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
                     >
                         <FaFacebookF />
                     </Link>
                     <Link
                         to="#"
                         // target="_blank"
-                        className="rounded-full hover:text-white bg-black text-white duration-200 p-3"
+                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
                     >
                         <AiFillYoutube />
                     </Link>
@@ -115,7 +115,7 @@ const Footer = () => {
                     <Link
                         to="#"
                         // target="_blank"
-                        className="rounded-full hover:text-white bg-black text-white duration-200 p-3"
+                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
                     >
                         <AiFillInstagram />
                     </Link>
@@ -123,7 +123,7 @@ const Footer = () => {
                     <Link
                         to="#"
                         // target="_blank"
-                        className="rounded-full hover:text-white bg-black text-white duration-200 p-3"
+                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
                     >
                         <FaTwitter />
                     </Link>

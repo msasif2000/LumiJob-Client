@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Mastering ReactJS for Frontend Development",
+    "speaker": "John Doe",
+    "date": "2024-02-15",
+    "time": "10:00 AM - 12:00 PM",
+    "location": "Virtual Event",
+    "description":
+      "A comprehensive seminar covering advanced concepts in ReactJS for frontend developers."
+  },
+  {
+    "id": 2,
+    "title": "Data Science in the Modern Workplace",
+    "speaker": "Jane Smith",
+    "date": "2024-03-10",
+    "time": "2:00 PM - 4:00 PM",
+    "location": "Tech Hub Conference Room",
+    "description":
+      "Exploring the latest trends and tools in data science for professionals in the tech industry."
+  },
+  {
+    "id": 3,
+    "title": "Cybersecurity Best Practices for Developers",
+    "speaker": "Alex Johnson",
+    "date": "2024-04-05",
+    "time": "1:00 PM - 3:00 PM",
+    "location": "CyberSec Auditorium",
+    "description":
+      "Learn about essential cybersecurity practices to enhance your development skills and protect your projects."
+  },
+  {
+    "id": 4,
+    "title": "Cloud Computing: The Future of IT Infrastructure",
+    "speaker": "Emily Davis",
+    "date": "2024-05-20",
+    "time": "3:30 PM - 5:30 PM",
+    "location": "Tech Expo Center",
+    "description":
+      "Explore the transformative power of cloud computing and its impact on IT infrastructure."
+  },
+  {
+    "id": 5,
+    "title": "Artificial Intelligence in Business Applications",
+    "speaker": "Michael Rodriguez",
+    "date": "2024-06-12",
+    "time": "11:00 AM - 1:00 PM",
+    "location": "AI Innovation Center",
+    "description":
+      "Discover how AI is reshaping business applications and driving innovation in various industries."
+  },
+  {
+    "id": 6,
+    "title": "Full Stack Development Bootcamp",
+    "speaker": "Sophia Turner",
+    "date": "2024-07-08",
+    "time": "9:30 AM - 4:00 PM",
+    "location": "Tech Institute Campus",
+    "description":
+      "An intensive bootcamp covering both frontend and backend development for aspiring full stack developers."
+  },
+  {
+    "id": 7,
+    "title": "Blockchain Technology: Beyond Cryptocurrency",
+    "speaker": "Daniel White",
+    "date": "2024-08-25",
+    "time": "12:00 PM - 2:00 PM",
+    "location": "Blockchain Hub",
+    "description":
+      "Explore the applications of blockchain technology beyond cryptocurrency, including smart contracts and decentralized apps."
+  },
+  {
+    "id": 8,
+    "title": "Agile Development Methodologies in Software Engineering",
+    "speaker": "Megan Brown",
+    "date": "2024-09-17",
+    "time": "2:30 PM - 4:30 PM",
+    "location": "Agile Conference Center",
+    "description":
+      "An in-depth look at agile development methodologies and their role in modern software engineering."
+  },
+  {
+    "id": 9,
+    "title": "IoT and the Future of Connected Devices",
+    "speaker": "Ryan Carter",
+    "date": "2024-10-10",
+    "time": "3:00 PM - 5:00 PM",
+    "location": "IoT Innovation Lab",
+    "description":
+      "Understanding the impact of the Internet of Things (IoT) on connected devices and smart technologies."
+  },
+  {
+    "id": 10,
+    "title": "DevOps Practices for Efficient Software Development",
+    "speaker": "Olivia Walker",
+    "date": "2024-11-02",
+    "time": "1:30 PM - 3:30 PM",
+    "location": "DevOps Headquarters",
+    "description":
+      "Learn about DevOps practices to streamline software development, deployment, and collaboration."
+  }
+]
