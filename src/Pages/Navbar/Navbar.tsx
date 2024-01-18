@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
 
   return (
     <div className={bgColor}>
-      <div className="navbar w-11/12 mx-auto">
+      <div className="navbar max-w-screen-2xl mx-auto px-4">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -116,9 +116,11 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
               {Linking}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl  md:text-3xl font-bold">
-            LumiJobs
-          </a>
+          <Link to="/">
+            <h3 className="text-3xl font-bold">
+              Lumi<span className="text-[#4869DD]">Jobs</span>
+            </h3>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul key={"Linking2"} className="menu menu-horizontal px-1">
