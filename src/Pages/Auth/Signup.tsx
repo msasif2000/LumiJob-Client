@@ -5,6 +5,8 @@ import SignupArt from "../../assets/Art (1).svg";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
 
 interface SignUpFormData {
   name: string;
@@ -15,6 +17,7 @@ interface SignUpFormData {
 const Signup: React.FC = () => {
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const {
     register,
@@ -28,9 +31,19 @@ const Signup: React.FC = () => {
     try {
       const userCredential = await createUser(data.email, data.password);
       console.log(userCredential);
-  
+
       await updateUserProfile(data.name);
-  
+
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        toast.success("User created successfully");
+      });
+
       setIsCreatingAccount(false);
       navigate("/");
     } catch (error: any) {
@@ -38,14 +51,15 @@ const Signup: React.FC = () => {
       setIsCreatingAccount(false);
     }
   };
-  
   return (
     <div className="w-full h-screen flex px-3">
       {/* form Div */}
       <div className="lg:w-1/2 flex flex-col items-center justify-center">
         <div className="w-full md:px-10 lg:px-5 xl:px-36">
           <div className="space-y-6">
-            <h1 className="text-2xl md:text-4xl xl:text-5xl font-semibold">Hey There</h1>
+            <h1 className="text-2xl md:text-4xl xl:text-5xl font-semibold">
+              Hey There
+            </h1>
             <p className="xl:text-2xl text-gray-500 pb-3">
               Create an account and start you career journey with us &
               recruiters from all around globe.

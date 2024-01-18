@@ -1,28 +1,29 @@
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
 
 const SocialLogin: React.FC = () => {
   const { googleSignIn, githubSignIn } = useAuth();
-  //   const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
   const handleGoogleSignin = () => {
     googleSignIn().then((res) => {
       console.log(res);
 
-      // post user to database
-      // const userInfo = {
-      //   email: res?.email,
-      //   name: res?.displayName,
-      //   profile: res?.photoURL,
-      // };
+      const userInfo = {
+        email: res.user?.email,
+        name: res.user?.displayName,
+        profile: res.user?.photoURL,
+      };
 
-      // axiosPublic.post("/users", userInfo).then((res) => {
-      //   console.log(res.data);
-      // });
+      console.log(userInfo);
+
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+      });
 
       navigate("/");
     });
@@ -32,19 +33,20 @@ const SocialLogin: React.FC = () => {
     githubSignIn().then((res) => {
       console.log(res);
 
-      // post user to database
-      // const userInfo = {
-      //   email: res?.email,
-      //   name: res?.displayName,
-      //   profile: res?.photoURL,
-      // };
+      const userInfo = {
+        email: res.user?.email,
+        name: res.user?.displayName,
+        profile: res.user?.photoURL,
+      };
 
-      // axiosPublic.post("/users", userInfo).then((res) => {
-      //   console.log(res.data);
-      // });
+      console.log(userInfo);
+
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+      });
 
       navigate("/");
-  })
+    });
   };
 
   return (
