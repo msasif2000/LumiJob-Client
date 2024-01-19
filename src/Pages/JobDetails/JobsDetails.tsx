@@ -9,6 +9,21 @@ import Footer from "../../component/Footer/Footer";
 interface JobDetails {
     _id: number;
     title: string;
+    location: string;
+    salary: string;
+    sector: string;
+    description: string;
+    requirements: string[];
+    platform: string;
+    post_time: string;
+    aboutUs: string;
+    positionOverview: string;
+    responsibilities: string[];
+    skills: string[];
+    experience: string;
+    perks: string[];
+    application: string;
+    [key: string]: any;
 }
 
 const JobsDetails: React.FC = () => {
