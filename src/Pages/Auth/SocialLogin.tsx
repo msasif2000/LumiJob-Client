@@ -9,8 +9,10 @@ const SocialLogin: React.FC = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
+  
+
   const handleGoogleSignin = () => {
-    googleSignIn().then((res) => {
+    googleSignIn().then((res: any) => {
       console.log(res);
 
       const userInfo = {
@@ -30,7 +32,7 @@ const SocialLogin: React.FC = () => {
   };
 
   const handleGithubSignin = () => {
-    githubSignIn().then((res) => {
+    githubSignIn().then((res: any) => {
       console.log(res);
 
       const userInfo = {

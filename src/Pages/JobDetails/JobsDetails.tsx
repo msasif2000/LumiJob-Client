@@ -7,13 +7,30 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../../component/Footer/Footer";
 
 interface JobDetails {
-    _id: number;
+    _id: string;
     title: string;
-}
-
+    location: string;
+    salary: string;
+    sector: string;
+    description: string;
+    requirements: string[];
+    platform: string;
+    post_time: string;
+    aboutUs: string;
+    positionOverview: string;
+    responsibilities: string[];
+    skills: string[];
+    experience: string;
+    perks: string[];
+    application: string;
+  }
+  
 const JobsDetails: React.FC = () => {
     // Fetch data using useLoaderData
-    const details: JobDetails[] = useLoaderData();
+    const details = useLoaderData() as JobDetails[] | undefined;
+
+
+
 
     // Get the "id" parameter from the route
     const { id } = useParams<{ id: string }>();
@@ -21,11 +38,27 @@ const JobsDetails: React.FC = () => {
 
 
     // Find the detail with the matching id
-    const detail = details.find((d) => d._id == id);
+    const detail = details && details.find((d) => d._id === id);
     console.log(details, detail?.title);
-
-    const { title, location, salary, sector, description, requirements, platform, post_time, aboutUs, positionOverview, responsibilities, skills, experience, perks, application } = detail;
-
+    const {
+        title,
+        location,
+        salary,
+        sector,
+        description,
+        requirements,
+        platform,
+        post_time,
+        aboutUs,
+        positionOverview,
+        responsibilities,
+        skills,
+        experience,
+        perks,
+        application,
+    } = detail || {};
+    
+    
     return (
         <>
             <Navbar></Navbar>
@@ -64,7 +97,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Responsibilities</h2>
                                     <ul>
-                                        {responsibilities.map((responsibility, index) => (
+                                        {responsibilities && responsibilities.map((responsibility, index) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot />{responsibility}</p></li>
                                         ))}
                                     </ul>
@@ -72,7 +105,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Requirements</h2>
                                     <ul>
-                                        {requirements.map((requirement, index) => (
+                                        {requirements && requirements.map((requirement, index) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot /> {requirement}</p></li>
                                         ))}
                                     </ul>
@@ -80,7 +113,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Skills</h2>
                                     <ul>
-                                        {skills.map((skill, index) => (
+                                        {skills && skills.map((skill, index) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot /> {skill}</p></li>
                                         ))}
                                     </ul>
@@ -89,7 +122,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Perks</h2>
                                     <ul>
-                                        {perks.map((perk, index) => (
+                                    {perks && perks.map((perk, index) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot /> {perk}</p></li>
                                         ))}
                                     </ul>

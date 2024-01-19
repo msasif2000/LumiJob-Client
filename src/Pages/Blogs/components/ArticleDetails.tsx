@@ -1,13 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import Nodata from "./err/Nodata";
 import Loading from "./err/Loading";
 
+interface BlogData {
+  id: number;
+  img: string;
+  title: string;
+  category: string;
+  date: string;
+  details: string;
+  readTime: string;
+}
+
 const ArticleDetails = () => {
-  const { id } = useParams();
-  const [datas, setData] = useState([]);
+  const { id } = useParams<{ id: string }>();
+  const [datas, setData] = useState<BlogData[]>([]);
   const [isLoading, setLoading] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
 
@@ -63,7 +73,12 @@ const ArticleDetails = () => {
     };
   }, []);
 
-  const item = datas.hasOwnProperty(id) ? datas[id] : null;
+  const numericId = id !== undefined ? parseInt(id, 10) : NaN;
+
+  const item =
+    !isNaN(numericId) && datas.hasOwnProperty(numericId)
+      ? datas[numericId]
+      : null;
 
   const capitalizeFirstLetter = (text: string) => {
     return text.charAt(0).toUpperCase() + text.slice(1);

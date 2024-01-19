@@ -113,7 +113,7 @@ const Footer = () => {
           <p>/</p>
           <p>Privacy policy</p>
         </div>
-        <p className="text-center">Copyright © 2022 all rights reserved to Developers Dynatsy</p>
+        <p className="text-center">Copyright © 2022 all rights reserved to Developers Dynasty</p>
       </div> */}
     </div>
   );

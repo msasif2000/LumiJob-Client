@@ -27,9 +27,8 @@ const Login: React.FC = () => {
   const onSubmit = (data: LoginData) => {
     try {
       toast.success("Login Successful");
-      signInUser(data.email, data.password).then((res: { data: any }) => {
-        console.log(res.data);
-        toast.success("Login Successful");
+      signInUser(data.email, data.password).then(() => {
+        console.log("Login Successful");
         navigate("/");
       });
       console.log(data);
@@ -38,6 +37,7 @@ const Login: React.FC = () => {
       console.log(error);
     }
   };
+  
 
   return (
     <div className="w-full h-screen flex px-3 md:px-10 lg:px-0">

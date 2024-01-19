@@ -2,17 +2,9 @@ import { useEffect, useState } from "react";
 import JobCards from "./JobCards";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Job from "./Job"; 
 
-interface Job {
-  _id?: string;
-  picture: string;
-  sector: string;
-  platform: string;
-  title: string;
-  post_time: string;
-  description: string;
-  // Add other properties of your job object here
-}
+
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
@@ -23,8 +15,6 @@ const PopularJobs = () => {
       .then((res) => res.json())
       .then((data: Job[]) => setPopularJobs(data));
   }, []);
-
-  // console.log(popularJobs)
 
   const filterJob = popularJobs.filter(
     (job) => job.sector == popularJobs[tabIndex].sector
