@@ -8,42 +8,47 @@ import ArticleDetails from "../Pages/Blogs/components/ArticleDetails";
 import Contact from "../Pages/Contact/Contact";
 import NotFound from "../component/err & loading/NotFound";
 import JobsDetails from "../Pages/JobDetails/JobsDetails";
+import PrivateRoute from "../providers/PrivateRoute";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      errorElement: <NotFound/>,
-      children: [
-        {
-          path: "/",
-          element: <Home></Home>,
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path: "/signup",
-          element: <Signup />,
-        },
-        {
-          path: "/insights",
-          element:<Insights/>
-        },
-        {
-          path: "/insights/:id",
-          element:<ArticleDetails/>
-        },
-        {
-          path: "/contact",
-          element: <Contact/>
-        },
-        {
-          path: "/details/:id",
-          element: <JobsDetails></JobsDetails>,
-          loader: () => fetch(`/popular.json`)
-        },
-      ],
-    },
-  ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/insights",
+        element: <Insights />,
+      },
+      {
+        path: "/insights/:id",
+        element: (
+          <PrivateRoute>
+            <ArticleDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/details/:id",
+        element: <JobsDetails></JobsDetails>,
+        loader: () => fetch(`/popular.json`),
+      },
+    ],
+  },
+]);
