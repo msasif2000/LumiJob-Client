@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginArt from "../../assets/Login Art.svg";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SocialLogin from "./SocialLogin";
+import { LuEyeOff } from "react-icons/lu";
+import { GiBleedingEye } from "react-icons/gi";
 import useAuth from "../../hooks/useAuth";
 
 interface LoginData {
@@ -15,6 +17,7 @@ interface LoginData {
 const Login: React.FC = () => {
   const { signInUser } = useAuth();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     formState: { errors },
@@ -61,12 +64,12 @@ const Login: React.FC = () => {
                 className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-teal-500 duration-500 outline-none bg-[#F7FBFF]"
               />
             </div>
-            <div className="form-control w-full">
+            <div className="form-control w-full relative">
               <label htmlFor="password" className="font-bold text-lg ">
                 Password
               </label>
               <input
-                type="password"
+               type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: "Password is required",
                   pattern: {
@@ -79,6 +82,12 @@ const Login: React.FC = () => {
                 placeholder="at least 6 character"
                 className="input-md md:input-lg border-b-4 outline-none rounded-lg  bg-[#F7FBFF] hover:border-b-teal-500 duration-500"
               />
+               <span
+                className="absolute top-[44px] md:top-[48px] md:text-lg right-3 cursor-pointer lg:text-2xl"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ?  <GiBleedingEye/> : <LuEyeOff />}
+              </span>
               {errors.password && (
                 <p className="text-red-500">{errors.password.message}</p>
               )}
