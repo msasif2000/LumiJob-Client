@@ -1,13 +1,6 @@
 import { Link } from "react-router-dom";
+import Job from "./Job";
 
-interface Job {
-  picture: string;
-  platform: string;
-  title: string;
-  post_time: string;
-  description: string;
-  _id : number;
-}
 
 interface JobCardsProps {
   job: Job;
