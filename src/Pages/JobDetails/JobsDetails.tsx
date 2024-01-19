@@ -23,8 +23,12 @@ interface JobDetails {
     experience: string;
     perks: string[];
     application: string;
+
   }
   
+    [key: string]: any;
+}
+
 const JobsDetails: React.FC = () => {
     // Fetch data using useLoaderData
     const details = useLoaderData() as JobDetails[] | undefined;
