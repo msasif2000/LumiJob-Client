@@ -1,14 +1,15 @@
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import Nodata from "./err/Nodata";
-import axios from "axios";
 import Loading from "./err/Loading";
 
 const ArticleDetails = () => {
   const { id } = useParams();
   const [datas, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -24,6 +25,43 @@ const ArticleDetails = () => {
         setLoading(false);
       });
   }, [id]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight =
+        "innerHeight" in window
+          ? window.innerHeight
+          : document.documentElement.offsetHeight;
+
+      const body = document.body;
+      const html = document.documentElement;
+
+      const documentHeight = Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+      );
+
+      const scrollTop =
+        "pageYOffset" in window
+          ? window.pageYOffset
+          : "scrollTop" in document.documentElement
+          ? document.documentElement.scrollTop
+          : document.body.scrollTop;
+
+      const scrollPercentage =
+        (scrollTop / (documentHeight - windowHeight)) * 100;
+      setScrollPercentage(scrollPercentage);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const item = datas.hasOwnProperty(id) ? datas[id] : null;
 
@@ -54,6 +92,10 @@ const ArticleDetails = () => {
           <div className="fixed w-full">
             <Navbar color={""} />
           </div>
+          <div
+            className="h-[6px] bg-gradient-to-r from-[#98ff98] via-[#fff45c] to-[#ff4739] fixed"
+            style={{ width: `${scrollPercentage}%` }}
+          ></div>
           <div className="max-w-screen-2xl mx-auto py-20 lg:px-3">
             {item ? (
               <div className="lg:flex">
