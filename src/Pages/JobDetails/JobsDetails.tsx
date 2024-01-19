@@ -23,8 +23,6 @@ interface JobDetails {
     experience: string;
     perks: string[];
     application: string;
-
-  }
   
     [key: string]: any;
 }
