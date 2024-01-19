@@ -38,24 +38,11 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         }
         to="/Job"
       >
-        Job
+        Jobs
       </NavLink>
     </li>,
-    <li key="Item1">
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
-        }
-        to="/Item1"
-      >
-        Item 1
-      </NavLink>
-    </li>,
-    <li key="Blogs">
+   
+    <li key="Insights">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
