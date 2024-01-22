@@ -8,6 +8,7 @@ import SocialLogin from "./SocialLogin";
 import { LuEyeOff } from "react-icons/lu";
 import { GiBleedingEye } from "react-icons/gi";
 import useAuth from "../../hooks/useAuth";
+import { TbHomeShare } from "react-icons/tb";
 
 interface LoginData {
   email: string;
@@ -103,7 +104,7 @@ const Login: React.FC = () => {
               className="btn md:btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500 "
             />
           </form>
-          <div className="divider divider-neutral">Or</div>
+          <div className="divider divider-neutral"><Link to='/' className="text-2xl"><TbHomeShare/></Link></div>
           {/* Social Login Section */}
           <SocialLogin />
 

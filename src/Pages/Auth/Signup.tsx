@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { TbHomeShare } from "react-icons/tb";
 import SignupArt from "../../assets/Art (1).svg";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
@@ -22,6 +22,7 @@ const Signup: React.FC = () => {
   const axiosPublic = useAxiosPublic();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     formState: { errors },
@@ -131,7 +132,7 @@ const Signup: React.FC = () => {
                 className="btn md:btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500"
               />
             )}
-            <div className="divider divider-neutral">Or</div>
+            <div className="divider divider-neutral"><Link to='/' className="text-2xl"><TbHomeShare/></Link></div>
             {/* Social Login Section */}
             <SocialLogin />
 
