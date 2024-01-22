@@ -1,92 +1,89 @@
-.card-title {
-    color: #ffffff;
-    font-size: 1.5em;
-    line-height: normal;
-    font-weight: 700;
-    margin-bottom: 0.5em;
-  }
-  
-  .small-desc {
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 1.5em;
-    color: #ffffff;
-  }
-  
-  .small-desc {
-    font-size: 17px;
-  }
-  
-  .go-corner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 4em;
-    height: 4em;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    background: #546EE3;
-    border-radius: 5px 4px 0 32px;
-    border-left:  10px  solid #FFD65A;
-    border-bottom: 10px solid #FFD65A;
-    box-shadow:  5px 5px 10px #000000;
-  }
-  
-  
-  .go-arrow {
-    margin-top: -4px;
-    margin-right: -4px;
-    color: white;
-    font-family: courier, sans;
-  }
-  
-  .card {
-    display: block;
-    position: relative;
-    max-width: 300px;
-    max-height: 320px;
-    background-color: #f2f8f9;
-    border-radius: 10px;
-    padding: 2em 1.2em;
-    margin: 12px;
-    text-decoration: none;
-    z-index: 0;
-    overflow: hidden;
-    background: #546EE3;
-    font-family: Arial, Helvetica, sans-serif;
-    box-shadow: 5px 5px 10px #1632a6;
-    
-  }
-  
-  .card:before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: -16px;
-    right: -16px;
-    background: #F9F9F9;
-    height: 32px;
-    width: 32px;
-    border-radius: 32px;
-    transform: scale(1);
-    transform-origin: 50% 50%;
-    transition: transform 0.35s ease-out;
-    box-shadow: 5px 5px 10px #000000;
-  }
-  
-  .card:hover:before {
-    transform: scale(28);
-  }
-  
-  .card:hover .small-desc {
-    transition: all 0.5s ease-out;
-    color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .card:hover .card-title {
-    transition: all 0.5s ease-out;
-    color: #000000;
-  }
-  
+.step .card-title {
+  color: #ffffff;
+  font-size: 1.5em;
+  line-height: normal;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.step .small-desc {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: #ffffff;
+}
+
+.step .small-desc {
+  font-size: 17px;
+}
+
+.step .go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 4em;
+  height: 4em;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  background: #546ee3;
+  border-radius: 5px 4px 0 32px;
+  border-left: 10px solid #ffd65a;
+  border-bottom: 10px solid #ffd65a;
+  box-shadow: 5px 5px 10px #000000;
+}
+
+.step .go-arrow {
+  margin-top: -4px;
+  margin-right: -4px;
+  color: white;
+  font-family: courier, sans;
+}
+
+.step .card {
+  display: block;
+  position: relative;
+  max-width: 300px;
+  max-height: 320px;
+  background-color: #f2f8f9;
+  border-radius: 10px;
+  padding: 2em 1.2em;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  background: #546ee3;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 5px 5px 10px #1632a6;
+}
+
+.step .card:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  right: -16px;
+  background: #f9f9f9;
+  height: 32px;
+  width: 32px;
+  border-radius: 32px;
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.35s ease-out;
+  box-shadow: 5px 5px 10px #000000;
+}
+
+.step .card:hover:before {
+  transform: scale(28);
+}
+
+.step .card:hover .small-desc {
+  transition: all 0.5s ease-out;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.step .card:hover .card-title {
+  transition: all 0.5s ease-out;
+  color: #000000;
+}

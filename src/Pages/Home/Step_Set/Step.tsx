@@ -23,7 +23,7 @@ const Step = () => {
       </div>
 
       {/*  Card Session */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-[#4869DD] py-10 md:py-20 px-4 md:px-8 mt-20 rounded-lg">
+      <div className="step w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-[#4869DD] py-10 md:py-20 px-4 md:px-8 mt-20 rounded-lg">
         {/* Card 1 */}
         <div className="card">
           <p className="card-title pb-3 ">Completed your Profile .</p>
