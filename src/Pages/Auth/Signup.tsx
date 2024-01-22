@@ -5,10 +5,11 @@ import SignupArt from "../../assets/Art (1).svg";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
 import { LuEyeOff } from "react-icons/lu";
 import { GiBleedingEye } from "react-icons/gi";
+import useAxiosDev from "../../hooks/useAxiosDev";
 
 interface SignUpFormData {
   name: string;
@@ -17,9 +18,12 @@ interface SignUpFormData {
   password: string;
 }
 const Signup: React.FC = () => {
+  // this hook is for Dev
+  const axiosDev = useAxiosDev();
+
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -43,13 +47,20 @@ const Signup: React.FC = () => {
         email: data.email,
         password: data.password,
       };
-      axiosPublic.post("/users", userInfo).then((res) => {
+      // for dev Delete in prod
+      axiosDev.post("/users", userInfo).then((res) => {
         console.log(res.data);
         toast.success("User created successfully");
       });
+      
+      // for prod
+      // axiosPublic.post("/users", userInfo).then((res) => {
+      //   console.log(res.data);
+      //   toast.success("User created successfully");
+      // });
 
       setIsCreatingAccount(false);
-      navigate("/");
+      navigate("/signup/role");
     } catch (error: any) {
       console.error("Error creating user:", error);
       setIsCreatingAccount(false);
@@ -132,7 +143,11 @@ const Signup: React.FC = () => {
                 className="btn md:btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500"
               />
             )}
-            <div className="divider divider-neutral"><Link to='/' className="text-2xl"><TbHomeShare/></Link></div>
+            <div className="divider divider-neutral">
+              <Link to="/" className="text-2xl">
+                <TbHomeShare />
+              </Link>
+            </div>
             {/* Social Login Section */}
             <SocialLogin />
 
