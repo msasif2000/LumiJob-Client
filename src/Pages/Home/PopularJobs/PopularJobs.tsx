@@ -33,11 +33,11 @@ const PopularJobs = () => {
 
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
-            {popularJobs?.slice(0, 5).map((job) => (
+            {popularJobs?.slice(0, 10).map((job) => (
               <Tab key={job._id}>{job.sector}</Tab>
             ))}
           </TabList>
-          {popularJobs?.slice(0, 5).map((job) => (
+          {popularJobs?.slice(0, 10).map((job) => (
             <TabPanel key={job._id}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
                 {filterJob?.map((job) => (
