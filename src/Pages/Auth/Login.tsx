@@ -25,20 +25,25 @@ const Login: React.FC = () => {
     handleSubmit,
   } = useForm<LoginData>();
 
-  const onSubmit = (data: LoginData) => {
+  const onSubmit = async (data: LoginData) => {
     try {
-      toast.success("Login Successful");
-      signInUser(data.email, data.password).then(() => {
-        console.log("Login Successful");
-        navigate("/");
+      await signInUser(data.email, data.password);
+      toast.success("Login Successful", {
+        position: "top-center",
+        hideProgressBar: true,
+        autoClose: 2000,
       });
-      console.log(data);
+      console.log("Login Successful");
+      navigate("/");
     } catch (error) {
-      toast.error("Login Failed");
+      toast.error("Invalid user credentials.", {
+        position: "top-center",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
       console.log(error);
     }
   };
-  
 
   return (
     <div className="w-full h-screen flex px-3 md:px-10 lg:px-0">
@@ -70,7 +75,7 @@ const Login: React.FC = () => {
                 Password
               </label>
               <input
-               type={showPassword ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: "Password is required",
                   pattern: {
@@ -83,11 +88,11 @@ const Login: React.FC = () => {
                 placeholder="at least 6 character"
                 className="input-md md:input-lg border-b-4 outline-none rounded-lg  bg-[#F7FBFF] hover:border-b-teal-500 duration-500"
               />
-               <span
+              <span
                 className="absolute top-[44px] md:top-[48px] md:text-lg right-3 cursor-pointer lg:text-2xl"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ?  <GiBleedingEye/> : <LuEyeOff />}
+                {showPassword ? <GiBleedingEye /> : <LuEyeOff />}
               </span>
               {errors.password && (
                 <p className="text-red-500">{errors.password.message}</p>
@@ -104,7 +109,11 @@ const Login: React.FC = () => {
               className="btn md:btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500 "
             />
           </form>
-          <div className="divider divider-neutral"><Link to='/' className="text-2xl"><TbHomeShare/></Link></div>
+          <div className="divider divider-neutral">
+            <Link to="/" className="text-2xl">
+              <TbHomeShare />
+            </Link>
+          </div>
           {/* Social Login Section */}
           <SocialLogin />
 

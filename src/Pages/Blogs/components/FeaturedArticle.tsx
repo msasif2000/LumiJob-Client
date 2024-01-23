@@ -159,7 +159,6 @@ const FeaturedArticle = () => {
                             {item.title}
                           </h1>
                         </div>
-                         
                       </div>
                     </div>
                   </Link>
