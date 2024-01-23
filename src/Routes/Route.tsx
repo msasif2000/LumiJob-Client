@@ -36,9 +36,9 @@ export const router = createBrowserRouter([
       {
         path: "/insights/:id",
         element: (
-          <PrivateRoute>
+          // <PrivateRoute>
             <ArticleDetails />
-          </PrivateRoute>
+          // </PrivateRoute>
         ),
       },
       {
