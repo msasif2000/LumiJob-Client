@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import JobCards from "./JobCards";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Job from "./Job"; 
-
-
+import Job from "./Job";
+import JobCardstwo from "./JobCards2";
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
@@ -48,6 +47,11 @@ const PopularJobs = () => {
             </TabPanel>
           ))}
         </Tabs>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
+          <JobCardstwo />
+          <JobCardstwo />
+          <JobCardstwo />
+        </div>
       </div>
     </>
   );
