@@ -50,9 +50,13 @@ const Signup: React.FC = () => {
       // for dev Delete in prod
       axiosDev.post("/users", userInfo).then((res) => {
         console.log(res.data);
-        toast.success("User created successfully");
+        toast.success("User created successfully", {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 2000,
+        });
       });
-      
+
       // for prod
       // axiosPublic.post("/users", userInfo).then((res) => {
       //   console.log(res.data);
@@ -62,6 +66,11 @@ const Signup: React.FC = () => {
       setIsCreatingAccount(false);
       navigate("/signup/role");
     } catch (error: any) {
+      toast.warn("Something went wrong, Please try again", {
+        position: "top-center",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
       console.error("Error creating user:", error);
       setIsCreatingAccount(false);
     }
