@@ -8,7 +8,7 @@ import ArticleDetails from "../Pages/Blogs/components/ArticleDetails";
 import Contact from "../Pages/Contact/Contact";
 import NotFound from "../component/err & loading/NotFound";
 import JobsDetails from "../Pages/JobDetails/JobsDetails";
-import PrivateRoute from "../providers/PrivateRoute";
+// import PrivateRoute from "../providers/PrivateRoute";
 import Roles from "../component/UpdateUser/Roles";
 
 export const router = createBrowserRouter([
