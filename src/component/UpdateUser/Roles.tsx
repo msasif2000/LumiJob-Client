@@ -56,9 +56,9 @@ const Roles = () => {
 
     // });
   };
-  const handleEmployee = () => {
+  const handleCandidate = () => {
     // for dev
-    axiosDev.put(`/roles/${user?.email}`, { role: "employee" }).then((res) => {
+    axiosDev.put(`/roles/${user?.email}`, { role: "candidate" }).then((res) => {
       console.log(res.data);
       if (res.data.message === "true") {
         toast.success("Role changed successfully");
@@ -121,7 +121,7 @@ const Roles = () => {
                   </div>
                 </div>
                 {/* card 3 */}
-                <div onClick={()=>handleEmployee()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
+                <div onClick={()=>handleCandidate()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
                   <figure>
                     <img
                       src="https://i.postimg.cc/LXm0Ct5g/18771.jpg"
@@ -130,7 +130,7 @@ const Roles = () => {
                     />
                   </figure>
                   <div className="card-body">
-                    <h2 className="text-xl font-bold text-center">Employee</h2>
+                    <h2 className="text-xl font-bold text-center">Candidate</h2>
                   </div>
                 </div>
               </div>
