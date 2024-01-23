@@ -95,7 +95,7 @@ const FeaturedArticle = () => {
                         <div
                           className={`${
                             idx === 0
-                              ? "h-[234px] bg-white p-2"
+                              ? " bg-white p-2"
                               : "bg-white p-2 space-y-2"
                           }`}
                         >
