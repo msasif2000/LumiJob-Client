@@ -9,6 +9,7 @@ import Contact from "../Pages/Contact/Contact";
 import NotFound from "../component/err & loading/NotFound";
 import JobsDetails from "../Pages/JobDetails/JobsDetails";
 import PrivateRoute from "../providers/PrivateRoute";
+import Roles from "../component/UpdateUser/Roles";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         element: <JobsDetails></JobsDetails>,
         loader: () => fetch(`/popular.json`),
+      },
+      {
+        path: "/signup/role",
+        element:<Roles/>
       },
     ],
   },
