@@ -1,9 +1,14 @@
 interface CandidateNavProps {
   text: string;
   btn: string;
+  handleClick: () => void;
 }
 
-const CandidateNav: React.FC<CandidateNavProps> = ({ text, btn }) => {
+const CandidateNav: React.FC<CandidateNavProps> = ({
+  text,
+  btn,
+  handleClick,
+}) => {
   return (
     <div className="navbar bg-base-200">
       <div className="navbar-start">
@@ -29,7 +34,9 @@ const CandidateNav: React.FC<CandidateNavProps> = ({ text, btn }) => {
       </div>
 
       <div className="navbar-end">
-        <a className="btn">{btn}</a>
+        <a onClick={handleClick} className="btn">
+          {btn}
+        </a>
       </div>
     </div>
   );

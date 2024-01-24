@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CandidateNav from "./CommonNavbar/CandidateNav";
+import { useNavigate } from "react-router-dom";
 
 const skills = [
   { id: 1, name: "React.js" },
@@ -42,6 +43,7 @@ const jobs = [
 
 const CandidateProfile = () => {
   const [activeTab, setActiveTab] = useState("experience");
+  const navigate = useNavigate()
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -87,9 +89,13 @@ const CandidateProfile = () => {
     }
   };
 
+  const buttonClicked = () =>{
+    navigate('/dashboard/candidateProfile/update')
+  }
+
   return (
     <div className="min-h-screen bg-base-200">
-      <CandidateNav text={"Profile"} btn={"Update Information"} />
+      <CandidateNav text={"Profile"} btn={"Update Information"} handleClick={buttonClicked}/>
       <div className="flex p-5 space-x-10">
         {/* profile card div */}
         <div className="bg-white h-fit w-1/3 rounded-2xl space-y-5 p-5 relative">
