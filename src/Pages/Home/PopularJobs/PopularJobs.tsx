@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import JobCards from "./JobCards";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Job from "./Job";
 import JobCardstwo from "./JobCards2";
+import Sector from "./sector";
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
+  const [sectors, setSectors] = useState<Sector[]>([]);
   const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
@@ -15,8 +16,14 @@ const PopularJobs = () => {
       .then((data: Job[]) => setPopularJobs(data));
   }, []);
 
+  useEffect(() => {
+    fetch("sectors.json")
+      .then((res) => res.json())
+      .then((data: Sector[]) => setSectors(data));
+  }, []);
+
   const filterJob = popularJobs.filter(
-    (job) => job.sector == popularJobs[tabIndex].sector
+    (job) => job.sector == sectors[tabIndex].sectorType
   );
 
   return (
@@ -33,25 +40,20 @@ const PopularJobs = () => {
 
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
-            {popularJobs?.slice(0, 10).map((job) => (
-              <Tab key={job._id}>{job.sector}</Tab>
+            {sectors?.map((sector) => (
+              <Tab key={sector._id}>{sector.sectorType}</Tab>
             ))}
           </TabList>
-          {popularJobs?.slice(0, 10).map((job) => (
-            <TabPanel key={job._id}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+          {sectors?.map((sector) => (
+            <TabPanel key={sector._id}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
                 {filterJob?.map((job) => (
-                  <JobCards key={job._id} job={job}></JobCards>
+                  <JobCardstwo key={job._id} job={job}></JobCardstwo>
                 ))}
               </div>
             </TabPanel>
           ))}
         </Tabs>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
-          <JobCardstwo />
-          <JobCardstwo />
-          <JobCardstwo />
-        </div>
       </div>
     </>
   );
