@@ -1,7 +1,74 @@
 import { MdOutlineModeEdit } from "react-icons/md";
+import { Bar, BarChart, Cell, Legend, Pie, PieChart, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
 const CompanyProfile = () => {
+    const data = [
+        { name: "Total job", value: 5 },
+        { name: "Total applied", value: 4 },
+        { name: "Total visitor", value: 10 },
+    ];
+    const data2 = [
+        {
+            name: 'Controls Engineer',
+            pv: 55,
+        },
+        {
+            name: 'Software Engineer',
+            pv: 100,
+        },
+        {
+            name: 'Designer',
+            pv: 80,
+        },
+        {
+            name: 'Supervisor',
+            pv: 90,
+            
+        },
+        {
+            name: 'Project Engineer at Tesla',
+            pv: 70,
+           
+        },
+        {
+            name: 'Data Specialist',
+            pv: 150,
+         
+        },
+        {
+            name: 'Solar Installer at Tesla',
+            pv: 300,
+        },
+
+    ]
+    const COLORS = ["#0088FE", "#00C49F", "#FF8042"];
+
+    const renderCustomizedLabel = ({
+        cx,
+        cy,
+        midAngle,
+        innerRadius,
+        outerRadius,
+        percent
+    }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+        const x = cx + radius * Math.cos(-midAngle * Math.PI / 180);
+        const y = cy + radius * Math.sin(-midAngle * Math.PI / 180);
+
+        return (
+            <text
+                x={x}
+                y={y}
+                fill="white"
+                textAnchor={x > cx ? "start" : "end"}
+                dominantBaseline="central"
+            >
+                {`${(percent * 100).toFixed(0)}%`}
+            </text>
+        );
+    };
+
     return (
         <div>
             <div className="h-60 mt-10 px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
@@ -76,7 +143,7 @@ const CompanyProfile = () => {
             </div>
             <div className="border-2 border-[#6886968f] min-h-20 mt-4 m-2 rounded-md p-6 pb-10">
                 <h3 className="text-3xl font-medium text-[#688696]">Company analytics</h3>
-                <div className="flex justify-center ">
+                <div className="flex">
                     <div>
                         <PieChart width={400} height={400}>
                             <Pie
@@ -95,6 +162,27 @@ const CompanyProfile = () => {
                             </Pie>
                             <Legend></Legend>
                         </PieChart>
+                    </div>
+                    <div className="mt-10">
+                        <BarChart
+                            width={650}
+                            height={380}
+                            data={data2}
+                            margin={{
+                                top: 5,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                            barSize={25}
+                        >
+                            <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+                            <YAxis />
+                            <Tooltip />
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <Bar dataKey="pv" fill="#8884d8" background={{ fill: '#eee' }} />
+                        </BarChart>
+                        <h2 className="text-lg font-semibold text-center">Job response</h2>
                     </div>
                 </div>
             </div>
