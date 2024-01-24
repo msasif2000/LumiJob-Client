@@ -80,7 +80,7 @@ const CandidateProUpdate: React.FC = () => {
                 selectedSkills.map((skill) => (
                   <div
                     key={skill}
-                    className="bg-green-300 rounded-full px-4 py-2 m-2 flex items-center"
+                    className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"
                   >
                     <span className="mr-2">{skill}</span>
                     <button
