@@ -44,7 +44,60 @@ const CompanyProfile = () => {
                 </div>
             </div>
 
-            
+            <div className="border-2 border-[#6886968f] min-h-20 mt-4 m-2 rounded-md p-6 pb-10">
+                <div className="flex justify-between">
+                    <h3 className="text-3xl font-medium text-[#688696]">Company details</h3>
+                    <div className="flex justify-center items-center bg-[#6886964f] rounded-xl px-2 py-1">
+                        <p className="text-xl font-semibold text-[#6560fb] p-2 ">See All Jobs</p>
+                    </div>
+                </div>
+                <div className="flex mt-5 gap-16">
+                    <div className="flex flex-col justify-center">
+                        <p className="text-lg font-medium text-[#688696]">Company Registration No</p>
+                        <p className="text-2xl ">11111</p>
+                    </div>
+                    <div className="flex flex-col justify-center ">
+                        <p className="text-lg font-medium text-[#688696]">Founding Year</p>
+                        <p className="text-2xl ">2010</p>
+                    </div>
+                    <div className="flex flex-col justify-center">
+                        <p className="text-lg font-medium text-[#688696]">Company Type</p>
+                        <p className="text-2xl ">Automotive and energy</p>
+                    </div>
+                    <div className="flex flex-col justify-center">
+                        <p className="text-lg font-medium text-[#688696]">Service/Product</p>
+                        <p className="text-2xl ">Electric Vehicles</p>
+                    </div>
+                    <div className="flex flex-col justify-center">
+                        <p className="text-lg font-medium text-[#688696]">Status</p>
+                        <p className="text-2xl ">Active</p>
+                    </div>
+                </div>
+            </div>
+            <div className="border-2 border-[#6886968f] min-h-20 mt-4 m-2 rounded-md p-6 pb-10">
+                <h3 className="text-3xl font-medium text-[#688696]">Company analytics</h3>
+                <div className="flex justify-center ">
+                    <div>
+                        <PieChart width={400} height={400}>
+                            <Pie
+                                data={data}
+                                cx={200}
+                                cy={200}
+                                labelLine={false}
+                                label={renderCustomizedLabel}
+                                outerRadius={100}
+                                fill="#8884d8"
+                                dataKey="value"
+                            >
+                                {data.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                ))}
+                            </Pie>
+                            <Legend></Legend>
+                        </PieChart>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
