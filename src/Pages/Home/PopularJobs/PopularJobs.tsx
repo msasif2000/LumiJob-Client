@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Job from "./Job";
-import JobCardstwo from "./JobCards2";
 import Sector from "./sector";
+import JobCard from "./JobCard";
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
@@ -48,7 +48,7 @@ const PopularJobs = () => {
             <TabPanel key={sector._id}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
                 {filterJob?.map((job) => (
-                  <JobCardstwo key={job._id} job={job}></JobCardstwo>
+                  <JobCard key={job._id} job={job}></JobCard>
                 ))}
               </div>
             </TabPanel>

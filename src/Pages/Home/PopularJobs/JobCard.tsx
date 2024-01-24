@@ -10,7 +10,7 @@ interface JobCardsProps {
   job: Job;
 }
 
-const JobCardstwo: React.FC<JobCardsProps> = ({ job }) => {
+const JobCard: React.FC<JobCardsProps> = ({ job }) => {
   const { picture, location, title, salary, post_time } = job;
 
   return (
@@ -81,4 +81,4 @@ const JobCardstwo: React.FC<JobCardsProps> = ({ job }) => {
   );
 };
 
-export default JobCardstwo;
+export default JobCard;
