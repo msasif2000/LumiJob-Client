@@ -56,9 +56,9 @@ const Roles = () => {
 
     // });
   };
-  const handleEmployee = () => {
+  const handleCandidate = () => {
     // for dev
-    axiosDev.put(`/roles/${user?.email}`, { role: "employee" }).then((res) => {
+    axiosDev.put(`/roles/${user?.email}`, { role: "candidate" }).then((res) => {
       console.log(res.data);
       if (res.data.message === "true") {
         toast.success("Role changed successfully");
@@ -80,12 +80,12 @@ const Roles = () => {
     // });
   };
   return (
-    <div className="bg-gradient-to-tr from-[#abf1c0] from-5% via-[#D0FBD0] via-20% to-[#F2F8F5] to-65% ... min-h-screen">
+    <div className="bg-gradient-to-r from-[#fdd5d5] via-[#f0f0f0] to-[#cfffcd] min-h-screen">
       <div className="max-w-screen-2xl mx-auto">
         <div className="hero min-h-screen">
           <div className="hero-content text-center">
             <div className="space-y-8">
-              <h1 className="text-5xl font-bold">Select user type</h1>
+              <h1 className="text-5xl font-bold">How would you like to use our website?</h1>
               <p className="w-3/4 mx-auto">
                 To optimize your experience, please specify your service usage.
                 This allows us to tailor our offerings to your unique needs,
@@ -94,20 +94,44 @@ const Roles = () => {
               </p>
 
               <div className="flex space-x-5">
-                <div
-                  onClick={() => handleCompany()}
-                  className="bg-white w-96 h-96 rounded-2xl"
-                >
-                  <h1 className="text-2xl">Company</h1>
+                {/* card 1 */}
+                <div onClick={()=>handleCompany()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
+                  <figure>
+                    <img
+                      src="https://i.postimg.cc/PJnXCF5v/1904-i402-011-Web-development-isometric-concept-infographics.jpg"
+                      alt="Shoes"
+                      className="h-72 w-full overflow-hidden"
+                    />
+                  </figure>
+                  <div className="card-body">
+                  <h2 className="text-xl font-bold text-center">Company</h2>
+                  </div>
                 </div>
-                <div onClick={() => handleHr()} className="bg-white w-96 h-96 rounded-2xl">
-                  <h1 className="text-2xl">Hiring Manager</h1>
+                {/* card 2 */}
+                <div onClick={()=>handleHr()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
+                  <figure>
+                    <img
+                      src="https://i.postimg.cc/5tBRS74M/21404.jpg"
+                      alt="Shoes"
+                      className="h-72 w-full overflow-hidden"
+                    />
+                  </figure>
+                  <div className="card-body">
+                  <h2 className="text-xl font-bold text-center">Hiring Manager</h2>
+                  </div>
                 </div>
-                <div
-                  onClick={() => handleEmployee()}
-                  className="bg-white w-96 h-96"
-                >
-                  <h1 className="text-2xl rounded-2xl">Employee</h1>
+                {/* card 3 */}
+                <div onClick={()=>handleCandidate()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
+                  <figure>
+                    <img
+                      src="https://i.postimg.cc/LXm0Ct5g/18771.jpg"
+                      alt="Shoes"
+                      className="h-72 w-full overflow-hidden"
+                    />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="text-xl font-bold text-center">Candidate</h2>
+                  </div>
                 </div>
               </div>
             </div>

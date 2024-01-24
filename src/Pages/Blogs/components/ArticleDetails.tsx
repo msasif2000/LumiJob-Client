@@ -13,6 +13,7 @@ interface BlogData {
   date: string;
   details: string;
   readTime: string;
+  author: string;
 }
 
 const ArticleDetails = () => {
@@ -119,10 +120,14 @@ const ArticleDetails = () => {
                   <h2 className="text-3xl font-bold">
                     {capitalizeFirstLetter(item.title)}
                   </h2>
+                  <div>
+                  <p className="text-xl font-bold">{item.author}</p>
+                  </div>
                   <div className="flex justify-between text-lg font-bold text-gray-500">
                     <p>{item.date}</p>
                     <p>{item.readTime} read</p>
                   </div>
+                  
                 </div>
                 {/* article */}
                 <div className="lg:w-3/4 lg:ml-[530px] px-3 lg:px-0">

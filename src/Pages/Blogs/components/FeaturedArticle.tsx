@@ -3,7 +3,6 @@ import { Key, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-
 interface BlogData {
   id: number;
   img: string;
@@ -43,7 +42,7 @@ const FeaturedArticle = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10" >
+    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
       <div className="max-w-screen-2xl mx-auto lg:px-4">
         <h1 className="text-3xl px-3 lg:px-0 lg:text-6xl font-bold py-10">
           Featured Articles
@@ -96,7 +95,7 @@ const FeaturedArticle = () => {
                         <div
                           className={`${
                             idx === 0
-                              ? "h-[234px] bg-white p-2"
+                              ? " bg-white p-2"
                               : "bg-white p-2 space-y-2"
                           }`}
                         >
