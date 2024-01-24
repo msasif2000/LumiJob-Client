@@ -12,7 +12,7 @@
     ],
     "location": "Various",
     "salary": "$80,000 - $120,000 per year",
-    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "picture": "https://i.ibb.co/XFGcyFL/Adobe-logo.png",
     "post_time": "1 day ago",
     "aboutUs": "We are a creative powerhouse within the fintech industry, crafting user-centric experiences to redefine digital design. Rooted in innovation, we seek a UI Designer to join our dynamic team at the forefront of transforming financial advisory interfaces. Embrace the opportunity to blend artistry with technology in a collaborative and cutting-edge environment.",
     "positionOverview": "As a UI Designer, you will be a pivotal force in shaping the visual aesthetics of our digital products. Collaborate closely with cross-functional teams to conceptualize, design, and implement intuitive and visually stunning user interfaces. Your role demands proficiency in design tools, an eye for detail, and a passion for creating seamless user experiences.",
@@ -52,7 +52,7 @@
     ],
     "location": "Redmond, WA",
     "salary": "$90,000 - $130,000 per year",
-    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "picture": "https://i.ibb.co/TB18zMP/Microsoft-logo-2012-svg.pngg",
     "post_time": "4 days ago",
     "aboutUs": "We are a driving force in the software development industry, committed to excellence, innovation, and cutting-edge technology. Join our dynamic team at Microsoft, where your expertise as a Software Developer will play a key role in creating and modifying computer programs. Collaborate with talented team members, troubleshoot software issues, and contribute to the impactful technology that defines Microsoft's presence in the industry.",
     "positionOverview": "As a Software Developer, you will be at the forefront of shaping the functionality of our digital products. Collaborate closely with cross-functional teams to conceptualize, code, and implement efficient and reliable software solutions. Your role demands proficiency in programming languages like Java or C#, along with a deep understanding of software development methodologies.",
@@ -92,7 +92,7 @@
     ],
     "location": "Mountain View, CA",
     "salary": "$85,000 - $110,000 per year",
-    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "picture": "https://i.ibb.co/n15XM8q/Google-2015-logo-svg.webp",
     "post_time": "1 month ago",
     "aboutUs": "At the forefront of data-driven decision-making, we are a powerhouse in the field of data science. Join our team at Google, where we are dedicated to collecting, processing, and analyzing data to empower companies in making informed business decisions. As a Data Analyst, you will play a pivotal role in transforming raw data into actionable insights, contributing to Google's commitment to innovation and excellence.",
     "positionOverview": "As a Data Analyst, you will be instrumental in the analysis of vast datasets to extract meaningful patterns and trends. Collaborate closely with cross-functional teams to understand business needs, design effective data analysis strategies, and present compelling insights. Your role demands expertise in data analysis tools like Python or R, along with strong analytical and problem-solving skills.",
@@ -132,7 +132,7 @@
     ],
     "location": "Seattle, WA",
     "salary": "$100,000 - $130,000 per year",
-    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.pngg",
     "post_time": "6 days ago",
     "aboutUs": "At the heart of optimizing supply chain processes, we are a key player in the logistics industry. Join our team at Amazon, where we are dedicated to ensuring the timely delivery of products through efficient supply chain management. As a Supply Chain Manager, you will be a driving force in enhancing operational efficiency, managing inventory, and contributing to Amazon's commitment to delivering exceptional customer experiences.",
     "positionOverview": "As a Supply Chain Manager, you will play a crucial role in optimizing and streamlining our supply chain processes. Collaborate closely with cross-functional teams to manage inventory, ensure timely delivery, and implement effective supply chain strategies. Your role demands strong organizational and communication skills, along with a deep understanding of logistics and supply chain operations.",
@@ -173,7 +173,7 @@
     "location": "Menlo Park, CA",
     "salary": "$70,000 - $90,000 per year",
     "post_time": "6 hour ago",
-    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "picture": "https://i.ibb.co/ZztZnxV/Facebook-Logo-2019.png",
     "aboutUs": "At the forefront of shaping digital presence, we are a key player in the social media landscape. Join our team at Facebook, where we are dedicated to creating engaging content and implementing effective social media strategies. As a Social Media Manager, you will be a driving force in developing and executing impactful social media campaigns, contributing to Facebook's commitment to connecting people and fostering community.",
     "positionOverview": "As a Social Media Manager, you will play a pivotal role in shaping the digital narrative of our brand. Collaborate closely with cross-functional teams to develop and implement creative social media strategies, create engaging content, and analyze performance metrics. Your role demands creative thinking, excellent communication skills, and a passion for connecting with audiences through social media.",
     "responsibilities": [
@@ -252,7 +252,7 @@
     ],
     "location": "Various",
     "salary": "$80,000 - $120,000 per year",
-    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "picture": "https://i.ibb.co/Yhk1y06/Illustrator-Logo.png",
     "post_time": "1 day ago",
     "aboutUs": "We are a creative powerhouse within the fintech industry, crafting user-centric experiences to redefine digital design. Rooted in innovation, we seek a UI Designer to join our dynamic team at the forefront of transforming financial advisory interfaces. Embrace the opportunity to blend artistry with technology in a collaborative and cutting-edge environment.",
     "positionOverview": "As a UI Designer, you will be a pivotal force in shaping the visual aesthetics of our digital products. Collaborate closely with cross-functional teams to conceptualize, design, and implement intuitive and visually stunning user interfaces. Your role demands proficiency in design tools, an eye for detail, and a passion for creating seamless user experiences.",
@@ -278,5 +278,1381 @@
       "Flexible work schedule."
     ],
     "application": "If you are passionate about redefining user experiences in the fintech sector and possess the required skills and vision, we invite you to apply and shape the future of digital design with us."
-  }
+  },
+  {
+    "_id": "7",
+    "platform": "Google",
+    "sector": "Technology",
+    "title": "Software Engineer",
+    "description": "Design, develop, and maintain high-quality software solutions for diverse applications.",
+    "requirements": [
+      "Bachelor's degree in Computer Science or related field",
+      "Proficient in languages such as Java, Python, or Ruby",
+      "Experience with agile development methodologies"
+    ],
+    "location": "Mountain View, CA",
+    "salary": "$90,000 - $130,000 per year",
+    "picture": "https://i.ibb.co/n15XM8q/Google-2015-logo-svg.webp",
+    "post_time": "2 days ago",
+    "aboutUs": "Join our innovative team at the forefront of technology. We are committed to creating cutting-edge solutions that impact millions of users worldwide.",
+    "positionOverview": "As a Software Engineer, you will play a key role in designing and implementing software solutions. Collaborate with cross-functional teams to deliver high-performance and scalable applications.",
+    "responsibilities": [
+      "Develop and maintain software applications.",
+      "Collaborate with product managers to define software requirements.",
+      "Conduct code reviews and ensure code quality standards.",
+      "Participate in the full software development lifecycle."
+    ],
+    "skills": [
+      "Proven experience as a Software Engineer.",
+      "Strong problem-solving and analytical skills.",
+      "Excellent communication and teamwork abilities."
+    ],
+    "experience": "2+ years of professional experience in software development.",
+    "perks": [
+      "Competitive salary and comprehensive benefits.",
+      "Opportunity for career growth and advancement.",
+      "Dynamic and collaborative work environment.",
+      "Flexible work schedule."
+    ],
+    "application": "If you are passionate about technology and thrive in a fast-paced environment, apply now to be part of our exciting journey!"
+  },
+  {
+    "_id": "8",
+    "platform": "Behance",
+    "sector": "Creative",
+    "title": "Graphic Designer",
+    "description": "Create visually appealing designs for print and digital media, ensuring brand consistency.",
+    "requirements": [
+      "Bachelor's degree in Graphic Design or related field",
+      "Proficiency in Adobe Creative Suite",
+      "Strong portfolio showcasing design expertise"
+    ],
+    "location": "New York, NY",
+    "salary": "$60,000 - $90,000 per year",
+    "picture": "https://i.ibb.co/KbyMXyy/2560px-Behance-logo-svg.png",
+    "post_time": "3 days ago",
+    "aboutUs": "We are a creative studio dedicated to delivering captivating designs that resonate with our clients and their target audience. Join us and be part of a team that transforms ideas into visually stunning reality.",
+    "positionOverview": "As a Graphic Designer, you will be responsible for creating engaging visual content that communicates our clients' messages effectively. Collaborate with clients and internal teams to bring creative visions to life.",
+    "responsibilities": [
+      "Design and produce high-quality graphics for various platforms.",
+      "Collaborate with clients to understand their design needs.",
+      "Maintain brand consistency across all design projects.",
+      "Stay updated on design trends and industry advancements."
+    ],
+    "skills": [
+      "Proven experience as a Graphic Designer.",
+      "Expertise in Adobe Creative Suite (Photoshop, Illustrator, InDesign).",
+      "Strong creative and conceptual thinking."
+    ],
+    "experience": "3+ years of professional experience in graphic design.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on diverse and exciting projects.",
+      "Collaborative and inspiring work environment.",
+      "Professional development opportunities."
+    ],
+    "application": "If you have a passion for visual storytelling and are ready to contribute to our creative journey, apply now!"
+  },
+  {
+    "_id": "9",
+    "platform": "LinkedIn",
+    "sector": "Data Science",
+    "title": "Data Scientist",
+    "description": "Apply statistical and machine learning techniques to analyze and interpret complex data sets.",
+    "requirements": [
+      "Master's or PhD in Data Science, Statistics, or related field",
+      "Proficiency in programming languages like Python or R",
+      "Experience with data visualization tools (e.g., Tableau)"
+    ],
+    "location": "San Francisco, CA",
+    "salary": "$100,000 - $150,000 per year",
+    "picture": "https://i.ibb.co/QN1B3Rb/Linked-In-Logo-svg.png",
+    "post_time": "4 days ago",
+    "aboutUs": "Join our data-driven team as we leverage the power of data to solve complex problems and drive informed decision-making. We are committed to innovation and excellence in the field of data science.",
+    "positionOverview": "As a Data Scientist, you will work on challenging projects, extracting valuable insights from data to guide business strategies. Collaborate with cross-functional teams to implement data-driven solutions.",
+    "responsibilities": [
+      "Analyze large and complex data sets using statistical methods.",
+      "Develop machine learning models to predict trends and outcomes.",
+      "Create data visualizations to communicate findings effectively.",
+      "Collaborate with business stakeholders to understand data requirements."
+    ],
+    "skills": [
+      "Proven experience as a Data Scientist.",
+      "Strong programming skills in Python or R.",
+      "Solid understanding of statistical methods and machine learning algorithms."
+    ],
+    "experience": "4+ years of professional experience in data science.",
+    "perks": [
+      "Competitive salary and comprehensive benefits.",
+      "Opportunity to work on cutting-edge data science projects.",
+      "Collaborative and intellectually stimulating work environment.",
+      "Professional development opportunities."
+    ],
+    "application": "If you have a passion for turning data into actionable insights and are excited about the future of data science, apply now!"
+  },
+  {
+    "_id": "10",
+    "platform": "Indeed",
+    "sector": "Marketing",
+    "title": "Marketing Manager",
+    "description": "Develop and execute marketing strategies to drive brand awareness and lead generation.",
+    "requirements": [
+      "Bachelor's degree in Marketing or related field",
+      "Proven experience in developing and implementing marketing plans",
+      "Strong analytical and project management skills"
+    ],
+    "location": "Chicago, IL",
+    "salary": "$70,000 - $100,000 per year",
+    "picture": "https://i.ibb.co/TbT74Y9/Indeed-logo.png",
+    "post_time": "5 days ago",
+    "aboutUs": "Join our dynamic marketing team and play a key role in shaping the success of our brand. We value creativity, strategic thinking, and a passion for driving results in a fast-paced environment.",
+    "positionOverview": "As a Marketing Manager, you will lead the development and execution of marketing initiatives. Collaborate with cross-functional teams to drive brand awareness, engage target audiences, and generate leads through innovative campaigns.",
+    "responsibilities": [
+      "Develop and implement comprehensive marketing plans.",
+      "Coordinate and execute online and offline marketing campaigns.",
+      "Analyze marketing data to measure campaign effectiveness.",
+      "Collaborate with design and content teams for collateral creation."
+    ],
+    "skills": [
+      "Proven experience as a Marketing Manager.",
+      "Strong project management and analytical skills.",
+      "Excellent communication and collaboration abilities."
+    ],
+    "experience": "5+ years of professional experience in marketing.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to lead and shape marketing strategies.",
+      "Collaborative and dynamic work environment.",
+      "Professional development opportunities."
+    ],
+    "application": "If you are a strategic thinker with a passion for driving marketing success, we invite you to apply and be part of our exciting journey!"
+  },
+  {
+    "_id": "11",
+    "platform": "GitHub Jobs",
+    "sector": "Technology",
+    "title": "Frontend Developer",
+    "description": "Build responsive and user-friendly web applications using modern frontend technologies.",
+    "requirements": [
+      "Bachelor's degree in Computer Science or related field",
+      "Proficient in HTML, CSS, and JavaScript",
+      "Experience with frontend frameworks (e.g., React, Angular)"
+    ],
+    "location": "Seattle, WA",
+    "salary": "$80,000 - $120,000 per year",
+    "picture": "https://i.ibb.co/48CMCjN/Git-Hub-logo.png",
+    "post_time": "6 days ago",
+    "aboutUs": "Join our dynamic development team focused on creating intuitive and visually appealing web applications. We value innovation, collaboration, and a passion for delivering exceptional user experiences.",
+    "positionOverview": "As a Frontend Developer, you will play a key role in building and enhancing user interfaces for our web applications. Collaborate with backend developers and designers to create seamless and responsive frontend solutions.",
+    "responsibilities": [
+      "Develop and maintain responsive web applications.",
+      "Collaborate with designers to implement visually appealing UIs.",
+      "Optimize applications for maximum speed and scalability.",
+      "Conduct code reviews to ensure code quality and adherence to best practices."
+    ],
+    "skills": [
+      "Proven experience as a Frontend Developer.",
+      "Proficiency in HTML, CSS, and JavaScript.",
+      "Experience with frontend frameworks like React or Angular."
+    ],
+    "experience": "3+ years of professional experience in frontend development.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work with cutting-edge frontend technologies.",
+      "Collaborative and innovative work environment.",
+      "Professional development opportunities."
+    ],
+    "application": "If you are passionate about building user-friendly web applications and thrive in a collaborative development environment, apply now to be part of our exciting projects!"
+  },
+  {
+    "_id": "12",
+    "platform": "Glassdoor",
+    "sector": "Design",
+    "title": "UX Researcher",
+    "description": "Conduct user research to inform and enhance the user experience of our digital products.",
+    "requirements": [
+      "Bachelor's or Master's degree in Human-Computer Interaction or related field",
+      "Experience in conducting user research studies",
+      "Strong analytical and communication skills"
+    ],
+    "location": "Austin, TX",
+    "salary": "$70,000 - $110,000 per year",
+    "picture": "https://i.ibb.co/XySxG5h/6296331b2be59dc55430ca8a.png",
+    "post_time": "7 days ago",
+    "aboutUs": "Join our design team dedicated to creating user-centric digital experiences. As a UX Researcher, you will play a crucial role in understanding user needs and behaviors, shaping the direction of our product design.",
+    "positionOverview": "As a UX Researcher, you will lead user research studies to uncover insights that inform product design decisions. Collaborate with designers and product managers to implement user-centered design principles.",
+    "responsibilities": [
+      "Plan and conduct user research studies, including usability testing and interviews.",
+      "Analyze research findings and provide actionable insights.",
+      "Collaborate with cross-functional teams to integrate user feedback into design iterations.",
+      "Stay updated on UX research methodologies and industry trends."
+    ],
+    "skills": [
+      "Proven experience as a UX Researcher.",
+      "Strong knowledge of user research methodologies.",
+      "Excellent analytical and communication skills."
+    ],
+    "experience": "3+ years of professional experience in UX research.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to shape the user experience of cutting-edge products.",
+      "Collaborative and user-focused work environment.",
+      "Professional development opportunities."
+    ],
+    "application": "If you are passionate about understanding user needs and shaping digital experiences, we invite you to apply and contribute to our user-centered design process!"
+  },
+  {
+    "_id": "13",
+    "platform": "Dice",
+    "sector": "Technology",
+    "title": "DevOps Engineer",
+    "description": "Automate and streamline our operations, ensuring efficient and reliable software delivery.",
+    "requirements": [
+      "Bachelor's degree in Computer Science or related field",
+      "Experience with configuration management tools (e.g., Ansible, Chef)",
+      "Knowledge of containerization and orchestration tools (e.g., Docker, Kubernetes)"
+    ],
+    "location": "Denver, CO",
+    "salary": "$90,000 - $130,000 per year",
+    "picture": "https://i.ibb.co/7yBYJty/DICE-Ticketing-Company-logo-svg.png",
+    "post_time": "8 days ago",
+    "aboutUs": "Join our DevOps team and play a crucial role in optimizing our software development and delivery processes. We are committed to automation, continuous integration, and creating a seamless development environment.",
+    "positionOverview": "As a DevOps Engineer, you will collaborate with development and operations teams to automate processes, enhance system reliability, and ensure efficient software delivery. Implement and maintain CI/CD pipelines for seamless deployment.",
+    "responsibilities": [
+      "Automate and streamline software development and deployment processes.",
+      "Collaborate with development and operations teams for continuous improvement.",
+      "Implement and maintain CI/CD pipelines for efficient software delivery.",
+      "Ensure system security and reliability through monitoring and optimization."
+    ],
+    "skills": [
+      "Proven experience as a DevOps Engineer.",
+      "Knowledge of configuration management tools and containerization technologies.",
+      "Experience with CI/CD pipelines and automation tools."
+    ],
+    "experience": "4+ years of professional experience in DevOps.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on cutting-edge DevOps technologies.",
+      "Collaborative and innovative work environment.",
+      "Professional development opportunities."
+    ],
+    "application": "If you are passionate about automating and optimizing software development processes, apply now to be part of our dynamic DevOps team!"
+  },
+  {
+    "_id": "14",
+    "platform": "Microsoft",
+    "sector": "Software Development",
+    "title": "Frontend Developer",
+    "description": "Create responsive and visually appealing user interfaces for web applications.",
+    "requirements": [
+      "Bachelor's degree in Computer Science or related field",
+      "Proficiency in HTML, CSS, and JavaScript",
+      "Experience with frontend frameworks such as React or Angular"
+    ],
+    "location": "Redmond, WA",
+    "salary": "$85,000 - $120,000 per year",
+    "picture": "https://i.ibb.co/TB18zMP/Microsoft-logo-2012-svg.png",
+    "post_time": "3 days ago",
+    "aboutUs": "Join our team dedicated to empowering individuals and organizations through innovative software solutions. As a Frontend Developer, you'll play a key role in delivering seamless and engaging user experiences across our diverse range of applications.",
+    "positionOverview": "In this role, you will collaborate with design and backend teams to implement frontend solutions. Your focus will be on creating intuitive and responsive interfaces that enhance user satisfaction and usability.",
+    "responsibilities": [
+      "Develop and maintain responsive user interfaces for web applications.",
+      "Collaborate with UX designers to translate design concepts into code.",
+      "Optimize application performance for maximum speed and scalability.",
+      "Participate in code reviews and provide feedback for continuous improvement.",
+      "Stay updated on frontend development trends and best practices."
+    ],
+    "skills": [
+      "Proven experience as a Frontend Developer with a strong portfolio.",
+      "Familiarity with RESTful APIs and backend integration.",
+      "Understanding of cross-browser compatibility issues and ways to address them.",
+      "Strong problem-solving and debugging skills."
+    ],
+    "experience": "3+ years of professional experience in frontend development.",
+    "perks": [
+      "Competitive salary and comprehensive benefits.",
+      "Opportunity for career advancement and skill development.",
+      "Inclusive and collaborative work culture.",
+      "Flexible work schedule and remote work options."
+    ],
+    "application": "If you're passionate about crafting user-centric web experiences and have the skills to contribute, we invite you to apply and be part of our exciting journey."
+  },
+  {
+    "_id": "15",
+    "platform": "Amazon",
+    "sector": "E-Commerce",
+    "title": "Data Scientist",
+    "description": "Utilize data analysis and machine learning to derive insights and improve business strategies.",
+    "requirements": [
+      "Master's or Ph.D. in Computer Science, Statistics, or related field",
+      "Proficiency in programming languages such as Python or R",
+      "Experience with data visualization tools and machine learning frameworks"
+    ],
+    "location": "Seattle, WA",
+    "salary": "$100,000 - $140,000 per year",
+    "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
+    "post_time": "4 days ago",
+    "aboutUs": "Join our dynamic data science team at the forefront of driving innovation in the e-commerce industry. We're committed to leveraging data to enhance customer experiences and optimize business operations.",
+    "positionOverview": "As a Data Scientist, you'll work on analyzing large datasets, developing machine learning models, and translating findings into actionable insights. Collaborate with cross-functional teams to implement data-driven solutions and contribute to business growth.",
+    "responsibilities": [
+      "Analyze large datasets to identify trends, patterns, and insights.",
+      "Develop and implement machine learning models for predictive analytics.",
+      "Collaborate with business stakeholders to understand requirements and goals.",
+      "Communicate findings through data visualization and presentations.",
+      "Stay updated on the latest advancements in data science and machine learning."
+    ],
+    "skills": [
+      "Proven experience as a Data Scientist with a strong portfolio of projects.",
+      "Strong analytical and problem-solving skills.",
+      "Excellent programming and scripting skills in languages like Python or R.",
+      "Experience with data visualization tools such as Tableau or Power BI."
+    ],
+    "experience": "4+ years of professional experience in data science or related field.",
+    "perks": [
+      "Competitive salary and comprehensive benefits.",
+      "Opportunity for career advancement and continuous learning.",
+      "Collaborative and innovative work environment.",
+      "Flexible work hours and remote work options."
+    ],
+    "application": "If you're passionate about leveraging data for business insights and have the skills to make an impact, we encourage you to apply and be part of our data-driven journey."
+  },
+  {
+    "_id": "16",
+    "platform": "Facebook",
+    "sector": "Social Media",
+    "title": "Product Manager",
+    "description": "Lead the development and strategy of digital products, ensuring alignment with business goals.",
+    "requirements": [
+      "Bachelor's or Master's degree in Business, Marketing, or related field",
+      "Experience in product management or related roles",
+      "Strong analytical and strategic thinking skills"
+    ],
+    "location": "Menlo Park, CA",
+    "salary": "$110,000 - $150,000 per year",
+    "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
+    "post_time": "5 days ago",
+    "aboutUs": "Join our mission to connect people and build communities. As a Product Manager, you'll play a crucial role in shaping the future of digital products that impact billions of users worldwide. Be part of a dynamic and innovative team focused on creating meaningful experiences.",
+    "positionOverview": "In this role, you will lead the end-to-end product development process, from ideation to launch. Collaborate with cross-functional teams, define product roadmaps, and ensure the delivery of high-quality products that meet user needs and business objectives.",
+    "responsibilities": [
+      "Define and prioritize product features based on user needs and business goals.",
+      "Collaborate with design and engineering teams to bring products to market.",
+      "Conduct market research and competitor analysis to inform product strategy.",
+      "Define and track key performance indicators (KPIs) to measure product success.",
+      "Iterate on products based on user feedback and market trends."
+    ],
+    "skills": [
+      "Proven experience in product management or related roles.",
+      "Strong analytical and strategic thinking skills.",
+      "Excellent communication and leadership skills.",
+      "Ability to work collaboratively in a fast-paced and dynamic environment."
+    ],
+    "experience": "5+ years of professional experience in product management.",
+    "perks": [
+      "Competitive salary and comprehensive benefits.",
+      "Opportunity for career growth and development.",
+      "Inclusive and innovative work culture.",
+      "Flexible work schedule and remote work options."
+    ],
+    "application": "If you're passionate about building impactful digital products and have the skills to lead product development, we invite you to apply and be part of our journey to connect the world."
+  },
+  {
+    "_id": "17",
+    "platform": "Tesla",
+    "sector": "Automotive",
+    "title": "Embedded Systems Engineer",
+    "description": "Design and implement software solutions for embedded systems in electric vehicles.",
+    "requirements": [
+      "Bachelor's or Master's degree in Electrical Engineering or related field",
+      "Proficiency in C or C++ programming languages",
+      "Experience with embedded systems development"
+    ],
+    "location": "Palo Alto, CA",
+    "salary": "$95,000 - $130,000 per year",
+    "picture": "https://i.ibb.co/5cBJy9v/Tesla-logo.png",
+    "post_time": "6 days ago",
+    "aboutUs": "Join the revolution of sustainable transportation. As an Embedded Systems Engineer at Tesla, you'll be at the forefront of developing software solutions for cutting-edge electric vehicles. Be part of a passionate team dedicated to accelerating the world's transition to sustainable energy.",
+    "positionOverview": "In this role, you will work on designing and implementing software for embedded systems in Tesla vehicles. Collaborate with hardware and software teams to optimize performance, ensure safety, and contribute to the development of innovative features.",
+    "responsibilities": [
+      "Design and implement software for embedded systems in electric vehicles.",
+      "Collaborate with hardware engineers to ensure seamless integration.",
+      "Optimize software for performance, safety, and energy efficiency.",
+      "Conduct code reviews and provide feedback to maintain code quality.",
+      "Stay updated on industry trends and advancements in embedded systems."
+    ],
+    "skills": [
+      "Proven experience in embedded systems development.",
+      "Proficiency in C or C++ programming languages.",
+      "Understanding of hardware-software integration in embedded systems.",
+      "Strong problem-solving and debugging skills."
+    ],
+    "experience": "3+ years of professional experience in embedded systems engineering.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on cutting-edge technology in sustainable transportation.",
+      "Collaborative and innovative work environment.",
+      "Professional development opportunities.",
+      "Flexible work schedule and remote work options."
+    ],
+    "application": "If you're passionate about contributing to the future of sustainable transportation and have the skills to innovate in embedded systems, we encourage you to apply and be part of the Tesla mission."
+  },
+  {
+    "_id": "18",
+    "platform": "Netflix",
+    "sector": "Entertainment",
+    "title": "Machine Learning Engineer",
+    "description": "Develop and deploy machine learning models for content recommendation and personalization.",
+    "requirements": [
+      "Master's or Ph.D. in Computer Science, Machine Learning, or related field",
+      "Proficiency in programming languages such as Python or Scala",
+      "Experience with machine learning frameworks like TensorFlow or PyTorch"
+    ],
+    "location": "Los Gatos, CA",
+    "salary": "$120,000 - $160,000 per year",
+    "picture": "https://i.ibb.co/XydLTmY/netflix-logo-png-large.png",
+    "post_time": "1 week ago",
+    "aboutUs": "Join our talented team shaping the future of entertainment through data-driven innovation. As a Machine Learning Engineer at Netflix, you'll be part of a dynamic environment where creativity and technology converge to deliver personalized content experiences to millions of users globally.",
+    "positionOverview": "In this role, you will work on designing, developing, and deploying machine learning models that power content recommendation and personalization algorithms. Collaborate with cross-functional teams to enhance the Netflix streaming experience.",
+    "responsibilities": [
+      "Develop and deploy machine learning models for content recommendation.",
+      "Collaborate with data scientists to analyze and interpret user behavior data.",
+      "Optimize algorithms for performance, accuracy, and scalability.",
+      "Contribute to the research and development of new machine learning techniques.",
+      "Stay updated on advancements in machine learning and data science."
+    ],
+    "skills": [
+      "Proven experience as a Machine Learning Engineer with a strong portfolio.",
+      "Proficiency in Python or Scala programming languages.",
+      "Experience with machine learning frameworks such as TensorFlow or PyTorch.",
+      "Strong problem-solving and analytical skills."
+    ],
+    "experience": "4+ years of professional experience in machine learning engineering.",
+    "perks": [
+      "Competitive salary and comprehensive benefits.",
+      "Opportunity to work on cutting-edge machine learning projects.",
+      "Creative and collaborative work environment.",
+      "Professional development opportunities.",
+      "Flexible work schedule and remote work options."
+    ],
+    "application": "If you're passionate about shaping the future of entertainment through machine learning and have the skills to contribute, we invite you to apply and be part of the Netflix journey."
+  },
+  {
+    "_id": "19",
+    "platform": "Uber",
+    "sector": "Transportation",
+    "title": "Senior Mobile App Developer",
+    "description": "Design and implement features for the Uber mobile app, ensuring a seamless user experience.",
+    "requirements": [
+      "Bachelor's or Master's degree in Computer Science or related field",
+      "Proficiency in Swift for iOS or Kotlin for Android",
+      "Experience with mobile app development and UI/UX design"
+    ],
+    "location": "San Francisco, CA",
+    "salary": "$100,000 - $140,000 per year",
+    "picture": "https://i.ibb.co/JyNrsWF/Uber-logo-2018.png",
+    "post_time": "1 week ago",
+    "aboutUs": "Join our mission to revolutionize transportation and create seamless experiences for millions of users worldwide. As a Senior Mobile App Developer at Uber, you'll be part of a dynamic team shaping the future of mobility through innovative app development.",
+    "positionOverview": "In this role, you will lead the design and implementation of new features for the Uber mobile app. Collaborate with cross-functional teams, contribute to UI/UX design, and ensure a high-quality user experience for both iOS and Android platforms.",
+    "responsibilities": [
+      "Lead the design and implementation of new features for the Uber mobile app.",
+      "Collaborate with UI/UX designers to ensure a seamless user experience.",
+      "Optimize app performance for speed, responsiveness, and reliability.",
+      "Conduct code reviews and mentor junior developers.",
+      "Stay updated on mobile app development trends and best practices."
+    ],
+    "skills": [
+      "Proven experience as a Mobile App Developer with a strong portfolio.",
+      "Proficiency in Swift for iOS or Kotlin for Android.",
+      "Experience with UI/UX design principles for mobile apps.",
+      "Strong problem-solving and debugging skills."
+    ],
+    "experience": "5+ years of professional experience in mobile app development.",
+    "perks": [
+      "Competitive salary and comprehensive benefits.",
+      "Opportunity for career growth and development.",
+      "Innovative and collaborative work environment.",
+      "Flexible work schedule and remote work options."
+    ],
+    "application": "If you're passionate about shaping the future of transportation through mobile app development and have the skills to make an impact, we invite you to apply and be part of the Uber journey."
+  },
+  {
+    "_id": "20",
+    "platform": "Netflix",
+    "sector": "Entertainment",
+    "title": "Content Writer",
+    "description": "Create engaging and original content for various genres and formats on Netflix.",
+    "requirements": [
+      "Bachelor's degree in Journalism, Communication, or related field",
+      "Excellent writing and editing skills in English",
+      "Ability to adapt to different tones, styles, and audiences",
+      "Knowledge of SEO and content marketing strategies"
+    ],
+    "location": "Remote",
+    "salary": "$50,000 - $70,000 per year",
+    "picture": "https://i.ibb.co/XydLTmY/netflix-logo-png-large.png",
+    "post_time": "2 days ago",
+    "aboutUs": "We are the world's leading streaming entertainment service with over 200 million paid memberships in over 190 countries. We offer a wide variety of TV shows, movies, documentaries, and more across different languages and genres. We are looking for a Content Writer to join our creative team and help us produce captivating content for our global audience.",
+    "positionOverview": "As a Content Writer, you will be responsible for creating original and engaging content for various genres and formats on Netflix. You will work closely with the content team to research, pitch, write, and edit content that aligns with the Netflix brand and voice. You will also collaborate with the marketing team to optimize content for SEO and social media platforms.",
+    "responsibilities": [
+      "Create original and engaging content for various genres and formats on Netflix, such as blog posts, articles, reviews, summaries, captions, etc.",
+      "Research and pitch content ideas that are relevant, timely, and appealing to the target audience.",
+      "Write and edit content that follows the Netflix style guide and tone of voice.",
+      "Optimize content for SEO and social media platforms using keywords, tags, hashtags, etc.",
+      "Ensure content quality, accuracy, and consistency across all channels."
+    ],
+    "skills": [
+      "Proven experience as a Content Writer or similar role with a portfolio of published work.",
+      "Excellent writing and editing skills in English with a flair for creativity and storytelling.",
+      "Ability to adapt to different tones, styles, and audiences depending on the genre and format.",
+      "Knowledge of SEO and content marketing strategies and best practices.",
+      "Familiarity with Netflix content and culture."
+    ],
+    "experience": "2+ years of professional experience in content writing or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on exciting and diverse content for a global audience.",
+      "Flexible and remote work environment.",
+      "Access to Netflix content and perks.",
+      "Creative and collaborative team culture."
+    ],
+    "application": "If you are passionate about creating captivating content for Netflix and have the required skills and experience, we invite you to apply and join our creative team."
+  },
+  {
+    "_id": "21",
+    "platform": "Spotify",
+    "sector": "Music",
+    "title": "Data Analyst",
+    "description": "Analyze and interpret data to provide insights and recommendations for Spotify's music streaming service.",
+    "requirements": [
+      "Bachelor's degree in Statistics, Mathematics, Computer Science, or related field",
+      "Proficiency in data analysis tools and languages, such as SQL, Python, R, Tableau, etc.",
+      "Experience with data visualization, reporting, and dashboarding",
+      "Knowledge of data mining, machine learning, and statistical techniques"
+    ],
+    "location": "New York, NY",
+    "salary": "$60,000 - $90,000 per year",
+    "picture": "https://i.ibb.co/RQYchyB/Spotify-logo-with-text-svg.webp",
+    "post_time": "3 days ago",
+    "aboutUs": "We are the world's most popular audio streaming service with over 320 million users and 70 million songs. We connect people with music and podcasts they love, and we empower artists and creators to reach and engage with their fans. We are looking for a Data Analyst to join our data team and help us leverage data to drive our business decisions and strategies.",
+    "positionOverview": "As a Data Analyst, you will be responsible for analyzing and interpreting data to provide insights and recommendations for Spotify's music streaming service. You will work with various stakeholders across the organization to understand their data needs and deliver actionable data solutions. You will also communicate and present your findings and suggestions in a clear and compelling way.",
+    "responsibilities": [
+      "Collect, process, and analyze data from various sources, such as user behavior, music consumption, market trends, etc.",
+      "Apply data mining, machine learning, and statistical techniques to identify patterns, trends, and correlations in the data.",
+      "Create and maintain data visualization, reporting, and dashboarding tools to communicate data insights and recommendations to stakeholders.",
+      "Perform data quality checks and data validation to ensure data accuracy and reliability.",
+      "Collaborate with other data analysts, data engineers, and data scientists to share best practices and improve data processes and systems."
+    ],
+    "skills": [
+      "Proven experience as a Data Analyst or similar role with a strong analytical and problem-solving mindset.",
+      "Proficiency in data analysis tools and languages, such as SQL, Python, R, Tableau, etc.",
+      "Experience with data visualization, reporting, and dashboarding tools and techniques.",
+      "Knowledge of data mining, machine learning, and statistical techniques and methods.",
+      "Familiarity with Spotify's music streaming service and industry."
+    ],
+    "experience": "2+ years of professional experience in data analysis or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on data-driven projects that impact millions of users and artists.",
+      "Flexible and collaborative work environment.",
+      "Access to Spotify's music and podcasts and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about data and music and have the required skills and experience, we invite you to apply and join our data team."
+  },
+  {
+    "_id": "22",
+    "platform": "Amazon",
+    "sector": "E-commerce",
+    "title": "Customer Service Representative",
+    "description": "Provide excellent customer service and support to Amazon's customers via phone, email, chat, or social media.",
+    "requirements": [
+      "High school diploma or equivalent",
+      "Excellent communication and interpersonal skills in English",
+      "Ability to handle customer inquiries, complaints, and feedback in a professional and courteous manner",
+      "Ability to work under pressure and multitask in a fast-paced environment"
+    ],
+    "location": "Remote",
+    "salary": "$15 - $20 per hour",
+    "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
+    "post_time": "4 days ago",
+    "aboutUs": "We are the world's largest online retailer and a leader in e-commerce, cloud computing, and artificial intelligence. We offer a wide range of products and services to millions of customers around the world. We are looking for a Customer Service Representative to join our customer service team and help us deliver exceptional customer service and support to our customers.",
+    "positionOverview": "As a Customer Service Representative, you will be responsible for providing excellent customer service and support to Amazon's customers via phone, email, chat, or social media. You will respond to customer inquiries, complaints, and feedback in a timely, accurate, and respectful manner. You will also resolve customer issues, provide information, and escalate complex cases as needed.",
+    "responsibilities": [
+      "Answer customer calls, emails, chats, or social media messages and provide information, assistance, and solutions.",
+      "Handle customer inquiries, complaints, and feedback in a professional and courteous manner and follow up as necessary.",
+      "Resolve customer issues, such as order status, delivery, returns, refunds, etc., or escalate complex cases to the appropriate department.",
+      "Maintain records of customer interactions and transactions using the customer service system.",
+      "Follow customer service policies and procedures and adhere to quality standards."
+    ],
+    "skills": [
+      "Proven experience as a Customer Service Representative or similar role with a customer-oriented attitude.",
+      "Excellent communication and interpersonal skills in English with a clear and friendly voice.",
+      "Ability to handle customer inquiries, complaints, and feedback in a professional and courteous manner.",
+      "Ability to work under pressure and multitask in a fast-paced environment.",
+      "Familiarity with Amazon's products and services and customer service system."
+    ],
+    "experience": "1+ year of professional experience in customer service or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work remotely and flexibly.",
+      "Supportive and collaborative team culture.",
+      "Access to Amazon's products and services and perks.",
+      "Career growth opportunities."
+    ],
+    "application": "If you are passionate about customer service and have the required skills and experience, we invite you to apply and join our customer service team."
+  },
+  {
+    "_id": "23",
+    "platform": "Apple",
+    "sector": "Technology",
+    "title": "Software Engineer",
+    "description": "Develop and maintain software applications and systems for Apple’s products and services.",
+    "requirements": [
+      "Bachelor’s degree in Computer Science, Engineering, or related field",
+      "Programming skills in Swift, Objective-C, C++, or Java",
+      "Experience with iOS, macOS, watchOS, or tvOS development",
+      "Experience with Xcode, Git, or other development tools"
+    ],
+    "location": "Cupertino, CA",
+    "salary": "$120,000 - $180,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "8 days ago",
+    "aboutUs": "We are the world’s most innovative technology company and a leader in design, engineering, and manufacturing. We offer a range of products and services, such as iPhone, iPad, Mac, Apple Watch, Apple TV, AirPods, Apple Music, iCloud, etc. We are looking for a Software Engineer to join our engineering team and help us create and improve our products and services.",
+    "positionOverview": "As a Software Engineer, you will be responsible for developing and maintaining software applications and systems for Apple’s products and services. You will work with various teams and stakeholders to understand their needs and deliver high-quality software solutions. You will also participate in code reviews, testing, debugging, and documentation.",
+    "responsibilities": [
+      "Design, develop, and maintain software applications and systems for Apple’s products and services, such as iPhone, iPad, Mac, Apple Watch, Apple TV, AirPods, Apple Music, iCloud, etc.",
+      "Collaborate with other engineers, product managers, designers, and testers to deliver user-centric and scalable software solutions.",
+      "Write clean, efficient, and well-tested code using best practices and standards.",
+      "Troubleshoot and debug software issues and provide technical support as needed.",
+      "Stay updated on the latest technologies and trends in the software industry and apply them to improve Apple’s products and services."
+    ],
+    "skills": [
+      "Proven experience as a Software Engineer or similar role with a strong software engineering background.",
+      "Programming skills in Swift, Objective-C, C++, or Java with experience in iOS, macOS, watchOS, or tvOS development.",
+      "Experience with Xcode, Git, or other development tools and platforms.",
+      "Knowledge of software development methodologies, such as Agile, Scrum, or Kanban, and software engineering principles, such as OOP, MVC, or MVVM.",
+      "Familiarity with Apple’s products and services and brand identity."
+    ],
+    "experience": "3+ years of professional experience in software engineering or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on innovative and impactful projects that enhance the lives of millions of users and customers.",
+      "Flexible and collaborative work environment.",
+      "Access to Apple’s products and services and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about software engineering and technology and have the required skills and experience, we invite you to apply and join our engineering team."
+  },
+  {
+    "_id": "24",
+    "platform": "McDonald’s",
+    "sector": "Food and Beverage",
+    "title": "Crew Member",
+    "description": "Perform various tasks and duties at McDonald’s restaurant, such as taking orders, preparing food, serving customers, etc.",
+    "requirements": [
+      "High school diploma or equivalent",
+      "Excellent customer service and communication skills",
+      "Ability to work in a team and follow instructions",
+      "Ability to work in a fast-paced and dynamic environment"
+    ],
+    "location": "Various",
+    "salary": "$8 - $12 per hour",
+    "picture": "https://i.ibb.co/h1Jb7s6/purepng-com-mcdonalds-logologobrand-logoiconslogos-25151994043391qrj.png",
+    "post_time": "9 days ago",
+    "aboutUs": "We are the world’s largest fast food chain and a leader in food service. We offer a wide range of food and beverage products and services to millions of customers around the world. We are looking for a Crew Member to join our restaurant team and help us deliver exceptional food quality and customer service.",
+    "positionOverview": "As a Crew Member, you will be responsible for performing various tasks and duties at McDonald’s restaurant, such as taking orders, preparing food, serving customers, etc. You will follow McDonald’s policies and procedures and ensure the cleanliness and safety of the restaurant. You will also interact with customers and provide them with a friendly and satisfying service.",
+    "responsibilities": [
+      "Take customer orders and payments and handle them accurately and efficiently.",
+      "Prepare and serve food and beverage products to customers, such as burgers, fries, nuggets, coffee, soda, etc.",
+      "Follow McDonald’s recipes and standards and ensure the quality and consistency of the products.",
+      "Operate and maintain the food equipment and machines, such as fryer, grill, toaster, etc.",
+      "Interact with customers and provide them with a friendly and satisfying service."
+    ],
+    "skills": [
+      "Proven experience as a Crew Member or similar role with a passion for food and customer service.",
+      "Excellent customer service and communication skills with a positive and friendly attitude.",
+      "Ability to work in a team and follow instructions and feedback.",
+      "Ability to work in a fast-paced and dynamic environment and handle multiple tasks and customers.",
+      "Familiarity with McDonald’s food and beverage products and services and brand values."
+    ],
+    "experience": "No prior experience required, but preferred.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work in a fun and rewarding food environment.",
+      "Flexible and supportive work environment.",
+      "Access to McDonald’s food and beverage products and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about food and customer service and have the required skills and attitude, we invite you to apply and join our restaurant team."
+  },
+  {
+    "_id": "25",
+    "platform": "Airbnb",
+    "sector": "Travel",
+    "title": "Software Engineer",
+    "description": "Develop and maintain software applications and systems for Airbnb’s online travel marketplace.",
+    "requirements": [
+      "Bachelor’s degree in Computer Science, Engineering, or related field",
+      "Programming skills in Ruby, Java, Python, or C#",
+      "Experience with web development frameworks, such as Rails, Django, or ASP.NET",
+      "Experience with cloud computing platforms, such as AWS, Azure, or Google Cloud"
+    ],
+    "location": "San Francisco, CA",
+    "salary": "$100,000 - $150,000 per year",
+    "picture": "https://i.ibb.co/wy3TqXT/Airbnb-Logo-B-lo-svg.png",
+    "post_time": "5 days ago",
+    "aboutUs": "We are the world’s leading online travel marketplace, connecting millions of travelers with unique places to stay and experiences to enjoy. We empower hosts and guests to share their stories and passions, and we foster a culture of belonging and community. We are looking for a Software Engineer to join our engineering team and help us build and improve our platform and products.",
+    "positionOverview": "As a Software Engineer, you will be responsible for developing and maintaining software applications and systems for Airbnb’s online travel marketplace. You will work with various teams and stakeholders to understand their needs and deliver high-quality software solutions. You will also participate in code reviews, testing, debugging, and documentation.",
+    "responsibilities": [
+      "Design, develop, and maintain software applications and systems for Airbnb’s online travel marketplace, such as booking, payment, messaging, search, etc.",
+      "Collaborate with other engineers, product managers, designers, and data scientists to deliver user-centric and scalable software solutions.",
+      "Write clean, efficient, and well-tested code using best practices and standards.",
+      "Troubleshoot and debug software issues and provide technical support as needed.",
+      "Stay updated on the latest technologies and trends in the software industry and apply them to improve Airbnb’s platform and products."
+    ],
+    "skills": [
+      "Proven experience as a Software Engineer or similar role with a strong software engineering background.",
+      "Programming skills in Ruby, Java, Python, or C# with experience in web development frameworks, such as Rails, Django, or ASP.NET.",
+      "Experience with cloud computing platforms, such as AWS, Azure, or Google Cloud, and related services and tools.",
+      "Knowledge of software development methodologies, such as Agile, Scrum, or Kanban, and software engineering principles, such as OOP, SOLID, or DRY.",
+      "Familiarity with Airbnb’s online travel marketplace and industry."
+    ],
+    "experience": "3+ years of professional experience in software engineering or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on innovative and impactful projects that enhance the travel experience for millions of users and hosts.",
+      "Flexible and collaborative work environment.",
+      "Access to Airbnb’s travel credits and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about software engineering and travel and have the required skills and experience, we invite you to apply and join our engineering team."
+  },
+  {
+    "_id": "26",
+    "platform": "Nike",
+    "sector": "Sports",
+    "title": "Marketing Manager",
+    "description": "Plan and execute marketing campaigns and strategies for Nike’s sports products and services.",
+    "requirements": [
+      "Bachelor’s degree in Marketing, Business, or related field",
+      "Experience in marketing management, preferably in the sports industry",
+      "Experience with digital marketing channels, such as social media, email, web, etc.",
+      "Experience with marketing tools and platforms, such as Google Analytics, Facebook Ads, Mailchimp, etc."
+    ],
+    "location": "Beaverton, OR",
+    "salary": "$70,000 - $100,000 per year",
+    "picture": "https://i.ibb.co/4RG5SGp/Nike-Logo.png",
+    "post_time": "6 days ago",
+    "aboutUs": "We are the world’s leading sports brand, inspiring athletes and enthusiasts with our innovative products and services. We believe in the power of sport to move the world and create positive change. We are looking for a Marketing Manager to join our marketing team and help us promote and grow our brand and business.",
+    "positionOverview": "As a Marketing Manager, you will be responsible for planning and executing marketing campaigns and strategies for Nike’s sports products and services. You will work with various teams and stakeholders to understand their goals and objectives and deliver effective and creative marketing solutions. You will also measure and analyze the performance and impact of your marketing efforts and optimize them accordingly.",
+    "responsibilities": [
+      "Plan and execute marketing campaigns and strategies for Nike’s sports products and services, such as shoes, apparel, equipment, etc.",
+      "Collaborate with other marketing managers, product managers, designers, and content creators to create and deliver engaging and consistent marketing materials and messages across different channels, such as social media, email, web, etc.",
+      "Manage and allocate marketing budgets and resources and ensure the timely and quality delivery of marketing projects and activities.",
+      "Measure and analyze the performance and impact of marketing campaigns and strategies using marketing tools and platforms, such as Google Analytics, Facebook Ads, Mailchimp, etc., and provide reports and recommendations for improvement.",
+      "Stay updated on the latest marketing trends and best practices and apply them to enhance Nike’s brand and business."
+    ],
+    "skills": [
+      "Proven experience as a Marketing Manager or similar role with a strong marketing background.",
+      "Experience in marketing management, preferably in the sports industry, with a track record of successful marketing campaigns and strategies.",
+      "Experience with digital marketing channels, such as social media, email, web, etc., and marketing tools and platforms, such as Google Analytics, Facebook Ads, Mailchimp, etc.",
+      "Knowledge of marketing principles, concepts, and techniques, such as marketing mix, segmentation, targeting, positioning, branding, etc.",
+      "Familiarity with Nike’s sports products and services and brand identity."
+    ],
+    "experience": "4+ years of professional experience in marketing management or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on exciting and impactful marketing projects that inspire and empower millions of athletes and enthusiasts.",
+      "Flexible and collaborative work environment.",
+      "Access to Nike’s sports products and services and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about marketing and sports and have the required skills and experience, we invite you to apply and join our marketing team."
+  },
+  {
+    "_id": "27",
+    "platform": "Starbucks",
+    "sector": "Food and Beverage",
+    "title": "Barista",
+    "description": "Prepare and serve coffee and other beverages and food items to Starbucks’ customers.",
+    "requirements": [
+      "High school diploma or equivalent",
+      "Excellent customer service and communication skills",
+      "Ability to work in a team and follow instructions",
+      "Ability to work in a fast-paced and dynamic environment"
+    ],
+    "location": "Various",
+    "salary": "$10 - $15 per hour",
+    "picture": "https://i.ibb.co/TkH23nm/Starbucks-Corporation-Logo-2011-svg.png",
+    "post_time": "6 days ago",
+    "aboutUs": "We are the world’s leading coffee company and a pioneer in ethical sourcing and roasting. We offer a wide range of coffee and tea products and services to millions of customers around the world. We are looking for a Barista to join our store team and help us deliver exceptional coffee experiences and customer service.",
+    "positionOverview": "As a Barista, you will be responsible for preparing and serving coffee and other beverages and food items to Starbucks’ customers. You will follow Starbucks’ recipes and standards and ensure the quality and consistency of the products. You will also interact with customers and provide them with a friendly and personalized service.",
+    "responsibilities": [
+      "Prepare and serve coffee and other beverages and food items to Starbucks’ customers, such as espresso, latte, cappuccino, tea, muffin, sandwich, etc.",
+      "Follow Starbucks’ recipes and standards and ensure the quality and consistency of the products.",
+      "Operate and maintain the coffee equipment and machines, such as espresso machine, grinder, brewer, etc.",
+      "Take customer orders and payments and handle them accurately and efficiently.",
+      "Interact with customers and provide them with a friendly and personalized service."
+    ],
+    "skills": [
+      "Proven experience as a Barista or similar role with a passion for coffee and customer service.",
+      "Excellent customer service and communication skills with a positive and friendly attitude.",
+      "Ability to work in a team and follow instructions and feedback.",
+      "Ability to work in a fast-paced and dynamic environment and handle multiple tasks and customers.",
+      "Familiarity with Starbucks’ coffee and tea products and services and brand values."
+    ],
+    "experience": "No prior experience required, but preferred.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work in a fun and rewarding coffee environment.",
+      "Flexible and supportive work environment.",
+      "Access to Starbucks’ coffee and tea products and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about coffee and customer service and have the required skills and attitude, we invite you to apply and join our store team."
+  },
+  {
+    "_id": "28",
+    "platform": "Apple",
+    "sector": "Technology",
+    "title": "Software Engineer",
+    "description": "Develop and maintain software applications and systems for Apple’s products and services.",
+    "requirements": [
+      "Bachelor’s degree in Computer Science, Engineering, or related field",
+      "Programming skills in Swift, Objective-C, C++, or Java",
+      "Experience with iOS, macOS, watchOS, or tvOS development",
+      "Experience with Xcode, Git, or other development tools"
+    ],
+    "location": "Cupertino, CA",
+    "salary": "$120,000 - $180,000 per year",
+    "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+    "post_time": "8 days ago",
+    "aboutUs": "We are the world’s most innovative technology company and a leader in design, engineering, and manufacturing. We offer a range of products and services, such as iPhone, iPad, Mac, Apple Watch, Apple TV, AirPods, Apple Music, iCloud, etc. We are looking for a Software Engineer to join our engineering team and help us create and improve our products and services.",
+    "positionOverview": "As a Software Engineer, you will be responsible for developing and maintaining software applications and systems for Apple’s products and services. You will work with various teams and stakeholders to understand their needs and deliver high-quality software solutions. You will also participate in code reviews, testing, debugging, and documentation.",
+    "responsibilities": [
+      "Design, develop, and maintain software applications and systems for Apple’s products and services, such as iPhone, iPad, Mac, Apple Watch, Apple TV, AirPods, Apple Music, iCloud, etc.",
+      "Collaborate with other engineers, product managers, designers, and testers to deliver user-centric and scalable software solutions.",
+      "Write clean, efficient, and well-tested code using best practices and standards.",
+      "Troubleshoot and debug software issues and provide technical support as needed.",
+      "Stay updated on the latest technologies and trends in the software industry and apply them to improve Apple’s products and services."
+    ],
+    "skills": [
+      "Proven experience as a Software Engineer or similar role with a strong software engineering background.",
+      "Programming skills in Swift, Objective-C, C++, or Java with experience in iOS, macOS, watchOS, or tvOS development.",
+      "Experience with Xcode, Git, or other development tools and platforms.",
+      "Knowledge of software development methodologies, such as Agile, Scrum, or Kanban, and software engineering principles, such as OOP, MVC, or MVVM.",
+      "Familiarity with Apple’s products and services and brand identity."
+    ],
+    "experience": "3+ years of professional experience in software engineering or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on innovative and impactful projects that enhance the lives of millions of users and customers.",
+      "Flexible and collaborative work environment.",
+      "Access to Apple’s products and services and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about software engineering and technology and have the required skills and experience, we invite you to apply and join our engineering team."
+  },
+  {
+    "_id": "29",
+    "platform": "McDonald’s",
+    "sector": "Food and Beverage",
+    "title": "Crew Member",
+    "description": "Perform various tasks and duties at McDonald’s restaurant, such as taking orders, preparing food, serving customers, etc.",
+    "requirements": [
+      "High school diploma or equivalent",
+      "Excellent customer service and communication skills",
+      "Ability to work in a team and follow instructions",
+      "Ability to work in a fast-paced and dynamic environment"
+    ],
+    "location": "Various",
+    "salary": "$8 - $12 per hour",
+    "picture": "https://i.ibb.co/h1Jb7s6/purepng-com-mcdonalds-logologobrand-logoiconslogos-25151994043391qrj.png",
+    "post_time": "9 days ago",
+    "aboutUs": "We are the world’s largest fast food chain and a leader in food service. We offer a wide range of food and beverage products and services to millions of customers around the world. We are looking for a Crew Member to join our restaurant team and help us deliver exceptional food quality and customer service.",
+    "positionOverview": "As a Crew Member, you will be responsible for performing various tasks and duties at McDonald’s restaurant, such as taking orders, preparing food, serving customers, etc. You will follow McDonald’s policies and procedures and ensure the cleanliness and safety of the restaurant. You will also interact with customers and provide them with a friendly and satisfying service.",
+    "responsibilities": [
+      "Take customer orders and payments and handle them accurately and efficiently.",
+      "Prepare and serve food and beverage products to customers, such as burgers, fries, nuggets, coffee, soda, etc.",
+      "Follow McDonald’s recipes and standards and ensure the quality and consistency of the products.",
+      "Operate and maintain the food equipment and machines, such as fryer, grill, toaster, etc.",
+      "Interact with customers and provide them with a friendly and satisfying service."
+    ],
+    "skills": [
+      "Proven experience as a Crew Member or similar role with a passion for food and customer service.",
+      "Excellent customer service and communication skills with a positive and friendly attitude.",
+      "Ability to work in a team and follow instructions and feedback.",
+      "Ability to work in a fast-paced and dynamic environment and handle multiple tasks and customers.",
+      "Familiarity with McDonald’s food and beverage products and services and brand values."
+    ],
+    "experience": "No prior experience required, but preferred.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work in a fun and rewarding food environment.",
+      "Flexible and supportive work environment.",
+      "Access to McDonald’s food and beverage products and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about food and customer service and have the required skills and attitude, we invite you to apply and join our restaurant team."
+  },
+  {
+    "_id": "30",
+    "platform": "Netflix",
+    "sector": "Entertainment",
+    "title": "Data Scientist",
+    "description": "Analyze and model data to provide insights and recommendations for Netflix’s content and business.",
+    "requirements": [
+      "Master’s degree or PhD in Statistics, Mathematics, Computer Science, or related field",
+      "Proficiency in data analysis tools and languages, such as SQL, Python, R, etc.",
+      "Experience with machine learning, deep learning, and natural language processing techniques and frameworks, such as TensorFlow, PyTorch, etc.",
+      "Experience with data visualization, reporting, and dashboarding tools, such as Tableau, Power BI, etc."
+    ],
+    "location": "Los Gatos, CA",
+    "salary": "$150,000 - $200,000 per year",
+    "picture": "https://i.ibb.co/0nZ8p9Q/Netflix-Logo.png",
+    "post_time": "10 days ago",
+    "aboutUs": "We are the world’s leading streaming entertainment service with over 200 million paid memberships in over 190 countries. We offer a wide variety of TV shows, movies, documentaries, and more across different languages and genres. We are looking for a Data Scientist to join our data team and help us leverage data to drive our content and business decisions and strategies.",
+    "positionOverview": "As a Data Scientist, you will be responsible for analyzing and modeling data to provide insights and recommendations for Netflix’s content and business. You will work with various stakeholders across the organization to understand their data needs and deliver actionable data solutions. You will also communicate and present your findings and suggestions in a clear and compelling way.",
+    "responsibilities": [
+      "Collect, process, and analyze data from various sources, such as user behavior, content consumption, market trends, etc.",
+      "Apply machine learning, deep learning, and natural language processing techniques to build predictive and prescriptive models and algorithms for Netflix’s content and business, such as recommendation systems, personalization, sentiment analysis, etc.",
+      "Create and maintain data visualization, reporting, and dashboarding tools to communicate data insights and recommendations to stakeholders.",
+      "Perform data quality checks and data validation to ensure data accuracy and reliability.",
+      "Collaborate with other data scientists, data engineers, and data analysts to share best practices and improve data processes and systems."
+    ],
+    "skills": [
+      "Proven experience as a Data Scientist or similar role with a strong analytical and problem-solving mindset.",
+      "Proficiency in data analysis tools and languages, such as SQL, Python, R, etc.",
+      "Experience with machine learning, deep learning, and natural language processing techniques and frameworks, such as TensorFlow, PyTorch, etc.",
+      "Experience with data visualization, reporting, and dashboarding tools and techniques, such as Tableau, Power BI, etc.",
+      "Familiarity with Netflix’s content and business and industry."
+    ],
+    "experience": "3+ years of professional experience in data science or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on data-driven projects that impact millions of users and content creators.",
+      "Flexible and remote work environment.",
+      "Access to Netflix’s content and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about data and entertainment and have the required skills and experience, we invite you to apply and join our data team."
+  },
+  {
+    "_id": "31",
+    "platform": "Spotify",
+    "sector": "Music",
+    "title": "Content Creator",
+    "description": "Create engaging and original content for various genres and formats on Spotify.",
+    "requirements": [
+      "Bachelor’s degree in Journalism, Communication, or related field",
+      "Excellent writing and editing skills in English",
+      "Ability to adapt to different tones, styles, and audiences",
+      "Knowledge of SEO and content marketing strategies"
+    ],
+    "location": "Remote",
+    "salary": "$40,000 - $60,000 per year",
+    "picture": "https://i.ibb.co/RQYchyB/Spotify-logo-with-text-svg.webp",
+    "post_time": "11 days ago",
+    "aboutUs": "We are the world’s most popular audio streaming service with over 320 million users and 70 million songs. We connect people with music and podcasts they love, and we empower artists and creators to reach and engage with their fans. We are looking for a Content Creator to join our creative team and help us produce captivating content for our global audience.",
+    "positionOverview": "As a Content Creator, you will be responsible for creating original and engaging content for various genres and formats on Spotify. You will work closely with the content team to research, pitch, write, and edit content that aligns with the Spotify brand and voice. You will also collaborate with the marketing team to optimize content for SEO and social media platforms.",
+    "responsibilities": [
+      "Create original and engaging content for various genres and formats on Spotify, such as blog posts, articles, reviews, summaries, captions, etc.",
+      "Research and pitch content ideas that are relevant, timely, and appealing to the target audience.",
+      "Write and edit content that follows the Spotify style guide and tone of voice.",
+      "Optimize content for SEO and social media platforms using keywords, tags, hashtags, etc.",
+      "Ensure content quality, accuracy, and consistency across all channels."
+    ],
+    "skills": [
+      "Proven experience as a Content Creator or similar role with a portfolio of published work.",
+      "Excellent writing and editing skills in English with a flair for creativity and storytelling.",
+      "Ability to adapt to different tones, styles, and audiences depending on the genre and format.",
+      "Knowledge of SEO and content marketing strategies and best practices.",
+      "Familiarity with Spotify’s music and podcast content and culture."
+    ],
+    "experience": "2+ years of professional experience in content creation or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on exciting and diverse content for a global audience.",
+      "Flexible and remote work environment.",
+      "Access to Spotify’s music and podcasts and perks.",
+      "Creative and collaborative team culture."
+    ],
+    "application": "If you are passionate about creating captivating content for Spotify and have the required skills and experience, we invite you to apply and join our creative team."
+  },
+  {
+    "_id": "32",
+    "platform": "Google",
+    "sector": "Technology",
+    "title": "Software Engineer",
+    "description": "Develop and maintain software applications and systems for Google’s products and services.",
+    "requirements": [
+      "Bachelor’s degree in Computer Science, Engineering, or related field",
+      "Programming skills in Java, C++, Python, or Go",
+      "Experience with web development frameworks, such as Angular, React, or Django",
+      "Experience with cloud computing platforms, such as Google Cloud, AWS, or Azure"
+    ],
+    "location": "Mountain View, CA",
+    "salary": "$120,000 - $180,000 per year",
+    "picture": "https://i.ibb.co/n15XM8q/Google-2015-logo-svg.webp",
+    "post_time": "12 days ago",
+    "aboutUs": "We are the world’s leading technology company and a leader in search, advertising, cloud computing, and artificial intelligence. We offer a range of products and services, such as Google Search, Gmail, YouTube, Google Maps, Google Photos, Google Drive, etc. We are looking for a Software Engineer to join our engineering team and help us create and improve our products and services.",
+    "positionOverview": "As a Software Engineer, you will be responsible for developing and maintaining software applications and systems for Google’s products and services. You will work with various teams and stakeholders to understand their needs and deliver high-quality software solutions. You will also participate in code reviews, testing, debugging, and documentation.",
+    "responsibilities": [
+      "Design, develop, and maintain software applications and systems for Google’s products and services, such as Google Search, Gmail, YouTube, Google Maps, Google Photos, Google Drive, etc.",
+      "Collaborate with other engineers, product managers, designers, and testers to deliver user-centric and scalable software solutions.",
+      "Write clean, efficient, and well-tested code using best practices and standards.",
+      "Troubleshoot and debug software issues and provide technical support as needed.",
+      "Stay updated on the latest technologies and trends in the software industry and apply them to improve Google’s products and services."
+    ],
+    "skills": [
+      "Proven experience as a Software Engineer or similar role with a strong software engineering background.",
+      "Programming skills in Java, C++, Python, or Go with experience in web development frameworks, such as Angular, React, or Django.",
+      "Experience with cloud computing platforms, such as Google Cloud, AWS, or Azure, and related services and tools.",
+      "Knowledge of software development methodologies, such as Agile, Scrum, or Kanban, and software engineering principles, such as OOP, SOLID, or DRY.",
+      "Familiarity with Google’s products and services and brand identity."
+    ],
+    "experience": "3+ years of professional experience in software engineering or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on innovative and impactful projects that enhance the lives of millions of users and customers.",
+      "Flexible and collaborative work environment.",
+      "Access to Google’s products and services and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about software engineering and technology and have the required skills and experience, we invite you to apply and join our engineering team."
+  },
+  {
+    "_id": "33",
+    "platform": "Nike",
+    "sector": "Sports",
+    "title": "Graphic Designer",
+    "description": "Create and design graphic materials and elements for Nike’s sports products and services.",
+    "requirements": [
+      "Bachelor’s degree in Graphic Design, Visual Communication, or related field",
+      "Experience in graphic design, preferably in the sports industry",
+      "Experience with graphic design software, such as Adobe Photoshop, Illustrator, or InDesign",
+      "Experience with video editing software, such as Adobe Premiere, After Effects, or Final Cut Pro"
+    ],
+    "location": "Beaverton, OR",
+    "salary": "$50,000 - $80,000 per year",
+    "picture": "https://i.ibb.co/4RG5SGp/Nike-Logo.png",
+    "post_time": "13 days ago",
+    "aboutUs": "We are the world’s leading sports brand, inspiring athletes and enthusiasts with our innovative products and services. We believe in the power of sport to move the world and create positive change. We are looking for a Graphic Designer to join our design team and help us create and design graphic materials and elements for our sports products and services.",
+    "positionOverview": "As a Graphic Designer, you will be responsible for creating and designing graphic materials and elements for Nike’s sports products and services. You will work with various teams and stakeholders to understand their goals and objectives and deliver effective and creative graphic solutions. You will also ensure the consistency and quality of the graphic materials and elements across different channels and platforms.",
+    "responsibilities": [
+      "Create and design graphic materials and elements for Nike’s sports products and services, such as logos, icons, illustrations, images, animations, videos, etc.",
+      "Collaborate with other designers, product managers, marketers, and content creators to create and deliver engaging and consistent graphic materials and messages across different channels and platforms, such as web, mobile, social media, print, etc.",
+      "Use graphic design software, such as Adobe Photoshop, Illustrator, or InDesign, and video editing software, such as Adobe Premiere, After Effects, or Final Cut Pro, to create and edit graphic materials and elements.",
+      "Ensure compliance with Nike’s brand guidelines and standards and ensure the quality and consistency of the graphic materials and elements.",
+      "Stay updated on the latest graphic design trends and best practices and apply them to enhance Nike’s brand and business."
+    ],
+    "skills": [
+      "Proven experience as a Graphic Designer or similar role with a strong graphic design background.",
+      "Experience in graphic design, preferably in the sports industry, with a portfolio of graphic design work.",
+      "Experience with graphic design software, such as Adobe Photoshop, Illustrator, or InDesign, and video editing software, such as Adobe Premiere, After Effects, or Final Cut Pro.",
+      "Knowledge of graphic design principles, concepts, and techniques, such as typography, color, layout, etc.",
+      "Familiarity with Nike’s sports products and services and brand identity."
+    ],
+    "experience": "2+ years of professional experience in graphic design or related field.",
+    "perks": [
+      "Competitive salary and benefits package.",
+      "Opportunity to work on exciting and impactful graphic design projects that inspire and empower millions of athletes and enthusiasts.",
+      "Flexible and collaborative work environment.",
+      "Access to Nike’s sports products and services and perks.",
+      "Learning and development opportunities."
+    ],
+    "application": "If you are passionate about graphic design and sports and have the required skills and experience, we invite you to apply and join our design team."
+  },
+    {
+      "_id": "34",
+      "platform": "Starbucks",
+      "sector": "Food and Beverage",
+      "title": "Store Manager",
+      "description": "Manage and oversee the daily operations and performance of Starbucks’ store.",
+      "requirements": [
+        "High school diploma or equivalent",
+        "Excellent customer service and communication skills",
+        "Ability to lead and motivate a team and follow instructions",
+        "Ability to work in a fast-paced and dynamic environment"
+      ],
+      "location": "Various",
+      "salary": "$20 - $25 per hour",
+      "picture": "https://i.ibb.co/TkH23nm/Starbucks-Corporation-Logo-2011-svg.png",
+      "post_time": "14 days ago",
+      "aboutUs": "We are the world’s largest coffee company and a pioneer in ethical sourcing and roasting. We offer a wide range of coffee and tea products and services to millions of customers around the world. We are looking for a Store Manager to join our store team and help us deliver exceptional coffee experiences and customer service.",
+      "positionOverview": "As a Store Manager, you will be responsible for managing and overseeing the daily operations and performance of Starbucks’ store. You will lead and motivate a team of baristas and crew members and ensure the quality and consistency of the products and services. You will also interact with customers and provide them with a friendly and satisfying service.",
+      "responsibilities": [
+        "Manage and oversee the daily operations and performance of Starbucks’ store, such as inventory, sales, expenses, labor, etc.",
+        "Lead and motivate a team of baristas and crew members and provide them with training, coaching, and feedback.",
+        "Ensure the quality and consistency of the products and services and follow Starbucks’ recipes and standards.",
+        "Ensure the cleanliness and safety of the store and follow Starbucks’ policies and procedures.",
+        "Interact with customers and provide them with a friendly and satisfying service and handle customer complaints and feedback."
+      ],
+      "skills": [
+        "Proven experience as a Store Manager or similar role with a passion for coffee and customer service.",
+        "Excellent customer service and communication skills with a positive and friendly attitude.",
+        "Ability to lead and motivate a team and follow instructions and feedback.",
+        "Ability to work in a fast-paced and dynamic environment and handle multiple tasks and customers.",
+        "Familiarity with Starbucks’ coffee and tea products and services and brand values."
+      ],
+      "experience": "2+ years of professional experience in store management or related field.",
+      "perks": [
+        "Competitive salary and benefits package.",
+        "Opportunity to work in a fun and rewarding coffee environment.",
+        "Flexible and supportive work environment.",
+        "Access to Starbucks’ coffee and tea products and perks.",
+        "Learning and development opportunities."
+      ],
+      "application": "If you are passionate about coffee and customer service and have the required skills and experience, we invite you to apply and join our store team."
+    },
+    {
+      "_id": "35",
+      "platform": "Apple",
+      "sector": "Technology",
+      "title": "Product Designer",
+      "description": "Design and develop user interfaces and user experiences for Apple’s products and services.",
+      "requirements": [
+        "Bachelor’s degree in Design, Computer Science, or related field",
+        "Experience in product design, preferably in the technology industry",
+        "Experience with design software, such as Sketch, Figma, or Adobe XD",
+        "Experience with prototyping software, such as InVision, Framer, or Principle"
+      ],
+      "location": "Cupertino, CA",
+      "salary": "$100,000 - $150,000 per year",
+      "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
+      "post_time": "15 days ago",
+      "aboutUs": "We are the world’s most innovative technology company and a leader in design, engineering, and manufacturing. We offer a range of products and services, such as iPhone, iPad, Mac, Apple Watch, Apple TV, AirPods, Apple Music, iCloud, etc. We are looking for a Product Designer to join our design team and help us design and develop user interfaces and user experiences for our products and services.",
+      "positionOverview": "As a Product Designer, you will be responsible for designing and developing user interfaces and user experiences for Apple’s products and services. You will work with various teams and stakeholders to understand their needs and deliver effective and creative design solutions. You will also test and validate your designs and prototypes and ensure the quality and consistency of the products and services.",
+      "responsibilities": [
+        "Design and develop user interfaces and user experiences for Apple’s products and services, such as iPhone, iPad, Mac, Apple Watch, Apple TV, AirPods, Apple Music, iCloud, etc.",
+        "Collaborate with other designers, engineers, product managers, and testers to create and deliver user-centric and scalable design solutions.",
+        "Use design software, such as Sketch, Figma, or Adobe XD, and prototyping software, such as InVision, Framer, or Principle, to create and test design concepts and prototypes.",
+        "Ensure compliance with Apple’s design guidelines and standards and ensure the quality and consistency of the products and services.",
+        "Stay updated on the latest design trends and best practices and apply them to enhance Apple’s products and services."
+      ],
+      "skills": [
+        "Proven experience as a Product Designer or similar role with a strong design background.",
+        "Experience in product design, preferably in the technology industry, with a portfolio of design work.",
+        "Experience with design software, such as Sketch, Figma, or Adobe XD, and prototyping software, such as InVision, Framer, or Principle.",
+        "Knowledge of design principles, concepts, and techniques, such as UI, UX, typography, color, layout, etc.",
+        "Familiarity with Apple’s products and services and brand identity."
+      ],
+      "experience": "3+ years of professional experience in product design or related field.",
+      "perks": [
+        "Competitive salary and benefits package.",
+        "Opportunity to work on innovative and impactful design projects that enhance the lives of millions of users and customers.",
+        "Flexible and collaborative work environment.",
+        "Access to Apple’s products and services and perks.",
+        "Learning and development opportunities."
+      ],
+      "application": "If you are passionate about product design and technology and have the required skills and experience, we invite you to apply and join our design team."
+    },
+      {
+        "_id": "36",
+        "platform": "Facebook",
+        "sector": "Social Media",
+        "title": "Data Engineer",
+        "description": "Build and maintain data pipelines and systems for Facebook’s social media platform.",
+        "requirements": [
+          "Bachelor’s degree in Computer Science, Engineering, or related field",
+          "Experience in data engineering, preferably in the social media industry",
+          "Experience with data pipeline tools and frameworks, such as Apache Kafka, Spark, Airflow, etc.",
+          "Experience with data storage and processing systems, such as MySQL, MongoDB, Hadoop, etc."
+        ],
+        "location": "Menlo Park, CA",
+        "salary": "$100,000 - $150,000 per year",
+        "picture": "https://i.ibb.co/ZztZnxV/Facebook-Logo-2019.png",
+        "post_time": "16 days ago",
+        "aboutUs": "We are the world’s largest social media platform, connecting billions of people with their friends, family, and communities. We offer a range of products and services, such as Facebook, Instagram, WhatsApp, Messenger, Oculus, etc. We are looking for a Data Engineer to join our data team and help us build and maintain data pipelines and systems for our social media platform.",
+        "positionOverview": "As a Data Engineer, you will be responsible for building and maintaining data pipelines and systems for Facebook’s social media platform. You will work with various teams and stakeholders to understand their data needs and deliver reliable and scalable data solutions. You will also ensure the quality and security of the data and optimize the data performance and efficiency.",
+        "responsibilities": [
+          "Build and maintain data pipelines and systems for Facebook’s social media platform, such as user behavior, content consumption, market trends, etc.",
+          "Collaborate with other data engineers, data scientists, and data analysts to deliver reliable and scalable data solutions.",
+          "Use data pipeline tools and frameworks, such as Apache Kafka, Spark, Airflow, etc., to create and manage data workflows and processes.",
+          "Use data storage and processing systems, such as MySQL, MongoDB, Hadoop, etc., to store and process data efficiently and securely.",
+          "Ensure data quality and security and optimize data performance and efficiency."
+        ],
+        "skills": [
+          "Proven experience as a Data Engineer or similar role with a strong data engineering background.",
+          "Experience in data engineering, preferably in the social media industry, with a track record of successful data projects and solutions.",
+          "Experience with data pipeline tools and frameworks, such as Apache Kafka, Spark, Airflow, etc., and data storage and processing systems, such as MySQL, MongoDB, Hadoop, etc.",
+          "Knowledge of data engineering principles, concepts, and techniques, such as ETL, data modeling, data warehousing, etc.",
+          "Familiarity with Facebook’s social media platform and industry."
+        ],
+        "experience": "3+ years of professional experience in data engineering or related field.",
+        "perks": [
+          "Competitive salary and benefits package.",
+          "Opportunity to work on data-driven projects that impact billions of users and communities.",
+          "Flexible and collaborative work environment.",
+          "Access to Facebook’s products and services and perks.",
+          "Learning and development opportunities."
+        ],
+        "application": "If you are passionate about data engineering and social media and have the required skills and experience, we invite you to apply and join our data team."
+      },
+      {
+        "_id": "37",
+        "platform": "Airbnb",
+        "sector": "Travel",
+        "title": "Customer Service Representative",
+        "description": "Provide excellent customer service and support to Airbnb’s customers via phone, email, chat, or social media.",
+        "requirements": [
+          "High school diploma or equivalent",
+          "Excellent communication and interpersonal skills in English",
+          "Ability to handle customer inquiries, complaints, and feedback in a professional and courteous manner",
+          "Ability to work under pressure and multitask in a fast-paced environment"
+        ],
+        "location": "Remote",
+        "salary": "$15 - $20 per hour",
+        "picture": "https://i.ibb.co/wy3TqXT/Airbnb-Logo-B-lo-svg.png",
+        "post_time": "17 days ago",
+        "aboutUs": "We are the world’s leading online travel marketplace, connecting millions of travelers with unique places to stay and experiences to enjoy. We empower hosts and guests to share their stories and passions, and we foster a culture of belonging and community. We are looking for a Customer Service Representative to join our customer service team and help us deliver exceptional customer service and support to our customers.",
+        "positionOverview": "As a Customer Service Representative, you will be responsible for providing excellent customer service and support to Airbnb’s customers via phone, email, chat, or social media. You will respond to customer inquiries, complaints, and feedback in a timely, accurate, and respectful manner. You will also resolve customer issues, provide information, and escalate complex cases as needed.",
+        "responsibilities": [
+          "Answer customer calls, emails, chats, or social media messages and provide information, assistance, and solutions.",
+          "Handle customer inquiries, complaints, and feedback in a professional and courteous manner and follow up as necessary.",
+          "Resolve customer issues, such as booking, cancellation, payment, refund, etc., or escalate complex cases to the appropriate department.",
+          "Maintain records of customer interactions and transactions using the customer service system.",
+          "Follow customer service policies and procedures and adhere to quality standards."
+        ],
+        "skills": [
+          "Proven experience as a Customer Service Representative or similar role with a customer-oriented attitude.",
+          "Excellent communication and interpersonal skills in English with a clear and friendly voice.",
+          "Ability to handle customer inquiries, complaints, and feedback in a professional and courteous manner.",
+          "Ability to work under pressure and multitask in a fast-paced environment.",
+          "Familiarity with Airbnb’s online travel marketplace and industry."
+        ],
+        "experience": "1+ year of professional experience in customer service or related field.",
+        "perks": [
+          "Competitive salary and benefits package.",
+          "Opportunity to work remotely and flexibly.",
+          "Supportive and collaborative team culture.",
+          "Access to Airbnb’s travel credits and perks.",
+          "Career growth opportunities."
+        ],
+        "application": "If you are passionate about customer service and travel and have the required skills and experience, we invite you to apply and join our customer service team."
+      },
+      {
+        "_id": "38",
+        "platform": "Amazon",
+        "sector": "E-commerce",
+        "title": "Warehouse Associate",
+        "description": "Perform various tasks and duties at Amazon’s warehouse, such as picking, packing, shipping, receiving, etc.",
+        "requirements": [
+          "High school diploma or equivalent",
+          "Ability to lift up to 50 lbs and stand for long periods of time",
+          "Ability to work in a team and follow instructions",
+          "Ability to work in a fast-paced and dynamic environment"
+        ],
+        "location": "Various",
+        "salary": "$15 - $20 per hour",
+        "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
+        "post_time": "18 days ago",
+        "aboutUs": "We are the world’s largest online retailer and a leader in e-commerce, cloud computing, and artificial intelligence. We offer a wide range of products and services to millions of customers around the world. We are looking for a Warehouse Associate to join our warehouse team and help us deliver exceptional customer service and satisfaction.",
+        "positionOverview": "As a Warehouse Associate, you will be responsible for performing various tasks and duties at Amazon’s warehouse, such as picking, packing, shipping, receiving, etc. You will follow Amazon’s policies and procedures and ensure the safety and quality of the products and services. You will also interact with other warehouse associates and supervisors and provide them with support and assistance.",
+        "responsibilities": [
+          "Perform various tasks and duties at Amazon’s warehouse, such as picking, packing, shipping, receiving, etc., using scanners, carts, pallets, etc.",
+          "Follow Amazon’s policies and procedures and ensure the safety and quality of the products and services.",
+          "Operate and maintain the warehouse equipment and machines, such as forklifts, conveyors, etc.",
+          "Work with other warehouse associates and supervisors and provide them with support and assistance.",
+          "Report any issues or problems to the warehouse supervisor or manager."
+        ],
+        "skills": [
+          "Proven experience as a Warehouse Associate or similar role with a passion for customer service and satisfaction.",
+          "Ability to lift up to 50 lbs and stand for long periods of time with a physical and energetic attitude.",
+          "Ability to work in a team and follow instructions and feedback.",
+          "Ability to work in a fast-paced and dynamic environment and handle multiple tasks and products.",
+          "Familiarity with Amazon’s products and services and warehouse system."
+        ],
+        "experience": "No prior experience required, but preferred.",
+        "perks": [
+          "Competitive salary and benefits package.",
+          "Opportunity to work in a fun and rewarding warehouse environment.",
+          "Flexible and supportive work environment.",
+          "Access to Amazon’s products and services and perks.",
+          "Learning and development opportunities."
+        ],
+        "application": "If you are passionate about customer service and satisfaction and have the required skills and attitude, we invite you to apply and join our warehouse team."
+      },
+      {
+        "_id": "39",
+        "platform": "Tesla",
+        "sector": "Automotive",
+        "title": "Sales Advisor",
+        "description": "Sell and promote Tesla’s electric vehicles and products to customers and prospects.",
+        "requirements": [
+          "High school diploma or equivalent",
+          "Excellent sales and communication skills",
+          "Ability to work in a team and follow instructions",
+          "Ability to work in a fast-paced and dynamic environment"
+        ],
+        "location": "Various",
+        "salary": "$40,000 - $60,000 per year plus commission",
+        "picture": "https://i.ibb.co/5cBJy9v/Tesla-logo.png",
+        "post_time": "19 days ago",
+        "aboutUs": "We are the world’s leading electric vehicle company and a pioneer in sustainable energy. We offer a range of electric vehicles and products, such as Model S, Model 3, Model X, Model Y, Cybertruck, Powerwall, Solar Roof, etc. We are looking for a Sales Advisor to join our sales team and help us sell and promote our electric vehicles and products to customers and prospects.",
+        "positionOverview": "As a Sales Advisor, you will be responsible for selling and promoting Tesla’s electric vehicles and products to customers and prospects. You will work with various teams and stakeholders to understand their needs and preferences and deliver effective and persuasive sales presentations and demonstrations. You will also provide excellent customer service and support and ensure customer satisfaction and loyalty.",
+        "responsibilities": [
+          "Sell and promote Tesla’s electric vehicles and products to customers and prospects, such as Model S, Model 3, Model X, Model Y, Cybertruck, Powerwall, Solar Roof, etc.",
+          "Collaborate with other sales advisors, managers, and engineers to deliver effective and persuasive sales presentations and demonstrations.",
+          "Provide excellent customer service and support and ensure customer satisfaction and loyalty.",
+          "Follow up with customers and prospects and maintain records of sales activities and transactions using the sales system.",
+          "Achieve and exceed sales targets and goals and contribute to the sales team’s performance and growth."
+        ],
+        "skills": [
+          "Proven experience as a Sales Advisor or similar role with a strong sales background.",
+          "Excellent sales and communication skills with a confident and persuasive voice.",
+          "Ability to work in a team and follow instructions and feedback.",
+          "Ability to work in a fast-paced and dynamic environment and handle multiple customers and products.",
+          "Familiarity with Tesla’s electric vehicles and products and industry."
+        ],
+        "experience": "1+ year of professional experience in sales or related field.",
+        "perks": [
+          "Competitive salary and benefits package plus commission.",
+          "Opportunity to work on exciting and impactful sales projects that enhance the sustainable energy future for millions of users and customers.",
+          "Flexible and collaborative work environment.",
+          "Access to Tesla’s electric vehicles and products and perks.",
+          "Learning and development opportunities."
+        ],
+        "application": "If you are passionate about sales and sustainable energy and have the required skills and experience, we invite you to apply and join our sales team."
+      },
+      {
+        "_id": "40",
+        "platform": "Spotify",
+        "sector": "Music",
+        "title": "Data Scientist",
+        "description": "Analyze and model large-scale data sets, generate insights and recommendations, and communicate findings to stakeholders.",
+        "requirements": [
+          "Master’s degree in Statistics, Mathematics, Computer Science, or related field",
+          "Programming skills in R, Python, or Scala",
+          "Experience with big data technologies such as Hadoop, Spark, or Hive"
+        ],
+        "location": "New York, NY",
+        "salary": "$100,000 - $150,000 per year",
+        "picture": "https://i.ibb.co/RQYchyB/Spotify-logo-with-text-svg.webp",
+        "post_time": "2 days ago",
+        "aboutUs": "We are the world’s leading music streaming service, connecting millions of listeners with their favorite artists, songs, and podcasts. Our mission is to unlock the potential of human creativity by giving a million creative artists the opportunity to live off their art and billions of fans the opportunity to enjoy and be inspired by it. We are looking for a Data Scientist to join our Analytics team and help us make data-driven decisions across the company.",
+        "positionOverview": "As a Data Scientist, you will work on a variety of projects that span across different domains such as user behavior, content, product, marketing, and finance. You will apply your analytical skills and statistical knowledge to extract insights from large and complex data sets, build and evaluate predictive models, and communicate your findings and recommendations to various stakeholders. You will also collaborate with other data scientists, engineers, and business partners to ensure the quality and reliability of our data and analytics solutions.",
+        "responsibilities": [
+          "Perform exploratory data analysis and hypothesis testing to understand user behavior, content performance, and business outcomes.",
+          "Develop and deploy machine learning models to solve problems such as recommendation, personalization, churn prediction, and segmentation.",
+          "Design and conduct experiments to measure the impact of new features, products, and campaigns.",
+          "Create and maintain dashboards and reports to monitor key metrics and trends.",
+          "Present and communicate data insights and recommendations to various audiences in a clear and compelling way."
+        ],
+        "skills": [
+          "Proven experience as a Data Scientist with a strong portfolio showcasing data analysis and modeling skills.",
+          "Expertise in data manipulation and visualization tools such as pandas, dplyr, ggplot2, or Tableau.",
+          "Knowledge of machine learning techniques and frameworks such as scikit-learn, TensorFlow, or PyTorch.",
+          "Ability to translate business questions into data problems and provide actionable solutions.",
+          "Strong communication skills to convey complex data findings and implications to both technical and non-technical audiences."
+        ],
+        "experience": "4+ years of professional experience in data science or related field.",
+        "perks": [
+          "Competitive salary and benefits package.",
+          "Opportunity to work on challenging and impactful data problems in the music industry.",
+          "Collaborative and diverse work environment.",
+          "Learning and development opportunities.",
+          "Free Spotify Premium subscription."
+        ],
+        "application": "If you are passionate about music and data and possess the required skills and experience, we invite you to apply and join our Analytics team."
+      }
 ]

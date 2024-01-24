@@ -1,0 +1,16 @@
+[
+    {
+      "name": "Alice White",
+      "email": "alice.white@example.com",
+      "phone": "+1-555-1111",
+      "location": "Los Angeles, USA",
+      "education": "Bachelor's in Graphic Design",
+      "work_experience": "4 years",
+      "positions_responsibility": "Graphic Designer",
+      "training_courses": "Adobe Creative Suite Certification",
+      "academic_personal_projects": "Redesigned company branding",
+      "skills": ["Adobe Photoshop", "Illustrator", "UI/UX Design"],
+      "portfolio": "https://alice.white/portfolio",
+      "accomplishment": "Received design awards"
+    }
+]
