@@ -46,14 +46,14 @@ const CandidateProUpdate: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="bg-base-200 min-h-screen p-5">
       <CandidateNav
         text="Upgrade your information"
         btn="Return"
         handleClick={backToProfile}
       />
       {/* Your navigation component */}
-      <div className="p-5">
+      <div className="p-5 bg-white">
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Name */}
           <div className="form-control w-full">
