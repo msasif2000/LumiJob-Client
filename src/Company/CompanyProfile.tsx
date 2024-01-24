@@ -83,7 +83,7 @@ const CompanyProfile = () => {
                         <p className="text-xl font-semibold text-[#6f6aff] p-2  ">Edit Profile</p>
                     </div>
                 </div>
-                <div className="flex gap-5">
+                <div className="flex gap-10">
                     <img className="w-28 h-28 rounded-full bg-white p-2" src="https://i.ibb.co/5cBJy9v/Tesla-logo.png" />
                     <div >
                         <p className="uppercase text-white ">Company Name </p>
