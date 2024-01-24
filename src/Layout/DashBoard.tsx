@@ -16,7 +16,7 @@ const DashBoard = () => {
     }
     return (
         <div className="md:flex">
-            <div className="md:w-2/5 lg:w-1/4 xxl-w-1/6 md:flex-shrink-0">
+            <div className="md:w-2/5 lg:w-1/6 xxl-w-1/6 md:flex-shrink-0">
                 <div className="navbar-start md:hidden">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
