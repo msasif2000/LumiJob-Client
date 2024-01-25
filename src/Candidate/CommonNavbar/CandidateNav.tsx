@@ -10,7 +10,7 @@ const CandidateNav: React.FC<CandidateNavProps> = ({
   handleClick,
 }) => {
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -30,7 +30,7 @@ const CandidateNav: React.FC<CandidateNavProps> = ({
             </svg>
           </div>
         </div>
-        <a className="btn btn-ghost text-xl">{text}</a>
+        <a className="text-xl font-semibold">{text}</a>
       </div>
 
       <div className="navbar-end">

@@ -94,9 +94,9 @@ const CandidateProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen">
       <CandidateNav text={"Profile"} btn={"Update Information"} handleClick={buttonClicked}/>
-      <div className="flex p-5 space-x-10">
+      <div className="flex space-x-10">
         {/* profile card div */}
         <div className="bg-white h-fit w-1/3 rounded-2xl space-y-5 p-5 relative">
           <div className="bg-accent h-48 rounded-2xl relative">
