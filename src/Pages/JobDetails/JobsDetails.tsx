@@ -135,11 +135,11 @@ const JobsDetails: React.FC = () => {
                             {/* right side */}
                             <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12">
                                 <div>
-                                    <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                                    <button className=" w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
                                         APPLY HERE
                                     </button>
                                 </div>
-                                <div className="flex flex-col bg-[#F2F5FE] items-center p-8">
+                                <div className="skeleton flex flex-col bg-[#F2F5FE] items-center p-8">
                                     <hr className="border-b-2 border-gray-400 mb-4" />
 
                                     <div className="mb-12">
