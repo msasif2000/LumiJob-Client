@@ -84,7 +84,7 @@ const DashBoard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="md:flex hidden  min-h-screen bg-gray-200 pt-12">
+                <div className="md:flex hidden  min-h-screen bg-gray-200 pt-12 md:fixed">
 
                     <ul className="menu text-xl">
                         {
@@ -146,7 +146,7 @@ const DashBoard = () => {
                     </ul>
                 </div>
             </div>
-            <div className="md:flex-1 overflow-x-auto">
+            <div className="md:flex-1 overflow-x-auto px-12">
                 <Outlet></Outlet>
             </div>
         </div>
