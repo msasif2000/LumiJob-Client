@@ -1,8 +1,28 @@
+import useAxiosDev from '../hooks/useAxiosDev';
 import './CompanyCSS/Postjob.css'
 
 const PostJob = () => {
+    const axiosDev = useAxiosDev();
+    const email: string = 'company@gmail.com';
     const handleJobPost = (e: React.FormEvent<HTMLFormElement>) => {
-        console.log(e.target);
+        const form = e.currentTarget;
+        e.preventDefault();
+        const formData = new FormData(form);
+        const postedDate = new Date().toISOString();
+        formData.append('postedDate', postedDate.toString());
+        formData.append('companyEmail', email);
+        const data = Object.fromEntries(formData);
+        console.log(data);
+
+        axiosDev.post('/postJob', data)
+            .then(res => {
+                console.log(res.data);
+                form.reset();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
     }
 
     const addInputField = (fieldName: string) => {
