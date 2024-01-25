@@ -33,6 +33,12 @@ const PostJob = () => {
                                 </div>
                                 <div className="form-control py-1">
                                     <label className="label">
+                                        <span className="label-text font-bold">Company Location</span>
+                                    </label>
+                                    <input required type="text" name="location" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" placeholder="Company Location" />
+                                </div>
+                                <div className="form-control py-1">
+                                    <label className="label">
                                         <span className="label-text font-bold">About Us</span>
                                     </label>
                                     <input required type="text" name="about" placeholder="About Us" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
@@ -45,6 +51,18 @@ const PostJob = () => {
                                 </div>
                                 <div className="form-control py-1">
                                     <label className="label">
+                                        <span className="label-text font-bold">Job Type</span>
+                                    </label>
+                                    <input required type="text" name="jobType" placeholder="Remote/Onsite/Both" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
+                                </div>
+                                <div className="form-control py-1">
+                                    <label className="label">
+                                        <span className="label-text font-bold">Job Position</span>
+                                    </label>
+                                    <input required type="text" name="position" placeholder="Developer/Engineer/UI Designer..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
+                                </div>
+                                <div className="form-control py-1">
+                                    <label className="label">
                                         <span className="label-text font-bold">Position Overview</span>
                                     </label>
                                     <input required type="text" name="positionOverview" placeholder="Position Overview" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
@@ -53,7 +71,7 @@ const PostJob = () => {
                                     <label className="label">
                                         <span className="label-text font-bold">Platform</span>
                                     </label>
-                                    <input required type="text" name="platform" placeholder="Facebook/Google/Adobe..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
+                                    <input type="text" name="platform" placeholder="Facebook/Google/Adobe..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
                                 <div className="form-control py-1">
                                     <label className="label">
@@ -83,24 +101,6 @@ const PostJob = () => {
 
 
                             <div className="flex-1">
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Company Location</span>
-                                    </label>
-                                    <input required type="text" name="location" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" placeholder="Company Location" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Job Type</span>
-                                    </label>
-                                    <input required type="text" name="jobType" placeholder="Remote/Onsite/Both" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Job Position</span>
-                                    </label>
-                                    <input required type="text" name="position" placeholder="Developer/Engineer/UI Designer..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
                                 <div className="form-control py-1" id="responsibilities">
                                     <label className="label">
                                         <span className="label-text font-bold">Responsibilities</span>
