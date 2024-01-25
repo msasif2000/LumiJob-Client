@@ -9,7 +9,7 @@ const DashBoard = () => {
     const navigate = useNavigate()
 
     const { logOut } = useAuth();
-    const role: string = 'candidate';
+    const role: string = 'company';
     const handleLogout = () => {
         logOut()
         navigate('/');
