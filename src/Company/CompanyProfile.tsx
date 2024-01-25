@@ -1,10 +1,14 @@
 import { MdOutlineModeEdit } from "react-icons/md";
 import { Bar, BarChart, Cell, Legend, Pie, PieChart, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-
+import { PiBagSimpleFill } from "react-icons/pi";
+import { LiaIndustrySolid } from "react-icons/lia";
+import { IoIosPeople } from "react-icons/io";
+import { IoMailOpen } from "react-icons/io5";
+import { GiConfirmed } from "react-icons/gi";
 
 const CompanyProfile = () => {
     const data = [
-        { name: "Total job", value: 5 },
+        { name: "Total job", value: 8 },
         { name: "Total applied", value: 4 },
         { name: "Total visitor", value: 10 },
     ];
@@ -70,7 +74,7 @@ const CompanyProfile = () => {
     };
 
     return (
-        <div>
+        <div className="px-20">
             <div className="h-60 mt-10 px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
                 <div className="flex justify-between  my-2 pt-2">
                     <div>
@@ -111,7 +115,7 @@ const CompanyProfile = () => {
                 </div>
             </div>
 
-            <div className="border-2 border-[#6886968f] min-h-20 mt-4 m-2 rounded-md p-6 pb-10">
+            <div className="border-2 border-[#6886968f] min-h-20 mt-4 rounded-md p-6 pb-10">
                 <div className="flex justify-between">
                     <h3 className="text-3xl font-medium text-[#688696]">Company details</h3>
                     <div className="flex justify-center items-center bg-[#6886964f] rounded-xl px-2 py-1">
@@ -141,8 +145,57 @@ const CompanyProfile = () => {
                     </div>
                 </div>
             </div>
-            <div className="border-2 border-[#6886968f] min-h-20 mt-4 m-2 rounded-md p-6 pb-10">
+            <div className="border-2 border-[#6886968f] min-h-20 mt-4  rounded-md p-6 pb-10">
                 <h3 className="text-3xl font-medium text-[#688696]">Company analytics</h3>
+                <div className=" flex justify-around items-center mt-10">
+                    <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
+                        <div className="bg-[#B6F4F6] p-2 rounded-full">
+                            <PiBagSimpleFill className="text-4xl text-[#00939A]" />
+                        </div>
+                        <div className="text-end">
+                            <h3 className="text-lg font-semibold text-gray-600">Total Jobs</h3>
+                            <p className="text-3xl font-semibold">500</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
+                        <div className="bg-[#FEF7CD] p-2 rounded-full">
+                            <LiaIndustrySolid className="text-4xl text-[#E7C154]"/>
+                        </div>
+                        <div className="text-end">
+                            <h3 className="text-lg font-semibold text-gray-600">Total Company</h3>
+                            <p className="text-3xl font-semibold">60</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
+                        <div className="bg-[#DFF1FC] p-2 rounded-full">
+                            <IoIosPeople className="text-4xl text-[#699BBA]"/>
+                        </div>
+                        <div className="text-end">
+                            <h3 className="text-lg font-semibold text-gray-600">Total Candidate</h3>
+                            <p className="text-3xl font-semibold">5000</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
+                        <div className="bg-[#FFD6CC] p-2 rounded-full">
+                            <IoMailOpen className="text-4xl text-[#F88652]"/>
+                        </div>
+                        <div className="text-end">
+                            <h3 className="text-lg font-semibold text-gray-600">Total Applied</h3>
+                            <p className="text-3xl font-semibold">3500</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
+                        <div className="bg-[#D4FAE5] p-2 rounded-full">
+                            <GiConfirmed className="text-4xl text-[#23AA5D]"/>
+                        </div>
+                        <div className="text-end">
+                            <h3 className="text-lg font-semibold text-gray-600">Total Confirm jobs</h3>
+                            <p className="text-3xl font-semibold">1000</p>
+                        </div>
+                    </div>
+                  
+                 
+                </div>
                 <div className="flex">
                     <div>
                         <PieChart width={400} height={400}>
