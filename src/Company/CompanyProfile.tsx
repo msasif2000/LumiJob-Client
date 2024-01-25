@@ -5,14 +5,34 @@ import { LiaIndustrySolid } from "react-icons/lia";
 import { IoIosPeople } from "react-icons/io";
 import { IoMailOpen } from "react-icons/io5";
 import { GiConfirmed } from "react-icons/gi";
+import { FunctionComponent } from 'react';
 
+interface CustomizedLabelProps {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  percent: number;
+}
+
+interface JobData {
+    name: string;
+    value: number;
+  }
+  
+  interface JobChartData {
+    name: string;
+    pv: number;
+  }
+  
 const CompanyProfile = () => {
-    const data = [
+    const data: JobData[] = [
         { name: "Total job", value: 8 },
         { name: "Total applied", value: 4 },
         { name: "Total visitor", value: 10 },
     ];
-    const data2 = [
+    const data2: JobChartData[] = [
         {
             name: 'Controls Engineer',
             pv: 55,
@@ -48,7 +68,7 @@ const CompanyProfile = () => {
     ]
     const COLORS = ["#0088FE", "#00C49F", "#FF8042"];
 
-    const renderCustomizedLabel = ({
+    const renderCustomizedLabel: FunctionComponent<CustomizedLabelProps> = ({
         cx,
         cy,
         midAngle,

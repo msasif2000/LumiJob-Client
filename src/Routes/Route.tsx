@@ -20,6 +20,7 @@ import CompanyProfile from "../Company/CompanyProfile";
 import PostJob from "../Company/PostJob";
 import PostedJobs from "../Company/PostedJobs";
 import Employees from "../Company/Employees";
+import CandidateProUpdate from "../Candidate/UpdateCmponents/CandidateProUpdate";
 
 export const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
       {
         path: 'candidateProfile',
         element: <CandidateProfile></CandidateProfile>
+      },
+      {
+        path: 'candidateProfile/update',
+        element: <CandidateProUpdate/>
       },
       {
         path: 'resume',
