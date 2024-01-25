@@ -1,4 +1,4 @@
-
+import './CompanyCSS/Postjob.css'
 
 const PostJob = () => {
     const handleJobPost = (e: React.FormEvent<HTMLFormElement>) => {
@@ -11,7 +11,7 @@ const PostJob = () => {
         input.type = 'text';
         input.name = fieldName;
         input.placeholder = `Enter ${fieldName}`;
-        input.className = 'peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600';
+        input.className = 'py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400';
         if (container) {
             container.appendChild(input);
         }
@@ -25,83 +25,83 @@ const PostJob = () => {
                     <form onSubmit={handleJobPost} className="font-raleway ">
                         <div className="lg:flex justify-center gap-6">
                             <div className="w-full flex-1">
-                                <div className="form-control">
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">Company Name</span>
                                     </label>
-                                    <input required type="text" name="companyName" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" placeholder="ABC Pvt Ltd" />
+                                    <input required type="text" name="companyName" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" placeholder="ABC Pvt Ltd" />
                                 </div>
-                                <div className="form-control">
+                                <div className="form-control py-1">
+                                    <label className="label">
+                                        <span className="label-text font-bold">Company Location</span>
+                                    </label>
+                                    <input required type="text" name="location" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" placeholder="Company Location" />
+                                </div>
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">About Us</span>
                                     </label>
-                                    <input required type="text" name="about" placeholder="About Us" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
+                                    <input required type="text" name="about" placeholder="About Us" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
-                                <div className="form-control">
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">Job Sector</span>
                                     </label>
-                                    <input required type="text" name="sector" placeholder="IT/Software/Frontend..." className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
+                                    <input required type="text" name="sector" placeholder="IT/Software/Frontend..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
-                                <div className="form-control">
+                                <div className="form-control py-1">
+                                    <label className="label">
+                                        <span className="label-text font-bold">Job Type</span>
+                                    </label>
+                                    <input required type="text" name="jobType" placeholder="Remote/Onsite/Both" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
+                                </div>
+                                <div className="form-control py-1">
+                                    <label className="label">
+                                        <span className="label-text font-bold">Job Position</span>
+                                    </label>
+                                    <input required type="text" name="position" placeholder="Developer/Engineer/UI Designer..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
+                                </div>
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">Position Overview</span>
                                     </label>
-                                    <input required type="text" name="positionOverview" placeholder="Position Overview" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
+                                    <input required type="text" name="positionOverview" placeholder="Position Overview" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
-                                <div className="form-control">
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">Platform</span>
                                     </label>
-                                    <input required type="text" name="platform" placeholder="Facebook/Google/Adobe..." className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
+                                    <input type="text" name="platform" placeholder="Facebook/Google/Adobe..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
-                                <div className="form-control">
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">Experiences</span>
                                     </label>
-                                    <input required type="text" name="experience" placeholder="0-2 years/Fresher" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
+                                    <input required type="text" name="experience" placeholder="0-2 years/Fresher" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
-                                <div className="form-control">
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">Salary</span>
                                     </label>
-                                    <input required type="text" name="salary" placeholder="$2000-3000 per month/$30000 per year" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
+                                    <input required type="text" name="salary" placeholder="$2000-3000 per month/$30000 per year" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
-                                <div className="form-control">
+                                <div className="form-control py-1">
                                     <label className="label">
                                         <span className="label-text font-bold">Deadline</span>
                                     </label>
-                                    <input required type="datetime-local" name="deadline" placeholder="Application Deadline" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
+                                    <input required type="datetime-local" name="deadline" placeholder="Application Deadline" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
+                                </div>
+                                <div className="form-control py-1">
+                                    <label className="label">
+                                        <span className="label-text font-bold">Vacancy</span>
+                                    </label>
+                                    <input required type="number" name="vacancy" defaultValue={1} className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
                                 </div>
                             </div>
 
 
                             <div className="flex-1">
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Company Location</span>
-                                    </label>
-                                    <input required type="text" name="location" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" placeholder="Company Location" />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Job Type</span>
-                                    </label>
-                                    <input required type="text" name="jobType" placeholder="Remote/Onsite/Both" className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Job Position</span>
-                                    </label>
-                                    <input required type="text" name="position" placeholder="Developer/Engineer/UI Designer..." className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Vacancy</span>
-                                    </label>
-                                    <input required type="number" name="vacancy" defaultValue={1} className="peer py-3 pe-0 ps-1 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600" />
-                                </div>
-                                <div className="form-control" id="responsibilities">
+                                <div className="form-control py-1" id="responsibilities">
                                     <label className="label">
                                         <span className="label-text font-bold">Responsibilities</span>
                                     </label>
@@ -111,7 +111,7 @@ const PostJob = () => {
                                         </button>
                                     </label>
                                 </div>
-                                <div className="form-control" id="requirements">
+                                <div className="form-control py-1" id="requirements">
                                     <label className="label">
                                         <span className="label-text font-bold">Requirements</span>
                                     </label>
@@ -121,18 +121,18 @@ const PostJob = () => {
                                         </button>
                                     </label>
                                 </div>
-                                <div className="form-control" id="skills">
+                                <div className="form-control py-1" id="skills">
                                     <label className="label">
                                         <span className="label-text font-bold">Skills</span>
                                     </label>
                                     <label>
                                         <button type="button" onClick={() => addInputField('skills')} className="btn btn-sm   bg-blue-800 text-white">
-                                            + Add Skills
+                                            + Add Skill
                                         </button>
                                     </label>
                                 </div>
 
-                                <div className="form-control" id="perks">
+                                <div className="form-control py-1" id="perks">
                                     <label className="label">
                                         <span className="label-text font-bold">Perks</span>
                                     </label>
@@ -142,7 +142,7 @@ const PostJob = () => {
                                         </button>
                                     </label>
                                 </div>
-                                <div className="form-control" id="tags">
+                                <div className="form-control py-1" id="tags">
                                     <label className="label">
                                         <span className="label-text font-bold">Tags</span>
                                     </label>
