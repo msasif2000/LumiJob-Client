@@ -1,0 +1,11 @@
+input {
+    border: none;
+    border-bottom: 2px solid #ccc; /* Set your desired color for the bottom border */
+    outline: none; /* Remove default input focus outline */
+    transition: border-bottom-color 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  /* Focus state styling */
+  input:focus {
+    border-bottom-color: #007bff; /* Set your desired color for the bottom border when focused */
+  }
