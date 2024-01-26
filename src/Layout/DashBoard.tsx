@@ -25,21 +25,21 @@ const DashBoard = () => {
         };
     }, [isNavOpen]);
 
-const [role, setRole] = useState('');
-    const axiosDev = useAxiosDev();
-    axiosDev.get(`/users/${user.email}`).then(res => {
-        //console.log(res.data);
-        setRole(res.data.role);
-    })
+// const [role, setRole] = useState('');
+//     const axiosDev = useAxiosDev();
+//     axiosDev.get(`/users/${user?.email}`).then(res => {
+//         //console.log(res.data);
+//         setRole(res.data.role);
+//     })
     
-    // const role: string = 'company';
+    const role: string = 'candidate';
     const handleLogout = () => {
         logOut()
         navigate('/');
     }
     return (
         <div className="md:flex">
-            <div className="lg:w-3/12 xxl-w-1/6 md:flex-shrink-0">
+            <div className="lg:w-2/12 xxl-w-1/6 md:flex-shrink-0">
                 <div className="navbar-start lg:hidden">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
