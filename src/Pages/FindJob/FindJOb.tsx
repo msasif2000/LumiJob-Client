@@ -142,7 +142,7 @@ const FindJob = () => {
 
               <div className="grid grid-cols-1 gap-8 p-3">
                 {popularJobs?.slice(0, 8).map((job) => (
-                  <FindJobCard key={job._id} />
+                  <FindJobCard key={job._id} job={job}></FindJobCard>
                 ))}
               </div>
 
