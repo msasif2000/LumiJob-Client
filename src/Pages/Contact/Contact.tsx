@@ -1,17 +1,16 @@
 import Navbar from "../Navbar/Navbar";
-import { BiSolidPhoneCall } from "react-icons/bi";
-import { MdEmail } from "react-icons/md";
-import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 import emailjs from '@emailjs/browser';
 import { useRef } from "react";
 import "./contact.css"
-
-
+import { IoLocationSharp } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { BiSolidPhoneCall } from "react-icons/bi";
 const Contact = () => {
     const form = useRef<HTMLFormElement | null>(null);
+
 
     const handlefrom = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -32,7 +31,7 @@ const Contact = () => {
         <div>
             <Navbar color={'bg-gradient-to-r from-[#EEF8F1] from-5% via-[#D0FBD0] via-20% to-[#E7F9F3] to-45% ...'} />
             <div className="min-h-screen bg-gradient-to-tr from-[#b9f5cb] from-5% via-[#d0fbd0ec] via-20% to-[#F2F8F5] to-65% ...">
-                <div className="max-w-screen-xl mx-auto">
+                <div className="max-w-screen-2xl mx-auto">
 
                     <div>
                         <div className="text-center pt-5 ">
@@ -45,9 +44,53 @@ const Contact = () => {
                         </div>
 
                         {/* main section  */}
-                        <div className="grid grid-cols-3 justify-center gap-8 mt-10 bg-white rounded-xl">
+                        <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-8 mt-10 px-5 bg-white rounded-xl">
+
+                            <div className="col-span-1 ">
+                                <div className="flex flex-col justify-center items-center gap-3">
+                                    <div className="lg:mt-12 xl:mt-16 py-10">
+                                        <p className="-rotate-90 font-bold">Follow us</p>
+                                    </div>
+                                    <div className="rotate-90 py-8">
+                                        <hr className="w-20  border-gray-400" />
+                                    </div>
+                                    <Link
+                                        to="/"
+                                        target="_blank"
+                                        className="rounded-full w-10 hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
+                                    >
+                                        <FaFacebookF />
+                                    </Link>
+                                    <Link
+                                        to="#"
+                                        // target="_blank"
+                                        className="rounded-full w-10 hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
+                                    >
+                                        <AiFillYoutube />
+                                    </Link>
+
+                                    <Link
+                                        to="#"
+                                        // target="_blank"
+                                        className="rounded-full w-10 hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
+                                    >
+                                        <AiFillInstagram />
+                                    </Link>
+
+                                    <Link
+                                        to="#"
+                                        // target="_blank"
+                                        className="rounded-full w-10 hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
+                                    >
+                                        <FaTwitter />
+                                    </Link>
+
+                                </div>
+                            </div>
+
                             {/* contact details  */}
-                            <div className=" col-span-1 bg-blue-500 p-8 py-12 space-y-24 text-white rounded-xl">
+
+                            <div className=" parent col-span-5 lg:col-span-4 bg-[#6AB8FF] p-8 py-12 space-y-24 text-black rounded-xl">
                                 <div>
                                     <h3 className="text-2xl font-semibold">Contact Information</h3>
                                     <p className="text-sm">Say something to start a live chat!</p>
@@ -62,57 +105,23 @@ const Contact = () => {
                                         <p>demo@gmail.com</p>
                                     </div>
                                     <div className="flex  gap-3">
-                                        <IoLocationSharp className="text-4xl" />
-                                        <p>132 Dartmouth Street Boston, Massachusetts 02156 United States</p>
+                                        <IoLocationSharp className="text-3xl" />
+                                        <p>132 Dartmouth Street Boston, <br className="block lg:hidden" /> Massachusetts 02156 United States</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-3">
-                                    <Link
-                                        to="/"
-                                        target="_blank"
-                                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
-                                    >
-                                        <FaFacebookF />
-                                    </Link>
-                                    <Link
-                                        to="#"
-                                        // target="_blank"
-                                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
-                                    >
-                                        <AiFillYoutube />
-                                    </Link>
 
-                                    <Link
-                                        to="#"
-                                        // target="_blank"
-                                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
-                                    >
-                                        <AiFillInstagram />
-                                    </Link>
-
-                                    <Link
-                                        to="#"
-                                        // target="_blank"
-                                        className="rounded-full hover:text-black hover:bg-white bg-black text-white duration-200 p-3"
-                                    >
-                                        <FaTwitter />
-                                    </Link>
-                                </div>
                                 <div className="half-circle-1"></div>
                                 <div className="half-circle-2"></div>
                             </div>
 
+
                             {/* contact form  */}
-                            <div className="col-span-2">
+                            <div className="col-span-6 lg:col-span-7">
                                 <div id='contract' className="max-w-screen-xl mx-auto px-5 lg:px-0">
-
-
-                                    <div className="">
-
-
+                                    <div >
                                         <form onSubmit={handlefrom} ref={form} className="card-body space-y-5">
 
-                                            <div className="flex gap-10">
+                                            <div className="flex flex-col md:flex-row gap-10">
                                                 <div className="form-control w-full" style={{ borderBottom: '1px solid gray' }}>
                                                     <label className="label">
                                                         <span className="label-text text-gray-500">First Name</span>
@@ -126,7 +135,7 @@ const Contact = () => {
                                                     <input type="text" name="user_last_name" className=" input " />
                                                 </div>
                                             </div>
-                                            <div className="flex gap-10 ">
+                                            <div className="flex flex-col md:flex-row gap-10 ">
                                                 <div className="form-control w-full" style={{ borderBottom: '1px solid gray' }}>
                                                     <label className="label">
                                                         <span className="label-text text-gray-500">Email</span>
@@ -146,18 +155,30 @@ const Contact = () => {
                                                     <span className="label-text text-[16px] font-semibold">Select Subject?</span>
                                                 </label>
 
-                                                <div className="flex items-center space-x-4">
-                                                    <input type="radio" id="option1" name="select_subject" value="option1" className="input-radio" />
-                                                    <label htmlFor="option1">Option 1</label>
+                                                <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-start">
+                                                    <div className="flex  gap-2">
 
-                                                    <input type="radio" id="option2" name="Select_subject" value="option2" className="input-radio" />
-                                                    <label htmlFor="option2">Option 2</label>
+                                                        <input type="radio" id="feedback" name="select_subject" value="feedback" className="input-radio" />
+                                                        <label htmlFor="feedback">Feedback</label>
+                                                    </div>
 
-                                                    <input type="radio" id="option3" name="Select_subject" value="option3" className="input-radio" />
-                                                    <label htmlFor="option3">Option 3</label>
+                                                    <div className="flex  gap-2">
+                                                        <input type="radio" id="question" name="Select_subject" value="question" className="input-radio" />
+                                                        <label htmlFor="question">Question</label>
 
-                                                    <input type="radio" id="option4" name="Select_subject" value="option4" className="input-radio" />
-                                                    <label htmlFor="option4">Option 4</label>
+                                                    </div>
+                                                    <div className="flex  gap-2">
+
+                                                        <input type="radio" id="partnership" name="Select_subject" value="partnership" className="input-radio" />
+                                                        <label htmlFor="partnership">Partnership</label>
+                                                    </div>
+                                                    <div className="flex  gap-2">
+
+                                                        <input type="radio" id="issue" name="Select_subject" value="issue" className="input-radio" />
+                                                        <label htmlFor="issue">Issue</label>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
 

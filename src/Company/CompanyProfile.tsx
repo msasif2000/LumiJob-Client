@@ -1,5 +1,5 @@
 import { MdOutlineModeEdit } from "react-icons/md";
-import { Bar, BarChart, Cell, Legend, Pie, PieChart, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Bar, BarChart, Cell, Legend, Pie, PieChart, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { PiBagSimpleFill } from "react-icons/pi";
 import { LiaIndustrySolid } from "react-icons/lia";
 import { IoIosPeople } from "react-icons/io";
@@ -8,24 +8,24 @@ import { GiConfirmed } from "react-icons/gi";
 import { FunctionComponent } from 'react';
 
 interface CustomizedLabelProps {
-  cx: number;
-  cy: number;
-  midAngle: number;
-  innerRadius: number;
-  outerRadius: number;
-  percent: number;
+    cx: number;
+    cy: number;
+    midAngle: number;
+    innerRadius: number;
+    outerRadius: number;
+    percent: number;
 }
 
 interface JobData {
     name: string;
     value: number;
-  }
-  
-  interface JobChartData {
+}
+
+interface JobChartData {
     name: string;
     pv: number;
-  }
-  
+}
+
 const CompanyProfile = () => {
     const data: JobData[] = [
         { name: "Total job", value: 8 },
@@ -48,17 +48,17 @@ const CompanyProfile = () => {
         {
             name: 'Supervisor',
             pv: 90,
-            
+
         },
         {
             name: 'Project Engineer at Tesla',
             pv: 70,
-           
+
         },
         {
             name: 'Data Specialist',
             pv: 150,
-         
+
         },
         {
             name: 'Solar Installer at Tesla',
@@ -166,7 +166,7 @@ const CompanyProfile = () => {
                 </div>
             </div>
             <div className="min-h-20 mt-4  rounded-md p-6 pb-10"> {/* border-2 border-[#6886968f] */}
-                
+
                 <h3 className="text-3xl font-medium text-[#688696]">Company analytics</h3>
                 <div className="flex flex-wrap gap-2 justify-around items-center mt-10">
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
@@ -180,7 +180,7 @@ const CompanyProfile = () => {
                     </div>
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
                         <div className="bg-[#FEF7CD] p-2 rounded-full">
-                            <LiaIndustrySolid className="text-4xl text-[#E7C154]"/>
+                            <LiaIndustrySolid className="text-4xl text-[#E7C154]" />
                         </div>
                         <div className="text-end">
                             <h3 className="text-lg font-semibold text-gray-600">Total Company</h3>
@@ -189,7 +189,7 @@ const CompanyProfile = () => {
                     </div>
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
                         <div className="bg-[#DFF1FC] p-2 rounded-full">
-                            <IoIosPeople className="text-4xl text-[#699BBA]"/>
+                            <IoIosPeople className="text-4xl text-[#699BBA]" />
                         </div>
                         <div className="text-end">
                             <h3 className="text-lg font-semibold text-gray-600">Total Candidate</h3>
@@ -198,7 +198,7 @@ const CompanyProfile = () => {
                     </div>
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
                         <div className="bg-[#FFD6CC] p-2 rounded-full">
-                            <IoMailOpen className="text-4xl text-[#F88652]"/>
+                            <IoMailOpen className="text-4xl text-[#F88652]" />
                         </div>
                         <div className="text-end">
                             <h3 className="text-lg font-semibold text-gray-600">Total Applied</h3>
@@ -207,15 +207,15 @@ const CompanyProfile = () => {
                     </div>
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
                         <div className="bg-[#D4FAE5] p-2 rounded-full">
-                            <GiConfirmed className="text-4xl text-[#23AA5D]"/>
+                            <GiConfirmed className="text-4xl text-[#23AA5D]" />
                         </div>
                         <div className="text-end">
                             <h3 className="text-lg font-semibold text-gray-600">Total Confirm jobs</h3>
                             <p className="text-3xl font-semibold">1000</p>
                         </div>
                     </div>
-                  
-                 
+
+
                 </div>
                 <div className="">
                     <div className="flex items-center justify-center">
@@ -230,7 +230,7 @@ const CompanyProfile = () => {
                                 fill="#8884d8"
                                 dataKey="value"
                             >
-                                {data.map((entry, index) => (
+                                {data.map((_entry, index) => (
                                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                 ))}
                             </Pie>

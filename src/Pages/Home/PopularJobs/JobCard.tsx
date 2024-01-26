@@ -6,6 +6,9 @@ import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Job from "./Job";
 import { Link } from "react-router-dom";
+import Aos from "aos"
+import "aos/dist/aos.css"
+import { useEffect } from "react";
 
 interface JobCardsProps {
   job: Job;
@@ -14,8 +17,12 @@ interface JobCardsProps {
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
   const { picture, location, title, salary, post_time, _id } = job;
 
+  useEffect(() => {
+    Aos.init();
+}, [])
+
   return (
-    <div className="card w-full bg-base-100 border rounded-md ">
+    <div data-aos="fade-up" className="card w-full bg-base-100 border rounded-md ">
       {/*================ >> Content Box <<=============== */}
 
       <div className=" px-3 pt-3 ">
