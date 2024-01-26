@@ -94,9 +94,9 @@ const CompanyProfile = () => {
     };
 
     return (
-        <div className="px-20">
+        <div className="">
             <div className="h-60 mt-10 px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
-                <div className="flex justify-between  my-2 pt-2">
+                <div className="flex justify-between my-2 pt-2">
                     <div>
                         <p className="text-2xl p-2 text-white ">Company Profile</p>
                     </div>
@@ -168,7 +168,7 @@ const CompanyProfile = () => {
             <div className="min-h-20 mt-4  rounded-md p-6 pb-10"> {/* border-2 border-[#6886968f] */}
                 
                 <h3 className="text-3xl font-medium text-[#688696]">Company analytics</h3>
-                <div className=" flex justify-around items-center mt-10">
+                <div className="flex flex-wrap gap-2 justify-around items-center mt-10">
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
                         <div className="bg-[#B6F4F6] p-2 rounded-full">
                             <PiBagSimpleFill className="text-4xl text-[#00939A]" />
@@ -217,8 +217,8 @@ const CompanyProfile = () => {
                   
                  
                 </div>
-                <div className="flex">
-                    <div>
+                <div className="">
+                    <div className="flex items-center justify-center">
                         <PieChart width={400} height={400}>
                             <Pie
                                 data={data}
@@ -237,15 +237,15 @@ const CompanyProfile = () => {
                             <Legend></Legend>
                         </PieChart>
                     </div>
-                    <div className="mt-10">
+                    <div className="mt-10 flex items-center justify-center">
                         <BarChart
-                            width={650}
+                            width={500}
                             height={380}
                             data={data2}
                             margin={{
                                 top: 5,
-                                right: 30,
-                                left: 20,
+                                right: 5,
+                                left: 5,
                                 bottom: 5,
                             }}
                             barSize={25}

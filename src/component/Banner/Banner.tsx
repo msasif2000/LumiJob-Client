@@ -30,7 +30,7 @@ const Banner = () => {
 
               </div>
             </div>
-            <img className="relative z-30" src={teamPhoto} alt="" />
+            <img className="relative z-30" src={teamPhoto} alt=""/>
             <img src={aqua} alt="blogBg" className="absolute right-40 -top-20 w-[1000px]" />
             <img src={aqua} alt="blogBg" className="absolute left-0 -top-0 w-[1000px]" />
             <img src={aqua} alt="blogBg" className="absolute right-20 -top-20 w-[1000px]" />

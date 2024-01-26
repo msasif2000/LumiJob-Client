@@ -11,20 +11,19 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   // To Do : All Link NavLink or Link Seta Valid link
 
   const { user, logOut } = useAuth();
+  const handleLogout = () => {
+    logOut();
+  }
+  const Linking: JSX.Element[] = [
 
-  
-  
-
-  const Linking: JSX.Element[] =   [
-    
     <li key="home">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
+              ? "font-black underline text-lg"
+              : "text-lg"
         }
         to="/"
       >
@@ -37,8 +36,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
+              ? "font-black underline text-lg"
+              : "text-lg"
         }
         to="/findjob"
       >
@@ -51,8 +50,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
+              ? "font-black underline text-lg"
+              : "text-lg"
         }
         to="/insights"
       >
@@ -65,8 +64,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
+              ? "font-black underline text-lg"
+              : "text-lg"
         }
         to="/dashboard"
       >
@@ -79,8 +78,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
+              ? "font-black underline text-lg"
+              : "text-lg"
         }
         to="/Contact"
       >
@@ -88,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Contact
       </NavLink>
     </li>,
-  ] ;
+  ];
 
   // for dynamic bg color of navbar
   const bgColor = color ? color : "bg-white";
@@ -194,7 +193,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   <li>
                     <button
                       className="mr-2 font-semibold text-lg"
-                      onClick={() => logOut()}
+                      onClick={handleLogout}
                     >
                       Logout
                     </button>
