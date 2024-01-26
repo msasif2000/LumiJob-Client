@@ -79,13 +79,7 @@ const CandidateProfile = () => {
            
           </div>
         );
-      case "certifications":
-        return (
-          <div>
-         
-          </div>
-        );
-      default:
+    
     }
   };
 
@@ -197,15 +191,7 @@ const CandidateProfile = () => {
               >
                 Education
               </a>
-              <a
-                role="tab"
-                className={`tab ${
-                  activeTab === "certifications" ? "tab-active" : ""
-                } text-xl font-bold`}
-                onClick={() => handleTabClick("certifications")}
-              >
-                Certification
-              </a>
+            
               <div
                 className={`tab-indicator ${activeTab}-indicator`}
                 style={{ top: "calc(100% + 5px)" }}
