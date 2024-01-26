@@ -12,7 +12,11 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
 
   const { user, logOut } = useAuth();
 
-  const Linking: JSX.Element[] = [
+  
+  
+
+  const Linking: JSX.Element[] =   [
+    
     <li key="home">
       <NavLink
         className={({ isActive, isPending }) =>
@@ -84,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Contact
       </NavLink>
     </li>,
-  ];
+  ] ;
 
   // for dynamic bg color of navbar
   const bgColor = color ? color : "bg-white";
