@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-// import { LuDot } from 'react-icons/lu';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import { LuDot } from 'react-icons/lu';
+;
 
 
 interface Candidate {
@@ -22,13 +21,12 @@ interface Candidate {
 const Resume: React.FC = () => {
     const [candidates, setCandidates] = useState<Candidate[] | null>(null);
     const resumeRef = useRef<HTMLDivElement>(null);
-    const [loader, setLoader] = useState(false);
 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('../../public/singleCandidate.json');
+                const response = await fetch('/singleCandidate.json');
                 const data = await response.json();
                 setCandidates(data);
             } catch (error) {
@@ -40,27 +38,6 @@ const Resume: React.FC = () => {
     }, []);
 
 
-    const downloadPDF = async () => {
-        if (resumeRef.current) {
-          const content = resumeRef.current;
-          setLoader(true);
-    
-          try {
-            const canvas = await html2canvas(content);
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const imgData = canvas.toDataURL('image/png');
-    
-            pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
-            setLoader(false);
-            pdf.save('resume.pdf');
-          } catch (error) {
-            console.error('Error generating PDF:', error);
-            setLoader(false);
-            
-          }
-        }
-      };
-
     return (
         <div className="mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg 2xl:max-w-3xl">
             <h2 className="text-center text-4xl font-semibold my-6">Resume</h2>
@@ -71,7 +48,7 @@ const Resume: React.FC = () => {
                             <h1 className="text-md md:text-xl font-bold mb-1">{candidate.name}</h1>
                             <p className="text-[8px] md:text-sm mb-1">{candidate.email}</p>
                             <p className="text-[8px] md:text-sm mb-1">{candidate.phone}</p>
-                            <p className="text-[8px]">{candidate.location}</p>
+                            <p className="text-[8px] md:text-sm mb-1">{candidate.location}</p>
                         </div>
                         <hr className="my-2" />
                         <div className="text-[8px] md:text-sm flex">
@@ -101,7 +78,7 @@ const Resume: React.FC = () => {
                             <h2 className="font-bold mb-2 w-1/3">Skills</h2>
                             <ul className="w-2/3">
                                 {candidate.skills.map((skill, skillIndex) => (
-                                    <li key={skillIndex}><p className="">{skill}</p></li>
+                                    <li key={skillIndex}><p className="flex"><LuDot></LuDot><p>{skill}</p></p></li>
                                 ))}
                             </ul>
                         </div>
@@ -127,14 +104,10 @@ const Resume: React.FC = () => {
 
             <button
                 className="bg-blue-500 text-white px-2 py-1 mt-2 mb-6"
-                onClick={downloadPDF}
-                disabled={loader}
-            >
-                {loader ? (
-                    <span>Generating PDF...</span>
-                ) : (
+                >
+                
                     <span>Download PDF</span>
-                )}
+                
             </button>
         </div>
     );
