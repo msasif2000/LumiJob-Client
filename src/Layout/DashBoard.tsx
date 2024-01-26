@@ -2,11 +2,26 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
+import { useEffect, useState } from "react";
 
 
 
 const DashBoard = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1024 && isNavOpen) {
+                setIsNavOpen(false);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [isNavOpen]);
+
 
     const { logOut } = useAuth();
     const role: string = 'company';
@@ -84,7 +99,7 @@ const DashBoard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="lg:flex hidden  min-h-screen bg-gray-200 pt-12 lg:fixed">
+                <div className="lg:flex hidden  min-h-screen bg-gray-200 pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
 
                     <ul className="menu text-xl">
                         {
