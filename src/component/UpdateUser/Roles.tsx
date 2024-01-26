@@ -26,7 +26,7 @@ const Roles = () => {
     //   console.log(res.data);
     // if (res.data.message === "true") {
     //   toast.success("Role changed successfully");
-    //   navigate("/");
+    //  navigate("/");
     // } else {
     //   toast.warn("Error: User not found or another issue");
     // }
@@ -62,7 +62,7 @@ const Roles = () => {
       console.log(res.data);
       if (res.data.message === "true") {
         toast.success("Role changed successfully");
-        navigate("/");
+        navigate("/dashboard/candidateProfile/update");
       } else {
         toast.warn("Error: User not found or another issue");
       }
@@ -72,7 +72,7 @@ const Roles = () => {
     //   console.log(res.data);
     // if (res.data.message === "true") {
     //   toast.success("Role changed successfully");
-    //   navigate("/");
+    //   navigate("/dashboard/candidateProfile/update");
     // } else {
     //   toast.warn("Error: User not found or another issue");
     // }
@@ -85,7 +85,9 @@ const Roles = () => {
         <div className="hero min-h-screen">
           <div className="hero-content text-center">
             <div className="space-y-8">
-              <h1 className="text-5xl font-bold">How would you like to use our website?</h1>
+              <h1 className="text-5xl font-bold">
+                How would you like to use our website?
+              </h1>
               <p className="w-3/4 mx-auto">
                 To optimize your experience, please specify your service usage.
                 This allows us to tailor our offerings to your unique needs,
@@ -95,7 +97,10 @@ const Roles = () => {
 
               <div className="flex space-x-5">
                 {/* card 1 */}
-                <div onClick={()=>handleCompany()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
+                <div
+                  onClick={() => handleCompany()}
+                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear"
+                >
                   <figure>
                     <img
                       src="https://i.postimg.cc/PJnXCF5v/1904-i402-011-Web-development-isometric-concept-infographics.jpg"
@@ -104,11 +109,14 @@ const Roles = () => {
                     />
                   </figure>
                   <div className="card-body">
-                  <h2 className="text-xl font-bold text-center">Company</h2>
+                    <h2 className="text-xl font-bold text-center">Company</h2>
                   </div>
                 </div>
                 {/* card 2 */}
-                <div onClick={()=>handleHr()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
+                <div
+                  onClick={() => handleHr()}
+                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear"
+                >
                   <figure>
                     <img
                       src="https://i.postimg.cc/5tBRS74M/21404.jpg"
@@ -117,11 +125,16 @@ const Roles = () => {
                     />
                   </figure>
                   <div className="card-body">
-                  <h2 className="text-xl font-bold text-center">Hiring Manager</h2>
+                    <h2 className="text-xl font-bold text-center">
+                      Hiring Manager
+                    </h2>
                   </div>
                 </div>
                 {/* card 3 */}
-                <div onClick={()=>handleCandidate()} className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear">
+                <div
+                  onClick={() => handleCandidate()}
+                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear"
+                >
                   <figure>
                     <img
                       src="https://i.postimg.cc/LXm0Ct5g/18771.jpg"
