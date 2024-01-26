@@ -3,7 +3,8 @@
 import axios from "axios";
 
 const axiosDev = axios.create({
-  baseURL: "http://localhost:5000",
+  //baseURL: "http://localhost:5000",
+  baseURL: "https://lumi-job-server.vercel.app",
 });
 
 const useAxiosDev = () => {
