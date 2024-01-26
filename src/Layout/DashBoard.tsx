@@ -3,10 +3,13 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
+import useAxiosDev from "../hooks/useAxiosDev";
+import axios from "axios";
 
 
 
 const DashBoard = () => {
+    const {user, logOut } = useAuth();
     const navigate = useNavigate();
     
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -22,9 +25,14 @@ const DashBoard = () => {
         };
     }, [isNavOpen]);
 
-
-    const { logOut } = useAuth();
-    const role: string = 'company';
+const [role, setRole] = useState('');
+    const axiosDev = useAxiosDev();
+    axiosDev.get(`/users/${user.email}`).then(res => {
+        //console.log(res.data);
+        setRole(res.data.role);
+    })
+    
+    // const role: string = 'company';
     const handleLogout = () => {
         logOut()
         navigate('/');
