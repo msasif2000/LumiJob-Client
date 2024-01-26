@@ -68,17 +68,17 @@ const JobsDetails: React.FC = () => {
                 <div>
                     {/* Display details */}
                     {detail ? (
-                        <div className="flex justify-between">
+                        <div className="lg:flex justify-between">
                             {/* left side */}
-                            <div className=" w-8/12">
+                            <div className=" lg:w-8/12">
                                 <div>
                                     <p className="text-sm opacity-80">{post_time}</p>
-                                    <h1 className="text-5xl font-bold mb-2">{title}</h1>
+                                    <h1 className=" text-2xl md:text-3xl lg:text-5xl font-bold mb-2">{title}</h1>
                                     <p className="text-xs opacity-80">{description}</p>
                                 </div>
                                 <div className="mt-5 mb-2 flex gap-6">
-                                    <p className="flex items-center gap-2"> <FaLocationDot /> <p>{location}</p></p>
-                                    <p className="flex items-center gap-2"><CiDollar /><p>{salary}</p></p>
+                                    <p className="flex items-center gap-2"> <FaLocationDot /> <p className="text-xs md:text-base">{location}</p></p>
+                                    <p className="flex items-center gap-2"><CiDollar /><p className="text-xs md:text-base">{salary}</p></p>
                                 </div>
                                 <hr />
                                 <div className="mt-6"> <p><span className="font-semibold">Sector</span>: <span className=" bg-slate-200 py-1 px-2">{sector}</span></p>
@@ -133,13 +133,13 @@ const JobsDetails: React.FC = () => {
                                 <div className="mt-5 mb-2"> <p className="text-sm opacity-90">{application}</p></div>
                             </div>
                             {/* right side */}
-                            <div className=" w-3/12">
+                            <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12">
                                 <div>
-                                    <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                                    <button className=" w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
                                         APPLY HERE
                                     </button>
                                 </div>
-                                <div className="flex flex-col bg-[#F2F5FE] items-center p-8">
+                                <div className="skeleton flex flex-col bg-[#F2F5FE] items-center p-8">
                                     <hr className="border-b-2 border-gray-400 mb-4" />
 
                                     <div className="mb-12">

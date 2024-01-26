@@ -39,7 +39,7 @@ const PostJob = () => {
 
     return (
         <div>
-            <div className="md-container mx-auto">
+            <div className="md-container mx-auto lg:px-12">
                 <div className="lg:p-12 md:p-6 p-4 space-y-6">
                     <h2 className="font-rancho text-4xl text-center">Create Job Post For Your Company</h2>
                     <form onSubmit={handleJobPost} className="font-raleway ">

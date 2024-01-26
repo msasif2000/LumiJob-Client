@@ -5,13 +5,14 @@ import { IoMdTime } from "react-icons/io";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Job from "./Job";
+import { Link } from "react-router-dom";
 
 interface JobCardsProps {
   job: Job;
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { picture, location, title, salary, post_time } = job;
+  const { picture, location, title, salary, post_time, _id } = job;
 
   return (
     <div className="card w-full bg-base-100 border rounded-md ">
@@ -72,9 +73,11 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
           <img src={picture} alt="logo" className=" h-6 " />
         </div>
         <div>
+          <Link to={`/details/${_id}`}>
           <button className="py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-3xl">
             Apply
           </button>
+          </Link>
         </div>
       </div>
     </div>

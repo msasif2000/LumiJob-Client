@@ -2,22 +2,37 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
+import { useEffect, useState } from "react";
 
 
 
 const DashBoard = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1024 && isNavOpen) {
+                setIsNavOpen(false);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [isNavOpen]);
+
 
     const { logOut } = useAuth();
-    const role: string = 'candidate';
+    const role: string = 'company';
     const handleLogout = () => {
         logOut()
         navigate('/');
     }
     return (
         <div className="md:flex">
-            <div className="md:w-2/5 lg:w-1/6 xxl-w-1/6 md:flex-shrink-0">
-                <div className="navbar-start md:hidden">
+            <div className="lg:w-1/6 xxl-w-1/6 md:flex-shrink-0">
+                <div className="navbar-start lg:hidden">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="red"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -84,7 +99,7 @@ const DashBoard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="md:flex hidden  min-h-screen bg-gray-200 pt-12 md:fixed">
+                <div className="lg:flex hidden  min-h-screen bg-gray-200 pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
 
                     <ul className="menu text-xl">
                         {
