@@ -120,25 +120,26 @@ const CandidateProUpdate: React.FC = () => {
     // Format dates before submitting
     const formattedExperiences = data.experienceDetails.map((experience) => ({
       ...experience,
-      fromDate: new Date(experience.fromDate).toLocaleDateString("en-GB"),
-      toDate: new Date(experience.toDate).toLocaleDateString("en-GB"),
+      fromDate: (experience.fromDate as Date).toLocaleDateString("en-GB"),
+      toDate: (experience.toDate as Date).toLocaleDateString("en-GB"),
     }));
-
+  
     const formattedEducations = data.education.map((education) => ({
       ...education,
-      fromDate: new Date(education.fromDate).toLocaleDateString("en-GB"),
-      toDate: new Date(education.toDate).toLocaleDateString("en-GB"),
+      fromDate: (education.fromDate as Date).toLocaleDateString("en-GB"),
+      toDate: (education.toDate as Date).toLocaleDateString("en-GB"),
     }));
-
+  
     const formattedData = {
       ...data,
       experienceDetails: formattedExperiences,
       education: formattedEducations,
     };
-
+  
     console.log(formattedData);
     // Add your logic to submit the formattedData
   };
+  
 
   return (
     <div className="min-h-screen lg:px-20">
@@ -357,13 +358,15 @@ const CandidateProUpdate: React.FC = () => {
                 <div className="w-1/2">
                   <DatePicker
                     selected={experience.fromDate}
-                    onChange={(date: any) => {
-                      setAdditionalExperiences((prevState) => {
-                        const updatedExperiences = [...prevState];
-                        updatedExperiences[index].fromDate = date;
-                        return updatedExperiences;
-                      });
-                      setValue(`experienceDetails.${index}.fromDate`, date);
+                    onChange={(date: Date | null) => {
+                      if (date) {
+                        setAdditionalExperiences((prevState) => {
+                          const updatedExperiences = [...prevState];
+                          updatedExperiences[index].fromDate = date;
+                          return updatedExperiences;
+                        });
+                        setValue(`experienceDetails.${index}.fromDate`, date);
+                      }
                     }}
                     dateFormat="dd-MM-yyyy"
                     placeholderText="From Date"
@@ -373,7 +376,8 @@ const CandidateProUpdate: React.FC = () => {
                 <div className="w-1/2">
                   <DatePicker
                     selected={experience.toDate}
-                    onChange={(date: any) => {
+                    onChange={(date: Date | null) => {
+                    if(date){
                       setAdditionalExperiences((prevState) => {
                         const updatedExperiences = [...prevState];
                         updatedExperiences[index].toDate = date;
@@ -381,6 +385,7 @@ const CandidateProUpdate: React.FC = () => {
                       });
                       setValue(`experienceDetails.${index}.toDate`, date);
                     }}
+                    }
                     dateFormat="dd-MM-yyyy"
                     placeholderText="To Date"
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
@@ -436,7 +441,8 @@ const CandidateProUpdate: React.FC = () => {
                 <div className="w-1/2">
                   <DatePicker
                     selected={education.fromDate}
-                    onChange={(date: any) => {
+                    onChange={(date: Date | null) => {
+                     if(date){
                       setAdditionalEducations((prevState) => {
                         const updatedEducations = [...prevState];
                         updatedEducations[index].fromDate = date;
@@ -444,6 +450,7 @@ const CandidateProUpdate: React.FC = () => {
                       });
                       setValue(`education.${index}.fromDate`, date);
                     }}
+                     }
                     placeholderText="From Date"
                     dateFormat="dd-MM-yyyy" // Add date format if needed
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
@@ -452,7 +459,8 @@ const CandidateProUpdate: React.FC = () => {
                 <div className="w-1/2">
                   <DatePicker
                     selected={education.toDate}
-                    onChange={(date: any) => {
+                    onChange={(date: Date | null) => {
+                     if(date){
                       setAdditionalEducations((prevState) => {
                         const updatedEducations = [...prevState];
                         updatedEducations[index].toDate = date;
@@ -460,6 +468,7 @@ const CandidateProUpdate: React.FC = () => {
                       });
                       setValue(`education.${index}.toDate`, date);
                     }}
+                     }
                     placeholderText="To Date"
                     dateFormat="dd-MM-yyyy" // Add date format if needed
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
