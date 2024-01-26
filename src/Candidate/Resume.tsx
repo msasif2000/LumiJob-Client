@@ -66,7 +66,7 @@ const Resume: React.FC = () => {
             <h2 className="text-center text-4xl font-semibold my-6">Resume</h2>
             {candidates ? (
                 candidates.map((candidate, index) => (
-                    <div key={index} className="mb-8 border-2 mdp-10 "  ref={resumeRef}>
+                    <div key={index} className="mb-8 border-2 md:p-10 "  ref={resumeRef}>
                         <div>
                             <h1 className="text-xl font-bold mb-1">{candidate.name}</h1>
                             <p className="text-xs md:text-sm mb-1">
