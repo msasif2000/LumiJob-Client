@@ -49,7 +49,7 @@ const CandidateProUpdate: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen lg:px-20">
       <CandidateNav
         text="Upgrade your information"
         btn="Return"

@@ -11,22 +11,81 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   // To Do : All Link NavLink or Link Seta Valid link
 
   const { user, logOut } = useAuth();
-
+  const handleLogout = () => {
+    logOut();
+  }
   const Linking: JSX.Element[] = [
+
     <li key="home">
-      <NavLink className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"} to="/">Home</NavLink>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+              ? "font-black underline text-lg"
+              : "text-lg"
+        }
+        to="/"
+      >
+        Home
+      </NavLink>
     </li>,
     <li key="Job">
-      <NavLink className={({ isActive, isPending }) =>isPending ? "pending": isActive? "font-black underline text-lg": "text-lg"} to="/Job">Jobs</NavLink>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+              ? "font-black underline text-lg"
+              : "text-lg"
+        }
+        to="/findjob"
+      >
+        Jobs
+      </NavLink>
     </li>,
     <li key="Insights">
-      <NavLink className={({ isActive, isPending }) =>isPending? "pending": isActive? "font-black underline text-lg": "text-lg"} to="/insights">Insights</NavLink>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+              ? "font-black underline text-lg"
+              : "text-lg"
+        }
+        to="/insights"
+      >
+        Insights
+      </NavLink>
     </li>,
     <li key="dashboard">
-      <NavLink className={({ isActive, isPending }) =>isPending? "pending": isActive? "font-black underline text-lg": "text-lg"} to="/dashboard">Dashboard</NavLink>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+              ? "font-black underline text-lg"
+              : "text-lg"
+        }
+        to="/dashboard"
+      >
+        Dashboard
+      </NavLink>
     </li>,
     <li key="Contact">
-      <NavLink className={({ isActive, isPending }) =>isPending? "pending": isActive? "font-black underline text-lg" : "text-lg"}to="/Contact"> Contact</NavLink>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+              ? "font-black underline text-lg"
+              : "text-lg"
+        }
+        to="/Contact"
+      >
+        {" "}
+        Contact
+      </NavLink>
     </li>,
   ];
 
@@ -34,7 +93,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const bgColor = color ? color : "bg-white";
 
   return (
-    <div className={bgColor}>
+    <div className={`border-b sticky top-0 z-30 ${bgColor}`}>
       <div className="navbar max-w-screen-2xl mx-auto px-4">
         <div className="navbar-start">
           <div className="dropdown">
@@ -134,7 +193,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   <li>
                     <button
                       className="mr-2 font-semibold text-lg"
-                      onClick={() => logOut()}
+                      onClick={handleLogout}
                     >
                       Logout
                     </button>
