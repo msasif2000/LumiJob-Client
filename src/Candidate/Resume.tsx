@@ -130,7 +130,7 @@ const Resume: React.FC = () => {
             )}
 
             <button
-                className="bg-blue-500 text-white px-2 py-1 mt-2 text-xs"
+                className="bg-blue-500 text-white px-2 py-1 mt-2 text-xs mb-6"
                 onClick={downloadPDF}
                 disabled={loader}
             >

@@ -165,7 +165,8 @@ const CompanyProfile = () => {
                     </div>
                 </div>
             </div>
-            <div className="border-2 border-[#6886968f] min-h-20 mt-4  rounded-md p-6 pb-10">
+            <div className="min-h-20 mt-4  rounded-md p-6 pb-10"> {/* border-2 border-[#6886968f] */}
+                
                 <h3 className="text-3xl font-medium text-[#688696]">Company analytics</h3>
                 <div className=" flex justify-around items-center mt-10">
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
