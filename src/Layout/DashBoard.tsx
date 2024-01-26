@@ -31,7 +31,7 @@ const DashBoard = () => {
     }
     return (
         <div className="md:flex">
-            <div className="lg:w-1/6 xxl-w-1/6 md:flex-shrink-0">
+            <div className="lg:w-3/12 xxl-w-1/6 md:flex-shrink-0">
                 <div className="navbar-start lg:hidden">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,7 +42,7 @@ const DashBoard = () => {
                                 role === 'candidate' ?
                                 <>
                                 <li>
-                                    <h2 className="text-2xl text-red-800 font-bold bg-white my-2">Candidate DashBoard</h2>
+                                    <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">Candidate DashBoard</h2>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/profile'>Profile</NavLink>

@@ -66,71 +66,67 @@ const Resume: React.FC = () => {
             <h2 className="text-center text-4xl font-semibold my-6">Resume</h2>
             {candidates ? (
                 candidates.map((candidate, index) => (
-                    <div key={index} className="mb-8 border-2 md:p-10 "  ref={resumeRef}>
+                    <div key={index} className="mb-8 border-2 p-4 md:p-10 " ref={resumeRef}>
                         <div>
-                            <h1 className="text-xl font-bold mb-1">{candidate.name}</h1>
-                            <p className="text-xs md:text-sm mb-1">
-                                {candidate.email}
-                            </p>
-                            <p className="text-xs md:text-sm mb-1">
-                                {candidate.phone}
-                            </p>
-                            <p className="text-xs">{candidate.location}</p>
+                            <h1 className="text-md md:text-xl font-bold mb-1">{candidate.name}</h1>
+                            <p className="text-[8px] md:text-sm mb-1">{candidate.email}</p>
+                            <p className="text-[8px] md:text-sm mb-1">{candidate.phone}</p>
+                            <p className="text-[8px]">{candidate.location}</p>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-xs md:text-sm flex">
-                            <h2 className=" w-1/3 font-bold mb-2">Education</h2>
-                            <p className=' w-2/3'>{candidate.education}</p>
+                        <div className="text-[8px] md:text-sm flex">
+                            <h2 className="w-1/3 font-bold mb-2">Education</h2>
+                            <p className="w-2/3">{candidate.education}</p>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-xs md:text-sm flex">
-                            <h2 className=" w-1/3 font-bold mb-2">Work Experience</h2>
-                            <div className='w-2/3'><p>{candidate.positions_responsibility}</p>
-                                <p>{candidate.work_experience}</p></div>
+                        <div className="text-[8px] md:text-sm flex">
+                            <h2 className="w-1/3 font-bold mb-2">Work Experience</h2>
+                            <div className="w-2/3">
+                                <p>{candidate.positions_responsibility}</p>
+                                <p>{candidate.work_experience}</p>
+                            </div>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-xs md:text-sm flex">
-                            <h2 className=" font-bold mb-2 w-1/3">Training Courses</h2>
-                            <p className=' w-2/3'>{candidate.training_courses}</p>
+                        <div className="text-[8px] md:text-sm flex">
+                            <h2 className="font-bold mb-2 w-1/3">Training Courses</h2>
+                            <p className="w-2/3">{candidate.training_courses}</p>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-xs md:text-sm flex">
-                            <h2 className=" font-bold mb-2 w-1/3">
-                                Projects</h2>
-                            <p className=' w-2/3'>{candidate.academic_personal_projects}</p>
+                        <div className="text-[8px] md:text-sm flex">
+                            <h2 className="font-bold mb-2 w-1/3">Projects</h2>
+                            <p className="w-2/3">{candidate.academic_personal_projects}</p>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-xs md:text-sm flex">
-                            <h2 className=" font-bold mb-2 w-1/3">Skills</h2>
-                            <ul className=' w-2/3'>
+                        <div className="text-[8px] md:text-sm flex">
+                            <h2 className="font-bold mb-2 w-1/3">Skills</h2>
+                            <ul className="w-2/3">
                                 {candidate.skills.map((skill, skillIndex) => (
-                                    <li key={skillIndex}><p className=""> {skill}</p></li>
+                                    <li key={skillIndex}><p className="">{skill}</p></li>
                                 ))}
                             </ul>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-xs md:text-sm flex">
-                            <h2 className=" font-bold mb-2 w-1/3">Portfolio</h2>
-                            <p className=' w-2/3'>
+                        <div className="text-[8px] md:text-sm flex">
+                            <h2 className="font-bold mb-2 w-1/3">Portfolio</h2>
+                            <p className="w-2/3">
                                 <a href={candidate.portfolio} target="_blank" rel="noopener noreferrer" className="">
                                     {candidate.portfolio}
                                 </a>
                             </p>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-xs md:text-sm flex">
-                            <h2 className=" w-1/3 font-bold mb-2">Accomplishment</h2>
-                            <p className=' w-2/3'>{candidate.accomplishment}</p>
+                        <div className="text-[8px] md:text-sm flex">
+                            <h2 className="w-1/3 font-bold mb-2">Accomplishment</h2>
+                            <p className="w-2/3">{candidate.accomplishment}</p>
                         </div>
                     </div>
-
                 ))
             ) : (
                 <p>Loading...</p>
             )}
 
             <button
-                className="bg-blue-500 text-white px-2 py-1 mt-2 text-xs mb-6"
+                className="bg-blue-500 text-white px-2 py-1 mt-2 mb-6"
                 onClick={downloadPDF}
                 disabled={loader}
             >
