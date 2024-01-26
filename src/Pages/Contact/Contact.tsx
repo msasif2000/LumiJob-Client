@@ -44,15 +44,15 @@ const Contact = () => {
                         </div>
 
                         {/* main section  */}
-                        <div className="grid grid-cols-12 justify-center gap-8 mt-10 bg-white rounded-xl">
+                        <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-8 mt-10 px-5 bg-white rounded-xl">
 
                             <div className="col-span-1 ">
                                 <div className="flex flex-col justify-center items-center gap-3">
-                                    <div className="mt-20 py-10">
+                                    <div className="lg:mt-12 xl:mt-16 py-10">
                                         <p className="-rotate-90 font-bold">Follow us</p>
                                     </div>
-                                    <div className="rotate-90">
-                                        <hr className="w-5"/>
+                                    <div className="rotate-90 py-8">
+                                        <hr className="w-20  border-gray-400" />
                                     </div>
                                     <Link
                                         to="/"
@@ -84,49 +84,44 @@ const Contact = () => {
                                     >
                                         <FaTwitter />
                                     </Link>
-                                
+
                                 </div>
                             </div>
 
                             {/* contact details  */}
 
-                                <div className=" col-span-4 bg-blue-500 p-8 py-12 space-y-24 text-white rounded-xl">
-                                    <div>
-                                        <h3 className="text-2xl font-semibold">Contact Information</h3>
-                                        <p className="text-sm">Say something to start a live chat!</p>
-                                    </div>
-                                    <div className="space-y-8">
-                                        <div className="flex items-center gap-3">
-                                            <BiSolidPhoneCall className="text-lg" />
-                                            <p>+1012 3456 789</p>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <MdEmail className="text-lg" />
-                                            <p>demo@gmail.com</p>
-                                        </div>
-                                        <div className="flex  gap-3">
-                                            <IoLocationSharp className="text-4xl" />
-                                            <p>132 Dartmouth Street Boston, Massachusetts 02156 United States</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="half-circle-1"></div>
-                                    <div className="half-circle-2"></div>
+                            <div className=" parent col-span-5 lg:col-span-4 bg-[#6AB8FF] p-8 py-12 space-y-24 text-black rounded-xl">
+                                <div>
+                                    <h3 className="text-2xl font-semibold">Contact Information</h3>
+                                    <p className="text-sm">Say something to start a live chat!</p>
                                 </div>
+                                <div className="space-y-8">
+                                    <div className="flex items-center gap-3">
+                                        <BiSolidPhoneCall className="text-lg" />
+                                        <p>+1012 3456 789</p>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <MdEmail className="text-lg" />
+                                        <p>demo@gmail.com</p>
+                                    </div>
+                                    <div className="flex  gap-3">
+                                        <IoLocationSharp className="text-3xl" />
+                                        <p>132 Dartmouth Street Boston, <br className="block lg:hidden" /> Massachusetts 02156 United States</p>
+                                    </div>
+                                </div>
+
+                                <div className="half-circle-1"></div>
+                                <div className="half-circle-2"></div>
+                            </div>
 
 
                             {/* contact form  */}
-                            <div className="col-span-7">
+                            <div className="col-span-6 lg:col-span-7">
                                 <div id='contract' className="max-w-screen-xl mx-auto px-5 lg:px-0">
-
-
-                                    <div className="">
-
-
-
+                                    <div >
                                         <form onSubmit={handlefrom} ref={form} className="card-body space-y-5">
 
-                                            <div className="flex gap-10">
+                                            <div className="flex flex-col md:flex-row gap-10">
                                                 <div className="form-control w-full" style={{ borderBottom: '1px solid gray' }}>
                                                     <label className="label">
                                                         <span className="label-text text-gray-500">First Name</span>
@@ -140,7 +135,7 @@ const Contact = () => {
                                                     <input type="text" name="user_last_name" className=" input " />
                                                 </div>
                                             </div>
-                                            <div className="flex gap-10 ">
+                                            <div className="flex flex-col md:flex-row gap-10 ">
                                                 <div className="form-control w-full" style={{ borderBottom: '1px solid gray' }}>
                                                     <label className="label">
                                                         <span className="label-text text-gray-500">Email</span>
@@ -160,18 +155,30 @@ const Contact = () => {
                                                     <span className="label-text text-[16px] font-semibold">Select Subject?</span>
                                                 </label>
 
-                                                <div className="flex items-center space-x-4">
-                                                    <input type="radio" id="option1" name="select_subject" value="option1" className="input-radio" />
-                                                    <label htmlFor="option1">Option 1</label>
+                                                <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-start">
+                                                    <div className="flex  gap-2">
 
-                                                    <input type="radio" id="option2" name="Select_subject" value="option2" className="input-radio" />
-                                                    <label htmlFor="option2">Option 2</label>
+                                                        <input type="radio" id="feedback" name="select_subject" value="feedback" className="input-radio" />
+                                                        <label htmlFor="feedback">Feedback</label>
+                                                    </div>
 
-                                                    <input type="radio" id="option3" name="Select_subject" value="option3" className="input-radio" />
-                                                    <label htmlFor="option3">Option 3</label>
+                                                    <div className="flex  gap-2">
+                                                        <input type="radio" id="question" name="Select_subject" value="question" className="input-radio" />
+                                                        <label htmlFor="question">Question</label>
 
-                                                    <input type="radio" id="option4" name="Select_subject" value="option4" className="input-radio" />
-                                                    <label htmlFor="option4">Option 4</label>
+                                                    </div>
+                                                    <div className="flex  gap-2">
+
+                                                        <input type="radio" id="partnership" name="Select_subject" value="partnership" className="input-radio" />
+                                                        <label htmlFor="partnership">Partnership</label>
+                                                    </div>
+                                                    <div className="flex  gap-2">
+
+                                                        <input type="radio" id="issue" name="Select_subject" value="issue" className="input-radio" />
+                                                        <label htmlFor="issue">Issue</label>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
 
