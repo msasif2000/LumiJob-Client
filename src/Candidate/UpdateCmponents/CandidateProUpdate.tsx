@@ -5,6 +5,9 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import CandidateNav from "../CommonNavbar/CandidateNav";
 import DatePicker from "react-datepicker"; // Import the date picker
 import "react-datepicker/dist/react-datepicker.css"; // Import the styles
+import useAxiosDev from "../../hooks/useAxiosDev";
+import useAuth from "../../hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 interface EducationData {
   university: string;
@@ -35,14 +38,16 @@ interface FormData {
   country: string;
   availability: string;
   position: string;
-  work:string;
- 
-
-
+  work: string;
 }
 
 const CandidateProUpdate: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const axiosDev = useAxiosDev();
+
+  // const axiosPublic = useAxiosPublic()
+
   const {
     register,
     handleSubmit,
@@ -123,23 +128,43 @@ const CandidateProUpdate: React.FC = () => {
       fromDate: (experience.fromDate as Date).toLocaleDateString("en-GB"),
       toDate: (experience.toDate as Date).toLocaleDateString("en-GB"),
     }));
-  
+
     const formattedEducations = data.education.map((education) => ({
       ...education,
       fromDate: (education.fromDate as Date).toLocaleDateString("en-GB"),
       toDate: (education.toDate as Date).toLocaleDateString("en-GB"),
     }));
-  
+
     const formattedData = {
       ...data,
       experienceDetails: formattedExperiences,
       education: formattedEducations,
     };
-  
+
     console.log(formattedData);
-    // Add your logic to submit the formattedData
+
+    axiosDev
+      .put(`/user-update/${user?.email}`, formattedData)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === "true") {
+          toast.success("Information updated", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+          });
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.warn("Information not updated", {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 2000,
+        });
+      });
   };
-  
 
   return (
     <div className="min-h-screen lg:px-20">
@@ -167,171 +192,169 @@ const CandidateProUpdate: React.FC = () => {
               />
             </div>
           </div>
-         
 
-         <div className="pb-10 space-y-6">
-           {/* Second div group */}
-           <div className="flex space-x-10">
-            <div className="form-control w-full">
-              <input
-                type="text"
-                {...register("name", { required: "Name is required" })}
-                placeholder="Your Name"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              />
+          <div className="pb-10 space-y-6">
+            {/* Second div group */}
+            <div className="flex space-x-10">
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("name", { required: "Name is required" })}
+                  placeholder="Your Name"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("position", {
+                    required: "position is required",
+                  })}
+                  placeholder="Your interested position"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("phone", { required: "phone is required" })}
+                  placeholder="Your phone number"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
             </div>
-            <div className="form-control w-full">
-              <input
-                type="text"
-                {...register("position", { required: "position is required" })}
-                placeholder="Your interested position"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              />
+            {/* Second div group */}
+            <div className="flex space-x-10">
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("village", { required: "Village is required" })}
+                  placeholder="Yor Village"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("city", { required: "City is required" })}
+                  placeholder="Your City"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("country", { required: "Country is required" })}
+                  placeholder="Your Country"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
             </div>
-            <div className="form-control w-full">
-              <input
-                type="text"
-                {...register("phone", { required: "phone is required" })}
-                placeholder="Your phone number"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              />
-            </div>
-          
-          </div>
-          {/* Second div group */}
-          <div className="flex space-x-10">
-          <div className="form-control w-full">
-              <input
-                type="text"
-                {...register("village", { required: "Village is required" })}
-                placeholder="Yor Village"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              />
-            </div>
-          <div className="form-control w-full">
-              <input
-                type="text"
-                {...register("city", { required: "City is required" })}
-                placeholder="Your City"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              />
-            </div>
-          <div className="form-control w-full">
-              <input
-                type="text"
-                {...register("country", { required: "Country is required" })}
-                placeholder="Your Country"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              />
-            </div>   
-          </div>
-         </div>
-
-         <div className="pb-10 space-y-6">
-         <div className="form-control w-full">
-            <textarea
-              rows={3}
-              {...register("bio", { required: "bio is required" })}
-              placeholder="Bio"
-              className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-            ></textarea>
           </div>
 
-          <div className="form-control w-full">
-            <div className="flex flex-wrap">
-              {Array.isArray(selectedSkills) &&
-                selectedSkills.map((skill) => (
-                  <div
-                    key={skill}
-                    className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"
-                  >
-                    <span className="mr-2">{skill}</span>
-                    <button
-                      type="button"
-                      onClick={() => removeSkill(skill)}
-                      className="text-red-500"
+          <div className="pb-10 space-y-6">
+            <div className="form-control w-full">
+              <textarea
+                rows={3}
+                {...register("bio", { required: "bio is required" })}
+                placeholder="Bio"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+              ></textarea>
+            </div>
+
+            <div className="form-control w-full">
+              <div className="flex flex-wrap">
+                {Array.isArray(selectedSkills) &&
+                  selectedSkills.map((skill) => (
+                    <div
+                      key={skill}
+                      className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"
                     >
-                      <AiOutlineCloseCircle />
-                    </button>
-                  </div>
-                ))}
+                      <span className="mr-2">{skill}</span>
+                      <button
+                        type="button"
+                        onClick={() => removeSkill(skill)}
+                        className="text-red-500"
+                      >
+                        <AiOutlineCloseCircle />
+                      </button>
+                    </div>
+                  ))}
+              </div>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  value={inputValue}
+                  placeholder="Type a skill and press Enter"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && inputValue.trim() !== "") {
+                      setValue(
+                        "skills",
+                        Array.isArray(selectedSkills)
+                          ? [...selectedSkills, inputValue.trim()]
+                          : [inputValue.trim()]
+                      );
+                      setInputValue("");
+                      e.preventDefault();
+                    }
+                  }}
+                  onChange={(e) => setInputValue(e.target.value)}
+                />
+              </div>
             </div>
-            <div className="mt-2">
-              <input
-                type="text"
-                value={inputValue}
-                placeholder="Type a skill and press Enter"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && inputValue.trim() !== "") {
-                    setValue(
-                      "skills",
-                      Array.isArray(selectedSkills)
-                        ? [...selectedSkills, inputValue.trim()]
-                        : [inputValue.trim()]
-                    );
-                    setInputValue("");
-                    e.preventDefault();
-                  }
-                }}
-                onChange={(e) => setInputValue(e.target.value)}
-              />
-            </div>
-          </div>
 
-          {errors.skills && <p>{errors.skills.message}</p>}
+            {errors.skills && <p>{errors.skills.message}</p>}
 
-          <div className="flex space-x-10">
-            <div className="form-control w-full">
-              <input
-                type="number"
-                {...register("experience", {
-                  required: "experience is required",
+            <div className="flex space-x-10">
+              <div className="form-control w-full">
+                <input
+                  type="number"
+                  {...register("experience", {
+                    required: "experience is required",
+                  })}
+                  placeholder="Years of experience"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
+
+              <select
+                {...register("availability", {
+                  required: "availability is required",
                 })}
-                placeholder="Years of experience"
+                name="availability"
+                id="availability"
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              />
+              >
+                <option value="" disabled selected>
+                  Availability
+                </option>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+              </select>
+
+              <select
+                {...register("work", {
+                  required: "work type is required",
+                })}
+                name="work"
+                id="work"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+              >
+                <option value="" disabled selected>
+                  Preferred work setting
+                </option>
+                <option value="Remote">Remote</option>
+                <option value="Office">Office</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
             </div>
-
-            <select
-              {...register("availability", {
-                required: "availability is required",
-              })}
-              name="availability"
-              id="availability"
-              className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-            >
-              <option value="" disabled selected>
-                Availability
-              </option>
-              <option value="Full Time">Full Time</option>
-              <option value="Part Time">Part Time</option>
-            </select>
-
-            <select
-              {...register("work", {
-                required: "work type is required",
-              })}
-              name="work"
-              id="work"
-              className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
-            >
-              <option value="" disabled selected>
-                Preferred work setting
-              </option>
-              <option value="Remote">Remote</option>
-              <option value="Office">Office</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
           </div>
-         </div>
 
-         <p className="text-2xl font-bold mb-4 pb-10">Experience</p>
+          <p className="text-2xl font-bold mb-4 pb-10">Experience</p>
           {additionalExperiences.map((experience, index) => (
             <div key={index} className="form-control w-full mt-6 space-y-1">
-              <h2 className="text-lg font-bold mb-4">
-                Experience {index + 1}
-              </h2>
+              <h2 className="text-lg font-bold mb-4">Experience {index + 1}</h2>
               <div className="flex space-x-4 pb-10">
                 <div className="w-1/2">
                   <input
@@ -377,15 +400,15 @@ const CandidateProUpdate: React.FC = () => {
                   <DatePicker
                     selected={experience.toDate}
                     onChange={(date: Date | null) => {
-                    if(date){
-                      setAdditionalExperiences((prevState) => {
-                        const updatedExperiences = [...prevState];
-                        updatedExperiences[index].toDate = date;
-                        return updatedExperiences;
-                      });
-                      setValue(`experienceDetails.${index}.toDate`, date);
+                      if (date) {
+                        setAdditionalExperiences((prevState) => {
+                          const updatedExperiences = [...prevState];
+                          updatedExperiences[index].toDate = date;
+                          return updatedExperiences;
+                        });
+                        setValue(`experienceDetails.${index}.toDate`, date);
+                      }
                     }}
-                    }
                     dateFormat="dd-MM-yyyy"
                     placeholderText="To Date"
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
@@ -442,15 +465,15 @@ const CandidateProUpdate: React.FC = () => {
                   <DatePicker
                     selected={education.fromDate}
                     onChange={(date: Date | null) => {
-                     if(date){
-                      setAdditionalEducations((prevState) => {
-                        const updatedEducations = [...prevState];
-                        updatedEducations[index].fromDate = date;
-                        return updatedEducations;
-                      });
-                      setValue(`education.${index}.fromDate`, date);
+                      if (date) {
+                        setAdditionalEducations((prevState) => {
+                          const updatedEducations = [...prevState];
+                          updatedEducations[index].fromDate = date;
+                          return updatedEducations;
+                        });
+                        setValue(`education.${index}.fromDate`, date);
+                      }
                     }}
-                     }
                     placeholderText="From Date"
                     dateFormat="dd-MM-yyyy" // Add date format if needed
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
@@ -460,15 +483,15 @@ const CandidateProUpdate: React.FC = () => {
                   <DatePicker
                     selected={education.toDate}
                     onChange={(date: Date | null) => {
-                     if(date){
-                      setAdditionalEducations((prevState) => {
-                        const updatedEducations = [...prevState];
-                        updatedEducations[index].toDate = date;
-                        return updatedEducations;
-                      });
-                      setValue(`education.${index}.toDate`, date);
+                      if (date) {
+                        setAdditionalEducations((prevState) => {
+                          const updatedEducations = [...prevState];
+                          updatedEducations[index].toDate = date;
+                          return updatedEducations;
+                        });
+                        setValue(`education.${index}.toDate`, date);
+                      }
                     }}
-                     }
                     placeholderText="To Date"
                     dateFormat="dd-MM-yyyy" // Add date format if needed
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
@@ -500,6 +523,7 @@ const CandidateProUpdate: React.FC = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
