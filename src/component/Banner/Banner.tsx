@@ -27,21 +27,18 @@ const Banner = () => {
                 <button className="btn bg-blue-500 text-white normal-case md:px-5 lg:px-20 mb-12 hover:bg-blue-600">
                   <NavLink to="/">Get Stated</NavLink>
                 </button>
-
               </div>
             </div>
             <img className="relative z-30" src={teamPhoto} alt="" />
             <img src={aqua} alt="blogBg" className="absolute right-40 -top-20 w-[1000px]" />
             <img src={aqua} alt="blogBg" className="absolute left-0 -top-0 w-[1000px]" />
             <img src={aqua} alt="blogBg" className="absolute right-20 -top-20 w-[1000px]" />
-
           </div>
         </div>
       </div>
     </div>
   );
 };
-
 
 export default Banner;
 

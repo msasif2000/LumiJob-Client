@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import CandidateNav from "../CommonNavbar/CandidateNav";
+import { FieldValues } from 'react-hook-form';
+
 
 interface FormData {
   name: string;
@@ -13,6 +15,21 @@ interface FormData {
   experience: number;
 }
 
+interface ExperienceData extends FieldValues {
+  experienceCompany: string;
+  experiencePosition: string;
+  experienceSubject: string;
+  experienceFromDate: string;
+  experienceToDate: string;
+}
+
+interface EducationData extends FieldValues {
+  educationUniversity: string;
+  educationPosition: string;
+  educationSubject: string;
+  educationFromDate: string;
+  educationToDate: string;
+}
 const CandidateProUpdate: React.FC = () => {
   const navigate = useNavigate();
   const {
@@ -28,6 +45,8 @@ const CandidateProUpdate: React.FC = () => {
   });
 
   const [inputValue, setInputValue] = useState<string>("");
+  const [additionalExperiences, setAdditionalExperiences] = useState<ExperienceData[]>([]);
+  const [additionalEducations, setAdditionalEducations] = useState<EducationData[]>([]);
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log(data);
@@ -44,12 +63,50 @@ const CandidateProUpdate: React.FC = () => {
     );
   };
 
+  const addExperience = () => {
+    setAdditionalExperiences([
+      ...additionalExperiences,
+      {
+        experienceCompany: "",
+        experiencePosition: "",
+        experienceSubject: "",
+        experienceFromDate: "",
+        experienceToDate: "",
+      },
+    ]);
+  };
+
+  const addEducation = () => {
+    setAdditionalEducations([
+      ...additionalEducations,
+      {
+        educationUniversity: "",
+        educationPosition: "",
+        educationSubject: "",
+        educationFromDate: "",
+        educationToDate: "",
+      },
+    ]);
+  };
+
+  const removeExperience = (index: number) => {
+    const updatedExperiences = [...additionalExperiences];
+    updatedExperiences.splice(index, 1);
+    setAdditionalExperiences(updatedExperiences);
+  };
+
+  const removeEducation = (index: number) => {
+    const updatedEducations = [...additionalEducations];
+    updatedEducations.splice(index, 1);
+    setAdditionalEducations(updatedEducations);
+  };
+
   const backToProfile = () => {
     navigate(-1);
   };
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen lg:px-20">
       <CandidateNav
         text="Upgrade your information"
         btn="Return"
@@ -180,6 +237,133 @@ const CandidateProUpdate: React.FC = () => {
           </div>
           <div>
             <div>
+
+            {additionalExperiences.map((experience, index) => (
+            <div key={index} className="form-control w-full mt-6">
+              <h2 className="text-2xl font-bold mb-4">Experience {index + 1}</h2>
+              <div className="flex space-x-4">
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`experienceCompany.${index}`, {
+                      required: "Company name is required",
+                    })}
+                    placeholder="Company Name"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`experiencePosition.${index}`, {
+                      required: "Position is required",
+                    })}
+                    placeholder="Position"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+              
+              </div>
+              <div className="flex space-x-4 mt-4">
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`experienceFromDate.${index}`, {
+                      required: "From date is required",
+                    })}
+                    placeholder="From Date"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`experienceToDate.${index}`, {
+                      required: "To date is required",
+                    })}
+                    placeholder="To Date"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => removeExperience(index)}
+                className="text-red-500 mt-2"
+              >
+                Remove Experience
+              </button>
+            </div>
+          ))}
+          <div className="mt-4">
+            <button type="button" onClick={addExperience} className="text-blue-500">
+              Add Experience
+            </button>
+          </div>
+
+          {/* Additional Educations */}
+          {additionalEducations.map((education, index) => (
+            <div key={index} className="form-control w-full mt-6">
+              <h2 className="text-2xl font-bold mb-4">Education {index + 1}</h2>
+              <div className="flex space-x-4">
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`educationUniversity.${index}`, {
+                      required: "University name is required",
+                    })}
+                    placeholder="University Name"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+                
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`educationSubject.${index}`, {
+                      required: "Subject studied is required",
+                    })}
+                    placeholder="Studied Subject"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+              </div>
+              <div className="flex space-x-4 mt-4">
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`educationFromDate.${index}`, {
+                      required: "From date is required",
+                    })}
+                    placeholder="From Date"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`educationToDate.${index}`, {
+                      required: "To date is required",
+                    })}
+                    placeholder="To Date"
+                    className="py-3 px-4 rounded-md outline-none bg-gray-100 border-2 border-gray-300 w-full text-lg focus:border-accent hover:border-accent duration-300"
+                  />
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => removeEducation(index)}
+                className="text-red-500 mt-2"
+              >
+              Remove Education
+              </button>
+            </div>
+          ))}
+          <div className="mt-4">
+            <button type="button" onClick={addEducation} className="text-blue-500">
+              Add Education
+            </button>
+          </div>
             
             </div>
             <button type="submit" className="btn btn-primary mt-4">

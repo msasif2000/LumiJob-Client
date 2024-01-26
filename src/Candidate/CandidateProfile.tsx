@@ -94,7 +94,7 @@ const CandidateProfile = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen lg:px-20">
       <CandidateNav text={"Profile"} btn={"Update Information"} handleClick={buttonClicked}/>
       <div className="flex space-x-10">
         {/* profile card div */}
