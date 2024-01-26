@@ -3,10 +3,13 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
+import useAxiosDev from "../hooks/useAxiosDev";
+import axios from "axios";
 
 
 
 const DashBoard = () => {
+    const {user, logOut } = useAuth();
     const navigate = useNavigate();
     
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -22,16 +25,21 @@ const DashBoard = () => {
         };
     }, [isNavOpen]);
 
-
-    const { logOut } = useAuth();
-    const role: string = 'company';
+const [role, setRole] = useState('');
+    const axiosDev = useAxiosDev();
+    axiosDev.get(`/users/${user.email}`).then(res => {
+        //console.log(res.data);
+        setRole(res.data.role);
+    })
+    
+    // const role: string = 'company';
     const handleLogout = () => {
         logOut()
         navigate('/');
     }
     return (
         <div className="md:flex">
-            <div className="lg:w-1/6 xxl-w-1/6 md:flex-shrink-0">
+            <div className="lg:w-3/12 xxl-w-1/6 md:flex-shrink-0">
                 <div className="navbar-start lg:hidden">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,7 +50,7 @@ const DashBoard = () => {
                                 role === 'candidate' ?
                                 <>
                                 <li>
-                                    <h2 className="text-2xl text-red-800 font-bold bg-white my-2">Candidate DashBoard</h2>
+                                    <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">Candidate DashBoard</h2>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/profile'>Profile</NavLink>
