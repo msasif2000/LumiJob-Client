@@ -4,14 +4,11 @@ import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import useAxiosDev from "../hooks/useAxiosDev";
-import axios from "axios";
-
-
 
 const DashBoard = () => {
-    const {user, logOut } = useAuth();
+    const { user, logOut } = useAuth();
     const navigate = useNavigate();
-    
+
     const [isNavOpen, setIsNavOpen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
@@ -25,14 +22,14 @@ const DashBoard = () => {
         };
     }, [isNavOpen]);
 
-// const [role, setRole] = useState('');
-//     const axiosDev = useAxiosDev();
-//     axiosDev.get(`/users/${user?.email}`).then(res => {
-//         //console.log(res.data);
-//         setRole(res.data.role);
-//     })
-    
-    const role: string = 'candidate';
+    const [role, setRole] = useState('');
+    const axiosDev = useAxiosDev();
+    axiosDev.get(`/users/${user?.email}`).then(res => {
+        //console.log(res.data);
+        setRole(res.data.role);
+    })
+
+    // const role: string = 'candidate';
     const handleLogout = () => {
         logOut()
         navigate('/');
@@ -48,47 +45,47 @@ const DashBoard = () => {
                         <ul tabIndex={0} className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-600 rounded-box  w-52 ">
                             {
                                 role === 'candidate' ?
-                                <>
-                                <li>
-                                    <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">Candidate DashBoard</h2>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/profile'>Profile</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/resume'>Resume</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/appliedJobs'>Applied Jobs</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/bookmarks'>Bookmarks</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/analytics'>Analytics</NavLink>
-                                </li>
-                            </>
-                            :
-                            <>
-                                <li>
-                                    <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">Company DashBoard</h2>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/companyProfile'>Profile</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/postJob'>Post  Job</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/postedJobs'>Posted Job</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/companyAnalytics'>Analytics</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/dashboard/employees'>Employees</NavLink>
-                                </li>
-                            </>
+                                    <>
+                                        <li>
+                                            <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">Candidate DashBoard</h2>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/profile'>Profile</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/resume'>Resume</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/appliedJobs'>Applied Jobs</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/bookmarks'>Bookmarks</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/analytics'>Analytics</NavLink>
+                                        </li>
+                                    </>
+                                    :
+                                    <>
+                                        <li>
+                                            <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">Company DashBoard</h2>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/companyProfile'>Profile</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/postJob'>Post  Job</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/postedJobs'>Posted Job</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/companyAnalytics'>Analytics</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dashboard/employees'>Employees</NavLink>
+                                        </li>
+                                    </>
                             }
                             <div className="divider"></div>
 
