@@ -1,7 +1,7 @@
 const FindJobCard = () => {
   return (
-    <div className="">
-      <div className="group max-w-screen-md grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 ">
+    <>
+      <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 bg-white ">
         <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
           <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
             <img
@@ -39,7 +39,7 @@ const FindJobCard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

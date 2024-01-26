@@ -21,7 +21,7 @@ import PostJob from "../Company/PostJob";
 import PostedJobs from "../Company/PostedJobs";
 import Employees from "../Company/Employees";
 import CandidateProUpdate from "../Candidate/UpdateCmponents/CandidateProUpdate";
-import FindJOb from "../Pages/FindJob/FindJOb";
+import FindJob from "../Pages/FindJob/FindJob";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/findjob",
-        element: <FindJOb />,
+        element: <FindJob />,
       },
 
       {
