@@ -1,7 +1,7 @@
 import { Key, useEffect, useState } from "react";
 // import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import useAxiosDev from "../../../hooks/useAxiosDev";
 
 interface BlogData {
   id: number;
@@ -14,10 +14,11 @@ interface BlogData {
 }
 
 const FeaturedArticle = () => {
+  const axiosDev = useAxiosDev();
   const [datas, setData] = useState<BlogData[] | null>(null);
 
   useEffect(() => {
-    axios.get("/blog.json").then((res) => {
+    axiosDev.get("/blogs").then((res) => {
       setData(res.data);
     });
   }, []);
