@@ -28,7 +28,7 @@ const Resume: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('../../public/singleCandidate.json');
+                const response = await fetch('/singleCandidate.json');
                 const data = await response.json();
                 setCandidates(data);
             } catch (error) {

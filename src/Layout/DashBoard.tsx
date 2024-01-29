@@ -39,7 +39,7 @@ const DashBoard = () => {
     });
   }, []);
 
-  // const role: string = 'candidate';
+  
   const handleLogout = () => {
     logOut();
     navigate("/");
