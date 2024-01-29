@@ -1,27 +1,31 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { LuDot } from 'react-icons/lu';
-;
-
 
 interface Candidate {
     name: string;
     email: string;
     phone: string;
     location: string;
-    education: string;
-    work_experience: string;
-    positions_responsibility: string;
+    education: Education[];
+    experience: string;
+    position: string;
     training_courses: string;
     academic_personal_projects: string;
     skills: string[];
     portfolio: string;
-    accomplishment: string;
+    bio: string;
+}
+
+interface Education {
+    university: string;
+    subject: string;
+    fromDate: string;
+    toDate: string;
 }
 
 const Resume: React.FC = () => {
     const [candidates, setCandidates] = useState<Candidate[] | null>(null);
     const resumeRef = useRef<HTMLDivElement>(null);
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,7 +40,6 @@ const Resume: React.FC = () => {
 
         fetchData();
     }, []);
-
 
     return (
         <div className="mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg 2xl:max-w-3xl">
@@ -53,14 +56,23 @@ const Resume: React.FC = () => {
                         <hr className="my-2" />
                         <div className="text-[8px] md:text-sm flex">
                             <h2 className="w-1/3 font-bold mb-2">Education</h2>
-                            <p className="w-2/3">{candidate.education}</p>
+                            <div className="w-2/3">
+                                {candidate.education.map((edu, eduIndex) => (
+                                    <div key={eduIndex}>
+                                        <p>{edu.university}</p>
+                                        <p>{edu.subject}</p>
+                                        <p>{edu.fromDate} - {edu.toDate}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
+                        <hr className="my-2" />
                         <hr className="my-2" />
                         <div className="text-[8px] md:text-sm flex">
                             <h2 className="w-1/3 font-bold mb-2">Work Experience</h2>
                             <div className="w-2/3">
-                                <p>{candidate.positions_responsibility}</p>
-                                <p>{candidate.work_experience}</p>
+                                <p>{candidate.position}</p>
+                                <p>{candidate.experience} years</p>
                             </div>
                         </div>
                         <hr className="my-2" />
@@ -69,10 +81,6 @@ const Resume: React.FC = () => {
                             <p className="w-2/3">{candidate.training_courses}</p>
                         </div>
                         <hr className="my-2" />
-                        <div className="text-[8px] md:text-sm flex">
-                            <h2 className="font-bold mb-2 w-1/3">Projects</h2>
-                            <p className="w-2/3">{candidate.academic_personal_projects}</p>
-                        </div>
                         <hr className="my-2" />
                         <div className="text-[8px] md:text-sm flex">
                             <h2 className="font-bold mb-2 w-1/3">Skills</h2>
@@ -94,7 +102,7 @@ const Resume: React.FC = () => {
                         <hr className="my-2" />
                         <div className="text-[8px] md:text-sm flex">
                             <h2 className="w-1/3 font-bold mb-2">Accomplishment</h2>
-                            <p className="w-2/3">{candidate.accomplishment}</p>
+                            <p className="w-2/3">{candidate.bio}</p>
                         </div>
                     </div>
                 ))
@@ -102,12 +110,8 @@ const Resume: React.FC = () => {
                 <p>Loading...</p>
             )}
 
-            <button
-                className="bg-blue-500 text-white px-2 py-1 mt-2 mb-6"
-                >
-                
-                    <span>Download PDF</span>
-                
+            <button className="bg-blue-500 text-white px-2 py-1 mt-2 mb-6">
+                <span>Download PDF</span>
             </button>
         </div>
     );
