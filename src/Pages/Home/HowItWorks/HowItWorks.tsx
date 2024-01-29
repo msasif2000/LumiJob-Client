@@ -5,8 +5,11 @@ const HowItWorks = () => {
       <div className="py-12 grid grid-cols-1 lg:grid-cols-2 gap-4 ">
         <div>
           <h4 className="text-6xl font-hanken font-semibold">
-            Navigating Success Through LumiJobs in
-            <span className="font-bold text-gray-500"> 4</span> Simple Steps
+            Navigating
+            <span className="font-bold text-[#718DE1]"> Success </span> Through
+            LumiJobs in 4
+            <span className="font-bold text-[#718DE1]"> Simple </span>
+            Steps
           </h4>
         </div>
         <div className="flex justify-between items-center">
