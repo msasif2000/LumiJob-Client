@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         'hanken': ['Hanken Grotesk', 'sans-serif'],
       },
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [require("daisyui"),],
