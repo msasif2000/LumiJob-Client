@@ -1,5 +1,5 @@
 import { HiOutlineSparkles } from "react-icons/hi2";
-import { MdBookmarkAdd, MdDateRange } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { IoMdTime } from "react-icons/io";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";

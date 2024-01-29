@@ -1,16 +1,43 @@
 [
+   
     {
-      "name": "Alice White",
-      "email": "alice.white@example.com",
-      "phone": "+1-555-1111",
-      "location": "Los Angeles, USA",
-      "education": "Bachelor's in Graphic Design",
-      "work_experience": "4 years",
-      "positions_responsibility": "Graphic Designer",
-      "training_courses": "Adobe Creative Suite Certification",
-      "academic_personal_projects": "Redesigned company branding",
-      "skills": ["Adobe Photoshop", "Illustrator", "UI/UX Design"],
-      "portfolio": "https://alice.white/portfolio",
-      "accomplishment": "Received design awards"
-    }
+    "name": "Hiroshi Tanaka",
+    "email": "hiroshi.tanaka@example.com",
+    "password": "Password123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Hardware engineer with a strong background in integrated circuit design and simulation.",
+    "city": "Tokyo",
+    "country": "Japan",
+    "education": [
+      {
+        "university": "University of Tokyo",
+        "subject": "Electrical Engineering",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "Hardware Innovations Co.",
+        "position": "Integrated Circuit Engineer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+811234567890",
+    "photo": {},
+    "position": "Hardware Engineer",
+    "skills": [
+      "Integrated Circuit Design",
+      "Analog Circuit Design",
+      "Digital Circuit Design",
+      "VLSI Design",
+      "SPICE Simulation",
+      "Cadence Virtuoso",
+      "Hardware Verification"
+    ],
+    "work": "Remote"
+  }
 ]

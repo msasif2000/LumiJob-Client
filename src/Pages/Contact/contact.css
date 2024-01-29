@@ -1,4 +1,4 @@
-.col-span-1 {
+.parent {
     position: relative;
 }
 
@@ -24,4 +24,3 @@
     border-bottom: 120px solid #00000064;
     border-radius: 100%;
 }
-

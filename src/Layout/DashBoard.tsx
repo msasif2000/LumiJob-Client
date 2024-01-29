@@ -4,29 +4,28 @@ import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import useAxiosDev from "../hooks/useAxiosDev";
 import UniLoader from "../component/err & loading/UniLoader";
-// import axios from "axios";
 
 const DashBoard = () => {
-  const { user, logOut } = useAuth();
-  const navigate = useNavigate();
-  const [isLoading, setLoading] = useState(true);
+    const { user, logOut } = useAuth();
+    const navigate = useNavigate();
+    const [isLoading, setLoading] = useState(true);
+  
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1024 && isNavOpen) {
+                setIsNavOpen(false);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [isNavOpen]);
 
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024 && isNavOpen) {
-        setIsNavOpen(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [isNavOpen]);
-
-  const [role, setRole] = useState("");
-  const axiosDev = useAxiosDev();
-  useEffect(() => {
+    const [role, setRole] = useState('');
+    const axiosDev = useAxiosDev();
+    useEffect(() => {
     setLoading(true);
     axiosDev.get(`/check-which-role/${user?.email}`).then((res) => {
       console.log(res.data.role);
@@ -37,13 +36,14 @@ const DashBoard = () => {
       console.log(error);
       setLoading(false);
     });
-  }, []);
-
+    }, []);
   
-  const handleLogout = () => {
-    logOut();
-    navigate("/");
-  };
+    // const role: string = 'candidate';
+    const handleLogout = () => {
+        logOut()
+        navigate('/');
+    }
+
   return (
     <>
       {isLoading ? (
