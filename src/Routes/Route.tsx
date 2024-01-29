@@ -21,6 +21,7 @@ import PostJob from "../Company/PostJob";
 import PostedJobs from "../Company/PostedJobs";
 import Employees from "../Company/Employees";
 import CandidateProUpdate from "../Candidate/UpdateCmponents/CandidateProUpdate";
+import FindJob from "../Pages/FindJob/FindJOb";
 
 export const router = createBrowserRouter([
   {
@@ -30,8 +31,13 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
       },
+      {
+        path: "/findjob",
+        element: <FindJob />,
+      },
+
       {
         path: "/login",
         element: <Login />,
@@ -63,62 +69,61 @@ export const router = createBrowserRouter([
       },
       {
         path: "/signup/role",
-        element: <Roles />
+        element: <Roles />,
       },
     ],
   },
 
   //Dashboard
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <DashBoard></DashBoard>,
     errorElement: <NotFound />,
     children: [
       {
-        path: 'candidateProfile',
-        element: <CandidateProfile></CandidateProfile>
+        path: "candidateProfile",
+        element: <CandidateProfile></CandidateProfile>,
       },
       {
-        path: 'candidateProfile/update',
-        element: <CandidateProUpdate/>
+        path: "candidateProfile/update",
+        element: <CandidateProUpdate />,
       },
       {
-        path: 'resume',
-        element: <Resume></Resume>
+        path: "resume",
+        element: <Resume></Resume>,
       },
       {
-        path: 'appliedJobs',
-        element: <AppliedJobs></AppliedJobs>
+        path: "appliedJobs",
+        element: <AppliedJobs></AppliedJobs>,
       },
       {
-        path: 'bookmarks',
-        element: <Bookmarks></Bookmarks>
+        path: "bookmarks",
+        element: <Bookmarks></Bookmarks>,
       },
       {
-        path: 'candidateAnalytics',
-        element: <CompanyAnalytics></CompanyAnalytics>
+        path: "candidateAnalytics",
+        element: <CompanyAnalytics></CompanyAnalytics>,
       },
       {
-        path: 'companyProfile',
-        element: <CompanyProfile></CompanyProfile>
+        path: "companyProfile",
+        element: <CompanyProfile></CompanyProfile>,
       },
       {
-        path: 'postJob',
-        element: <PostJob></PostJob>
+        path: "postJob",
+        element: <PostJob></PostJob>,
       },
       {
-        path: 'postedJobs',
-        element: <PostedJobs></PostedJobs>
+        path: "postedJobs",
+        element: <PostedJobs></PostedJobs>,
       },
       {
-        path: 'companyAnalytics',
-        element: <CompanyAnalytics></CompanyAnalytics>
+        path: "companyAnalytics",
+        element: <CompanyAnalytics></CompanyAnalytics>,
       },
       {
-        path: 'employees',
-        element: <Employees></Employees>
+        path: "employees",
+        element: <Employees></Employees>,
       },
-
-    ]
-  }
+    ],
+  },
 ]);
