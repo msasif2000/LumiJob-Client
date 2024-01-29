@@ -8,9 +8,7 @@ export default {
     extend: {
       fontFamily: {
         'hanken': ['Hanken Grotesk', 'sans-serif'],
-      },
-      fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
+        'Inter': ['Inter', 'sans-serif'],
       },
     },
   },
