@@ -27,7 +27,6 @@ const Banner = () => {
                 <button className="btn bg-blue-500 text-white normal-case md:px-5 lg:px-20 mb-12 hover:bg-blue-600">
                   <NavLink to="/">Get Stated</NavLink>
                 </button>
-
               </div>
             </div>
             <img className="relative z-30" src={teamPhoto} alt="" />
