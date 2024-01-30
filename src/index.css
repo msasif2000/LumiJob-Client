@@ -9,6 +9,17 @@ body {
   font-weight: 400;
 }
 
+/* Navbar link custom css */
+
+.menu li a:hover {
+  background-color: rgba(0, 0, 0, 0) !important;
+  text-decoration: underline;
+}
+
+a.active {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
 /* Custom scrollbar design */
 ::-webkit-scrollbar {
   width: 5px;
