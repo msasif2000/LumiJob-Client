@@ -36,7 +36,7 @@ const DashBoard = () => {
       console.log(error);
       setLoading(false);
     });
-    }, []);
+    }, [user]);
   
     // const role: string = 'candidate';
     const handleLogout = () => {

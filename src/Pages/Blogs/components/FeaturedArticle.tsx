@@ -18,7 +18,7 @@ const FeaturedArticle = () => {
   const [datas, setData] = useState<BlogData[] | null>(null);
 
   useEffect(() => {
-    axiosDev.get("/blogs").then((res) => {
+    axiosDev.get("/get-all-blogs").then((res) => {
       setData(res.data);
     });
   }, []);
