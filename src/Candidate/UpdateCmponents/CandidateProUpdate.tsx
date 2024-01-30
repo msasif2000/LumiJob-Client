@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import CandidateNav from "../CommonNavbar/CandidateNav";
-import DatePicker from "react-datepicker"; // Import the date picker
-import "react-datepicker/dist/react-datepicker.css"; // Import the styles
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import useAxiosDev from "../../hooks/useAxiosDev";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
-import { FaBackward } from 'react-icons/fa6';
 
 interface EducationData {
   university: string;
@@ -123,29 +122,11 @@ const CandidateProUpdate: React.FC = () => {
   };
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    // Format dates before submitting
-    const formattedExperiences = data.experienceDetails.map((experience) => ({
-      ...experience,
-      fromDate: (experience.fromDate as Date).toLocaleDateString("en-GB"),
-      toDate: (experience.toDate as Date).toLocaleDateString("en-GB"),
-    }));
-
-    const formattedEducations = data.education.map((education) => ({
-      ...education,
-      fromDate: (education.fromDate as Date).toLocaleDateString("en-GB"),
-      toDate: (education.toDate as Date).toLocaleDateString("en-GB"),
-    }));
-
-    const formattedData = {
-      ...data,
-      experienceDetails: formattedExperiences,
-      education: formattedEducations,
-    };
-
-    console.log(formattedData);
-
+    const formData = new FormData();
+    formData.append("photo", data.photo);
+    
     axiosDev
-      .put(`/user-update/${user?.email}`, formattedData)
+      .put(`/user-update/${user?.email}`, formData)
       .then((res) => {
         console.log(res.data);
         if (res.data.message === "true") {
@@ -167,9 +148,9 @@ const CandidateProUpdate: React.FC = () => {
       });
   };
 
-const backToResume = () =>{
-  navigate('/dashboard/candidateProfile/resume')
-}
+  const backToResume = () => {
+    navigate("/dashboard/candidateProfile/resume");
+  };
   return (
     <div className="min-h-screen">
       <CandidateNav
@@ -190,10 +171,14 @@ const backToResume = () =>{
               >
                 Profile Picture
               </label>
+
               <input
                 type="file"
-                {...register("photo", { required: "Photo is required" })}
-                placeholder="Your Name"
+                name="photo"
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  setValue("photo", file);
+                }}
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
               />
             </div>
