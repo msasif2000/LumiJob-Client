@@ -11,7 +11,7 @@ interface JobCardsProps {
 const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
   const { _id, sector, picture, location, title, salary, post_time } = job;
   return (
-    <>
+    <div className="transition ease-in-out hover:-translate-y-1 hover:scale-105 duration-300">
       <Link to={`/details/${_id}`}>
         <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-[#486DD9] py-8 text-gray-700 bg-white ">
           <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
@@ -20,11 +20,11 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
             </div>
           </div>
           <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
-            <h3 className="text-sm text-gray-600 mb-2">{sector}</h3>
-            <h3 className="mb-1 overflow-hidden pr-7 text-lg font-semibold sm:text-xl">
+            <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">{sector}</h3>
+            <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
               {title}
             </h3>
-            <p>{location}</p>
+            <p className="text-sm opacity-90">{location}</p>
             {/* =============>  Job Details <<=========== */}
 
             <div className="flex flex-wrap gap-3 items-center mt-5">
@@ -44,7 +44,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
           </div>
         </div>
       </Link>
-    </>
+    </div>
   );
 };
 
