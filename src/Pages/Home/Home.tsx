@@ -9,7 +9,6 @@ import HowItWorks from "./HowItWorks/HowItWorks";
 
 import TopCompany from "../../component/TopCompany/TopCompany";
 
-
 const Home = () => {
   return (
     <div>
