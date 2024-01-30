@@ -1,13 +1,17 @@
 interface CandidateNavProps {
   text: string;
   btn: string;
+  btn2: string;
   handleClick: () => void;
+  handleClick2: () => void;
 }
 
 const CandidateNav: React.FC<CandidateNavProps> = ({
   text,
   btn,
+  btn2,
   handleClick,
+  handleClick2,
 }) => {
   return (
     <div className="navbar">
@@ -33,11 +37,15 @@ const CandidateNav: React.FC<CandidateNavProps> = ({
         <a className="text-xl font-semibold">{text}</a>
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end space-x-2">
+        <a onClick={handleClick2} className="btn">
+          {btn2}
+        </a>
         <a onClick={handleClick} className="btn">
           {btn}
         </a>
       </div>
+   
     </div>
   );
 };

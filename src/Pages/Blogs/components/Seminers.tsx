@@ -7,7 +7,7 @@ const Seminers = () => {
   const [seminars, setSeminars] = useState([]);
 
   useEffect(() => {
-    axiosDev.get("/get-all-seminars")
+    axiosDev.get("/seminars")
       .then((res) =>
         setSeminars(res.data)
       );
