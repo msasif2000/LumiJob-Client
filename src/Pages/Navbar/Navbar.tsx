@@ -13,17 +13,16 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const { user, logOut } = useAuth();
   const handleLogout = () => {
     logOut();
-  }
+  };
   const Linking: JSX.Element[] = [
-
     <li key="home">
       <NavLink
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-              ? "font-black underline text-lg"
-              : "text-lg"
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/"
       >
@@ -36,8 +35,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-              ? "font-black underline text-lg"
-              : "text-lg"
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/findjob"
       >
@@ -50,8 +49,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-              ? "font-black underline text-lg"
-              : "text-lg"
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/insights"
       >
@@ -64,8 +63,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-              ? "font-black underline text-lg"
-              : "text-lg"
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/dashboard"
       >
@@ -78,8 +77,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           isPending
             ? "pending"
             : isActive
-              ? "font-black underline text-lg"
-              : "text-lg"
+            ? "font-black underline text-lg"
+            : "text-lg"
         }
         to="/Contact"
       >
