@@ -52,7 +52,7 @@ const SocialLogin: React.FC = () => {
       const userInfo = {
         email: res.user?.email,
         name: res.user?.displayName,
-        profile: res.user?.photoURL,
+        photo: res.user?.photoURL,
       };
 
       console.log(userInfo);
@@ -80,7 +80,7 @@ const SocialLogin: React.FC = () => {
       const userInfo = {
         email: res.user?.email,
         name: res.user?.displayName,
-        profile: res.user?.photoURL,
+        photo: res.user?.photoURL,
       };
 
       console.log(userInfo);

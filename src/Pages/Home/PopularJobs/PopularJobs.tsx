@@ -23,7 +23,7 @@ const PopularJobs = () => {
   }, []);
 
   const filterJob = popularJobs?.filter(
-    (job) => job.sector == sectors[tabIndex].sectorType
+    (job) => job.sector == sectors[tabIndex]?.sectorType
   );
 
   return (
