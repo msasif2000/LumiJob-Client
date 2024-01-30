@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
         element: <CandidateProUpdate />,
       },
       {
-        path: "resume",
+        path: "candidateProfile/resume",
         element: <Resume></Resume>,
       },
       {

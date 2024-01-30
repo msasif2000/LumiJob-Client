@@ -86,10 +86,13 @@ const CandidateProfile = () => {
   const buttonClicked = () =>{
     navigate('/dashboard/candidateProfile/update')
   }
+  const buttonClicked2 = () =>{
+    navigate('/dashboard/candidateProfile/resume')
+  }
 
   return (
     <div className="min-h-screen lg:px-20">
-      <CandidateNav text={"Profile"} btn={"Update Information"} handleClick={buttonClicked}/>
+      <CandidateNav text={"Profile"} btn={"Update Information"} btn2={"Resume"}  handleClick2={buttonClicked2} handleClick={buttonClicked}/>
       <div className="flex space-x-10">
         {/* profile card div */}
         <div className="bg-white h-fit w-1/3 rounded-2xl space-y-5 p-5 relative">

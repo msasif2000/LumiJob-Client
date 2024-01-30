@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css"; // Import the styles
 import useAxiosDev from "../../hooks/useAxiosDev";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
+import { FaBackward } from 'react-icons/fa6';
 
 interface EducationData {
   university: string;
@@ -166,12 +167,17 @@ const CandidateProUpdate: React.FC = () => {
       });
   };
 
+const backToResume = () =>{
+  navigate('/dashboard/candidateProfile/resume')
+}
   return (
-    <div className="min-h-screen lg:px-20">
+    <div className="min-h-screen">
       <CandidateNav
         text="Upgrade your information"
         btn="Return"
+        btn2="See Resume"
         handleClick={backToProfile}
+        handleClick2={backToResume}
       />
 
       <div className=" bg-white px-2 py-5">
