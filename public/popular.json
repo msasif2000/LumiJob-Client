@@ -52,7 +52,10 @@
       "Knowledge of software development methodologies"
     ],
     "location": "Redmond, WA",
-    "salary": "$90,000 - $130,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/TB18zMP/Microsoft-logo-2012-svg.pngg",
     "post_time": "2024-01-26T20:10",
     "deadline": "2024-06-27T20:10",
