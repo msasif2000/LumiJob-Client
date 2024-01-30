@@ -4,7 +4,7 @@ const HowItWorks = () => {
       {/* =========> Section Title <========= */}
       <div className="py-12 grid grid-cols-1 lg:grid-cols-2 gap-4 ">
         <div>
-          <h4 className="text-6xl font-hanken font-semibold">
+          <h4 className="text-6xl font-heading font-semibold">
             Navigating
             <span className="font-bold text-[#718DE1]"> Success </span> Through
             LumiJobs in 4
@@ -30,7 +30,7 @@ const HowItWorks = () => {
         {/* =========> Step: 1 <========= */}
         <div className="col-span-2 p-6 border rounded-md min-h-[25rem]">
           <div>
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Discover Opportunities
             </h4>
             <p>
@@ -46,7 +46,7 @@ const HowItWorks = () => {
         {/* =========> Step: 2 <========= */}
         <div className="col-span-4 p-6 border rounded-md">
           <div className="max-w-[75%]">
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Craft Your Profile
             </h4>
             <p>
@@ -62,7 +62,7 @@ const HowItWorks = () => {
         {/* =========> Step: 3 <========= */}
         <div className="col-span-4 p-6 border rounded-md">
           <div className="max-w-[75%]">
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Effortless Application Process
             </h4>
             <p>
@@ -78,7 +78,7 @@ const HowItWorks = () => {
         {/* =========> Step: 4 <========= */}
         <div className="col-span-2 p-6 border rounded-md min-h-[25rem]">
           <div>
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Engage and Excel
             </h4>
             <p>

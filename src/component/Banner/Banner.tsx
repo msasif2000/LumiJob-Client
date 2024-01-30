@@ -9,7 +9,7 @@ const Banner = () => {
         <div className="max-w-screen-2xl mx-auto lg:px-4">
           <div className="relative z-10">
             <div className="space-y-4 lg:space-y-5 xl:space-y-8  text-center">
-              <h1 className="text-3xl lg:text-7xl font-bold font-hanken my-12 relative z-10">
+              <h1 className="text-3xl lg:text-7xl font-bold font-heading my-12 relative z-10">
                 Grow With Us <br /> And build Your Career
               </h1>
               {/* <h1 className="xl:hidden block text-3xl md:text-5xl pt-5 lg:pt-8 px-3 font-bold  relative z-10">
