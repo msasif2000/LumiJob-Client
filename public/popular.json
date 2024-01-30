@@ -1,47 +1,5 @@
 [
   {
-    "_id": "0",
-    "platform": "Adobe",
-    "sector": "Design",
-    "title": "UI Designer",
-    "description": "Develop and maintain software applications, write code, and troubleshoot problems.",
-    "requirements": [
-      "Bachelor's degree in Computer Science",
-      "Programming skills in Java, Python, or C++",
-      "Experience with software development life cycle"
-    ],
-    "location": "Various",
-    "salary": "$80,000 - $120,000 per year",
-    "picture": "https://i.ibb.co/XFGcyFL/Adobe-logo.png",
-    "post_time": "2024-01-27T20:10",
-    "deadline": "2024-06-27T20:10",
-    "aboutUs": "We are a creative powerhouse within the fintech industry, crafting user-centric experiences to redefine digital design. Rooted in innovation, we seek a UI Designer to join our dynamic team at the forefront of transforming financial advisory interfaces. Embrace the opportunity to blend artistry with technology in a collaborative and cutting-edge environment.",
-    "positionOverview": "As a UI Designer, you will be a pivotal force in shaping the visual aesthetics of our digital products. Collaborate closely with cross-functional teams to conceptualize, design, and implement intuitive and visually stunning user interfaces. Your role demands proficiency in design tools, an eye for detail, and a passion for creating seamless user experiences.",
-    "responsibilities": [
-      "Lead the design and implementation of user interfaces for our financial advisory software.",
-      "Collaborate with development teams to ensure the alignment of visual design intent with technical feasibility.",
-      "Contribute to the creation and maintenance of design systems for consistent user experiences.",
-      "Iterate on designs based on user feedback and testing.",
-      "Stay updated on design trends and emerging technologies to drive continuous improvement."
-    ],
-    "skills": [
-      "Proven experience as a UI Designer with a strong portfolio showcasing design proficiency.",
-      "Expertise in design tools such as Adobe XD, Sketch, or Figma.",
-      "Understanding of UX principles and best practices.",
-      "Strong communication skills to articulate design concepts and rationale."
-    ],
-    "experience": "3+ years of professional experience in UI/UX design.",
-    "perks": [
-      "Competitive salary and benefits package.",
-      "Opportunity to contribute to revolutionary fintech design.",
-      "Collaborative and creative work environment.",
-      "Professional development opportunities.",
-      "Flexible work schedule."
-    ],
-    "application": "If you are passionate about redefining user experiences in the fintech sector and possess the required skills and vision, we invite you to apply and shape the future of digital design with us."
-  },
-  {
-    "_id": "1",
     "platform": "Microsoft",
     "sector": "Software Development",
     "title": "Software Developer",
@@ -52,7 +10,10 @@
       "Knowledge of software development methodologies"
     ],
     "location": "Redmond, WA",
-    "salary": "$90,000 - $130,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/TB18zMP/Microsoft-logo-2012-svg.pngg",
     "post_time": "2024-01-26T20:10",
     "deadline": "2024-06-27T20:10",
@@ -82,7 +43,6 @@
     "application": "If you are passionate about pushing the boundaries of software development and possess the required skills and vision, we invite you to apply and contribute to the future of technology with us."
   },
   {
-    "_id": "2",
     "platform": "Google",
     "sector": "Data Science",
     "title": "Data Analyst",
@@ -93,7 +53,10 @@
       "Strong analytical and problem-solving skills"
     ],
     "location": "Mountain, CA",
-    "salary": "$85,000 - $110,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/n15XM8q/Google-2015-logo-svg.webp",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -123,7 +86,6 @@
     "application": "If you are passionate about leveraging data to drive business decisions and possess the required skills and vision, we invite you to apply and be a part of shaping the future of data science with us."
   },
   {
-    "_id": "3",
     "platform": "Amazon",
     "sector": "Logistics",
     "title": "Supply Chain Manager",
@@ -134,7 +96,10 @@
       "Strong organizational and communication skills"
     ],
     "location": "Seattle, WA",
-    "salary": "$100,000 - $130,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.pngg",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -164,7 +129,6 @@
     "application": "If you are passionate about optimizing supply chain processes and possess the required skills and vision, we invite you to apply and be a part of redefining logistics excellence with us."
   },
   {
-    "_id": "4",
     "platform": "Facebook",
     "sector": "Social Media",
     "title": "Social Media Manager",
@@ -175,7 +139,10 @@
       "Creative thinking and excellent communication skills"
     ],
     "location": "Menlo Park, CA",
-    "salary": "$70,000 - $90,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "post_time": "2024-01-28T20:10",
     "deadline": "2024-06-27T20:10",
     "picture": "https://i.ibb.co/ZztZnxV/Facebook-Logo-2019.png",
@@ -205,7 +172,6 @@
     "application": "If you are passionate about shaping digital narratives and possess the required skills and vision, we invite you to apply and be a part of defining the future of social media at Facebook."
   },
   {
-    "_id": "5",
     "platform": "Apple",
     "sector": "Hardware Engineering",
     "title": "Hardware Engineer",
@@ -216,7 +182,10 @@
       "Knowledge of CAD tools"
     ],
     "location": "Cupertino, CA",
-    "salary": "$95,000 - $120,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
     "post_time": "2024-01-25T20:10",
     "deadline": "2024-06-27T20:10",
@@ -246,7 +215,6 @@
     "application": "If you are passionate about pushing the boundaries of hardware technology and possess the required skills and vision, we invite you to apply and be a part of shaping the future of electronic devices with Apple."
   },
   {
-    "_id": "6",
     "platform": "Adobe Illustrator",
     "sector": "Design",
     "title": "UI Designer",
@@ -257,7 +225,10 @@
       "Experience with software development life cycle"
     ],
     "location": "Various",
-    "salary": "$80,000 - $120,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/Yhk1y06/Illustrator-Logo.png",
     "post_time": "2024-01-26T20:10",
     "deadline": "2024-06-27T20:10",
@@ -287,7 +258,6 @@
     "application": "If you are passionate about redefining user experiences in the fintech sector and possess the required skills and vision, we invite you to apply and shape the future of digital design with us."
   },
   {
-    "_id": "7",
     "platform": "Google",
     "sector": "Technology",
     "title": "Software Engineer",
@@ -298,7 +268,10 @@
       "Experience with agile development methodologies"
     ],
     "location": "Mountain, CA",
-    "salary": "$90,000 - $130,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/n15XM8q/Google-2015-logo-svg.webp",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -325,7 +298,6 @@
     "application": "If you are passionate about technology and thrive in a fast-paced environment, apply now to be part of our exciting journey!"
   },
   {
-    "_id": "8",
     "platform": "Behance",
     "sector": "Creative",
     "title": "Graphic Designer",
@@ -336,7 +308,10 @@
       "Strong portfolio showcasing design expertise"
     ],
     "location": "New York, NY",
-    "salary": "$60,000 - $90,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/KbyMXyy/2560px-Behance-logo-svg.png",
     "post_time": "2024-01-26T20:10",
     "deadline": "2024-06-27T20:10",
@@ -363,7 +338,6 @@
     "application": "If you have a passion for visual storytelling and are ready to contribute to our creative journey, apply now!"
   },
   {
-    "_id": "9",
     "platform": "LinkedIn",
     "sector": "Data Science",
     "title": "Data Scientist",
@@ -374,7 +348,10 @@
       "Experience with data visualization tools (e.g., Tableau)"
     ],
     "location": "San Francisco, CA",
-    "salary": "$100,000 - $150,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/QN1B3Rb/Linked-In-Logo-svg.png",
     "post_time": "2024-01-25T20:10",
     "deadline": "2024-06-27T20:10",
@@ -401,7 +378,6 @@
     "application": "If you have a passion for turning data into actionable insights and are excited about the future of data science, apply now!"
   },
   {
-    "_id": "10",
     "platform": "Indeed",
     "sector": "Marketing",
     "title": "Marketing Manager",
@@ -412,7 +388,10 @@
       "Strong analytical and project management skills"
     ],
     "location": "Chicago, IL",
-    "salary": "$70,000 - $100,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/TbT74Y9/Indeed-logo.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -439,7 +418,6 @@
     "application": "If you are a strategic thinker with a passion for driving marketing success, we invite you to apply and be part of our exciting journey!"
   },
   {
-    "_id": "11",
     "platform": "GitHub Jobs",
     "sector": "Technology",
     "title": "Frontend Developer",
@@ -450,7 +428,10 @@
       "Experience with frontend frameworks (e.g., React, Angular)"
     ],
     "location": "Seattle, WA",
-    "salary": "$80,000 - $120,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/48CMCjN/Git-Hub-logo.png",
     "post_time": "2024-01-24T20:10",
     "deadline": "2024-06-27T20:10",
@@ -477,7 +458,6 @@
     "application": "If you are passionate about building user-friendly web applications and thrive in a collaborative development environment, apply now to be part of our exciting projects!"
   },
   {
-    "_id": "12",
     "platform": "Glassdoor",
     "sector": "Design",
     "title": "UX Researcher",
@@ -488,7 +468,10 @@
       "Strong analytical and communication skills"
     ],
     "location": "Austin, TX",
-    "salary": "$70,000 - $110,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/XySxG5h/6296331b2be59dc55430ca8a.png",
     "post_time": "2024-01-29T20:10",
     "deadline": "2024-06-27T20:10",
@@ -515,7 +498,6 @@
     "application": "If you are passionate about understanding user needs and shaping digital experiences, we invite you to apply and contribute to our user-centered design process!"
   },
   {
-    "_id": "13",
     "platform": "Dice",
     "sector": "Technology",
     "title": "DevOps Engineer",
@@ -526,7 +508,10 @@
       "Knowledge of containerization and orchestration tools (e.g., Docker, Kubernetes)"
     ],
     "location": "Denver, CO",
-    "salary": "$90,000 - $130,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/7yBYJty/DICE-Ticketing-Company-logo-svg.png",
     "post_time": "2024-01-28T20:10",
     "deadline": "2024-06-27T20:10",
@@ -553,7 +538,6 @@
     "application": "If you are passionate about automating and optimizing software development processes, apply now to be part of our dynamic DevOps team!"
   },
   {
-    "_id": "14",
     "platform": "Microsoft",
     "sector": "Software Development",
     "title": "Frontend Developer",
@@ -564,7 +548,10 @@
       "Experience with frontend frameworks such as React or Angular"
     ],
     "location": "Redmond, WA",
-    "salary": "$85,000 - $120,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/TB18zMP/Microsoft-logo-2012-svg.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -593,7 +580,6 @@
     "application": "If you're passionate about crafting user-centric web experiences and have the skills to contribute, we invite you to apply and be part of our exciting journey."
   },
   {
-    "_id": "15",
     "platform": "Amazon",
     "sector": "E-Commerce",
     "title": "Data Scientist",
@@ -604,7 +590,10 @@
       "Experience with data visualization tools and machine learning frameworks"
     ],
     "location": "Seattle, WA",
-    "salary": "$100,000 - $140,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
     "post_time": "2024-01-26T20:10",
     "deadline": "2024-06-27T20:10",
@@ -633,7 +622,6 @@
     "application": "If you're passionate about leveraging data for business insights and have the skills to make an impact, we encourage you to apply and be part of our data-driven journey."
   },
   {
-    "_id": "16",
     "platform": "Facebook",
     "sector": "Social Media",
     "title": "Product Manager",
@@ -644,7 +632,10 @@
       "Strong analytical and strategic thinking skills"
     ],
     "location": "Menlo Park, CA",
-    "salary": "$110,000 - $150,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -673,7 +664,6 @@
     "application": "If you're passionate about building impactful digital products and have the skills to lead product development, we invite you to apply and be part of our journey to connect the world."
   },
   {
-    "_id": "17",
     "platform": "Tesla",
     "sector": "Automotive",
     "title": "Embedded Systems Engineer",
@@ -684,7 +674,10 @@
       "Experience with embedded systems development"
     ],
     "location": "Palo Alto, CA",
-    "salary": "$95,000 - $130,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/5cBJy9v/Tesla-logo.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -714,7 +707,6 @@
     "application": "If you're passionate about contributing to the future of sustainable transportation and have the skills to innovate in embedded systems, we encourage you to apply and be part of the Tesla mission."
   },
   {
-    "_id": "18",
     "platform": "Netflix",
     "sector": "Entertainment",
     "title": "Machine Learning Engineer",
@@ -725,7 +717,10 @@
       "Experience with machine learning frameworks like TensorFlow or PyTorch"
     ],
     "location": "Los Gatos, CA",
-    "salary": "$120,000 - $160,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/XydLTmY/netflix-logo-png-large.png",
     "post_time": "2024-01-28T20:10",
     "deadline": "2024-06-27T20:10",
@@ -755,7 +750,6 @@
     "application": "If you're passionate about shaping the future of entertainment through machine learning and have the skills to contribute, we invite you to apply and be part of the Netflix journey."
   },
   {
-    "_id": "19",
     "platform": "Uber",
     "sector": "Transportation",
     "title": "Senior Mobile App Developer",
@@ -766,7 +760,10 @@
       "Experience with mobile app development and UI/UX design"
     ],
     "location": "San Francisco, CA",
-    "salary": "$100,000 - $140,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/JyNrsWF/Uber-logo-2018.png",
     "post_time": "2024-01-26T20:10",
     "deadline": "2024-06-27T20:10",
@@ -795,7 +792,6 @@
     "application": "If you're passionate about shaping the future of transportation through mobile app development and have the skills to make an impact, we invite you to apply and be part of the Uber journey."
   },
   {
-    "_id": "20",
     "platform": "Netflix",
     "sector": "Entertainment",
     "title": "Content Writer",
@@ -807,7 +803,10 @@
       "Knowledge of SEO and content marketing strategies"
     ],
     "location": "Remote",
-    "salary": "$50,000 - $70,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/XydLTmY/netflix-logo-png-large.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -838,7 +837,6 @@
     "application": "If you are passionate about creating captivating content for Netflix and have the required skills and experience, we invite you to apply and join our creative team."
   },
   {
-    "_id": "21",
     "platform": "Spotify",
     "sector": "Music",
     "title": "Data Analyst",
@@ -850,7 +848,10 @@
       "Knowledge of data mining, machine learning, and statistical techniques"
     ],
     "location": "New York, NY",
-    "salary": "$60,000 - $90,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/RQYchyB/Spotify-logo-with-text-svg.webp",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -881,7 +882,6 @@
     "application": "If you are passionate about data and music and have the required skills and experience, we invite you to apply and join our data team."
   },
   {
-    "_id": "22",
     "platform": "Amazon",
     "sector": "E-commerce",
     "title": "Customer Service Representative",
@@ -893,7 +893,10 @@
       "Ability to work under pressure and multitask in a fast-paced environment"
     ],
     "location": "Remote",
-    "salary": "$15 - $20 per hour",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
     "post_time": "2024-01-28T20:10",
     "deadline": "2024-06-27T20:10",
@@ -924,7 +927,6 @@
     "application": "If you are passionate about customer service and have the required skills and experience, we invite you to apply and join our customer service team."
   },
   {
-    "_id": "23",
     "platform": "Apple",
     "sector": "Technology",
     "title": "Software Engineer",
@@ -936,7 +938,10 @@
       "Experience with Xcode, Git, or other development tools"
     ],
     "location": "Cupertino, CA",
-    "salary": "$120,000 - $180,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
     "post_time": "2024-01-29T20:10",
     "deadline": "2024-06-27T20:10",
@@ -967,7 +972,6 @@
     "application": "If you are passionate about software engineering and technology and have the required skills and experience, we invite you to apply and join our engineering team."
   },
   {
-    "_id": "24",
     "platform": "McDonald’s",
     "sector": "Food and Beverage",
     "title": "Crew Member",
@@ -979,7 +983,10 @@
       "Ability to work in a fast-paced and dynamic environment"
     ],
     "location": "Various",
-    "salary": "$8 - $12 per hour",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/h1Jb7s6/purepng-com-mcdonalds-logologobrand-logoiconslogos-25151994043391qrj.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1010,7 +1017,6 @@
     "application": "If you are passionate about food and customer service and have the required skills and attitude, we invite you to apply and join our restaurant team."
   },
   {
-    "_id": "25",
     "platform": "Airbnb",
     "sector": "Travel",
     "title": "Software Engineer",
@@ -1022,7 +1028,10 @@
       "Experience with cloud computing platforms, such as AWS, Azure, or Google Cloud"
     ],
     "location": "San Francisco, CA",
-    "salary": "$100,000 - $150,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/wy3TqXT/Airbnb-Logo-B-lo-svg.png",
     "post_time": "2024-01-24T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1053,7 +1062,6 @@
     "application": "If you are passionate about software engineering and travel and have the required skills and experience, we invite you to apply and join our engineering team."
   },
   {
-    "_id": "26",
     "platform": "Nike",
     "sector": "Sports",
     "title": "Marketing Manager",
@@ -1065,7 +1073,10 @@
       "Experience with marketing tools and platforms, such as Google Analytics, Facebook Ads, Mailchimp, etc."
     ],
     "location": "Beaverton, OR",
-    "salary": "$70,000 - $100,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/4RG5SGp/Nike-Logo.png",
     "post_time": "2024-01-23T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1096,7 +1107,6 @@
     "application": "If you are passionate about marketing and sports and have the required skills and experience, we invite you to apply and join our marketing team."
   },
   {
-    "_id": "27",
     "platform": "Starbucks",
     "sector": "Food and Beverage",
     "title": "Barista",
@@ -1108,7 +1118,10 @@
       "Ability to work in a fast-paced and dynamic environment"
     ],
     "location": "Various",
-    "salary": "$10 - $15 per hour",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/TkH23nm/Starbucks-Corporation-Logo-2011-svg.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1139,7 +1152,6 @@
     "application": "If you are passionate about coffee and customer service and have the required skills and attitude, we invite you to apply and join our store team."
   },
   {
-    "_id": "28",
     "platform": "Apple",
     "sector": "Technology",
     "title": "Software Engineer",
@@ -1151,7 +1163,10 @@
       "Experience with Xcode, Git, or other development tools"
     ],
     "location": "Cupertino, CA",
-    "salary": "$120,000 - $180,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1182,7 +1197,6 @@
     "application": "If you are passionate about software engineering and technology and have the required skills and experience, we invite you to apply and join our engineering team."
   },
   {
-    "_id": "29",
     "platform": "McDonald’s",
     "sector": "Food and Beverage",
     "title": "Crew Member",
@@ -1194,7 +1208,10 @@
       "Ability to work in a fast-paced and dynamic environment"
     ],
     "location": "Various",
-    "salary": "$8 - $12 per hour",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/h1Jb7s6/purepng-com-mcdonalds-logologobrand-logoiconslogos-25151994043391qrj.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1225,7 +1242,6 @@
     "application": "If you are passionate about food and customer service and have the required skills and attitude, we invite you to apply and join our restaurant team."
   },
   {
-    "_id": "30",
     "platform": "Netflix",
     "sector": "Entertainment",
     "title": "Data Scientist",
@@ -1237,7 +1253,10 @@
       "Experience with data visualization, reporting, and dashboarding tools, such as Tableau, Power BI, etc."
     ],
     "location": "Los Gatos, CA",
-    "salary": "$150,000 - $200,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/0nZ8p9Q/Netflix-Logo.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1268,7 +1287,6 @@
     "application": "If you are passionate about data and entertainment and have the required skills and experience, we invite you to apply and join our data team."
   },
   {
-    "_id": "31",
     "platform": "Spotify",
     "sector": "Music",
     "title": "Content Creator",
@@ -1280,7 +1298,10 @@
       "Knowledge of SEO and content marketing strategies"
     ],
     "location": "Remote",
-    "salary": "$40,000 - $60,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/RQYchyB/Spotify-logo-with-text-svg.webp",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1311,7 +1332,6 @@
     "application": "If you are passionate about creating captivating content for Spotify and have the required skills and experience, we invite you to apply and join our creative team."
   },
   {
-    "_id": "32",
     "platform": "Google",
     "sector": "Technology",
     "title": "Software Engineer",
@@ -1323,7 +1343,10 @@
       "Experience with cloud computing platforms, such as Google Cloud, AWS, or Azure"
     ],
     "location": "Mountain View, CA",
-    "salary": "$120,000 - $180,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/n15XM8q/Google-2015-logo-svg.webp",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1354,7 +1377,6 @@
     "application": "If you are passionate about software engineering and technology and have the required skills and experience, we invite you to apply and join our engineering team."
   },
   {
-    "_id": "33",
     "platform": "Nike",
     "sector": "Sports",
     "title": "Graphic Designer",
@@ -1366,7 +1388,10 @@
       "Experience with video editing software, such as Adobe Premiere, After Effects, or Final Cut Pro"
     ],
     "location": "Beaverton, OR",
-    "salary": "$50,000 - $80,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/4RG5SGp/Nike-Logo.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1397,7 +1422,6 @@
     "application": "If you are passionate about graphic design and sports and have the required skills and experience, we invite you to apply and join our design team."
   },
   {
-    "_id": "34",
     "platform": "Starbucks",
     "sector": "Food and Beverage",
     "title": "Store Manager",
@@ -1409,7 +1433,10 @@
       "Ability to work in a fast-paced and dynamic environment"
     ],
     "location": "Various",
-    "salary": "$20 - $25 per hour",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/TkH23nm/Starbucks-Corporation-Logo-2011-svg.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1440,7 +1467,6 @@
     "application": "If you are passionate about coffee and customer service and have the required skills and experience, we invite you to apply and join our store team."
   },
   {
-    "_id": "35",
     "platform": "Apple",
     "sector": "Technology",
     "title": "Product Designer",
@@ -1452,7 +1478,10 @@
       "Experience with prototyping software, such as InVision, Framer, or Principle"
     ],
     "location": "Cupertino, CA",
-    "salary": "$100,000 - $150,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/Hx9H6Xs/Apple-Logo.png",
     "post_time": "2024-01-28T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1483,7 +1512,6 @@
     "application": "If you are passionate about product design and technology and have the required skills and experience, we invite you to apply and join our design team."
   },
   {
-    "_id": "36",
     "platform": "Facebook",
     "sector": "Social Media",
     "title": "Data Engineer",
@@ -1495,7 +1523,10 @@
       "Experience with data storage and processing systems, such as MySQL, MongoDB, Hadoop, etc."
     ],
     "location": "Menlo Park, CA",
-    "salary": "$100,000 - $150,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/ZztZnxV/Facebook-Logo-2019.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1526,7 +1557,6 @@
     "application": "If you are passionate about data engineering and social media and have the required skills and experience, we invite you to apply and join our data team."
   },
   {
-    "_id": "37",
     "platform": "Airbnb",
     "sector": "Travel",
     "title": "Customer Service Representative",
@@ -1538,7 +1568,10 @@
       "Ability to work under pressure and multitask in a fast-paced environment"
     ],
     "location": "Remote",
-    "salary": "$15 - $20 per hour",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/wy3TqXT/Airbnb-Logo-B-lo-svg.png",
     "post_time": "2024-01-29T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1569,7 +1602,6 @@
     "application": "If you are passionate about customer service and travel and have the required skills and experience, we invite you to apply and join our customer service team."
   },
   {
-    "_id": "38",
     "platform": "Amazon",
     "sector": "E-commerce",
     "title": "Warehouse Associate",
@@ -1581,7 +1613,10 @@
       "Ability to work in a fast-paced and dynamic environment"
     ],
     "location": "Various",
-    "salary": "$15 - $20 per hour",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/7bPbLcC/current-logo-600x338.png",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1612,7 +1647,6 @@
     "application": "If you are passionate about customer service and satisfaction and have the required skills and attitude, we invite you to apply and join our warehouse team."
   },
   {
-    "_id": "39",
     "platform": "Tesla",
     "sector": "Automotive",
     "title": "Sales Advisor",
@@ -1624,7 +1658,10 @@
       "Ability to work in a fast-paced and dynamic environment"
     ],
     "location": "Various",
-    "salary": "$40,000 - $60,000 per year plus commission",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/5cBJy9v/Tesla-logo.png",
     "post_time": "2024-01-26T20:10",
     "deadline": "2024-06-27T20:10",
@@ -1655,7 +1692,6 @@
     "application": "If you are passionate about sales and sustainable energy and have the required skills and experience, we invite you to apply and join our sales team."
   },
   {
-    "_id": "40",
     "platform": "Spotify",
     "sector": "Music",
     "title": "Data Scientist",
@@ -1666,7 +1702,10 @@
       "Experience with big data technologies such as Hadoop, Spark, or Hive"
     ],
     "location": "New York, NY",
-    "salary": "$100,000 - $150,000 per year",
+    "salaryRange": {
+      "min": 100000,
+      "max": 120000
+    },
     "picture": "https://i.ibb.co/RQYchyB/Spotify-logo-with-text-svg.webp",
     "post_time": "2024-01-27T20:10",
     "deadline": "2024-06-27T20:10",
