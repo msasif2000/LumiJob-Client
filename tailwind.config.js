@@ -12,7 +12,7 @@ export default {
         accent: '#486DD9',
         btnbg: '#000000',
         subheading: '#999999',
-        lightcolor: '#fff',
+        light: '#fff',
       },
       fontFamily: {
         'heading': ['heading Grotesk', 'sans-serif'],
