@@ -11,12 +11,12 @@ body {
 
 /* Navbar link custom css */
 
-.menu li a:hover {
+.navbar .menu li a:hover {
   background-color: rgba(0, 0, 0, 0) !important;
   text-decoration: underline;
 }
 
-a.active {
+.navbar a.active {
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
