@@ -45,6 +45,7 @@ const CandidateProUpdate: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const axiosDev = useAxiosDev();
+  const [loading, setLoading] = useState<boolean>(false);
 
   // const axiosPublic = useAxiosPublic()
 
@@ -121,31 +122,39 @@ const CandidateProUpdate: React.FC = () => {
     navigate(-1);
   };
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    const formData = new FormData();
-    formData.append("photo", data.photo);
-    
-    axiosDev
-      .put(`/user-update/${user?.email}`, formData)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.message === "true") {
-          toast.success("Information updated", {
-            position: "top-center",
-            hideProgressBar: true,
-            autoClose: 2000,
-          });
-          navigate("/");
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    setLoading(true);
+
+    try {
+      const updateUserDataResponse = await axiosDev.put(
+        `/user-update/${user?.email}`,
+        data
+      );
+
+      if (updateUserDataResponse.data.message === "true") {
+        const formData = new FormData();
+        formData.append("photo", data.photo);
+
+        const updateUserPhotoResponse = await axiosDev.post(
+          `/user-update-photo/${user?.email}`,
+          formData
+        );
+
+        if (updateUserPhotoResponse.data.message === true) {
+          toast.success("Profile Updated Successfully");
+          navigate("/dashboard/candidateProfile");
+        } else {
+          toast.error("Failed to update profile photo");
         }
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.warn("Information not updated", {
-          position: "top-center",
-          hideProgressBar: true,
-          autoClose: 2000,
-        });
-      });
+      } else {
+        toast.error("Failed to update profile data");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while updating profile");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const backToResume = () => {
@@ -176,8 +185,10 @@ const CandidateProUpdate: React.FC = () => {
                 type="file"
                 name="photo"
                 onChange={(e) => {
-                  const file = e.target.files[0];
-                  setValue("photo", file);
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    setValue("photo", file);
+                  }
                 }}
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
               />
@@ -510,7 +521,11 @@ const CandidateProUpdate: React.FC = () => {
           </div>
 
           <button type="submit" className="btn btn-accent mb-10 w-full ">
-            Submit
+            {loading ? (
+              <span className="loading loading-ring loading-lg"></span>
+            ) : (
+              "Submit"
+            )}
           </button>
         </form>
       </div>
