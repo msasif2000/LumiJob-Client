@@ -42,7 +42,7 @@ const CandidateProfile = () => {
         .get(`/user-profile/${user.email}`)
         .then((res) => {
           setProfile(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -72,8 +72,9 @@ const CandidateProfile = () => {
           </div>
         );
       case "education":
-        return <div>
-           {profile?.education?.map((uni, index) => (
+        return (
+          <div>
+            {profile?.education?.map((uni, index) => (
               <div key={index} className="mb-4">
                 <div>
                   <p className="text-xl font-bold">{uni.university}</p>
@@ -90,7 +91,8 @@ const CandidateProfile = () => {
                 </div>
               </div>
             ))}
-        </div>;
+          </div>
+        );
     }
   };
 
@@ -102,7 +104,7 @@ const CandidateProfile = () => {
   };
 
   return (
-    <div className="min-h-screen lg:px-20">
+    <div className="min-h-screen">
       <CandidateNav
         text={"Profile"}
         btn={"Update Information"}
