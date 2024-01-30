@@ -6,9 +6,9 @@ const HowItWorks = () => {
         <div>
           <h4 className="text-4xl md:text-6xl lg:text-6xl font-heading font-semibold text-center lg:text-left">
             Navigating
-            <span className="font-bold text-[#718DE1]"> Success </span> Through
+            <span className="font-bold text-accentTwo"> Success </span> Through
             LumiJobs in 4
-            <span className="font-bold text-[#718DE1]"> Simple </span>
+            <span className="font-bold text-accentTwo"> Simple </span>
             Steps
           </h4>
         </div>
