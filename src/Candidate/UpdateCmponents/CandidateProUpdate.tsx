@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -46,7 +46,7 @@ const CandidateProUpdate: React.FC = () => {
   const { user } = useAuth();
   const axiosDev = useAxiosDev();
   const [loading, setLoading] = useState<boolean>(false);
-
+  const [currentUser, setCurrentUser] = useState(null);
   // const axiosPublic = useAxiosPublic()
 
   const {
@@ -160,6 +160,19 @@ const CandidateProUpdate: React.FC = () => {
   const backToResume = () => {
     navigate("/dashboard/candidateProfile/resume");
   };
+
+  useEffect(() => {
+   if(user?.email){
+    axiosDev
+    .get(`/user-profile/${user.email}`)
+    .then((res) => {
+      console.log(res.data);
+      setCurrentUser(res.data);
+    })
+    .catch((error) => console.log(error))
+   };
+  }, [user]);
+
   return (
     <div className="min-h-screen">
       <CandidateNav
@@ -202,7 +215,7 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
-                  placeholder="Your Name"
+                  defaultValue={currentUser?.name}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -212,7 +225,7 @@ const CandidateProUpdate: React.FC = () => {
                   {...register("position", {
                     required: "position is required",
                   })}
-                  placeholder="Your interested position"
+                  defaultValue={currentUser?.position}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -220,7 +233,7 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("phone", { required: "phone is required" })}
-                  placeholder="Your phone number"
+                  defaultValue={currentUser?.phone}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -231,7 +244,7 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("village", { required: "Village is required" })}
-                  placeholder="Yor Village"
+                  defaultValue={currentUser?.village}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -239,7 +252,7 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("city", { required: "City is required" })}
-                  placeholder="Your City"
+                  defaultValue={currentUser?.city}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -247,7 +260,7 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("country", { required: "Country is required" })}
-                  placeholder="Your Country"
+                  defaultValue={currentUser?.country}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -259,7 +272,7 @@ const CandidateProUpdate: React.FC = () => {
               <textarea
                 rows={3}
                 {...register("bio", { required: "bio is required" })}
-                placeholder="Bio"
+                defaultValue={currentUser?.bio}
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
               ></textarea>
             </div>
@@ -287,7 +300,7 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   value={inputValue}
-                  placeholder="Type a skill and press Enter"
+                  placeholder="Type a skill and press enter"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && inputValue.trim() !== "") {
