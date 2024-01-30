@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import Sector from "../Home/PopularJobs/sector";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 const Filters = () => {
   const [sectors, setSectors] = useState<Sector[]>([]);
+  const [range, setRange] = useState<[number, number]>([0, 100]);
+
+  const handleSliderChange = (values: [number, number]) => {
+    setRange(values);
+  };
 
   useEffect(() => {
     fetch("sectors.json")
@@ -17,7 +24,7 @@ const Filters = () => {
           <h4 className="font-semibold font-hanken text-2xl">Filters</h4>
         </div>
         <div className="border rounded p-5 lg:p-8 m-3 min-h-[35vh] bg-white sticky top-24">
-          {/* Category Filter */}
+          {/* Job Type Filter */}
           <div>
             <h6 className="mb-3 text-xl font-hanken font-semibold text-gray-900">
               Category
@@ -65,6 +72,25 @@ const Filters = () => {
                 </label>
               </li>
             </ul>
+          </div>
+
+          {/* Job filter by price range */}
+          <div className="my-8 mx-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Price Range:
+            </label>
+            <div className="flex items-center">
+              <div className="mr-2">${range[0]}</div>
+              <Slider
+                min={0}
+                max={100}
+                range
+                value={range}
+                onChange={() => handleSliderChange(range)}
+                className="flex-1"
+              />
+              <div className="ml-2">${range[1]}</div>
+            </div>
           </div>
         </div>
       </div>

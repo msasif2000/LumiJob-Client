@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import Footer from "../../component/Footer/Footer";
-import Job from "../Home/PopularJobs/Job";
 import Navbar from "../Navbar/Navbar";
 import FindJobCard from "./FindJobCard";
 import { IoFilterOutline } from "react-icons/io5";
@@ -8,15 +6,20 @@ import Filters from "./Filters";
 import Search from "./Search";
 import NotificationCard from "./NotificationCard";
 import Pagination from "./Pagination";
+import { useQuery } from "@tanstack/react-query";
+import Job from "../Home/PopularJobs/Job";
+import useAxiosDev from "../../hooks/useAxiosDev";
 
 const FindJob = () => {
-  const [popularJobs, setPopularJobs] = useState<Job[]>([]);
+  const axiosPublic = useAxiosDev();
 
-  useEffect(() => {
-    fetch("popular.json")
-      .then((res) => res.json())
-      .then((data: Job[]) => setPopularJobs(data));
-  }, []);
+  const { data: popularJobs = [] } = useQuery({
+    queryKey: ["popularJobs"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/all-job-posts`);
+      return res.data;
+    },
+  });
 
   return (
     <>
@@ -67,7 +70,7 @@ const FindJob = () => {
 
               {/* ===> Showing jobs <=== */}
               <div className="grid grid-cols-1 gap-8 p-3">
-                {popularJobs?.slice(0, 8).map((job) => (
+                {popularJobs?.slice(0, 8).map((job: Job) => (
                   <FindJobCard key={job._id} job={job}></FindJobCard>
                 ))}
               </div>
