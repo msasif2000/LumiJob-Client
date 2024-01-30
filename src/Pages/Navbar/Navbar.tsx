@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   ];
 
   // for dynamic bg color of navbar
-  const bgColor = color ? color : "bg-white";
+  const bgColor = color ? color : "e";
 
   return (
     <div className={`border-b sticky top-0 z-30 ${bgColor}`}>

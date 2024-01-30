@@ -7,7 +7,7 @@ const Seminers = () => {
   const [seminars, setSeminars] = useState([]);
 
   useEffect(() => {
-    axiosDev.get("/seminars")
+    axiosDev.get("/get-all-seminars")
       .then((res) =>
         setSeminars(res.data)
       );
@@ -29,9 +29,9 @@ const Seminers = () => {
         {/* actual seminars part */}
         <div className=" pt-10 lg:w-2/3 lg:pt-32">
           <div className="space-y-16 w-full">
-            {seminars.map((seminar: any, idx) => {
+            {seminars.map((seminar: any) => {
               return (
-                <div key={idx} className="grid gap-5 lg:grid-cols-5 lg:gap-10 px-3 xl:px-0">
+                <div key={seminar._id} className="grid gap-5 lg:grid-cols-5 lg:gap-10 px-3 xl:px-0">
                   <div className="space-y-2 ">
                     <p className="text-xl font-bold">{seminar.date}</p>
                   </div>

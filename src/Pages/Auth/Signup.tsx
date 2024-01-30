@@ -59,8 +59,11 @@ const Signup: React.FC = () => {
 
       // for prod
       // axiosPublic.post("/users", userInfo).then((res) => {
-      //   console.log(res.data);
-      //   toast.success("User created successfully");
+      //   toast.success("User created successfully", {
+      //   position: "top-center",
+      //   hideProgressBar: true,
+      //   autoClose: 2000,
+      // });
       // });
 
       setIsCreatingAccount(false);
