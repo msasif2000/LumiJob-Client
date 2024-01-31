@@ -112,8 +112,8 @@ const FeaturedArticle = () => {
 
                           {idx === 0 ? (
                             <>
-                              <p>
-                                {truncateDetails(item.details, 80)}
+                              <p className="text-md md:text-lg">
+                                {truncateDetails(item.details, 75)}
                                 <span className="text-[#4965E1] font-bold">
                                   ...read more
                                 </span>
