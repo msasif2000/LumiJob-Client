@@ -203,7 +203,8 @@ const CandidateProUpdate: React.FC = () => {
                     setValue("photo", file);
                   }
                 }}
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                className="py-4 outline-none font-bold bg-transparent border-b-2
+                 w-full border-gray-300 text-xl hover:border-accent duration-500"
               />
             </div>
           </div>
