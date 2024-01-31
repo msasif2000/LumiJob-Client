@@ -27,7 +27,7 @@ const FindJob: React.FC = () => {
     <>
       <Navbar />
       <div className="">
-        <div className=" my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
+        <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
             Navigate <span className="text-[#4869DD]">Opportunities</span> and
             Find Your Perfect Job Today!
