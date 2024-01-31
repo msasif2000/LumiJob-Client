@@ -1,3 +1,4 @@
+import React, { SetStateAction, useState } from "react";
 import Footer from "../../component/Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import FindJobCard from "./FindJobCard";
@@ -5,14 +6,15 @@ import { IoFilterOutline } from "react-icons/io5";
 import Filters from "./Filters";
 import Search from "./Search";
 import NotificationCard from "./NotificationCard";
-import Pagination from "./Pagination";
 import { useQuery } from "@tanstack/react-query";
 import Job from "../Home/PopularJobs/Job";
 import useAxiosDev from "../../hooks/useAxiosDev";
+import Pagination from "./Pagination";
 
-const FindJob = () => {
+const FindJob: React.FC = () => {
+  const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
+
   const axiosPublic = useAxiosDev();
-
   const { data: popularJobs = [] } = useQuery({
     queryKey: ["popularJobs"],
     queryFn: async () => {
@@ -25,7 +27,7 @@ const FindJob = () => {
     <>
       <Navbar />
       <div className="">
-        <div className=" my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
+        <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
             Navigate <span className="text-[#4869DD]">Opportunities</span> and
             Find Your Perfect Job Today!
@@ -70,14 +72,17 @@ const FindJob = () => {
 
               {/* ===> Showing jobs <=== */}
               <div className="grid grid-cols-1 gap-8 p-3">
-                {popularJobs?.slice(0, 8).map((job: Job) => (
+                {currentJobs.map((job: Job) => (
                   <FindJobCard key={job._id} job={job}></FindJobCard>
                 ))}
               </div>
 
               <div className="py-12">
                 {/* ==>  Pagination <== */}
-                <Pagination />
+                <Pagination
+                  popularJobs={popularJobs}
+                  onPageChange={(jobs: SetStateAction<Job[]>) => setCurrentJobs(jobs)}
+                ></Pagination>
               </div>
             </div>
 
