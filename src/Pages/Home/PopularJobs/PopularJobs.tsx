@@ -11,7 +11,7 @@ const PopularJobs = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
-    fetch("popular.json")
+    fetch("http://localhost:5000/all-job-posts")
       .then((res) => res.json())
       .then((data: Job[]) => setPopularJobs(data));
   }, []);

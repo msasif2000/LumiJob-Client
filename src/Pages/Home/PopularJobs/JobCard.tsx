@@ -1,21 +1,28 @@
 import { HiOutlineSparkles } from "react-icons/hi2";
-import { MdBookmarkAdd, MdDateRange } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { IoMdTime } from "react-icons/io";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import Job from "./Job";
 import { Link } from "react-router-dom";
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react";
+import BookmarkButton from "../../../component/Shared/BookmarkButton";
+import Job from "./Job";
 
 interface JobCardsProps {
   job: Job;
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { picture, location, title, salary, post_time, _id } = job;
+
+  console.log(job)
+
+  const { picture, location, title, salaryRange, post_time, _id } = job;
+
+  console.log(_id)
+
 
   useEffect(() => {
     Aos.init();
@@ -39,12 +46,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
 
             {/* =============> Bookmark Button <============= */}
 
-            <button
-              title="Add to Bookmark"
-              className="bg-white border border-[#486DD9] hover:border-black p-2 rounded-full text-xl text-[#486DD9] hover:text-black"
-            >
-              <MdBookmarkAdd />
-            </button>
+            <BookmarkButton job={job}/>
           </div>
 
           <div className="py-4">
@@ -64,7 +66,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
               <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <PiMoney className="mr-1" /> {salary}
+              <PiMoney className="mr-1" /> {salaryRange.min}-{salaryRange.max}
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
               <MdDateRange className="mr-1" /> {post_time}
