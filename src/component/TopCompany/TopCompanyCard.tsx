@@ -19,9 +19,11 @@ const TopCompanyCard: React.FC<TopCompanyCardProps> = ({ job }) => {
       <div className="flex flex-col lg:flex-row justify-between items-center pt-4">
         <div className="flex items-center gap-1">
           <IoLocationOutline />
-          <p className="font-semibold text-gray-500">{location}</p>
+          <p className="font-normal text-gray-500">{location}</p>
         </div>
-        <p className="font-semibold text-gray-500">Open Job 20</p>
+        <p className="font-normal text-gray-500">
+          Opened Job <b>20</b>
+        </p>
       </div>
     </div>
   );
