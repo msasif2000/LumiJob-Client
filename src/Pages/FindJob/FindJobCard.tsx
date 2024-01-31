@@ -1,18 +1,24 @@
 import { IoMdTime } from "react-icons/io";
-import { MdBookmarkAdd, MdDateRange } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import Job from "../Home/PopularJobs/Job";
 import { Link } from "react-router-dom";
+
+import BookmarkButton from "../../component/Shared/BookmarkButton";
 
 interface JobCardsProps {
   job: Job;
 }
 
+
 const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { _id, sector, picture, location, title, salary, post_time } = job;
+
+  const { _id, sector, picture, location, title, salaryRange, post_time } = job;
+
+
   return (
     <div className="">
-      <Link to={`/details/${_id}`}>
+      <div>
         <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-[#486DD9] py-8 text-gray-700 bg-white ">
           <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
             <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
@@ -25,11 +31,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
               <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
                 {title}
               </h3>
-              <button
-                title="Add to Bookmark"
-                className="bg-white border  border-black p-2 rounded-lg hover:text-[#486DD9] hover:border-[#486DD9]">
-                <MdBookmarkAdd />
-              </button>
+              <BookmarkButton job={job}/>
             </p>
             <p className="text-sm opacity-90">{location}</p>
             {/* =============>  Job Details <<=========== */}
@@ -45,7 +47,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
                 <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                <PiMoney className="mr-1" /> {salary}
+                <PiMoney className="mr-1" /> {salaryRange.min} - {salaryRange.max}
               </span>
             </div>
             <Link className="flex justify-end" to={`/details/${_id}`}>
@@ -55,7 +57,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
             </Link>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

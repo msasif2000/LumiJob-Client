@@ -22,6 +22,7 @@ import PostedJobs from "../Company/PostedJobs";
 import Employees from "../Company/Employees";
 import CandidateProUpdate from "../Candidate/UpdateCmponents/CandidateProUpdate";
 import FindJob from "../Pages/FindJob/FindJOb";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -64,7 +65,6 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <JobsDetails></JobsDetails>,
-        loader: () => fetch(`/popular.json`),
       },
       {
         path: "/signup/role",

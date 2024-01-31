@@ -1,16 +1,21 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { CiDollar } from "react-icons/ci";
 import { LuDot } from "react-icons/lu";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../../component/Footer/Footer";
+import useAxiosDev from "../../hooks/useAxiosDev";
+import { useQuery } from "@tanstack/react-query";
 
 interface JobDetails {
     _id: string;
     title: string;
     location: string;
-    salary: string;
+    salary: {
+      min: number;
+      max: number;
+    };
     sector: string;
     description: string;
     requirements: string[];
@@ -23,25 +28,33 @@ interface JobDetails {
     experience: string;
     perks: string[];
     application: string;
-  
     [key: string]: any;
-}
+  }
+
 
 const JobsDetails: React.FC = () => {
     // Fetch data using useLoaderData
-    const details = useLoaderData() as JobDetails[] | undefined;
+    const axiosPublic = useAxiosDev();
+
+  const { data: jobs = [] } = useQuery({
+    queryKey: ["jobs"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/all-job-posts`);
+      return res.data;
+    },
+  });
 
 
 
 
     // Get the "id" parameter from the route
     const { id } = useParams<{ id: string }>();
-    console.log(id);
+    console.log(typeof(id));
 
 
     // Find the detail with the matching id
-    const detail = details && details.find((d) => d._id === id);
-    console.log(details, detail?.title);
+    const job =  jobs?.find((d: JobDetails) => d._id === id);
+    console.log(job);
     const {
         title,
         location,
@@ -58,7 +71,7 @@ const JobsDetails: React.FC = () => {
         experience,
         perks,
         application,
-    } = detail || {};
+    } = job || {};
     
     
     return (
@@ -66,8 +79,8 @@ const JobsDetails: React.FC = () => {
             <Navbar></Navbar>
             <div className="max-w-screen-2xl mx-auto py-16 px-4">
                 <div>
-                    {/* Display details */}
-                    {detail ? (
+                    {/* Display jobs */}
+                    {job ? (
                         <div className="lg:flex justify-between">
                             {/* left side */}
                             <div className=" lg:w-8/12">
@@ -99,7 +112,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Responsibilities</h2>
                                     <ul>
-                                        {responsibilities && responsibilities.map((responsibility, index) => (
+                                        {responsibilities && responsibilities.map((responsibility: string, index: number) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot />{responsibility}</p></li>
                                         ))}
                                     </ul>
@@ -107,7 +120,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Requirements</h2>
                                     <ul>
-                                        {requirements && requirements.map((requirement, index) => (
+                                        {requirements && requirements.map((requirement: string, index: number) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot /> {requirement}</p></li>
                                         ))}
                                     </ul>
@@ -115,7 +128,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Skills</h2>
                                     <ul>
-                                        {skills && skills.map((skill, index) => (
+                                        {skills && skills.map((skill: string, index:number) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot /> {skill}</p></li>
                                         ))}
                                     </ul>
@@ -124,7 +137,7 @@ const JobsDetails: React.FC = () => {
                                 <div>
                                     <h2 className=" font-medium mt-5 mb-2">Perks</h2>
                                     <ul>
-                                    {perks && perks.map((perk, index) => (
+                                    {perks && perks.map((perk:string, index: number) => (
                                             <li key={index}><p className="flex items-center ms-3 gap-2 text-sm opacity-90"><LuDot /> {perk}</p></li>
                                         ))}
                                     </ul>
