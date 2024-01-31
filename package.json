@@ -38,9 +38,9 @@
     "react-toastify": "^10.0.1",
     "recharts": "^2.10.4",
     "sort-by": "^0.0.2",
-    "sweetalert2": "^11.10.4"
+    "sweetalert2": "^11.10.4",
     "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.5",
+    "semantic-ui-react": "^2.1.5"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
