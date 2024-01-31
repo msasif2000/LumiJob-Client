@@ -6,18 +6,23 @@ import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 import './PostedCard.css'
+import Job from "../Pages/Home/PopularJobs/Job";
 
+interface PostedJobsCardProps {
+  job: Job;
+}
 
+const PostedJobsCard: React.FC<PostedJobsCardProps> = ({ job }) => {
 
-const PostedJobsCard = () => {
-
+  const { title, salaryRange, location } = job;
+  console.log(salaryRange.min);
 
   return (
-    <div className=" bg-slate-100 border rounded-md p-12">
+    <div className=" bg-slate-100  rounded-md p-10 px-40 ">
       {/*================ >> Content Box <<=============== */}
 
-      <div className=" px-3 pt-3 ">
-        <div className="bg-sky-200 min-h-48 rounded-md p-4">
+      <div className=" px-3 pt-3 w-[800px] ">
+        <div className="bg-[#DCE3F8] min-h-48 rounded-md p-6">
           <div className="flex justify-between items-center">
             <div className="flex gap-3 items-center">
               <span className="bg-[#F9CB5B] py-1 px-4 rounded flex items-center text-sm text-gray-600">
@@ -105,9 +110,9 @@ const PostedJobsCard = () => {
           </div>
 
           <div className="py-4">
-            <h3 className="text-3xl mb-2">UI Designer</h3>
+            <h3 className="text-3xl mb-2">{title}</h3>
             <p className="text-lg flex items-center gap-2 mb-4">
-              <FaMapMarkerAlt /> Various
+              <FaMapMarkerAlt /> {location}
             </p>
           </div>
 
@@ -121,7 +126,7 @@ const PostedJobsCard = () => {
               <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <PiMoney className="mr-1" /> $80,000 - $120,000 per year
+              <PiMoney className="mr-1" /> ${salaryRange.min} - ${salaryRange.max} per year
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
               <MdDateRange className="mr-1" /> 1 day ago
