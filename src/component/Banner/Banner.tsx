@@ -26,7 +26,7 @@ const Banner = () => {
             and Limitless Possibilities
           </p>
 
-          <button className="btn bg-btnbg text-light text-md font-heading font-medium rounded-sm border-none px-12 lg:px-20 my-12 hover:bg-accent">
+          <button className="btn bg-btnbg text-light text-lg font-heading font-medium rounded-sm border-none px-12 lg:px-20 my-12 hover:bg-accent">
             <NavLink to="/findjob">Find Your Future</NavLink>
           </button>
           {/* <img
