@@ -27,8 +27,8 @@ const FindJob: React.FC = () => {
     <>
       <Navbar />
       <div className="">
-        <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
-          <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
+        <div className=" my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
+          <h3 className="text-4xl md:text-4xl xl:text-5xl font-heading font-semibold text-center mb-4 xl:mb-12">
             Navigate <span className="text-[#4869DD]">Opportunities</span> and
             Find Your Perfect Job Today!
           </h3>
@@ -45,7 +45,7 @@ const FindJob: React.FC = () => {
             {/* =============> Middle column <============== */}
             <div className="col-span-1 md:col-span-4 lg:col-span-3 min-h-screen">
               <div className="flex justify-between items-center min-h-32 px-4">
-                <h4 className="font-semibold font-hanken text-2xl">
+                <h4 className="font-semibold font-heading text-2xl">
                   <span className="text-[#486DD9]">3,137</span> Jobs Available
                 </h4>
                 <div className="dropdown dropdown-end">

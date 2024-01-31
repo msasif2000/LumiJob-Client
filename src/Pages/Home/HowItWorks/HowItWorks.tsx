@@ -4,36 +4,33 @@ const HowItWorks = () => {
       {/* =========> Section Title <========= */}
       <div className="py-12 grid grid-cols-1 lg:grid-cols-2 gap-4 ">
         <div>
-          <h4 className="text-6xl font-hanken font-semibold">
+          <h4 className="text-4xl md:text-6xl lg:text-6xl font-heading font-semibold text-center lg:text-left">
             Navigating
-            <span className="font-bold text-[#718DE1]"> Success </span> Through
+            <span className="font-bold text-accentTwo"> Success </span> Through
             LumiJobs in 4
-            <span className="font-bold text-[#718DE1]"> Simple </span>
+            <span className="font-bold text-accentTwo"> Simple </span>
             Steps
           </h4>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="w-3/4">
-            <p>
+        <div className="flex lg:justify-end items-center">
+          <div className="w-full lg:w-3/4 text-center lg:text-left">
+            <p className="text-md md:text-lg xl:text-xl text-gray-600">
               Your tech journey is not just a job search; it's an immersive
               experience with LumiJobs, guiding you toward professional triumphs
               in the dynamic world of technology.
             </p>
           </div>
-          <button className="py-1 px-6 border border-gray-300 bg-black hover:bg-[#486DD9] text-white font-semibold text-base rounded h-10">
-            Apply Now
-          </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-6 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5">
         {/* =========> Step: 1 <========= */}
-        <div className="col-span-2 p-6 border rounded-md min-h-[25rem]">
+        <div className="lg:col-span-2 p-6 border rounded-md min-h-[25rem]">
           <div>
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Discover Opportunities
             </h4>
-            <p>
+            <p className="text-md md:text-lg xl:text-xl text-gray-600">
               Uncover a myriad of tech opportunities tailored to your skills and
               aspirations. Explore real-time job listings from leading companies
               in diverse sectors. Our intuitive search filters empower you to
@@ -44,12 +41,12 @@ const HowItWorks = () => {
         </div>
 
         {/* =========> Step: 2 <========= */}
-        <div className="col-span-4 p-6 border rounded-md">
-          <div className="max-w-[75%]">
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+        <div className="lg:col-span-4 p-6 border rounded-md">
+          <div className="lg:max-w-[75%]">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Craft Your Profile
             </h4>
-            <p>
+            <p className="text-md md:text-lg xl:text-xl text-gray-600">
               Elevate your professional presence with a personalized profile
               that showcases your skills, experience, and unique qualities.
               Tailor your digital resume to stand out in the competitive tech
@@ -60,12 +57,12 @@ const HowItWorks = () => {
         </div>
 
         {/* =========> Step: 3 <========= */}
-        <div className="col-span-4 p-6 border rounded-md">
-          <div className="max-w-[75%]">
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+        <div className="lg:col-span-4 p-6 border rounded-md">
+          <div className="lg:max-w-[75%]">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Effortless Application Process
             </h4>
-            <p>
+            <p className="text-md md:text-lg xl:text-xl text-gray-600">
               Navigate through the hiring process with a one-click "Quick Apply"
               feature. Express your interest efficiently and effectively,
               streamlining your applications across a spectrum of tech
@@ -76,12 +73,12 @@ const HowItWorks = () => {
         </div>
 
         {/* =========> Step: 4 <========= */}
-        <div className="col-span-2 p-6 border rounded-md min-h-[25rem]">
+        <div className="lg:col-span-2 p-6 border rounded-md min-h-[25rem]">
           <div>
-            <h4 className="text-2xl font-hanken font-semibold mb-4">
+            <h4 className="text-2xl font-heading font-semibold mb-4">
               Engage and Excel
             </h4>
-            <p>
+            <p className="text-md md:text-lg xl:text-xl text-gray-600">
               Immerse yourself in a vibrant tech community through interactive
               forums and industry-related events. Connect with hiring teams,
               tech professionals, and experts in your field. Receive real-time

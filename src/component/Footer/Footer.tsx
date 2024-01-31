@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="relative mt-16 bg-gray-950 text-gray-600 lg:h-[360px]">
       <div className="footer py-10 px-4 max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 font-semibold pt-20">
         <div>
-          <span className="text-white uppercase font-hanken text-xl">
+          <span className="text-white uppercase font-heading text-xl">
             Services
           </span>
           <Link className="link link-hover" to="#">
@@ -23,7 +23,7 @@ const Footer = () => {
           </Link>
         </div>
         <div>
-          <span className="text-white uppercase font-hanken text-xl">
+          <span className="text-white uppercase font-heading text-xl">
             Terms
           </span>
           <Link className="link link-hover" to="#">
@@ -40,7 +40,7 @@ const Footer = () => {
           </Link>
         </div>
         <div>
-          <span className="text-white uppercase font-hanken text-xl">
+          <span className="text-white uppercase font-heading text-xl">
             Company
           </span>
           <Link className="link link-hover" to="#">
@@ -57,7 +57,7 @@ const Footer = () => {
           </Link>
         </div>
         <nav>
-          <header className="text-white uppercase font-hanken text-xl">
+          <header className="text-white uppercase font-heading text-xl">
             Explore
           </header>
           <a className="link link-hover">Features</a>
@@ -66,7 +66,7 @@ const Footer = () => {
           <a className="link link-hover">Pricing</a>
         </nav>
         <nav>
-          <header className="text-white uppercase font-hanken text-xl">
+          <header className="text-white uppercase font-heading text-xl">
             Legal
           </header>
           <a className="link link-hover">Terms of use</a>
@@ -113,7 +113,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-gray-950 border-t border-gray-700 flex justify-center items-center min-h-16">
-        <h5 className="text-center font-hanken font-normal">
+        <h5 className="text-center font-heading font-normal">
           Copyright © {new Date().getFullYear()} all rights reserved to Dev
           Dynasty.
         </h5>
