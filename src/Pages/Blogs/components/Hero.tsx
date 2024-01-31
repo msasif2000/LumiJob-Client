@@ -6,14 +6,14 @@ import yellow from "../../../assets/GlowShadow/Yellow.svg";
 const Hero = () => {
   return (
     <div className="h-[440px] md:h-[560px] lg:min-h-screen bg-[#F2F8F5] relative overflow-hidden">
-      <div className="max-w-screen-2xl mx-auto lg:px-4">
+      <div className="max-w-screen-2xl mx-auto px-4">
         <div className="space-y-10 lg:space-y-20 relative z-10">
-          <h1 className="hidden xl:block text-[120px] font-heading font-bold pt-20 relative z-10">
+          <h3 className="text-4xl md:text-7xl lg:text-9xl font-heading font-bold pt-20 relative z-10">
             News, Seminars & <br /> Insides of Tech <br /> Fields.
-          </h1>
-          <h1 className="xl:hidden block text-3xl md:text-7xl px-3 font-heading font-bold pt-10 relative z-10">
+          </h3>
+          {/* <h1 className="xl:hidden block text-3xl md:text-7xl px-3 font-heading font-bold pt-10 relative z-10">
             News, Seminars & <br /> Insides of Tech <br /> Fields.
-          </h1>
+          </h1> */}
           <img
             src={green}
             alt="blogBg"
@@ -35,7 +35,7 @@ const Hero = () => {
             className="absolute -right-96 top-5 w-[1000px]"
           />
 
-          <p className="text-xs px-3 md:text-lg lg:px-0 lg:text-xl font-normal relative z-10">
+          <p className="text-xs lg:px-3 md:text-lg  lg:text-xl font-normal relative z-10">
             Discover cutting-edge advancements in rapidly growing industries.
             Stay updated on groundbreaking technologies and job opportunities.
             Secure your ideal tech position with real-time insights into
