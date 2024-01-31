@@ -146,16 +146,16 @@ const FeaturedArticle = () => {
                             alt=""
                           />
 
-                          <p className="bg-green-300 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
+                          <p className="bg-green-300 text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
                             {item.category}
                           </p>
                         </figure>
-                        <div className="flex justify-between font-bold text-gray-400 px-2">
+                        <div className="flex justify-between font-normal text-gray-400 px-2">
                           <p>{item.date}</p>
                           <p>{item.readTime} read</p>
                         </div>
                         <div>
-                          <h1 className="md:text-lg p-2 font-semibold">
+                          <h1 className=" text-xl p-2 font-heading font-semibold">
                             {item.title}
                           </h1>
                         </div>

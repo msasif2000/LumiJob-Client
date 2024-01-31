@@ -32,7 +32,7 @@ const Seminers = () => {
               return (
                 <div
                   key={seminar._id}
-                  className="grid gap-5 lg:grid-cols-5 lg:gap-10 xl:px-0"
+                  className="grid gap-5 lg:grid-cols-5 lg:gap-10"
                 >
                   <div className="space-y-2 ">
                     <p className="text-xl font-bold">{seminar.date}</p>
