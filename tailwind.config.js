@@ -6,9 +6,18 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#000000',
+        secondary: '#2ecc71',
+        accent: '#486DD9',
+        accentTwo: '#718DE1',
+        btnbg: '#000000',
+        subheading: '#999999',
+        light: '#fff',
+      },
       fontFamily: {
-        'hanken': ['Hanken Grotesk', 'sans-serif'],
-        'Inter': ['Inter', 'sans-serif'],
+        'heading': ['heading Grotesk', 'sans-serif'],
+        'body': ['Inter', 'sans-serif'],
       },
     },
   },

@@ -21,12 +21,12 @@ const Filters = () => {
     <div>
       <div className="col-span-1">
         <div className="flex flex-col justify-center h-auto md:min-h-32 px-3">
-          <h4 className="font-semibold font-hanken text-2xl">Filters</h4>
+          <h4 className="font-semibold font-heading text-2xl">Filters</h4>
         </div>
         <div className="border rounded p-5 lg:p-8 m-3 min-h-[35vh] bg-white sticky top-24">
           {/* Job Type Filter */}
           <div>
-            <h6 className="mb-3 text-xl font-hanken font-semibold text-gray-900">
+            <h6 className="mb-3 text-xl font-heading font-semibold text-gray-900">
               Category
             </h6>
             <ul className="space-y-2 text-sm">
@@ -47,7 +47,7 @@ const Filters = () => {
 
           {/* Job Type Filter */}
           <div className="mb-5 mt-12">
-            <h6 className="mb-3 text-xl font-hanken font-semibold text-gray-900">
+            <h6 className="mb-3 text-xl font-heading font-semibold text-gray-900">
               Job Type
             </h6>
             <ul className="space-y-2 text-sm">

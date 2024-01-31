@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=heading+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,12 +11,12 @@ body {
 
 /* Navbar link custom css */
 
-.menu li a:hover {
+.navbar .menu li a:hover {
   background-color: rgba(0, 0, 0, 0) !important;
   text-decoration: underline;
 }
 
-a.active {
+.navbar a.active {
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
