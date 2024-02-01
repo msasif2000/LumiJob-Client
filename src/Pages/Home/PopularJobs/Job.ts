@@ -1,3 +1,11 @@
+
+
+export interface salaryRange { // Capitalize 'SalaryRange'
+  min: number;
+  max: number;
+}
+
+
 // Job.ts
 interface Job {
   _id?: string;
@@ -8,9 +16,10 @@ interface Job {
   post_time: string;
   description: string;
   location: string;
-  salary: string;
   salaryRange:any;
+  salaryRange: salaryRange;
   // Add other properties of your job object here
 }
+
 
 export default Job;
