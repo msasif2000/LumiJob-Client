@@ -6,6 +6,7 @@ import { IoIosPeople } from "react-icons/io";
 import { IoMailOpen } from "react-icons/io5";
 import { GiConfirmed } from "react-icons/gi";
 import { FunctionComponent } from 'react';
+import { Link } from "react-router-dom";
 
 interface CustomizedLabelProps {
     cx: number;
@@ -100,12 +101,14 @@ const CompanyProfile = () => {
                     <div>
                         <p className="text-2xl p-2 text-white ">Company Profile</p>
                     </div>
-                    <div className="flex justify-center items-center bg-white rounded-3xl px-2 py-1">
+                    <Link to='/dashboard/companyProfile/update'>
+                    <div className="flex btn justify-center items-center bg-white rounded-3xl px-2">
                         <div className="bg-[#6f6aff] p-1 rounded-full">
                             <MdOutlineModeEdit className="text-2xl text-white" />
                         </div>
                         <p className="text-xl font-semibold text-[#6f6aff] p-2  ">Edit Profile</p>
                     </div>
+                    </Link>
                 </div>
                 <div className="flex gap-10">
                     <img className="w-28 h-28 rounded-full bg-white p-2" src="https://i.ibb.co/5cBJy9v/Tesla-logo.png" />
