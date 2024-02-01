@@ -17,8 +17,6 @@ interface Job {
   description: string;
   location: string;
   salaryRange:any;
-  salaryRange: salaryRange;
-  // Add other properties of your job object here
 }
 
 
