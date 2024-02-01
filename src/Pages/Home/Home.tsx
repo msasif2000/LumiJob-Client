@@ -17,8 +17,8 @@ const Home = () => {
       <Banner />
       <HowItWorks />
       {/* <Step></Step> */}
-      <PopularJobs></PopularJobs>
-      <TopCompany></TopCompany>
+      <PopularJobs />
+      <TopCompany />
       <Footer />
     </div>
   );

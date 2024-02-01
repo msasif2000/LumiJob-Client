@@ -1,26 +1,31 @@
 .parent {
-    position: relative;
+  position: relative;
 }
 
 .half-circle-1 {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-left: 130px solid #00000064;
-    border-bottom: 130px solid #00000064;
-    border-radius: 125px 0px 0 0px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 130px solid #00000064;
+  border-bottom: 130px solid #00000064;
+  border-radius: 125px 0px 0 0px;
 }
 .half-circle-2 {
-    content: "";
-    position: absolute;
-    bottom: 25px;
-    right: 30px;
-    width: 0;
-    height: 0;
-    border-left: 120px solid #00000064;
-    border-bottom: 120px solid #00000064;
-    border-radius: 100%;
+  content: "";
+  position: absolute;
+  bottom: 25px;
+  right: 30px;
+  width: 0;
+  height: 0;
+  border-left: 120px solid #00000064;
+  border-bottom: 120px solid #00000064;
+  border-radius: 100%;
+}
+
+.contactForm textarea:focus,
+input:focus {
+  outline: none !important;
 }

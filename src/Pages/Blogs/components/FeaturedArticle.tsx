@@ -44,8 +44,8 @@ const FeaturedArticle = () => {
 
   return (
     <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
-      <div className="max-w-screen-2xl mx-auto lg:px-4">
-        <h1 className="text-3xl px-3 lg:px-0 lg:text-6xl font-bold py-10">
+      <div className="max-w-screen-2xl mx-auto px-4">
+        <h1 className="text-3xl lg:text-6xl font-heading font-semibold py-8">
           Featured Articles
         </h1>
         {/* for computer */}
@@ -80,16 +80,16 @@ const FeaturedArticle = () => {
                             />
                           )}
                           {idx === 0 ? (
-                            <p className="bg-green-300 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[435px] right-5 ">
+                            <p className="bg-green-300 text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[435px] right-5 ">
                               {item.category}
                             </p>
                           ) : (
-                            <p className="bg-green-300 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
+                            <p className="bg-green-300 text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
                               {item.category}
                             </p>
                           )}
                         </figure>
-                        <div className="flex justify-between font-bold text-gray-400 px-2">
+                        <div className="flex justify-between font-normal text-gray-400 px-2">
                           <p>{item.date}</p>
                           <p>{item.readTime} read</p>
                         </div>
@@ -101,21 +101,20 @@ const FeaturedArticle = () => {
                           }`}
                         >
                           {idx === 0 ? (
-                            <h1 className="text-3xl font-semibold">
+                            <h1 className="text-3xl font-heading font-semibold mb-3">
                               {item.title}
                             </h1>
                           ) : (
-                            <h1 className="text-xl font-semibold">
+                            <h1 className="text-xl font-heading font-semibold">
                               {item.title}
                             </h1>
                           )}
 
                           {idx === 0 ? (
                             <>
-                              <p>
-                                {truncateDetails(item.details, 80)}{" "}
-                                <span className="text-[#4965E1] font-semibold">
-                                  {" "}
+                              <p className="text-md md:text-lg">
+                                {truncateDetails(item.details, 75)}
+                                <span className="text-[#4965E1] font-bold">
                                   ...read more
                                 </span>
                               </p>
@@ -133,7 +132,7 @@ const FeaturedArticle = () => {
         </div>
         {/* for mobile */}
         <div className="xl:hidden block">
-          <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {slicedData &&
               slicedData.map((item: any, idx: Key | null | undefined) => {
                 return (
@@ -147,16 +146,16 @@ const FeaturedArticle = () => {
                             alt=""
                           />
 
-                          <p className="bg-green-300 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
+                          <p className="bg-green-300 text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
                             {item.category}
                           </p>
                         </figure>
-                        <div className="flex justify-between font-bold text-gray-400 px-2">
+                        <div className="flex justify-between font-normal text-gray-400 px-2">
                           <p>{item.date}</p>
                           <p>{item.readTime} read</p>
                         </div>
                         <div>
-                          <h1 className="md:text-lg p-2 font-semibold">
+                          <h1 className=" text-xl p-2 font-heading font-semibold">
                             {item.title}
                           </h1>
                         </div>
