@@ -23,8 +23,8 @@ const TopCompany = () => {
           Elevate Your Career with the Most Coveted Companies
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-16">
-          {filterJob?.map((job) => (
-            <TopCompanyCard key={job._id} job={job}></TopCompanyCard>
+          {filterJob?.map((job, idx) => (
+            <TopCompanyCard key={idx} job={job}></TopCompanyCard> /* Changed key={job._id} to key={idx} */
           ))}
         </div>
       </div>

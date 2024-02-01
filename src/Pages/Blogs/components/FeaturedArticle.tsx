@@ -55,7 +55,7 @@ const FeaturedArticle = () => {
               slicedData.map((item: any, idx: Key | null | undefined) => {
                 return (
                   <Link
-                    to={`/insights/${item.id}`}
+                    to={`/insights/${item._id}`}
                     key={idx}
                     className={`${
                       idx === 0

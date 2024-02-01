@@ -4,7 +4,6 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import { IoMdTime } from "react-icons/io";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import Aos from "aos"
 import "aos/dist/aos.css"
 import BookmarkButton from "../../../component/Shared/BookmarkButton";
@@ -17,7 +16,7 @@ interface JobCardsProps {
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { picture, location, title, salary, post_time, _id } = job;
+  const { picture, location, title, salaryRange, post_time, } = job; /* Changed salary to salaryRange for solving error and removed _id  */
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [name, setName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
@@ -93,7 +92,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
               <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <PiMoney className="mr-1" /> {salaryRange.min}-{salaryRange.max}
+              <PiMoney className="mr-1" /> {salaryRange?.min}-{salaryRange?.max} 
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
               <MdDateRange className="mr-1" /> {post_time}

@@ -4,26 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosDev from "../hooks/useAxiosDev";
 
-const jobs = [
-  {
-    company: "ABC Corp",
-    position: "Software Engineer",
-    startDate: "2020-01-01",
-    endDate: "2022-05-31",
-  },
-  {
-    company: "DEF Ltd",
-    position: "Senior Frontend Developer",
-    startDate: "2018-03-15",
-    endDate: "2020-12-31",
-  },
-  {
-    company: "GHI Ltd",
-    position: "Senior Frontend Developer",
-    startDate: "2018-03-15",
-    endDate: "2020-12-31",
-  },
-];
+
 
 const CandidateProfile = () => {
   const { user } = useAuth();
