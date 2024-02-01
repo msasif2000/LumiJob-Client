@@ -16,8 +16,7 @@ interface Job {
   post_time: string;
   description: string;
   location: string;
-  salaryRange: salaryRange;
-  // Add other properties of your job object here
+  salaryRange:any;
 }
 
 
