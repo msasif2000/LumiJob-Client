@@ -1,12 +1,17 @@
 // import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import CandidateNav from "../../Candidate/CommonNavbar/CandidateNav";
+// import useAxiosDev from "../../hooks/useAxiosDev";
+// import useAuth from "../../hooks/useAuth";
+
 
 const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
+  // const axiosDev = useAxiosDev();
+  // const { user } = useAuth();
 
   const {
     register,
@@ -15,12 +20,13 @@ const CompanyProUpdate = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit: SubmitHandler = async (data: any) => {
-    console.log(data);
-  };
-
   const handleBack = () => {
     navigate(-1);
+  };
+
+  const onSubmit: SubmitHandler<any> = async (data: any) => {
+    console.log(data)
+   
   };
 
   return (
