@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import Nodata from "./err/Nodata";
 import Loading from "./err/Loading";
 import { FaCircleUser } from "react-icons/fa6";
+import useAxiosDev from "../../../hooks/useAxiosDev";
 
 interface BlogData {
   id: number;
@@ -18,15 +18,19 @@ interface BlogData {
 }
 
 const ArticleDetails = () => {
-  const { id } = useParams<{ id: string }>();
-  const [datas, setData] = useState<BlogData[]>([]);
+  const { _id } = useParams();
+  console.log(_id); // Log _id to the console
+
+  const [datas, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
+  const axiosDev = useAxiosDev();
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`/blog.json`)
+    axiosDev
+      .get(`/single-blog/${_id}`)
+
       .then((res) => {
         // console.log(res.data);
         setData(res.data);
@@ -36,7 +40,9 @@ const ArticleDetails = () => {
         console.error("Error fetching blog details:", error);
         setLoading(false);
       });
-  }, [id]);
+  }, [_id]);
+
+  console.log(`/single-blog/${_id}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,16 +81,11 @@ const ArticleDetails = () => {
     };
   }, []);
 
-  const numericId = id !== undefined ? parseInt(id, 10) : NaN;
-
-  const item =
-    !isNaN(numericId) && datas.hasOwnProperty(numericId)
-      ? datas[numericId]
-      : null;
-
-  const capitalizeFirstLetter = (text: string) => {
+  const capitalizeFirstLetter = (text: string | undefined) => {
+    if (!text) return ""; 
     return text.charAt(0).toUpperCase() + text.slice(1);
-  };
+};
+
 
   const addLineGapAfter200Words = (text: string) => {
     const words = text.split(" ");
@@ -114,22 +115,22 @@ const ArticleDetails = () => {
             style={{ width: `${scrollPercentage}%` }}
           ></div>
           <div className="max-w-screen-2xl mx-auto py-20 px-4">
-            {item ? (
+            {datas ? (
               <div className="lg:flex py-6">
                 <div className="flex flex-col lg:w-1/4 space-y-5 lg:fixed pb-10 lg:pb-0">
-                  <img src={item.img} className="w-full" alt="" />
+                  <img src={datas.img} className="w-full" alt="" />
                   <h2 className="text-3xl font-heading font-semibold">
-                    {capitalizeFirstLetter(item.title)}
+                    {capitalizeFirstLetter(datas.title)}
                   </h2>
                   <div>
                     <p className="flex items-center gap-2 text-gray-600 text-lg font-medium">
-                      <FaCircleUser /> {item.author}
+                      <FaCircleUser /> {datas.author}
                     </p>
                   </div>
                   <div className="flex justify-between items-center text-lg font-normal text-gray-500">
-                    <p>{item.date}</p>
+                    <p>{datas.date}</p>
                     <p className="text-accentTwo  font-semibold">
-                      {item.readTime} read
+                      {datas.readTime} read
                     </p>
                   </div>
                 </div>
@@ -140,7 +141,7 @@ const ArticleDetails = () => {
                     style={{ whiteSpace: "pre-line" }}
                   >
                     {capitalizeFirstLetter(
-                      addLineGapAfter200Words(item.details)
+                      addLineGapAfter200Words(datas.details)
                     )}
                   </p>
                 </div>

@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         element: <Insights />,
       },
       {
-        path: "/insights/:id",
+        path: "/insights/:_id",
         element: (
           <PrivateRoute>
             <ArticleDetails />
