@@ -1,185 +1,337 @@
-import useAxiosDev from '../hooks/useAxiosDev';
-import './CompanyCSS/Postjob.css'
+import React, { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { MdDeleteForever } from "react-icons/md";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 
-const PostJob = () => {
-    const axiosDev = useAxiosDev();
-    const email: string = 'company@gmail.com';
-    const handleJobPost = (e: React.FormEvent<HTMLFormElement>) => {
-        const form = e.currentTarget;
-        e.preventDefault();
-        const formData = new FormData(form);
-        const postedDate = new Date().toISOString();
-        formData.append('postedDate', postedDate.toString());
-        formData.append('companyEmail', email);
-        const data = Object.fromEntries(formData);
-        console.log(data);
+const JobPostingForm: React.FC = () => {
+  const { register, handleSubmit, setValue } = useForm();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [requirements, setRequirements] = useState([0, 1]);
+  const [responsibilities, setResponsibilities] = useState([0, 1]);
+  const [skills, setSkills] = useState([0, 1]);
+  const [perks, setPerks] = useState([0, 1]);
+  const [dates, setDate] = useState(null);
 
-        axiosDev.post('/postJob', data)
-            .then(res => {
-                console.log(res.data);
-                form.reset();
-            })
-            .catch(err => {
-                console.log(err);
-            });
+  const addRequirement = () => {
+    setRequirements((prevRequirements) => [
+      ...prevRequirements,
+      prevRequirements.length,
+    ]);
+  };
 
-    }
+  const addResponsibilities = () => {
+    setResponsibilities((prevResponsibilities) => [
+      ...prevResponsibilities,
+      prevResponsibilities.length,
+    ]);
+  };
 
-    const addInputField = (fieldName: string) => {
-        const container = document.getElementById(fieldName);
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.name = fieldName;
-        input.placeholder = `Enter ${fieldName}`;
-        input.className = 'py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400';
-        if (container) {
-            container.appendChild(input);
-        }
-    };
+  const addSkills = () => {
+    setSkills((prevSkills) => [...prevSkills, prevSkills.length]);
+  };
 
-    return (
-        <div>
-            <div className="md-container mx-auto lg:px-12">
-                <div className="lg:p-12 md:p-6 p-4 space-y-6">
-                    <h2 className="font-rancho text-4xl text-center">Create Job Post For Your Company</h2>
-                    <form onSubmit={handleJobPost} className="font-raleway ">
-                        <div className="lg:flex justify-center gap-6">
-                            <div className="w-full flex-1">
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Company Name</span>
-                                    </label>
-                                    <input required type="text" name="companyName" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" placeholder="ABC Pvt Ltd" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Company Location</span>
-                                    </label>
-                                    <input required type="text" name="location" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" placeholder="Company Location" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">About Us</span>
-                                    </label>
-                                    <input required type="text" name="about" placeholder="About Us" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Job Sector</span>
-                                    </label>
-                                    <input required type="text" name="sector" placeholder="IT/Software/Frontend..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Job Type</span>
-                                    </label>
-                                    <input required type="text" name="jobType" placeholder="Remote/Onsite/Both" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Job Position</span>
-                                    </label>
-                                    <input required type="text" name="position" placeholder="Developer/Engineer/UI Designer..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Position Overview</span>
-                                    </label>
-                                    <input required type="text" name="positionOverview" placeholder="Position Overview" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Platform</span>
-                                    </label>
-                                    <input type="text" name="platform" placeholder="Facebook/Google/Adobe..." className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Experiences</span>
-                                    </label>
-                                    <input required type="text" name="experience" placeholder="0-2 years/Fresher" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Salary</span>
-                                    </label>
-                                    <input required type="text" name="salary" placeholder="$2000-3000 per month/$30000 per year" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Deadline</span>
-                                    </label>
-                                    <input required type="datetime-local" name="deadline" placeholder="Application Deadline" className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                                <div className="form-control py-1">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Vacancy</span>
-                                    </label>
-                                    <input required type="number" name="vacancy" defaultValue={1} className="py-1 pe-0 ps-1 block w-full bg-transparent focus:border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm dark:text-gray-400" />
-                                </div>
-                            </div>
+  const addPerks = () => {
+    setPerks((prevPerks) => [...prevPerks, prevPerks.length]);
+  };
 
-
-                            <div className="flex-1">
-                                <div className="form-control py-1" id="responsibilities">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Responsibilities</span>
-                                    </label>
-                                    <label>
-                                        <button type="button" onClick={() => addInputField('responsibilities')} className="btn btn-sm   bg-blue-800 text-white">
-                                            + Add Responsibility
-                                        </button>
-                                    </label>
-                                </div>
-                                <div className="form-control py-1" id="requirements">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Requirements</span>
-                                    </label>
-                                    <label>
-                                        <button type="button" onClick={() => addInputField('requirements')} className="btn btn-sm   bg-blue-800 text-white">
-                                            + Add Requirement
-                                        </button>
-                                    </label>
-                                </div>
-                                <div className="form-control py-1" id="skills">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Skills</span>
-                                    </label>
-                                    <label>
-                                        <button type="button" onClick={() => addInputField('skills')} className="btn btn-sm   bg-blue-800 text-white">
-                                            + Add Skill
-                                        </button>
-                                    </label>
-                                </div>
-
-                                <div className="form-control py-1" id="perks">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Perks</span>
-                                    </label>
-                                    <label>
-                                        <button type="button" onClick={() => addInputField('perks')} className="btn btn-sm   bg-blue-800 text-white">
-                                            + Add Perk
-                                        </button>
-                                    </label>
-                                </div>
-                                <div className="form-control py-1" id="tags">
-                                    <label className="label">
-                                        <span className="label-text font-bold">Tags</span>
-                                    </label>
-                                    <label>
-                                        <button type="button" onClick={() => addInputField('tags')} className="btn btn-sm   bg-blue-800 text-white">
-                                            + Add Tag
-                                        </button>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="submit" value="Post Job" className="w-full mt-6 bg-blue-800 text-white  text-center p-2 text-2xl" />
-                    </form>
-                </div>
-            </div>
-        </div>
+  const removeRequirement = (indexToRemove: number) => {
+    setRequirements((prevRequirements) =>
+      prevRequirements.filter((_, index) => index !== indexToRemove)
     );
+  };
+
+  const removeResponsibilities = (indexToRemoves: number) => {
+    setResponsibilities((prevResponsibilities) =>
+      prevResponsibilities.filter((_, index) => index !== indexToRemoves)
+    );
+  };
+
+  const removeSkills = (indexToRemoves: number) => {
+    setSkills((prevSkills) =>
+      prevSkills.filter((_, index) => index !== indexToRemoves)
+    );
+  };
+  const removePerks = (indexToRemoves: number) => {
+    setPerks((prevPerks) =>
+      prevPerks.filter((_, index) => index !== indexToRemoves)
+    );
+  };
+
+  const onSubmit: SubmitHandler<any> = (data) => {
+    // Handle the form submission logic here
+    console.log(data);
+  };
+
+  return (
+    <>
+      <CandidateNav
+        text="Post Jobs"
+        btn=""
+        btn2=""
+        handleClick={() => {}}
+        handleClick2={() => {}}
+      />
+      <div className="min-h-screen">
+        <div className=" bg-white px-2 pb-5">
+          <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+            {/* Company Info */}
+            <div className="flex space-x-10 py-10">
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("title")}
+                  className="py-4 outline-none font-bold bg-transparent border-b-2
+                 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  placeholder="Job Title"
+                />
+              </div>
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("sector")}
+                  className="py-4 outline-none font-bold bg-transparent border-b-2
+                w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  placeholder="Sector"
+                />
+              </div>
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  {...register("location")}
+                  className="py-4 outline-none font-bold bg-transparent border-b-2
+                w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  placeholder="location"
+                />
+              </div>
+            </div>
+
+            {/* Job Details */}
+            <div className="pb-10 space-y-6">
+              <div className="flex space-x-10">
+                <div className="form-control w-full">
+                  <textarea
+                    rows={3}
+                    {...register("description")}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    placeholder="Job Description"
+                  />
+                </div>
+              </div>
+
+              <div className="flex space-x-10">
+                <div className="form-control w-full">
+                  <textarea
+                    rows={3}
+                    {...register("positionOverview")}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    placeholder="Position Overview"
+                  />
+                </div>
+              </div>
+
+              {/* Requirements */}
+              <div className="form-control w-full pt-10">
+                <label
+                  className="font-bold text-gray-400 text-xl"
+                  htmlFor="requirements"
+                >
+                  Requirements
+                </label>
+                <ul>
+                  {requirements.map((index) => (
+                    <li key={index} className="relative">
+                      <input
+                        {...register(`requirements[${index}]`)}
+                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeRequirement(index)}
+                        className="text-red-500 ml-2 absolute right-5 top-1/2 -translate-y-1/2  text-2xl"
+                      >
+                        <MdDeleteForever />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={addRequirement}
+                  className="text-blue-500 text-lg text-right font-semibold py-5"
+                >
+                  Add More
+                </button>
+              </div>
+
+              {/* Responsibility */}
+              <div className="form-control w-full">
+                <label
+                  className="font-bold text-gray-400 text-xl"
+                  htmlFor="requirements"
+                >
+                  Responsibilities
+                </label>
+                <ul>
+                  {responsibilities.map((index) => (
+                    <li key={index} className="relative">
+                      <input
+                        {...register(`responsibilities[${index}]`)}
+                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeResponsibilities(index)}
+                        className="text-red-500 ml-2 absolute right-5 top-1/2 -translate-y-1/2  text-2xl"
+                      >
+                        <MdDeleteForever />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={addResponsibilities}
+                  className="text-blue-500 text-lg text-right font-semibold py-5"
+                >
+                  Add More
+                </button>
+              </div>
+
+              {/* Skills */}
+              <div className="form-control w-full">
+                <label
+                  className="font-bold text-gray-400 text-xl"
+                  htmlFor="requirements"
+                >
+                  Skills
+                </label>
+                <ul>
+                  {skills.map((index) => (
+                    <li key={index} className="relative">
+                      <input
+                        {...register(`skills[${index}]`)}
+                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeSkills(index)}
+                        className="text-red-500 ml-2 absolute right-5 top-1/2 -translate-y-1/2  text-2xl"
+                      >
+                        <MdDeleteForever />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={addSkills}
+                  className="text-blue-500 text-lg text-right font-semibold py-5"
+                >
+                  Add More
+                </button>
+              </div>
+
+              {/* Perks */}
+              <div className="form-control w-full">
+                <label
+                  className="font-bold text-gray-400 text-xl"
+                  htmlFor="requirements"
+                >
+                  Perks
+                </label>
+                <ul>
+                  {perks.map((index) => (
+                    <li key={index} className="relative">
+                      <input
+                        {...register(`perks[${index}]`)}
+                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removePerks(index)}
+                        className="text-red-500 ml-2 absolute right-5 top-1/2 -translate-y-1/2  text-2xl"
+                      >
+                        <MdDeleteForever />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={addPerks}
+                  className="text-blue-500 text-lg text-right font-semibold py-5 "
+                >
+                  Add More
+                </button>
+              </div>
+
+              {/* Deadline Experience */}
+              <div className="flex space-x-10">
+                <div className="form-control w-full">
+                  <DatePicker
+                    selected={dates}
+                    onChange={(date) => {
+                      setDate(date);
+                      setValue("deadline", date); // Set the value for the "deadline" field
+                    }}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    placeholderText="Submission Deadline"
+                  />
+                </div>
+                <div className="form-control w-full">
+                  <input
+                    type="text"
+                    {...register("experience")}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    placeholder="Experience Required"
+                  />
+                </div>
+              </div>
+
+              {/* Salary Range */}
+              <div className="flex space-x-10">
+                <div className="form-control w-full">
+                  <input
+                    type="number"
+                    {...register("salaryRange.min")}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    placeholder="$ Min Salary"
+                  />
+                </div>
+                <div className="form-control w-full">
+                  <input
+                    type="number"
+                    {...register("salaryRange.max")}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    placeholder="$ Max Salary"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="form-control w-full">
+                  <textarea
+                    {...register("application")}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    placeholder="Summury"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" className="btn btn-accent mb-10 w-full">
+              {loading ? (
+                <span className="loading loading-ring loading-lg"></span>
+              ) : (
+                "Submit"
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
 };
 
-export default PostJob;
+export default JobPostingForm;

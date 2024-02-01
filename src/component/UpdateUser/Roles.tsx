@@ -16,7 +16,7 @@ const Roles = () => {
       console.log(res.data);
       if (res.data.message === "true") {
         toast.success("Role changed successfully");
-        navigate("/");
+        navigate("/dashboard/companyProfile/update");
       } else {
         toast.warn("Error: User not found or another issue");
       }
