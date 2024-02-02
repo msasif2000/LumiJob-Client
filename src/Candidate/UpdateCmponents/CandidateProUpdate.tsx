@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAxiosDev from "../../hooks/useAxiosDev";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
-
+​
 interface EducationData {
   university: string;
   degree: string;
@@ -16,14 +16,14 @@ interface EducationData {
   fromDate: Date | null;
   toDate: Date | null;
 }
-
+​
 interface ExperienceData {
   company: string;
   position: string;
   fromDate: Date | null;
   toDate: Date | null;
 }
-
+​
 interface FormData {
   name: string;
   phone: string;
@@ -43,13 +43,13 @@ interface FormData {
   salaryRangeMin: number;
   salaryRangeMax: number;
 }
-
+​
 interface UserData {
   email: string;
   _id: string;
   role: string;
 }
-
+​
 const CandidateProUpdate: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -58,7 +58,7 @@ const CandidateProUpdate: React.FC = () => {
   // const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState<UserData | null>(null);
   // const axiosPublic = useAxiosPublic()
-
+​
   const {
     register,
     handleSubmit,
@@ -72,7 +72,7 @@ const CandidateProUpdate: React.FC = () => {
       experienceDetails: [],
     },
   });
-
+​
   const [inputValue, setInputValue] = useState<string>("");
   const [additionalExperiences, setAdditionalExperiences] = useState<
     ExperienceData[]
@@ -80,9 +80,9 @@ const CandidateProUpdate: React.FC = () => {
   const [additionalEducations, setAdditionalEducations] = useState<
     EducationData[]
   >([]);
-
+​
   const selectedSkills = watch("skills");
-
+​
   const removeSkill = (skill: string) => {
     setValue(
       "skills",
@@ -91,7 +91,7 @@ const CandidateProUpdate: React.FC = () => {
         : []
     );
   };
-
+​
   const addExperience = () => {
     setAdditionalExperiences([
       ...additionalExperiences,
@@ -103,7 +103,7 @@ const CandidateProUpdate: React.FC = () => {
       },
     ]);
   };
-
+​
   const addEducation = () => {
     setAdditionalEducations([
       ...additionalEducations,
@@ -116,23 +116,23 @@ const CandidateProUpdate: React.FC = () => {
       },
     ]);
   };
-
+​
   const removeExperience = (index: number) => {
     const updatedExperiences = [...additionalExperiences];
     updatedExperiences.splice(index, 1);
     setAdditionalExperiences(updatedExperiences);
   };
-
+​
   const removeEducation = (index: number) => {
     const updatedEducations = [...additionalEducations];
     updatedEducations.splice(index, 1);
     setAdditionalEducations(updatedEducations);
   };
-
+​
   const backToProfile = () => {
     navigate(-1);
   };
-
+​
   useEffect(() => {
     if (user?.email) {
       axiosDev
@@ -143,35 +143,35 @@ const CandidateProUpdate: React.FC = () => {
         .catch((error) => console.log(error));
     }
   }, [user]);
-
+​
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setLoading(true);
     console.log("data is being submitted");
-
+​
     const candidateData = {
       ...data,
       email: userData?.email,
       userId: userData?._id,
       role: userData?.role,
     };
-
+​
     console.log(candidateData);
-
+​
     try {
       const updateUserDataResponse = await axiosDev.put(
         `/user-update/${user?.email}`,
         candidateData
       );
-
+​
       if (updateUserDataResponse.data.message === "true") {
         const formData = new FormData();
         formData.append("photo", data.photo);
-
+​
         const updateUserPhotoResponse = await axiosDev.post(
           `/update-photo/${user?.email}`,
           formData
         );
-
+​
         if (updateUserPhotoResponse.data.message === true) {
           toast.success("Profile Updated Successfully");
           navigate("/dashboard/candidateProfile");
@@ -188,11 +188,11 @@ const CandidateProUpdate: React.FC = () => {
       setLoading(false);
     }
   };
-
+​
   const backToResume = () => {
     navigate("/dashboard/candidateProfile/resume");
   };
-
+​
   // useEffect(() => {
   //   if (user?.email) {
   //     axiosDev
@@ -203,7 +203,7 @@ const CandidateProUpdate: React.FC = () => {
   //       .catch((error) => console.log(error));
   //   }
   // }, [user]);
-
+​
   return (
     <div className="min-h-screen">
       <CandidateNav
@@ -213,7 +213,7 @@ const CandidateProUpdate: React.FC = () => {
         handleClick={backToProfile}
         handleClick2={backToResume}
       />
-
+​
       <div className=" bg-white px-2 py-5">
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex space-x-10 py-10 ">
@@ -224,7 +224,7 @@ const CandidateProUpdate: React.FC = () => {
               >
                 Profile Picture
               </label>
-
+​
               <input
                 type="file"
                 name="photo"
@@ -239,7 +239,7 @@ const CandidateProUpdate: React.FC = () => {
               />
             </div>
           </div>
-
+​
           <div className="pb-10 space-y-6">
             {/* Second div group */}
             <div className="flex space-x-10">
@@ -251,7 +251,7 @@ const CandidateProUpdate: React.FC = () => {
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
-
+​
               <div className="form-control w-full">
                 <input
                   type="text"
@@ -298,7 +298,7 @@ const CandidateProUpdate: React.FC = () => {
                 />
               </div>
             </div>
-
+​
             <div className="flex space-x-10">
               <div className="form-control w-full">
                 <input
@@ -308,7 +308,7 @@ const CandidateProUpdate: React.FC = () => {
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
-
+​
               <select
                 {...register("availability", {
                   required: "Availability is required",
@@ -324,7 +324,7 @@ const CandidateProUpdate: React.FC = () => {
                 <option value="Full Time">Full Time</option>
                 <option value="Part Time">Part Time</option>
               </select>
-
+​
               <select
                 {...register("work", {
                   required: "Work type is required",
@@ -343,7 +343,7 @@ const CandidateProUpdate: React.FC = () => {
               </select>
             </div>
           </div>
-
+​
           <div className="pb-10 space-y-6">
             <div className="form-control w-full">
               <textarea
@@ -353,7 +353,7 @@ const CandidateProUpdate: React.FC = () => {
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
               ></textarea>
             </div>
-
+​
             <div className="form-control w-full">
               <div className="flex flex-wrap">
                 {Array.isArray(selectedSkills) &&
@@ -373,7 +373,7 @@ const CandidateProUpdate: React.FC = () => {
                     </div>
                   ))}
               </div>
-
+​
               <div className="mt-2">
                 <input
                   type="text"
@@ -396,10 +396,10 @@ const CandidateProUpdate: React.FC = () => {
                 />
               </div>
             </div>
-
+​
             {errors.skills && <p>{errors.skills.message}</p>}
           </div>
-
+​
           <div className="flex space-x-10 pb-10">
             <div className="form-control w-full">
               <input
@@ -418,7 +418,7 @@ const CandidateProUpdate: React.FC = () => {
               />
             </div>
           </div>
-
+​
           <p className="text-2xl font-bold mb-4 pb-10">Experience</p>
           {additionalExperiences.map((experience, index) => (
             <div key={index} className="form-control w-full mt-6 space-y-1">
@@ -492,7 +492,7 @@ const CandidateProUpdate: React.FC = () => {
               </button>
             </div>
           ))}
-
+​
           <div className="mt-4">
             <button
               type="button"
@@ -583,7 +583,7 @@ const CandidateProUpdate: React.FC = () => {
               </button>
             </div>
           ))}
-
+​
           <div className="mt-4">
             <button
               type="button"
@@ -593,7 +593,7 @@ const CandidateProUpdate: React.FC = () => {
               Add Education
             </button>
           </div>
-
+​
           <button type="submit" className="btn btn-accent mb-10 w-full ">
             {loading ? (
               <span className="loading loading-ring loading-lg"></span>
@@ -607,5 +607,5 @@ const CandidateProUpdate: React.FC = () => {
     </div>
   );
 };
-
+​
 export default CandidateProUpdate;
