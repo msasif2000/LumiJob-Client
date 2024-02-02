@@ -4,16 +4,21 @@ import "react-tabs/style/react-tabs.css";
 import Job from "./Job";
 import Sector from "./sector";
 import JobCard from "./JobCard";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [tabIndex, setTabIndex] = useState(0);
+  const axiosPublic = useAxiosPublic()
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-job-posts")
-      .then((res) => res.json())
-      .then((data: Job[]) => setPopularJobs(data));
+    axiosPublic.get('/all-job-posts')
+    .then(res=>{
+      setPopularJobs(res.data)
+      console.log(res.data)
+    })
+    .catch(error=>console.log(error))
   }, []);
 
   useEffect(() => {
