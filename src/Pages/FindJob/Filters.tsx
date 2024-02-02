@@ -1,31 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Sector from "../Home/PopularJobs/sector";
-<<<<<<< HEAD
-import useAxiosDev from "../../hooks/useAxiosDev";
-=======
 import useAxiosPublic from "../../hooks/useAxiosPublic";
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
 
 interface FiltersProps {
   onFilterChange: (filteredData: any[]) => void;
 }
 
 const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
-<<<<<<< HEAD
-  const axiosDev = useAxiosDev();
-=======
   const axiosPublic = useAxiosPublic();
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
 
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [selectedSectors, setSelectedSectors] = useState<string[]>([]);
   const [jobTypes, setJobTypes] = useState<string[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
-<<<<<<< HEAD
-=======
 
   console.log(filteredData);
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
 
   useEffect(() => {
     fetch("/sectors.json")
@@ -34,47 +23,27 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   }, []);
 
   const applyFilters = () => {
-<<<<<<< HEAD
-    let query = '';
-
-    // Construct query parameters for selected sectors
-    if (selectedSectors.length > 0) {
-      query += `sectorType=${selectedSectors.join('&sectorType=')}`;
-=======
     let query = "";
 
     // Construct query parameters for selected sectors
     if (selectedSectors.length > 0) {
       query += `sectorType=${selectedSectors.join("&sectorType=")}`;
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
     }
 
     // Construct query parameters for selected job types
     if (jobTypes.length > 0) {
-<<<<<<< HEAD
-      query += `${query ? '&' : ''}jobType=${jobTypes.join('&jobType=')}`;
-    }
-
-    // Fetch filtered data based on constructed query
-    axiosDev(`/all-job-posts?${query}`)
-=======
       query += `${query ? "&" : ""}jobType=${jobTypes.join("&jobType=")}`;
     }
 
     // Fetch filtered data based on constructed query
     axiosPublic(`/all-job-posts?${query}`)
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
       .then((res) => {
         setFilteredData(res.data);
         onFilterChange(res.data);
       })
-<<<<<<< HEAD
-      .catch((error) => console.error('Error fetching filtered job posts:', error));
-=======
       .catch((error) =>
         console.error("Error fetching filtered job posts:", error)
       );
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
   };
 
   const handleSectorChange = (e: React.ChangeEvent<HTMLInputElement>) => {

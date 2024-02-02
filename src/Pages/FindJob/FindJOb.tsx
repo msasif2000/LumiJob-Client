@@ -13,16 +13,11 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const FindJob: React.FC = () => {
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
-<<<<<<< HEAD
-
-  const axiosDev = useAxiosDev();
-=======
-  const axiosPublic = useAxiosPublic()
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
+  const axiosPublic = useAxiosPublic();
   const { data: popularJobs = [] } = useQuery({
     queryKey: ["popularJobs"],
     queryFn: async () => {
-      const res = await axiosDev.get(`/all-job-posts`);
+      const res = await axiosPublic.get(`/all-job-posts`);
       return res.data;
     },
   });
@@ -89,7 +84,9 @@ const FindJob: React.FC = () => {
                 {/* ==>  Pagination <== */}
                 <Pagination
                   popularJobs={popularJobs}
-                  onPageChange={(jobs: SetStateAction<Job[]>) => setCurrentJobs(jobs)}
+                  onPageChange={(jobs: SetStateAction<Job[]>) =>
+                    setCurrentJobs(jobs)
+                  }
                 ></Pagination>
               </div>
             </div>

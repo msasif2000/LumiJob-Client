@@ -13,11 +13,7 @@ interface BookmarkButtonProps {
 }
 
 const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
-<<<<<<< HEAD
-  const { _id, sector, picture, location, title, salaryRange, deadline } = job;
-=======
   const { _id, sectorType, picture, location, title, salaryRange, deadline } = job;
->>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
   const { user } = useAuth();
   const navigate = useNavigate();
   const pageLocation = useLocation();
