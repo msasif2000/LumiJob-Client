@@ -26,6 +26,8 @@ const PopularJobs = () => {
     (job) => job.sector == sectors[tabIndex]?.sectorType
   );
 
+  const slicedJobs = filterJob?.slice(0,6)
+
   return (
     <>
       <div className="max-w-screen-2xl mx-auto py-16 px-4">
@@ -47,7 +49,7 @@ const PopularJobs = () => {
           {sectors?.map((sector) => (
             <TabPanel key={sector._id}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
-                {filterJob?.map((job) => (
+                {slicedJobs?.map((job) => (
                   <JobCard key={job._id} job={job}></JobCard>
                 ))}
               </div>

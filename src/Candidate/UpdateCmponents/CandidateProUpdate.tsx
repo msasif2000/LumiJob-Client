@@ -11,15 +11,16 @@ import { ToastContainer, toast } from "react-toastify";
 
 interface EducationData {
   university: string;
+  degree: string;
   subject: string;
-  fromDate: Date | null; // Update fromDate and toDate to Date | null
+  fromDate: Date | null;
   toDate: Date | null;
 }
 
 interface ExperienceData {
   company: string;
   position: string;
-  fromDate: Date | null; // Update fromDate and toDate to Date | null
+  fromDate: Date | null;
   toDate: Date | null;
 }
 
@@ -114,6 +115,7 @@ const CandidateProUpdate: React.FC = () => {
       ...additionalEducations,
       {
         university: "",
+        Degree: "",
         subject: "",
         fromDate: null,
         toDate: null,
@@ -139,6 +141,7 @@ const CandidateProUpdate: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setLoading(true);
+    console.log(data)
 
     try {
       const updateUserDataResponse = await axiosDev.put(
@@ -231,17 +234,20 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
-                  defaultValue={currentUser?.name}
+                  defaultValue={currentUser ? currentUser.name : ""}
+                  placeholder={!currentUser ? "Your Name" : ""}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
+
               <div className="form-control w-full">
                 <input
                   type="text"
                   {...register("position", {
                     required: "position is required",
                   })}
-                  defaultValue={currentUser?.position}
+                  defaultValue={currentUser ? currentUser.position : ""}
+                  placeholder={!currentUser ? "Interested Position" : ""}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -249,7 +255,8 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("phone", { required: "phone is required" })}
-                  defaultValue={currentUser?.phone}
+                  defaultValue={currentUser ? currentUser.phone : ""}
+                  placeholder={!currentUser ? "Contact Number" : ""}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -260,7 +267,8 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("village", { required: "Village is required" })}
-                  defaultValue={currentUser?.village}
+                  defaultValue={currentUser ? currentUser.village : ""}
+                  placeholder={!currentUser ? "Your Village" : ""}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -268,7 +276,8 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("city", { required: "City is required" })}
-                  defaultValue={currentUser?.city}
+                  defaultValue={currentUser ? currentUser.city : ""}
+                  placeholder={!currentUser ? "Your City" : ""}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -276,68 +285,15 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("country", { required: "Country is required" })}
-                  defaultValue={currentUser?.country}
+                  defaultValue={currentUser ? currentUser.country : ""}
+                  placeholder={!currentUser ? "Your Country" : ""}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
             </div>
-          </div>
 
-          <div className="pb-10 space-y-6">
-            <div className="form-control w-full">
-              <textarea
-                rows={3}
-                {...register("bio", { required: "bio is required" })}
-                defaultValue={currentUser?.bio}
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              ></textarea>
-            </div>
-
-            <div className="form-control w-full">
-              <div className="flex flex-wrap">
-                {Array.isArray(selectedSkills) &&
-                  selectedSkills.map((skill) => (
-                    <div
-                      key={skill}
-                      className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"
-                    >
-                      <span className="mr-2">{skill}</span>
-                      <button
-                        type="button"
-                        onClick={() => removeSkill(skill)}
-                        className="text-red-500"
-                      >
-                        <AiOutlineCloseCircle />
-                      </button>
-                    </div>
-                  ))}
-              </div>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  value={inputValue}
-                  placeholder="Type a skill and press enter"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && inputValue.trim() !== "") {
-                      setValue(
-                        "skills",
-                        Array.isArray(selectedSkills)
-                          ? [...selectedSkills, inputValue.trim()]
-                          : [inputValue.trim()]
-                      );
-                      setInputValue("");
-                      e.preventDefault();
-                    }
-                  }}
-                  onChange={(e) => setInputValue(e.target.value)}
-                />
-              </div>
-            </div>
-
-            {errors.skills && <p>{errors.skills.message}</p>}
-
-            <div className="md:flex md:space-x-10">
+            
+            <div className="flex space-x-10">
               <div className="form-control w-full">
                 <input
                   type="number"
@@ -379,6 +335,97 @@ const CandidateProUpdate: React.FC = () => {
                 <option value="Office">Office</option>
                 <option value="Hybrid">Hybrid</option>
               </select>
+            </div>
+          </div>
+
+
+
+          <div className="pb-10 space-y-6">
+            <div className="form-control w-full">
+              <textarea
+                rows={3}
+                {...register("bio", { required: "bio is required" })}
+                defaultValue={currentUser ? currentUser.bio : ""}
+                placeholder={!currentUser ? "Your Bio" : ""}
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+              ></textarea>
+            </div>
+
+            <div className="form-control w-full">
+              <div className="flex flex-wrap">
+                {Array.isArray(selectedSkills) &&
+                  selectedSkills.map((skill) => (
+                    <div
+                      key={skill}
+                      className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"
+                    >
+                      <span className="mr-2">{skill}</span>
+                      <button
+                        type="button"
+                        onClick={() => removeSkill(skill)}
+                        className="text-red-500"
+                      >
+                        <AiOutlineCloseCircle />
+                      </button>
+                    </div>
+                  ))}
+              </div>
+              
+
+              <div className="mt-2">
+                <input
+                  type="text"
+                  value={inputValue}
+                  placeholder="Type a skill and press enter"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && inputValue.trim() !== "") {
+                      setValue(
+                        "skills",
+                        Array.isArray(selectedSkills)
+                          ? [...selectedSkills, inputValue.trim()]
+                          : [inputValue.trim()]
+                      );
+                      setInputValue("");
+                      e.preventDefault();
+                    }
+                  }}
+                  onChange={(e) => setInputValue(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {errors.skills && <p>{errors.skills.message}</p>}
+
+          </div>
+            <div className="md:flex md:space-x-10">
+              <div className="form-control w-full">
+                <input
+                  type="number"
+                  {...register("experience", {
+                    required: "experience is required",
+                  })}
+                  placeholder="Years of experience"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
+
+          <div className="flex space-x-10 pb-10">
+            <div className="form-control w-full">
+              <input
+                type="number"
+                {...register("salaryRange.min")}
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                placeholder="$ Expected Min Salary"
+              />
+            </div>
+            <div className="form-control w-full">
+              <input
+                type="number"
+                {...register("salaryRange.max")}
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                placeholder="$ Expected Max Salary"
+              />
             </div>
           </div>
 
@@ -476,7 +523,15 @@ const CandidateProUpdate: React.FC = () => {
                     {...register(`education.${index}.university`, {
                       required: "University name is required",
                     })}
-                    placeholder="University Name"
+                    placeholder="University / Collage Name"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`education.${index}.degree`)}
+                    placeholder="Degree"
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
                   />
                 </div>
