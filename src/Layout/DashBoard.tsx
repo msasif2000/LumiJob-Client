@@ -2,14 +2,14 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import useAxiosDev from "../hooks/useAxiosDev";
 import UniLoader from "../component/err & loading/UniLoader";
+import useAxiosPublic from "../hooks/useAxiosPublic";
  
 const DashBoard = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
- 
+  const axiosPublic = useAxiosPublic()
   const [isNavOpen, setIsNavOpen] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -24,11 +24,11 @@ const DashBoard = () => {
   }, [isNavOpen]);
  
   const [role, setRole] = useState("");
-  const axiosDev = useAxiosDev();
+ 
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      axiosDev
+      axiosPublic
         .get(`/check-which-role/${user?.email}`)
         .then((res) => {
           console.log(res.data.role);
@@ -42,8 +42,7 @@ const DashBoard = () => {
     }
   }, [user]);
  
-  // const role: string = "candidate";
-  // const role: string = "company";
+ 
   const handleLogout = () => {
     logOut();
     navigate("/");
@@ -231,5 +230,4 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
-
 

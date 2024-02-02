@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Sector from "../Home/PopularJobs/sector";
-import useAxiosDev from "../../hooks/useAxiosDev";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface FiltersProps {
   onFilterChange: (filteredData: any[]) => void;
 }
 
 const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
-  const axiosDev = useAxiosDev();
+  const axiosPublic = useAxiosPublic();
 
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [selectedSectors, setSelectedSectors] = useState<string[]>([]);
   const [jobTypes, setJobTypes] = useState<string[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
+
+  console.log(filteredData);
 
   useEffect(() => {
     fetch("/sectors.json")
@@ -21,25 +23,27 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   }, []);
 
   const applyFilters = () => {
-    let query = '';
+    let query = "";
 
     // Construct query parameters for selected sectors
     if (selectedSectors.length > 0) {
-      query += `sectorType=${selectedSectors.join('&sectorType=')}`;
+      query += `sectorType=${selectedSectors.join("&sectorType=")}`;
     }
 
     // Construct query parameters for selected job types
     if (jobTypes.length > 0) {
-      query += `${query ? '&' : ''}jobType=${jobTypes.join('&jobType=')}`;
+      query += `${query ? "&" : ""}jobType=${jobTypes.join("&jobType=")}`;
     }
 
     // Fetch filtered data based on constructed query
-    axiosDev(`/all-job-posts?${query}`)
+    axiosPublic(`/all-job-posts?${query}`)
       .then((res) => {
         setFilteredData(res.data);
         onFilterChange(res.data);
       })
-      .catch((error) => console.error('Error fetching filtered job posts:', error));
+      .catch((error) =>
+        console.error("Error fetching filtered job posts:", error)
+      );
   };
 
   const handleSectorChange = (e: React.ChangeEvent<HTMLInputElement>) => {

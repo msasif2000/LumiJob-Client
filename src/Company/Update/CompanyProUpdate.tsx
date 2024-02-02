@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import CandidateNav from "../../Candidate/CommonNavbar/CandidateNav";
-import useAxiosDev from "../../hooks/useAxiosDev";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface FormData {
   photo: File;
@@ -32,7 +32,7 @@ interface CompanyData {
 const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
-  const axiosDev = useAxiosDev();
+  const axiosPublic = useAxiosPublic()
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const { register, handleSubmit, setValue } = useForm<FormData>();
@@ -43,7 +43,7 @@ const CompanyProUpdate = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosDev
+      axiosPublic
         .get(`/user-profile/${user.email}`)
         .then((res) => {
           setCompany(res.data);
@@ -64,7 +64,7 @@ const CompanyProUpdate = () => {
     };
 
     try {
-      const updateUserDataResponse = await axiosDev.put(
+      const updateUserDataResponse = await axiosPublic.put(
         `/user-update/${user?.email}`,
         companyData
       );
@@ -73,7 +73,7 @@ const CompanyProUpdate = () => {
         const formData = new FormData();
         formData.append("photo", data.photo);
 
-        const updateUserPhotoResponse = await axiosDev.post(
+        const updateUserPhotoResponse = await axiosPublic.post(
           `/update-photo/${user?.email}`,
           formData
         );

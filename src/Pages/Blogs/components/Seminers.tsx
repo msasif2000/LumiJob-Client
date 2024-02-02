@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import useAxiosDev from "../../../hooks/useAxiosDev";
 import { FaCircleUser } from "react-icons/fa6";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Seminers = () => {
-  const axiosDev = useAxiosDev();
+  const axiosPublic = useAxiosPublic()
   const [seminars, setSeminars] = useState([]);
 
   useEffect(() => {
-    axiosDev.get("/seminars").then((res) => setSeminars(res.data));
+    axiosPublic.get("/seminars").then((res) => setSeminars(res.data));
   }, []);
 
   return (

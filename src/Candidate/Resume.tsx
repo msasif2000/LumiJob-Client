@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import CandidateNav from "./CommonNavbar/CandidateNav";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import useAxiosDev from "../hooks/useAxiosDev";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface Candidate {
   name: string;
@@ -32,11 +32,11 @@ const Resume: React.FC = () => {
   const {user} = useAuth()
   // const resumeRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const axiosDev = useAxiosDev()
+  const axiosPublic = useAxiosPublic()
 
   useEffect(() => {
     if (user?.email) {
-      axiosDev
+      axiosPublic
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCandidates(res.data);

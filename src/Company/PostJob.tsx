@@ -5,8 +5,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import useAuth from "../hooks/useAuth";
-import useAxiosDev from "../hooks/useAxiosDev";
 import {ToastContainer ,toast } from "react-toastify";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface CompanyData {
   email: string;
@@ -26,7 +26,7 @@ const JobPostingForm: React.FC = () => {
   const [dates, setDate] = useState<Date | undefined>(undefined);
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
-  const axiosDev = useAxiosDev();
+  const axiosPublic = useAxiosPublic()
 
   const addRequirement = () => {
     setRequirements((prevRequirements) => [
@@ -75,7 +75,7 @@ const JobPostingForm: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosDev
+      axiosPublic
         .get(`/specific-company/${user.email}`)
         .then((res) => {
           setCompany(res.data);
@@ -98,7 +98,9 @@ const JobPostingForm: React.FC = () => {
     };
     // console.log(jobData);
 
-    axiosDev
+    setLoading(true)
+    
+    axiosPublic
       .post("/post-jobs", jobData)
       .then((response: any) => {
         if (response.data.insertedId) {
@@ -108,6 +110,7 @@ const JobPostingForm: React.FC = () => {
             hideProgressBar: true,
             closeOnClick: true,
           });
+          setLoading(false)
         } else {
           toast.error("Job Posting Failed", {
             position: "top-center",
@@ -115,6 +118,7 @@ const JobPostingForm: React.FC = () => {
             hideProgressBar: true,
             closeOnClick: true,
           });
+          setLoading(false)
         }
       })
       .catch((error: any) => {
@@ -126,6 +130,7 @@ const JobPostingForm: React.FC = () => {
           closeOnClick: true,
          
         });
+        setLoading(false)
       });
   };
 
