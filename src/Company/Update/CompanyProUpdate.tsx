@@ -78,9 +78,9 @@ const CompanyProUpdate = () => {
                 <input
                   type="text"
                   {...register("industry", {
-                    required: "position is required",
+                    required: "Company type is required",
                   })}
-                  placeholder="Industry type"
+                  placeholder="Company type"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
