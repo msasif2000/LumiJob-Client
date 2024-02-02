@@ -98,6 +98,8 @@ const JobPostingForm: React.FC = () => {
     };
     // console.log(jobData);
 
+    setLoading(true)
+    
     axiosPublic
       .post("/post-jobs", jobData)
       .then((response: any) => {
@@ -108,6 +110,7 @@ const JobPostingForm: React.FC = () => {
             hideProgressBar: true,
             closeOnClick: true,
           });
+          setLoading(false)
         } else {
           toast.error("Job Posting Failed", {
             position: "top-center",
@@ -115,6 +118,7 @@ const JobPostingForm: React.FC = () => {
             hideProgressBar: true,
             closeOnClick: true,
           });
+          setLoading(false)
         }
       })
       .catch((error: any) => {
@@ -126,6 +130,7 @@ const JobPostingForm: React.FC = () => {
           closeOnClick: true,
          
         });
+        setLoading(false)
       });
   };
 
