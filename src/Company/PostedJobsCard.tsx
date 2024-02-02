@@ -7,15 +7,44 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 import './PostedCard.css'
 import Job from "../Pages/Home/PopularJobs/Job";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 interface PostedJobsCardProps {
   job: Job;
+  refetch: () => Promise<any>;
 }
 
-const PostedJobsCard: React.FC<PostedJobsCardProps> = ({ job }) => {
+const PostedJobsCard: React.FC<PostedJobsCardProps> = ({ job, refetch  }) => {
 
   const { title, salaryRange, location } = job;
-  console.log(salaryRange.min);
+
+  const axiosPublic = useAxiosPublic()
+
+  const handleDeletePost = (id: string | undefined) => {
+    Swal.fire({
+      title: "Are you sure to delete this post?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic.delete(`/postJob/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your post has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div className=" bg-slate-100  rounded-md p-10 px-40 ">
@@ -55,7 +84,7 @@ const PostedJobsCard: React.FC<PostedJobsCardProps> = ({ job }) => {
                 </svg>
               </button>
 
-              <button className="bin-button">
+              <button onClick={() => handleDeletePost(job._id)} className="bin-button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

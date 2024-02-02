@@ -13,7 +13,7 @@ interface BookmarkButtonProps {
 }
 
 const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
-  const { _id, sector, picture, location, title, salaryRange, post_time } = job;
+  const { _id, sector, picture, location, title, salaryRange, deadline } = job;
   const { user } = useAuth();
   const navigate = useNavigate();
   const pageLocation = useLocation();
@@ -30,7 +30,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
         location,
         title,
         salaryRange,
-        post_time,
+        deadline,
       };
       axiosDev
         .post("/bookmarks", bookmarkItem)
