@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosDev from "../hooks/useAxiosDev";
 
-
-
 const CandidateProfile = () => {
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState("experience");
@@ -20,7 +18,7 @@ const CandidateProfile = () => {
   useEffect(() => {
     if (user?.email) {
       axiosDev
-        .get(`/user-profile/${user.email}`)
+        .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setProfile(res.data);
           // console.log(res.data);
@@ -33,45 +31,77 @@ const CandidateProfile = () => {
       case "experience":
         return (
           <div>
-            {profile?.experienceDetails?.map((job, index) => (
-              <div key={index} className="mb-4">
-                <div>
-                  <p className="text-xl font-bold">{job.position}</p>
-                  <p className="text-lg font-bold text-gray-400">
-                    {job.company}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-400">
-                    {job.startDate} - {job.endDate}
-                  </p>
-                </div>
+            {profile?.experienceDetails?.map((job, index) => {
+              // Convert fromDate and toDate to Date objects
+              const startDate = new Date(job.fromDate);
+              const endDate = new Date(job.toDate);
 
-                <div className="mt-4">
-                  <hr />
+              // Format dates in the desired format (e.g., "21-Jan-2024")
+              const formattedStartDate = `${startDate.getDate()}-${startDate.toLocaleString(
+                "en-us",
+                { month: "short" }
+              )}-${startDate.getFullYear()}`;
+              const formattedEndDate = `${endDate.getDate()}-${endDate.toLocaleString(
+                "en-us",
+                { month: "short" }
+              )}-${endDate.getFullYear()}`;
+
+              return (
+                <div key={index} className="mb-4">
+                  <div>
+                    <p className="text-xl font-bold">{job.position}</p>
+                    <p className="text-lg font-bold text-gray-400">
+                      {job.company}
+                    </p>
+                    <p className="text-lg font-semibold text-gray-400">
+                      {formattedStartDate} - {formattedEndDate}
+                    </p>
+                  </div>
+
+                  <div className="mt-4">
+                    <hr />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         );
       case "education":
         return (
           <div>
-            {profile?.education?.map((uni, index) => (
-              <div key={index} className="mb-4">
-                <div>
-                  <p className="text-xl font-bold">{uni.university}</p>
-                  <p className="text-lg font-bold text-gray-400">
-                    {uni.subject}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-400">
-                    {/* {job.startDate} - {job.endDate} */}
-                  </p>
-                </div>
+            {profile?.education?.map((uni, index) => {
+              // Convert startDate and endDate to Date objects
+              const startDate = new Date(uni.fromDate);
+              const endDate = new Date(uni.toDate);
 
-                <div className="mt-4">
-                  <hr />
+              // Format dates in the desired format (e.g., "21-Jan-2024")
+              const formattedStartDate = `${startDate.getDate()}-${startDate.toLocaleString(
+                "en-us",
+                { month: "short" }
+              )}-${startDate.getFullYear()}`;
+              const formattedEndDate = `${endDate.getDate()}-${endDate.toLocaleString(
+                "en-us",
+                { month: "short" }
+              )}-${endDate.getFullYear()}`;
+
+              return (
+                <div key={index} className="mb-4">
+                  <div>
+                    <p className="text-xl font-bold">{uni.university}</p>
+                    <p className="text-lg font-bold text-gray-400">
+                      {uni.subject}
+                    </p>
+                    <p className="text-lg font-semibold text-gray-400">
+                      {formattedStartDate} - {formattedEndDate}
+                    </p>
+                  </div>
+
+                  <div className="mt-4">
+                    <hr />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         );
     }
@@ -171,7 +201,9 @@ const CandidateProfile = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-lg">Expected salary</p>
-                <p className="text-xl font-semibold">$5000 - $8000</p>
+                <p className="text-xl font-semibold">
+                  ${profile?.salaryRangeMin} - ${profile?.salaryRangeMax}
+                </p>
               </div>
             </div>
           </div>
