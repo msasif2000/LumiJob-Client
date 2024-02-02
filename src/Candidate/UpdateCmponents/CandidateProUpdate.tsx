@@ -146,7 +146,7 @@ const CandidateProUpdate: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setLoading(true);
-    console.log("data is being submitted");
+    // console.log("data is being submitted");
 
     const candidateData = {
       ...data,
@@ -155,7 +155,7 @@ const CandidateProUpdate: React.FC = () => {
       role: userData?.role,
     };
 
-    console.log(candidateData);
+    // console.log(candidateData);
 
     try {
       const updateUserDataResponse = await axiosDev.put(
