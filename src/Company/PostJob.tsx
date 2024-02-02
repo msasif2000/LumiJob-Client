@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { MdDeleteForever } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
+import useAuth from "../hooks/useAuth";
+import useAxiosDev from "../hooks/useAxiosDev";
+import {ToastContainer ,toast } from "react-toastify";
+
+interface CompanyData {
+  email: string;
+  _id: string;
+  role: string;
+  name: string;
+  photo: string;
+}
 
 const JobPostingForm: React.FC = () => {
   const { register, handleSubmit, setValue } = useForm();
@@ -13,6 +24,9 @@ const JobPostingForm: React.FC = () => {
   const [skills, setSkills] = useState([0, 1]);
   const [perks, setPerks] = useState([0, 1]);
   const [dates, setDate] = useState<Date | undefined>(undefined);
+  const { user } = useAuth();
+  const [company, setCompany] = useState<CompanyData | null>(null);
+  const axiosDev = useAxiosDev();
 
   const addRequirement = () => {
     setRequirements((prevRequirements) => [
@@ -59,10 +73,60 @@ const JobPostingForm: React.FC = () => {
     );
   };
 
+  useEffect(() => {
+    if (user?.email) {
+      axiosDev
+        .get(`/specific-company/${user.email}`)
+        .then((res) => {
+          setCompany(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
   const onSubmit: SubmitHandler<any> = (data) => {
-    // Handle the form submission logic here
-    console.log(data);
-    setLoading(false);
+    const date = new Date();
+    const jobData = {
+      ...data,
+      email: company?.email,
+      companyId: company?._id,
+      role: company?.role,
+      platform: company?.name,
+      picture: company?.photo,
+      post_time: date,
+    };
+    // console.log(jobData);
+
+    axiosDev
+      .post("/post-jobs", jobData)
+      .then((response: any) => {
+        if (response.data.insertedId) {
+          toast.success("Job Posted Successfully", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+          });
+        } else {
+          toast.error("Job Posting Failed", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+          });
+        }
+      })
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Job Posting Failed", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+         
+        });
+      });
   };
 
   return (
@@ -91,7 +155,7 @@ const JobPostingForm: React.FC = () => {
               <div className="form-control w-full">
                 <input
                   type="text"
-                  {...register("sector")}
+                  {...register("sectorType")}
                   className="py-4 outline-none font-bold bg-transparent border-b-2
                 w-full border-gray-300 text-xl hover:border-accent duration-500"
                   placeholder="Sector"
@@ -268,6 +332,40 @@ const JobPostingForm: React.FC = () => {
                 </button>
               </div>
 
+              {/* Job type */}
+              <div className="flex space-x-10">
+                <div className="form-control w-full">
+                  <select
+                    defaultValue="Job Type"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    {...register("jobType", {
+                      required: "Job Type is required",
+                    })}
+                  >
+                    <option value="Job Type" disabled>
+                      Job Type
+                    </option>
+                    <option value="Office">On-Site</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Remote">Remote</option>
+                  </select>
+                </div>
+                <div className="form-control w-full">
+                  <select
+                    defaultValue="Work"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                    {...register("workTime", {
+                      required: "Job Type is required",
+                    })}
+                  >
+                    <option value="Work" disabled>
+                      Work Time
+                    </option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Full Time">Full Time</option>
+                  </select>
+                </div>
+              </div>
               {/* Deadline Experience */}
               <div className="flex space-x-10">
                 <div className="form-control w-full">
@@ -330,6 +428,7 @@ const JobPostingForm: React.FC = () => {
             </button>
           </form>
         </div>
+        <ToastContainer/>
       </div>
     </>
   );

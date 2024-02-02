@@ -1,31 +1,96 @@
 // import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import CandidateNav from "../../Candidate/CommonNavbar/CandidateNav";
-// import useAxiosDev from "../../hooks/useAxiosDev";
-// import useAuth from "../../hooks/useAuth";
+import useAxiosDev from "../../hooks/useAxiosDev";
+import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
 
+interface FormData {
+  photo: File;
+  name: string;
+  industry: string;
+  phone: string;
+  registration?: string;
+  founding: string;
+  service?: string;
+  city: string;
+  country: string;
+  postal: string;
+  bio: string;
+  companySize: string;
+  website?: string;
+}
+
+interface CompanyData {
+  email: string;
+  _id: string;
+  role: string;
+}
 
 const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
-  // const axiosDev = useAxiosDev();
-  // const { user } = useAuth();
-
-  const {
-    register,
-    handleSubmit,
-    setValue,
-  } = useForm();
+  const axiosDev = useAxiosDev();
+  const { user } = useAuth();
+  const [company, setCompany] = useState<CompanyData | null>(null);
+  const { register, handleSubmit, setValue } = useForm<FormData>();
 
   const handleBack = () => {
     navigate(-1);
   };
 
-  const onSubmit: SubmitHandler<any> = async (data: any) => {
-    console.log(data)
-   
+  useEffect(() => {
+    if (user?.email) {
+      axiosDev
+        .get(`/user-profile/${user.email}`)
+        .then((res) => {
+          setCompany(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  },[user]);
+
+  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+    console.log(data);
+
+    const companyData = {
+      ...data,
+      email: company?.email,
+      userId: company?._id,
+      role: company?.role,
+    };
+
+    try {
+      const updateUserDataResponse = await axiosDev.put(
+        `/user-update/${user?.email}`,
+        companyData
+      );
+
+      if (updateUserDataResponse.data.message === "true") {
+        const formData = new FormData();
+        formData.append("photo", data.photo);
+
+        const updateUserPhotoResponse = await axiosDev.post(
+          `/update-photo/${user?.email}`,
+          formData
+        );
+
+        if (updateUserPhotoResponse.data.message === true) {
+          toast.success("Profile Updated Successfully");
+          navigate("/dashboard/companyProfile");
+        } else {
+          toast.error("Failed to update profile photo");
+        }
+      } else {
+        toast.error("Failed to update profile data");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while updating profile");
+    }
   };
 
   return (
@@ -45,7 +110,7 @@ const CompanyProUpdate = () => {
                 className="font-bold text-gray-400 text-xl"
                 htmlFor="photo"
               >
-                Profile Picture
+                Company Logo
               </label>
 
               <input
@@ -162,20 +227,20 @@ const CompanyProUpdate = () => {
 
             <div className="flex space-x-10">
               <select
-                {...register("availability", {
-                  required: "availability is required",
+                defaultValue="company"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-1/3 border-gray-300 text-xl hover:border-accent duration-500"
+                {...register("companySize", {
+                  required: "companySize is required",
                 })}
-                name="availability"
-                id="availability"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
               >
-                <option value="" disabled selected>
+                <option value="company" disabled>
                   Company Size
                 </option>
                 <option value="Big">Big</option>
                 <option value="Medium">Medium</option>
                 <option value="Start-Up">Start-Up</option>
               </select>
+
               <div className="form-control w-full">
                 <input
                   type="text"
