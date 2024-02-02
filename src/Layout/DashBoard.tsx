@@ -4,12 +4,12 @@ import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import useAxiosDev from "../hooks/useAxiosDev";
 import UniLoader from "../component/err & loading/UniLoader";
-
+ 
 const DashBoard = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
-
+ 
   const [isNavOpen, setIsNavOpen] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -22,7 +22,7 @@ const DashBoard = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [isNavOpen]);
-
+ 
   const [role, setRole] = useState("");
   const axiosDev = useAxiosDev();
   useEffect(() => {
@@ -41,14 +41,14 @@ const DashBoard = () => {
         });
     }
   }, [user]);
-
+ 
   // const role: string = "candidate";
   // const role: string = "company";
   const handleLogout = () => {
     logOut();
     navigate("/");
   };
-
+ 
   return (
     <>
       {isLoading ? (
@@ -132,7 +132,7 @@ const DashBoard = () => {
                     </>
                   )}
                   <div className="divider"></div>
-
+ 
                   <li>
                     <NavLink to="/">Home</NavLink>
                   </li>
@@ -206,9 +206,9 @@ const DashBoard = () => {
                     </li>
                   </>
                 )}
-
+ 
                 <div className="divider"></div>
-
+ 
                 <li>
                   <NavLink to="/">Home</NavLink>
                 </li>
@@ -231,4 +231,5 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
+
 

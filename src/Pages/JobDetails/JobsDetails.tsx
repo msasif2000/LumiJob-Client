@@ -168,7 +168,7 @@ const JobsDetails: React.FC = () => {
                             </div>
                         </div>
                     ) : (
-                        <p>Data not found</p>
+                        <p>Loading...</p>
                     )}
                 </div>
             </div>

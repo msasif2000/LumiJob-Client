@@ -14,14 +14,18 @@ import Pagination from "./Pagination";
 const FindJob: React.FC = () => {
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
 
-  const axiosPublic = useAxiosDev();
+  const axiosDev = useAxiosDev();
   const { data: popularJobs = [] } = useQuery({
     queryKey: ["popularJobs"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/all-job-posts`);
+      const res = await axiosDev.get(`/all-job-posts`);
       return res.data;
     },
   });
+
+  const handleFilterChange = (filteredData: Job[]) => {
+    setCurrentJobs(filteredData);
+  };
 
   return (
     <>
@@ -40,7 +44,7 @@ const FindJob: React.FC = () => {
         <div className="w-full bg-[#FAFAFA]">
           <div className="max-w-screen-2xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-4">
             {/*=======> Left column <============= */}
-            <Filters />
+            <Filters onFilterChange={handleFilterChange} />
 
             {/* =============> Middle column <============== */}
             <div className="col-span-1 md:col-span-4 lg:col-span-3 min-h-screen">
