@@ -1,7 +1,7 @@
 [
   {
     "platform": "Microsoft",
-    "sector": "Software Development",
+    "sectorType": "Software Development",
     "title": "Software Developer",
     "description": "Create and modify computer programs, collaborate with team members, and troubleshoot software issues.",
     "requirements": [
@@ -45,7 +45,7 @@
   },
   {
     "platform": "Google",
-    "sector": "Data Science",
+    "sectorType": "Data Science",
     "title": "Data Analyst",
     "description": "Collect, process, and analyze data to help companies make informed business decisions.",
     "requirements": [
@@ -89,7 +89,7 @@
   },
   {
     "platform": "Amazon",
-    "sector": "Logistics",
+    "sectorType": "Logistics",
     "title": "Supply Chain Manager",
     "description": "Optimize supply chain processes, manage inventory, and ensure timely delivery of products.",
     "requirements": [
@@ -133,7 +133,7 @@
   },
   {
     "platform": "Facebook",
-    "sector": "Social Media",
+    "sectorType": "Social Media",
     "title": "Social Media Manager",
     "description": "Develop and implement social media strategies, create engaging content, and analyze performance metrics.",
     "requirements": [
@@ -177,7 +177,7 @@
   },
   {
     "platform": "Apple",
-    "sector": "Hardware Engineering",
+    "sectorType": "Hardware Engineering",
     "title": "Hardware Engineer",
     "description": "Design and develop hardware components for electronic devices, conduct tests, and collaborate with cross-functional teams.",
     "requirements": [
@@ -221,7 +221,7 @@
   },
   {
     "platform": "Adobe Illustrator",
-    "sector": "Design",
+    "sectorType": "Design",
     "title": "UI Designer",
     "description": "Develop and maintain software applications, write code, and troubleshoot problems.",
     "requirements": [
@@ -261,11 +261,11 @@
       "Professional development opportunities.",
       "Flexible work schedule."
     ],
-    "application": "If you are passionate about redefining user experiences in the fintech sector and possess the required skills and vision, we invite you to apply and shape the future of digital design with us."
+    "application": "If you are passionate about redefining user experiences in the fintech sectorType and possess the required skills and vision, we invite you to apply and shape the future of digital design with us."
   },
   {
     "platform": "Google",
-    "sector": "Technology",
+    "sectorType": "Technology",
     "title": "Software Engineer",
     "description": "Design, develop, and maintain high-quality software solutions for diverse applications.",
     "requirements": [
@@ -306,7 +306,7 @@
   },
   {
     "platform": "Behance",
-    "sector": "Creative",
+    "sectorType": "Creative",
     "title": "Graphic Designer",
     "description": "Create visually appealing designs for print and digital media, ensuring brand consistency.",
     "requirements": [
@@ -347,7 +347,7 @@
   },
   {
     "platform": "LinkedIn",
-    "sector": "Data Science",
+    "sectorType": "Data Science",
     "title": "Data Scientist",
     "description": "Apply statistical and machine learning techniques to analyze and interpret complex data sets.",
     "requirements": [
@@ -388,7 +388,7 @@
   },
   {
     "platform": "Indeed",
-    "sector": "Marketing",
+    "sectorType": "Marketing",
     "title": "Marketing Manager",
     "description": "Develop and execute marketing strategies to drive brand awareness and lead generation.",
     "requirements": [
@@ -429,7 +429,7 @@
   },
   {
     "platform": "GitHub Jobs",
-    "sector": "Technology",
+    "sectorType": "Technology",
     "title": "Frontend Developer",
     "description": "Build responsive and user-friendly web applications using modern frontend technologies.",
     "requirements": [
@@ -470,7 +470,7 @@
   },
   {
     "platform": "Glassdoor",
-    "sector": "Design",
+    "sectorType": "Design",
     "title": "UX Researcher",
     "description": "Conduct user research to inform and enhance the user experience of our digital products.",
     "requirements": [
@@ -511,7 +511,7 @@
   },
   {
     "platform": "Dice",
-    "sector": "Technology",
+    "sectorType": "Technology",
     "title": "DevOps Engineer",
     "description": "Automate and streamline our operations, ensuring efficient and reliable software delivery.",
     "requirements": [
@@ -552,7 +552,7 @@
   },
   {
     "platform": "Microsoft",
-    "sector": "Software Development",
+    "sectorType": "Software Development",
     "title": "Frontend Developer",
     "description": "Create responsive and visually appealing user interfaces for web applications.",
     "requirements": [
@@ -595,7 +595,7 @@
   },
   {
     "platform": "Amazon",
-    "sector": "E-Commerce",
+    "sectorType": "E-Commerce",
     "title": "Data Scientist",
     "description": "Utilize data analysis and machine learning to derive insights and improve business strategies.",
     "requirements": [
@@ -638,7 +638,7 @@
   },
   {
     "platform": "Facebook",
-    "sector": "Social Media",
+    "sectorType": "Social Media",
     "title": "Product Manager",
     "description": "Lead the development and strategy of digital products, ensuring alignment with business goals.",
     "requirements": [
@@ -681,7 +681,7 @@
   },
   {
     "platform": "Tesla",
-    "sector": "Automotive",
+    "sectorType": "Automotive",
     "title": "Embedded Systems Engineer",
     "description": "Design and implement software solutions for embedded systems in electric vehicles.",
     "requirements": [
@@ -725,7 +725,7 @@
   },
   {
     "platform": "Netflix",
-    "sector": "Entertainment",
+    "sectorType": "Entertainment",
     "title": "Machine Learning Engineer",
     "description": "Develop and deploy machine learning models for content recommendation and personalization.",
     "requirements": [
@@ -769,7 +769,7 @@
   },
   {
     "platform": "Uber",
-    "sector": "Transportation",
+    "sectorType": "Transportation",
     "title": "Senior Mobile App Developer",
     "description": "Design and implement features for the Uber mobile app, ensuring a seamless user experience.",
     "requirements": [
@@ -812,7 +812,7 @@
   },
   {
     "platform": "Netflix",
-    "sector": "Entertainment",
+    "sectorType": "Entertainment",
     "title": "Content Writer",
     "description": "Create engaging and original content for various genres and formats on Netflix.",
     "requirements": [
@@ -858,7 +858,7 @@
   },
   {
     "platform": "Spotify",
-    "sector": "Music",
+    "sectorType": "Music",
     "title": "Data Analyst",
     "description": "Analyze and interpret data to provide insights and recommendations for Spotify's music streaming service.",
     "requirements": [
@@ -904,7 +904,7 @@
   },
   {
     "platform": "Amazon",
-    "sector": "E-commerce",
+    "sectorType": "E-commerce",
     "title": "Customer Service Representative",
     "description": "Provide excellent customer service and support to Amazon's customers via phone, email, chat, or social media.",
     "requirements": [
@@ -950,7 +950,7 @@
   },
   {
     "platform": "Apple",
-    "sector": "Technology",
+    "sectorType": "Technology",
     "title": "Software Engineer",
     "description": "Develop and maintain software applications and systems for Apple’s products and services.",
     "requirements": [
@@ -996,7 +996,7 @@
   },
   {
     "platform": "McDonald’s",
-    "sector": "Food and Beverage",
+    "sectorType": "Food and Beverage",
     "title": "Crew Member",
     "description": "Perform various tasks and duties at McDonald’s restaurant, such as taking orders, preparing food, serving customers, etc.",
     "requirements": [
@@ -1042,7 +1042,7 @@
   },
   {
     "platform": "Airbnb",
-    "sector": "Travel",
+    "sectorType": "Travel",
     "title": "Software Engineer",
     "description": "Develop and maintain software applications and systems for Airbnb’s online travel marketplace.",
     "requirements": [
@@ -1088,7 +1088,7 @@
   },
   {
     "platform": "Nike",
-    "sector": "Sports",
+    "sectorType": "Sports",
     "title": "Marketing Manager",
     "description": "Plan and execute marketing campaigns and strategies for Nike’s sports products and services.",
     "requirements": [
@@ -1134,7 +1134,7 @@
   },
   {
     "platform": "Starbucks",
-    "sector": "Food and Beverage",
+    "sectorType": "Food and Beverage",
     "title": "Barista",
     "description": "Prepare and serve coffee and other beverages and food items to Starbucks’ customers.",
     "requirements": [
@@ -1180,7 +1180,7 @@
   },
   {
     "platform": "Apple",
-    "sector": "Technology",
+    "sectorType": "Technology",
     "title": "Software Engineer",
     "description": "Develop and maintain software applications and systems for Apple’s products and services.",
     "requirements": [
@@ -1226,7 +1226,7 @@
   },
   {
     "platform": "McDonald’s",
-    "sector": "Food and Beverage",
+    "sectorType": "Food and Beverage",
     "title": "Crew Member",
     "description": "Perform various tasks and duties at McDonald’s restaurant, such as taking orders, preparing food, serving customers, etc.",
     "requirements": [
@@ -1272,7 +1272,7 @@
   },
   {
     "platform": "Netflix",
-    "sector": "Entertainment",
+    "sectorType": "Entertainment",
     "title": "Data Scientist",
     "description": "Analyze and model data to provide insights and recommendations for Netflix’s content and business.",
     "requirements": [
@@ -1318,7 +1318,7 @@
   },
   {
     "platform": "Spotify",
-    "sector": "Music",
+    "sectorType": "Music",
     "title": "Content Creator",
     "description": "Create engaging and original content for various genres and formats on Spotify.",
     "requirements": [
@@ -1364,7 +1364,7 @@
   },
   {
     "platform": "Google",
-    "sector": "Technology",
+    "sectorType": "Technology",
     "title": "Software Engineer",
     "description": "Develop and maintain software applications and systems for Google’s products and services.",
     "requirements": [
@@ -1410,7 +1410,7 @@
   },
   {
     "platform": "Nike",
-    "sector": "Sports",
+    "sectorType": "Sports",
     "title": "Graphic Designer",
     "description": "Create and design graphic materials and elements for Nike’s sports products and services.",
     "requirements": [
@@ -1456,7 +1456,7 @@
   },
   {
     "platform": "Starbucks",
-    "sector": "Food and Beverage",
+    "sectorType": "Food and Beverage",
     "title": "Store Manager",
     "description": "Manage and oversee the daily operations and performance of Starbucks’ store.",
     "requirements": [
@@ -1502,7 +1502,7 @@
   },
   {
     "platform": "Apple",
-    "sector": "Technology",
+    "sectorType": "Technology",
     "title": "Product Designer",
     "description": "Design and develop user interfaces and user experiences for Apple’s products and services.",
     "requirements": [
@@ -1548,7 +1548,7 @@
   },
   {
     "platform": "Facebook",
-    "sector": "Social Media",
+    "sectorType": "Social Media",
     "title": "Data Engineer",
     "description": "Build and maintain data pipelines and systems for Facebook’s social media platform.",
     "requirements": [
@@ -1594,7 +1594,7 @@
   },
   {
     "platform": "Airbnb",
-    "sector": "Travel",
+    "sectorType": "Travel",
     "title": "Customer Service Representative",
     "description": "Provide excellent customer service and support to Airbnb’s customers via phone, email, chat, or social media.",
     "requirements": [
@@ -1640,7 +1640,7 @@
   },
   {
     "platform": "Amazon",
-    "sector": "E-commerce",
+    "sectorType": "E-commerce",
     "title": "Warehouse Associate",
     "description": "Perform various tasks and duties at Amazon’s warehouse, such as picking, packing, shipping, receiving, etc.",
     "requirements": [
@@ -1686,7 +1686,7 @@
   },
   {
     "platform": "Tesla",
-    "sector": "Automotive",
+    "sectorType": "Automotive",
     "title": "Sales Advisor",
     "description": "Sell and promote Tesla’s electric vehicles and products to customers and prospects.",
     "requirements": [
@@ -1732,7 +1732,7 @@
   },
   {
     "platform": "Spotify",
-    "sector": "Music",
+    "sectorType": "Music",
     "title": "Data Scientist",
     "description": "Analyze and model large-scale data sets, generate insights and recommendations, and communicate findings to stakeholders.",
     "requirements": [

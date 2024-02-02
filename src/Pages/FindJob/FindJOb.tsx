@@ -18,14 +18,13 @@ const FindJob: React.FC = () => {
   const { data: popularJobs = [] } = useQuery({
     queryKey: ["popularJobs"],
     queryFn: async () => {
-      const res = await axiosDev.get(`/all-job-posts?`);
+      const res = await axiosDev.get(`/all-job-posts`);
       return res.data;
     },
   });
 
   const handleFilterChange = (filteredData: Job[]) => {
     setCurrentJobs(filteredData);
-    console.log(currentJobs);
   };
 
   return (
