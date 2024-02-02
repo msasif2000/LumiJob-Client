@@ -17,7 +17,6 @@ const CompanyProUpdate = () => {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
   } = useForm();
 
   const handleBack = () => {

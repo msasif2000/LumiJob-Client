@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
-import { LuDot } from "react-icons/lu";
-import UniLoader from "../component/err & loading/UniLoader";
+import React, { useEffect, useState} from "react";
 import CandidateNav from "./CommonNavbar/CandidateNav";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
@@ -19,6 +17,7 @@ interface Candidate {
   skills: string[];
   portfolio: string;
   bio: string;
+
 }
 
 interface Education {
@@ -29,7 +28,7 @@ interface Education {
 }
 
 const Resume: React.FC = () => {
-  const [candidate, setCandidates] = useState<Candidate[] | null>(null);
+  const [candidate, setCandidates] = useState<Candidate | null>(null);
   const {user} = useAuth()
   // const resumeRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ const Resume: React.FC = () => {
   useEffect(() => {
     if (user?.email) {
       axiosDev
-        .get(`/user-profile/${user.email}`)
+        .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCandidates(res.data);
           // console.log(res.data);
