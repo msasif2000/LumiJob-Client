@@ -40,14 +40,6 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
-      },
-      {
         path: "/insights",
         element: <Insights />,
       },
@@ -72,6 +64,21 @@ export const router = createBrowserRouter([
         element: <Roles />,
       },
     ],
+  },
+
+  //Login
+
+  {
+    path: "/login",
+    errorElement: <NotFound />,
+    element: <Login />,
+  },
+
+  //SignUp
+  {
+    path: "/signup",
+    errorElement: <NotFound />,
+    element: <Signup />,
   },
 
   //Dashboard
@@ -110,7 +117,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "companyProfile/update",
-        element: <CompanyProUpdate/>
+        element: <CompanyProUpdate />,
       },
       {
         path: "postJob",
