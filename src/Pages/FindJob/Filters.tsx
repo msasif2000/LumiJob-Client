@@ -1,21 +1,60 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sector from "../Home/PopularJobs/sector";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
 
-const Filters = () => {
+interface FiltersProps {
+  onFilterChange: (filteredData: any[]) => void;
+}
+
+const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   const [sectors, setSectors] = useState<Sector[]>([]);
-  const [range, setRange] = useState<[number, number]>([0, 100]);
-
-  const handleSliderChange = (values: [number, number]) => {
-    setRange(values);
-  };
+  const [selectedSectors, setSelectedSectors] = useState<string[]>([]);
+  const [jobTypes, setJobTypes] = useState<string[]>([]);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("sectors.json")
+    fetch("/all-job-post?sectorType=&jobType=remote")
+      .then((res) => res.json())
+      .then((data) => setFilteredData(data));
+
+    fetch("/sectors.json")
       .then((res) => res.json())
       .then((data: Sector[]) => setSectors(data));
   }, []);
+
+  const applyFilters = () => {
+    let newData = filteredData.filter((item) => {
+      // Apply sector filter
+      if (selectedSectors.length > 0 && !selectedSectors.includes(item.sectorType)) {
+        return false;
+      }
+      // Apply job type filter
+      if (jobTypes.length > 0 && !jobTypes.includes(item.jobType)) {
+        return false;
+      }
+      return true;
+    });
+    return newData;
+  };
+
+  const handleSectorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    setSelectedSectors((prev) =>
+      checked ? [...prev, value] : prev.filter((sector) => sector !== value)
+    );
+  };
+
+  const handleJobTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    setJobTypes((prev) =>
+      checked ? [...prev, value] : prev.filter((type) => type !== value)
+    );
+  };
+
+  useEffect(() => {
+    const filteredData = applyFilters();
+    setFilteredData(filteredData);
+    onFilterChange(filteredData); // Pass filtered data to parent
+  }, [selectedSectors, jobTypes]);
 
   return (
     <div>
@@ -35,6 +74,7 @@ const Filters = () => {
                   <input
                     type="checkbox"
                     value={sector.sectorType}
+                    onChange={handleSectorChange}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
                   />
                   <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -54,17 +94,30 @@ const Filters = () => {
               <li className="flex items-center">
                 <input
                   type="checkbox"
-                  value=""
+                  value="hybrid"
+                  onChange={handleJobTypeChange}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                  Full Time
+                  Hybrid
                 </label>
               </li>
               <li className="flex items-center">
                 <input
                   type="checkbox"
-                  value=""
+                  value="onsite"
+                  onChange={handleJobTypeChange}
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                />
+                <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  Onsite
+                </label>
+              </li>
+              <li className="flex items-center">
+                <input
+                  type="checkbox"
+                  value="remote"
+                  onChange={handleJobTypeChange}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -72,25 +125,6 @@ const Filters = () => {
                 </label>
               </li>
             </ul>
-          </div>
-
-          {/* Job filter by price range */}
-          <div className="my-8 mx-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Price Range:
-            </label>
-            <div className="flex items-center">
-              <div className="mr-2">${range[0]}</div>
-              <Slider
-                min={0}
-                max={100}
-                range
-                value={range}
-                onChange={() => handleSliderChange(range)}
-                className="flex-1"
-              />
-              <div className="ml-2">${range[1]}</div>
-            </div>
           </div>
         </div>
       </div>
