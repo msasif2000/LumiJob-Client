@@ -4,9 +4,9 @@ import { MdDateRange } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 import { PiMoney } from "react-icons/pi";
 import useBookmark from "../hooks/useBookmarks";
-import useAxiosDev from "../hooks/useAxiosDev";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface Bookmark {
     _id: string;
@@ -22,7 +22,7 @@ interface Bookmark {
 
 const Bookmarks: React.FC = () => {
     const [bookmarks, refetch] = useBookmark();
-    const axiosDev = useAxiosDev();
+    const axiosPublic = useAxiosPublic()
 
     const handleDelete = (id: string) => {
         Swal.fire({
@@ -36,7 +36,7 @@ const Bookmarks: React.FC = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosDev.delete(`/bookmarks/${id}`)
+                axiosPublic.delete(`/bookmarks/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();

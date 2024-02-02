@@ -2,14 +2,18 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import useAxiosDev from "../hooks/useAxiosDev";
 import UniLoader from "../component/err & loading/UniLoader";
-
+import useAxiosPublic from "../hooks/useAxiosPublic";
+ 
 const DashBoard = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
+<<<<<<< HEAD
 
+=======
+  const axiosPublic = useAxiosPublic()
+>>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
   const [isNavOpen, setIsNavOpen] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -22,6 +26,7 @@ const DashBoard = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [isNavOpen]);
+<<<<<<< HEAD
 
   const [role, setRole] = useState('');
   const axiosDev = useAxiosDev();
@@ -41,11 +46,34 @@ const DashBoard = () => {
 
   // const role: string = "company";
   
+=======
+ 
+  const [role, setRole] = useState("");
+ 
+  useEffect(() => {
+    setLoading(true);
+    if (user?.email) {
+      axiosPublic
+        .get(`/check-which-role/${user?.email}`)
+        .then((res) => {
+          console.log(res.data.role);
+          setRole(res.data.role);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setLoading(false);
+        });
+    }
+  }, [user]);
+ 
+ 
+>>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
   const handleLogout = () => {
     logOut();
     navigate("/");
   };
-
+ 
   return (
     <>
       {isLoading ? (
@@ -74,6 +102,7 @@ const DashBoard = () => {
                 <ul
                   tabIndex={0}
                   className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-600 rounded-box  w-52 "
+<<<<<<< HEAD
                 >
                   {role === "candidate" ? (
                     <>
@@ -248,32 +277,97 @@ export default DashBoard;
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="red"
+=======
+>>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-600 rounded-box  w-52 "
-              >
+                  {role === "candidate" ? (
+                    <>
+                      <li>
+                        <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">
+                          Candidate DashBoard
+                        </h2>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/profile">Profile</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/resume">Resume</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/appliedJobs">
+                          Applied Jobs
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/analytics">Analytics</NavLink>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
+                          Company DashBoard
+                        </h2>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/companyProfile">
+                          Profile
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/postJob">Post Job</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/postedJobs">Posted Job</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/companyAnalytics">
+                          Analytics
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/employees">Employees</NavLink>
+                      </li>
+                    </>
+                  )}
+                  <div className="divider"></div>
+ 
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/availableCamp">Available Camp</NavLink>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center btn btn-sm"
+                    >
+                      <BiLogOut className="text-2xl" />
+                      <span>Sign Out</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="lg:flex hidden  min-h-screen bg-gray-200 pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+              <ul className="menu text-xl">
                 {role === "candidate" ? (
                   <>
                     <li>
-                      <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">
+                      <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
                         Candidate DashBoard
                       </h2>
                     </li>
                     <li>
-                      <NavLink to="/dashboard/profile">Profile</NavLink>
+                      <NavLink to="/dashboard/candidateProfile">
+                        Profile
+                      </NavLink>
                     </li>
-                    <li>
-                      <NavLink to="/dashboard/resume">Resume</NavLink>
-                    </li>
+                   
                     <li>
                       <NavLink to="/dashboard/appliedJobs">
                         Applied Jobs
@@ -283,13 +377,15 @@ export default DashBoard;
                       <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/dashboard/analytics">Analytics</NavLink>
+                      <NavLink to="/dashboard/candidateAnalytics">
+                        Analytics
+                      </NavLink>
                     </li>
                   </>
                 ) : (
                   <>
                     <li>
-                      <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
+                      <h2 className="text-2xl text-red-800 font-bold bg-white my-2">
                         Company DashBoard
                       </h2>
                     </li>
@@ -312,19 +408,14 @@ export default DashBoard;
                     </li>
                   </>
                 )}
+ 
                 <div className="divider"></div>
-
+ 
                 <li>
                   <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/availableCamp">Available Camp</NavLink>
-                </li>
-                <li>
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center btn btn-sm"
-                  >
+                  <button onClick={handleLogout} className="flex items-center">
                     <BiLogOut className="text-2xl" />
                     <span>Sign Out</span>
                   </button>
@@ -332,73 +423,21 @@ export default DashBoard;
               </ul>
             </div>
           </div>
-          <div className="lg:flex hidden  min-h-screen bg-gray-200 pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
-            <ul className="menu text-xl">
-              {role === "candidate" ? (
-                <>
-                  <li>
-                    <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
-                      Candidate DashBoard
-                    </h2>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/candidateProfile">Profile</NavLink>
-                  </li>
-                  
-                  <li>
-                    <NavLink to="/dashboard/appliedJobs">Applied Jobs</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/candidateAnalytics">
-                      Analytics
-                    </NavLink>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li>
-                    <h2 className="text-2xl text-red-800 font-bold bg-white my-2">
-                      Company DashBoard
-                    </h2>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/companyProfile">Profile</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/postJob">Post Job</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/postedJobs">Posted Job</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/companyAnalytics">
-                      Analytics
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/employees">Employees</NavLink>
-                  </li>
-                </>
-              )}
-
-              <div className="divider"></div>
-
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <button onClick={handleLogout} className="flex items-center">
-                  <BiLogOut className="text-2xl" />
-                  <span>Sign Out</span>
-                </button>
-              </li>
-            </ul>
+          <div className="md:flex-1 overflow-x-auto px-5">
+            <Outlet></Outlet>
           </div>
         </div>
+<<<<<<< HEAD
         <div className="md:flex-1 overflow-x-auto px-5">
           <Outlet></Outlet>
         </div>
       </div> */}
+=======
+      )}
+    </>
+  );
+};
+
+export default DashBoard;
+
+>>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b

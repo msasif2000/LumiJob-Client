@@ -4,7 +4,7 @@ import Navbar from "../../Navbar/Navbar";
 import Nodata from "./err/Nodata";
 import Loading from "./err/Loading";
 import { FaCircleUser } from "react-icons/fa6";
-import useAxiosDev from "../../../hooks/useAxiosDev";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 interface BlogData {
   id: number;
@@ -24,11 +24,11 @@ const ArticleDetails = () => {
   const [datas, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
-  const axiosDev = useAxiosDev();
+  const axiosPublic = useAxiosPublic()
 
   useEffect(() => {
     setLoading(true);
-    axiosDev
+    axiosPublic
       .get(`/single-blog/${_id}`)
 
       .then((res) => {

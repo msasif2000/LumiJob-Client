@@ -8,13 +8,17 @@ import Search from "./Search";
 import NotificationCard from "./NotificationCard";
 import { useQuery } from "@tanstack/react-query";
 import Job from "../Home/PopularJobs/Job";
-import useAxiosDev from "../../hooks/useAxiosDev";
 import Pagination from "./Pagination";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const FindJob: React.FC = () => {
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
+<<<<<<< HEAD
 
   const axiosDev = useAxiosDev();
+=======
+  const axiosPublic = useAxiosPublic()
+>>>>>>> 6ba073226bb50eb6e1159d2a20d9b0539059f92b
   const { data: popularJobs = [] } = useQuery({
     queryKey: ["popularJobs"],
     queryFn: async () => {

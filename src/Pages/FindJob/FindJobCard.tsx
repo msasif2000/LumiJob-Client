@@ -13,7 +13,7 @@ interface JobCardsProps {
 
 const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
 
-  const { _id, sector, picture, location, title, salaryRange, deadline } = job;
+  const { _id, sectorType, picture, location, title, salaryRange, deadline } = job;
 
   return (
     <div className="">
@@ -25,7 +25,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
             </div>
           </div>
           <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
-            <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">{sector}</h3>
+            <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">{sectorType}</h3>
             <p className="flex justify-between">
               <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
                 {title}

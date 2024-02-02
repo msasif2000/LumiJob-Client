@@ -10,7 +10,7 @@ export interface salaryRange { // Capitalize 'SalaryRange'
 interface Job {
   _id?: string;
   picture: string;
-  sector: string;
+  sectorType: string;
   platform: string;
   title: string;
   deadline: string;
