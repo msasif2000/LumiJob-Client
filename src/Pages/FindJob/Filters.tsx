@@ -1,39 +1,45 @@
 import React, { useEffect, useState } from "react";
 import Sector from "../Home/PopularJobs/sector";
+import useAxiosDev from "../../hooks/useAxiosDev";
 
 interface FiltersProps {
   onFilterChange: (filteredData: any[]) => void;
 }
 
 const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
+  const axiosDev = useAxiosDev();
+
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [selectedSectors, setSelectedSectors] = useState<string[]>([]);
   const [jobTypes, setJobTypes] = useState<string[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("/all-job-post?sectorType=&jobType=remote")
-      .then((res) => res.json())
-      .then((data) => setFilteredData(data));
-
     fetch("/sectors.json")
       .then((res) => res.json())
       .then((data: Sector[]) => setSectors(data));
   }, []);
 
   const applyFilters = () => {
-    let newData = filteredData.filter((item) => {
-      // Apply sector filter
-      if (selectedSectors.length > 0 && !selectedSectors.includes(item.sectorType)) {
-        return false;
-      }
-      // Apply job type filter
-      if (jobTypes.length > 0 && !jobTypes.includes(item.jobType)) {
-        return false;
-      }
-      return true;
-    });
-    return newData;
+    let query = '';
+
+    // Construct query parameters for selected sectors
+    if (selectedSectors.length > 0) {
+      query += `sectorType=${selectedSectors.join('&sectorType=')}`;
+    }
+
+    // Construct query parameters for selected job types
+    if (jobTypes.length > 0) {
+      query += `${query ? '&' : ''}jobType=${jobTypes.join('&jobType=')}`;
+    }
+
+    // Fetch filtered data based on constructed query
+    axiosDev(`/all-job-posts?${query}`)
+      .then((res) => {
+        setFilteredData(res.data);
+        onFilterChange(res.data);
+      })
+      .catch((error) => console.error('Error fetching filtered job posts:', error));
   };
 
   const handleSectorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,9 +57,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   };
 
   useEffect(() => {
-    const filteredData = applyFilters();
-    setFilteredData(filteredData);
-    onFilterChange(filteredData); // Pass filtered data to parent
+    applyFilters();
   }, [selectedSectors, jobTypes]);
 
   return (
