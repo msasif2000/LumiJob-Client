@@ -41,12 +41,27 @@ interface FormData {
   work: string;
 }
 
+// changed on 2 february--
+
+interface CurrentUserData {
+  name: string;
+  bio: string;
+  city: string;
+  country: string;
+  phone: string;
+  position: string;
+  village: string;
+}
+
+// ----
+
 const CandidateProUpdate: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const axiosDev = useAxiosDev();
   const [loading, setLoading] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<CurrentUserData | null>(null);  
+  // const [currentUser, setCurrentUser] = useState(null);
   // const axiosPublic = useAxiosPublic()
 
   const {
