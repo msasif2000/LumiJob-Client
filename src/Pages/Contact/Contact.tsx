@@ -1,4 +1,3 @@
-import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
@@ -37,7 +36,6 @@ const Contact = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="min-h-screen bg-[#fdfdfd]">
         <div className="max-w-screen-2xl mx-auto">
           <div>

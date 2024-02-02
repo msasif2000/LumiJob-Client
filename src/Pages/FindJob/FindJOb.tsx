@@ -1,6 +1,4 @@
 import React, { SetStateAction, useState } from "react";
-import Footer from "../../component/Footer/Footer";
-import Navbar from "../Navbar/Navbar";
 import FindJobCard from "./FindJobCard";
 import { IoFilterOutline } from "react-icons/io5";
 import Filters from "./Filters";
@@ -28,7 +26,6 @@ const FindJob: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <div className="">
         <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
@@ -98,7 +95,6 @@ const FindJob: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
