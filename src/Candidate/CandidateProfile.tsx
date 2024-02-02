@@ -4,11 +4,54 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosDev from "../hooks/useAxiosDev";
 
+
+
+interface UserProfile {
+  _id: string;
+  email: string;
+  availability: string;
+  bio: string;
+  city: string;
+  country: string;
+  education: {
+    university: string;
+    degree: string;
+    subject: string;
+    fromDate: string;
+    toDate: string;
+    experience: string;
+  }[];
+  experienceDetails: {
+    company: string;
+    position: string;
+    fromDate: string;
+    toDate: string;
+    name: string;
+    phone: string;
+    photo: string;
+    role: string;
+    salaryRangeMax: string;
+    salaryRangeMin: string;
+  }[];
+  skills: string[];
+  userId: string;
+  village: string;
+  work: string;
+  photo: string;
+  name: string;
+  phone: string;
+  position: string;
+  experience: number;
+  salaryRangeMin: number;
+  salaryRangeMax: number;
+
+}
+
 const CandidateProfile = () => {
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState("experience");
   const navigate = useNavigate();
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   const axiosDev = useAxiosDev();
 
   const handleTabClick = (tab: string) => {
@@ -31,7 +74,7 @@ const CandidateProfile = () => {
       case "experience":
         return (
           <div>
-            {profile?.experienceDetails?.map((job, index) => {
+            {profile?.experienceDetails?.map((job : any, index : number) => {
               // Convert fromDate and toDate to Date objects
               const startDate = new Date(job.fromDate);
               const endDate = new Date(job.toDate);
@@ -69,7 +112,7 @@ const CandidateProfile = () => {
       case "education":
         return (
           <div>
-            {profile?.education?.map((uni, index) => {
+            {profile?.education?.map((uni: any, index: number) => {
               // Convert startDate and endDate to Date objects
               const startDate = new Date(uni.fromDate);
               const endDate = new Date(uni.toDate);

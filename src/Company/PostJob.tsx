@@ -12,7 +12,7 @@ const JobPostingForm: React.FC = () => {
   const [responsibilities, setResponsibilities] = useState([0, 1]);
   const [skills, setSkills] = useState([0, 1]);
   const [perks, setPerks] = useState([0, 1]);
-  const [dates, setDate] = useState(null);
+  const [dates, setDate] = useState<Date | undefined>(undefined);
 
   const addRequirement = () => {
     setRequirements((prevRequirements) => [
@@ -62,6 +62,7 @@ const JobPostingForm: React.FC = () => {
   const onSubmit: SubmitHandler<any> = (data) => {
     // Handle the form submission logic here
     console.log(data);
+    setLoading(false);
   };
 
   return (
@@ -273,8 +274,8 @@ const JobPostingForm: React.FC = () => {
                   <DatePicker
                     selected={dates}
                     onChange={(date) => {
-                      setDate(date);
-                      setValue("deadline", date); // Set the value for the "deadline" field
+                      setDate(date || undefined); // Handle null case
+                      setValue("deadline", date !== null ? date : new Date());
                     }}
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                     placeholderText="Submission Deadline"
