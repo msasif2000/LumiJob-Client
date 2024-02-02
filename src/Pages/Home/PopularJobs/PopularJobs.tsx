@@ -5,33 +5,38 @@ import Job from "./Job";
 import Sector from "./sector";
 import JobCard from "./JobCard";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import axios from "axios";
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [tabIndex, setTabIndex] = useState(0);
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    axiosPublic.get('/all-job-posts')
-    .then(res=>{
-      setPopularJobs(res.data)
-      console.log(res.data)
-    })
-    .catch(error=>console.log(error))
+    axiosPublic
+      .get("/all-job-posts")
+      .then((res) => {
+        setPopularJobs(res.data);
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-    fetch("sectors.json")
-      .then((res) => res.json())
-      .then((data: Sector[]) => setSectors(data));
+    axios.get("/sectors.json").then((res) => {
+      setSectors(res.data);
+      console.log("Sectors:", res.data); // Log sector data
+    });
   }, []);
 
   const filterJob = popularJobs?.filter(
-    (job) => job.sector == sectors[tabIndex]?.sectorType
+    (job) => job.sectorType === sectors[tabIndex]?.sectorType
   );
+  
 
-  const slicedJobs = filterJob?.slice(0,6)
+  const slicedJobs = filterJob?.slice(0, 6);
+
 
   return (
     <>
