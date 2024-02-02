@@ -16,7 +16,7 @@ interface JobCardsProps {
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { picture, location, title, salaryRange, post_time, } = job; /* Changed salary to salaryRange for solving error and removed _id  */
+  const { picture, location, title, salaryRange, deadline } = job; /* Changed salary to salaryRange for solving error and removed _id  */
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [name, setName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
@@ -95,7 +95,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
               <PiMoney className="mr-1" /> {salaryRange?.min}-{salaryRange?.max} 
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <MdDateRange className="mr-1" /> {post_time}
+              <MdDateRange className="mr-1" /> {deadline.split("T")[0]}
             </span>
           </div>
         </div>
@@ -112,7 +112,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <button
             className="py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-3xl"
-            onClick={() => document.getElementById("my_modal_4").showModal()}
+            onClick={() => (document.getElementById("my_modal_4") as HTMLDialogElement)?.showModal()}
           >
             Quickly Apply
           </button>

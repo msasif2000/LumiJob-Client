@@ -1,4 +1,4 @@
-import { IoMdTime } from "react-icons/io";
+import { ImLocation } from "react-icons/im"; 
 import { MdDateRange } from "react-icons/md";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import Job from "../Home/PopularJobs/Job";
@@ -13,8 +13,7 @@ interface JobCardsProps {
 
 const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
 
-  const { _id, sector, picture, location, title, salaryRange, post_time } = job;
-
+  const { _id, sector, picture, location, title, salaryRange, deadline } = job;
 
   return (
     <div className="">
@@ -38,10 +37,10 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
 
             <div className="flex flex-wrap gap-3 items-center mt-5">
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                <MdDateRange className="mr-1" /> {post_time}
+                <MdDateRange className="mr-1" /> {deadline.split("T")[0]}
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                <IoMdTime className="mr-1" /> Full Time
+                <ImLocation className="mr-1" /> Full Time
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                 <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
@@ -51,7 +50,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
               </span>
             </div>
             <Link className="flex justify-end" to={`/details/${_id}`}>
-              <button className="py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-lg">
+              <button className="mt-4 py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-lg">
                 Apply
               </button>
             </Link>

@@ -13,7 +13,7 @@ interface Job {
   sector: string;
   platform: string;
   title: string;
-  post_time: string;
+  deadline: string;
   description: string;
   location: string;
   salaryRange:any;
