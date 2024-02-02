@@ -66,9 +66,11 @@ const Bookmarks: React.FC = () => {
                             </div>
                             <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
                                 <p className="flex justify-between flex-wrap sm:flex-nowrap">
+                                    <div>
                                     <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">{bookmark.title}</h3>
                                     <p className="md:hidden text-sm opacity-90">{bookmark.location}</p>
-                                    <div className="flex gap-2 items-center">
+                                    </div>
+                                    <div className="flex gap-2 items-center justify-between">
                                         <button onClick={() => handleDelete(bookmark._id)} className="">
                                             <FaTrashAlt className="text-red-600 hover:text-[#486DD9]"></FaTrashAlt>
                                         </button>
@@ -79,7 +81,7 @@ const Bookmarks: React.FC = () => {
                                         </Link>
                                     </div>
                                 </p>
-                                <p className="hidden text-sm opacity-90">{bookmark.location}</p>
+                                <p className="hidden md:flex text-sm opacity-90">{bookmark.location}</p>
                                 <div className="hidden md:flex flex-wrap gap-3 items-center mt-5">
                                     <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                                         <MdDateRange className="mr-1" /> {bookmark.post_time}
