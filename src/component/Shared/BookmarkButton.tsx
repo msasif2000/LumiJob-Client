@@ -2,10 +2,10 @@ import React from "react";
 import { MdBookmarkAdd } from "react-icons/md";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import useAxiosDev from "../../hooks/useAxiosDev";
 import useBookmark from "../../hooks/useBookmarks";
 import Job from "../../Pages/Home/PopularJobs/Job";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 interface BookmarkButtonProps {
@@ -17,8 +17,8 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const pageLocation = useLocation();
-  const axiosDev = useAxiosDev();
   const [, refetch] = useBookmark();
+  const axiosPublic = useAxiosPublic()
 
   const handleAddToBookmark = () => {
     if (user && user.email) {
@@ -32,7 +32,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
         salaryRange,
         deadline,
       };
-      axiosDev
+      axiosPublic
         .post("/bookmarks", bookmarkItem)
         .then((res) => {
           console.log(res.data);

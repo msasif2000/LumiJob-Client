@@ -5,11 +5,10 @@ import SignupArt from "../../assets/Art (1).svg";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
 import { LuEyeOff } from "react-icons/lu";
 import { GiBleedingEye } from "react-icons/gi";
-import useAxiosDev from "../../hooks/useAxiosDev";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface SignUpFormData {
   name: string;
@@ -18,12 +17,9 @@ interface SignUpFormData {
   password: string;
 }
 const Signup: React.FC = () => {
-  // this hook is for Dev
-  const axiosDev = useAxiosDev();
-
+  const axiosPublic = useAxiosPublic()
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
-  // const axiosPublic = useAxiosPublic();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -48,7 +44,7 @@ const Signup: React.FC = () => {
         password: data.password,
       };
       // for dev Delete in prod
-      axiosDev.post("/users", userInfo).then((res) => {
+      axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
         toast.success("User created successfully", {
           position: "top-center",
@@ -57,14 +53,7 @@ const Signup: React.FC = () => {
         });
       });
 
-      // for prod
-      // axiosPublic.post("/users", userInfo).then((res) => {
-      //   toast.success("User created successfully", {
-      //   position: "top-center",
-      //   hideProgressBar: true,
-      //   autoClose: 2000,
-      // });
-      // });
+    
 
       setIsCreatingAccount(false);
       navigate("/signup/role");

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CandidateNav from "./CommonNavbar/CandidateNav";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import useAxiosDev from "../hooks/useAxiosDev";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 
@@ -52,7 +52,7 @@ const CandidateProfile = () => {
   const [activeTab, setActiveTab] = useState("experience");
   const navigate = useNavigate();
   const [profile, setProfile] = useState<UserProfile | null>(null);
-  const axiosDev = useAxiosDev();
+  const axiosPublic = useAxiosPublic()
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -60,7 +60,7 @@ const CandidateProfile = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosDev
+      axiosPublic
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setProfile(res.data);

@@ -5,9 +5,9 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import CandidateNav from "../CommonNavbar/CandidateNav";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import useAxiosDev from "../../hooks/useAxiosDev";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface EducationData {
   university: string;
@@ -53,11 +53,10 @@ interface UserData {
 const CandidateProUpdate: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const axiosDev = useAxiosDev();
   const [loading, setLoading] = useState<boolean>(false);
   // const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState<UserData | null>(null);
-  // const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic()
 
   const {
     register,
@@ -135,7 +134,7 @@ const CandidateProUpdate: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosDev
+      axiosPublic
         .get(`/user-profile/${user.email}`)
         .then((res) => {
           setUserData(res.data);
@@ -158,7 +157,7 @@ const CandidateProUpdate: React.FC = () => {
     // console.log(candidateData);
 
     try {
-      const updateUserDataResponse = await axiosDev.put(
+      const updateUserDataResponse = await axiosPublic.put(
         `/user-update/${user?.email}`,
         candidateData
       );
@@ -167,7 +166,7 @@ const CandidateProUpdate: React.FC = () => {
         const formData = new FormData();
         formData.append("photo", data.photo);
 
-        const updateUserPhotoResponse = await axiosDev.post(
+        const updateUserPhotoResponse = await axiosPublic.post(
           `/update-photo/${user?.email}`,
           formData
         );
@@ -195,7 +194,7 @@ const CandidateProUpdate: React.FC = () => {
 
   // useEffect(() => {
   //   if (user?.email) {
-  //     axiosDev
+  //     axiosPublic
   //       .get(`/user-profile/${user.email}`)
   //       .then((res) => {
   //         setCurrentUser(res.data);

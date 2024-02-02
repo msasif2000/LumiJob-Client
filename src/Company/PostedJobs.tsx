@@ -1,13 +1,13 @@
 
-import { useQuery } from "@tanstack/react-query";
-import useAxiosDev from "../hooks/useAxiosDev";
+import { useQuery } from "@tanstack/react-query";;
 import PostedJobsCard from "./PostedJobsCard";
 import Job from "../Pages/Home/PopularJobs/Job";
 import useAuth from "../hooks/useAuth";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const PostedJobs = () => {
-    const axiosPublic = useAxiosDev();
+    const axiosPublic = useAxiosPublic()
     const { user } = useAuth();
     console.log(user?.email);
     const { data: popularJobs = [], refetch } = useQuery({
