@@ -1,5 +1,4 @@
 import Banner from "../../component/Banner/Banner";
-import Footer from "../../component/Footer/Footer";
 // import Step from "./Step_Set/Step";
 import PopularJobs from "./PopularJobs/PopularJobs";
 import HowItWorks from "./HowItWorks/HowItWorks";
@@ -17,7 +16,6 @@ const Home = () => {
       {/* <Step></Step> */}
       <PopularJobs />
       <TopCompany />
-      <Footer />
     </div>
   );
 };

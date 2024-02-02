@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { AiFillYoutube, AiFillInstagram } from "react-icons/ai";
 const Footer = () => {
   return (
-    <footer className="relative mt-16 bg-gray-950 text-gray-600 lg:h-[360px]">
+    <footer className="relative bg-gray-950 text-gray-600 lg:h-[360px]">
       <div className="footer py-10 px-4 max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 font-semibold pt-20">
         <div>
           <span className="text-white uppercase font-heading text-xl">
