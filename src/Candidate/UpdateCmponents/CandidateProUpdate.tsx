@@ -8,28 +8,29 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAxiosDev from "../../hooks/useAxiosDev";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
-
+​
 interface EducationData {
   university: string;
+  degree: string;
   subject: string;
-  fromDate: Date | null; // Update fromDate and toDate to Date | null
+  fromDate: Date | null;
   toDate: Date | null;
 }
-
+​
 interface ExperienceData {
   company: string;
   position: string;
-  fromDate: Date | null; // Update fromDate and toDate to Date | null
+  fromDate: Date | null;
   toDate: Date | null;
 }
-
+​
 interface FormData {
   name: string;
   phone: string;
   address: string;
   bio: string;
   skills: string[];
-  experience: string;
+  experience: number;
   education: EducationData[];
   experienceDetails: ExperienceData[];
   photo: File;
@@ -39,31 +40,25 @@ interface FormData {
   availability: string;
   position: string;
   work: string;
+  salaryRangeMin: number;
+  salaryRangeMax: number;
 }
-
-// changed on 2 february--
-
-interface CurrentUserData {
-  name: string;
-  bio: string;
-  city: string;
-  country: string;
-  phone: string;
-  position: string;
-  village: string;
+​
+interface UserData {
+  email: string;
+  _id: string;
+  role: string;
 }
-
-// ----
-
+​
 const CandidateProUpdate: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const axiosDev = useAxiosDev();
   const [loading, setLoading] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState<CurrentUserData | null>(null);
   // const [currentUser, setCurrentUser] = useState(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
   // const axiosPublic = useAxiosPublic()
-
+​
   const {
     register,
     handleSubmit,
@@ -77,7 +72,7 @@ const CandidateProUpdate: React.FC = () => {
       experienceDetails: [],
     },
   });
-
+​
   const [inputValue, setInputValue] = useState<string>("");
   const [additionalExperiences, setAdditionalExperiences] = useState<
     ExperienceData[]
@@ -85,9 +80,9 @@ const CandidateProUpdate: React.FC = () => {
   const [additionalEducations, setAdditionalEducations] = useState<
     EducationData[]
   >([]);
-
+​
   const selectedSkills = watch("skills");
-
+​
   const removeSkill = (skill: string) => {
     setValue(
       "skills",
@@ -96,7 +91,7 @@ const CandidateProUpdate: React.FC = () => {
         : []
     );
   };
-
+​
   const addExperience = () => {
     setAdditionalExperiences([
       ...additionalExperiences,
@@ -108,53 +103,75 @@ const CandidateProUpdate: React.FC = () => {
       },
     ]);
   };
-
+​
   const addEducation = () => {
     setAdditionalEducations([
       ...additionalEducations,
       {
         university: "",
+        degree: "",
         subject: "",
         fromDate: null,
         toDate: null,
       },
     ]);
   };
-
+​
   const removeExperience = (index: number) => {
     const updatedExperiences = [...additionalExperiences];
     updatedExperiences.splice(index, 1);
     setAdditionalExperiences(updatedExperiences);
   };
-
+​
   const removeEducation = (index: number) => {
     const updatedEducations = [...additionalEducations];
     updatedEducations.splice(index, 1);
     setAdditionalEducations(updatedEducations);
   };
-
+​
   const backToProfile = () => {
     navigate(-1);
   };
-
+​
+  useEffect(() => {
+    if (user?.email) {
+      axiosDev
+        .get(`/user-profile/${user.email}`)
+        .then((res) => {
+          setUserData(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
+​
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setLoading(true);
-
+    console.log("data is being submitted");
+​
+    const candidateData = {
+      ...data,
+      email: userData?.email,
+      userId: userData?._id,
+      role: userData?.role,
+    };
+​
+    console.log(candidateData);
+​
     try {
       const updateUserDataResponse = await axiosDev.put(
         `/user-update/${user?.email}`,
-        data
+        candidateData
       );
-
+​
       if (updateUserDataResponse.data.message === "true") {
         const formData = new FormData();
         formData.append("photo", data.photo);
-
+​
         const updateUserPhotoResponse = await axiosDev.post(
-          `/user-update-photo/${user?.email}`,
+          `/update-photo/${user?.email}`,
           formData
         );
-
+​
         if (updateUserPhotoResponse.data.message === true) {
           toast.success("Profile Updated Successfully");
           navigate("/dashboard/candidateProfile");
@@ -171,23 +188,22 @@ const CandidateProUpdate: React.FC = () => {
       setLoading(false);
     }
   };
-
+​
   const backToResume = () => {
     navigate("/dashboard/candidateProfile/resume");
   };
-
-  useEffect(() => {
-    if (user?.email) {
-      axiosDev
-        .get(`/user-profile/${user.email}`)
-        .then((res) => {
-          console.log(res.data);
-          setCurrentUser(res.data);
-        })
-        .catch((error) => console.log(error))
-    };
-  }, [user]);
-
+​
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     axiosDev
+  //       .get(`/user-profile/${user.email}`)
+  //       .then((res) => {
+  //         setCurrentUser(res.data);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }
+  // }, [user]);
+​
   return (
     <div className="min-h-screen">
       <CandidateNav
@@ -197,18 +213,18 @@ const CandidateProUpdate: React.FC = () => {
         handleClick={backToProfile}
         handleClick2={backToResume}
       />
-
-      <div className="bg-white px-2 py-5">
+​
+      <div className=" bg-white px-2 py-5">
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
-          <div className="md:flex md:space-x-10 py-10 ">
-            <div className="form-control w-full md:w-1/3">
+          <div className="flex space-x-10 py-10 ">
+            <div className="form-control w-full">
               <label
                 className="font-bold text-gray-400 text-xl"
                 htmlFor="photo"
               >
                 Profile Picture
               </label>
-
+​
               <input
                 type="file"
                 name="photo"
@@ -219,29 +235,30 @@ const CandidateProUpdate: React.FC = () => {
                   }
                 }}
                 className="py-4 outline-none font-bold bg-transparent border-b-2
-              w-full border-gray-300 text-xl hover:border-accent duration-500"
+                 w-full border-gray-300 text-xl hover:border-accent duration-500"
               />
             </div>
           </div>
-
+​
           <div className="pb-10 space-y-6">
             {/* Second div group */}
-            <div className="md:flex md:space-x-10">
+            <div className="flex space-x-10">
               <div className="form-control w-full">
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
-                  defaultValue={currentUser?.name}
+                  placeholder="Your Name"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
+​
               <div className="form-control w-full">
                 <input
                   type="text"
                   {...register("position", {
                     required: "position is required",
                   })}
-                  defaultValue={currentUser?.position}
+                  placeholder="Interested Position"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -249,18 +266,18 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("phone", { required: "phone is required" })}
-                  defaultValue={currentUser?.phone}
+                  placeholder="Contact Number"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
             </div>
             {/* Second div group */}
-            <div className="md:flex md:space-x-10">
+            <div className="flex space-x-10">
               <div className="form-control w-full">
                 <input
                   type="text"
                   {...register("village", { required: "Village is required" })}
-                  defaultValue={currentUser?.village}
+                  placeholder="Your Village"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -268,7 +285,7 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("city", { required: "City is required" })}
-                  defaultValue={currentUser?.city}
+                  placeholder="Your City"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
@@ -276,29 +293,73 @@ const CandidateProUpdate: React.FC = () => {
                 <input
                   type="text"
                   {...register("country", { required: "Country is required" })}
-                  defaultValue={currentUser?.country}
+                  placeholder="Your Country"
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                 />
               </div>
             </div>
+​
+            <div className="flex space-x-10">
+              <div className="form-control w-full">
+                <input
+                  type="number"
+                  {...register("experience")}
+                  placeholder="Years of experience"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                />
+              </div>
+​
+              <select
+                {...register("availability", {
+                  required: "Availability is required",
+                })}
+                name="availability"
+                id="availability"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Availability
+                </option>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+              </select>
+​
+              <select
+                {...register("work", {
+                  required: "Work type is required",
+                })}
+                name="work"
+                id="work"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Preferred work setting
+                </option>
+                <option value="Remote">Remote</option>
+                <option value="Office">Office</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
           </div>
-
+​
           <div className="pb-10 space-y-6">
             <div className="form-control w-full">
               <textarea
                 rows={3}
                 {...register("bio", { required: "bio is required" })}
-                defaultValue={currentUser?.bio}
+                placeholder="Your Bio"
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
               ></textarea>
             </div>
-
+​
             <div className="form-control w-full">
               <div className="flex flex-wrap">
                 {Array.isArray(selectedSkills) &&
-                  selectedSkills.map((skill) => (
+                  selectedSkills.map((skill, idx) => (
                     <div
-                      key={skill}
+                      key={idx}
                       className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"
                     >
                       <span className="mr-2">{skill}</span>
@@ -312,6 +373,7 @@ const CandidateProUpdate: React.FC = () => {
                     </div>
                   ))}
               </div>
+​
               <div className="mt-2">
                 <input
                   type="text"
@@ -334,60 +396,35 @@ const CandidateProUpdate: React.FC = () => {
                 />
               </div>
             </div>
-
+​
             {errors.skills && <p>{errors.skills.message}</p>}
-
-            <div className="md:flex md:space-x-10">
-              <div className="form-control w-full">
-                <input
-                  type="number"
-                  {...register("experience", {
-                    required: "experience is required",
-                  })}
-                  placeholder="Years of experience"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                />
-              </div>
-
-              <select
-                {...register("availability", {
-                  required: "availability is required",
-                })}
-                name="availability"
-                id="availability"
+          </div>
+​
+          <div className="flex space-x-10 pb-10">
+            <div className="form-control w-full">
+              <input
+                type="number"
+                {...register("salaryRangeMin")}
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-              >
-                <option value="" disabled selected>
-                  Availability
-                </option>
-                <option value="Full Time">Full Time</option>
-                <option value="Part Time">Part Time</option>
-              </select>
-
-              <select
-                {...register("work", {
-                  required: "work type is required",
-                })}
-                name="work"
-                id="work"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
-              >
-                <option value="" disabled selected>
-                  Preferred work setting
-                </option>
-                <option value="Remote">Remote</option>
-                <option value="Office">Office</option>
-                <option value="Hybrid">Hybrid</option>
-              </select>
+                placeholder="$ Expected Min Salary"
+              />
+            </div>
+            <div className="form-control w-full">
+              <input
+                type="number"
+                {...register("salaryRangeMax")}
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                placeholder="$ Expected Max Salary"
+              />
             </div>
           </div>
-
+​
           <p className="text-2xl font-bold mb-4 pb-10">Experience</p>
           {additionalExperiences.map((experience, index) => (
             <div key={index} className="form-control w-full mt-6 space-y-1">
               <h2 className="text-lg font-bold mb-4">Experience {index + 1}</h2>
-              <div className="md:flex md:space-x-4 pb-10">
-                <div className="w-full md:w-1/2">
+              <div className="flex space-x-4 pb-10">
+                <div className="w-1/2">
                   <input
                     type="text"
                     {...register(`experienceDetails.${index}.company`, {
@@ -397,7 +434,7 @@ const CandidateProUpdate: React.FC = () => {
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
                   />
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-1/2">
                   <input
                     type="text"
                     {...register(`experienceDetails.${index}.position`, {
@@ -408,8 +445,8 @@ const CandidateProUpdate: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="md:flex md:space-x-4 mt-4">
-                <div className="w-full md:w-1/2">
+              <div className="flex space-x-4 mt-4">
+                <div className="w-1/2">
                   <DatePicker
                     selected={experience.fromDate}
                     onChange={(date: Date | null) => {
@@ -427,7 +464,7 @@ const CandidateProUpdate: React.FC = () => {
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
                   />
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-1/2">
                   <DatePicker
                     selected={experience.toDate}
                     onChange={(date: Date | null) => {
@@ -455,7 +492,7 @@ const CandidateProUpdate: React.FC = () => {
               </button>
             </div>
           ))}
-
+​
           <div className="mt-4">
             <button
               type="button"
@@ -469,18 +506,26 @@ const CandidateProUpdate: React.FC = () => {
           {additionalEducations.map((education, index) => (
             <div key={index} className="form-control w-full mt-6">
               <h2 className="text-lg font-bold mb-4">Education {index + 1}</h2>
-              <div className="md:flex md:space-x-4">
-                <div className="w-full md:w-1/2">
+              <div className="flex space-x-4">
+                <div className="w-1/2">
                   <input
                     type="text"
                     {...register(`education.${index}.university`, {
                       required: "University name is required",
                     })}
-                    placeholder="University Name"
+                    placeholder="University / Collage Name"
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
                   />
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-1/2">
+                  <input
+                    type="text"
+                    {...register(`education.${index}.degree`)}
+                    placeholder="Degree"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                  />
+                </div>
+                <div className="w-1/2">
                   <input
                     type="text"
                     {...register(`education.${index}.subject`, {
@@ -491,8 +536,8 @@ const CandidateProUpdate: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="md:flex md:space-x-4 mt-4">
-                <div className="w-full md:w-1/2">
+              <div className="flex space-x-4 mt-4">
+                <div className="w-1/2">
                   <DatePicker
                     selected={education.fromDate}
                     onChange={(date: Date | null) => {
@@ -510,7 +555,7 @@ const CandidateProUpdate: React.FC = () => {
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
                   />
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-1/2">
                   <DatePicker
                     selected={education.toDate}
                     onChange={(date: Date | null) => {
@@ -538,7 +583,7 @@ const CandidateProUpdate: React.FC = () => {
               </button>
             </div>
           ))}
-
+​
           <div className="mt-4">
             <button
               type="button"
@@ -548,7 +593,7 @@ const CandidateProUpdate: React.FC = () => {
               Add Education
             </button>
           </div>
-
+​
           <button type="submit" className="btn btn-accent mb-10 w-full ">
             {loading ? (
               <span className="loading loading-ring loading-lg"></span>
@@ -560,8 +605,7 @@ const CandidateProUpdate: React.FC = () => {
       </div>
       <ToastContainer />
     </div>
-
   );
 };
-
+​
 export default CandidateProUpdate;
