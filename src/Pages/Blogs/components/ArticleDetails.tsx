@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../Navbar/Navbar";
 import Nodata from "./err/Nodata";
 import Loading from "./err/Loading";
 import { FaCircleUser } from "react-icons/fa6";
@@ -24,7 +23,7 @@ const ArticleDetails = () => {
   const [datas, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     setLoading(true);
@@ -82,10 +81,9 @@ const ArticleDetails = () => {
   }, []);
 
   const capitalizeFirstLetter = (text: string | undefined) => {
-    if (!text) return ""; 
+    if (!text) return "";
     return text.charAt(0).toUpperCase() + text.slice(1);
-};
-
+  };
 
   const addLineGapAfter200Words = (text: string) => {
     const words = text.split(" ");
@@ -107,9 +105,7 @@ const ArticleDetails = () => {
         <Loading />
       ) : (
         <>
-          <div className="fixed w-full">
-            <Navbar color={""} />
-          </div>
+          <div className="fixed w-full"></div>
           <div
             className="h-[6px] bg-gradient-to-r from-[#98ff98] via-[#fff45c] to-[#ff4739] fixed"
             style={{ width: `${scrollPercentage}%` }}

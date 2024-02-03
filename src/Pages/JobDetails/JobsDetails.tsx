@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { CiDollar } from "react-icons/ci";
 import { LuDot } from "react-icons/lu";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../../component/Footer/Footer";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
@@ -70,7 +68,6 @@ const JobsDetails: React.FC = () => {
 
   return (
     <>
-      <Navbar></Navbar>
       <div className="max-w-screen-2xl mx-auto py-16 px-4">
         <div>
           {/* Display jobs */}
@@ -217,7 +214,6 @@ const JobsDetails: React.FC = () => {
           )}
         </div>
       </div>
-      <Footer></Footer>
     </>
   );
 };

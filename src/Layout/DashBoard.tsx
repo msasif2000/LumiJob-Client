@@ -4,12 +4,12 @@ import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import UniLoader from "../component/err & loading/UniLoader";
 import useAxiosPublic from "../hooks/useAxiosPublic";
- 
+
 const DashBoard = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const [isNavOpen, setIsNavOpen] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -22,9 +22,9 @@ const DashBoard = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [isNavOpen]);
- 
+
   const [role, setRole] = useState("");
- 
+
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
@@ -41,13 +41,12 @@ const DashBoard = () => {
         });
     }
   }, [user]);
- 
- 
+
   const handleLogout = () => {
     logOut();
     navigate("/");
   };
- 
+
   return (
     <>
       {isLoading ? (
@@ -131,7 +130,7 @@ const DashBoard = () => {
                     </>
                   )}
                   <div className="divider"></div>
- 
+
                   <li>
                     <NavLink to="/">Home</NavLink>
                   </li>
@@ -164,7 +163,7 @@ const DashBoard = () => {
                         Profile
                       </NavLink>
                     </li>
-                   
+
                     <li>
                       <NavLink to="/dashboard/appliedJobs">
                         Applied Jobs
@@ -205,9 +204,9 @@ const DashBoard = () => {
                     </li>
                   </>
                 )}
- 
+
                 <div className="divider"></div>
- 
+
                 <li>
                   <NavLink to="/">Home</NavLink>
                 </li>
@@ -230,4 +229,3 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
-
