@@ -11,6 +11,10 @@ const DashBoard = () => {
   const [isLoading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [role, setRole] = useState("");
+ 
+ 
+ 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isNavOpen) {
@@ -23,7 +27,7 @@ const DashBoard = () => {
     };
   }, [isNavOpen]);
 
-  const [role, setRole] = useState("");
+
 
   useEffect(() => {
     setLoading(true);
@@ -41,6 +45,8 @@ const DashBoard = () => {
         });
     }
   }, [user]);
+
+  
 
   const handleLogout = () => {
     logOut();
