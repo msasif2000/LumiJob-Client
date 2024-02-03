@@ -1,51 +1,54 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import useAxiosPublic from '../../hooks/useAxiosPublic';
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Roles = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
   const handleCompany = () => {
     // for dev
-    axiosPublic.put(`/roles/${user?.email}`, { role: "company" }).then((res) => {
-      console.log(res.data);
-      if (res.data.message === "true") {
-        toast.success("Role changed successfully");
-        navigate("/dashboard/companyProfile/update");
-      } else {
-        toast.warn("Error: User not found or another issue");
-      }
-    });
-
+    axiosPublic
+      .put(`/roles/${user?.email}`, { role: "company", canPost: "5" })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === "true") {
+          toast.success("Role changed successfully");
+          navigate("/dashboard/companyProfile/update");
+        } else {
+          toast.warn("Error: User not found or another issue");
+        }
+      });
   };
   const handleHr = () => {
     // for dev
-    axiosPublic.put(`/roles/${user?.email}`, { role: "hr" }).then((res) => {
-      console.log(res.data);
-      if (res.data.message === "true") {
-        toast.success("Role changed successfully");
-        navigate("/");
-      } else {
-        toast.warn("Error: User not found or another issue");
-      }
-    });
-
+    axiosPublic
+      .put(`/roles/${user?.email}`, { role: "hr", canPost: "5" })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === "true") {
+          toast.success("Role changed successfully");
+          navigate("/");
+        } else {
+          toast.warn("Error: User not found or another issue");
+        }
+      });
   };
   const handleCandidate = () => {
     // for dev
-    axiosPublic.put(`/roles/${user?.email}`, { role: "candidate" }).then((res) => {
-      console.log(res.data);
-      if (res.data.message === "true") {
-        toast.success("Role changed successfully");
-        navigate("/dashboard/candidateProfile/update");
-      } else {
-        toast.warn("Error: User not found or another issue");
-      }
-    });
-
+    axiosPublic
+      .put(`/roles/${user?.email}`, { role: "candidate", canApply: "20" })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === "true") {
+          toast.success("Role changed successfully");
+          navigate("/dashboard/candidateProfile/update");
+        } else {
+          toast.warn("Error: User not found or another issue");
+        }
+      });
   };
   return (
     <div className="bg-gradient-to-r from-[#fdd5d5] via-[#f0f0f0] to-[#cfffcd] min-h-screen">
