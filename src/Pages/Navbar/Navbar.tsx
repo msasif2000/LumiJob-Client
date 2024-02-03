@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface NavbarProps {
   color?: string;
@@ -11,9 +13,29 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   // To Do : All Link NavLink or Link Seta Valid link
 
   const { user, logOut } = useAuth();
+  const [isRole, setRole] = useState(null);
+  const axiosPublic = useAxiosPublic();
+
+  useEffect(() => {
+    if (user?.email) {
+      axiosPublic
+        .get(`/check-role/${user?.email}`)
+        .then((response) => {
+          const userRole = response.data.role;
+          setRole(userRole);
+        })
+        .catch((error) => {
+          console.error("Error checking user role:", error);
+        });
+    }
+  }, [user]);
+
+  console.log(isRole);
+
   const handleLogout = () => {
     logOut();
   };
+  
   const Linking: JSX.Element[] = [
     <li key="home">
       <NavLink
@@ -57,20 +79,24 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         Insights
       </NavLink>
     </li>,
-    <li key="dashboard">
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
-        }
-        to="/dashboard"
-      >
-        Dashboard
-      </NavLink>
-    </li>,
+    ...(isRole !== null
+      ? [
+          <li key="dashboard">
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "font-black underline text-lg"
+                  : "text-lg"
+              }
+              to="/dashboard"
+            >
+              Dashboard
+            </NavLink>
+          </li>,
+        ]
+      : []),
     <li key="Contact">
       <NavLink
         className={({ isActive, isPending }) =>
