@@ -6,6 +6,7 @@ import CandidateNav from "../../Candidate/CommonNavbar/CandidateNav";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import axios from "axios";
 
 interface FormData {
   photo: File;
@@ -32,10 +33,12 @@ interface CompanyData {
 const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const { register, handleSubmit, setValue } = useForm<FormData>();
+
+  const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
   const handleBack = () => {
     navigate(-1);
@@ -51,7 +54,7 @@ const CompanyProUpdate = () => {
         })
         .catch((err) => console.log(err));
     }
-  },[user]);
+  }, [user]);
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     console.log(data);
@@ -64,28 +67,48 @@ const CompanyProUpdate = () => {
     };
 
     try {
-      const updateUserDataResponse = await axiosPublic.put(
-        `/user-update/${user?.email}`,
-        companyData
+      // Upload image to ImageBB
+      const imageData = new FormData();
+      imageData.append("image", data.photo);
+
+      const imageUploadResponse = await axios.post(
+        "https://api.imgbb.com/1/upload",
+        imageData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          params: {
+            key: api,
+          },
+        }
       );
 
-      if (updateUserDataResponse.data.message === "true") {
-        const formData = new FormData();
-        formData.append("photo", data.photo);
+      // Check if image upload was successful
+      if (imageUploadResponse.data.status === 200) {
+        const imageUrl = imageUploadResponse.data.data.url;
 
-        const updateUserPhotoResponse = await axiosPublic.post(
-          `/update-photo/${user?.email}`,
-          formData
+        // Prepare company data with the image URL
+        const updatedCompanyData = {
+          ...companyData,
+          photo: imageUrl,
+        };
+
+        // Send the updated company data to your database
+        const updateUserDataResponse = await axiosPublic.put(
+          `/user-update/${user?.email}`,
+          updatedCompanyData
         );
 
-        if (updateUserPhotoResponse.data.message === true) {
+        // Handle response accordingly
+        if (updateUserDataResponse.data.message === "true") {
           toast.success("Profile Updated Successfully");
           navigate("/dashboard/companyProfile");
         } else {
-          toast.error("Failed to update profile photo");
+          toast.error("Failed to update profile data");
         }
       } else {
-        toast.error("Failed to update profile data");
+        toast.error("Failed to upload profile photo to ImageBB");
       }
     } catch (error) {
       console.log(error);

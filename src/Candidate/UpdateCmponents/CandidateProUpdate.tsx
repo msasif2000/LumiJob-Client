@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import axios from "axios";
 
 interface EducationData {
   university: string;
@@ -56,7 +57,9 @@ const CandidateProUpdate: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   // const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState<UserData | null>(null);
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
+
+  const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
   const {
     register,
@@ -145,43 +148,58 @@ const CandidateProUpdate: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setLoading(true);
-    // console.log("data is being submitted");
-
-    const candidateData = {
-      ...data,
-      email: userData?.email,
-      userId: userData?._id,
-      role: userData?.role,
-    };
-
-    // console.log(candidateData);
 
     try {
-      const updateUserDataResponse = await axiosPublic.put(
-        `/user-update/${user?.email}`,
-        candidateData
+      // Upload image to ImageBB
+      const imageData = new FormData();
+      imageData.append("image", data.photo);
+
+      const imageUploadResponse = await axios.post(
+        "https://api.imgbb.com/1/upload",
+        imageData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          params: {
+            key: api,
+          },
+        }
       );
 
-      if (updateUserDataResponse.data.message === "true") {
-        const formData = new FormData();
-        formData.append("photo", data.photo);
+      // Check if image upload was successful
+      if (imageUploadResponse.data.status === 200) {
+        const imageUrl = imageUploadResponse.data.data.url;
 
-        const updateUserPhotoResponse = await axiosPublic.post(
-          `/update-photo/${user?.email}`,
-          formData
+        // Prepare candidate data with the image URL
+        const candidateData = {
+          ...data,
+          email: userData?.email,
+          userId: userData?._id,
+          role: userData?.role,
+          photo: imageUrl,
+        };
+
+        console.log(candidateData);
+
+        // Send the updated candidate data to your database
+        const updateUserDataResponse = await axiosPublic.put(
+          `/user-update/${user?.email}`,
+          candidateData
         );
 
-        if (updateUserPhotoResponse.data.message === true) {
+        // Handle response accordingly
+        if (updateUserDataResponse.data.message === "true") {
           toast.success("Profile Updated Successfully");
           navigate("/dashboard/candidateProfile");
         } else {
-          toast.error("Failed to update profile photo");
+          toast.error("Failed to update profile data");
         }
       } else {
-        toast.error("Failed to update profile data");
+        toast.error("Failed to upload profile photo to ImageBB");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("An error occurred while updating profile");
     } finally {
       setLoading(false);
