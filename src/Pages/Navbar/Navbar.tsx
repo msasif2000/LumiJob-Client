@@ -8,9 +8,7 @@ interface NavbarProps {
   color?: string;
 }
 
-interface Profile {
-  photo: string,
-}
+
 
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
   // To Do : user set AuthProvider
@@ -18,28 +16,24 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
 
   const { user, logOut } = useAuth();
   const [isRole, setRole] = useState(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const [profile, setProfile] = useState<any>(null);
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     if (user?.email) {
       axiosPublic
-        .get(`/user-info/${user?.email}`)
-        .then((response) => {
-          const { role, profile } = response.data;
-          setRole(role);
-          setProfile(profile);
+        .get(`/user-profile/${user?.email}`)
+        .then((res) => {
+          const {role, photo} = res.data
+          setProfile(photo);
+          setRole(role)
         })
         .catch((error) => {
-          console.error("Error fetching user info:", error);
+          console.error("Error checking user role:", error);
         });
     }
   }, [user]);
-  
 
-  console.log(profile);
-
-  console.log(isRole);
 
   const handleLogout = () => {
     logOut();
@@ -189,14 +183,14 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-20 rounded-full">
-                    {user.photoURL ? (
+                    {user ? (
                       <img
                         alt="Tailwind CSS Navbar component"
-                        src={profile?.photo}
+                        src={profile}
                       />
                     ) : (
                       <img
-                        alt="Tailwind CSS Navbar component"
+                        alt="User Photo"
                         src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                       />
                     )}
