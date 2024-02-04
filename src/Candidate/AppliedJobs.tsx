@@ -1,8 +1,18 @@
+import CandidateNav from "./CommonNavbar/CandidateNav";
+
 const AppliedJobs = () => {
   return (
-    <div>
-      <h2 className="text-4xl">Applied Jobs</h2>
-    </div>
+    <>
+      <CandidateNav
+        text="Jobs you applied for"
+        btn=""
+        btn2=""
+        handleClick={() => {}}
+        handleClick2={() => {}}
+      />
+
+      <div></div>
+    </>
   );
 };
 
