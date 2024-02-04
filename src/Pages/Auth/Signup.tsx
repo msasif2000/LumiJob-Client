@@ -31,18 +31,18 @@ const Signup: React.FC = () => {
 
   const onSubmit = async (data: SignUpFormData) => {
     setIsCreatingAccount(true);
-    console.log(data);
     try {
       const userCredential = await createUser(data.email, data.password);
       console.log(userCredential);
-
+  
       await updateUserProfile(data.name);
-
+  
       const userInfo = {
         name: data.name,
         email: data.email,
         password: data.password,
       };
+  
       // for dev Delete in prod
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
@@ -52,21 +52,31 @@ const Signup: React.FC = () => {
           autoClose: 2000,
         });
       });
-
-    
-
+  
       setIsCreatingAccount(false);
       navigate("/signup/role");
     } catch (error: any) {
-      toast.warn("Something went wrong, Please try again", {
-        position: "top-center",
-        hideProgressBar: true,
-        autoClose: 2000,
-      });
+      if (error.code === "auth/email-already-in-use") {
+        // Firebase error indicating that the email already exists
+        toast.warn("Email already exists. Please use a different email.", {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 2000,
+        });
+      } else {
+        // Other errors
+        toast.warn("Something went wrong. Please try again.", {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 2000,
+        });
+      }
+  
       console.error("Error creating user:", error);
       setIsCreatingAccount(false);
     }
   };
+  
   return (
     <div className="w-full h-screen flex px-3">
       {/* form Div */}
