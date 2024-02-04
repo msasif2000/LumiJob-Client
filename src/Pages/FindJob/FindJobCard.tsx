@@ -26,12 +26,12 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
           </div>
           <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
             <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">{sectorType}</h3>
-            <p className="flex justify-between">
+            <div className="flex justify-between">
               <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
                 {title}
               </h3>
               <BookmarkButton job={job}/>
-            </p>
+            </div>
             <p className="text-sm opacity-90">{location}</p>
             {/* =============>  Job Details <<=========== */}
 
