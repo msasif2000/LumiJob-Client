@@ -52,7 +52,7 @@ const JobsDetails: React.FC = () => {
     title,
     location,
     salary,
-    sector,
+    // sector,
     description,
     requirements,
     platform,
@@ -96,10 +96,10 @@ const JobsDetails: React.FC = () => {
                 <hr />
                 <div className="mt-6">
                   {" "}
-                  <p>
+                  {/* <p>
                     <span className="font-semibold">Sector</span>:{" "}
                     <span className=" bg-slate-200 py-1 px-2">{sector}</span>
-                  </p>
+                  </p> */}
                 </div>
                 <div className="mt-6">
                   {" "}
