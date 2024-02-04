@@ -9,7 +9,8 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface Bookmark {
-    _id: string;
+    _id: string;  
+    userId: string;
     title: string;
     picture: string;
     location: string;
@@ -74,7 +75,7 @@ const Bookmarks: React.FC = () => {
                                         <button onClick={() => handleDelete(bookmark._id)} className="">
                                             <FaTrashAlt className="text-red-600 hover:text-[#486DD9]"></FaTrashAlt>
                                         </button>
-                                        <Link className="" to={`/details/${bookmark._id}`}>
+                                        <Link className="" to={`/details/${bookmark.userId}`}>
                                             <button className="py-1 px-3 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-sm rounded-lg">
                                                 Quick Apply
                                             </button>
