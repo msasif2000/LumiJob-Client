@@ -14,6 +14,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
 
   const { user, logOut } = useAuth();
   const [isRole, setRole] = useState(null);
+  const [profile, setProfile] = useState(null);
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
@@ -30,12 +31,28 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (user?.email) {
+      axiosPublic
+        .get(`/user-profile/${user?.email}`)
+        .then((response) => {
+          const userRole = response.data.role;
+          setProfile(userRole);
+        })
+        .catch((error) => {
+          console.error("Error checking user role:", error);
+        });
+    }
+  }, [user]);
+
+  console.log(profile);
+
   console.log(isRole);
 
   const handleLogout = () => {
     logOut();
   };
-  
+
   const Linking: JSX.Element[] = [
     <li key="home">
       <NavLink
