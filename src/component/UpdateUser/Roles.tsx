@@ -11,7 +11,7 @@ const Roles = () => {
   const handleCompany = () => {
     // for dev
     axiosPublic
-      .put(`/roles/${user?.email}`, { role: "company", canPost: "5" })
+      .put(`/roles/${user?.email}`, { role: "company", canPost: 5 })
       .then((res) => {
         console.log(res.data);
         if (res.data.message === "true") {
@@ -25,7 +25,7 @@ const Roles = () => {
   const handleHr = () => {
     // for dev
     axiosPublic
-      .put(`/roles/${user?.email}`, { role: "hr", canPost: "5" })
+      .put(`/roles/${user?.email}`, { role: "hr", canPost: 5 })
       .then((res) => {
         console.log(res.data);
         if (res.data.message === "true") {
@@ -39,7 +39,7 @@ const Roles = () => {
   const handleCandidate = () => {
     // for dev
     axiosPublic
-      .put(`/roles/${user?.email}`, { role: "candidate", canApply: "20" })
+      .put(`/roles/${user?.email}`, { role: "candidate", canApply: 20 })
       .then((res) => {
         console.log(res.data);
         if (res.data.message === "true") {
@@ -114,7 +114,7 @@ const Roles = () => {
                     />
                   </figure>
                   <div className="card-body">
-                    <h2 className="text-xl font-bold text-center">Candidate</h2>
+                    <h2 className="text-xl font-bold text-center">Job Seeker</h2>
                   </div>
                 </div>
               </div>
