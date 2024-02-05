@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FindJobCard from "./FindJobCard";
 import { IoFilterOutline } from "react-icons/io5";
 import Filters from "./Filters";
@@ -11,6 +11,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const FindJob: React.FC = () => {
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [jobsPerPage] = useState<number>(6);
   const axiosPublic = useAxiosPublic();
   const { data: popularJobs = [] } = useQuery({
     queryKey: ["popularJobs"],
@@ -20,12 +22,22 @@ const FindJob: React.FC = () => {
     },
   });
 
+  useEffect(() => {
+    setCurrentJobs(popularJobs);
+  }, [popularJobs]);
+
   const handleFilterChange = (filteredData: Job[]) => {
     setCurrentJobs(filteredData);
+    setCurrentPage(1); // Reset to first page when filtering
   };
 
   const handleSearchResult = (searchData: any[]) => {
     setCurrentJobs(searchData);
+    setCurrentPage(1); // Reset to first page when searching
+  };
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -50,46 +62,52 @@ const FindJob: React.FC = () => {
             <div className="col-span-1 md:col-span-4 lg:col-span-3 min-h-screen">
               <div className="flex justify-between items-center min-h-32 px-4">
                 <h4 className="font-semibold font-heading text-2xl">
-                  <span className="text-[#486DD9]">3,137</span> Jobs Available
+                  <span className="text-[#486DD9]">{currentJobs.length}</span> Jobs Available
                 </h4>
-                <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="flex items-center gap-2 py-2 px-5 border border-[#486DD9] text-[#486DD9] font-semibold rounded"
-                  >
-                    <IoFilterOutline /> Filter By
+                {currentJobs.length > jobsPerPage && (
+                  <div className="dropdown dropdown-end">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="flex items-center gap-2 py-2 px-5 border border-[#486DD9] text-[#486DD9] font-semibold rounded"
+                    >
+                      <IoFilterOutline /> Filter By
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                        <a>Item 1</a>
+                      </li>
+                      <li>
+                        <a>Item 2</a>
+                      </li>
+                    </ul>
                   </div>
-                  <ul
-                    tabIndex={0}
-                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                  >
-                    <li>
-                      <a>Item 1</a>
-                    </li>
-                    <li>
-                      <a>Item 2</a>
-                    </li>
-                  </ul>
-                </div>
+                )}
               </div>
 
               {/* ===> Showing jobs <=== */}
               <div className="grid grid-cols-1 gap-8 p-3">
-                {currentJobs.map((job: Job) => (
-                  <FindJobCard key={job._id} job={job}></FindJobCard>
-                ))}
+                {currentJobs
+                  .slice((currentPage - 1) * jobsPerPage, currentPage * jobsPerPage)
+                  .map((job: Job) => (
+                    <FindJobCard key={job._id} job={job}></FindJobCard>
+                  ))}
               </div>
 
-              <div className="py-12">
-                {/* ==>  Pagination <== */}
-                <Pagination
-                  popularJobs={popularJobs}
-                  onPageChange={(jobs: SetStateAction<Job[]>) =>
-                    setCurrentJobs(jobs)
-                  }
-                ></Pagination>
-              </div>
+              {currentJobs.length > jobsPerPage && (
+                <div className="py-12">
+                  {/* ==>  Pagination <== */}
+                  <Pagination
+                    totalJobs={currentJobs.length}
+                    jobsPerPage={jobsPerPage}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                  ></Pagination>
+                </div>
+              )}
             </div>
 
             <div className="col-span-1 hidden lg:block">
