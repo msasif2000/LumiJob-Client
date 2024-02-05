@@ -1,7 +1,11 @@
 import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-const Search = () => {
+interface SearchProps {
+    onSearchResult: (searchData: any[]) => void;
+  }
+
+  const Search: React.FC<SearchProps> = ({ onSearchResult }) => {
     const [searchText, setSearchText] = useState('');
     const axiosPublic = useAxiosPublic();
 
@@ -10,10 +14,7 @@ const Search = () => {
         try {
             const response = await axiosPublic.get(`/job-Search?search=${searchText}`); 
             console.log("Search Result:", response.data);
-            return(
-              <>
-              </>
-            )
+            onSearchResult(response.data);
         } catch (error) {
             console.error('Error:', error);
         }
