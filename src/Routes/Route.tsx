@@ -59,11 +59,13 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         element: <JobsDetails></JobsDetails>,
       },
-      {
-        path: "/signup/role",
-        element: <Roles />,
-      },
     ],
+  },
+
+  {
+    path: "/signup/role",
+    errorElement: <NotFound />,
+    element: <Roles />,
   },
 
   //Login
