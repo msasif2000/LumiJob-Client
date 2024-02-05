@@ -12,9 +12,7 @@ const DashBoard = () => {
   const axiosPublic = useAxiosPublic();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [role, setRole] = useState("");
- 
- 
- 
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isNavOpen) {
@@ -26,8 +24,6 @@ const DashBoard = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [isNavOpen]);
-
-
 
   useEffect(() => {
     setLoading(true);
@@ -46,12 +42,86 @@ const DashBoard = () => {
     }
   }, [user]);
 
-  
-
   const handleLogout = () => {
     logOut();
     navigate("/");
   };
+
+  const Links =
+    role === "candidate" ? (
+      <>
+        <li>
+          <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">
+            Candidate DashBoard
+          </h2>
+        </li>
+        <li>
+          <NavLink to="/dashboard/profile">Profile</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/resume">Resume</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/appliedJobs">Applied Jobs</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/analytics">Analytics</NavLink>
+        </li>
+      </>
+    ) : role === "company" ? (
+      <>
+        <li>
+          <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
+            Company DashBoard
+          </h2>
+        </li>
+        <li>
+          <NavLink to="/dashboard/companyProfile">Profile</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/postJob">Post Job</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/postedJobs">Posted Job</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/companyAnalytics">Analytics</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/employees">Employees</NavLink>
+        </li>
+      </>
+    ) : role === "admin" ? (
+      <>
+        <li>
+          <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
+            Admin DashBoard
+          </h2>
+        </li>
+        <li>
+          <NavLink to="/dashboard/adminDashboard">DashBoard</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/admin/manage-user">Manage User</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/admin/manage-company">Manage Company</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/admin/manage-jobs">Manage Jobs</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/admin/manage-payments">
+            Manage Payments
+          </NavLink>
+        </li>
+      </>
+    ) : (
+      ""
+    );
 
   return (
     <>
@@ -82,59 +152,8 @@ const DashBoard = () => {
                   tabIndex={0}
                   className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-600 rounded-box  w-52 "
                 >
-                  {role === "candidate" ? (
-                    <>
-                      <li>
-                        <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">
-                          Candidate DashBoard
-                        </h2>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/profile">Profile</NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/resume">Resume</NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/appliedJobs">
-                          Applied Jobs
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/analytics">Analytics</NavLink>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
-                          Company DashBoard
-                        </h2>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/companyProfile">
-                          Profile
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/postJob">Post Job</NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/postedJobs">Posted Job</NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/companyAnalytics">
-                          Analytics
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/dashboard/employees">Employees</NavLink>
-                      </li>
-                    </>
-                  )}
+                  {Links}
+
                   <div className="divider"></div>
 
                   <li>
@@ -157,59 +176,7 @@ const DashBoard = () => {
             </div>
             <div className="lg:flex hidden  min-h-screen bg-gray-200 pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
               <ul className="menu text-xl">
-                {role === "candidate" ? (
-                  <>
-                    <li>
-                      <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
-                        Candidate DashBoard
-                      </h2>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/candidateProfile">
-                        Profile
-                      </NavLink>
-                    </li>
-
-                    <li>
-                      <NavLink to="/dashboard/appliedJobs">
-                        Applied Jobs
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/candidateAnalytics">
-                        Analytics
-                      </NavLink>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <h2 className="text-2xl text-red-800 font-bold bg-white my-2">
-                        Company DashBoard
-                      </h2>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/companyProfile">Profile</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/postJob">Post Job</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/postedJobs">Posted Job</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/companyAnalytics">
-                        Analytics
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/dashboard/employees">Employees</NavLink>
-                    </li>
-                  </>
-                )}
+                {Links}
 
                 <div className="divider"></div>
 
