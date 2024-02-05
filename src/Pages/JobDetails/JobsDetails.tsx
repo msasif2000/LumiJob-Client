@@ -5,6 +5,8 @@ import { LuDot } from "react-icons/lu";
 import { FaDollarSign } from "react-icons/fa";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import UniLoader from "../../component/err & loading/UniLoader";
+import { ToastContainer, toast } from "react-toastify";
+import useAuth from "../../hooks/useAuth";
 
 interface JobDetails {
   _id: string;
@@ -33,6 +35,7 @@ const JobsDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const axiosPublic = useAxiosPublic();
   const [job, setJobs] = useState<JobDetails>();
+  const { user } = useAuth();
 
   // console.log(id);
 
@@ -66,18 +69,77 @@ const JobsDetails: React.FC = () => {
 
   const formatDateTime = (dateTimeString: any) => {
     const date = new Date(dateTimeString);
-  
-    const timeOptions: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
-    const formattedTime = new Intl.DateTimeFormat('en-US', timeOptions).format(date);
-  
-    const dateOptions: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' };
-    const formattedDate = new Intl.DateTimeFormat('en-GB', dateOptions).format(date);
-  
+
+    const timeOptions: Intl.DateTimeFormatOptions = {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
+    const formattedTime = new Intl.DateTimeFormat("en-US", timeOptions).format(
+      date
+    );
+
+    const dateOptions: Intl.DateTimeFormatOptions = {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    };
+    const formattedDate = new Intl.DateTimeFormat("en-GB", dateOptions).format(
+      date
+    );
+
     return `${formattedTime} - ${formattedDate}`;
   };
-  
-  
+
   const formattedPostTime = post_time ? formatDateTime(post_time) : "";
+
+  const handleApply = () => {
+    console.log("btn clicked");
+    const jobDetails = {
+      ...job,
+      candidate: user?.email,
+      appliedTime: new Date(),
+      jobId: job?._id,
+      status: "unopened",
+    };
+
+    axiosPublic
+      .post(`/apply-to-jobs`, jobDetails)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          toast.success("Applied Successfully", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+        } else if (res.data.message === "Already applied") {
+          toast.success("You have Already Applied Successfully", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+        } else if (res.data.message === "Please update subscription") {
+          toast.success("You've reached your apply limit", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.warn("Something went wrong", {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 2000,
+          closeOnClick: true,
+        });
+      });
+  };
 
   return (
     <>
@@ -131,12 +193,16 @@ const JobsDetails: React.FC = () => {
                   <p className="text-lg opacity-90">{aboutUs}</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-xl mt-5 mb-2">Position Overview</p>
+                  <p className="font-semibold text-xl mt-5 mb-2">
+                    Position Overview
+                  </p>
                   <p className="text-lg opacity-90">{positionOverview}</p>
                 </div>
                 <div></div>
                 <div>
-                  <h2 className=" font-semibold text-xl mt-5 mb-2">Responsibilities</h2>
+                  <h2 className=" font-semibold text-xl mt-5 mb-2">
+                    Responsibilities
+                  </h2>
                   <ul>
                     {responsibilities &&
                       responsibilities.map(
@@ -152,7 +218,9 @@ const JobsDetails: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <h2 className="font-semibold text-xl mt-5 mb-2">Requirements</h2>
+                  <h2 className="font-semibold text-xl mt-5 mb-2">
+                    Requirements
+                  </h2>
                   <ul>
                     {requirements &&
                       requirements.map((requirement: string, index: number) => (
@@ -179,7 +247,9 @@ const JobsDetails: React.FC = () => {
                 </div>
                 <div>
                   {" "}
-                  <h4 className="font-semibold text-xl mt-5 mb-2">Experience</h4>{" "}
+                  <h4 className="font-semibold text-xl mt-5 mb-2">
+                    Experience
+                  </h4>{" "}
                   <p className="text-lg opacity-90">{experience}</p>
                 </div>
                 <div>
@@ -204,7 +274,10 @@ const JobsDetails: React.FC = () => {
               {/* right side */}
               <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12">
                 <div>
-                  <button className=" w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                  <button
+                    onClick={() => handleApply()}
+                    className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                  >
                     APPLY HERE
                   </button>
                 </div>
@@ -230,6 +303,7 @@ const JobsDetails: React.FC = () => {
             <UniLoader />
           )}
         </div>
+        <ToastContainer />
       </div>
     </>
   );
