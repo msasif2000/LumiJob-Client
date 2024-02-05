@@ -18,7 +18,7 @@ const PopularJobs = () => {
       .get("/all-job-posts")
       .then((res) => {
         setPopularJobs(res.data);
-        console.log(res.data);
+        //console.log(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -26,7 +26,7 @@ const PopularJobs = () => {
   useEffect(() => {
     axios.get("/sectors.json").then((res) => {
       setSectors(res.data);
-      console.log("Sectors:", res.data); // Log sector data
+      //console.log("Sectors:", res.data); // Log sector data
     });
   }, []);
 
