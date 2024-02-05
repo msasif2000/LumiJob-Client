@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Sector from "../Home/PopularJobs/sector";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+
+interface Sector {
+  _id: string;
+  sectorType: string;
+}
 
 interface FiltersProps {
   onFilterChange: (filteredData: any[]) => void;
@@ -14,7 +18,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   const [jobTypes, setJobTypes] = useState<string[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
 
-  console.log(filteredData);
+  console.log(filteredData)
 
   useEffect(() => {
     fetch("/sectors.json")
@@ -23,20 +27,17 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   }, []);
 
   const applyFilters = () => {
-    let query = "";
-
-    // Construct query parameters for selected sectors
+    const query: any = {};
+  
     if (selectedSectors.length > 0) {
-      query += `sectorType=${selectedSectors.join("&sectorType=")}`;
+      query.sectorType = selectedSectors.join(","); 
     }
-
-    // Construct query parameters for selected job types
+  
     if (jobTypes.length > 0) {
-      query += `${query ? "&" : ""}jobType=${jobTypes.join("&jobType=")}`;
+      query.jobType = jobTypes.join(",");
     }
-
-    // Fetch filtered data based on constructed query
-    axiosPublic(`/all-job-posts?${query}`)
+  
+    axiosPublic.get(`/filter-job-posts`, { params: query })
       .then((res) => {
         setFilteredData(res.data);
         onFilterChange(res.data);
@@ -71,10 +72,10 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
           <h4 className="font-semibold font-heading text-2xl">Filters</h4>
         </div>
         <div className="border rounded p-5 lg:p-8 m-3 min-h-[35vh] bg-white sticky top-24">
-          {/* Job Type Filter */}
+          {/* Sector Filter */}
           <div>
             <h6 className="mb-3 text-xl font-heading font-semibold text-gray-900">
-              Category
+              Sector
             </h6>
             <ul className="space-y-2 text-sm">
               {sectors?.map((sector) => (
@@ -102,7 +103,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
               <li className="flex items-center">
                 <input
                   type="checkbox"
-                  value="hybrid"
+                  value="Hybrid"
                   onChange={handleJobTypeChange}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
@@ -113,7 +114,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
               <li className="flex items-center">
                 <input
                   type="checkbox"
-                  value="onsite"
+                  value="Onsite"
                   onChange={handleJobTypeChange}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
@@ -124,7 +125,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
               <li className="flex items-center">
                 <input
                   type="checkbox"
-                  value="remote"
+                  value="Remote"
                   onChange={handleJobTypeChange}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
