@@ -18,6 +18,8 @@ body {
 
 .navbar a.active {
   background-color: rgba(0, 0, 0, 0) !important;
+  color: #4869dd !important;
+  font-weight: 600 !important;
 }
 
 /* Custom scrollbar design */
@@ -56,4 +58,3 @@ body {
   padding: 0.4rem 1.1rem !important;
   border-radius: 0.2rem !important;
 }
-

@@ -23,6 +23,11 @@ import Employees from "../Company/Employees";
 import CandidateProUpdate from "../Candidate/UpdateCmponents/CandidateProUpdate";
 import FindJob from "../Pages/FindJob/FindJOb";
 import CompanyProUpdate from "../Company/Update/CompanyProUpdate";
+import AdminDashboard from "../Admin/AdminDashboard";
+import ManageCompany from "../Admin/ManageCompany";
+import ManageJobs from "../Admin/ManageJobs";
+import ManageUser from "../Admin/ManageUser";
+import ManagePayments from "../Admin/ManagePayments";
 
 export const router = createBrowserRouter([
   {
@@ -59,11 +64,13 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         element: <JobsDetails></JobsDetails>,
       },
-      {
-        path: "/signup/role",
-        element: <Roles />,
-      },
     ],
+  },
+
+  {
+    path: "/signup/role",
+    errorElement: <NotFound />,
+    element: <Roles />,
   },
 
   //Login
@@ -91,9 +98,32 @@ export const router = createBrowserRouter([
     ),
     errorElement: <NotFound />,
     children: [
+      // Admin Dashboard Routes
+      {
+        path: "adminDashboard",
+        element: <AdminDashboard />,
+      },
+      {
+        path: "admin/manage-user",
+        element: <ManageUser />,
+      },
+      {
+        path: "admin/manage-company",
+        element: <ManageCompany />,
+      },
+      {
+        path: "admin/manage-jobs",
+        element: <ManageJobs />,
+      },
+      {
+        path: "admin/manage-payments",
+        element: <ManagePayments />,
+      },
+
+      // Candidate Dashboard Routes
       {
         path: "candidateProfile",
-        element: <CandidateProfile></CandidateProfile>,
+        element: <CandidateProfile />,
       },
       {
         path: "candidateProfile/update",
@@ -105,19 +135,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "appliedJobs",
-        element: <AppliedJobs></AppliedJobs>,
+        element: <AppliedJobs />,
       },
       {
         path: "bookmarks",
-        element: <Bookmarks></Bookmarks>,
+        element: <Bookmarks />,
       },
       {
         path: "candidateAnalytics",
-        element: <CompanyAnalytics></CompanyAnalytics>,
+        element: <CompanyAnalytics />,
       },
+
+      // Company Dashboard Routes
       {
         path: "companyProfile",
-        element: <CompanyProfile></CompanyProfile>,
+        element: <CompanyProfile />,
       },
       {
         path: "companyProfile/update",
@@ -125,19 +157,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "postJob",
-        element: <PostJob></PostJob>,
+        element: <PostJob />,
       },
       {
         path: "postedJobs",
-        element: <PostedJobs></PostedJobs>,
+        element: <PostedJobs />,
       },
       {
         path: "companyAnalytics",
-        element: <CompanyAnalytics></CompanyAnalytics>,
+        element: <CompanyAnalytics />,
       },
       {
         path: "employees",
-        element: <Employees></Employees>,
+        element: <Employees />,
       },
     ],
   },
