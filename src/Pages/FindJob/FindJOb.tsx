@@ -24,6 +24,10 @@ const FindJob: React.FC = () => {
     setCurrentJobs(filteredData);
   };
 
+  const handleSearchResult = (searchData: any[]) => {
+    setCurrentJobs(searchData);
+  };
+
   return (
     <>
       <div className="">
@@ -34,7 +38,7 @@ const FindJob: React.FC = () => {
           </h3>
 
           {/*=======> Search <============= */}
-          <Search />
+          <Search onSearchResult={handleSearchResult}></Search>
         </div>
 
         <div className="w-full bg-[#FAFAFA]">
