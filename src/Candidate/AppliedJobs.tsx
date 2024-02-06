@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import CandidateNav from "./CommonNavbar/CandidateNav";
 import useAuth from "../hooks/useAuth";
-import { Link } from "react-router-dom";
+import AppliedCard from "./AppliedCard";
+import { toast } from "react-toastify";
 
 const AppliedJobs = () => {
   const { user } = useAuth();
@@ -23,9 +24,24 @@ const AppliedJobs = () => {
 
   const length = jobs?.length;
 
-  const formatDeadlineDate = (deadline: any) => {
-    const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
-    return formattedDate;
+  const handleDelete = (jobId: string) => {
+    axiosPublic
+      .delete(`//${jobId}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === "true") {
+          toast.success(`Job post deleted successfully`, {
+            hideProgressBar: true,
+            autoClose: 2000,
+            position: "top-center",
+          });
+          setJobs(jobs?.filter((job: any) => job._id !== jobId));
+        }
+      })
+      .catch((err) => {
+        console.error("Error deleting job:", err);
+        toast.error("An error occurred while deleting the job");
+      });
   };
 
   return (
@@ -40,29 +56,8 @@ const AppliedJobs = () => {
 
       <div>
         <div className="grid grid-cols-4 gap-6">
-          {jobs?.map((job:any) => (
-            <Link key={job._id} to={`/details/${job._id}`}>
-              <div className="card shadow-md hover:shadow-xl duration-1000">
-                <div className="card-body  space-y-2">
-                  <h2 className="text-2xl font-bold">{job?.platform}</h2>
-                  <div className="flex justify-between items-center">
-                    <p className="font-semibold">{job?.jobType}</p>
-                    <p className="text-right">${job?.salaryRange.min}</p>
-                  </div>
-                  <p>{job?.description}</p>
-                  <div className="flex justify-between items-center">
-                    <p className="">{job?.sectorType}</p>
-                    <p className="text-violet-500 text-right font-semibold">{job?.status}</p>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="">{job?.location}</p>
-                    <p className="text-right">
-                      {formatDeadlineDate(job?.deadline)}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
+          {jobs?.map((job: any) => (
+            <AppliedCard key={job._id} job={job} handleDelete={handleDelete} />
           ))}
         </div>
       </div>
