@@ -43,6 +43,29 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           Home
         </NavLink>
       </li>
+    <li key="subscriptionsUiCandidate">
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "font-black underline text-lg"
+            : "text-lg"
+        }
+        to="/subscriptionsUiCandidate"
+      >
+        Subscriptions Ui Candidate
+      </NavLink>
+    </li>
+    <li key="subscriptionsUiCompany" >
+      <NavLink to="/subscriptionsUiCompany" className={({isActive, isPending}) => 
+      isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg" 
+       }>
+        subscriptions Ui Company
+
+      </NavLink>
+
+    </li>,
       <li key="Job">
         <NavLink className="text-lg font-heading font-medium" to="/findjob">
           Jobs
