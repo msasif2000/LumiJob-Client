@@ -76,31 +76,6 @@ const ManageCandidate = () => {
 
                 <th>
                   <div className="flex justify-between md:justify-start">
-                    {/* <button
-                      onClick={() => handleMakeAdmin(user._id)}
-                      disabled={user.role === "admin"}
-                      className={` text-white py-1 px-3 rounded text-xs mr-4 ${
-                        user.role === "admin"
-                          ? "bg-gray-300 hover:bg-gray-300 "
-                          : "bg-red-800 hover:bg-black"
-                      }`}
-                    >
-                      make admin
-                    </button> */}
-                    {/* <button
-                      onClick={() => handleMakeTourGuide(user._id)}
-                      disabled={
-                        user.role === "admin" || user.role === "tourGuide"
-                      }
-                      className={` text-white py-1 px-3 rounded text-xs mr-4 ${
-                        user.role === "admin" || user.role === "tourGuide"
-                          ? "bg-gray-300 hover:bg-gray-300 "
-                          : "bg-green-900 hover:bg-black"
-                      }`}
-                    >
-                      Make Tour Guide
-                    </button> */}
-
                     <button
                       onClick={() => handleDelete(candidate._id)}
                       className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4"
