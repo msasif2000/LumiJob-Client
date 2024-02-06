@@ -16,9 +16,9 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [selectedSectors, setSelectedSectors] = useState<string[]>([]);
   const [jobTypes, setJobTypes] = useState<string[]>([]);
-  const [filteredData, setFilteredData] = useState<any[]>([]);
+  //const [filteredData, setFilteredData] = useState<any[]>([]);
 
-  console.log(filteredData)
+  //console.log(filteredData)
 
   useEffect(() => {
     fetch("/sectors.json")
@@ -39,7 +39,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   
     axiosPublic.get(`/filter-job-posts`, { params: query })
       .then((res) => {
-        setFilteredData(res.data);
+        // setFilteredData(res.data);
         onFilterChange(res.data);
       })
       .catch((error) =>
