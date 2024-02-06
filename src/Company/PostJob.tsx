@@ -7,6 +7,7 @@ import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import useAuth from "../hooks/useAuth";
 import {ToastContainer ,toast } from "react-toastify";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 interface CompanyData {
   email: string;
@@ -27,6 +28,7 @@ const JobPostingForm: React.FC = () => {
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const axiosPublic = useAxiosPublic()
+  const navigate = useNavigate()
 
   const addRequirement = () => {
     setRequirements((prevRequirements) => [
@@ -136,13 +138,17 @@ const JobPostingForm: React.FC = () => {
       });
   };
 
+  const handlePosted = ()=>{
+    navigate('/dashboard/postedJobs')
+  }
+
   return (
     <>
       <CandidateNav
         text="Post Jobs"
-        btn=""
+        btn="Go Back"
         btn2=""
-        handleClick={() => {}}
+        handleClick={() => {handlePosted()}}
         handleClick2={() => {}}
       />
       <div className="min-h-screen">

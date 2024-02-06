@@ -5,12 +5,14 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const PostedJobs = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   console.log(user?.email);
   const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (user?.email) {
@@ -48,13 +50,17 @@ const PostedJobs = () => {
 
   const length = companyPostedJobs?.length;
 
+  const handlePostJob = () =>{
+    navigate('/dashboard/postJob')
+  }
+
   return (
     <div>
       <CandidateNav
         text="Your Posted Jobs"
-        btn={length}
-        btn2=""
-        handleClick={() => {}}
+        btn="Post Jobs"
+        btn2={length}
+        handleClick={() => {handlePostJob()}}
         handleClick2={() => {}}
       />
       <div className="grid grid-cols-4 gap-6">
