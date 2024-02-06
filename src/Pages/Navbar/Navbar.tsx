@@ -8,8 +8,6 @@ interface NavbarProps {
   color?: string;
 }
 
-
-
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
   // To Do : user set AuthProvider
   // To Do : All Link NavLink or Link Seta Valid link
@@ -24,9 +22,9 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
       axiosPublic
         .get(`/user-profile/${user?.email}`)
         .then((res) => {
-          const {role, photo} = res.data
+          const { role, photo } = res.data;
           setProfile(photo);
-          setRole(role)
+          setRole(role);
         })
         .catch((error) => {
           console.error("Error checking user role:", error);
@@ -34,26 +32,17 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
     }
   }, [user]);
 
-
   const handleLogout = () => {
     logOut();
   };
 
-  const Linking: JSX.Element[] = [
-    <li key="home">
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
-        }
-        to="/"
-      >
-        Home
-      </NavLink>
-    </li>,
+  const Linking = (
+    <>
+      <li key="home">
+        <NavLink className="text-lg font-heading font-medium" to="/">
+          Home
+        </NavLink>
+      </li>
     <li key="subscriptionsUiCandidate">
       <NavLink
         className={({ isActive, isPending }) =>
@@ -67,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
       >
         Subscriptions Ui Candidate
       </NavLink>
-    </li>,
+    </li>
     <li key="subscriptionsUiCompany" >
       <NavLink to="/subscriptionsUiCompany" className={({isActive, isPending}) => 
       isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg" 
@@ -77,68 +66,55 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
       </NavLink>
 
     </li>,
-    <li key="Job">
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
-        }
-        to="/findjob"
-      >
-        Jobs
-      </NavLink>
-    </li>,
-    <li key="Insights">
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
-        }
-        to="/insights"
-      >
-        Insights
-      </NavLink>
-    </li>,
-    ...(isRole !== null
-      ? [
-          <li key="dashboard">
-            <NavLink
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "font-black underline text-lg"
-                  : "text-lg"
-              }
-              to="/dashboard"
-            >
-              Dashboard
-            </NavLink>
-          </li>,
-        ]
-      : []),
-    <li key="Contact">
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
-        }
-        to="/Contact"
-      >
-        {" "}
-        Contact
-      </NavLink>
-    </li>,
-  ];
+      <li key="Job">
+        <NavLink className="text-lg font-heading font-medium" to="/findjob">
+          Jobs
+        </NavLink>
+      </li>
+      <li key="Insights">
+        <NavLink className="text-lg font-heading font-medium" to="/insights">
+          Insights
+        </NavLink>
+      </li>
+
+      {isRole === "admin" ? (
+        <li key="adminDashboard">
+          <NavLink
+            className="text-lg font-heading font-medium"
+            to="/dashboard/adminDashboard"
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : isRole === "candidate" ? (
+        <li key="candidateDashboard">
+          <NavLink
+            className="text-lg font-heading font-medium"
+            to="/dashboard/candidateProfile"
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : isRole === "company" ? (
+        <li key="companyDashboard">
+          <NavLink
+            className="text-lg font-heading font-medium"
+            to="/dashboard/companyProfile"
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : (
+        ""
+      )}
+
+      <li key="Contact">
+        <NavLink className="text-lg font-heading font-medium" to="/Contact">
+          Contact
+        </NavLink>
+      </li>
+    </>
+  );
 
   // for dynamic bg color of navbar
   const bgColor = color ? color : "bg-white";
@@ -209,12 +185,16 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                     {user ? (
                       <img
                         alt="Tailwind CSS Navbar component"
-                        src={profile}
+                        src={
+                          profile
+                            ? profile
+                            : "https://i.pinimg.com/564x/70/dd/61/70dd612c65034b88ebf474a52ccc70c4.jpg"
+                        }
                       />
                     ) : (
                       <img
                         alt="User Photo"
-                        src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                        src="https://i.pinimg.com/564x/70/dd/61/70dd612c65034b88ebf474a52ccc70c4.jpg"
                       />
                     )}
                   </div>

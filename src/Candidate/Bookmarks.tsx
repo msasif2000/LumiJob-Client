@@ -7,6 +7,7 @@ import useBookmark from "../hooks/useBookmarks";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import CandidateNav from "./CommonNavbar/CandidateNav";
 
 interface Bookmark {
     _id: string;  
@@ -19,11 +20,13 @@ interface Bookmark {
         max: number;
     };
     post_time: string;
+    deadline: string;
 }
 
 const Bookmarks: React.FC = () => {
     const [bookmarks, refetch] = useBookmark();
     const axiosPublic = useAxiosPublic()
+    
 
     const handleDelete = (id: string) => {
         Swal.fire({
@@ -52,11 +55,18 @@ const Bookmarks: React.FC = () => {
         });
     }
 
+    const length = bookmarks.length;
+
+    const formatDeadlineDate = (deadline: any) => {
+        const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
+        return formattedDate;
+      };
+
     return (
         <div>
-            <h1 className=" text-3xl font-bold mt-8 mb-12 text-center">My Bookmarks</h1>
+            <CandidateNav text='Bookmarked jobs' btn={length} btn2="" handleClick={() => {}} handleClick2={() => {}}/>
 
-            <div className="md:w-2/3 mx-auto">
+            <div className="grid grid-cols-2 gap-5 mx-auto">
                 {bookmarks.map((bookmark: Bookmark) => (
                     <div className="my-2" key={bookmark._id}>
                         <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-[#486DD9] py-5 text-gray-700 bg-white">
@@ -85,7 +95,7 @@ const Bookmarks: React.FC = () => {
                                 <p className="hidden md:flex text-sm opacity-90">{bookmark.location}</p>
                                 <div className="hidden md:flex flex-wrap gap-3 items-center mt-5">
                                     <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                                        <MdDateRange className="mr-1" /> {bookmark.post_time}
+                                        <MdDateRange className="mr-1" /> {formatDeadlineDate(bookmark.deadline)}
                                     </span>
                                     <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                                         <IoMdTime className="mr-1" /> Full Time
