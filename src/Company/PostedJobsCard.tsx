@@ -16,6 +16,10 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
     return formattedDate;
   };
 
+  const applicants = job.applicants?.length  
+  console.log(applicants)
+ 
+
   const confirmDelete = () => {
     setShowConfirmation(true);
   };
@@ -47,7 +51,16 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
             <div className="flex justify-between items-center">
               <p className="">{job?.sectorType}</p>
               <p className="text-violet-500 text-right font-semibold">
-                {job?.status}
+               {
+                job.applicants?
+                <>
+                <p>{applicants} Applicants</p>
+                </>
+                :
+                <>
+                <p>0 Applicants</p>
+                </>                
+               }
               </p>
             </div>
             <div className="flex justify-between items-center">
