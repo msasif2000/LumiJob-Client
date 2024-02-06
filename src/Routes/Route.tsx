@@ -23,6 +23,8 @@ import Employees from "../Company/Employees";
 import CandidateProUpdate from "../Candidate/UpdateCmponents/CandidateProUpdate";
 import FindJob from "../Pages/FindJob/FindJOb";
 import CompanyProUpdate from "../Company/Update/CompanyProUpdate";
+import SubscriptionsUiCompany from "../Pages/Subscription/SubscriptionsUiCompany";
+import SubscriptionsUiCandidate from "../Pages/Subscription/SubscriptionsUiCandidate";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,16 @@ export const router = createBrowserRouter([
       {
         path: "/findjob",
         element: <FindJob />,
+      },
+      {
+        path : "/subscriptionsUiCompany",
+        element : <SubscriptionsUiCompany></SubscriptionsUiCompany>
+
+      },
+      {
+        path : "/subscriptionsUiCandidate",
+        element : <SubscriptionsUiCandidate />
+
       },
 
       {
