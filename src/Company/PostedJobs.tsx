@@ -1,10 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import PostedJobsCard from "./PostedJobsCard";
 import Job from "../Pages/Home/PopularJobs/Job";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const PostedJobs = () => {
   const axiosPublic = useAxiosPublic();
@@ -24,7 +24,29 @@ const PostedJobs = () => {
     }
   }, [user]);
 
-  const length = companyPostedJobs?.length
+  const handleDelete = (jobId: string) => {
+    axiosPublic
+      .delete(`/delete-job/${jobId}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === 'true') {
+          toast.success(`Job post deleted successfully`, {
+            hideProgressBar: true,
+            autoClose: 2000,
+            position: "top-center",
+          });
+          setCompanyPostedJobs(
+            companyPostedJobs?.filter((job: any) => job._id !== jobId)
+          );
+        }
+      })
+      .catch((err) => {
+        console.error("Error deleting job:", err);
+        toast.error("An error occurred while deleting the job.");
+      });
+  };
+
+  const length = companyPostedJobs?.length;
 
   return (
     <div>
@@ -37,9 +59,10 @@ const PostedJobs = () => {
       />
       <div className="grid grid-cols-4 gap-6">
         {companyPostedJobs?.map((job: Job) => (
-          <PostedJobsCard key={job._id} job={job} />
+          <PostedJobsCard key={job._id} job={job} handleDelete={handleDelete} />
         ))}
       </div>
+      <ToastContainer/>
     </div>
   );
 };
