@@ -17,7 +17,8 @@ interface Job {
   description: string;
   location: string;
   salaryRange:any;
-  
+  jobType: string;
+  experience: string;
 }
 
 

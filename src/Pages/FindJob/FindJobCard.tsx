@@ -13,7 +13,7 @@ interface JobCardsProps {
 
 const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
 
-  const { _id, sectorType, picture, location, title, salaryRange, deadline } = job;
+  const { _id, sectorType, picture, location, title, salaryRange, deadline, jobType, experience } = job;
 
   return (
     <div className="">
@@ -40,10 +40,10 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
                 <MdDateRange className="mr-1" /> {deadline.split("T")[0]}
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                <ImLocation className="mr-1" /> Full Time
+                <ImLocation className="mr-1" /> {jobType}
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
+                <PiSuitcaseSimpleLight className="mr-1" /> {experience.split("years")[0]} years
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                 <PiMoney className="mr-1" /> {salaryRange.min} - {salaryRange.max}

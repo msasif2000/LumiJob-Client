@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdDateRange } from "react-icons/md";
+import { MdDateRange, MdDelete } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 import { PiMoney } from "react-icons/pi";
 import useBookmark from "../hooks/useBookmarks";
-import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import CandidateNav from "./CommonNavbar/CandidateNav";
@@ -83,7 +82,7 @@ const Bookmarks: React.FC = () => {
                                     </div>
                                     <div className="flex gap-2 items-center justify-between">
                                         <button onClick={() => handleDelete(bookmark._id)} className="">
-                                            <FaTrashAlt className="text-red-600 hover:text-[#486DD9]"></FaTrashAlt>
+                                            <MdDelete className="text-red-600 hover:text-accent"></MdDelete>
                                         </button>
                                         <Link className="" to={`/details/${bookmark.userId}`}>
                                             <button className="py-1 px-3 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-sm rounded-lg">
