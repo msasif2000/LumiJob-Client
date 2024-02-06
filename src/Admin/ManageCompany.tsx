@@ -16,7 +16,7 @@ const ManageCompany = () => {
   const [companyData, refetch] = useCompanyData();
 
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: string, email: string ) => {
     Swal.fire({
       title: "Are you want to delete this company from database?",
       text: "You won't be able to revert this!",
@@ -27,6 +27,10 @@ const ManageCompany = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
+        axiosPublic.delete(`/delete-company-postedJob/${email}`)
+          .then(res => {
+            console.log(res.data);
+          })
 
         axiosPublic.delete(`/delete-company/${id}`)
           .then(res => {
@@ -76,7 +80,7 @@ const ManageCompany = () => {
                   <td>{company.country}</td>
                   <td>{company?.subscription}</td>
                   <td>
-                    <button onClick={() => handleDelete(company._id)} className="btn btn-sm bg-red-600 px-1 text-white"><MdDelete className="text-2xl hover:text-accent" /> </button>
+                    <button onClick={() => handleDelete(company._id, company.email)} className="btn btn-sm bg-red-600 px-1 text-white"><MdDelete className="text-2xl hover:text-accent" /> </button>
                   </td>
 
                 </tr>)
