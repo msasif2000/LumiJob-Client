@@ -62,7 +62,6 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
       isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg" 
        }>
         subscriptions Ui Company
- 
       </NavLink>
  
     </li>,
