@@ -16,7 +16,7 @@ interface JobCardsProps {
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { picture, location, title, salaryRange, deadline } = job; /* Changed salary to salaryRange for solving error and removed _id  */
+  const { picture, location, title, salaryRange, deadline, jobType, experience } = job; /* Changed salary to salaryRange for solving error and removed _id  */
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [name, setName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
@@ -86,10 +86,10 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
 
           <div className="flex flex-wrap gap-3 items-center">
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <IoMdTime className="mr-1" /> Full Time
+              <IoMdTime className="mr-1" /> {jobType}
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
+              <PiSuitcaseSimpleLight className="mr-1" /> {experience.split("years")[0]} Years
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
               <PiMoney className="mr-1" /> {salaryRange?.min}-{salaryRange?.max} 
