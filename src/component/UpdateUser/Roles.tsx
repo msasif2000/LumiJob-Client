@@ -70,7 +70,7 @@ const Roles = () => {
                 {/* card 1 */}
                 <div
                   onClick={() => handleCompany()}
-                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear"
+                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear cursor-pointer"
                 >
                   <figure>
                     <img
@@ -86,7 +86,7 @@ const Roles = () => {
                 {/* card 2 */}
                 <div
                   onClick={() => handleHr()}
-                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear"
+                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear cursor-pointer"
                 >
                   <figure>
                     <img
@@ -104,7 +104,7 @@ const Roles = () => {
                 {/* card 3 */}
                 <div
                   onClick={() => handleCandidate()}
-                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear"
+                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear cursor-pointer"
                 >
                   <figure>
                     <img
@@ -114,7 +114,9 @@ const Roles = () => {
                     />
                   </figure>
                   <div className="card-body">
-                    <h2 className="text-xl font-bold text-center">Job Seeker</h2>
+                    <h2 className="text-xl font-bold text-center">
+                      Job Seeker
+                    </h2>
                   </div>
                 </div>
               </div>
