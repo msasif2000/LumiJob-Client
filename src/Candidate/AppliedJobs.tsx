@@ -3,7 +3,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import CandidateNav from "./CommonNavbar/CandidateNav";
 import useAuth from "../hooks/useAuth";
 import AppliedCard from "./AppliedCard";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const AppliedJobs = () => {
   const { user } = useAuth();
@@ -25,23 +25,7 @@ const AppliedJobs = () => {
   const length = jobs?.length;
 
   const handleDelete = (jobId: string) => {
-    axiosPublic
-      .delete(`//${jobId}`)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.message === "true") {
-          toast.success(`Job post deleted successfully`, {
-            hideProgressBar: true,
-            autoClose: 2000,
-            position: "top-center",
-          });
-          setJobs(jobs?.filter((job: any) => job._id !== jobId));
-        }
-      })
-      .catch((err) => {
-        console.error("Error deleting job:", err);
-        toast.error("An error occurred while deleting the job");
-      });
+   console.log(jobId)
   };
 
   return (
@@ -55,7 +39,7 @@ const AppliedJobs = () => {
       />
 
       <div>
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
           {jobs?.map((job: any) => (
             <AppliedCard key={job._id} job={job} handleDelete={handleDelete} />
           ))}
