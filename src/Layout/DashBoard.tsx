@@ -31,7 +31,7 @@ const DashBoard = () => {
       axiosPublic
         .get(`/check-which-role/${user?.email}`)
         .then((res) => {
-          console.log(res.data.role);
+          // console.log(res.data.role);
           setRole(res.data.role);
           setLoading(false);
         })
@@ -99,7 +99,9 @@ const DashBoard = () => {
           <NavLink to="/dashboard/adminDashboard">DashBoard</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-user">Manage User</NavLink>
+          <NavLink to="/dashboard/admin/manage-candidate">
+            Manage Candidate
+          </NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/admin/manage-company">Manage Company</NavLink>
@@ -123,7 +125,7 @@ const DashBoard = () => {
         <UniLoader />
       ) : (
         <div className="md:flex">
-          <div className="lg:w-2/12 xxl-w-1/6 md:flex-shrink-0">
+          <div className="lg:w-2/12 xl:max-w-[18rem] border-r md:flex-shrink-0">
             <div className="navbar-start lg:hidden">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -168,7 +170,7 @@ const DashBoard = () => {
                 </ul>
               </div>
             </div>
-            <div className="lg:flex hidden  min-h-screen bg-gray-200 pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+            <div className="lg:flex hidden  min-h-screen pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
               <ul className="menu text-xl">
                 {Links}
 
@@ -186,7 +188,7 @@ const DashBoard = () => {
               </ul>
             </div>
           </div>
-          <div className="md:flex-1 overflow-x-auto px-5">
+          <div className="md:flex-1 overflow-x-auto px-5 bg-[#FAFAFA]">
             <Outlet></Outlet>
           </div>
         </div>
