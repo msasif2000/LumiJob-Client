@@ -1,159 +1,287 @@
 import './SubScriptions.css';
 
 const SubscriptionsUiCandidate = () => {
-    return (
-        <div className="h-screen" >
+	return (
+		<div className="h-screen max-w-screen-2xl mx-auto" >
 
-            <div className="grid grid-cols-3 w-10/12 mx-auto pl-20 pt-16">
-            <div>
-            <div className="plan ">
-		<div className="inner">
-			<span className="pricing">
-				<span>
-					$0 <small>/ m</small>
-				</span>
-			</span>
-			<p className="title font-bold">Starter Package</p>
-			<p className="info text-justify text-black">Kickstart your journey to finding the perfect job with our Starter Package. Access a range of job listings and apply to opportunities that match your skills and interests.</p>
-			<ul className="features">
-				<li>
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span className='flex-1'>Access to job listings and application submissions. </span>
-				</li>
-				<li>
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span className="flex-1">Basic candidate profile creation and management.</span>
-				</li>
-				<li className='pb-6'>
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span>Limited access to job search filters.</span>
-				</li>
-			</ul>
-			<div className="action">
-			<a className="button" href="#">
-				Choose plan
-			</a>
-			</div>
+			<section className="bg-white ">
+				<div className="py-8 px-10 mx-10 lg:py-16 lg:px-6">
+					<div className="mx-auto max-w-screen-lg text-center mb-8 lg:mb-12">
+						<h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
+							Choose the Right Plan for Your Career Success
+						</h2>
+						<p className="mb-5 font-light text-gray-500 sm:text-xl ">
+							Explore our range of pricing plans tailored to suit your job-seeking needs. Whether you're just starting your job search journey or looking for premium features to enhance your experience, LumiJobs offers flexible options to cater to every candidate.
+						</p>
+					</div>
+					<div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+						{/* Free Card */}
+						<div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 scale-100 border-gray-100   xl:p-8 ">
+							<h3 className="mb-4 text-2xl font-semibold">Free</h3>
+							<p className="font-light text-gray-500 sm:text-lg ">
+								Your essential toolkit for job hunting. Access diverse job listings and apply seamlessly.
+							</p>
+							<div className="flex justify-center items-baseline my-8">
+								<span className="mr-2 text-5xl font-extrabold">$00</span>
+							</div>
+							{/* List */}
+							<ul role="list" className="mb-8 space-y-4 text-left">
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>
+										Apply to <span className='text-lg font-semibold'>20</span> jobs and kickstart your career journey.
+									</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>Access job listings and apply easily.</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>Manage your candidate profile effortlessly.</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500"
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>
+										Use limited job search filters for tailored results.
+									</span>
+								</li>
+							</ul>
+							<div className="action">
+								<a className="button" href="#">
+									Choose plan
+								</a>
+							</div>
+						</div>
+						{/* standard Card */}
+						
+						<div className="flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 scale-110 border-gray-100 xl:p-8 ">
+							<p className='absolute top-2 right-2 bg-blue-200 p-1 px-2 rounded-2xl  font-semibold'>Popular</p>
+							<h3 className="mb-4 text-2xl font-semibold">Standard</h3>
+							<p className="font-light text-gray-500 sm:text-lg ">
+								Relevant for multiple users, extended &amp; premium support.
+							</p>
+							<div className="flex justify-center items-baseline my-8">
+								<span className="mr-2 text-5xl font-extrabold">$49</span>
+							</div>
+							{/* List */}
+							<ul role="list" className="mb-8 space-y-4 text-left">
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>
+										Apply to <span className='text-lg font-semibold'>100</span> jobs and kickstart your career journey.
+									</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>Access job listings and apply easily.</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>Manage your candidate profile effortlessly.</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500"
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>
+										Use limited job search filters for tailored results.
+									</span>
+								</li>
+							</ul>
+							<div className="action">
+								<a className="button" href="#">
+									Choose plan
+								</a>
+							</div>
+						</div>
+						{/* Premium Card */}
+						<div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 scale-100 border-gray-100   xl:p-8 ">
+							<h3 className="mb-4 text-2xl font-semibold">Premium</h3>
+							<p className="font-light text-gray-500 sm:text-lg ">
+								Best for large scale uses and extended redistribution rights.
+							</p>
+							<div className="flex justify-center items-baseline my-8">
+								<span className="mr-2 text-5xl font-extrabold">$99</span>
+							</div>
+							{/* List */}
+							<ul role="list" className="mb-8 space-y-4 text-left">
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>
+										Apply to <span className='text-lg font-semibold'>unlimited</span> jobs and kickstart your career journey.
+									</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>Access job listings and apply easily.</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500 "
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>Manage your candidate profile effortlessly.</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									{/* Icon */}
+									<svg
+										className="flex-shrink-0 w-5 h-5 text-green-500"
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									<span>
+										Use limited job search filters for tailored results.
+									</span>
+								</li>
+							</ul>
+							<div className="action">
+								<a className="button" href="#">
+									Choose plan
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
 		</div>
-	</div>
-            </div>
-
-            <div>
-            <div className="plan">
-		<div className="inner">
-			<span className="pricing">
-				<span>
-					<del>$49</del> $39 <small>/ m</small>
-				</span>
-			</span>
-			<p className="title">Career Booster</p>
-			<p className="info text-justify text-black">Supercharge your job search with our Career Booster monthly subscription. Gain access to exclusive features, priority listings, and enhanced visibility to stand out to employers. </p>
-			<ul className="features">
-				<li className='flex '>
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span className='flex-1 text-balance'>Advanced job search filters and personalized job recommendations.</span>
-				</li>
-				<li className="">
-				<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					
-					<span className='flex-1' > Insights into job market trends and salary information.</span>
-				</li>
-				<li className="pb-6">
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span >Resume  optimization services .</span>
-				</li>
-			</ul>
-			<div className="action">
-			<a className="button" href="#">
-				Choose plan
-			</a>
-			</div>
-		</div>
-	        </div>
-            </div>
-
-            <div>
-            <div className="plan">
-		<div className="inner">
-			<span className="pricing">
-				<span>
-                <del>$499</del> $399 <small>/ y</small>
-				</span>
-			</span>
-			<p className="title">Professional Pathway</p>
-			<p className="info text-justify font-semibold">Secure your professional future with our Professional Pathway yearly subscription. Unlock premium benefits, including priority application review, tailored career guidance</p>
-			<ul className="features">
-				<li className='flex'>
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span className='flex-1'> Dedicated career coach for personalized guidance and support.</span>
-				</li>
-				<li className='flex' >
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span className='flex-1'> Networking opportunities with industry professionals.</span>
-				</li>
-				<li className="flex">
-					<span className="icon">
-						<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 0h24v24H0z" fill="none"></path>
-							<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-						</svg>
-					</span>
-					<span className='flex-1'>Access to premium webinars and career development resources.</span>
-				</li>
-			</ul>
-			<div className="action">
-			<a className="button" href="#">
-				Choose plan
-			</a>
-			</div>
-		</div>
-	</div>
-            </div>
-
-            </div>
-           
-        </div>
-    );
+	);
 };
 
 export default SubscriptionsUiCandidate;

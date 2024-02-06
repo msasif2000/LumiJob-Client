@@ -10,42 +10,49 @@ import BookmarkButton from "../../../component/Shared/BookmarkButton";
 import Job from "./Job";
 import { useEffect, useState } from "react";
 import { useDropzone } from 'react-dropzone';
+import useAuth from "../../../hooks/useAuth";
 
 interface JobCardsProps {
   job: Job;
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { picture, location, title, salaryRange, deadline, jobType, experience } = job; /* Changed salary to salaryRange for solving error and removed _id  */
+  const {user}=useAuth()
+
+
+  const { _id, picture, location, title, salaryRange, deadline } = job; 
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [name, setName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
+  const [contactEmail, setContactEmail] = useState<string>('');
+  const jobPostId = _id
+  const applierEmail = user.email
+
 
   const onDrop = (acceptedFiles: File[]) => {
     // Handle the dropped file
     const file = acceptedFiles[0];
     setCvFile(file);
   };
-
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  const modalId = `my_modal_${_id}`;
+  // console.log(modalId);
 
   const handelApplications = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Name:', name);
-    console.log('Address:', address);
-    console.log('Phone Number:', phoneNumber);
-    console.log('Email:', email);
-    console.log('CV File:', cvFile);
-
+    const data = { name, address, phoneNumber, contactEmail, jobPostId, applierEmail}
+    console.log(data);
     setName('');
     setCvFile(null);
     setAddress('');
     setPhoneNumber('');
-    setEmail('');
+    setContactEmail('');
 
   };
+
+
 
   useEffect(() => {
     Aos.init();
@@ -72,7 +79,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
 
             {/* =============> Bookmark Button <============= */}
 
-            <BookmarkButton job={job}/>
+            <BookmarkButton job={job} />
           </div>
 
           <div className="py-4">
@@ -86,13 +93,13 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
 
           <div className="flex flex-wrap gap-3 items-center">
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <IoMdTime className="mr-1" /> {jobType}
+              <IoMdTime className="mr-1" /> Full Time
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <PiSuitcaseSimpleLight className="mr-1" /> {experience.split("years")[0]} Years
+              <PiSuitcaseSimpleLight className="mr-1" /> 5-7 Years
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
-              <PiMoney className="mr-1" /> {salaryRange?.min}-{salaryRange?.max} 
+              <PiMoney className="mr-1" /> {salaryRange?.min}-{salaryRange?.max}
             </span>
             <span className="bg-white py-1 px-3 rounded flex items-center text-sm">
               <MdDateRange className="mr-1" /> {deadline.split("T")[0]}
@@ -112,11 +119,11 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <button
             className="py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-3xl"
-            onClick={() => (document.getElementById("my_modal_4") as HTMLDialogElement)?.showModal()}
+            onClick={() => (document.getElementById(modalId) as HTMLDialogElement)?.showModal()}
           >
             Quickly Apply
           </button>
-          <dialog id="my_modal_4" className="modal">
+          <dialog id={modalId} className="modal">
             <div className="modal-box w-9/12 max-w-5xl">
               {/* Form content part */}
               <div>
@@ -128,7 +135,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                   us.
                 </p>
                 <div className="divider divider-neutral w-full"></div>
-                <form onSubmit={handelApplications} className="space-y-3 w-10/12 mx-auto" >
+                <form onSubmit={handelApplications} className="space-y-3 w-10/12 mx-auto">
                   <div className=" flex justify-center items-center">
                     <label htmlFor="FullName" className="text-lg font-semibold  w-3/12 text-start">
                       Your Full Name :
@@ -166,7 +173,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       id="Phone-Number"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
-                      type="number"
+                      type="text"
                       placeholder="Phone Number...."
                       className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
                     />
@@ -178,8 +185,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     <input
                       required
                       id="Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={contactEmail}
+                      onChange={(e) => setContactEmail(e.target.value)}
                       type="email"
                       placeholder="Email...."
                       className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
