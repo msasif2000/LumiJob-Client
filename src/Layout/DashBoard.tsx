@@ -56,10 +56,7 @@ const DashBoard = () => {
           </h2>
         </li>
         <li>
-          <NavLink to="/dashboard/profile">Profile</NavLink>
-        </li>
-        <li>
-          <NavLink to="/dashboard/resume">Resume</NavLink>
+          <NavLink to="/dashboard/candidateProfile">Profile</NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/appliedJobs">Applied Jobs</NavLink>
@@ -68,7 +65,7 @@ const DashBoard = () => {
           <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/analytics">Analytics</NavLink>
+          <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
         </li>
       </>
     ) : role === "company" ? (
