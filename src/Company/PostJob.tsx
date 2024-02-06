@@ -103,6 +103,7 @@ const JobPostingForm: React.FC = () => {
     axiosPublic
       .post("/post-jobs", jobData)
       .then((response: any) => {
+        console.log(response.data)
         if (response.data.insertedId) {
           toast.success("Job Posted Successfully", {
             position: "top-center",
@@ -111,15 +112,16 @@ const JobPostingForm: React.FC = () => {
             closeOnClick: true,
           });
           setLoading(false)
-        } else {
-          toast.error("Job Posting Failed", {
+        } else if(response.data.message === 'Please update subscription') {
+          toast.error("You've reached your job posting limit. Please update your subscription", {
             position: "top-center",
-            autoClose: 3000,
+            autoClose: 5000,
             hideProgressBar: true,
             closeOnClick: true,
           });
           setLoading(false)
         }
+        
       })
       .catch((error: any) => {
         console.log(error);
