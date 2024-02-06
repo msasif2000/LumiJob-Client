@@ -1,10 +1,8 @@
-
-
-export interface salaryRange { // Capitalize 'SalaryRange'
+export interface salaryRange {
+  // Capitalize 'SalaryRange'
   min: number;
   max: number;
 }
-
 
 // Job.ts
 interface Job {
@@ -16,10 +14,9 @@ interface Job {
   deadline: string;
   description: string;
   location: string;
-  salaryRange:any;
+  salaryRange: any;
   jobType: string;
   experience: string;
 }
-
 
 export default Job;

@@ -4,12 +4,12 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import { IoMdTime } from "react-icons/io";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import Aos from "aos"
-import "aos/dist/aos.css"
+import Aos from "aos";
+import "aos/dist/aos.css";
 import BookmarkButton from "../../../component/Shared/BookmarkButton";
 import Job from "./Job";
 import { useEffect, useState } from "react";
-import { useDropzone } from 'react-dropzone';
+import { useDropzone } from "react-dropzone";
 import useAuth from "../../../hooks/useAuth";
 
 interface JobCardsProps {
@@ -17,18 +17,20 @@ interface JobCardsProps {
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const {user}=useAuth()
+  const { user } = useAuth();
 
-
-  const { _id, picture, location, title, salaryRange, deadline } = job; 
+  const { _id, picture, location, title, salaryRange, deadline } = job;
   const [cvFile, setCvFile] = useState<File | null>(null);
-  const [name, setName] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [contactEmail, setContactEmail] = useState<string>('');
-  const jobPostId = _id
-  const applierEmail = user.email
+  const [name, setName] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [contactEmail, setContactEmail] = useState<string>("");
+  const jobPostId = _id;
+  let applierEmail: string;
 
+  if (user && user.email) {
+    applierEmail = user.email;
+  }
 
   const onDrop = (acceptedFiles: File[]) => {
     // Handle the dropped file
@@ -42,17 +44,21 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
 
   const handelApplications = (e: React.FormEvent) => {
     e.preventDefault();
-    const data = { name, address, phoneNumber, contactEmail, jobPostId, applierEmail}
+    const data = {
+      name,
+      address,
+      phoneNumber,
+      contactEmail,
+      jobPostId,
+      applierEmail,
+    };
     console.log(data);
-    setName('');
+    setName("");
     setCvFile(null);
-    setAddress('');
-    setPhoneNumber('');
-    setContactEmail('');
-
+    setAddress("");
+    setPhoneNumber("");
+    setContactEmail("");
   };
-
-
 
   useEffect(() => {
     Aos.init();
@@ -119,7 +125,11 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <button
             className="py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-3xl"
-            onClick={() => (document.getElementById(modalId) as HTMLDialogElement)?.showModal()}
+            onClick={() =>
+              (
+                document.getElementById(modalId) as HTMLDialogElement
+              )?.showModal()
+            }
           >
             Quickly Apply
           </button>
@@ -135,9 +145,15 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                   us.
                 </p>
                 <div className="divider divider-neutral w-full"></div>
-                <form onSubmit={handelApplications} className="space-y-3 w-10/12 mx-auto">
+                <form
+                  onSubmit={handelApplications}
+                  className="space-y-3 w-10/12 mx-auto"
+                >
                   <div className=" flex justify-center items-center">
-                    <label htmlFor="FullName" className="text-lg font-semibold  w-3/12 text-start">
+                    <label
+                      htmlFor="FullName"
+                      className="text-lg font-semibold  w-3/12 text-start"
+                    >
                       Your Full Name :
                     </label>
                     <input
@@ -151,7 +167,10 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
                   <div className=" flex justify-center items-center">
-                    <label htmlFor="Address" className=" text-lg font-semibold w-3/12 text-start ">
+                    <label
+                      htmlFor="Address"
+                      className=" text-lg font-semibold w-3/12 text-start "
+                    >
                       Address :
                     </label>
                     <input
@@ -165,7 +184,10 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
                   <div className=" flex justify-center items-center">
-                    <label htmlFor="Phone-Number" className=" text-lg font-semibold w-3/12 text-start ">
+                    <label
+                      htmlFor="Phone-Number"
+                      className=" text-lg font-semibold w-3/12 text-start "
+                    >
                       Phone Number :
                     </label>
                     <input
@@ -179,7 +201,10 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
                   <div className=" flex justify-center items-center">
-                    <label htmlFor="Email" className=" text-lg font-semibold w-3/12 text-start ">
+                    <label
+                      htmlFor="Email"
+                      className=" text-lg font-semibold w-3/12 text-start "
+                    >
                       Email :
                     </label>
                     <input
@@ -193,30 +218,37 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
 
-
-                  <div {...getRootProps({ className: 'dropzone' })}>
+                  <div {...getRootProps({ className: "dropzone" })}>
                     <input {...getInputProps()} />
-                    <h1 className="text-lg font-semibold mb-5 ml-16">CV or Resume : </h1>
-                    {
-                      cvFile ? <p className="py-10 border-2 bg-gray-100 text-center">
+                    <h1 className="text-lg font-semibold mb-5 ml-16">
+                      CV or Resume :{" "}
+                    </h1>
+                    {cvFile ? (
+                      <p className="py-10 border-2 bg-gray-100 text-center">
                         File Selected: {cvFile.name}
-                      </p> : <p className="py-10 border-2 bg-gray-100 text-center" >click to select a file</p>
-                    }
-
+                      </p>
+                    ) : (
+                      <p className="py-10 border-2 bg-gray-100 text-center">
+                        click to select a file
+                      </p>
+                    )}
                   </div>
-
 
                   {/* from button submit and cancel */}
                   <div className="flex justify-center gap-10 ">
-
-                    <button type="submit" className=" btn mt-6  bg-green-300 hover:bg-green-600 hover:text-white">
+                    <button
+                      type="submit"
+                      className=" btn mt-6  bg-green-300 hover:bg-green-600 hover:text-white"
+                    >
                       Submit
                     </button>
 
                     <div className="modal-action">
                       <form method="dialog">
                         {/* if there is a button, it will close the modal */}
-                        <button className="btn hover:bg-red-600 hover:text-white bg-red-400 ">Close</button>
+                        <button className="btn hover:bg-red-600 hover:text-white bg-red-400 ">
+                          Close
+                        </button>
                       </form>
                     </div>
                   </div>
