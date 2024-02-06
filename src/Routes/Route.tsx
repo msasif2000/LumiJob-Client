@@ -28,8 +28,8 @@ import SubscriptionsUiCandidate from "../Pages/Subscription/SubscriptionsUiCandi
 import AdminDashboard from "../Admin/AdminDashboard";
 import ManageCompany from "../Admin/ManageCompany";
 import ManageJobs from "../Admin/ManageJobs";
-import ManageUser from "../Admin/ManageUser";
 import ManagePayments from "../Admin/ManagePayments";
+import ManageCandidate from "../Admin/ManageCandidate";
 
 export const router = createBrowserRouter([
   {
@@ -46,14 +46,12 @@ export const router = createBrowserRouter([
         element: <FindJob />,
       },
       {
-        path : "/subscriptionsUiCompany",
-        element : <SubscriptionsUiCompany></SubscriptionsUiCompany>
-
+        path: "/subscriptionsUiCompany",
+        element: <SubscriptionsUiCompany></SubscriptionsUiCompany>,
       },
       {
-        path : "/subscriptionsUiCandidate",
-        element : <SubscriptionsUiCandidate />
-
+        path: "/subscriptionsUiCandidate",
+        element: <SubscriptionsUiCandidate />,
       },
 
       {
@@ -116,8 +114,8 @@ export const router = createBrowserRouter([
         element: <AdminDashboard />,
       },
       {
-        path: "admin/manage-user",
-        element: <ManageUser />,
+        path: "admin/manage-candidate",
+        element: <ManageCandidate />,
       },
       {
         path: "admin/manage-company",
