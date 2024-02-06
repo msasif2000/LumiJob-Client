@@ -3,20 +3,20 @@ import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
- 
+
 interface NavbarProps {
   color?: string;
 }
- 
+
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
   // To Do : user set AuthProvider
   // To Do : All Link NavLink or Link Seta Valid link
- 
+
   const { user, logOut } = useAuth();
   const [isRole, setRole] = useState(null);
   const [profile, setProfile] = useState<any>(null);
   const axiosPublic = useAxiosPublic();
- 
+
   useEffect(() => {
     if (user?.email) {
       axiosPublic
@@ -31,11 +31,11 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         });
     }
   }, [user]);
- 
+
   const handleLogout = () => {
     logOut();
   };
- 
+
   const Linking = (
     <>
       <li key="home">
@@ -43,28 +43,31 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           Home
         </NavLink>
       </li>
-    <li key="subscriptionsUiCandidate">
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "font-black underline text-lg"
-            : "text-lg"
-        }
-        to="/subscriptionsUiCandidate"
-      >
-        Subscriptions Ui Candidate
-      </NavLink>
-    </li>
-    <li key="subscriptionsUiCompany" >
-      <NavLink to="/subscriptionsUiCompany" className={({isActive, isPending}) => 
-      isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg" 
-       }>
-        subscriptions Ui Company
-      </NavLink>
- 
-    </li>,
+      {
+        isRole === "candidate" ? (
+          <li key="subscriptionsUiCandidate">
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                    ? "font-black underline text-lg"
+                    : "text-lg"
+              }
+              to="/subscriptionsUiCandidate"
+            >
+              Subscriptions Ui Candidate
+            </NavLink>
+          </li>) :
+          (<li key="subscriptionsUiCompany" >
+            <NavLink to="/subscriptionsUiCompany" className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
+            }>
+              subscriptions Ui Company
+            </NavLink>
+
+          </li>)
+      }
       <li key="Job">
         <NavLink className="text-lg font-heading font-medium" to="/findjob">
           Jobs
@@ -75,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           Insights
         </NavLink>
       </li>
- 
+
       {isRole === "admin" ? (
         <li key="adminDashboard">
           <NavLink
@@ -106,7 +109,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
       ) : (
         ""
       )}
- 
+
       <li key="Contact">
         <NavLink className="text-lg font-heading font-medium" to="/Contact">
           Contact
@@ -114,10 +117,10 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
       </li>
     </>
   );
- 
+
   // for dynamic bg color of navbar
   const bgColor = color ? color : "bg-white";
- 
+
   return (
     <div className={`border-b sticky top-0 z-30 ${bgColor}`}>
       <div className="navbar max-w-screen-2xl mx-auto px-4">
@@ -170,7 +173,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
               </svg>
             </button>
           </div>
- 
+
           <div>
             {user ? (
               // if user exist show img and dropdown
@@ -249,5 +252,5 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
     </div>
   );
 };
- 
+
 export default Navbar;
