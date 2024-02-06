@@ -58,7 +58,7 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
                 </>
                 :
                 <>
-                <p>0 Applicants</p>
+                <p>No Applicants</p>
                 </>                
                }
               </p>
