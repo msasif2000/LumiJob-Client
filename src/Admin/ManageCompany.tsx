@@ -16,7 +16,7 @@ const ManageCompany = () => {
   const [companyData, refetch] = useCompanyData();
 
 
-  const handleDelete = (id: string, email: string ) => {
+  const handleDelete = (id: string, email: string) => {
     Swal.fire({
       title: "Are you want to delete this company from database?",
       text: "You won't be able to revert this!",
@@ -47,49 +47,51 @@ const ManageCompany = () => {
     });
   }
   return (
-    <div className="mt-8">
-      <h1 className="text-3xl text-center my-4"><span className="text-accent">{companyData.length}</span> Registered Company</h1>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table min-w-full divide-y divide-red-500">
-            {/* head */}
-            <thead>
-              <tr>
+    <div>
+      <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg mt-20">
+        <h2 className="text-3xl font-bold">Manage Companies</h2>
+        <h2 className="text-3xl">
+          <b>Total:</b> <span className="text-accent">{companyData.length}</span>
+        </h2>
+      </div>
+      <div className="overflow-x-auto max-w-screen-xl border mx-auto bg-white p-6 rounded-b-lg">
+        <table className="table">
+          {/* head */}
+          <thead className="bg-accentTwo text-lg text-white font-bold">
+            <tr>
+              <th>
+                #
+              </th>
+              <th>NAME</th>
+              <th>EMAIL</th>
+              <th>PHONE</th>
+              <th>LOCATION</th>
+              {/* <th>SUBSCRIPTION</th> */}
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              companyData.map((company: Company, index: number) => <tr key={company._id}>
                 <th>
-                  #ID
+                  {index + 1}
                 </th>
-                <th>NAME</th>
-                <th>EMAIL</th>
-                <th>PHONE</th>
-                <th>LOCATION</th>
-                <th>SUBSCRIPTION</th>
-                <th>ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                companyData.map((company: Company) => <tr key={company._id}>
-                  <th>
-                    {company._id.slice(10, 18)}...
-                  </th>
-                  <td>
-                    <span className="">{company.name}</span>
-                  </td>
-                  <td>{company.email}</td>
-                  <td>{company.phone}</td>
-                  <td>{company.country}</td>
-                  <td>{company?.subscription}</td>
-                  <td>
-                    <button onClick={() => handleDelete(company._id, company.email)} className="btn btn-sm bg-red-600 px-1 text-white"><MdDelete className="text-2xl hover:text-accent" /> </button>
-                  </td>
+                <td className="font-bold">
+                  {company.name}
+                </td>
+                <td className="font-semibold text-lg">{company.email}</td>
+                <td className="font-semibold">{company.phone}</td>
+                <td className="font-semibold">{company.country}</td>
+                {/* <td>{company?.subscription}</td> */}
+                <td>
+                  <button onClick={() => handleDelete(company._id, company.email)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4"><MdDelete className="text-xl hover:text-accent" /> </button>
+                </td>
+              </tr>)
+            }
+            {/* row 1 */}
 
-                </tr>)
-              }
-              {/* row 1 */}
-
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
   );
