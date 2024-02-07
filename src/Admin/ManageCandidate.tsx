@@ -48,7 +48,7 @@ const ManageCandidate = () => {
           <b>Manage Candidates</b>
         </h2>
         <h2 className="text-3xl">
-          <b>Total:</b> {candidates.length}
+          <b>Total:</b> <span className="text-accent">{candidates.length}</span>
         </h2>
       </div>
       <div className="overflow-x-auto max-w-screen-xl border mx-auto bg-white p-6 rounded-b-lg">
@@ -57,9 +57,10 @@ const ManageCandidate = () => {
           <thead className="bg-accentTwo text-lg text-white font-bold">
             <tr>
               <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Action</th>
+              <th>NAME</th>
+              <th>EMAIL</th>
+              {/* <th>SUBSCRIPTION</th> */}
+              <th>ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -73,7 +74,7 @@ const ManageCandidate = () => {
                 <td>
                   <h3 className="font-semibold text-lg">{candidate?.email}</h3>
                 </td>
-
+                {/* <td>{company?.subscription}</td> */}
                 <th>
                   <div className="flex justify-between md:justify-start">
                     <button
