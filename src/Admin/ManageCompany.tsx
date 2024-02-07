@@ -46,6 +46,8 @@ const ManageCompany = () => {
       }
     });
   }
+
+  
   return (
     <div className="mt-8">
       <h1 className="text-3xl text-center my-4"><span className="text-accent">{companyData.length}</span> Registered Company</h1>
