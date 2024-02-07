@@ -46,6 +46,8 @@ const ManageCompany = () => {
       }
     });
   }
+
+  
   return (
     <div>
       <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg mt-20">
