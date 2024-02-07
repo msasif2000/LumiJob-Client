@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import LoginArt from "../../assets/Login Art.svg";
+// import LoginArt from "../../assets/Login Art.svg";
+import LoginArt from "../../assets/image/auth.jpg";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -46,7 +47,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen flex px-3 md:px-10 lg:px-0">
+    <div className="w-full min-h-screen flex px-3 md:px-10 lg:px-0">
       {/* form div */}
       <div className="lg:w-1/2 flex items-center justify-center">
         <div className="space-y-5 lg:px-5 xl:px-40  md:space-y-10">
