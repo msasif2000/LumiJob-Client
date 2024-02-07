@@ -30,6 +30,7 @@ import ManageCompany from "../Admin/ManageCompany";
 import ManageJobs from "../Admin/ManageJobs";
 import ManagePayments from "../Admin/ManagePayments";
 import ManageCandidate from "../Admin/ManageCandidate";
+import Payment from "../Pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +76,11 @@ export const router = createBrowserRouter([
         element: <JobsDetails></JobsDetails>,
       },
     ],
+  },
+
+  {
+    path: "payment",
+    element: <Payment />,
   },
 
   {
