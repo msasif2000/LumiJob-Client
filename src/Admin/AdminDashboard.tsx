@@ -78,7 +78,7 @@ const AdminDashboard: React.FC = () => {
 
 
   return (
-    <div className='mt-12'>
+    <div className='mt-6'>
       <h3 className=' text-3xl font-bold my-6 text-gray-600'>Analytics</h3>
       <div className="block md:flex gap-5">
         <div className="w-full md:w-1/2 border-4">
