@@ -90,7 +90,7 @@ const AdminDashboard: React.FC = () => {
               <YAxis dataKey="name" type="category" />
               <Tooltip />
               <Legend />
-              <Bar dataKey="value" fill="#FFFFFF">
+              <Bar dataKey="value" fill="#8dacc8">
                 {jobTypeData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={JOB_TYPE_COLORS[index % JOB_TYPE_COLORS.length]} />
                 ))}
@@ -124,7 +124,7 @@ const AdminDashboard: React.FC = () => {
           <div className='flex justify-center gap-2 mb-5'>
               <p className='bg-[#164070] py-1 px-2 text-white'>Company</p>
               <p className='bg-[#00C89F] py-1 px-2 text-white'>Candidate</p>
-              <p className='bg-[#FFBB98] py-1 px-2 text-white'>Admin</p>
+              <p className='bg-[#ffbb98] py-1 px-2 text-white'>Admin</p>
              </div>
         </div>
       </div>
