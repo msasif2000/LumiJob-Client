@@ -82,7 +82,7 @@ const AdminDashboard: React.FC = () => {
       <h3 className=' text-3xl font-bold my-6 text-gray-600'>Analytics</h3>
       <div className="block md:flex gap-5">
         <div className="w-full md:w-1/2 border-4">
-          <h5 className='text-xl font-semibold text-center text-gray-600 mb-5'>Job Types</h5>
+          <h5 className='text-xl font-semibold text-center text-gray-600 mt-6 mb-5'>Job Types</h5>
           <ResponsiveContainer width="80%" height={200}>
             <BarChart layout="vertical" data={jobTypeData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -100,7 +100,7 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         <div className="w-full md:w-1/2  border-4">
-        <h5 className='text-xl font-semibold text-center text-gray-600 mb-5'>User Roles</h5>
+        <h5 className='text-xl font-semibold text-center text-gray-600 mt-6 mb-2'>User Roles</h5>
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie
