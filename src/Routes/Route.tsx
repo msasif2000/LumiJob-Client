@@ -30,6 +30,7 @@ import ManageCompany from "../Admin/ManageCompany";
 import ManageJobs from "../Admin/ManageJobs";
 import ManagePayments from "../Admin/ManagePayments";
 import ManageCandidate from "../Admin/ManageCandidate";
+import OptionSubscribe from "../Pages/Subscription/OptionSubscribe";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/subscriptionsUiCandidate",
         element: <SubscriptionsUiCandidate />,
+      },
+      {
+        path: "/optionsSubscribe",
+        element: <OptionSubscribe></OptionSubscribe>,
       },
 
       {

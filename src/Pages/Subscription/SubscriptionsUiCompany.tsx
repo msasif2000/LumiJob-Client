@@ -1,9 +1,8 @@
-
 import "./SubScriptions.css"
 
 const SubscriptionsUiCompany = () => {
 	return (
-		<div className="h-screen max-w-screen-2xl mx-auto" >
+		<div className="max-w-screen-2xl mx-auto" >
 
 			<section className="bg-white ">
 				<div className="py-8 px-10 mx-10 lg:py-16 lg:px-6">
