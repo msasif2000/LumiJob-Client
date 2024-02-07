@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { TbHomeShare } from "react-icons/tb";
-import SignupArt from "../../assets/Art (1).svg";
+// import SignupArt from "../../assets/Art (1).svg";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { LuEyeOff } from "react-icons/lu";
 import { GiBleedingEye } from "react-icons/gi";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import signInImage from "../../assets/image/sign-in.jpg";
 
 interface SignUpFormData {
   name: string;
@@ -17,7 +18,7 @@ interface SignUpFormData {
   password: string;
 }
 const Signup: React.FC = () => {
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
@@ -34,15 +35,15 @@ const Signup: React.FC = () => {
     try {
       const userCredential = await createUser(data.email, data.password);
       console.log(userCredential);
-  
+
       await updateUserProfile(data.name);
-  
+
       const userInfo = {
         name: data.name,
         email: data.email,
         password: data.password,
       };
-  
+
       // for dev Delete in prod
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
@@ -52,7 +53,7 @@ const Signup: React.FC = () => {
           autoClose: 2000,
         });
       });
-  
+
       setIsCreatingAccount(false);
       navigate("/signup/role");
     } catch (error: any) {
@@ -71,14 +72,14 @@ const Signup: React.FC = () => {
           autoClose: 2000,
         });
       }
-  
+
       console.error("Error creating user:", error);
       setIsCreatingAccount(false);
     }
   };
-  
+
   return (
-    <div className="w-full h-screen flex px-3">
+    <div className="w-full min-h-screen flex px-3">
       {/* form Div */}
       <div className="lg:w-1/2 flex flex-col items-center justify-center">
         <div className="w-full md:px-10 lg:px-5 xl:px-36">
@@ -176,7 +177,7 @@ const Signup: React.FC = () => {
       {/* image div */}
       <div className="lg:w-1/2 object-cover m-4 hidden lg:block">
         <img
-          src={SignupArt}
+          src={signInImage}
           className="w-full h-full object-cover rounded-xl"
           alt=""
         />
