@@ -43,7 +43,7 @@ interface SearchProps {
                                 value={searchText}
                                 onChange={handleChange}
                                 className="p-2 w-11/12 bg-white pl-2 text-base font-semibold outline-0"
-                                placeholder="Search..."
+                                placeholder="Search company, job title..."
                             />
                             <button
                                 onClick={handleSearch}

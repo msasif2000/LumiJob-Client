@@ -54,12 +54,14 @@ const FindJob: React.FC = () => {
         </div>
 
         <div className="w-full bg-[#FAFAFA]">
-          <div className="max-w-screen-2xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-4">
-            {/*=======> Left column <============= */}
-            <Filters onFilterChange={handleFilterChange} />
+          <div className="max-w-screen-2xl mx-auto px-4 grid grid-cols-1 md:grid-cols-6 xl:grid-cols-7 xl:gap-2">
+            <div className="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1">
+              {/*=======> Left column <============= */}
+              <Filters onFilterChange={handleFilterChange} />
+            </div>
 
             {/* =============> Middle column <============== */}
-            <div className="col-span-1 md:col-span-4 lg:col-span-3 min-h-screen">
+            <div className="col-span-1 md:col-span-4 xl:col-span-5 min-h-screen">
               <div className="flex justify-between items-center min-h-32 px-4">
                 <h4 className="font-semibold font-heading text-2xl">
                   <span className="text-[#486DD9]">{currentJobs.length}</span> Jobs Available

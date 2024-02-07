@@ -1,4 +1,4 @@
-import { ImLocation } from "react-icons/im"; 
+import { ImLocation } from "react-icons/im";
 import { MdDateRange } from "react-icons/md";
 import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import Job from "../Home/PopularJobs/Job";
@@ -18,7 +18,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
   return (
     <div className="">
       <div>
-        <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-[#486DD9] py-8 text-gray-700 bg-white ">
+        <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-accent py-8 text-gray-700 bg-white ">
           <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
             <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
               <img src={picture} alt="logo" className="w-full  text-gray-700" />
@@ -30,7 +30,9 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
               <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
                 {title}
               </h3>
-              <BookmarkButton job={job}/>
+              <div className="md:flex hidden">
+                <BookmarkButton job={job} />
+              </div>
             </div>
             <p className="text-sm opacity-90">{location}</p>
             {/* =============>  Job Details <<=========== */}
@@ -49,11 +51,19 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
                 <PiMoney className="mr-1" /> {salaryRange.min} - {salaryRange.max}
               </span>
             </div>
-            <Link className="flex justify-end" to={`/details/${_id}`}>
-              <button className="mt-4 py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-lg">
+            <Link className="md:flex justify-end hidden" to={`/details/${_id}`}>
+              <button className="mt-4 py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
                 Apply
               </button>
             </Link>
+            <div className="flex items-center justify-center mt-4 gap-2 md:hidden">
+              <BookmarkButton job={job} />
+              <Link className="flex justify-end" to={`/details/${_id}`}>
+                <button className=" py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
+                  Apply
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

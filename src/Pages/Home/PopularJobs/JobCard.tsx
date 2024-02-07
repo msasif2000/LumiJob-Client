@@ -124,7 +124,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
         <div>
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <button
-            className="py-1 px-8 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-base rounded-3xl"
+            className="py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-3xl"
             onClick={() =>
               (
                 document.getElementById(modalId) as HTMLDialogElement

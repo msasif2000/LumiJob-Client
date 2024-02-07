@@ -68,10 +68,10 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   return (
     <div>
       <div className="col-span-1">
-        <div className="flex flex-col justify-center h-auto md:min-h-32 px-3">
+        <div className="flex flex-col justify-center h-auto md:min-h-32 px-3 w-full">
           <h4 className="font-semibold font-heading text-2xl">Filters</h4>
         </div>
-        <div className="border rounded p-5 lg:p-8 m-3 min-h-[35vh] bg-white sticky top-24">
+        <div className="border rounded p-2  m-3 min-h-[35vh] bg-white sticky top-24">
           {/* Sector Filter */}
           <div>
             <h6 className="mb-3 text-xl font-heading font-semibold text-gray-900">

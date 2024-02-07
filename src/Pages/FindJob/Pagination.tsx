@@ -19,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <nav className="mx-auto flex items-center gap-5">
+    <nav className="mx-auto flex items-center md:gap-2 gap-1">
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         type="button"

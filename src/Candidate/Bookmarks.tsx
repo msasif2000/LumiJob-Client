@@ -68,7 +68,7 @@ const Bookmarks: React.FC = () => {
             <div className="grid grid-cols-2 gap-5 mx-auto">
                 {bookmarks.map((bookmark: Bookmark) => (
                     <div className="my-2" key={bookmark._id}>
-                        <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-[#486DD9] py-5 text-gray-700 bg-white">
+                        <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-accent py-5 text-gray-700 bg-white">
                             <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
                                 <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
                                     <img src={bookmark.picture} alt="logo" className="w-full text-gray-700" />
@@ -85,7 +85,7 @@ const Bookmarks: React.FC = () => {
                                             <MdDelete className="text-red-600 hover:text-accent"></MdDelete>
                                         </button>
                                         <Link className="" to={`/details/${bookmark.userId}`}>
-                                            <button className="py-1 px-3 border border-gray-300 hover:bg-[#486DD9] hover:text-white font-semibold text-sm rounded-lg">
+                                            <button className="py-1 px-3 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-sm rounded-lg">
                                                 Quick Apply
                                             </button>
                                         </Link>
