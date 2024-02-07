@@ -71,7 +71,7 @@ const AdminDashboard: React.FC = () => {
     fetchUserData();
   }, [axiosPublic]);
 
-  const onPieEnter1 = (data: any, index: number) => {
+  const onPieEnter1 = (_data: any, index: number) => {
     setActiveIndex1(index);
   };
 
@@ -91,7 +91,7 @@ const AdminDashboard: React.FC = () => {
               <Tooltip />
               <Legend />
               <Bar dataKey="value" fill="#8dacc8">
-                {jobTypeData.map((entry, index) => (
+                {jobTypeData.map((_entry, index) => (
                   <Cell key={`cell-${index}`} fill={JOB_TYPE_COLORS[index % JOB_TYPE_COLORS.length]} />
                 ))}
               </Bar>
@@ -114,7 +114,7 @@ const AdminDashboard: React.FC = () => {
                 dataKey="value"
                 onMouseEnter={onPieEnter1}
               >
-                {userData.map((entry, index) => (
+                {userData.map((_entry, index) => (
                   <Cell key={`cell-${index}`} fill={ROLE_COLORS[index % ROLE_COLORS.length]} />
                 ))}
               </Pie>
@@ -139,7 +139,7 @@ const AdminDashboard: React.FC = () => {
             <Tooltip />
             <Legend />
             <Bar dataKey="value" fill="#164070">
-              {sectorTypeData.map((entry, index) => (
+              {sectorTypeData.map((_entry, index) => (
                 <Cell key={`cell-${index}`} fill={SECTOR_COLORS[index % SECTOR_COLORS.length]} />
               ))}
             </Bar>
