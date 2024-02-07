@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 
-const SECTOR_COLORS = ['#2661a4', '#2662b7', '#2663c9']; // Colors for different sectors
-const ROLE_COLORS = ['#0078FE', '#00C89F', '#ff9763']; // Colors for roles
+const SECTOR_COLORS = ['#164070']; // Colors for different sectors
+const ROLE_COLORS = ['#0078FE', '#00C89F', '#FFBB98']; 
 const JOB_TYPE_COLORS = ['#FF8042', '#DD93CE', '#BBC49F']; // Colors for Remote, Onsite, Hybrid
 
 const AdminDashboard: React.FC = () => {
@@ -79,9 +79,10 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div className='mt-12'>
-      <h3 className=' text-3xl font-bold my-6'>Analytics</h3>
-      <div className="block md:flex">
+      <h3 className=' text-3xl font-bold my-6 text-gray-600'>Analytics</h3>
+      <div className="block md:flex gap-5">
         <div className="w-full md:w-1/2 border-4">
+          <h5 className='text-xl font-semibold text-center text-gray-600 mb-5'>Job Types</h5>
           <ResponsiveContainer width="80%" height={200}>
             <BarChart layout="vertical" data={jobTypeData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -89,16 +90,17 @@ const AdminDashboard: React.FC = () => {
               <YAxis dataKey="name" type="category" />
               <Tooltip />
               <Legend />
-              <Bar dataKey="value" fill="#8884d8">
+              <Bar dataKey="value" fill="#FFFFFF">
                 {jobTypeData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={JOB_TYPE_COLORS[index % JOB_TYPE_COLORS.length]} />
                 ))}
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-      
         </div>
-        <div className="w-full md:w-1/2">
+
+        <div className="w-full md:w-1/2  border-4">
+        <h5 className='text-xl font-semibold text-center text-gray-600 mb-5'>User Roles</h5>
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie
@@ -119,15 +121,16 @@ const AdminDashboard: React.FC = () => {
               <Tooltip />
             </PieChart>   
           </ResponsiveContainer>
-          <div className='flex justify-center gap-2'>
-              <p className='bg-[#0078fe] py-1 px-2 text-white'>Company</p>
+          <div className='flex justify-center gap-2 mb-5'>
+              <p className='bg-[#164070] py-1 px-2 text-white'>Company</p>
               <p className='bg-[#00C89F] py-1 px-2 text-white'>Candidate</p>
-              <p className='bg-[#ff9763] py-1 px-2 text-white'>Admin</p>
+              <p className='bg-[#FFBB98] py-1 px-2 text-white'>Admin</p>
              </div>
         </div>
-
       </div>
+
       <div className="mx-auto mt-12" style={{ width: '100%', display: 'inline-block' }}>
+      <h5 className='text-xl font-semibold text-center text-gray-600 mb-5'>Job Sectors</h5>
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={sectorTypeData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -135,7 +138,7 @@ const AdminDashboard: React.FC = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="value" fill="#8884d8">
+            <Bar dataKey="value" fill="#164070">
               {sectorTypeData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={SECTOR_COLORS[index % SECTOR_COLORS.length]} />
               ))}
