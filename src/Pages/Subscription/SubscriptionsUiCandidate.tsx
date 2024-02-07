@@ -41,7 +41,7 @@ const SubscriptionsUiCandidate = () => {
 										/>
 									</svg>
 									<span>
-										Apply to <span className='text-lg font-semibold'>20</span> jobs and kickstart your career journey.
+										Apply to <span className='text-lg font-semibold'>15</span> jobs and kickstart your career journey.
 									</span>
 								</li>
 								<li className="flex items-center space-x-3">
@@ -129,7 +129,7 @@ const SubscriptionsUiCandidate = () => {
 										/>
 									</svg>
 									<span>
-										Apply to <span className='text-lg font-semibold'>100</span> jobs and kickstart your career journey.
+										Apply to <span className='text-lg font-semibold'>80</span> jobs and kickstart your career journey.
 									</span>
 								</li>
 								<li className="flex items-center space-x-3">
@@ -196,7 +196,7 @@ const SubscriptionsUiCandidate = () => {
 								Best for large scale uses and extended redistribution rights.
 							</p>
 							<div className="flex justify-center items-baseline my-8">
-								<span className="mr-2 text-5xl font-extrabold">$99</span>
+								<span className="mr-2 text-5xl font-extrabold">$199</span>
 							</div>
 							{/* List */}
 							<ul role="list" className="mb-8 space-y-4 text-left">

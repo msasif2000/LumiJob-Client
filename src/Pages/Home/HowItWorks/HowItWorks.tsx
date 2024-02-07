@@ -14,7 +14,7 @@ const HowItWorks = () => {
         </div>
         <div className="flex lg:justify-end items-center">
           <div className="w-full lg:w-3/4 text-center lg:text-left">
-            <p className="text-md md:text-lg xl:text-xl text-gray-600">
+            <p className="text-md md:text-lg xl:text-base text-gray-600">
               Your tech journey is not just a job search; it's an immersive
               experience with LumiJobs, guiding you toward professional triumphs
               in the dynamic world of technology.
@@ -25,12 +25,12 @@ const HowItWorks = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5">
         {/* =========> Step: 1 <========= */}
-        <div className="lg:col-span-2 p-6 border rounded-md min-h-[25rem]">
+        <div className="lg:col-span-2 p-6 border rounded-md ">
           <div>
             <h4 className="text-2xl font-heading font-semibold mb-4">
               Discover Opportunities
             </h4>
-            <p className="text-md md:text-lg xl:text-xl text-gray-600">
+            <p className="text-md md:text-lg xl:text-base text-gray-600">
               Uncover a myriad of tech opportunities tailored to your skills and
               aspirations. Explore real-time job listings from leading companies
               in diverse sectors. Our intuitive search filters empower you to
@@ -46,7 +46,7 @@ const HowItWorks = () => {
             <h4 className="text-2xl font-heading font-semibold mb-4">
               Craft Your Profile
             </h4>
-            <p className="text-md md:text-lg xl:text-xl text-gray-600">
+            <p className="text-md md:text-lg xl:text-base text-gray-600">
               Elevate your professional presence with a personalized profile
               that showcases your skills, experience, and unique qualities.
               Tailor your digital resume to stand out in the competitive tech
@@ -62,7 +62,7 @@ const HowItWorks = () => {
             <h4 className="text-2xl font-heading font-semibold mb-4">
               Effortless Application Process
             </h4>
-            <p className="text-md md:text-lg xl:text-xl text-gray-600">
+            <p className="text-md md:text-lg xl:text-base text-gray-600">
               Navigate through the hiring process with a one-click "Quick Apply"
               feature. Express your interest efficiently and effectively,
               streamlining your applications across a spectrum of tech
@@ -73,12 +73,12 @@ const HowItWorks = () => {
         </div>
 
         {/* =========> Step: 4 <========= */}
-        <div className="lg:col-span-2 p-6 border rounded-md min-h-[25rem]">
+        <div className="lg:col-span-2 p-6 border rounded-md ">
           <div>
             <h4 className="text-2xl font-heading font-semibold mb-4">
               Engage and Excel
             </h4>
-            <p className="text-md md:text-lg xl:text-xl text-gray-600">
+            <p className="text-md md:text-lg xl:text-base text-gray-600">
               Immerse yourself in a vibrant tech community through interactive
               forums and industry-related events. Connect with hiring teams,
               tech professionals, and experts in your field. Receive real-time

@@ -30,11 +30,8 @@ import ManageCompany from "../Admin/ManageCompany";
 import ManageJobs from "../Admin/ManageJobs";
 import ManagePayments from "../Admin/ManagePayments";
 import ManageCandidate from "../Admin/ManageCandidate";
-<<<<<<< HEAD
 import Payment from "../Pages/Payment/Payment";
-=======
 import OptionSubscribe from "../Pages/Subscription/OptionSubscribe";
->>>>>>> 49fda003e52645977f9763ed26a26eec2d863e96
 
 export const router = createBrowserRouter([
   {

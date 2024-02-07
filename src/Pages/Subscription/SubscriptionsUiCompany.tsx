@@ -41,7 +41,7 @@ const SubscriptionsUiCompany = () => {
 										/>
 									</svg>
 									<span>
-										Limited to <span className='text-lg font-semibold'>5</span> active job listings at a time
+										Limited to <span className='text-lg font-semibold'>3</span> active job listings at a time
 									</span>
 								</li>
 								<li className="flex items-center space-x-3">
@@ -129,7 +129,7 @@ const SubscriptionsUiCompany = () => {
 										/>
 									</svg>
 									<span>
-										Up to 20 <span className='text-lg font-semibold'>20</span> active job listings at a time
+										Up to <span className='text-lg font-semibold'>20</span> active job listings at a time
 									</span>
 								</li>
 								<li className="flex items-center space-x-3">
@@ -196,7 +196,7 @@ const SubscriptionsUiCompany = () => {
 								Best for large scale uses and extended redistribution rights.
 							</p>
 							<div className="flex justify-center items-baseline my-8">
-								<span className="mr-2 text-5xl font-extrabold">$99</span>
+								<span className="mr-2 text-5xl font-extrabold">$499</span>
 							</div>
 							{/* List */}
 							<ul role="list" className="mb-8 space-y-4 text-left">

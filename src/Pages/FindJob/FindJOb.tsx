@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FindJobCard from "./FindJobCard";
-import { IoFilterOutline } from "react-icons/io5";
+//import { IoFilterOutline } from "react-icons/io5";
 import Filters from "./Filters";
 import Search from "./Search";
 import NotificationCard from "./NotificationCard";
@@ -64,28 +64,6 @@ const FindJob: React.FC = () => {
                 <h4 className="font-semibold font-heading text-2xl">
                   <span className="text-[#486DD9]">{currentJobs.length}</span> Jobs Available
                 </h4>
-                {currentJobs.length > jobsPerPage && (
-                  <div className="dropdown dropdown-end">
-                    <div
-                      tabIndex={0}
-                      role="button"
-                      className="flex items-center gap-2 py-2 px-5 border border-[#486DD9] text-[#486DD9] font-semibold rounded"
-                    >
-                      <IoFilterOutline /> Filter By
-                    </div>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                    >
-                      <li>
-                        <a>Item 1</a>
-                      </li>
-                      <li>
-                        <a>Item 2</a>
-                      </li>
-                    </ul>
-                  </div>
-                )}
               </div>
 
               {/* ===> Showing jobs <=== */}
