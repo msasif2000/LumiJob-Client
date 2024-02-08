@@ -261,13 +261,13 @@ const CandidateProUpdate: React.FC = () => {
 
           <div className="pb-10 space-y-6">
             {/* Second div group */}
-            <div className="flex space-x-10">
+            <div className="md:flex md:space-x-10">
               <div className="form-control w-full">
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
                   placeholder="Your Name"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 />
               </div>
 
@@ -278,7 +278,7 @@ const CandidateProUpdate: React.FC = () => {
                     required: "position is required",
                   })}
                   placeholder="Interested Position"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 />
               </div>
               <div className="form-control w-full">
@@ -286,18 +286,18 @@ const CandidateProUpdate: React.FC = () => {
                   type="text"
                   {...register("phone", { required: "phone is required" })}
                   placeholder="Contact Number"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 />
               </div>
             </div>
             {/* Second div group */}
-            <div className="flex space-x-10">
+            <div className=" md:flex md:space-x-10">
               <div className="form-control w-full">
                 <input
                   type="text"
                   {...register("village", { required: "Village is required" })}
                   placeholder="Your Village"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 />
               </div>
               <div className="form-control w-full">
@@ -305,7 +305,7 @@ const CandidateProUpdate: React.FC = () => {
                   type="text"
                   {...register("city", { required: "City is required" })}
                   placeholder="Your City"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 />
               </div>
               <div className="form-control w-full">
@@ -313,18 +313,18 @@ const CandidateProUpdate: React.FC = () => {
                   type="text"
                   {...register("country", { required: "Country is required" })}
                   placeholder="Your Country"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 />
               </div>
             </div>
 
-            <div className="flex space-x-10">
+            <div className="md:flex md:space-x-10">
               <div className="form-control w-full">
                 <input
                   type="number"
                   {...register("experience")}
                   placeholder="Years of experience"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 />
               </div>
 
@@ -334,7 +334,7 @@ const CandidateProUpdate: React.FC = () => {
                 })}
                 name="availability"
                 id="availability"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -350,7 +350,7 @@ const CandidateProUpdate: React.FC = () => {
                 })}
                 name="work"
                 id="work"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -419,7 +419,7 @@ const CandidateProUpdate: React.FC = () => {
             {errors.skills && <p>{errors.skills.message}</p>}
           </div>
 
-          <div className="flex space-x-10 pb-10">
+          <div className="md:flex space-x-10 pb-10">
             <div className="form-control w-full">
               <input
                 type="number"
