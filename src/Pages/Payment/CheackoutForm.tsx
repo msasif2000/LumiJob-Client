@@ -1,9 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { ThemeContext } from "../../providers/ThemeProvider";
+import bgimg from "../../assets/svg/bg-glow.svg";
 
 const CheackoutForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -16,17 +17,17 @@ const CheackoutForm = () => {
   const navigate = useNavigate();
   const user = themeInfo !== null ? themeInfo.user : null;
 
-  const totalPrice = 79;
+  const price = 79;
 
   useEffect(() => {
-    totalPrice > 0 &&
+    price > 0 &&
       axiosPublic
-        .post("/create-payment-intent", { price: totalPrice })
+        .post("/create-payment-intent", { price: price })
         .then((res) => {
-          console.log(res.data.clientSecret);
+          // console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         });
-  }, [axiosPublic, totalPrice]);
+  }, [axiosPublic, price]);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -77,11 +78,11 @@ const CheackoutForm = () => {
         // now save the payment in the databse
 
         const payment = {
+          name: user.displayName,
           email: user.email,
-          price: totalPrice,
+          price: price,
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js
-          status: "pending",
         };
 
         const res = await axiosPublic.post("/payments", payment);
@@ -95,44 +96,160 @@ const CheackoutForm = () => {
             timer: 1500,
           });
         }
-        navigate("/dashboard/paymentHistory");
+        navigate("/");
       }
     }
   };
   return (
-    <div className=" bg-gray-200 rounded-md p-10 shadow ">
-      <form onSubmit={handleSubmit}>
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: "16px",
-                color: "#424770",
-                "::placeholder": {
-                  color: "#aab7c4",
-                },
-              },
-              invalid: {
-                color: "#9e2146",
-              },
-            },
-          }}
-        ></CardElement>
-
-        <div className="w-full pt-8">
-          <button
-            type="submit"
-            disabled={!stripe || !clientSecret}
-            className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
-          >
-            Pay Now
-          </button>
+    <div className=" bg-white rounded-sm border flex flex-col md:flex-row p-4">
+      <div className="w-full md:w-1/2 rounded-md">
+        <div
+          className="w-full min-h-64 bg-[#18181B] bg-no-repeat bg-center rounded-t-sm flex justify-center items-center p-10"
+          style={{ backgroundImage: `url(${bgimg})` }}
+        >
+          <h2 className="text-white text-3xl font-heading font-medium text-center">
+            {/* TODO: Add heading by user role */}
+            Subscribe and start your Hiring process now
+          </h2>
         </div>
-        <p className="text-red-600 mt-5">{error}</p>
-        {transactionId && (
-          <p className="text-green-600 mt-5">Transaction Id: {transactionId}</p>
-        )}
-      </form>
+        <div className="bg-[#F1F3F7] p-10 rounded-b-sm relative">
+          {/* TODO: Add data dynmically */}
+
+          <div className="w-[80%] mx-auto bg-white p-3 rounded-md absolute -top-10">
+            <div className="flex items-center ">
+              <figure className="w-24 mr-4">
+                <img
+                  src="https://i.pinimg.com/564x/9e/4d/7f/9e4d7f6d814054bf75611ebf8ed0d1ee.jpg"
+                  alt="pay"
+                  className="w-full rounded-md"
+                />
+              </figure>
+              <div>
+                <h3 className="text-gray-500 text-xl">Standard Plan</h3>
+                <h3 className="font-bold">Price: $79</h3>
+              </div>
+            </div>
+          </div>
+          <ul role="list" className="mt-16 mb-8 space-y-4 text-left">
+            <li className="flex items-center space-x-3">
+              {/* Icon */}
+              <svg
+                className="flex-shrink-0 w-5 h-5 text-green-500 "
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span>
+                Up to <span className="text-lg font-semibold">20</span> active
+                job listings at a time
+              </span>
+            </li>
+            <li className="flex items-center space-x-3">
+              {/* Icon */}
+              <svg
+                className="flex-shrink-0 w-5 h-5 text-green-500 "
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span>Access job listings and apply easily.</span>
+            </li>
+            <li className="flex items-center space-x-3">
+              {/* Icon */}
+              <svg
+                className="flex-shrink-0 w-5 h-5 text-green-500 "
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span>
+                {" "}
+                Enhanced company profile visibility with logo and branding
+              </span>
+            </li>
+            <li className="flex items-center space-x-3">
+              {/* Icon */}
+              <svg
+                className="flex-shrink-0 w-5 h-5 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span>
+                Advanced application tracking with filtering and sorting options
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="w-full md:w-1/2 p-10">
+        <Link to="/">
+          <h3 className="text-3xl font-bold text-center">
+            Lumi<span className="text-[#4869DD]">Jobs</span>
+          </h3>
+          <div className="divider w-2/3 mx-auto"></div>
+        </Link>
+        <div className="pt-14 md:pt-[10rem]">
+          <form onSubmit={handleSubmit}>
+            <CardElement
+              options={{
+                style: {
+                  base: {
+                    fontSize: "16px",
+                    color: "#424770",
+                    "::placeholder": {
+                      color: "#aab7c4",
+                    },
+                  },
+                  invalid: {
+                    color: "#9e2146",
+                  },
+                },
+              }}
+            ></CardElement>
+
+            <div className="w-full pt-8 flex justify-center">
+              <button
+                type="submit"
+                disabled={!stripe || !clientSecret}
+                className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
+              >
+                Pay Now
+              </button>
+            </div>
+            <p className="text-red-600 mt-5">{error}</p>
+            {transactionId && (
+              <p className="text-green-600 mt-5">
+                Transaction Id: {transactionId}
+              </p>
+            )}
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
