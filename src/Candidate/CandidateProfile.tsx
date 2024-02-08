@@ -130,7 +130,7 @@ const CandidateProfile = () => {
               return (
                 <div key={index} className="mb-4">
                   <div>
-                    <p className="">{uni.university}</p>
+                    <p className="text-xs md:text-xl font-bold">{uni.university}</p>
                     <p className="text-xs md:text-lg font-bold text-gray-400">
                       {uni.subject}
                     </p>
