@@ -30,12 +30,16 @@ const PopularJobs = () => {
     });
   }, []);
 
+  const slicedSectors = sectors.slice(0, 10)
+
   const filterJob = popularJobs?.filter(
     (job) => job.sectorType === sectors[tabIndex]?.sectorType
   );
-  
+
 
   const slicedJobs = filterJob?.slice(0, 6);
+
+
 
 
   return (
@@ -52,7 +56,7 @@ const PopularJobs = () => {
 
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
-            {sectors?.map((sector) => (
+            {slicedSectors?.map((sector) => (
               <Tab key={sector._id}>{sector.sectorType}</Tab>
             ))}
           </TabList>
