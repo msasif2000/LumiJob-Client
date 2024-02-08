@@ -78,11 +78,11 @@ const CheackoutForm = () => {
         // now save the payment in the databse
 
         const payment = {
+          name: user.displayName,
           email: user.email,
           price: price,
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js
-          status: "pending",
         };
 
         const res = await axiosPublic.post("/payments", payment);
