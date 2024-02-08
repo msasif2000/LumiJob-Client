@@ -369,7 +369,7 @@ const CandidateProUpdate: React.FC = () => {
                 rows={3}
                 {...register("bio", { required: "bio is required" })}
                 placeholder="Your Bio"
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
               ></textarea>
             </div>
 
@@ -398,7 +398,7 @@ const CandidateProUpdate: React.FC = () => {
                   type="text"
                   value={inputValue}
                   placeholder="Type a skill and press enter"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && inputValue.trim() !== "") {
                       setValue(
@@ -419,12 +419,12 @@ const CandidateProUpdate: React.FC = () => {
             {errors.skills && <p>{errors.skills.message}</p>}
           </div>
 
-          <div className="md:flex space-x-10 pb-10">
+          <div className="md:flex md:space-x-10 pb-10">
             <div className="form-control w-full">
               <input
                 type="number"
                 {...register("salaryRangeMin")}
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 placeholder="$ Expected Min Salary"
               />
             </div>
@@ -432,7 +432,7 @@ const CandidateProUpdate: React.FC = () => {
               <input
                 type="number"
                 {...register("salaryRangeMax")}
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 placeholder="$ Expected Max Salary"
               />
             </div>
@@ -450,7 +450,7 @@ const CandidateProUpdate: React.FC = () => {
                       required: "Company name is required",
                     })}
                     placeholder="Company Name"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
                 <div className="w-1/2">
@@ -460,7 +460,7 @@ const CandidateProUpdate: React.FC = () => {
                       required: "Position is required",
                     })}
                     placeholder="Position"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
               </div>
@@ -480,7 +480,7 @@ const CandidateProUpdate: React.FC = () => {
                     }}
                     dateFormat="dd-MM-yyyy"
                     placeholderText="From Date"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
                 <div className="w-1/2">
@@ -498,7 +498,7 @@ const CandidateProUpdate: React.FC = () => {
                     }}
                     dateFormat="dd-MM-yyyy"
                     placeholderText="To Date"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
               </div>
@@ -516,7 +516,7 @@ const CandidateProUpdate: React.FC = () => {
             <button
               type="button"
               onClick={addExperience}
-              className="text-blue-500 text-xl font-semibold"
+              className="text-blue-500 text-xs md:text-xl font-semibold"
             >
               Add Experience
             </button>
@@ -533,7 +533,7 @@ const CandidateProUpdate: React.FC = () => {
                       required: "University name is required",
                     })}
                     placeholder="University / Collage Name"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
                 <div className="w-1/2">
@@ -541,7 +541,7 @@ const CandidateProUpdate: React.FC = () => {
                     type="text"
                     {...register(`education.${index}.degree`)}
                     placeholder="Degree"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
                 <div className="w-1/2">
@@ -551,7 +551,7 @@ const CandidateProUpdate: React.FC = () => {
                       required: "Subject studied is required",
                     })}
                     placeholder="Studied Subject"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
               </div>
@@ -571,7 +571,7 @@ const CandidateProUpdate: React.FC = () => {
                     }}
                     placeholderText="From Date"
                     dateFormat="dd-MM-yyyy" // Add date format if needed
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
                 <div className="w-1/2">
@@ -589,7 +589,7 @@ const CandidateProUpdate: React.FC = () => {
                     }}
                     placeholderText="To Date"
                     dateFormat="dd-MM-yyyy" // Add date format if needed
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-50"
+                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
               </div>
@@ -607,7 +607,7 @@ const CandidateProUpdate: React.FC = () => {
             <button
               type="button"
               onClick={addEducation}
-              className="text-blue-500 text-xl font-semibold"
+              className="text-blue-500 text-xs md:text-xl font-semibold"
             >
               Add Education
             </button>
