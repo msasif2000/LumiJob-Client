@@ -74,7 +74,7 @@ const CandidateProfile = () => {
       case "experience":
         return (
           <div>
-            {profile?.experienceDetails?.map((job : any, index : number) => {
+            {profile?.experienceDetails?.map((job: any, index: number) => {
               // Convert fromDate and toDate to Date objects
               const startDate = new Date(job.fromDate);
               const endDate = new Date(job.toDate);
@@ -92,11 +92,11 @@ const CandidateProfile = () => {
               return (
                 <div key={index} className="mb-4">
                   <div>
-                    <p className="text-xl font-bold">{job.position}</p>
-                    <p className="text-lg font-bold text-gray-400">
+                    <p className="text-xs md:text-xl font-bold">{job.position}</p>
+                    <p className="text-xs md:text-lg font-bold text-gray-400">
                       {job.company}
                     </p>
-                    <p className="text-lg font-semibold text-gray-400">
+                    <p className="text-xs md:text-lg font-semibold text-gray-400">
                       {formattedStartDate} - {formattedEndDate}
                     </p>
                   </div>
@@ -130,11 +130,11 @@ const CandidateProfile = () => {
               return (
                 <div key={index} className="mb-4">
                   <div>
-                    <p className="text-xl font-bold">{uni.university}</p>
-                    <p className="text-lg font-bold text-gray-400">
+                    <p className="">{uni.university}</p>
+                    <p className="text-xs md:text-lg font-bold text-gray-400">
                       {uni.subject}
                     </p>
-                    <p className="text-lg font-semibold text-gray-400">
+                    <p className="text-xs md:text-lg font-semibold text-gray-400">
                       {formattedStartDate} - {formattedEndDate}
                     </p>
                   </div>
@@ -166,9 +166,9 @@ const CandidateProfile = () => {
         handleClick2={buttonClicked2}
         handleClick={buttonClicked}
       />
-      <div className="flex space-x-10">
+      <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10">
         {/* profile card div */}
-        <div className="bg-white h-fit w-1/3 rounded-2xl space-y-5 p-5 relative">
+        <div className="bg-white h-fit lg:w-1/3 rounded-2xl space-y-5 p-5 relative">
           <div className="bg-accent h-48 rounded-2xl relative">
             {/* image */}
             <div className="flex justify-center">
@@ -184,16 +184,16 @@ const CandidateProfile = () => {
           </div>
           {/* Name */}
           <div className="pt-10">
-            <h1 className="text-3xl font-bold">{profile?.name}</h1>
-            <p className="">{profile?.position}</p>
+            <h1 className=" text-base md:text-3xl font-bold">{profile?.name}</h1>
+            <p className="text-xs md:text-sm">{profile?.position}</p>
           </div>
           {/* Bio */}
           <div>
-            <h1 className="font-medium text-lg">{profile?.bio}</h1>
+            <h1 className="font-medium text-xs md:text-lg">{profile?.bio}</h1>
           </div>
           {/* skills */}
           <div className="space-y-5">
-            <h1 className="text-2xl font-bold">Skills</h1>
+            <h1 className="text-sm md:text-2xl font-bold">Skills</h1>
             <ul className="flex flex-wrap">
               {profile?.skills?.map((skill, idx) => (
                 <li
@@ -210,63 +210,61 @@ const CandidateProfile = () => {
 
         {/* end profile card div */}
 
-        <div className="flex flex-col space-y-10 h-full w-2/3">
+        <div className="flex flex-col lg:flex-grow">
           {/* address div */}
-          <div className="bg-white h-1/2 w-full rounded-2xl p-10 space-y-4">
-            <p className="text-2xl font-bold">Personal Information</p>
-            <div className="grid grid-cols-3 gap-7 ">
+          <div className="bg-white h-1/2 lg:w-full rounded-2xl p-10 space-y-4">
+            <p className="text-base md:text-2xl font-bold">Personal Information</p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 ">
               <div className="space-y-2">
-                <p className="text-lg">Name</p>
-                <p className="text-xl font-semibold">{profile?.name}</p>
+                <p className="text-xs md:text-lg">Name</p>
+                <p className=" text-xs md:text-xl font-semibold">{profile?.name}</p>
               </div>
 
               <div className="space-y-2">
-                <p className="text-lg">Contact</p>
-                <p className="text-xl font-semibold">{profile?.phone}</p>
+                <p className="text-xs md:text-lg">Contact</p>
+                <p className=" text-xs md:text-xl font-semibold">{profile?.phone}</p>
               </div>
               <div className="space-y-2">
-                <p className="text-lg">Location</p>
-                <p className="text-xl font-semibold">
+                <p className="text-xs md:text-lg">Location</p>
+                <p className=" text-xs md:text-xl font-semibold">
                   {profile?.city}, {profile?.country}
                 </p>
               </div>
               <div className="space-y-2">
-                <p className="text-lg">Years of experience</p>
-                <p className="text-xl font-semibold">
+                <p className="text-xs md:text-lg">Years of experience</p>
+                <p className=" text-xs md:text-xl font-semibold">
                   {profile?.experience} years
                 </p>
               </div>
               <div className="space-y-2">
-                <p className="text-lg">Availability</p>
-                <p className="text-xl font-semibold">
+                <p className="text-xs md:text-lg">Availability</p>
+                <p className=" text-xs md:text-xl font-semibold">
                   {profile?.availability} - {profile?.work}
                 </p>
               </div>
               <div className="space-y-2">
-                <p className="text-lg">Expected salary</p>
-                <p className="text-xl font-semibold">
+                <p className="text-xs md:text-lg">Expected salary</p>
+                <p className=" text-xs md:text-xl font-semibold">
                   ${profile?.salaryRangeMin} - ${profile?.salaryRangeMax}
                 </p>
               </div>
             </div>
           </div>
           {/* Skills div */}
-          <div className="bg-white w-full rounded-2xl p-10">
+          <div className="bg-white lg:w-full rounded-2xl md:p-10">
             <div role="tablist" className="tabs tabs-bordered relative">
               <a
                 role="tab"
-                className={`tab ${
-                  activeTab === "experience" ? "tab-active" : ""
-                } text-xl font-bold`}
+                className={`tab ${activeTab === "experience" ? "tab-active" : ""
+                  } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("experience")}
               >
                 Experience
               </a>
               <a
                 role="tab"
-                className={`tab ${
-                  activeTab === "education" ? "tab-active" : ""
-                } text-xl font-bold`}
+                className={`tab ${activeTab === "education" ? "tab-active" : ""
+                  } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("education")}
               >
                 Education
@@ -283,6 +281,7 @@ const CandidateProfile = () => {
         {/*  */}
       </div>
     </div>
+
   );
 };
 
