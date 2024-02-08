@@ -84,7 +84,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
                     type="checkbox"
                     value={sector.sectorType}
                     onChange={handleSectorChange}
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                    className="text-blue-600 bg-gray-100 border-gray-300 rounded"
                   />
                   <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-600">
                     {sector.sectorType}
@@ -105,7 +105,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
                   type="checkbox"
                   value="Hybrid"
                   onChange={handleJobTypeChange}
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                  className=" text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">
                   Hybrid
@@ -116,7 +116,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
                   type="checkbox"
                   value="Onsite"
                   onChange={handleJobTypeChange}
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                  className=" text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">
                   Onsite
@@ -127,7 +127,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
                   type="checkbox"
                   value="Remote"
                   onChange={handleJobTypeChange}
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                  className="text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500">
                   Remote
