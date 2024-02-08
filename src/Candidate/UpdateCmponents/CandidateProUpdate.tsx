@@ -438,10 +438,10 @@ const CandidateProUpdate: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-2xl font-bold mb-4 pb-10">Experience</p>
+          <p className=" md:text-2xl font-bold mb-4 md:pb-10">Experience</p>
           {additionalExperiences.map((experience, index) => (
             <div key={index} className="form-control w-full mt-6 space-y-1">
-              <h2 className="text-lg font-bold mb-4">Experience {index + 1}</h2>
+              <h2 className="text-sm md:text-lg opacity-70 font-bold mb-4">Experience {index + 1}</h2>
               <div className="flex space-x-4 pb-10">
                 <div className="w-1/2">
                   <input
@@ -505,7 +505,7 @@ const CandidateProUpdate: React.FC = () => {
               <button
                 type="button"
                 onClick={() => removeExperience(index)}
-                className="text-red-500 mt-2 text-right"
+                className="text-red-500 mt-2 text-xs md:text-base text-right"
               >
                 Remove Experience
               </button>
@@ -521,12 +521,12 @@ const CandidateProUpdate: React.FC = () => {
               Add Experience
             </button>
           </div>
-          <p className="text-2xl font-bold mb-4 py-10">Education</p>
+          <p className=" md:text-2xl font-bold mb-4 md:py-10">Education</p>
           {additionalEducations.map((education, index) => (
             <div key={index} className="form-control w-full mt-6">
-              <h2 className="text-lg font-bold mb-4">Education {index + 1}</h2>
-              <div className="flex space-x-4">
-                <div className="w-1/2">
+              <h2 className="text-sm md:text-lg opacity-70 font-bold mb-4">Education {index + 1}</h2>
+              <div className="md:flex md:space-x-4">
+                <div className="md:w-1/2">
                   <input
                     type="text"
                     {...register(`education.${index}.university`, {
@@ -536,7 +536,7 @@ const CandidateProUpdate: React.FC = () => {
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
-                <div className="w-1/2">
+                <div className="md:w-1/2">
                   <input
                     type="text"
                     {...register(`education.${index}.degree`)}
@@ -544,7 +544,7 @@ const CandidateProUpdate: React.FC = () => {
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                   />
                 </div>
-                <div className="w-1/2">
+                <div className="md:w-1/2">
                   <input
                     type="text"
                     {...register(`education.${index}.subject`, {
@@ -596,7 +596,7 @@ const CandidateProUpdate: React.FC = () => {
               <button
                 type="button"
                 onClick={() => removeEducation(index)}
-                className="text-red-500 mt-2 text-right"
+                className="text-red-500 mt-2 text-xs md:text-base text-right"
               >
                 Remove Education
               </button>
