@@ -83,7 +83,7 @@ const AdminDashboard: React.FC = () => {
       <div className="block md:flex gap-5">
         <div className="w-full md:w-1/2 border-4">
           <h5 className='text-xl font-semibold text-center text-gray-600 mt-6 mb-5'>Job Types</h5>
-          <ResponsiveContainer width="80%" height={200}>
+          <ResponsiveContainer width="80%" height={200} className="p-1">
             <BarChart layout="vertical" data={jobTypeData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis type="number" />
