@@ -53,6 +53,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
       applierEmail,
     };
     console.log(data);
+
+    
     setName("");
     setCvFile(null);
     setAddress("");
