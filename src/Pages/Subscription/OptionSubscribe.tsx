@@ -14,7 +14,7 @@ const OptionSubscribe: React.FC = () => {
               <div className="md:flex justify-center space-x-5">
 
                 <Link to={"/subscriptionsUiCompany"}>
-                  <div className="card card-compact w-full md:w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear cursor-pointer">
+                  <div className="card card-compact md:w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear cursor-pointer">
                     <figure>
                       <img
                         src="https://i.postimg.cc/PJnXCF5v/1904-i402-011-Web-development-isometric-concept-infographics.jpg"
