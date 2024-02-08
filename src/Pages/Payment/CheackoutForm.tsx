@@ -24,7 +24,7 @@ const CheackoutForm = () => {
       axiosPublic
         .post("/create-payment-intent", { price: price })
         .then((res) => {
-          console.log(res.data.clientSecret);
+          // console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         });
   }, [axiosPublic, price]);
@@ -104,7 +104,7 @@ const CheackoutForm = () => {
     <div className=" bg-white rounded-sm border flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 rounded-md">
         <div
-          className="w-full min-h-64 bg-[#18181B] bg-no-repeat bg-right rounded-t-sm flex justify-center items-center p-10"
+          className="w-full min-h-64 bg-[#18181B] bg-no-repeat bg-center rounded-t-sm flex justify-center items-center p-10"
           style={{ backgroundImage: `url(${bgimg})` }}
         >
           <h2 className="text-white text-3xl font-heading font-medium text-center">
@@ -208,9 +208,10 @@ const CheackoutForm = () => {
       </div>
       <div className="w-full md:w-1/2 p-10">
         <Link to="/">
-          <h3 className="text-3xl font-bold text-center underline">
+          <h3 className="text-3xl font-bold text-center">
             Lumi<span className="text-[#4869DD]">Jobs</span>
           </h3>
+          <div className="divider w-2/3 mx-auto"></div>
         </Link>
         <div className="pt-14 md:pt-[10rem]">
           <form onSubmit={handleSubmit}>
