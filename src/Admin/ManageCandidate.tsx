@@ -43,7 +43,7 @@ const ManageCandidate = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg mt-20">
+      <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg my-2">
         <h2 className="text-3xl">
           <b>Manage Candidates</b>
         </h2>
@@ -75,11 +75,14 @@ const ManageCandidate = () => {
                   <h3 className="font-semibold text-lg">{candidate?.email}</h3>
                 </td>
                 {/* <td>{company?.subscription}</td> */}
-                <th>
-                <td>
-                    <button onClick={() => handleDelete(candidate?._id)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4"><MdDelete className="text-2xl" /> </button>
+                  <td>
+                    <button onClick={() => handleDelete(candidate?._id)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group">
+                      <MdDelete className="text-2xl" />
+                      <span className="opacity-0 group-hover:opacity-100 absolute top-full left-1/2 transform -translate-x-1/2 text-black  px-3 text-sm z-10 transition-opacity duration-300">
+                        Delete
+                      </span>
+                    </button>
                   </td>
-                </th>
               </tr>
             ))}
           </tbody>
