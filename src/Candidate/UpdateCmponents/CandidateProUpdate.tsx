@@ -238,7 +238,7 @@ const CandidateProUpdate: React.FC = () => {
           <div className="flex space-x-10 py-10 ">
             <div className="form-control w-full">
               <label
-                className="font-bold text-gray-400 text-xl"
+                className="font-bold text-gray-400 text-xs md:text-xl"
                 htmlFor="photo"
               >
                 Profile Picture
@@ -254,7 +254,7 @@ const CandidateProUpdate: React.FC = () => {
                   }
                 }}
                 className="py-4 outline-none font-bold bg-transparent border-b-2
-                 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
               />
             </div>
           </div>
