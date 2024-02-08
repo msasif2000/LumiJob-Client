@@ -86,7 +86,7 @@ const ManageCompany = () => {
                 <td className="font-semibold">{company.country}</td>
                 {/* <td>{company?.subscription}</td> */}
                 <td>
-                  <button onClick={() => handleDelete(company._id, company.email)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4"><MdDelete className="text-xl hover:text-accent" /> </button>
+                  <button onClick={() => handleDelete(company._id, company.email)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4"><MdDelete className="text-xl" /> </button>
                 </td>
               </tr>)
             }

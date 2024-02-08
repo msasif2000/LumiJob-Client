@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { FaTrash } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { MdDelete } from "react-icons/md";
 
 const ManageCandidate = () => {
   const axiosPublic = useAxiosPublic();
@@ -76,14 +76,9 @@ const ManageCandidate = () => {
                 </td>
                 {/* <td>{company?.subscription}</td> */}
                 <th>
-                  <div className="flex justify-between md:justify-start">
-                    <button
-                      onClick={() => handleDelete(candidate._id)}
-                      className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4"
-                    >
-                      <FaTrash />
-                    </button>
-                  </div>
+                <td>
+                    <button onClick={() => handleDelete(candidate?._id)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4"><MdDelete className="text-2xl" /> </button>
+                  </td>
                 </th>
               </tr>
             ))}
