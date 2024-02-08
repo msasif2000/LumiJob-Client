@@ -40,6 +40,8 @@ const PopularJobs = () => {
   const slicedJobs = filterJob?.slice(0, 6);
 
 
+
+  
   return (
     <>
       <div className="max-w-screen-2xl mx-auto py-16 px-4">
