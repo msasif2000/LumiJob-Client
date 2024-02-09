@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import "./SubScriptions.css";
+import useAuth from "../../hooks/useAuth";
 
 const SubscriptionsUiCompany = () => {
+  const { user} = useAuth()
+
+
   return (
     <div className="max-w-screen-2xl mx-auto px-4">
       <section className="bg-white ">
@@ -99,9 +103,9 @@ const SubscriptionsUiCompany = () => {
                 </li>
               </ul>
               <div className="action">
-                <a className="button" href="#">
+               <Link to={user ? "/payment" : "/login"} className="button">
                   Choose plan
-                </a>
+                </Link>
               </div>
             </div>
             {/* standard Card */}
@@ -194,8 +198,8 @@ const SubscriptionsUiCompany = () => {
                 </li>
               </ul>
               <div className="action">
-                <Link to="/payment">
-                  <a className="button">Choose plan</a>
+              <Link to={user ? "/payment" : "/login"} className="button">
+                  Choose plan
                 </Link>
               </div>
             </div>
@@ -279,9 +283,9 @@ const SubscriptionsUiCompany = () => {
                 </li>
               </ul>
               <div className="action">
-                <a className="button" href="#">
+              <Link to={user ? "/payment" : "/login"} className="button">
                   Choose plan
-                </a>
+                </Link>
               </div>
             </div>
           </div>

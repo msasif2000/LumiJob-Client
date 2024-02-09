@@ -1,6 +1,11 @@
+import { Link } from "react-router-dom";
 import "./SubScriptions.css";
+import useAuth from "../../hooks/useAuth";
 
 const SubscriptionsUiCandidate = () => {
+
+  const { user} = useAuth()
+
   return (
     <div className="max-w-screen-2xl mx-auto px-4">
       <section className="bg-white ">
@@ -101,9 +106,9 @@ const SubscriptionsUiCandidate = () => {
                 </li>
               </ul>
               <div className="action">
-                <a className="button" href="#">
+              <Link to={user ? "/payment" : "/login"} className="button">
                   Choose plan
-                </a>
+                </Link>
               </div>
             </div>
             {/* standard Card */}
@@ -192,9 +197,9 @@ const SubscriptionsUiCandidate = () => {
                 </li>
               </ul>
               <div className="action">
-                <a className="button" href="#">
+              <Link to={user ? "/payment" : "/login"} className="button">
                   Choose plan
-                </a>
+                </Link>
               </div>
             </div>
             {/* Premium Card */}
@@ -280,9 +285,9 @@ const SubscriptionsUiCandidate = () => {
                 </li>
               </ul>
               <div className="action">
-                <a className="button" href="#">
+              <Link to={user ? "/payment" : "/login"} className="button">
                   Choose plan
-                </a>
+                </Link>
               </div>
             </div>
           </div>
