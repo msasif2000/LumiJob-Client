@@ -67,8 +67,8 @@ const ManageJobs = () => {
         </h2>
       </div>
       <div>
-        <div className="overflow-x-auto">
-          <table className="table min-w-full divide-y divide-red-500">
+        <div className="overflow-x-auto max-w-screen-xl border mx-auto bg-white p-6 rounded-b-lg">
+          <table className="table">
             {/* head */}
             <thead className="bg-accentTwo text-lg text-white font-bold">
               <tr>
