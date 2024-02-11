@@ -241,12 +241,16 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
 
                   {/* from button submit and cancel */}
                   <div className="flex justify-center gap-10 ">
-                    <button
-                      type="submit"
-                      className=" btn mt-6  bg-green-300 hover:bg-green-600 hover:text-white"
-                    >
-                      Submit
-                    </button>
+                  <button className="contactButton mt-5">
+  Submit
+  <div className="iconButton">
+    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+    </svg>
+  </div>
+</button>
+
 
                     <div className="modal-action">
                       <form method="dialog">
