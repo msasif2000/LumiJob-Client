@@ -150,10 +150,10 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                   className="space-y-3 w-10/12 mx-auto"
                 >
                   {/* Name */}
-                  <div className=" lg:flex justify-center items-center ">
+                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0 ">
                     <label
                       htmlFor="FullName"
-                      className="text-lg font-semibold  w-3/12 text-start "
+                      className="text-lg font-semibold  w-3/12 text-start ml-3 md:ml-0 "
                     >
                       Full Name :
                     </label>
@@ -163,8 +163,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       onChange={(e) => setName(e.target.value)}
                       type="text"
                       required
-                      placeholder="Full Name...."
-                      className=" lg:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  lg:px-2 lg:py-2 "
+                      placeholder="Your Full Name...."
+                      className=" md:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
                   {/* address */}
