@@ -221,18 +221,19 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       className=" w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
-
-                  <div {...getRootProps({ className: "dropzone" })}>
-                    <input {...getInputProps()} />
-                    <h1 className="text-lg font-semibold mb-5 ml-16">
-                      CV or Resume :{" "}
+                   
+                  <h1 className="text-lg font-semibold mb-5 ml-12">
+                      Resume :{" "}
                     </h1>
+                  <div  {...getRootProps({ className: "dropzone" })}>
+                    <input {...getInputProps()} />
+                    
                     {cvFile ? (
-                      <p className="py-10 border-2 bg-gray-100 text-center">
+                      <p className="py-10 border-2 bg-[#E8F0FE]  text-center">
                         File Selected: {cvFile.name}
                       </p>
                     ) : (
-                      <p className="py-10 border-2 bg-gray-100 text-center">
+                      <p className="py-10 border-2  bg-gray-200  text-center">
                         click to select a file
                       </p>
                     )}
