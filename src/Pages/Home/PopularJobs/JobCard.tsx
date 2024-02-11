@@ -168,12 +168,12 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
                   {/* address */}
-                  <div className=" flex justify-center items-center">
+                  <div className=" lg:flex   md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
                     <label
                       htmlFor="Address"
-                      className=" text-lg font-semibold w-3/12 text-start "
+                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0"
                     >
-                      Address :
+                     Your Address :
                     </label>
                     <input
                       required
