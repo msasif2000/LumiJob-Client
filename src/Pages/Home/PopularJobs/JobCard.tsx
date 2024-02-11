@@ -185,12 +185,13 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       className=" w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
+                  {/* phone */}
                   <div className=" flex justify-center items-center">
                     <label
                       htmlFor="Phone-Number"
                       className=" text-lg font-semibold w-3/12 text-start "
                     >
-                      Phone Number :
+                      Phone  :
                     </label>
                     <input
                       required
@@ -198,10 +199,11 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       type="text"
-                      placeholder="Phone Number...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      placeholder=" your Phone Number...."
+                      className=" w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
+                  {/* Email */}
                   <div className=" flex justify-center items-center">
                     <label
                       htmlFor="Email"
