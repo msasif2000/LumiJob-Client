@@ -147,7 +147,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                 <div className="divider divider-neutral w-full"></div>
                 <form
                   onSubmit={handelApplications}
-                  className="space-y-3 w-10/12 mx-auto"
+                  className="space-y-3 w-11/12 md:w-10/12 mx-auto "
                 >
                   {/* Name */}
                   <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0 ">
