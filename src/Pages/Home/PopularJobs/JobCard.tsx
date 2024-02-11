@@ -149,12 +149,13 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                   onSubmit={handelApplications}
                   className="space-y-3 w-10/12 mx-auto"
                 >
-                  <div className=" flex justify-center items-center">
+                  {/* Name */}
+                  <div className=" lg:flex justify-center items-center ">
                     <label
                       htmlFor="FullName"
-                      className="text-lg font-semibold  w-3/12 text-start"
+                      className="text-lg font-semibold  w-3/12 text-start "
                     >
-                      Your Full Name :
+                      Full Name :
                     </label>
                     <input
                       id="FullName"
@@ -163,9 +164,10 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       type="text"
                       required
                       placeholder="Full Name...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      className=" lg:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  lg:px-2 lg:py-2 "
                     />
                   </div>
+                  {/* address */}
                   <div className=" flex justify-center items-center">
                     <label
                       htmlFor="Address"
