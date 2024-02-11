@@ -168,12 +168,12 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
                   {/* address */}
-                  <div className=" lg:flex   md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
+                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
                     <label
                       htmlFor="Address"
-                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0"
+                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0 "
                     >
-                     Your Address :
+                     Address :
                     </label>
                     <input
                       required
@@ -207,7 +207,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                   <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
                     <label
                       htmlFor="Email"
-                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0 "
+                      className=" text-lg font-semibold w-3/12 lg:text-start   ml-3 md:ml-0 "
                     >
                       Email :
                     </label>
@@ -222,8 +222,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
                    
-                  <h1 className="text-lg font-semibold mb-5 ml-12">
-                      Resume :{" "}
+                  <h1 className="text-lg font-semibold lg:mb-5 lg:ml-12">
+                      Resume :
                     </h1>
                   <div  {...getRootProps({ className: "dropzone" })}>
                     <input {...getInputProps()} />
