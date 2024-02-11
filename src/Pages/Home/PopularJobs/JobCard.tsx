@@ -124,7 +124,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
         <div>
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <button
-            className="py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-3xl"
+            className="py-3 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-3xl"
             onClick={() =>
               (
                 document.getElementById(modalId) as HTMLDialogElement
@@ -137,10 +137,10 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
             <div className="modal-box w-9/12 max-w-5xl">
               {/* Form content part */}
               <div>
-                <h3 className="font-bold text-lg text-center">
-                  Job Application Form
+                <h3 className="font-bold text-lg lg:text-3xl text-center pb-2 pt-1">
+                Quickly Job Application Form
                 </h3>
-                <p className="text-center">
+                <p className="text-center  font-semibold">
                   Please complete the form below to apply for a position with
                   us.
                 </p>
