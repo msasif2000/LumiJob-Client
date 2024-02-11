@@ -134,27 +134,28 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
             Quickly Apply
           </button>
           <dialog id={modalId} className="modal">
-            <div className="modal-box w-9/12 max-w-5xl">
+            <div className="modal-box w-9/12 lg:max-w-3xl">
               {/* Form content part */}
               <div>
-                <h3 className="font-bold text-lg lg:text-3xl text-center pb-2 pt-1">
+                <h3 className=" font-extrabold lg:font-bold text-lg lg:text-3xl text-center pb-2 pt-1">
                 Quickly Job Application Form
                 </h3>
-                <p className="text-center  font-semibold">
+                <p className="text-center  lg:font-semibold">
                   Please complete the form below to apply for a position with
                   us.
                 </p>
                 <div className="divider divider-neutral w-full"></div>
                 <form
                   onSubmit={handelApplications}
-                  className="space-y-3 w-10/12 mx-auto"
+                  className="space-y-3 w-11/12 md:w-10/12 mx-auto "
                 >
-                  <div className=" flex justify-center items-center">
+                  {/* Name */}
+                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0 ">
                     <label
                       htmlFor="FullName"
-                      className="text-lg font-semibold  w-3/12 text-start"
+                      className="text-lg font-semibold  w-3/12 text-start ml-3 md:ml-0 "
                     >
-                      Your Full Name :
+                      Full Name :
                     </label>
                     <input
                       id="FullName"
@@ -162,16 +163,17 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       onChange={(e) => setName(e.target.value)}
                       type="text"
                       required
-                      placeholder="Full Name...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      placeholder="Your Full Name...."
+                      className=" md:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
-                  <div className=" flex justify-center items-center">
+                  {/* address */}
+                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
                     <label
                       htmlFor="Address"
-                      className=" text-lg font-semibold w-3/12 text-start "
+                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0 "
                     >
-                      Address :
+                     Address :
                     </label>
                     <input
                       required
@@ -179,16 +181,17 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                       type="text"
-                      placeholder="Address...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      placeholder="Your Address...."
+                      className=" md:w-7/12  rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
-                  <div className=" flex justify-center items-center">
+                  {/* phone */}
+                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
                     <label
                       htmlFor="Phone-Number"
-                      className=" text-lg font-semibold w-3/12 text-start "
+                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0 "
                     >
-                      Phone Number :
+                      Phone  :
                     </label>
                     <input
                       required
@@ -196,14 +199,15 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       type="text"
-                      placeholder="Phone Number...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      placeholder=" Your Phone Number...."
+                      className=" md:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
-                  <div className=" flex justify-center items-center">
+                  {/* Email */}
+                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
                     <label
                       htmlFor="Email"
-                      className=" text-lg font-semibold w-3/12 text-start "
+                      className=" text-lg font-semibold w-3/12 lg:text-start   ml-3 md:ml-0 "
                     >
                       Email :
                     </label>
@@ -213,22 +217,23 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
                       type="email"
-                      placeholder="Email...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      placeholder="Your Email...."
+                      className=" md:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
-
-                  <div {...getRootProps({ className: "dropzone" })}>
-                    <input {...getInputProps()} />
-                    <h1 className="text-lg font-semibold mb-5 ml-16">
-                      CV or Resume :{" "}
+                   
+                  <h1 className="text-lg font-semibold ml-3 lg:mb-5 lg:ml-12">
+                      Resume :
                     </h1>
+                  <div  {...getRootProps({ className: "dropzone" })}>
+                    <input {...getInputProps()} />
+                    
                     {cvFile ? (
-                      <p className="py-10 border-2 bg-gray-100 text-center">
+                      <p className="py-10 border-2 bg-[#E8F0FE]  text-center">
                         File Selected: {cvFile.name}
                       </p>
                     ) : (
-                      <p className="py-10 border-2 bg-gray-100 text-center">
+                      <p className="py-10 border-2  bg-gray-200  text-center">
                         click to select a file
                       </p>
                     )}
