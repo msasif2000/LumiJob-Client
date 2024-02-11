@@ -199,7 +199,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       type="text"
-                      placeholder=" your Phone Number...."
+                      placeholder=" Your Phone Number...."
                       className=" w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
@@ -217,8 +217,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
                       type="email"
-                      placeholder="Email...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      placeholder="Your Email...."
+                      className=" w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
 
