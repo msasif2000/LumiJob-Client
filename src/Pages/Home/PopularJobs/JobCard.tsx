@@ -134,13 +134,13 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
             Quickly Apply
           </button>
           <dialog id={modalId} className="modal">
-            <div className="modal-box w-9/12 max-w-5xl">
+            <div className="modal-box w-9/12 lg:max-w-3xl">
               {/* Form content part */}
               <div>
-                <h3 className="font-bold text-lg lg:text-3xl text-center pb-2 pt-1">
+                <h3 className=" font-extrabold lg:font-bold text-lg lg:text-3xl text-center pb-2 pt-1">
                 Quickly Job Application Form
                 </h3>
-                <p className="text-center  font-semibold">
+                <p className="text-center  lg:font-semibold">
                   Please complete the form below to apply for a position with
                   us.
                 </p>
