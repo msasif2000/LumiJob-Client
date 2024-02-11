@@ -182,7 +182,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       onChange={(e) => setAddress(e.target.value)}
                       type="text"
                       placeholder="Your Address...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
+                      className=" md:w-7/12  rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
                   {/* phone */}
