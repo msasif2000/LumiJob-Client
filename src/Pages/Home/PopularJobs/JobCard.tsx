@@ -222,7 +222,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     />
                   </div>
                    
-                  <h1 className="text-lg font-semibold lg:mb-5 lg:ml-12">
+                  <h1 className="text-lg font-semibold ml-3 lg:mb-5 lg:ml-12">
                       Resume :
                     </h1>
                   <div  {...getRootProps({ className: "dropzone" })}>
