@@ -11,7 +11,7 @@ import Job from "./Job";
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import useAuth from "../../../hooks/useAuth";
-
+import './quickly-button.css';
 interface JobCardsProps {
   job: Job;
 }
@@ -251,9 +251,12 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                     <div className="modal-action">
                       <form method="dialog">
                         {/* if there is a button, it will close the modal */}
-                        <button className="btn hover:bg-red-600 hover:text-white bg-red-400 ">
-                          Close
-                        </button>
+                        <button className="button1">
+  <span className="X"></span>
+  <span className="Y"></span>
+  <div className="close">Close</div>
+</button>
+
                       </form>
                     </div>
                   </div>
