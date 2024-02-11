@@ -137,8 +137,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
             <div className="modal-box w-9/12 max-w-5xl">
               {/* Form content part */}
               <div>
-                <h3 className="font-bold text-lg text-center">
-                  Job Application Form
+                <h3 className="font-bold text-lg lg:text-3xl text-center">
+                Quickly Job Application Form
                 </h3>
                 <p className="text-center">
                   Please complete the form below to apply for a position with
