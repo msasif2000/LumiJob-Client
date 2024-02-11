@@ -181,8 +181,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                       type="text"
-                      placeholder="Address...."
-                      className=" w-7/12 rounded-md border-l-neutral-950 px-2 py-2 "
+                      placeholder="Your Address...."
+                      className=" w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
                     />
                   </div>
                   <div className=" flex justify-center items-center">
