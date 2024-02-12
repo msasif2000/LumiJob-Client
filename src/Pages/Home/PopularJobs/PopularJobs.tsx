@@ -18,10 +18,11 @@ const PopularJobs = () => {
       .get("/all-job-posts")
       .then((res) => {
         setPopularJobs(res.data);
-        //console.log(res.data);
+        console.log(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
+
 
   useEffect(() => {
     axios.get("/sectors.json").then((res) => {
@@ -31,6 +32,8 @@ const PopularJobs = () => {
   }, []);
 
   const slicedSectors = sectors.slice(0, 10)
+
+  // sort popular jobs by date here only show jobs that are away by 5 days from current date
 
   const filterJob = popularJobs?.filter(
     (job) => job.sectorType === sectors[tabIndex]?.sectorType
