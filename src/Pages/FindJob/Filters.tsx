@@ -77,7 +77,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
             <h6 className="mb-3 text-xl font-heading font-semibold text-gray-900">
               Sector
             </h6>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm lg:p-4 p-2">
               {sectors?.map((sector) => (
                 <li key={sector._id} className="flex items-center">
                   <input
@@ -99,7 +99,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
             <h6 className="mb-3 text-xl font-heading font-semibold text-gray-900">
               Job Type
             </h6>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm lg:p-4 p-2">
               <li className="flex items-center">
                 <input
                   type="checkbox"
