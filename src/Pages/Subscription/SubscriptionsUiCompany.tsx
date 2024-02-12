@@ -3,11 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import "./SubScriptions.css";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SubscriptionsUiCompany = () => {
   const { user } = useAuth();
   const [companyPlan, setCompanyPlan] = useState<any | null>(null);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
+
+  const userEmail = user?.email;
 
   useEffect(() => {
     axios.get("/companyPlans.json").then((res) => {
@@ -17,8 +21,17 @@ const SubscriptionsUiCompany = () => {
   }, []);
 
   const handleSelectPlan = (selectedPlan: any) => {
-    navigate(user ? "/payment" : "/login", { state: { selectedPlan } });
-    console.log(selectedPlan);
+    const paymentInfo = {
+      selectedPlan,
+      user: userEmail,
+    };
+    console.log(paymentInfo);
+
+    axiosPublic.post("/subscription", paymentInfo).then((res) => {
+      if (res.data.message === "data inserted") {
+        navigate("/payment");
+      }
+    });
   };
 
   return (
