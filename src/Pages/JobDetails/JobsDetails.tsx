@@ -275,19 +275,25 @@ const JobsDetails: React.FC = () => {
               {/* right side */}
               {role === "company" ? (
                 <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12 ">
+                  {/* i want to impliment dnd here  */}
+
                   <h2 className="text-2xl font-semibold text-gray-400 my-8">
                     {" "}
                     Applicants
                   </h2>
-                  <div  className="flex space-x-5">
+                  <div className="flex space-x-5">
                     {job?.applicants?.map((details: any, index: number) => (
-                      
-                        <div key={index} className="avatar">
-                          <div className=" w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={details?.profile} alt="user Image" />
-                          </div>
+                      <div key={index} className="avatar">
+                        <div className=" w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img src={details?.profile} alt="user Image" />
                         </div>
-                      
+                      </div>
+
+                      // selection first phrase
+
+                      // selection Second phrase
+
+                      // Final selection
                     ))}
                   </div>
                 </div>

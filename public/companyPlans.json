@@ -4,11 +4,12 @@
       "price": "$00",
       "description": "Your essential toolkit for job hunting. Access diverse job listings and apply seamlessly.",
       "features": [
-        "Limited to 3 active job listings at a time",
+        "Limited to 5 active job listings at a time",
         "Basic company profile visibility",
         "Basic application tracking functionality",
         "Standard support via email."
       ],
+      "canPost": 5,
       "popular": false
     },
     {
@@ -21,6 +22,7 @@
         "Enhanced company profile visibility with logo and branding",
         "Advanced application tracking with filtering and sorting options"
       ],
+      "canPost": 20,
       "popular": true
     },
     {
@@ -33,6 +35,7 @@
         "Personalized support and assistance",
         "Advanced application tracking"
       ],
+      "canPost": 100000,
       "popular": false
     }
   ]
