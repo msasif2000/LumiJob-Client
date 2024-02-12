@@ -35,9 +35,9 @@ const JobsDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const axiosPublic = useAxiosPublic();
   const [job, setJobs] = useState<JobDetails>();
-  const { user } = useAuth();
+  const { user, role } = useAuth();
 
-  // console.log(id);
+  console.log(role);
 
   useEffect(() => {
     axiosPublic
