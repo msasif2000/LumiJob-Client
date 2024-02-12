@@ -12,6 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../config/Firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const GoogleProvider = new GoogleAuthProvider();
 const GithubProvider = new GithubAuthProvider();
@@ -27,6 +28,7 @@ interface ThemeInfo {
   createUser: (email: string, password: string) => Promise<void>;
   passwordReset: (email: string) => Promise<void>;
   updateUserProfile: (name: string) => Promise<void>;
+  role: any;
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -38,6 +40,8 @@ interface ThemeProviderProps {
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [role, setRole] = useState(null)
+  const axiosPublic = useAxiosPublic(); 
 
   const createUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
@@ -113,6 +117,21 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   };
 
+
+  useEffect(() => {
+    if (user?.email) {
+      axiosPublic
+        .get(`/user-profile/${user?.email}`)
+        .then((res) => {
+          const { role } = res.data; 
+          setRole(role);
+        })
+        .catch((error) => {
+          console.error("Error checking user role:", error);
+        });
+    }
+  },[user])
+
   const themeInfo: ThemeInfo = {
     googleSignIn,
     loading,
@@ -123,7 +142,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     createUser,
     passwordReset,
     githubSignIn,
-    updateUserProfile
+    updateUserProfile,
+    role
   };
 
   return (
