@@ -275,9 +275,9 @@ const JobsDetails: React.FC = () => {
               {/* right side */}
               {role === "company" ? (
                 <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12 ">
-                  <h2 className="text-3xl font-semibold text-gray-400 my-8">
+                  <h2 className="text-2xl font-semibold text-gray-400 my-8">
                     {" "}
-                    All Applicants for this job
+                    Applicants
                   </h2>
                   <div  className="flex space-x-5">
                     {job?.applicants?.map((details: any, index: number) => (
