@@ -69,7 +69,7 @@ const SubscriptionsUiCompany = () => {
                 </p>
                 <div className="flex justify-center items-baseline my-8">
                   <span className="mr-2 text-5xl font-extrabold">
-                    {plan.price}
+                   ${plan.price}
                   </span>
                 </div>
                 {/* List */}

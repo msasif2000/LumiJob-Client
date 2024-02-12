@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-// import { ThemeContext } from "../../providers/ThemeProvider";
 import bgimg from "../../assets/svg/bg-glow.svg";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,16 +11,15 @@ const CheackoutForm = () => {
   const [error, setError] = useState<string | null>(null);
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  // const themeInfo = useContext(ThemeContext);
   const stripe = useStripe();
   const elements = useElements();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  // const user = themeInfo !== null ? themeInfo?.user : null;
+  const [loading, setLoading] = useState(false);
   const { user, role } = useAuth();
   const [subs, setSubs] = useState<any | null>(null);
 
-  const price = 79;
+  const price = subs?.selectedPlan?.price;
 
   useEffect(() => {
     price > 0 &&
@@ -55,9 +53,12 @@ const CheackoutForm = () => {
       return;
     }
 
+    setLoading(true)
+
     const card = elements.getElement(CardElement);
 
     if (card == null) {
+      setLoading(false);
       return;
     }
 
@@ -69,6 +70,7 @@ const CheackoutForm = () => {
     if (error) {
       console.log("Payment Error", error);
       //   setError(error.message);
+      setLoading(false);
     } else {
       console.log("Payment Method", paymentMethod);
       setError("");
@@ -94,14 +96,17 @@ const CheackoutForm = () => {
         // console.log("transaction Id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
 
-        // now save the payment in the database
-
         const payment = {
-          name: user.displayName,
-          email: user.email,
-          price: price,
+          name: user?.displayName,
+          package:subs?.selectedPlan?.name,
+          email: user?.email,
+          price: subs?.selectedPlan?.price,
+          Features: subs?.selectedPlan?.features,
           transactionId: paymentIntent.id,
+          canPost : subs?.selectedPlan?.canPost,
           date: new Date(), // utc date convert. use moment js
+          userStatus: 'premium',
+          userRole: role
         };
 
         const res = await axiosPublic.post("/payments", payment);
@@ -118,6 +123,7 @@ const CheackoutForm = () => {
         navigate("/");
       }
     }
+    setLoading(false);
   };
 
   const handleCancel = (id: string) => {
@@ -147,7 +153,7 @@ const CheackoutForm = () => {
         </div>
         {subs && (
           <div className="bg-[#F1F3F7] p-10 rounded-b-sm relative">
-            {/* TODO: Add data dynmically */}
+            {/* TODO: Add data dynamically */}
 
             <div className="w-[80%] mx-auto bg-white p-3 rounded-md absolute -top-10">
               <div className="flex items-center ">
@@ -163,7 +169,7 @@ const CheackoutForm = () => {
                     {subs?.selectedPlan?.name}
                   </h3>
                   <h3 className="font-bold">
-                    Price: {subs?.selectedPlan?.price}
+                    Price: ${subs?.selectedPlan?.price}
                   </h3>
                 </div>
               </div>
@@ -230,10 +236,10 @@ const CheackoutForm = () => {
             <div className="w-full pt-8 flex justify-center">
               <button
                 type="submit"
-                disabled={!stripe || !clientSecret}
+                disabled={!stripe || !clientSecret || loading}
                 className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
               >
-                Pay Now
+                {loading ? 'Processing...' : 'Pay Now'}
               </button>
             </div>
             <p className="text-red-600 mt-5">{error}</p>
