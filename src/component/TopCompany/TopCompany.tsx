@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
-import Job from "../../Pages/Home/PopularJobs/Job";
 import TopCompanyCard from "./TopCompanyCard";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const TopCompany = () => {
-  const [allJobs, setAllJobs] = useState<Job[]>([]);
+  const [allCompany, setAllCompany] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    fetch("popular.json")
-      .then((res) => res.json())
-      .then((data: Job[]) => setAllJobs(data));
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await axiosPublic.get('/company-data');
+        setAllCompany(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  const filterJob = allJobs.slice(0, 12);
+    fetchData();
+  }, [axiosPublic]);
+
+  const filterJob = allCompany.slice(0, 6);
 
   return (
     <div className="max-w-screen-2xl mx-auto py-16 px-4">
@@ -22,9 +30,9 @@ const TopCompany = () => {
         <p className="text-sm md:text-lg xl:text-2xl text-[#999999] text-center mx-4">
           Elevate Your Career with the Most Coveted Companies
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-16">
-          {filterJob?.map((job, idx) => (
-            <TopCompanyCard key={idx} job={job}></TopCompanyCard> /* Changed key={job._id} to key={idx} */
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 mt-16">
+          {filterJob?.map((company, _id) => (
+            <TopCompanyCard key={_id} company={company}></TopCompanyCard> /* Changed key={job._id} to key={idx} */
           ))}
         </div>
       </div>
