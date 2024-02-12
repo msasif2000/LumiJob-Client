@@ -105,7 +105,8 @@ const CheackoutForm = () => {
           transactionId: paymentIntent.id,
           canPost : subs?.selectedPlan?.canPost,
           date: new Date(), // utc date convert. use moment js
-          userStatus: 'premium'
+          userStatus: 'premium',
+          userRole: role
         };
 
         const res = await axiosPublic.post("/payments", payment);
