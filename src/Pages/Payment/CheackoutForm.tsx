@@ -97,8 +97,8 @@ const CheackoutForm = () => {
         // now save the payment in the database
 
         const payment = {
-          name: user.displayName,
-          email: user.email,
+          name: user?.displayName,
+          email: user?.email,
           price: price,
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js
@@ -147,7 +147,7 @@ const CheackoutForm = () => {
         </div>
         {subs && (
           <div className="bg-[#F1F3F7] p-10 rounded-b-sm relative">
-            {/* TODO: Add data dynmically */}
+            {/* TODO: Add data dynamically */}
 
             <div className="w-[80%] mx-auto bg-white p-3 rounded-md absolute -top-10">
               <div className="flex items-center ">
@@ -163,7 +163,7 @@ const CheackoutForm = () => {
                     {subs?.selectedPlan?.name}
                   </h3>
                   <h3 className="font-bold">
-                    Price: {subs?.selectedPlan?.price}
+                    Price: ${subs?.selectedPlan?.price}
                   </h3>
                 </div>
               </div>
