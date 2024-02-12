@@ -53,15 +53,15 @@ const FindJob: React.FC = () => {
           <Search onSearchResult={handleSearchResult}></Search>
         </div>
 
-        <div className="w-full bg-[#FAFAFA]">
-          <div className="max-w-screen-2xl mx-auto px-4 grid grid-cols-1 md:grid-cols-6 xl:grid-cols-7 xl:gap-2">
-            <div className="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1">
+        <div className="bg-[#FAFAFA]">
+          <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:px-5 xl:gap-6">
+            <div className="lg:w-1/4 md:w-1/3">
               {/*=======> Left column <============= */}
               <Filters onFilterChange={handleFilterChange} />
             </div>
 
             {/* =============> Middle column <============== */}
-            <div className="col-span-1 md:col-span-4 xl:col-span-5 min-h-screen">
+            <div className="lg:w-2/4 md:w-2/3">
               <div className="flex justify-between items-center min-h-32 px-4">
                 <h4 className="font-semibold font-heading text-2xl">
                   <span className="text-[#486DD9]">{currentJobs.length}</span> Jobs Available
@@ -90,7 +90,7 @@ const FindJob: React.FC = () => {
               )}
             </div>
 
-            <div className="col-span-1 hidden lg:block">
+            <div className="lg:w-1/4 hidden lg:block">
               <div className="min-h-32"></div>
               <NotificationCard />
             </div>
