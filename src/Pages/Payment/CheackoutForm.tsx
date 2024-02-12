@@ -6,6 +6,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 // import { ThemeContext } from "../../providers/ThemeProvider";
 import bgimg from "../../assets/svg/bg-glow.svg";
 import useAuth from "../../hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 const CheackoutForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -17,7 +18,7 @@ const CheackoutForm = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   // const user = themeInfo !== null ? themeInfo?.user : null;
-  const {user} = useAuth()
+  const { user, role } = useAuth();
   const [subs, setSubs] = useState<any | null>(null);
 
   const price = 79;
@@ -45,7 +46,7 @@ const CheackoutForm = () => {
     }
   }, [user]);
 
-  console.log(subs)
+  console.log(subs);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -118,6 +119,20 @@ const CheackoutForm = () => {
       }
     }
   };
+
+  const handleCancel = (id: string) => {
+    axiosPublic.delete(`/delete-subs-plan/${id}`).then((res) => {
+      if (res.data.deletedCount > 0) {
+        if (role === "company") {
+          navigate(`/subscriptionsUiCompany`);
+        } else {
+          navigate("/subscriptionsUiCandidate");
+        }
+      } else {
+        toast.warn("Something went wrong");
+      }
+    });
+  };
   return (
     <div className=" bg-white rounded-sm border flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 rounded-md">
@@ -130,28 +145,32 @@ const CheackoutForm = () => {
             Subscribe and start your Hiring process now
           </h2>
         </div>
-       {
-        subs &&
-        <div className="bg-[#F1F3F7] p-10 rounded-b-sm relative">
-        {/* TODO: Add data dynmically */}
+        {subs && (
+          <div className="bg-[#F1F3F7] p-10 rounded-b-sm relative">
+            {/* TODO: Add data dynmically */}
 
-        <div className="w-[80%] mx-auto bg-white p-3 rounded-md absolute -top-10">
-          <div className="flex items-center ">
-            <figure className="w-24 mr-4">
-              <img
-                src="https://i.pinimg.com/564x/9e/4d/7f/9e4d7f6d814054bf75611ebf8ed0d1ee.jpg"
-                alt="pay"
-                className="w-full rounded-md"
-              />
-            </figure>
-            <div>
-              <h3 className="text-gray-500 text-xl">{subs?.selectedPlan?.name}</h3>
-              <h3 className="font-bold">Price: {subs?.selectedPlan?.price}</h3>
+            <div className="w-[80%] mx-auto bg-white p-3 rounded-md absolute -top-10">
+              <div className="flex items-center ">
+                <figure className="w-24 mr-4">
+                  <img
+                    src="https://i.pinimg.com/564x/9e/4d/7f/9e4d7f6d814054bf75611ebf8ed0d1ee.jpg"
+                    alt="pay"
+                    className="w-full rounded-md"
+                  />
+                </figure>
+                <div>
+                  <h3 className="text-gray-500 text-xl">
+                    {subs?.selectedPlan?.name}
+                  </h3>
+                  <h3 className="font-bold">
+                    Price: {subs?.selectedPlan?.price}
+                  </h3>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <ul role="list" className="mb-8 space-y-4 text-left">
-                {subs?.selectedPlan?.features?.map((feature: any, index: number) => (
+            <ul role="list" className="mb-8 space-y-4 text-left">
+              {subs?.selectedPlan?.features?.map(
+                (feature: any, index: number) => (
                   <li key={index} className="flex items-center space-x-3">
                     {/* Icon */}
                     <svg
@@ -168,10 +187,19 @@ const CheackoutForm = () => {
                     </svg>
                     <span>{feature}</span>
                   </li>
-                ))}
-              </ul>
-      </div>
-       }
+                )
+              )}
+            </ul>
+            <div className="flex justify-center">
+              <button
+                onClick={() => handleCancel(subs?._id)}
+                className="underline text-violet-400"
+              >
+                Cancel Plan
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       <div className="w-full md:w-1/2 p-10">
         <Link to="/">
@@ -217,6 +245,7 @@ const CheackoutForm = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
