@@ -38,6 +38,7 @@ const JobsDetails: React.FC = () => {
   const { user, role } = useAuth();
 
   console.log(role);
+  console.log(job);
 
   useEffect(() => {
     axiosPublic
@@ -272,32 +273,52 @@ const JobsDetails: React.FC = () => {
                 </div>
               </div>
               {/* right side */}
-              <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12">
-                <div>
-                  <button
-                    onClick={() => handleApply()}
-                    className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
-                  >
-                    APPLY HERE
-                  </button>
-                </div>
-                <div className="skeleton flex flex-col bg-[#F2F5FE] items-center p-8">
-                  <hr className="border-b-2 border-gray-400 mb-4" />
-
-                  <div className="mb-12">
-                    {/* Content for the component */}
-                    <span className="text-gray-600">
-                      Share this position with your friends and get
-                      <span className=" text-orange-500"> CAD $500</span> when
-                      they are hired
-                    </span>
+              {role === "company" ? (
+                <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12 ">
+                  <h2 className="text-3xl font-semibold text-gray-400 my-8">
+                    {" "}
+                    All Applicants for this job
+                  </h2>
+                  <div  className="flex space-x-5">
+                    {job?.applicants?.map((details: any, index: number) => (
+                      
+                        <div key={index} className="avatar">
+                          <div className=" w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src={details?.profile} alt="user Image" />
+                          </div>
+                        </div>
+                      
+                    ))}
                   </div>
-
-                  <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
-                    Login to get your link
-                  </button>
                 </div>
-              </div>
+              ) : (
+                <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12">
+                  <div>
+                    <button
+                      onClick={() => handleApply()}
+                      className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                    >
+                      APPLY HERE
+                    </button>
+                  </div>
+                  <div className="skeleton flex flex-col bg-[#F2F5FE] items-center p-8">
+                    <hr className="border-b-2 border-gray-400 mb-4" />
+
+                    <div className="mb-12">
+                      {/* Content for the component */}
+                      <span className="text-gray-600">
+                        Share this position with your friends and get
+                        <span className=" text-orange-500"> CAD $500</span> when
+                        they are hired
+                      </span>
+                    </div>
+
+                    <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
+                      Login to get your link
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <UniLoader />
