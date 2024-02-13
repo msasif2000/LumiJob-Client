@@ -79,7 +79,7 @@ const TopCompanyProfile = () => {
             </div>
 
             {/* company details */}
-            <div className="flex-1 bg-[#ffffff] pt-16 px-10 rounded-2xl shadow-2xl">
+            <div className="flex-1 bg-[#ffffff] pt-16 mb-5 px-10 rounded-2xl shadow-2xl">
               <p className="text-sm md:text-base font-semibold  text-black mb-2 uppercase">
                 {CompanyProfile?.name} Details
               </p>
