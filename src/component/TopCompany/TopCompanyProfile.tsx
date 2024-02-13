@@ -64,9 +64,9 @@ const TopCompanyProfile = () => {
 
 
             {/* company details */}
-            <div className="flex-1">
-                <p className="text-sm md:text-base font-semibold uppercase text-white mb-2">Details</p>
-                <p className="text-[#d6dfe9] text-sm md:text-base ">
+            <div className="flex-1 bg-[#D3D3D3]">
+                <p className="text-sm md:text-base font-semibold uppercase text-black mb-2">Details</p>
+                <p className="text-black text-sm md:text-base ">
                 Established on March 21, 2006, GreenGrowth Ventures is a leading force in the social media industry, headquartered in San Francisco, CA, USA. With a focus on leveraging technology for positive societal impact, our company is registered under Company No. 876. Specializing in fostering digital connectivity and community empowerment, we offer innovative solutions to meet evolving needs. Reach out to us at +97343356789 or info@greengrowthventures.com for inquiries or collaborations. Visit our website https://twitter.com/ to discover our diverse range of initiatives aimed at driving meaningful change in the digital landscape. Join us in shaping a brighter future through the power of social media.
                 </p>
                 
