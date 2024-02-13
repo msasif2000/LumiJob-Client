@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SubScriptions.css";
 import useAuth from "../../hooks/useAuth";
@@ -8,6 +8,7 @@ const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
   const {user} = useAuth()
   const axiosPublic = useAxiosPublic()
+  const navigate = useNavigate()
 
   const userEmail = user?.email
 
@@ -33,11 +34,12 @@ const SubscriptionsUiCandidate = () => {
     };
     console.log(paymentInfo);
 
-    // axiosPublic.post("/subscription", paymentInfo).then((res) => {
-    //   if (res.data.message === "data inserted") {
-    //     navigate("/payment");
-    //   }
-    // });
+    axiosPublic.post("/subscription", paymentInfo).then((res) => {
+      console.log(res.data)
+      if (res.data.message === "data inserted") {
+        navigate("/payment");
+      }
+    });
   };
 
   return (
@@ -76,7 +78,7 @@ const SubscriptionsUiCandidate = () => {
                 </p>
                 <div className="flex justify-center items-baseline my-8">
                   <span className="mr-2 text-5xl font-extrabold">
-                    {plan.price}
+                    ${plan.price}
                   </span>
                 </div>
                 {/* List */}
