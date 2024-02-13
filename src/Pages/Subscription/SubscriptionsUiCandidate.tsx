@@ -6,11 +6,11 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
-  const {user} = useAuth()
-  const axiosPublic = useAxiosPublic()
-  const navigate = useNavigate()
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
-  const userEmail = user?.email
+  const userEmail = user?.email;
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -26,7 +26,6 @@ const SubscriptionsUiCandidate = () => {
     fetchPlans();
   }, []);
 
-
   const handleSelectPlan = (selectedPlan: any) => {
     const paymentInfo = {
       selectedPlan,
@@ -35,7 +34,7 @@ const SubscriptionsUiCandidate = () => {
     console.log(paymentInfo);
 
     axiosPublic.post("/subscription", paymentInfo).then((res) => {
-      console.log(res.data)
+      console.log(res.data);
       if (res.data.message === "data inserted") {
         navigate("/payment");
       }
@@ -103,15 +102,23 @@ const SubscriptionsUiCandidate = () => {
                   ))}
                 </ul>
                 <div className="action">
-                  <Link
-                    to={{
-                      pathname: user ? "/payment" : "/login",
-                    }}
-                    className="button"
-                    onClick={()=>handleSelectPlan(plan)}
-                  >
-                    Choose plan
-                  </Link>
+                  {index === 0 ? (
+                    <button                     
+                      className="button w-full"                   
+                    >
+                      Current Plan
+                    </button>
+                  ) : (
+                    <Link
+                      to={{
+                        pathname: user ? "/payment" : "/login",
+                      }}
+                      className="button"
+                      onClick={() => handleSelectPlan(plan)}
+                    >
+                      Choose plan
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
