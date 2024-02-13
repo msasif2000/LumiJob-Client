@@ -25,7 +25,7 @@ const TopCompanyProfile = () => {
             {/* company details pages  */}
             <div>
             <div className=" pt-10 pb-16  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
-            <p className=" pb-8 lg:text-4xl font-bold text-center text-white ">Company Profile {`>`} 
+            <p className=" pb-8 lg:text-4xl font-bold text-center text-white ">Company Profile {`> `} 
             {CompanyProfile?.name} </p>
           {/* company information */}
            <div className="flex gap-10 lg:px-16 lg:pt-10">
@@ -65,9 +65,9 @@ const TopCompanyProfile = () => {
 
 
             {/* company details */}
-            <div className="flex-1 bg-[#ffffff] pt-16 px-10 rounded-2xl">
-                <p className="text-sm md:text-base font-semibold  text-black mb-5 uppercase">Information</p>
-                <p className=" text-sm md:text-base text-justify text-[#808285] ">
+            <div className="flex-1 bg-[#ffffff] pt-16 px-10 rounded-2xl shadow-2xl">
+                <p className="text-sm md:text-base font-semibold  text-black mb-5 uppercase">{CompanyProfile?.name} Details</p>
+                <p className=" text-sm md:text-base text-justify text-[#282829] ">
                 Established on {CompanyProfile?.founding}, {CompanyProfile?.name} is a leading force in the {CompanyProfile?.industry} industry, headquartered in {CompanyProfile?.city} - {CompanyProfile?.postal}, {CompanyProfile?.country}. With a focus on leveraging technology for positive societal impact, our company is registered under Company No. {CompanyProfile?.registration}. Specializing in fostering digital connectivity and community empowerment, we offer innovative solutions to meet evolving needs. Reach out to us at {CompanyProfile?.phone} or {CompanyProfile?.email} for inquiries or collaborations. Visit our website {CompanyProfile?.website} to discover our diverse range of initiatives aimed at driving meaningful change in the digital landscape. Join us in shaping a brighter future through the power of {CompanyProfile?.industry}.
                 </p>
                 
