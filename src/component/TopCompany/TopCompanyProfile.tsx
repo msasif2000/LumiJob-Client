@@ -40,7 +40,7 @@ const TopCompanyProfile = () => {
               <p className="text-sm md:text-2xl font-bold text-[#d6dfe9] ">{CompanyProfile?.name}</p>
               <div className="flex flex-col justify-center  text-white mt-5 mb-5">
             <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">Founding Year</p>
-            <p className="font-semibold md:text-xl text-[#d6dfe9]">{CompanyProfile?.founding}</p>
+            <p className="text-sm md:text-lg text-[#d6dfe9]">{CompanyProfile?.founding}</p>
           </div>
               <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">Industry</p>
               <p className="text-sm md:text-lg text-[#d6dfe9] ">
