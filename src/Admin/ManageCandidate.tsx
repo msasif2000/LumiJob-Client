@@ -59,7 +59,7 @@ const ManageCandidate = () => {
               <th>#</th>
               <th>NAME</th>
               <th>EMAIL</th>
-              {/* <th>SUBSCRIPTION</th> */}
+              <th>STATUS</th>
               <th>ACTION</th>
             </tr>
           </thead>
@@ -73,6 +73,9 @@ const ManageCandidate = () => {
                 </td>
                 <td>
                   <h3 className="font-semibold text-lg">{candidate?.email}</h3>
+                </td>
+                <td>
+                  <h3 className="font-semibold text-lg">{candidate?.status}</h3>
                 </td>
                 {/* <td>{company?.subscription}</td> */}
                   <td>
