@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SubScriptions.css";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
   const {user} = useAuth()
+  const axiosPublic = useAxiosPublic()
+
+  const userEmail = user?.email
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -20,6 +24,21 @@ const SubscriptionsUiCandidate = () => {
 
     fetchPlans();
   }, []);
+
+
+  const handleSelectPlan = (selectedPlan: any) => {
+    const paymentInfo = {
+      selectedPlan,
+      user: userEmail,
+    };
+    console.log(paymentInfo);
+
+    // axiosPublic.post("/subscription", paymentInfo).then((res) => {
+    //   if (res.data.message === "data inserted") {
+    //     navigate("/payment");
+    //   }
+    // });
+  };
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4">
@@ -87,6 +106,7 @@ const SubscriptionsUiCandidate = () => {
                       pathname: user ? "/payment" : "/login",
                     }}
                     className="button"
+                    onClick={()=>handleSelectPlan(plan)}
                   >
                     Choose plan
                   </Link>
