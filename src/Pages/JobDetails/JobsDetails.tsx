@@ -116,7 +116,7 @@ const JobsDetails: React.FC = () => {
             closeOnClick: true,
           });
         } else if (res.data.message === "Already applied") {
-          toast.success("You have Already Applied Successfully", {
+          toast.success("You have Already Applied", {
             position: "top-center",
             hideProgressBar: true,
             autoClose: 2000,
@@ -275,7 +275,7 @@ const JobsDetails: React.FC = () => {
               {/* right side */}
               {role === "company" ? (
                 <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12 ">
-                  {/* i want to impliment dnd here  */}
+                  {/* i want to implement dnd here  */}
 
                   <h2 className="text-2xl font-semibold text-gray-400 my-8">
                     {" "}
