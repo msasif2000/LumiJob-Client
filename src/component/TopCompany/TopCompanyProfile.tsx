@@ -51,9 +51,9 @@ const TopCompanyProfile = () => {
               <p className="text-sm md:text-lg  text-[#d6dfe9] ">
                 {CompanyProfile?.city} - {CompanyProfile?.postal}, {CompanyProfile?.country}
               </p>
-              <p className="text-sm md:text-base uppercase text-[#d6dfe9] pt-1">Phone: {CompanyProfile?.phone}</p>
-              <p className=" text-sm md:text-base text-[#d6dfe9] md:pt-1">E-mail: {CompanyProfile?.email}</p>
-              <p className=" text-sm md:text-base text-[#d6dfe9] md:pt-1">Website: {CompanyProfile?.website}</p>
+              <p className="text-sm md:text-lg uppercase text-[#d6dfe9] pt-1">Phone: {CompanyProfile?.phone}</p>
+              <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1">E-mail: {CompanyProfile?.email}</p>
+              <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1">Website: {CompanyProfile?.website}</p>
               
             </div>
               
