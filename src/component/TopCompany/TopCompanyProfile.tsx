@@ -36,18 +36,18 @@ const TopCompanyProfile = () => {
               src={CompanyProfile?.photo}
             />
             <div>
-              <p className="text-sm md:text-base uppercase text-white ">Company Name </p>
+              <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">Company Name </p>
               <p className="text-sm md:text-2xl font-bold text-[#d6dfe9] ">{CompanyProfile?.name}</p>
-              <div className="flex flex-col justify-center  text-white mt-5">
-            <p className="text-lg font-medium ">Founding Year</p>
+              <div className="flex flex-col justify-center  text-white mt-5 mb-5">
+            <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">Founding Year</p>
             <p className="font-semibold md:text-xl text-[#d6dfe9]">{CompanyProfile?.founding}</p>
           </div>
-              <p className="text-sm md:text-base uppercase text-white md:mt-5">Industry</p>
+              <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">Industry</p>
               <p className="text-sm md:text-xl font-semibold text-[#d6dfe9] ">
                 {CompanyProfile?.industry}
               </p>
               <div className="mt-5" >
-              <p className="text-sm md:text-base font-semibold uppercase text-white ">address </p>
+              <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">address </p>
               <p className="text-sm md:text-lg  text-[#d6dfe9] ">
                 {CompanyProfile?.city} - {CompanyProfile?.postal}, {CompanyProfile?.country}
               </p>
@@ -65,8 +65,8 @@ const TopCompanyProfile = () => {
 
             {/* company details */}
             <div className="flex-1">
-                <p className="">Details</p>
-                <p className="">
+                <p className="text-sm md:text-base font-semibold uppercase text-white mb-2">Details</p>
+                <p className="text-[#d6dfe9]">
                 Established on March 21, 2006, GreenGrowth Ventures is a leading force in the social media industry, headquartered in San Francisco, CA, USA. With a focus on leveraging technology for positive societal impact, our company is registered under Company No. 876. Specializing in fostering digital connectivity and community empowerment, we offer innovative solutions to meet evolving needs. Reach out to us at +97343356789 or info@greengrowthventures.com for inquiries or collaborations. Visit our website https://twitter.com/ to discover our diverse range of initiatives aimed at driving meaningful change in the digital landscape. Join us in shaping a brighter future through the power of social media.
                 </p>
                 
