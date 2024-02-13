@@ -1,6 +1,6 @@
-import { MdOutlineModeEdit } from "react-icons/md";
+// import { MdOutlineModeEdit } from "react-icons/md";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
@@ -32,7 +32,7 @@ const CompanyDetails = () => {
           <div>
             <p className="text-xl md:text-2xl p-2 text-white ">Company Profile</p>
           </div>
-          <Link to="/dashboard/companyProfile/update">
+          {/* <Link to="/dashboard/companyProfile/update">
             <div className="flex md:btn justify-center items-center bg-white rounded-full md:rounded-3xl p-1 md:px-2">
               <div className="bg-[#6f6aff] p-1 rounded-full">
                 <MdOutlineModeEdit className="text-sm md:text-2xl text-white" />
@@ -41,7 +41,7 @@ const CompanyDetails = () => {
                 Edit Profile
               </p>
             </div>
-          </Link>
+          </Link> */}
         </div>
 
          {/* company profile made two pard for responsivnes */}
@@ -87,14 +87,9 @@ const CompanyDetails = () => {
         <div className="flex justify-between">
           <h3 className="text-xl md:text-3xl font-medium text-[#688696]">
             Company details
-          </h3>
-          <div className="flex justify-center items-center bg-[#6886964f] rounded-xl px-2 py-1">
-            <p className=" text-xs md:text-xl font-semibold text-[#6560fb] p-1 md:p-2 ">
-              See All Jobs
-            </p>
-          </div>
+          </h3>  
         </div>
-        <div className="md:flex mt-5 gap-16">
+        <div className="md:flex justify-between mt-5 gap-16">
           <div className="flex flex-col justify-center">
             <p className="text-lg font-medium text-[#688696]">
               Company Registration No

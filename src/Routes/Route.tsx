@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
     element: <Roles />,
   },
   {
-    path: "/candidate-profile/:id",
+    path: "/company-detailsProfile/:id",
     element: <CompanyDetails></CompanyDetails>,
   },
 
