@@ -71,6 +71,41 @@ const TopCompanyProfile = () => {
         </div> 
       </div>
 
+
+      <div className="border-2 border-[#6886968f] min-h-20 mt-4 rounded-md md:p-6 p-4 md:pb-10">
+        <div className="flex justify-between">
+          <h3 className="text-xl md:text-3xl font-medium text-[#688696]">
+            Company details
+          </h3>  
+        </div>
+        <div className="md:flex justify-between mt-5 gap-16">
+          <div className="flex flex-col justify-center">
+            <p className="text-lg font-medium text-[#688696]">
+              Company Registration No
+            </p>
+            <p className="font-semibold md:text-xl "> {CompanyProfile?.registration}</p>
+          </div>
+          <div className="flex flex-col justify-center ">
+            <p className="text-lg font-medium text-[#688696]">Founding Year</p>
+            <p className="font-semibold md:text-xl ">{CompanyProfile?.founding}</p>
+          </div>
+          <div className="flex flex-col justify-center">
+            <p className="text-lg font-medium text-[#688696]">Company Type</p>
+            <p className="font-semibold md:text-xl ">{CompanyProfile?.industry}</p>
+          </div>
+          <div className="flex flex-col justify-center">
+            <p className="text-lg font-medium text-[#688696]">
+              Service/Product
+            </p>
+            <p className="font-semibold md:text-xl ">{CompanyProfile?.service}</p>
+          </div>
+          <div className="flex flex-col justify-center">
+            <p className="text-lg font-medium text-[#688696]">Status</p>
+            <p className="font-semibold md:text-xl ">Active</p>
+          </div>
+        </div>
+      </div>
+
             </div>
 
              {/* company posted jobs */}
