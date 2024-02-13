@@ -43,43 +43,6 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           Home
         </NavLink>
       </li>
-      {
-        isRole === "candidate" ? (
-          <li key="subscriptionsUiCandidate">
-            <NavLink
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                    ? "font-black underline text-lg"
-                    : "text-lg"
-              }
-              to="/subscriptionsUiCandidate"
-            >
-              Pricing
-            </NavLink>
-          </li>) : 
-          isRole === "company" ? (
-            <li key="subscriptionsUiCompany">
-              <NavLink
-                to="/subscriptionsUiCompany"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
-                }
-              >
-                Pricing
-              </NavLink>
-            </li>
-          ) :
-          (<li key="optionsSubscribe" >
-            <NavLink to="/optionsSubscribe" className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
-            }>
-              Pricing
-            </NavLink>
-
-          </li>)
-      }
       <li key="Job">
         <NavLink className="text-lg font-heading font-medium" to="/findjob">
           Jobs
@@ -174,16 +137,61 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </div>
         <div className="navbar-end">
           <div className="mr-24 hidden md:block ">
-            <button className="button  ">
-              Apply Now
-              <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
-                <path
-                  clipRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                  fillRule="evenodd"
-                ></path>
-              </svg>
-            </button>
+            {
+              isRole === "candidate" ? (
+                <button className="button ">
+                  <NavLink to="/subscriptionsUiCandidate" className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"}>
+                    <div className="flex items-center gap-2 ">
+                      Upgrade
+                      <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </NavLink>
+                </button>) :
+                isRole === "company" ? (
+                   <button className="button ">
+                    <NavLink to="/subscriptionsUiCompany" className={ ({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"}>
+                       <div className="flex items-center gap-2 ">
+                          Upgrade
+                          <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
+                            <path
+                              clipRule="evenodd"
+                              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                              fillRule="evenodd"
+                            ></path>
+                          </svg>
+                       </div>
+                      </NavLink>
+                    </button>
+                 
+                ) :
+                  (
+                    <button className="button ">
+                      <NavLink to="/optionsSubscribe" className={ ({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"}>
+                       <div className="flex items-center gap-2 ">
+                          Upgrade
+                          <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
+                            <path
+                              clipRule="evenodd"
+                              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                              fillRule="evenodd"
+                            ></path>
+                          </svg>
+                       </div>
+                      </NavLink>
+                    </button>
+
+                  )
+            }
+           
           </div>
 
           <div>
