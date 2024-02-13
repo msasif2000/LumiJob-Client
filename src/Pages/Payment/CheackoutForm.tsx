@@ -174,7 +174,7 @@ const CheackoutForm = () => {
                 </div>
               </div>
             </div>
-            <ul role="list" className="mb-8 space-y-4 text-left">
+            <ul role="list" className="my-8  space-y-4 text-left">
               {subs?.selectedPlan?.features?.map(
                 (feature: any, index: number) => (
                   <li key={index} className="flex items-center space-x-3">
