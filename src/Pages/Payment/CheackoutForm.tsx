@@ -6,6 +6,21 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import bgimg from "../../assets/svg/bg-glow.svg";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
+import Payment from './Payment';
+
+interface Payment {
+  name: string;
+  package: string;
+  email: string;
+  price: number;
+  Features: string[];
+  transactionId: string;
+  date: Date;
+  userStatus: string;
+  userRole: string;
+  canPost?: number; // Optional property for 'company' role
+  canApply?: number; // Optional property for other roles
+}
 
 const CheackoutForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +68,7 @@ const CheackoutForm = () => {
       return;
     }
 
-    setLoading(true)
+    setLoading(true);
 
     const card = elements.getElement(CardElement);
 
@@ -96,18 +111,26 @@ const CheackoutForm = () => {
         // console.log("transaction Id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
 
-        const payment = {
+        const payment: Payment = {
           name: user?.displayName,
-          package:subs?.selectedPlan?.name,
+          package: subs?.selectedPlan?.name,
           email: user?.email,
           price: subs?.selectedPlan?.price,
           Features: subs?.selectedPlan?.features,
           transactionId: paymentIntent.id,
-          canPost : subs?.selectedPlan?.canPost,
           date: new Date(), // utc date convert. use moment js
-          userStatus: 'premium',
-          userRole: role
+          userStatus: "premium",
+          userRole: role,
         };
+
+        // Depending on the user's role, set the appropriate permission
+        if (role === "company") {
+          payment.canPost = subs?.selectedPlan?.canPost;
+        } else {
+          payment.canApply = subs?.selectedPlan?.canApply;
+        }
+
+        console.log(payment)
 
         const res = await axiosPublic.post("/payments", payment);
         console.log("payment saved", res.data);
@@ -174,7 +197,7 @@ const CheackoutForm = () => {
                 </div>
               </div>
             </div>
-            <ul role="list" className="mb-8 space-y-4 text-left">
+            <ul role="list" className="my-8  space-y-4 text-left">
               {subs?.selectedPlan?.features?.map(
                 (feature: any, index: number) => (
                   <li key={index} className="flex items-center space-x-3">
@@ -239,7 +262,7 @@ const CheackoutForm = () => {
                 disabled={!stripe || !clientSecret || loading}
                 className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
               >
-                {loading ? 'Processing...' : 'Pay Now'}
+                {loading ? "Processing..." : "Pay Now"}
               </button>
             </div>
             <p className="text-red-600 mt-5">{error}</p>

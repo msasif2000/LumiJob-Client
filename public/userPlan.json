@@ -1,37 +1,39 @@
 [
-    {
-      "name": "Free",
-      "price": "$00",
-      "description": "Your essential toolkit for job hunting. Access diverse job listings and apply seamlessly.",
-      "features": [
-        "Apply to 15 jobs and kickstart your career journey.",
-        "Access job listings and apply easily.",
-        "Manage your candidate profile effortlessly.",
-        "Use limited job search filters for tailored results."
-      ]
-    },
-    {
-      "name": "Standard",
-      "price": "$49",
-      "popular": true,
-      "description": "Relevant for multiple users, extended & premium support.",
-      "features": [
-        "Apply to 80 jobs and kickstart your career journey.",
-        "Access job listings and apply easily.",
-        "Manage your candidate profile effortlessly.",
-        "Use limited job search filters for tailored results."
-      ]
-    },
-    {
-      "name": "Premium",
-      "price": "$199",
-      "description": "Best for large scale uses and extended redistribution rights.",
-      "features": [
-        "Apply to unlimited jobs and kickstart your career journey.",
-        "Access job listings and apply easily.",
-        "Manage your candidate profile effortlessly.",
-        "Use limited job search filters for tailored results."
-      ]
-    }
-  ]
-  
+  {
+    "name": "Free",
+    "price": 0,
+    "description": "Your essential toolkit for job hunting. Access diverse job listings and apply seamlessly.",
+    "canApply": 20,
+    "features": [
+      "Apply to 20 jobs and kickstart your career journey.",
+      "Access job listings and apply easily.",
+      "Manage your candidate profile effortlessly.",
+      "Use limited job search filters for tailored results."
+    ]
+  },
+  {
+    "name": "Standard",
+    "price": 49,
+    "popular": true,
+    "canApply": 80,
+    "description": "Relevant for multiple users, extended & premium support.",
+    "features": [
+      "Apply to 80 jobs and kickstart your career journey.",
+      "Access job listings and apply easily.",
+      "Manage your candidate profile effortlessly.",
+      "Use limited job search filters for tailored results."
+    ]
+  },
+  {
+    "name": "Premium",
+    "price": 199,
+    "description": "Best for large scale uses and extended redistribution rights.",
+    "canApply": 100000,
+    "features": [
+      "Apply to unlimited jobs and kickstart your career journey.",
+      "Access job listings and apply easily.",
+      "Manage your candidate profile effortlessly.",
+      "Use limited job search filters for tailored results."
+    ]
+  }
+]

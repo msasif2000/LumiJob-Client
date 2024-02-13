@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SubScriptions.css";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+
+  const userEmail = user?.email;
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -18,6 +25,21 @@ const SubscriptionsUiCandidate = () => {
 
     fetchPlans();
   }, []);
+
+  const handleSelectPlan = (selectedPlan: any) => {
+    const paymentInfo = {
+      selectedPlan,
+      user: userEmail,
+    };
+    console.log(paymentInfo);
+
+    axiosPublic.post("/subscription", paymentInfo).then((res) => {
+      console.log(res.data);
+      if (res.data.message === "data inserted") {
+        navigate("/payment");
+      }
+    });
+  };
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4">
@@ -55,7 +77,7 @@ const SubscriptionsUiCandidate = () => {
                 </p>
                 <div className="flex justify-center items-baseline my-8">
                   <span className="mr-2 text-5xl font-extrabold">
-                    {plan.price}
+                    ${plan.price}
                   </span>
                 </div>
                 {/* List */}
@@ -80,9 +102,23 @@ const SubscriptionsUiCandidate = () => {
                   ))}
                 </ul>
                 <div className="action">
-                  <Link to="/login" className="button">
-                    Choose plan
-                  </Link>
+                  {index === 0 ? (
+                    <button                     
+                      className="button w-full"                   
+                    >
+                      Current Plan
+                    </button>
+                  ) : (
+                    <Link
+                      to={{
+                        pathname: user ? "/payment" : "/login",
+                      }}
+                      className="button"
+                      onClick={() => handleSelectPlan(plan)}
+                    >
+                      Choose plan
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
