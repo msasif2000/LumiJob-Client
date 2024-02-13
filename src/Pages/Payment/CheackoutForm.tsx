@@ -10,7 +10,7 @@ import Payment from './Payment';
 
 interface Payment {
   name: string;
-  package: string;
+  packages: string;
   email: string;
   price: number;
   Features: string[];
