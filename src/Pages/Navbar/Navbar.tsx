@@ -1,36 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
-import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 
 interface NavbarProps {
   color?: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
-  // To Do : user set AuthProvider
-  // To Do : All Link NavLink or Link Seta Valid link
-
-  const { user, logOut, premium } = useAuth();
-  const [isRole, setRole] = useState(null);
-  const [profile, setProfile] = useState<any>(null);
-  const axiosPublic = useAxiosPublic();
-
-  useEffect(() => {
-    if (user?.email) {
-      axiosPublic
-        .get(`/user-profile/${user?.email}`)
-        .then((res) => {
-          const { role, photo } = res.data;
-          setProfile(photo);
-          setRole(role);
-        })
-        .catch((error) => {
-          console.error("Error checking user role:", error);
-        });
-    }
-  }, [user]);
+  const { user, logOut, premium, role, photo } = useAuth();
 
   const handleLogout = () => {
     logOut();
@@ -54,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
 
-      {isRole === "admin" ? (
+      {role === "admin" ? (
         <li key="adminDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -63,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             Dashboard
           </NavLink>
         </li>
-      ) : isRole === "candidate" ? (
+      ) : role === "candidate" ? (
         <li key="candidateDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -72,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             Dashboard
           </NavLink>
         </li>
-      ) : isRole === "company" ? (
+      ) : role === "company" ? (
         <li key="companyDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -137,7 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </div>
         <div className="navbar-end">
           <div className="mr-24 hidden md:block ">
-            {isRole === "candidate" ? (
+            {role === "candidate" ? (
               <button className="button ">
                 <NavLink
                   to="/subscriptionsUiCandidate"
@@ -165,7 +143,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   </div>
                 </NavLink>
               </button>
-            ) : isRole === "company" ? (
+            ) : role === "company" ? (
               <button className="button ">
                 <NavLink
                   to="/subscriptionsUiCompany"
@@ -244,8 +222,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                       <img
                         alt="Tailwind CSS Navbar component"
                         src={
-                          profile
-                            ? profile
+                          photo
+                            ? photo
                             : "https://i.pinimg.com/564x/70/dd/61/70dd612c65034b88ebf474a52ccc70c4.jpg"
                         }
                       />
