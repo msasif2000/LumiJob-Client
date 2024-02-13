@@ -94,15 +94,23 @@ const SubscriptionsUiCompany = () => {
                   ))}
                 </ul>
                 <div className="action">
-                  <Link
-                    to={{
-                      pathname: user ? "/payment" : "/login",
-                    }}
-                    className="button"
-                    onClick={() => handleSelectPlan(plan)}
-                  >
-                    Choose plan
-                  </Link>
+                  {index === 0 ? (
+                    <button                     
+                      className="button w-full"                   
+                    >
+                      Current Plan
+                    </button>
+                  ) : (
+                    <Link
+                      to={{
+                        pathname: user ? "/payment" : "/login",
+                      }}
+                      className="button"
+                      onClick={() => handleSelectPlan(plan)}
+                    >
+                      Choose plan
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
