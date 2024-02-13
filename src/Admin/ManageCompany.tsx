@@ -9,7 +9,7 @@ interface Company {
   email: string;
   phone: string;
   country: string;
-  subscription: string;
+  status: string;
 }
 const ManageCompany = () => {
   const axiosPublic = useAxiosPublic();
@@ -68,7 +68,7 @@ const ManageCompany = () => {
               <th>EMAIL</th>
               <th>PHONE</th>
               <th>LOCATION</th>
-              {/* <th>SUBSCRIPTION</th> */}
+              <th>STATUS</th>
               <th>ACTION</th>
             </tr>
           </thead>
@@ -84,7 +84,7 @@ const ManageCompany = () => {
                 <td className="font-semibold text-lg">{company.email}</td>
                 <td className="font-semibold">{company.phone}</td>
                 <td className="font-semibold">{company.country}</td>
-                {/* <td>{company?.subscription}</td> */}
+                <td className="font-semibold">{company?.status}</td>
                 <td>
                 <button onClick={() => handleDelete(company._id, company?.email)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group">
                       <MdDelete className="text-2xl" />
