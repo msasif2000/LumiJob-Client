@@ -166,7 +166,7 @@ const CandidateProfile = () => {
         handleClick2={buttonClicked2}
         handleClick={buttonClicked}
       />
-      <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10">
+      <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10 py-5">
         {/* profile card div */}
         <div className="bg-white h-fit lg:w-1/3 rounded-2xl space-y-5 p-5 relative">
           <div className="bg-accent h-48 rounded-2xl relative">
@@ -185,7 +185,7 @@ const CandidateProfile = () => {
           {/* Name */}
           <div className="pt-10">
             <h1 className=" text-base md:text-3xl font-bold">{profile?.name}</h1>
-            <p className="text-xs md:text-sm">{profile?.position}</p>
+            <p className="text-md md:text-lg font-semibold">{profile?.position}</p>
           </div>
           {/* Bio */}
           <div>
@@ -210,7 +210,7 @@ const CandidateProfile = () => {
 
         {/* end profile card div */}
 
-        <div className="flex flex-col lg:flex-grow">
+        <div className="flex flex-col lg:flex-grow space-y-4">
           {/* address div */}
           <div className="bg-white h-1/2 lg:w-full rounded-2xl p-10 space-y-4">
             <p className="text-base md:text-2xl font-bold">Personal Information</p>
