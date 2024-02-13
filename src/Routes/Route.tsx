@@ -32,6 +32,7 @@ import ManagePayments from "../Admin/ManagePayments";
 import ManageCandidate from "../Admin/ManageCandidate";
 import Payment from "../Pages/Payment/Payment";
 import OptionSubscribe from "../Pages/Subscription/OptionSubscribe";
+import CompanyDetails from "../Pages/CompanyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
     path: "/signup/role",
     errorElement: <NotFound />,
     element: <Roles />,
+  },
+  {
+    path: "/candidate-profile/:id",
+    element: <CompanyDetails></CompanyDetails>,
   },
 
   //Login
