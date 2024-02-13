@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SubScriptions.css";
+import useAuth from "../../hooks/useAuth";
 
 const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
+  const {user} = useAuth()
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -80,7 +82,12 @@ const SubscriptionsUiCandidate = () => {
                   ))}
                 </ul>
                 <div className="action">
-                  <Link to="/login" className="button">
+                  <Link
+                    to={{
+                      pathname: user ? "/payment" : "/login",
+                    }}
+                    className="button"
+                  >
                     Choose plan
                   </Link>
                 </div>
