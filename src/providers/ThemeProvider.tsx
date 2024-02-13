@@ -31,6 +31,7 @@ interface ThemeInfo {
   role: any;
   premium: any;
   photo: any;
+  packages:any
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -45,6 +46,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [role, setRole] = useState(null)
   const [premium, setPremium] = useState(null)
   const [photo, setPhoto] = useState(null)
+  const [packages, setPackages] = useState(null)
   const axiosPublic = useAxiosPublic(); 
 
   const createUser = (email: string, password: string): Promise<any> => {
@@ -127,10 +129,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       axiosPublic
         .get(`/user-profile/${user?.email}`)
         .then((res) => {
-          const { role, status, photo } = res.data; 
+          const { role, status, photo, packages } = res.data; 
           setRole(role);
           setPremium(status);
           setPhoto(photo)
+          setPackages(packages)
         })
         .catch((error) => {
           console.error("Error checking user role:", error);
@@ -151,7 +154,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     updateUserProfile,
     role,
     premium,
-    photo
+    photo,
+    packages
   };
 
   return (
