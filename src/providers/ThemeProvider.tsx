@@ -29,6 +29,7 @@ interface ThemeInfo {
   passwordReset: (email: string) => Promise<void>;
   updateUserProfile: (name: string) => Promise<void>;
   role: any;
+  premium: any;
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -41,6 +42,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState(null)
+  const [premium, setPremium] = useState(null)
   const axiosPublic = useAxiosPublic(); 
 
   const createUser = (email: string, password: string): Promise<any> => {
@@ -123,8 +125,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       axiosPublic
         .get(`/user-profile/${user?.email}`)
         .then((res) => {
-          const { role } = res.data; 
+          const { role, status } = res.data; 
           setRole(role);
+          setPremium(status);
         })
         .catch((error) => {
           console.error("Error checking user role:", error);
@@ -143,7 +146,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     passwordReset,
     githubSignIn,
     updateUserProfile,
-    role
+    role,
+    premium
   };
 
   return (
