@@ -25,12 +25,12 @@ const TopCompanyProfile = () => {
             {/* company details pages  */}
             <div>
             <div className=" pt-10 pb-16  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
-            <p className=" py-6 lg:text-4xl font-bold text-center text-white ">Company Profile</p>
+            <p className=" pb-8 lg:text-4xl font-bold text-center text-white ">Company Profile {`>`} {CompanyProfile?.name} </p>
           
 
          
 
-        <div className="md:flex md:gap-10">
+        <div className="md:flex md:gap-10 ">
           {/* part one-- */}
           <div className="flex gap-4 md:gap-10">
             <img
