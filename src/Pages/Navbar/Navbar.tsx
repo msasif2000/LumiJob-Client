@@ -1,36 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
-import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 
 interface NavbarProps {
   color?: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
-  // To Do : user set AuthProvider
-  // To Do : All Link NavLink or Link Seta Valid link
-
-  const { user, logOut } = useAuth();
-  const [isRole, setRole] = useState(null);
-  const [profile, setProfile] = useState<any>(null);
-  const axiosPublic = useAxiosPublic();
-
-  useEffect(() => {
-    if (user?.email) {
-      axiosPublic
-        .get(`/user-profile/${user?.email}`)
-        .then((res) => {
-          const { role, photo } = res.data;
-          setProfile(photo);
-          setRole(role);
-        })
-        .catch((error) => {
-          console.error("Error checking user role:", error);
-        });
-    }
-  }, [user]);
+  const { user, logOut, premium, role, photo } = useAuth();
 
   const handleLogout = () => {
     logOut();
@@ -43,43 +21,6 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           Home
         </NavLink>
       </li>
-      {
-        isRole === "candidate" ? (
-          <li key="subscriptionsUiCandidate">
-            <NavLink
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                    ? "font-black underline text-lg"
-                    : "text-lg"
-              }
-              to="/subscriptionsUiCandidate"
-            >
-              Pricing
-            </NavLink>
-          </li>) : 
-          isRole === "company" ? (
-            <li key="subscriptionsUiCompany">
-              <NavLink
-                to="/subscriptionsUiCompany"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
-                }
-              >
-                Pricing
-              </NavLink>
-            </li>
-          ) :
-          (<li key="optionsSubscribe" >
-            <NavLink to="/optionsSubscribe" className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "font-black underline text-lg" : "text-lg"
-            }>
-              Pricing
-            </NavLink>
-
-          </li>)
-      }
       <li key="Job">
         <NavLink className="text-lg font-heading font-medium" to="/findjob">
           Jobs
@@ -91,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
 
-      {isRole === "admin" ? (
+      {role === "admin" ? (
         <li key="adminDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -100,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             Dashboard
           </NavLink>
         </li>
-      ) : isRole === "candidate" ? (
+      ) : role === "candidate" ? (
         <li key="candidateDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -109,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             Dashboard
           </NavLink>
         </li>
-      ) : isRole === "company" ? (
+      ) : role === "company" ? (
         <li key="companyDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -174,16 +115,91 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </div>
         <div className="navbar-end">
           <div className="mr-24 hidden md:block ">
-            <button className="button  ">
-              Apply Now
-              <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
-                <path
-                  clipRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                  fillRule="evenodd"
-                ></path>
-              </svg>
-            </button>
+            {role === "candidate" ? (
+              <button className="button ">
+                <NavLink
+                  to="/subscriptionsUiCandidate"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "font-black underline text-lg"
+                      : "text-lg"
+                  }
+                >
+                  <div className="flex items-center gap-2 ">
+                    Upgrade
+                    <svg
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="icon"
+                    >
+                      <path
+                        clipRule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                        fillRule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </NavLink>
+              </button>
+            ) : role === "company" ? (
+              <button className="button ">
+                <NavLink
+                  to="/subscriptionsUiCompany"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "font-black underline text-lg"
+                      : "text-lg"
+                  }
+                >
+                  <div className="flex items-center gap-2 ">
+                    Upgrade
+                    <svg
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="icon"
+                    >
+                      <path
+                        clipRule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                        fillRule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </NavLink>
+              </button>
+            ) : (
+              <button className="button ">
+                <NavLink
+                  to="/optionsSubscribe"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "font-black underline text-lg"
+                      : "text-lg"
+                  }
+                >
+                  <div className="flex items-center gap-2 ">
+                    Upgrade
+                    <svg
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="icon"
+                    >
+                      <path
+                        clipRule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                        fillRule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </NavLink>
+              </button>
+            )}
           </div>
 
           <div>
@@ -195,13 +211,19 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
-                  <div className="w-20 rounded-full">
+                  <div
+                    className={`w-20 rounded-full ${
+                      premium === "premium"
+                        ? "ring-4 ring-blue-400 ring-offset-2"
+                        : ""
+                    }`}
+                  >
                     {user ? (
                       <img
                         alt="Tailwind CSS Navbar component"
                         src={
-                          profile
-                            ? profile
+                          photo
+                            ? photo
                             : "https://i.pinimg.com/564x/70/dd/61/70dd612c65034b88ebf474a52ccc70c4.jpg"
                         }
                       />

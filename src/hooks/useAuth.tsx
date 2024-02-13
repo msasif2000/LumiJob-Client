@@ -11,7 +11,10 @@ interface AuthContextType {
   logOut: () => Promise<void>;
   createUser: (email: string, password: string) => Promise<void>;
   updateUserProfile: (name: string) => Promise<void>;
-  role: any
+  role: any;
+  premium: any;
+  photo: any;
+  packages: any
 }
 
 

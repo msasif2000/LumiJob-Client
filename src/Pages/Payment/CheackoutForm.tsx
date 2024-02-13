@@ -10,7 +10,7 @@ import Payment from './Payment';
 
 interface Payment {
   name: string;
-  package: string;
+  packages: string;
   email: string;
   price: number;
   Features: string[];
@@ -113,7 +113,7 @@ const CheackoutForm = () => {
 
         const payment: Payment = {
           name: user?.displayName,
-          package: subs?.selectedPlan?.name,
+          packages: subs?.selectedPlan?.name,
           email: user?.email,
           price: subs?.selectedPlan?.price,
           Features: subs?.selectedPlan?.features,
