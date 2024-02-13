@@ -33,8 +33,9 @@ import ManageCandidate from "../Admin/ManageCandidate";
 import Payment from "../Pages/Payment/Payment";
 import OptionSubscribe from "../Pages/Subscription/OptionSubscribe";
 import CompanyDetails from "../Pages/CompanyDetails";
-import TopCompany from "../component/TopCompany/TopCompany";
+// import TopCompany from "../component/TopCompany/TopCompany";
 import TopCompanyProfile from "../component/TopCompany/TopCompanyProfile";
+import Blogs from "../Company/Blogs";
 
 export const router = createBrowserRouter([
   {
@@ -194,6 +195,10 @@ export const router = createBrowserRouter([
       {
         path: "postedJobs",
         element: <PostedJobs />,
+      },
+      {
+        path: "blog-posted", 
+        element: <Blogs />
       },
       {
         path: "companyAnalytics",
