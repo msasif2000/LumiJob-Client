@@ -22,7 +22,7 @@ const TopCompanyProfile = () => {
       {/* company details pages  */}
       <div>
         <div className=" pt-10 pb-16  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
-          <p className=" pb-8 lg:text-4xl font-bold text-center text-white ">
+          <p className=" pb-8 lg:text-4xl font-bold text-center text-white  ">
             Company Profile {`> `}
             {CompanyProfile?.name}{" "}
           </p>
@@ -39,38 +39,38 @@ const TopCompanyProfile = () => {
                   <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">
                     Company Name{" "}
                   </p>
-                  <p className="text-sm md:text-lg text-[#d6dfe9] ">
+                  <p className="text-sm md:text-lg text-[#d6dfe9] pl-1">
                     {CompanyProfile?.name}
                   </p>
                   <div className="flex flex-col justify-center  text-white mt-5 mb-5">
                     <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">
                       Founding Year
                     </p>
-                    <p className="text-sm md:text-lg text-[#d6dfe9]">
+                    <p className="text-sm md:text-lg text-[#d6dfe9] pl-1">
                       {CompanyProfile?.founding}
                     </p>
                   </div>
                   <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">
                     Industry
                   </p>
-                  <p className="text-sm md:text-lg text-[#d6dfe9] ">
+                  <p className="text-sm md:text-lg text-[#d6dfe9] pl-1">
                     {CompanyProfile?.industry}
                   </p>
                   <div className="mt-5">
                     <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">
                       address{" "}
                     </p>
-                    <p className="text-sm md:text-lg  text-[#d6dfe9] ">
+                    <p className="text-sm md:text-lg  text-[#d6dfe9] pl-1">
                       {CompanyProfile?.city} - {CompanyProfile?.postal},{" "}
                       {CompanyProfile?.country}
                     </p>
-                    <p className="text-sm md:text-lg uppercase text-[#d6dfe9] pt-1">
+                    <p className="text-sm md:text-lg uppercase text-[#d6dfe9] pt-1 pl-1">
                       Phone: {CompanyProfile?.phone}
                     </p>
-                    <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1">
+                    <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1 pl-1">
                       E-mail: {CompanyProfile?.email}
                     </p>
-                    <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1">
+                    <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1 pl-1">
                       Website: {CompanyProfile?.website}
                     </p>
                   </div>
@@ -80,7 +80,7 @@ const TopCompanyProfile = () => {
 
             {/* company details */}
             <div className="flex-1 bg-[#ffffff] pt-16 px-10 rounded-2xl shadow-2xl">
-              <p className="text-sm md:text-base font-semibold  text-black mb-5 uppercase">
+              <p className="text-sm md:text-base font-semibold  text-black mb-2 uppercase">
                 {CompanyProfile?.name} Details
               </p>
               <p className=" text-sm md:text-base text-justify text-[#282829] ">
