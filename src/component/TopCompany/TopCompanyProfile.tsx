@@ -24,8 +24,8 @@ const TopCompanyProfile = () => {
         <div className="h-screen">
             {/* company details pages  */}
             <div>
-            <div className="md:h-60  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
-            <p className=" py-6 text-2xl font-bold text-center text-white ">Company Profile</p>
+            <div className=" pt-10 pb-16  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
+            <p className=" py-6 lg:text-4xl font-bold text-center text-white ">Company Profile</p>
           
 
          
