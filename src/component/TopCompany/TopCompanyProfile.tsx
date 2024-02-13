@@ -37,7 +37,7 @@ const TopCompanyProfile = () => {
             />
             <div>
               <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">Company Name </p>
-              <p className="text-sm md:text-2xl font-bold text-[#d6dfe9] ">{CompanyProfile?.name}</p>
+              <p className="text-sm md:text-lg text-[#d6dfe9] ">{CompanyProfile?.name}</p>
               <div className="flex flex-col justify-center  text-white mt-5 mb-5">
             <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">Founding Year</p>
             <p className="text-sm md:text-lg text-[#d6dfe9]">{CompanyProfile?.founding}</p>
