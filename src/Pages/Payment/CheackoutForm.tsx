@@ -113,7 +113,7 @@ const CheackoutForm = () => {
 
         const payment: Payment = {
           name: user?.displayName,
-          package: subs?.selectedPlan?.name,
+          packages: subs?.selectedPlan?.name,
           email: user?.email,
           price: subs?.selectedPlan?.price,
           Features: subs?.selectedPlan?.features,
