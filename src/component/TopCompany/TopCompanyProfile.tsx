@@ -24,13 +24,9 @@ const TopCompanyProfile = () => {
         <div className="h-screen">
             {/* company details pages  */}
             <div>
-            <div className="md:h-60 mt-10 px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
-        <div className="flex justify-between items-center my-2 pt-2">
-          <div>
-            <p className="text-xl md:text-2xl p-2 text-white ">Company Profile</p>
-          </div>
+            <div className="md:h-60  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
+            <p className=" py-6 text-2xl font-bold text-center text-white ">Company Profile</p>
           
-        </div>
 
          
 
@@ -110,6 +106,7 @@ const TopCompanyProfile = () => {
 
              {/* company posted jobs */}
             <div>
+                 
 
             </div>
             
