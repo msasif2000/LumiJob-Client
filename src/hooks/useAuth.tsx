@@ -13,7 +13,7 @@ interface AuthContextType {
   updateUserProfile: (name: string) => Promise<void>;
   role: any;
   premium: any;
-  photo: any
+  photo: any;
 }
 
 
