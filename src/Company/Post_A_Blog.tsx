@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 interface FormData {
     photo: File;
     title: string;
-    author: string;
     category: string;
     details: string;
 }
@@ -18,6 +17,7 @@ interface CompanyData {
     email: string;
     _id: string;
     role: string;
+    name: string;
 }
 
 const Post_A_Blog = () => {
@@ -58,33 +58,6 @@ const Post_A_Blog = () => {
                     },
                 }
             );
-
-            // Check if image upload was successful
-            if (imageUploadResponse.data.status === 200) {
-                const imageUrl = imageUploadResponse.data.data.url;
-
-                // Prepare company data with the image URL
-                const updatedCompanyData = {
-                    ...companyData,
-                    photo: imageUrl,
-                };
-
-                // Send the updated company data to your database
-                const updateUserDataResponse = await axiosPublic.put(
-                    `/user-update/${user?.email}`,
-                    updatedCompanyData
-                );
-
-                // Handle response accordingly
-                if (updateUserDataResponse.data.message === "true") {
-                    toast.success("Profile Updated Successfully");
-                    navigate("/dashboard/companyProfile");
-                } else {
-                    toast.error("Failed to update profile data");
-                }
-            } else {
-                toast.error("Failed to upload profile photo to ImageBB");
-            }
         } catch (error) {
             console.log(error);
             toast.error("An error occurred while updating profile");
@@ -94,154 +67,57 @@ const Post_A_Blog = () => {
         <div>
             <div className=" bg-white px-2 py-5">
                 <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="flex space-x-10 py-10 ">
-                        <div className="form-control w-full">
-                            <label
-                                className="font-bold text-gray-400 text-xl"
-                                htmlFor="photo"
-                            >
-                                Company Logo
-                            </label>
-
-                            <input
-                                type="file"
-                                name="photo"
-                                onChange={(e) => {
-                                    const file = e.target.files?.[0];
-                                    if (file) {
-                                        setValue("photo", file);
-                                    }
-                                }}
-                                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                            />
-                        </div>
-                    </div>
 
                     <div className="pb-10 space-y-6">
-                        {/* Second div group */}
-                        <div className="flex space-x-10">
+                        <div className="space-x-10">
                             <div className="form-control w-full">
+                                <label
+                                    className="font-bold text-gray-400 text-xl"
+                                    htmlFor="photo"
+                                >
+                                    Upload Image
+                                </label>
+
                                 <input
-                                    type="text"
-                                    {...register("name", { required: "Name is required" })}
-                                    placeholder="Company Name"
+                                    type="file"
+                                    name="photo"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            setValue("photo", file);
+                                        }
+                                    }}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                                 />
                             </div>
                             <div className="form-control w-full">
                                 <input
                                     type="text"
-                                    {...register("industry", {
-                                        required: "Company type is required",
+                                    {...register("title", { required: "Title is required" })}
+                                    placeholder="Blog Title"
+                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                                />
+                            </div>
+                            <div className="form-control w-full">
+                                <input
+                                    type="text"
+                                    {...register("category", {
+                                        required: "Category is required",
                                     })}
-                                    placeholder="Company type"
+                                    placeholder="Category"
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                                 />
                             </div>
                             <div className="form-control w-full">
                                 <input
                                     type="text"
-                                    {...register("phone", { required: "phone is required" })}
+                                    {...register("details", { required: "Details is required" })}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    placeholder="Phone Number"
-                                />
-                            </div>
-                        </div>
-                        {/* Second div group */}
-                        <div className="flex space-x-10">
-                            <div className="form-control w-full">
-                                <input
-                                    type="text"
-                                    {...register("registration")}
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    placeholder="Registration no"
-                                />
-                            </div>
-
-                            <div className="form-control w-full">
-                                <input
-                                    type="text"
-                                    {...register("founding", { required: "Country is required" })}
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    placeholder="Established Year"
-                                />
-                            </div>
-                            <div className="form-control w-full">
-                                <input
-                                    type="text"
-                                    {...register("service")}
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    placeholder="service/product"
-                                />
-                            </div>
-                        </div>
-                        {/* Third div group */}
-                        <div className="flex space-x-10">
-                            <div className="form-control w-full">
-                                <input
-                                    type="text"
-                                    {...register("city", { required: "City is required" })}
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    placeholder="City"
-                                />
-                            </div>
-
-                            <div className="form-control w-full">
-                                <input
-                                    type="text"
-                                    {...register("country", { required: "Country is required" })}
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    placeholder="Country"
-                                />
-                            </div>
-                            <div className="form-control w-full">
-                                <input
-                                    type="text"
-                                    {...register("postal", { required: "Postal is required" })}
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    placeholder="Postal Code"
+                                    placeholder="Write Details"
                                 />
                             </div>
                         </div>
                     </div>
-
-                    <div className="pb-10 space-y-6">
-                        <div className="form-control w-full">
-                            <textarea
-                                rows={3}
-                                {...register("bio", { required: "bio is required" })}
-                                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                placeholder="Company Bio"
-                            ></textarea>
-                        </div>
-
-                        <div className="flex space-x-10">
-                            <select
-                                defaultValue="company"
-                                className="py-4 outline-none font-bold bg-transparent border-b-2 w-1/3 border-gray-300 text-xl hover:border-accent duration-500"
-                                {...register("companySize", {
-                                    required: "companySize is required",
-                                })}
-                            >
-                                <option value="company" disabled>
-                                    Company Size
-                                </option>
-                                <option value="Big">Big</option>
-                                <option value="Medium">Medium</option>
-                                <option value="Start-Up">Start-Up</option>
-                            </select>
-
-                            <div className="form-control w-full">
-                                <input
-                                    type="text"
-                                    {...register("website")}
-                                    placeholder="Website Address"
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
                     <button type="submit" className="btn btn-accent mb-10 w-full ">
                         {loading ? (
                             <span className="loading loading-ring loading-lg"></span>
