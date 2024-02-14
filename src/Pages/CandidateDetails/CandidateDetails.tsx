@@ -69,32 +69,32 @@ const CandidateDetails = () => {
                             />
                             <h2 className="text-xl font-bold  mt-4">{candidate.name}</h2>
                             <p className="text-gray-500 mt-2">{candidate.position}</p>
-                            <div className="mt-4">
-                                <h3 className="text-lg font-semibold">Contact Information</h3>
-                                <p>Email: {candidate.email}</p>
-                                <p>Phone: {candidate.phone}</p>
-                                <p>Location: {candidate.city}, {candidate.country}</p>
+                            <div className="mt-2">
+                                <h3 className=" text-sm lg:text-base font-semibold">Contact Information</h3>
+                                <p className=" text-xs opacity-90 md:text-sm">Email: {candidate.email}</p>
+                                <p className=" text-xs opacity-90 md:text-sm">Phone: {candidate.phone}</p>
+                                <p className=" text-xs opacity-90 md:text-sm">Location: {candidate.city}, {candidate.country}</p>
                             </div>
-                            <div className="mt-4">
-                                <h3 className="text-lg font-semibold">Availability</h3>
-                                <p>{candidate.availability}</p>
+                            <div className="mt-2">
+                                <h3 className=" text-sm lg:text-base font-semibold">Availability</h3>
+                                <p className=" text-xs opacity-90 md:text-sm">{candidate.availability}</p>
                             </div>
-                            <div className="mt-4">
-                                <h3 className="text-lg font-semibold">Work Preference</h3>
-                                <p>{candidate.work}</p>
+                            <div className="mt-2">
+                                <h3 className=" text-sm lg:text-base font-semibold">Work Preference</h3>
+                                <p className=" text-xs opacity-90 md:text-sm">{candidate.work}</p>
                             </div>
-                            <div className="mt-4">
-                                <h3 className="text-lg font-semibold">Salary Range</h3>
-                                <p>{candidate.salaryRangeMin}$ - {candidate.salaryRangeMax}$</p>
+                            <div className="mt-2">
+                                <h3 className=" text-sm lg:text-base font-semibold">Salary Range</h3>
+                                <p className=" text-xs opacity-90 md:text-sm">{candidate.salaryRangeMin}$ - {candidate.salaryRangeMax}$</p>
                             </div>
                         </div>
                         <div className="md:w-3/5 lg:w-3/4 xl:w-4/6 mt-4 md:mt-0 md:ml-8">
                             <h3 className="text-lg font-semibold">About Me</h3>
                             <p>{candidate.bio}</p>
                             <h3 className="text-lg font-semibold mt-4">Skills</h3>
-                            <ul className="list-disc list-inside grid md:grid-cols-2 lg:grid-cols-4">
+                            <ul className="list-disc list-inside grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                 {candidate.skills.map((skill, index) => (
-                                    <li className="" key={index}>{skill}</li>
+                                    <li className="text-xs md:text-sm xl:text-base opacity-90" key={index}>{skill}</li>
                                 ))}
                             </ul>
                             <h3 className="text-lg font-semibold mt-4">Education</h3>
