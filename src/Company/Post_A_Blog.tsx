@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 interface FormData {
@@ -21,32 +22,35 @@ interface BlogData {
 }
 
 const Post_A_Blog = () => {
+    const navigate = useNavigate();
     const loading = false;
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
-    const [blog, setBlog] = useState<BlogData | null>(null);
+    const [company, setCompany] = useState<BlogData | null>(null);
     const { register, handleSubmit, setValue } = useForm<FormData>();
     const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
-    console.log(api);
+    //console.log(api);
     useEffect(() => {
         if (user?.email) {
             axiosPublic
                 .get(`/user-profile/${user.email}`)
                 .then((res) => {
-                    setBlog(res.data);
+                    setCompany(res.data);
                     console.log(res.data);
                 })
                 .catch((err) => console.log(err));
         }
     }, [user]);
+
+    //console.log(company);
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         const blogData = {
             ...data,
-            email: user?.email,
-            userId: user?._id,
-            role: user?.role,
-            author: user?.name,
+            email: company?.email,
+            companyId: company?._id,
+            role: company?.role,
+            author: company?.name,
         };
 
         try {
