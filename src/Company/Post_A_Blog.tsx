@@ -80,19 +80,18 @@ const Post_A_Blog = () => {
                     photo: imageUrl,
                 };
 
-                // Send the updated company data to your database
-                const postTheBlog = await axiosPublic.post(
-                    `/post-the-blog`,
-                    updateBlog
-                );
-
-                // Handle response accordingly
-                if (postTheBlog.data.message === "true") {
-                    toast.success("Blog Posted Successfully");
-                    navigate("/dashboard/blog-posted");
-                } else {
+                axiosPublic.post("/post-the-blog", updateBlog)
+                .then(res => {
+                    console.log(res.data);
+                    if(res.data.insertedId){
+                        toast.success("Blog Posted Successfully");
+                        navigate("/dashboard/blog-posted");
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
                     toast.error("Failed to post Blog");
-                }
+                })
 
             } else {
                 toast.error("Failed to upload photo");
