@@ -61,6 +61,8 @@ const Post_A_Blog = () => {
             const imageData = new FormData();
             imageData.append("image", data.photo);
 
+            console.log(imageData);
+
             const imageUploadResponse = await axios.post(
                 "https://api.imgbb.com/1/upload",
                 imageData,
@@ -80,7 +82,7 @@ const Post_A_Blog = () => {
                 //set image to the field
                 const updateBlog = {
                     ...blogData,
-                    photo: imageUrl,
+                    img: imageUrl,
                 };
 
                 axiosPublic.post("/post-the-blog", updateBlog)
@@ -103,7 +105,8 @@ const Post_A_Blog = () => {
             console.log(error);
             toast.error("An error occurred while uploading Image");
         }
-    }
+    };
+
     return (
         <div>
             <div className=" bg-white px-2 py-5">
