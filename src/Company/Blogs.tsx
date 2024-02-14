@@ -6,14 +6,14 @@ import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
 
-interface Blog  {
+interface Blog {
     _id: string,
     title: string,
     category: string,
     details: string,
     email: string,
     img: URL,
-    postTime: string, 
+    postTime: string,
 }
 const Blogs = () => {
     const navigate = useNavigate();
@@ -39,15 +39,16 @@ const Blogs = () => {
             .delete(`/delete-blog/${blogId}`)
             .then((res) => {
                 console.log(res.data);
-                if (res.data.message === 'true') {
+                if (res.data.acknowledged) {
                     toast.success(`Blog post deleted successfully`, {
                         hideProgressBar: true,
                         autoClose: 2000,
                         position: "top-center",
                     });
                     setCompanyPostedBlogs(
-                        companyPostedBlogs?.filter((job: any) => job._id !== blogId)
+                        companyPostedBlogs?.filter((job: any) => job._id !== blogId),
                     );
+                    navigate('/dashboard/blog-posted');
                 }
             })
             .catch((err) => {
