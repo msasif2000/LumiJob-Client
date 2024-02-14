@@ -66,7 +66,12 @@ const CandidateDetails = () => {
                         />
                         <h2 className="text-xl font-bold text-center mt-4">{candidate.name}</h2>
                         <p className="text-gray-500 text-center mt-2">{candidate.position}</p>
-                        
+                        <div className="mt-4">
+                            <h3 className="text-lg font-semibold">Contact Information</h3>
+                            <p>Email: {candidate.email}</p>
+                            <p>Phone: {candidate.phone}</p>
+                            <p>Location: {candidate.city}, {candidate.country}</p>
+                        </div>
                         <div className="mt-4">
                             <h3 className="text-lg font-semibold">Availability</h3>
                             <p>{candidate.availability}</p>
