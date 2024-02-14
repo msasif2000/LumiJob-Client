@@ -18,9 +18,9 @@ interface BlogData {
 
 const ArticleDetails = () => {
   const { _id } = useParams();
-  console.log(_id); // Log _id to the console
+  //console.log(_id); // Log _id to the console
 
-  const [datas, setData] = useState<BlogData>();
+  const [data, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const axiosPublic = useAxiosPublic();
@@ -111,22 +111,22 @@ const ArticleDetails = () => {
             style={{ width: `${scrollPercentage}%` }}
           ></div>
           <div className="max-w-screen-2xl mx-auto py-20 px-4">
-            {datas ? (
+            {data ? (
               <div className="lg:flex py-6">
                 <div className="flex flex-col lg:w-1/4 space-y-5 lg:fixed pb-10 lg:pb-0">
-                  <img src={datas.img} className="w-full" alt="" />
+                  <img src={data.img} className="w-full" alt="" />
                   <h2 className="text-3xl font-heading font-semibold">
-                    {capitalizeFirstLetter(datas.title)}
+                    {capitalizeFirstLetter(data.title)}
                   </h2>
                   <div>
                     <p className="flex items-center gap-2 text-gray-600 text-lg font-medium">
-                      <FaCircleUser /> {datas.author}
+                      <FaCircleUser /> {data.author}
                     </p>
                   </div>
                   <div className="flex justify-between items-center text-lg font-normal text-gray-500">
-                    <p>{datas.date}</p>
+                    <p>{data.date}</p>
                     <p className="text-accentTwo  font-semibold">
-                      {datas.readTime} read
+                      {data.readTime} read
                     </p>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ const ArticleDetails = () => {
                     style={{ whiteSpace: "pre-line" }}
                   >
                     {capitalizeFirstLetter(
-                      addLineGapAfter200Words(datas.details)
+                      addLineGapAfter200Words(data.details)
                     )}
                   </p>
                 </div>

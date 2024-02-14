@@ -73,9 +73,9 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
         </div>
       </Link>
       {showDeleteIcon && (
-        <div className="absolute top-8 right-8">
+        <div className="absolute top-8 right-8 bg-red-600 p-2 rounded">
           <RiDeleteBinLine
-            className="text-red-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+            className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
             onClick={confirmDelete} // Show confirmation dialog on click
           />
         </div>
