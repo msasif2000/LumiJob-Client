@@ -85,34 +85,34 @@ const CandidateDetails = () => {
                             </div>
                             <div className="mt-4">
                                 <h3 className="text-lg font-semibold">Salary Range</h3>
-                                <p>{candidate.salaryRangeMin} - {candidate.salaryRangeMax}</p>
+                                <p>{candidate.salaryRangeMin}$ - {candidate.salaryRangeMax}$</p>
                             </div>
                         </div>
                         <div className="md:w-3/5 lg:w-3/4 xl:w-4/6 mt-4 md:mt-0 md:ml-8">
                             <h3 className="text-lg font-semibold">About Me</h3>
                             <p>{candidate.bio}</p>
                             <h3 className="text-lg font-semibold mt-4">Skills</h3>
-                            <ul className="list-disc list-inside">
+                            <ul className="list-disc list-inside grid md:grid-cols-2 lg:grid-cols-4">
                                 {candidate.skills.map((skill, index) => (
-                                    <li key={index}>{skill}</li>
+                                    <li className="" key={index}>{skill}</li>
                                 ))}
                             </ul>
                             <h3 className="text-lg font-semibold mt-4">Education</h3>
                             <ul>
                                 {candidate.education.map((edu, index) => (
-                                    <li key={index}>
-                                        <p>{edu.degree} in {edu.subject}</p>
-                                        <p>{edu.university}</p>
-                                        <p>{formatDate(edu.fromDate)} - {formatDate(edu.toDate)}</p>
+                                    <li className="my-2" key={index}>
+                                        <p className="text-sm">{edu.degree} in {edu.subject}</p>
+                                        <p className="text-sm opacity-90">{edu.university}</p>
+                                        <p className=" opacity-80 text-sm">From {formatDate(edu.fromDate)} to {formatDate(edu.toDate)}</p>
                                     </li>
                                 ))}
                             </ul>
                             <h3 className="text-lg font-semibold mt-4">Experience</h3>
                             <ul>
                                 {candidate.experienceDetails.map((exp, index) => (
-                                    <li key={index}>
-                                        <p>{exp.position} at {exp.company}</p>
-                                        <p>{formatDate(exp.fromDate)} - {formatDate(exp.toDate)}</p>
+                                    <li className="my-2" key={index}>
+                                        <p className="text-sm">{exp.position} at {exp.company}</p>
+                                        <p className=" opacity-80 text-sm">From {formatDate(exp.fromDate)} to {formatDate(exp.toDate)}</p>
                                     </li>
                                 ))}
                             </ul>
