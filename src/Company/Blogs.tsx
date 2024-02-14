@@ -38,7 +38,7 @@ const Blogs = () => {
         axiosPublic
             .delete(`/delete-blog/${blogId}`)
             .then((res) => {
-                console.log(res.data);
+                //console.log(res.data);
                 if (res.data.acknowledged) {
                     toast.success(`Blog post deleted successfully`, {
                         hideProgressBar: true,
@@ -53,7 +53,7 @@ const Blogs = () => {
             })
             .catch((err) => {
                 console.error("Error deleting job:", err);
-                toast.error("An error occurred while deleting the job.");
+                toast.error("An error occurred while deleting the Blog.");
             });
     };
     const handleBlogPosts = () => {
