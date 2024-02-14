@@ -38,7 +38,7 @@ const NotificationCard = () => {
                   </span>
 
                   <span className="bg-[#f8f6f6] py-1 px-3 rounded flex items-center text-xs">
-                    <PiMoney className="mr-1" /> $1100000 - $1719962
+                    <PiMoney className="mr-1" /> $ 1100000 - $ 1719962
                   </span>
                 </div>
               </div>
