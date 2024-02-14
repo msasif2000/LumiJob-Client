@@ -18,7 +18,7 @@ const PopularJobs = () => {
       .get("/all-job-posts")
       .then((res) => {
         setPopularJobs(res.data);
-        console.log(res.data);
+        //console.log(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
