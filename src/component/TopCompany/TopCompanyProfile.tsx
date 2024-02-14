@@ -21,7 +21,7 @@ const TopCompanyProfile = () => {
     <div className="">
       {/* company details pages  */}
       <div>
-        <div className=" pt-10 pb-16  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
+        <div className=" pt-10 pb-16  px-7 bg-[#4869DD]">
           <p className=" pb-8 lg:text-4xl font-bold text-center text-white  ">
             Company Profile {`> `}
             {CompanyProfile?.name}{" "}
