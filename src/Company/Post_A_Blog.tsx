@@ -37,7 +37,7 @@ const Post_A_Blog = () => {
                 .get(`/user-profile/${user.email}`)
                 .then((res) => {
                     setCompany(res.data);
-                    console.log(res.data);
+                    //console.log(res.data);
                 })
                 .catch((err) => console.log(err));
         }
@@ -81,21 +81,21 @@ const Post_A_Blog = () => {
                 };
 
                 // Send the updated company data to your database
-                const updateUserDataResponse = await axiosPublic.put(
-                    `/user-update/${user?.email}`,
+                const postTheBlog = await axiosPublic.post(
+                    `/post-the-blog`,
                     updateBlog
                 );
 
                 // Handle response accordingly
-                if (updateUserDataResponse.data.message === "true") {
+                if (postTheBlog.data.message === "true") {
                     toast.success("Blog Posted Successfully");
-                    navigate("/dashboard/companyProfile");
+                    navigate("/dashboard/blog-posted");
                 } else {
-                    toast.error("Failed to update profile data");
+                    toast.error("Failed to post Blog");
                 }
 
             } else {
-                toast.error("Failed to upload profile photo to ImageBB");
+                toast.error("Failed to upload photo");
             }
         } catch (error) {
             console.log(error);
