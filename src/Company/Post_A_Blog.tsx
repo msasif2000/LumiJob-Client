@@ -30,7 +30,9 @@ const Post_A_Blog = () => {
     const { register, handleSubmit, setValue } = useForm<FormData>();
     const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
-    //console.log(api);
+    const date = new Date().toISOString();
+
+    //console.log(date);
     useEffect(() => {
         if (user?.email) {
             axiosPublic
@@ -51,6 +53,7 @@ const Post_A_Blog = () => {
             companyId: company?._id,
             role: company?.role,
             author: company?.name,
+            postTime: date,
         };
 
         try {
@@ -82,7 +85,7 @@ const Post_A_Blog = () => {
 
                 axiosPublic.post("/post-the-blog", updateBlog)
                 .then(res => {
-                    console.log(res.data);
+                    //console.log(res.data);
                     if(res.data.insertedId){
                         toast.success("Blog Posted Successfully");
                         navigate("/dashboard/blog-posted");
