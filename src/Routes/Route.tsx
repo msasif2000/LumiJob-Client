@@ -37,6 +37,8 @@ import CompanyDetails from "../Pages/CompanyDetails";
 import TopCompanyProfile from "../component/TopCompany/TopCompanyProfile";
 import Blogs from "../Company/Blogs";
 import Post_A_Blog from "../Company/Post_A_Blog";
+import CandidateDetails from "../Pages/CandidateDetails/CandidateDetails";
+import FindCandidate from "../Pages/FindCandidate/FindCandidate";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/findjob",
         element: <FindJob />,
+      },
+      {
+        path: "/find-candidate",
+        element: <FindCandidate></FindCandidate>,
       },
       {
         path: "/subscriptionsUiCompany",
@@ -105,6 +111,10 @@ export const router = createBrowserRouter([
   {
     path: "/company-detailsProfile/:id",
     element: <CompanyDetails></CompanyDetails>,
+  },
+  {
+    path: "/candidate-detailsProfile/:id",
+    element: <CandidateDetails></CandidateDetails>,
   },
 
   //Login
