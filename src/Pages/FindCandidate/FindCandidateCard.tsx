@@ -28,7 +28,8 @@ const FindCandidateCard: React.FC<CandidateCardsProps> = ({ candidate }) => {
                             </h3>
                         </div>
                         <p className="text-sm opacity-90">{position}</p>
-                        <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">{city} </h3>
+                        <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">
+                     y   {city}, {country}</h3>
 
 
 
