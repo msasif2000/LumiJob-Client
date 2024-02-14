@@ -29,14 +29,14 @@ const FindCandidateCard: React.FC<CandidateCardsProps> = ({ candidate }) => {
                         </div>
                         <p className="text-sm opacity-90">{position}</p>
                         <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">
-                     y   {city}, {country}</h3>
+                        {city}, {country}</h3>
 
 
 
                         <Link className="md:flex justify-end hidden" 
                         to={`/candidate-detailsProfile/${_id}`}>
                             <button className="mt-4 py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
-                                Apply
+                                Profile
                             </button>
                         </Link>
                         {/* <div className="flex items-center justify-center mt-4 gap-2 md:hidden">
