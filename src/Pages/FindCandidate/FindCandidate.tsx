@@ -20,6 +20,8 @@ const FindCandidate: React.FC = () => {
     },
   });
 
+  console.log(setCurrentPage);
+
   useEffect(() => {
     setCurrentCandidates(allCandidates);
   }, [allCandidates]);
