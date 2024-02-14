@@ -33,7 +33,8 @@ const FindCandidateCard: React.FC<CandidateCardsProps> = ({ candidate }) => {
 
 
 
-                        <Link className="md:flex justify-end hidden" to={`/details/${_id}`}>
+                        <Link className="md:flex justify-end hidden" 
+                        to={`/candidate-detailsProfile/${_id}`}>
                             <button className="mt-4 py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
                                 Apply
                             </button>
