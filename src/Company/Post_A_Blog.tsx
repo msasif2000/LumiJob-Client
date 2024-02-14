@@ -1,34 +1,45 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import useAuth from "../hooks/useAuth";
+import { useEffect, useState } from "react";
+
+
 interface FormData {
     photo: File;
-    name: string;
-    industry: string;
-    phone: string;
-    registration?: string;
-    founding: string;
-    service?: string;
-    city: string;
-    country: string;
-    postal: string;
-    bio: string;
-    companySize: string;
-    website?: string;
-  }
-  
-  interface CompanyData {
+    title: string;
+    author: string;
+    category: string;
+    details: string;
+}
+
+interface CompanyData {
     email: string;
     _id: string;
     role: string;
-  }
-  
+}
+
 const Post_A_Blog = () => {
+    const loading = false;
+    const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const [company, setCompany] = useState<CompanyData | null>(null);
     const { register, handleSubmit, setValue } = useForm<FormData>();
     const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
     console.log(api);
+    useEffect(() => {
+        if (user?.email) {
+            axiosPublic
+                .get(`/user-profile/${user.email}`)
+                .then((res) => {
+                    setCompany(res.data);
+                    console.log(res.data);
+                })
+                .catch((err) => console.log(err));
+        }
+    }, [user]);
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         try {
             // Upload image to ImageBB
