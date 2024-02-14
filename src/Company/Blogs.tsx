@@ -6,43 +6,74 @@ import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
 
+interface Blog  {
+    _id: string,
+    title: string,
+    category: string,
+    details: string,
+    email: string,
+    img: URL,
+
+}
 const Blogs = () => {
     const navigate = useNavigate();
-    const [companyPostedBlogs, setCompanyPostedBlogs] = useState();
-    const {user} = useAuth();
+    const [companyPostedBlogs, setCompanyPostedBlogs] = useState<any | null>(null);
+    const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
-        if(user?.email) {
+        if (user?.email) {
             axiosPublic.get(`get-posted-blogs/${user.email}`)
-            .then(res => {
-                setCompanyPostedBlogs(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                .then(res => {
+                    setCompanyPostedBlogs(res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     }, [user]);
+    const length = companyPostedBlogs?.length;
 
-    const handleBlogPosts = () =>{
+    const handleDelete = (blogId: string) => {
+        axiosPublic
+            .delete(`/delete-blog/${blogId}`)
+            .then((res) => {
+                console.log(res.data);
+                if (res.data.message === 'true') {
+                    toast.success(`Blog post deleted successfully`, {
+                        hideProgressBar: true,
+                        autoClose: 2000,
+                        position: "top-center",
+                    });
+                    setCompanyPostedBlogs(
+                        companyPostedBlogs?.filter((job: any) => job._id !== blogId)
+                    );
+                }
+            })
+            .catch((err) => {
+                console.error("Error deleting job:", err);
+                toast.error("An error occurred while deleting the job.");
+            });
+    };
+    const handleBlogPosts = () => {
         navigate('/dashboard/post-a-blog')
-      }
+    }
     return (
         <div>
-      <CandidateNav
-        text="Your Posted Jobs"
-        btn="Post Jobs"
-        btn2={length}
-        handleClick={() => {handleBlogPosts()}}
-        handleClick2={() => {}}
-      />
-      <div className="grid grid-cols-4 gap-6">
-        {companyPostedBlogs?.map((job: Job) => (
-          <BlogCard key={job._id} job={job} handleDelete={handleDelete} />
-        ))}
-      </div>
-      <ToastContainer/>
-    </div>
+            <CandidateNav
+                text="Your Posted Jobs"
+                btn="Post Jobs"
+                btn2={length}
+                handleClick={() => { handleBlogPosts() }}
+                handleClick2={() => { }}
+            />
+            <div className="grid grid-cols-4 gap-6">
+                {companyPostedBlogs?.map((blog: Blog) => (
+                    <BlogCard key={blog._id} blog={blog} handleDelete={handleDelete} />
+                ))}
+            </div>
+            <ToastContainer />
+        </div>
     );
 };
 

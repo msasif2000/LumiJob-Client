@@ -1,9 +1,9 @@
 
 
-const BlogCard = () => {
+const BlogCard = ({ blog, handleDelete }) => {
     return (
         <div>
-            
+
         </div>
     );
 };
