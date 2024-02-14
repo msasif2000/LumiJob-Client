@@ -13,7 +13,7 @@ interface Blog  {
     details: string,
     email: string,
     img: URL,
-
+    postTime: string, 
 }
 const Blogs = () => {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Blogs = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axiosPublic.get(`get-posted-blogs/${user.email}`)
+            axiosPublic.get(`/get-posted-blogs/${user?.email}`)
                 .then(res => {
                     setCompanyPostedBlogs(res.data);
                 })
@@ -61,8 +61,8 @@ const Blogs = () => {
     return (
         <div>
             <CandidateNav
-                text="Your Posted Jobs"
-                btn="Post Jobs"
+                text="Your Posted Blogs"
+                btn="Post Blog"
                 btn2={length}
                 handleClick={() => { handleBlogPosts() }}
                 handleClick2={() => { }}

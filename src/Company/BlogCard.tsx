@@ -11,15 +11,6 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
     const [showDeleteIcon, setShowDeleteIcon] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
-    const formatDeadlineDate = (deadline: any) => {
-        const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
-        return formattedDate;
-    };
-
-    const applicants = blog.applicants?.length
-    console.log(applicants)
-
-
     const confirmDelete = () => {
         setShowConfirmation(true);
     };
@@ -38,43 +29,22 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
             onMouseEnter={() => setShowDeleteIcon(true)}
             onMouseLeave={() => setShowDeleteIcon(false)}
         >
-            <Link key={blog._id} to={`/details/${blog._id}`}>
+            <Link key={blog._id} to={`/single-blog/${blog._id}`}>
                 <div className="card shadow-md hover:shadow-xl duration-1000">
                     <div className="card-body space-y-2">
-                        <h2 className="text-2xl font-bold">{blog?.platform}</h2>
+                        <h2 className="text-2xl font-bold">{blog?.title}</h2>
                         <div className="flex justify-between items-center">
-                            <p className="font-semibold">{blog?.blogType}</p>
-                            <p className="text-right">${blog?.salaryRange.min}</p>
+                            <p className="font-semibold">{blog?.category}</p>
                         </div>
-                        <p>{blog?.description}</p>
-                        <div className="flex justify-between items-center">
-                            <p className="">{blog?.sectorType}</p>
-                            <p className="text-violet-500 text-right font-semibold">
-                                {
-                                    blog.applicants ?
-                                        <>
-                                            <p>{applicants} Applicants</p>
-                                        </>
-                                        :
-                                        <>
-                                            <p>No Applicants</p>
-                                        </>
-                                }
-                            </p>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <p className="">{blog?.location}</p>
-                            <p className="text-right">
-                                {formatDeadlineDate(blog?.deadline)}
-                            </p>
-                        </div>
+                        <p className="font-semibold text-violet-500">{blog?.postTime?.split("T")[0]}</p>
+                        <p>{blog?.details.slice(0, 100)}...</p>
                     </div>
                 </div>
             </Link>
             {showDeleteIcon && (
-                <div className="absolute top-8 right-8">
+                <div className="absolute top-8 right-4 bg-red-600 p-2 rounded">
                     <RiDeleteBinLine
-                        className="text-red-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+                        className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
                         onClick={confirmDelete} // Show confirmation dialog on click
                     />
                 </div>
