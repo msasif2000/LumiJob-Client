@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
 
 interface Education {
     degree: string;
@@ -55,18 +56,19 @@ const CandidateDetails = () => {
     }
 
     return (
-        <div>
-            <div className="container mx-auto mt-8">
+        <div className="max-w-screen-2xl mx-auto">
+            <Navbar></Navbar>
+            <div className="mx-auto mt-8 px-4 md:px-6 lg:px-10 2xl:px-12">
                 {candidate && ( // eta chara fetch howar agei load hoye undefined dekhabe
-                    <div className="flex flex-col md:flex-row">
-                        <div className="md:w-1/4">
+                    <div className="flex justify-between flex-col md:flex-row">
+                        <div className=" md:w-2/5 lg:w-1/4 xl:w-1/5">
                             <img
                                 src={candidate.photo}
                                 alt={candidate.name}
-                                className="rounded-full w-40 h-40 mx-auto"
+                                className="rounded-full mx-auto"
                             />
-                            <h2 className="text-xl font-bold text-center mt-4">{candidate.name}</h2>
-                            <p className="text-gray-500 text-center mt-2">{candidate.position}</p>
+                            <h2 className="text-xl font-bold  mt-4">{candidate.name}</h2>
+                            <p className="text-gray-500 mt-2">{candidate.position}</p>
                             <div className="mt-4">
                                 <h3 className="text-lg font-semibold">Contact Information</h3>
                                 <p>Email: {candidate.email}</p>
@@ -86,7 +88,7 @@ const CandidateDetails = () => {
                                 <p>{candidate.salaryRangeMin} - {candidate.salaryRangeMax}</p>
                             </div>
                         </div>
-                        <div className="md:w-3/4 mt-4 md:mt-0 md:ml-8">
+                        <div className="md:w-3/5 lg:w-3/4 xl:w-4/6 mt-4 md:mt-0 md:ml-8">
                             <h3 className="text-lg font-semibold">About Me</h3>
                             <p>{candidate.bio}</p>
                             <h3 className="text-lg font-semibold mt-4">Skills</h3>
