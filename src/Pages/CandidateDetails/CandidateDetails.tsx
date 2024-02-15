@@ -68,7 +68,8 @@ const CandidateDetails = () => {
                                 className="rounded-full mx-auto"
                             />
                             <h2 className="text-xl font-bold  mt-4">{candidate.name}</h2>
-                            <p className="text-gray-500 mt-2">{candidate.position}</p>
+                            <p className="text-gray-500">{candidate.position}</p>
+                            
                             <div className="mt-2">
                                 <h3 className=" text-sm lg:text-base font-semibold">Contact Information</h3>
                                 <p className=" text-xs opacity-90 md:text-sm">Email: {candidate.email}</p>
