@@ -28,8 +28,8 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
     };
 
     const confirmEdit = () => {
-        
-        navigate(`/dashboard/${blog._id}/edit-blog`);
+
+        navigate(`/dashboard/${blog._id}/edit-blog`, { state: { blog } });
     }
 
     return (
