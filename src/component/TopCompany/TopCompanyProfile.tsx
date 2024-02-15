@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import FindJobCard from "../../Pages/FindJob/FindJobCard";
+import Job from "../../Pages/Home/PopularJobs/Job";
 
 
 const TopCompanyProfile = () => {
@@ -128,7 +130,7 @@ const TopCompanyProfile = () => {
         
       </div>
       {/* tab sessions */}
-      <div className="w-10/12 mx-auto" >
+      <div className="w-10/12 mx-auto mb-10" >
           <Tabs>
             <TabList className={`text-2xl font-bold text-center pt-4 pb-10`}>
               <Tab >Posted Jobs</Tab>
@@ -137,24 +139,13 @@ const TopCompanyProfile = () => {
             </TabList>
 
             <TabPanel>
-              <p>
-                <b>Mario</b> (<i>Japanese: マリオ Hepburn: Mario, [ma.ɾʲi.o]</i>
-                ) (<i>English: /ˈmɑːrioʊ/; Italian: [ˈmaːrjo]</i>) is a
-                fictional character in the Mario video game franchise, owned by
-                Nintendo and created by Japanese video game designer Shigeru
-                Miyamoto. Serving as the company's mascot and the eponymous
-                protagonist of the series, Mario has appeared in over 200 video
-                games since his creation. Depicted as a short, pudgy, Italian
-                plumber who resides in the Mushroom Kingdom, his adventures
-                generally center upon rescuing Princess Peach from the Koopa
-                villain Bowser. His younger brother and sidekick is Luigi.
-              </p>
-              <p>
-                Source:{" "}
-                <a href="https://en.wikipedia.org/wiki/Mario" target="_blank">
-                  Wikipedia
-                </a>
-              </p>
+            <div className="grid grid-cols-1 gap-8 p-3 w-10/12 mx-auto ">
+                {
+                  companyPostedJobs?.map((job: Job) => (
+                    <FindJobCard key={job._id} job={job}></FindJobCard>
+                  ))
+                }
+              </div>
             </TabPanel>
             <TabPanel>
               <p>
