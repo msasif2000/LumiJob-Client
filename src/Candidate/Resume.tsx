@@ -51,7 +51,7 @@ const Resume: React.FC = () => {
   };
 
   const handleUpdate = () => {
-    navigate("/dashboard/candidateProfile/update");
+    navigate("/dashboard/candidateProfile/Resume/create_resume");
   };
 
   return (
