@@ -89,11 +89,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <JobsDetails></JobsDetails>,
+        element: (
+          <PrivateRoute>
+            <JobsDetails></JobsDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/top-company-detailsProfiles/:id",
-        element: <TopCompanyProfile></TopCompanyProfile>
+        element: <TopCompanyProfile></TopCompanyProfile>,
       },
     ],
   },
@@ -209,11 +213,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "blog-posted",
-        element: <Blogs />
+        element: <Blogs />,
       },
       {
         path: "post-a-blog",
-        element: <Post_A_Blog />
+        element: <Post_A_Blog />,
       },
 
       {
