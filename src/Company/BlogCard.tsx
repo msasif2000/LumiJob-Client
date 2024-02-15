@@ -31,7 +31,7 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
 
         navigate(`/dashboard/${blog._id}/edit-blog`, { state: { blog } });
     }
-
+    console.log(blog._id);   
     return (
         <div
             className="relative"
@@ -41,7 +41,7 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
             }}
             onMouseLeave={() => setShowDeleteIcon(false)}
         >
-            <Link key={blog._id} to={`/single-blog/${blog._id}`}>
+            <Link key={blog._id} to={`/insights/${blog._id}`}>
                 <div className="card shadow-md hover:shadow-xl duration-1000">
                     <div className="card-body space-y-2">
                         <h2 className="text-2xl font-bold">{blog?.title}</h2>
@@ -53,7 +53,7 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
                     </div>
                 </div>
             </Link>
-            {showDeleteIcon && showEditIcon && (
+            {(showDeleteIcon && showEditIcon) && (
                 <div className="absolute top-8 right-4 ">
                     <div className="bg-red-600 p-2 rounded">
                         <RiDeleteBinLine
