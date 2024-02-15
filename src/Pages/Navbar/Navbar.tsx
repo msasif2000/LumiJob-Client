@@ -22,9 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
       <li key="Job">
-        {/* <NavLink className="text-lg font-heading font-medium" to="/findjob">
-          Jobs
-        </NavLink> */}
+       
         {
           role === "company" ? (
             <NavLink className="text-lg font-heading font-medium"  to="/find-candidate">          
