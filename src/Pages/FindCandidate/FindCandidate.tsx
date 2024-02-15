@@ -5,12 +5,13 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 // import CFIlters from "./CFIlters";
 import FindCandidateCard from "./FindCandidateCard";
 import Candidate from "./CandidateType";
+import CPagination from "./CPagination";
 // import CPagination from "./CPagination";
 
 const FindCandidate: React.FC = () => {
   const [currentCandidates, setCurrentCandidates] = useState<Candidate[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [candidatesPerPage] = useState<number>(6);
+  const [candidatesPerPage] = useState<number>(4);
   const axiosPublic = useAxiosPublic();
   const { data: allCandidates = [] } = useQuery({
     queryKey: ["allCandidates"],
@@ -19,8 +20,6 @@ const FindCandidate: React.FC = () => {
       return res.data;
     },
   });
-
-  console.log(setCurrentPage);
 
   useEffect(() => {
     setCurrentCandidates(allCandidates);
@@ -36,9 +35,9 @@ const FindCandidate: React.FC = () => {
 //     setCurrentPage(1); // Reset to first page when searching
 //   };
 
-//   const handlePageChange = (pageNumber: number) => {
-//     setCurrentPage(pageNumber);
-//   };
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
@@ -61,7 +60,7 @@ const FindCandidate: React.FC = () => {
             <div className="lg:w-2/4 md:w-2/3">
 
               {/* ===> Showing jobs <=== */}
-              <div className="grid grid-cols-1 gap-8 p-3">
+              <div className="grid grid-cols-1 px-3">
                 {currentCandidates
                   .slice((currentPage - 1) * candidatesPerPage, currentPage * candidatesPerPage)
                   .map((candidate: Candidate) => (
@@ -72,12 +71,12 @@ const FindCandidate: React.FC = () => {
               {currentCandidates.length > candidatesPerPage && (
                 <div className="py-12">
                   {/* ==>  Pagination <== */}
-                  {/* <CPagination
-                    totalJobs={currentCandidates.length}
+                  <CPagination
+                    totalCandidates={currentCandidates.length}
                     candidatesPerPage={candidatesPerPage}
                     currentPage={currentPage}
                     onPageChange={handlePageChange}
-                  ></CPagination> */}
+                  ></CPagination>
                 </div>
               )}
             </div>
