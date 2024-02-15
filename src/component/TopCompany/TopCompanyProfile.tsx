@@ -5,6 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FindJobCard from "../../Pages/FindJob/FindJobCard";
 import Job from "../../Pages/Home/PopularJobs/Job";
 import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
+import Seminers from "../../Pages/Blogs/components/Seminers";
 
 
 const TopCompanyProfile = () => {
@@ -131,7 +132,7 @@ const TopCompanyProfile = () => {
         
       </div>
       {/* tab sessions */}
-      <div className=" mb-10" >
+      <div className=" " >
           <Tabs>
             <TabList className={`text-2xl font-bold text-center pt-4 pb-10`}>
               <Tab >Posted Jobs</Tab>
@@ -158,8 +159,7 @@ const TopCompanyProfile = () => {
                 <FeaturedArticle />
             </TabPanel>
             <TabPanel>
-            <h4 className="font-semibold font-heading text-2xl text-center"> Currently Seminar for {CompanyProfile?.name} 
-                </h4>
+            <Seminers />
             </TabPanel>
           </Tabs>
         </div>
