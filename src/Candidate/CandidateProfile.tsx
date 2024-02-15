@@ -3,8 +3,7 @@ import CandidateNav from "./CommonNavbar/CandidateNav";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-
-
+import { GoVerified } from "react-icons/go";
 
 interface UserProfile {
   _id: string;
@@ -44,15 +43,14 @@ interface UserProfile {
   experience: number;
   salaryRangeMin: number;
   salaryRangeMax: number;
-
 }
 
 const CandidateProfile = () => {
-  const { user } = useAuth();
+  const { user, premium } = useAuth();
   const [activeTab, setActiveTab] = useState("experience");
   const navigate = useNavigate();
   const [profile, setProfile] = useState<UserProfile | null>(null);
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -92,7 +90,9 @@ const CandidateProfile = () => {
               return (
                 <div key={index} className="mb-4">
                   <div>
-                    <p className="text-xs md:text-xl font-bold">{job.position}</p>
+                    <p className="text-xs md:text-xl font-bold">
+                      {job.position}
+                    </p>
                     <p className="text-xs md:text-lg font-bold text-gray-400">
                       {job.company}
                     </p>
@@ -130,7 +130,9 @@ const CandidateProfile = () => {
               return (
                 <div key={index} className="mb-4">
                   <div>
-                    <p className="text-xs md:text-xl font-bold">{uni.university}</p>
+                    <p className="text-xs md:text-xl font-bold">
+                      {uni.university}
+                    </p>
                     <p className="text-xs md:text-lg font-bold text-gray-400">
                       {uni.subject}
                     </p>
@@ -183,9 +185,23 @@ const CandidateProfile = () => {
             </div>
           </div>
           {/* Name */}
-          <div className="pt-10">
-            <h1 className=" text-base md:text-3xl font-bold">{profile?.name}</h1>
-            <p className="text-md md:text-lg font-semibold">{profile?.position}</p>
+          <div className="pt-14 space-y-2">
+            <div className="flex items-center space-x-3">
+              <h1 className=" text-base md:text-3xl font-bold">
+                {profile?.name}
+              </h1>
+              {premium === "premium" ? (
+                <p className="text-3xl text-blue-500">
+                  {" "}
+                  <GoVerified />
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
+            <p className="text-md md:text-lg font-semibold">
+              {profile?.position}
+            </p>
           </div>
           {/* Bio */}
           <div>
@@ -213,16 +229,22 @@ const CandidateProfile = () => {
         <div className="flex flex-col lg:flex-grow space-y-4">
           {/* address div */}
           <div className="bg-white h-1/2 lg:w-full rounded-2xl p-10 space-y-4">
-            <p className="text-base md:text-2xl font-bold">Personal Information</p>
+            <p className="text-base md:text-2xl font-bold">
+              Personal Information
+            </p>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 ">
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Name</p>
-                <p className=" text-xs md:text-xl font-semibold">{profile?.name}</p>
+                <p className=" text-xs md:text-xl font-semibold">
+                  {profile?.name}
+                </p>
               </div>
 
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Contact</p>
-                <p className=" text-xs md:text-xl font-semibold">{profile?.phone}</p>
+                <p className=" text-xs md:text-xl font-semibold">
+                  {profile?.phone}
+                </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Location</p>
@@ -255,16 +277,18 @@ const CandidateProfile = () => {
             <div role="tablist" className="tabs tabs-bordered relative">
               <a
                 role="tab"
-                className={`tab ${activeTab === "experience" ? "tab-active" : ""
-                  } text-xs md:text-xl font-bold`}
+                className={`tab ${
+                  activeTab === "experience" ? "tab-active" : ""
+                } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("experience")}
               >
                 Experience
               </a>
               <a
                 role="tab"
-                className={`tab ${activeTab === "education" ? "tab-active" : ""
-                  } text-xs md:text-xl font-bold`}
+                className={`tab ${
+                  activeTab === "education" ? "tab-active" : ""
+                } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("education")}
               >
                 Education
@@ -281,7 +305,6 @@ const CandidateProfile = () => {
         {/*  */}
       </div>
     </div>
-
   );
 };
 
