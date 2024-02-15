@@ -50,9 +50,17 @@ const CandidateDetails = () => {
             .catch((error) => console.log(error));
     }, [axiosPublic, id]);
 
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-        return date.toISOString().split('T')[0];
+    const formatDate = (dateString: string): string => {
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                throw new Error('Invalid date string');
+            }
+            return date.toISOString().split('T')[0];
+        } catch (error) {
+            console.error('Error formatting date');
+            return ''; 
+        }
     }
 
     return (
