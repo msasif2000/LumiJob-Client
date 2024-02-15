@@ -31,7 +31,7 @@ interface ThemeInfo {
   role: any;
   premium: any;
   photo: any;
-  packages:any
+  packages: any;
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -43,18 +43,18 @@ interface ThemeProviderProps {
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [role, setRole] = useState(null)
-  const [premium, setPremium] = useState(null)
-  const [photo, setPhoto] = useState(null)
-  const [packages, setPackages] = useState(null)
-  const axiosPublic = useAxiosPublic(); 
+  const [role, setRole] = useState(null);
+  const [premium, setPremium] = useState(null);
+  const [photo, setPhoto] = useState(null);
+  const [packages, setPackages] = useState(null);
+  const axiosPublic = useAxiosPublic();
 
   const createUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => userCredential.user);
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      (userCredential) => userCredential.user
+    );
   };
-  
 
   const signInUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
@@ -93,7 +93,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      // console.log("Observed User:", currentUser);
+      console.log("Observed User:", currentUser);
     });
 
     return () => {
@@ -101,7 +101,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     };
   }, [user]);
 
-  
   const updateUserProfile = (name: string): Promise<void> => {
     setLoading(true);
     const user = auth.currentUser;
@@ -123,23 +122,22 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   };
 
-
   useEffect(() => {
     if (user?.email) {
       axiosPublic
         .get(`/user-profile/${user?.email}`)
         .then((res) => {
-          const { role, status, photo, packages } = res.data; 
+          const { role, status, photo, packages } = res.data;
           setRole(role);
           setPremium(status);
-          setPhoto(photo)
-          setPackages(packages)
+          setPhoto(photo);
+          setPackages(packages);
         })
         .catch((error) => {
           console.error("Error checking user role:", error);
         });
     }
-  },[user])
+  }, [user]);
 
   const themeInfo: ThemeInfo = {
     googleSignIn,
@@ -155,7 +153,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     role,
     premium,
     photo,
-    packages
+    packages,
   };
 
   return (
