@@ -64,14 +64,18 @@ const FindJob: React.FC = () => {
             <div className="lg:w-2/4 md:w-2/3">
               <div className="flex justify-between items-center min-h-32 px-4">
                 <h4 className="font-semibold font-heading text-2xl">
-                  <span className="text-[#486DD9]">{currentJobs.length}</span> Jobs Available
+                  <span className="text-[#486DD9]">{currentJobs.length}</span>{" "}
+                  Jobs Available
                 </h4>
               </div>
 
               {/* ===> Showing jobs <=== */}
               <div className="grid grid-cols-1 gap-8 p-3">
                 {currentJobs
-                  .slice((currentPage - 1) * jobsPerPage, currentPage * jobsPerPage)
+                  .slice(
+                    (currentPage - 1) * jobsPerPage,
+                    currentPage * jobsPerPage
+                  )
                   .map((job: Job) => (
                     <FindJobCard key={job._id} job={job}></FindJobCard>
                   ))}

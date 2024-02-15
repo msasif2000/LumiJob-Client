@@ -10,10 +10,18 @@ interface JobCardsProps {
   job: Job;
 }
 
-
 const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
-
-  const { _id, sectorType, picture, location, title, salaryRange, deadline, jobType, experience } = job;
+  const {
+    _id,
+    sectorType,
+    picture,
+    location,
+    title,
+    salaryRange,
+    deadline,
+    jobType,
+    experience,
+  } = job;
 
   return (
     <div className="">
@@ -25,7 +33,9 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
             </div>
           </div>
           <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
-            <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">{sectorType}</h3>
+            <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">
+              {sectorType}
+            </h3>
             <div className="flex justify-between">
               <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
                 {title}
@@ -45,10 +55,12 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
                 <ImLocation className="mr-1" /> {jobType}
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                <PiSuitcaseSimpleLight className="mr-1" /> {experience.split("years")[0]} years
+                <PiSuitcaseSimpleLight className="mr-1" />{" "}
+                {experience.split("years")[0]} years
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
-                <PiMoney className="mr-1" /> {salaryRange.min} - {salaryRange.max}
+                <PiMoney className="mr-1" /> $ {salaryRange.min} - ${" "}
+                {salaryRange.max}
               </span>
             </div>
             <Link className="md:flex justify-end hidden" to={`/details/${_id}`}>
