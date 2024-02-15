@@ -40,7 +40,7 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
       onMouseLeave={() => setShowDeleteIcon(false)}
     >
       <Link key={job._id} to={`/details/${job._id}`}>
-        <div className="card shadow-md hover:shadow-xl duration-1000">
+        <div className="card shadow-md hover:shadow-xl duration-1000 h-full">
           <div className="card-body space-y-2">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">

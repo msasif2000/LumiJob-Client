@@ -42,7 +42,7 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
             onMouseLeave={() => setShowDeleteIcon(false)}
         >
             <Link key={blog._id} to={`/insights/${blog._id}`}>
-                <div className="card shadow-md hover:shadow-xl duration-1000">
+                <div className="card shadow-md hover:shadow-xl duration-1000 h-full">
                     <div className="card-body space-y-2">
                         <h2 className="text-2xl font-bold">{blog?.title}</h2>
                         <div className="flex justify-between items-center">

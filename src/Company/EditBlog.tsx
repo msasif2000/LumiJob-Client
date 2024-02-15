@@ -23,7 +23,8 @@ const EditBlog = () => {
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         axiosPublic.patch(`/update-blog/${blog._id}`, data)
             .then(res => {
-                if (res.data.acknowledged) {
+                console.log(res.data);
+                if (res.data._id) {
                     toast.success(`Blog post updated successfully`, {
                         hideProgressBar: true,
                         autoClose: 2000,
@@ -53,7 +54,7 @@ const EditBlog = () => {
                             <input
                                 type="text"
                                 {...register("title", { required: "Title is required" })}
-                                placeholder={blog?.title}
+                                defaultValue={blog?.title}
                                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                             />
                         </div>
@@ -66,7 +67,7 @@ const EditBlog = () => {
                                 {...register("category", {
                                     required: "Category is required",
                                 })}
-                                placeholder={blog?.category}
+                                defaultValue={blog?.category}
                                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                             />
                         </div>
@@ -78,7 +79,7 @@ const EditBlog = () => {
                                 type="text"
                                 {...register("details", { required: "Details is required" })}
                                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                placeholder={blog?.details}
+                                defaultValue={blog?.details}
                             />
                         </div>
 
