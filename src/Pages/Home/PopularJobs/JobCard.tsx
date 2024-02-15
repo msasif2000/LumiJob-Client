@@ -8,9 +8,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import BookmarkButton from "../../../component/Shared/BookmarkButton";
 import Job from "./Job";
-import { useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
-import useAuth from "../../../hooks/useAuth";
+import { useEffect } from "react";
 import './quickly-button.css';
 import { Link } from "react-router-dom";
 interface JobCardsProps {
@@ -18,19 +16,9 @@ interface JobCardsProps {
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { user } = useAuth();
   const { _id, picture, location, title, salaryRange, deadline } = job;
   const jobPostId = _id;
-  let applierEmail: string;
-
-  if (user && user.email) {
-    applierEmail = user.email;
-  }
-
  
-
-  
-
   useEffect(() => {
     Aos.init();
   }, []);
