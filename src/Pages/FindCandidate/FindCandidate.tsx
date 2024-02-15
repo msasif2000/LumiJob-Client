@@ -60,7 +60,7 @@ const FindCandidate: React.FC = () => {
             <div className="lg:w-2/4 md:w-2/3">
 
               {/* ===> Showing jobs <=== */}
-              <div className="grid grid-cols-1 gap-8 p-3">
+              <div className="grid grid-cols-1 px-3">
                 {currentCandidates
                   .slice((currentPage - 1) * candidatesPerPage, currentPage * candidatesPerPage)
                   .map((candidate: Candidate) => (

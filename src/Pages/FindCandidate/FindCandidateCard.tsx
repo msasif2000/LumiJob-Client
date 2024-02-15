@@ -15,7 +15,7 @@ const FindCandidateCard: React.FC<CandidateCardsProps> = ({ candidate }) => {
     return (
         <div className="">
             <div>
-                <div className="group grid grid-cols-12 overflow-hidden rounded-lg border hover:border-accent py-2 text-gray-700 bg-white ">
+                <div className="group grid grid-cols-12 overflow-hidden rounded-lg border hover:border-accent p-2 text-gray-700 bg-white ">
                     <div className=" col-span-3 md:col-span-2 text-left text-gray-600 hover:text-gray-700  sm:ml-4">
                         <div className="group relative rounded-lg h-12 w-12 md:h-16 md:w-16 overflow-hidden">
                             <img src={photo} alt="logo" className="w-full  text-gray-700" />
@@ -24,11 +24,11 @@ const FindCandidateCard: React.FC<CandidateCardsProps> = ({ candidate }) => {
                     <div className="col-span-8 md:col-span-7 flex flex-col pr-8 text-left sm:pl-4">
 
                         <div className="flex justify-between">
-                            <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
+                            <h3 className="md:mb-1 overflow-hidden text-sm md:text-xl font-medium md:font-semibold ">
                                 {name}
                             </h3>
                         </div>
-                        <p className="text-sm opacity-90">{position}</p>
+                        <p className=" text-xs md:text-sm">{position}</p>
                         <h3 className="text-xs text-gray-600 text-opacity-90 mb-1">
                             {city}, {country}</h3>
 
