@@ -7,7 +7,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 const TopCompanyProfile = () => {
   const { id } = useParams<{ id: string }>();
   const axiosPublic = useAxiosPublic();
-
+  const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
   const [CompanyProfile, setCompanyProfile] = useState<any>(null);
   useEffect(() => {
     axiosPublic
@@ -15,9 +15,27 @@ const TopCompanyProfile = () => {
       .then((res) => {
         setCompanyProfile(res.data);
         console.log(res.data);
+  
+
       })
       .catch((error) => console.log(error));
   });
+
+
+  // company posted jobs
+  useEffect(() => {
+    if (CompanyProfile?.email) {
+      axiosPublic
+        .get(`/company-postedJobs/${CompanyProfile?.email}`)
+        .then((res) => {
+          setCompanyPostedJobs(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [CompanyProfile]);
+
+  
 
   return (
     <div className="">
@@ -112,7 +130,7 @@ const TopCompanyProfile = () => {
       {/* tab sessions */}
       <div className="w-10/12 mx-auto" >
           <Tabs>
-            <TabList className={`text-2xl font-bold text-center`}>
+            <TabList className={`text-2xl font-bold text-center pt-4 pb-10`}>
               <Tab >Posted Jobs</Tab>
               <Tab>Blog</Tab>
               <Tab>Seminar</Tab>
