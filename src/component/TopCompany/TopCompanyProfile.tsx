@@ -1,11 +1,17 @@
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import FindJobCard from "../../Pages/FindJob/FindJobCard";
+import Job from "../../Pages/Home/PopularJobs/Job";
+import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
+import Seminers from "../../Pages/Blogs/components/Seminers";
+
 
 const TopCompanyProfile = () => {
   const { id } = useParams<{ id: string }>();
   const axiosPublic = useAxiosPublic();
-
+  const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
   const [CompanyProfile, setCompanyProfile] = useState<any>(null);
   useEffect(() => {
     axiosPublic
@@ -13,21 +19,39 @@ const TopCompanyProfile = () => {
       .then((res) => {
         setCompanyProfile(res.data);
         console.log(res.data);
+  
+
       })
       .catch((error) => console.log(error));
   });
 
+
+  // company posted jobs
+  useEffect(() => {
+    if (CompanyProfile?.email) {
+      axiosPublic
+        .get(`/company-postedJobs/${CompanyProfile?.email}`)
+        .then((res) => {
+          setCompanyPostedJobs(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [CompanyProfile]);
+
+  
+
   return (
     <div className="">
-      {/* company details pages  */}
       <div>
-        <div className=" pt-10 pb-16  px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
+        {/* company details pages  */}
+        <div className=" pt-5 pb-5  px-7 bg-[#4360ca]">
           <p className=" pb-8 lg:text-4xl font-bold text-center text-white  ">
             Company Profile {`> `}
             {CompanyProfile?.name}{" "}
           </p>
           {/* company information */}
-          <div className="flex gap-10 lg:px-16 lg:pt-10">
+          <div className="flex gap-10 lg:px-16 lg:pt-2">
             {/* company title img adreess ect */}
             <div className="flex-1">
               <div className="flex gap-4 md:gap-10 mb-10">
@@ -103,10 +127,44 @@ const TopCompanyProfile = () => {
             </div>
           </div>
         </div>
+
+        
+        
       </div>
+      {/* tab sessions */}
+      <div className=" " >
+          <Tabs>
+            <TabList className={`text-2xl font-bold text-center pt-4 pb-10`}>
+              <Tab >Posted Jobs</Tab>
+              <Tab>Blog</Tab>
+              <Tab>Seminar</Tab>
+            </TabList>
+
+            <TabPanel>
+            <div className=" items-center mb-3">
+                <h4 className="font-semibold font-heading text-2xl text-center"> Currently Posted jobs for {CompanyProfile?.name} : {` `}
+                  <span className="text-[#486DD9] text-4xl">{companyPostedJobs?.length}</span> Jobs Available
+                </h4>
+              </div>
+            <div className="grid grid-cols-1 gap-8 p-3 w-10/12 mx-auto ">
+                {
+                  companyPostedJobs?.map((job: Job) => (
+                    <FindJobCard key={job._id} job={job}></FindJobCard>
+                  ))
+                }
+              </div>
+            </TabPanel>
+            <TabPanel>
+           
+                <FeaturedArticle />
+            </TabPanel>
+            <TabPanel>
+            <Seminers />
+            </TabPanel>
+          </Tabs>
+        </div>
 
       {/* company posted jobs */}
-      
     </div>
   );
 };
