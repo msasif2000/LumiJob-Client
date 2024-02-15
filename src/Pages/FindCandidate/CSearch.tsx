@@ -44,7 +44,7 @@ interface CSearchProps {
                                 value={searchText}
                                 onChange={handleChange}
                                 className="p-2 w-11/12 bg-white pl-2 text-base font-semibold outline-0"
-                                placeholder="Search company, job title..."
+                                placeholder="Candidate name, post..."
                             />
                             <button
                                 onClick={handleSearch}
