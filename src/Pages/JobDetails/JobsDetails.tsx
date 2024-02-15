@@ -35,7 +35,7 @@ const JobsDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const axiosPublic = useAxiosPublic();
   const [job, setJobs] = useState<JobDetails>();
-  const { user, role } = useAuth();
+  const { user, role, premium } = useAuth();
 
   console.log(role);
   console.log(job);
@@ -94,7 +94,7 @@ const JobsDetails: React.FC = () => {
 
   const formattedPostTime = post_time ? formatDateTime(post_time) : "";
 
-  const handleApply = () => {
+  const handlePremiumApply = () => {
     console.log("btn clicked");
     const jobDetails = {
       ...job,
@@ -140,6 +140,15 @@ const JobsDetails: React.FC = () => {
           closeOnClick: true,
         });
       });
+  };
+
+  const handleNotPremium = () => {
+    toast.warn("For premium members only.", {
+      position: "top-center",
+      hideProgressBar: true,
+      autoClose: 4000,
+      closeOnClick: true,
+    });
   };
 
   return (
@@ -299,14 +308,27 @@ const JobsDetails: React.FC = () => {
                 </div>
               ) : (
                 <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12">
-                  <div>
-                    <button
-                      onClick={() => handleApply()}
-                      className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
-                    >
-                      Quick Apply
-                    </button>
-                  </div>
+                  {premium === "premium" ? (
+                    <div>
+                      <button
+                        onClick={() => handlePremiumApply()}
+                        className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                      >
+                        Quick Apply
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        className="btn w-full bg-blue-300 text-white py-2 px-4 rounded hover:bg-red-300 mb-5 duration-500 border-none"
+                        onClick={() => {
+                          handleNotPremium();
+                        }}
+                      >
+                        Quick Apply
+                      </button>
+                    </div>
+                  )}
                   <div>
                     <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
                       Apply
