@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-// import CSearch from "./CSearch";
+
 // import CFIlters from "./CFIlters";
 import FindCandidateCard from "./FindCandidateCard";
 import Candidate from "./CandidateType";
 import CPagination from "./CPagination";
-// import CPagination from "./CPagination";
+import CSearch from "./CSearch";
+
 
 const FindCandidate: React.FC = () => {
   const [currentCandidates, setCurrentCandidates] = useState<Candidate[]>([]);
@@ -30,10 +31,10 @@ const FindCandidate: React.FC = () => {
 //     setCurrentPage(1); // Reset to first page when filtering
 //   };
 
-//   const handleSearchResult = (searchData: any[]) => {
-//     setCurrentCandidates(searchData);
-//     setCurrentPage(1); // Reset to first page when searching
-//   };
+  const handleSearchResult = (searchData: any[]) => {
+    setCurrentCandidates(searchData);
+    setCurrentPage(1); // Reset to first page when searching
+  };
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -46,7 +47,7 @@ const FindCandidate: React.FC = () => {
           
 
           {/*=======> Search <============= */}
-          {/* <CSearch onSearchResult={handleSearchResult}></CSearch> */}
+          <CSearch onSearchResult={handleSearchResult}></CSearch>
         </div>
 
         <div className="bg-[#FAFAFA]">
