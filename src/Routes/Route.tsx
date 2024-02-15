@@ -39,6 +39,7 @@ import Blogs from "../Company/Blogs";
 import Post_A_Blog from "../Company/Post_A_Blog";
 import CandidateDetails from "../Pages/CandidateDetails/CandidateDetails";
 import FindCandidate from "../Pages/FindCandidate/FindCandidate";
+import CompleteResume from "../Candidate/UpdateCmponents/CompleteResume";
 
 export const router = createBrowserRouter([
   {
@@ -176,6 +177,10 @@ export const router = createBrowserRouter([
       {
         path: "candidateProfile/update",
         element: <CandidateProUpdate />,
+      },
+      {
+        path: "candidateProfile/resume/create_resume",
+        element: <CompleteResume/>,
       },
       {
         path: "candidateProfile/resume",
