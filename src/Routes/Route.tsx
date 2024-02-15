@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/findjob",
+        path: "/find-job",
         element: <FindJob />,
       },
       {
