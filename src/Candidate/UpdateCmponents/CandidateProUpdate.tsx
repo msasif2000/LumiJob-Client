@@ -233,9 +233,9 @@ const CandidateProUpdate: React.FC = () => {
         handleClick2={backToResume}
       />
 
-      <div className=" bg-white px-2 py-5">
-        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex space-x-10 py-10 ">
+      <div className=" bg-white p-2 ">
+        <form className="space-y-5 p-10" onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex space-x-10 pb-10 ">
             <div className="form-control w-full">
               <label
                 className="font-bold text-gray-400 text-xs md:text-xl"
