@@ -52,10 +52,10 @@ const FindCandidate: React.FC = () => {
 
         <div className="bg-[#FAFAFA]">
           <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:px-5 xl:gap-6">
-            <div className="lg:w-1/4 md:w-1/3">
+            {/* <div className="lg:w-1/4 md:w-1/3">
               {/*=======> Left column <============= */}
               {/* <CFIlters onFilterChange={handleFilterChange} /> */}
-            </div>
+            {/* </div> */} 
 
             {/* =============> Middle column <============== */}
             <div className="lg:w-2/4 md:w-2/3">
