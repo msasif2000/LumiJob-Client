@@ -8,58 +8,17 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import BookmarkButton from "../../../component/Shared/BookmarkButton";
 import Job from "./Job";
-import { useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
-import useAuth from "../../../hooks/useAuth";
+import { useEffect } from "react";
 import './quickly-button.css';
+import { Link } from "react-router-dom";
 interface JobCardsProps {
   job: Job;
 }
 
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
-  const { user } = useAuth();
-
   const { _id, picture, location, title, salaryRange, deadline } = job;
-  const [cvFile, setCvFile] = useState<File | null>(null);
-  const [name, setName] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [contactEmail, setContactEmail] = useState<string>("");
   const jobPostId = _id;
-  let applierEmail: string;
-
-  if (user && user.email) {
-    applierEmail = user.email;
-  }
-
-  const onDrop = (acceptedFiles: File[]) => {
-    // Handle the dropped file
-    const file = acceptedFiles[0];
-    setCvFile(file);
-  };
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
-  const modalId = `my_modal_${_id}`;
-  // console.log(modalId);
-
-  const handelApplications = (e: React.FormEvent) => {
-    e.preventDefault();
-    const data = {
-      name,
-      address,
-      phoneNumber,
-      contactEmail,
-      jobPostId,
-      applierEmail,
-    };
-    console.log(data);
-    setName("");
-    setCvFile(null);
-    setAddress("");
-    setPhoneNumber("");
-    setContactEmail("");
-  };
-
+ 
   useEffect(() => {
     Aos.init();
   }, []);
@@ -123,151 +82,12 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
         {/*Quickly Apply button with model react form */}
         <div>
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
-          <button
+          <Link to={`details/${jobPostId}`}
             className="py-3 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-3xl"
-            onClick={() =>
-              (
-                document.getElementById(modalId) as HTMLDialogElement
-              )?.showModal()
-            }
           >
-            Quickly Apply
-          </button>
-          <dialog id={modalId} className="modal">
-            <div className="modal-box w-9/12 lg:max-w-3xl">
-              {/* Form content part */}
-              <div>
-                <h3 className=" font-extrabold lg:font-bold text-lg lg:text-3xl text-center pb-2 pt-1">
-                Quickly Job Application Form
-                </h3>
-                <p className="text-center  lg:font-semibold">
-                  Please complete the form below to apply for a position with
-                  us.
-                </p>
-                <div className="divider divider-neutral w-full"></div>
-                <form
-                  onSubmit={handelApplications}
-                  className="space-y-3 w-11/12 md:w-10/12 mx-auto "
-                >
-                  {/* Name */}
-                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0 ">
-                    <label
-                      htmlFor="FullName"
-                      className="text-lg font-semibold  w-3/12 text-start ml-3 md:ml-0 "
-                    >
-                      Full Name :
-                    </label>
-                    <input
-                      id="FullName"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      type="text"
-                      required
-                      placeholder="Your Full Name...."
-                      className=" md:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
-                    />
-                  </div>
-                  {/* address */}
-                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
-                    <label
-                      htmlFor="Address"
-                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0 "
-                    >
-                     Address :
-                    </label>
-                    <input
-                      required
-                      id="Address"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      type="text"
-                      placeholder="Your Address...."
-                      className=" md:w-7/12  rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
-                    />
-                  </div>
-                  {/* phone */}
-                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
-                    <label
-                      htmlFor="Phone-Number"
-                      className=" text-lg font-semibold w-3/12 text-start ml-3 md:ml-0 "
-                    >
-                      Phone  :
-                    </label>
-                    <input
-                      required
-                      id="Phone-Number"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      type="text"
-                      placeholder=" Your Phone Number...."
-                      className=" md:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
-                    />
-                  </div>
-                  {/* Email */}
-                  <div className=" md:flex  md:justify-center md:items-center space-y-2 md:space-y-0 space-x-3 lg:space-x-0">
-                    <label
-                      htmlFor="Email"
-                      className=" text-lg font-semibold w-3/12 lg:text-start   ml-3 md:ml-0 "
-                    >
-                      Email :
-                    </label>
-                    <input
-                      required
-                      id="Email"
-                      value={contactEmail}
-                      onChange={(e) => setContactEmail(e.target.value)}
-                      type="email"
-                      placeholder="Your Email...."
-                      className=" md:w-7/12 rounded-md border-l-neutral-950 bg-[#E8F0FE]  px-2 py-2 "
-                    />
-                  </div>
-                   
-                  <h1 className="text-lg font-semibold ml-3 lg:mb-5 lg:ml-12">
-                      Resume :
-                    </h1>
-                  <div  {...getRootProps({ className: "dropzone" })}>
-                    <input {...getInputProps()} />
-                    
-                    {cvFile ? (
-                      <p className="py-10 border-2 bg-[#E8F0FE]  text-center">
-                        File Selected: {cvFile.name}
-                      </p>
-                    ) : (
-                      <p className="py-10 border-2  bg-gray-200  text-center">
-                        click to select a file
-                      </p>
-                    )}
-                  </div>
-
-                  {/* from button submit and cancel */}
-                  <div className="flex justify-center gap-10 ">
-                  <button className="contactButton mt-5">
-  Submit
-  <div className="iconButton">
-    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
-    </svg>
-  </div>
-</button>
-
-
-                    <div className="modal-action">
-                      <form method="dialog">
-                        {/* if there is a button, it will close the modal */}
-                        <button className="button1">
-  <span className="X"></span>
-  <span className="Y"></span>
-  <div className="close">Close</div>
-</button>
-
-                      </form>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </dialog>
+            See Details
+          </Link>
+         
         </div>
       </div>
     </div>
