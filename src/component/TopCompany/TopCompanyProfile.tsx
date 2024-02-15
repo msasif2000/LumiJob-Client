@@ -139,6 +139,11 @@ const TopCompanyProfile = () => {
             </TabList>
 
             <TabPanel>
+            <div className=" items-center mb-3">
+                <h4 className="font-semibold font-heading text-2xl text-center"> Currently Posted jobs for {CompanyProfile?.name} : {` `}
+                  <span className="text-[#486DD9] text-4xl">{companyPostedJobs?.length}</span> Jobs Available
+                </h4>
+              </div>
             <div className="grid grid-cols-1 gap-8 p-3 w-10/12 mx-auto ">
                 {
                   companyPostedJobs?.map((job: Job) => (
