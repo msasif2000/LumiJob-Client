@@ -13,7 +13,7 @@ interface CSearchProps {
     const handleSearch = async (e:any) => {
         e.preventDefault();
         try {
-            const response = await axiosPublic.get(`/job-Search?search=${searchText}`); 
+            const response = await axiosPublic.get(`/candidate-Search?search=${searchText}`); 
             console.log("Search Result:", response.data);
             onSearchResult(response.data);
         } catch (error) {
