@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 // import iconTwo from "../../assets/image/hero-icon2.png";
 
 const Banner = () => {
-  const { role } = useAuth();
+  const {  role } = useAuth();
   return (
     <section
       className="bg-gray-50"
@@ -17,9 +17,9 @@ const Banner = () => {
     >
       <div className="max-w-screen-xl mx-auto px-4 py-10 relative">
         <div className="flex flex-col justify-center items-center text-center min-h-[60vh] md:min-h-[40vh] lg:min-h-[90vh] 2xl:min-h-[80vh]">
-          <h2 className="text-2xl md:text-4xl lg:text-6xl font-heading font-semibold my-12 z-10">
-            <span className="text-accentTwo">Empowering </span> Tech Careers <br />
-            with Innovation and <br />
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold my-12 z-10">
+            <span className="text-accentTwo">Empowering </span> Tech Careers
+            with Innovation and
             <span className="text-accentTwo"> Boundless </span> Opportunities
           </h2>
           <p className="text-md md:text-lg xl:text-xl text-gray-600 px-5 md:px-28 lg:px-40 font-normal">
