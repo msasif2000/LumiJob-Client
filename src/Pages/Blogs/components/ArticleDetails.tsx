@@ -41,7 +41,7 @@ const ArticleDetails = () => {
       });
   }, [_id]);
 
-  console.log(`/single-blog/${_id}`);
+  //console.log(`/single-blog/${_id}`);
 
   useEffect(() => {
     const handleScroll = () => {

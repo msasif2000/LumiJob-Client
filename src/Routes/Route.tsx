@@ -39,6 +39,7 @@ import Blogs from "../Company/Blogs";
 import Post_A_Blog from "../Company/Post_A_Blog";
 import CandidateDetails from "../Pages/CandidateDetails/CandidateDetails";
 import FindCandidate from "../Pages/FindCandidate/FindCandidate";
+import EditBlog from "../Company/EditBlog";
 
 export const router = createBrowserRouter([
   {
@@ -219,7 +220,10 @@ export const router = createBrowserRouter([
         path: "post-a-blog",
         element: <Post_A_Blog />,
       },
-
+{
+  path: ":id/edit-blog",
+  element: <EditBlog />
+},
       {
         path: "companyAnalytics",
         element: <CompanyAnalytics />,
