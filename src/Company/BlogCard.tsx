@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { AiFillEdit } from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 
@@ -8,7 +9,9 @@ interface prop {
 }
 
 const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
+    const navigate = useNavigate();
     const [showDeleteIcon, setShowDeleteIcon] = useState(false);
+    const [showEditIcon, setShowEditIcon] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
     const confirmDelete = () => {
@@ -23,14 +26,23 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
         handleDelete(blog._id);
         setShowConfirmation(false);
     };
+
+    const confirmEdit = () => {
+
+        navigate(`/dashboard/${blog._id}/edit-blog`, { state: { blog } });
+    }
+    console.log(blog._id);   
     return (
         <div
             className="relative"
-            onMouseEnter={() => setShowDeleteIcon(true)}
+            onMouseEnter={() => {
+                setShowDeleteIcon(true);
+                setShowEditIcon(true);
+            }}
             onMouseLeave={() => setShowDeleteIcon(false)}
         >
-            <Link key={blog._id} to={`/single-blog/${blog._id}`}>
-                <div className="card shadow-md hover:shadow-xl duration-1000">
+            <Link key={blog._id} to={`/insights/${blog._id}`}>
+                <div className="card shadow-md hover:shadow-xl duration-1000 h-full">
                     <div className="card-body space-y-2">
                         <h2 className="text-2xl font-bold">{blog?.title}</h2>
                         <div className="flex justify-between items-center">
@@ -41,12 +53,20 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
                     </div>
                 </div>
             </Link>
-            {showDeleteIcon && (
-                <div className="absolute top-8 right-4 bg-red-600 p-2 rounded">
-                    <RiDeleteBinLine
-                        className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
-                        onClick={confirmDelete} // Show confirmation dialog on click
-                    />
+            {(showDeleteIcon && showEditIcon) && (
+                <div className="absolute top-8 right-4 ">
+                    <div className="bg-red-600 p-2 rounded">
+                        <RiDeleteBinLine
+                            className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+                            onClick={confirmDelete} // Show confirmation dialog on click
+                        />
+                    </div>
+                    <div className="bg-accent p-2 rounded mt-1">
+                        <AiFillEdit
+                            className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+                            onClick={confirmEdit} // Show confirmation dialog on click
+                        />
+                    </div>
                 </div>
             )}
             {showConfirmation && (

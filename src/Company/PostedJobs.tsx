@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const PostedJobs = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  console.log(user?.email);
+  //console.log(user?.email);
   const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
   const navigate = useNavigate()
 
@@ -20,7 +20,7 @@ const PostedJobs = () => {
         .get(`/get-company-posted-jobs/${user?.email}`)
         .then((res) => {
           setCompanyPostedJobs(res.data);
-          console.log(res.data);
+          //console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
