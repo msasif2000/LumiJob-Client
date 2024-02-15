@@ -72,7 +72,7 @@ const Resume: React.FC = () => {
           </div>
 
           {/* Body */}
-          <div className="w-full pt-16">
+          <div className="w-full flex pt-16">
             {/* left column */}
             <div className="w-1/3">
               {/* contact information */}
@@ -138,9 +138,8 @@ const Resume: React.FC = () => {
                           <p className="font-semibold">Familiar</p>
 
                           <div>
-                            <p>React Js - Javascript - Typescript</p>
-                            <p>React Js - Javascript - Typescript</p>
-                            <p>React Js - Javascript - Typescript</p>
+                            <p>Node Js - Express Js - MongoDB</p>
+                            <p>Firebase - REST Api - Redux</p>
                           </div>
                         </div>
                       </>
@@ -186,19 +185,128 @@ const Resume: React.FC = () => {
                       <p className="text-[1.5rem] font-semibold">Links</p>
 
                       <div className="space-y-1">
-                        <p className="underline">Portfolio</p>
-                        <p className="underline">LinkedIn</p>
-                        <p className="underline">Github</p>
-                        <p className="underline">Certificates</p>
+                        <p className="font-semibold text-violet-400 underline">
+                          Portfolio
+                        </p>
+                        <p className="font-semibold text-violet-400 underline">
+                          LinkedIn
+                        </p>
+                        <p className="font-semibold text-violet-400 underline">
+                          Github
+                        </p>
+                        <p className="font-semibold text-violet-400 underline">
+                          Certificates
+                        </p>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
+
             {/* right column */}
-            <div></div>
+            <div className="w-2/3">
+              {/* main container */}
+              <div className="space-y-10">
+                {/* Objective */}
+                <div className="space-y-3">
+                  <p className="text-[1.5rem] font-semibold">Objective</p>
+                  <p>
+                    I am a budding front-end developer with expertise in HTML,
+                    CSS, JavaScript, and React. I am passionate about crafting
+                    visually captivating and user-friendly interfaces. I have a
+                    strong command in both independent and collaborative
+                    projects. At present, I am actively pursuing opportunities
+                    for employment or internships to expand my skills and make
+                    meaningful contributions to significant projects.
+                  </p>
+                </div>
+                {/* Experience */}
+                <div className="space-y-3">
+                  <p className="text-[1.5rem] font-semibold">Experience</p>
+                  {/* exp1 */}
+                  <div>
+                    <p className="text-lg font-semibold">
+                      Sr Frontend Developer
+                    </p>
+                    <p>Google</p>
+                    <p className="py-3">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Tempore totam maxime mollitia nostrum perspiciatis
+                      consequuntur quibusdam incidunt, fuga corrupti quod, vel
+                      sequi, excepturi consequatur sunt. Non provident quibusdam
+                      placeat veniam.
+                    </p>
+                    <p>01/01/2020 - Current</p>
+                    <hr className="border-1 my-4" />
+                  </div>
+                  {/* exp2 */}
+                  <div>
+                    <p className="text-lg font-semibold">
+                      Jr Frontend Developer
+                    </p>
+                    <p>Google</p>
+                    <p className="py-3">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Tempore totam maxime mollitia nostrum perspiciatis
+                      consequuntur quibusdam incidunt, fuga corrupti quod, vel
+                      sequi, excepturi consequatur sunt. Non provident quibusdam
+                      placeat veniam.
+                    </p>
+                    <p>01/04/2017 - 01/01/2020</p>
+                    <hr className="border-1 my-4" />
+                  </div>
+                </div>
+                {/* Project */}
+                <div className="space-y-3">
+                  <p className="text-[1.5rem] font-semibold">Project</p>
+                  {/* exp1 */}
+                  <div>
+                    <p className="text-lg font-semibold">InventiSync</p>
+                    <p>Inventory Management Software</p>
+                    <ul className="py-3 list-disc ml-10">
+                      <li>Simple dashboard for business management</li>
+                      <li>Product management functionality</li>
+                      <li>Sales tracking and stock summury</li>
+                      <li>Qr code for easy product tracking</li>
+                      <li>User friendly design</li>
+                    </ul>
+                    <p>Duration - 10 Days</p>
+                    <div className="flex justify-between my-4">
+                      <p className="font-semibold text-violet-400 underline">
+                        Checkout
+                      </p>
+                      <div className="flex space-x-10">
+                        <p className="font-semibold text-violet-400 underline">
+                          Client
+                        </p>
+                        <p className="font-semibold text-violet-400 underline">
+                          Server
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Education */}
+                <div className="space-y-3">
+                  <p className="text-[1.5rem] font-semibold">Education</p>
+                  {/* exp1 */}
+                  <div>
+                    <p className="text-lg font-semibold">CSE</p>
+                    <p>Daffodil International University</p>
+                    <p className="py-3">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Tempore totam maxime mollitia nostrum perspiciatis
+                      consequuntur quibusdam incidunt, fuga corrupti quod, vel
+                      sequi, excepturi consequatur sunt. Non provident quibusdam
+                      placeat veniam.
+                    </p>
+                    <p>01/01/2020 - Current</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
