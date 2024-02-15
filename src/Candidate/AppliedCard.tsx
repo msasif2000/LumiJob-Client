@@ -15,7 +15,6 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     setShowConfirmation(true);
   };
 
-
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
     return formattedDate;
@@ -26,6 +25,15 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     setShowConfirmation(false);
   };
 
+  const shortDesc = (desc: string, maxWord: number)=>{
+    const words = desc.split(" ");
+    if (words.length > maxWord) {
+      return words.slice(0, maxWord).join(" ") + "...";
+    } else {
+      return desc;
+    }
+  }
+
   return (
     <div
       className="relative"
@@ -33,16 +41,17 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       onMouseLeave={() => setCancel(false)}
     >
       <Link key={job._id} to={`/details/${job._id}`}>
-        <div className="card hover:shadow-xl duration-1000">
+        <div className="card bg-base-100 hover:shadow-xl duration-1000">
           <div className="card-body space-y-2">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">
-              <p className="font-semibold">{job?.jobType}</p>
+              <p className="font-semibold">{job?.title}</p>
+
               <p className="text-right">${job?.salaryRange.min}</p>
             </div>
-            <p>{job?.description}</p>
+            <p>{shortDesc(job?.description, 15)}</p>
             <div className="flex justify-between items-center">
-              <p className="">{job?.sectorType}</p>
+              <p className="font-semibold">{job?.jobType}</p>
               <p className="text-violet-500 text-right font-semibold">
                 {job?.status}
               </p>
