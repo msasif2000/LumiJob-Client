@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
-
 interface Candidate {
   name: string;
   email: string;
@@ -41,16 +40,11 @@ const Resume: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCandidates(res.data);
+          console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
   }, [user]);
-
-  const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'numeric', year: 'numeric' };
-    const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
-    return formattedDate;
-  };
 
   const handleGoBack = () => {
     navigate(-1);
@@ -66,83 +60,145 @@ const Resume: React.FC = () => {
         text="Resume"
         btn="Go Back"
         handleClick={handleGoBack}
-        btn2="Update Information"
+        btn2="Complete Resume"
         handleClick2={handleUpdate}
       />
-      <div className="mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg 2xl:max-w-3xl">
-        <div id="resume-content" className="mb-8 border-2 p-4 md:p-10">
+      <div className="p-5 bg-base-100">
+        <div className="border-2 p-20">
+          {/* Head */}
           <div>
-            <h1 className="text-md md:text-xl font-bold mb-1">
-              {candidate?.name}
-            </h1>
-            <p className="text-[8px] md:text-sm mb-1">{candidate?.email}</p>
-            <p className="text-[8px] md:text-sm mb-1">{candidate?.phone}</p>
-            <p className="text-[8px] md:text-sm mb-1">
-              {candidate?.location}
-            </p>
+            <p className="text-[3rem]">{candidate?.name}</p>
+            <p className="text-[1.5rem]">{candidate?.position}</p>
           </div>
-          <hr className="my-2" />
-          <div className="text-[8px] md:text-sm flex">
-            <h2 className="w-1/3 font-bold mb-2">Education</h2>
-            <div className="w-2/3">
-              {candidate?.education.map((edu, eduIndex) => (
-                <div key={eduIndex}>
-                  <p>{edu.university}</p>
-                  <p>{edu.subject}</p>
-                  <p>
-                  {formatDate(edu.fromDate)} - {formatDate(edu.toDate)}
-                  </p>
+
+          {/* Body */}
+          <div className="w-full pt-16">
+            {/* left column */}
+            <div className="w-1/3">
+              {/* contact information */}
+              <div className="space-y-3">
+                <p className="text-[1.5rem] font-semibold">Details</p>
+                {/* Per section */}
+
+                <div className="space-y-10">
+                  {/* Details section */}
+                  <div>
+                    <div className="space-y-3">
+                      <>
+                        <div className="space-y-2">
+                          <p className="font-semibold">Address</p>
+                          <div>
+                            <p>Kalma</p>
+                            <p>Savar, Dhaka 1341</p>
+                            <p>Bnagladesh</p>
+                          </div>
+                        </div>
+                      </>
+
+                      <>
+                        <div className="space-y-2">
+                          <p className="font-semibold">Phone</p>
+
+                          <p>+8801992787306</p>
+                        </div>
+                      </>
+
+                      <>
+                        <div className="space-y-2">
+                          <p className="font-semibold">Email</p>
+
+                          <p>rifat@gmail.com</p>
+                        </div>
+                      </>
+                    </div>
+                  </div>
+                  {/* Skills section */}
+                  <div>
+                    <div className="space-y-3">
+                      <p className="text-[1.5rem] font-semibold">Skills</p>
+
+                      <>
+                        <div className="space-y-2">
+                          <p className="font-semibold">Expert</p>
+
+                          <p>HTML - CSS - Tailwind CSS</p>
+                        </div>
+                      </>
+
+                      <>
+                        <div className="space-y-2">
+                          <p className="font-semibold">Comfortable</p>
+
+                          <p>React Js - Javascript - Typescript</p>
+                        </div>
+                      </>
+
+                      <>
+                        <div className="space-y-2">
+                          <p className="font-semibold">Familiar</p>
+
+                          <div>
+                            <p>React Js - Javascript - Typescript</p>
+                            <p>React Js - Javascript - Typescript</p>
+                            <p>React Js - Javascript - Typescript</p>
+                          </div>
+                        </div>
+                      </>
+
+                      <>
+                        <div className="space-y-2">
+                          <p className="font-semibold">Tools</p>
+
+                          <p>Vs Code - Git - Github</p>
+                        </div>
+                      </>
+                    </div>
+                  </div>
+                  {/* Soft Skills */}
+                  <div>
+                    <div className="space-y-3">
+                      <p className="text-[1.5rem] font-semibold">Soft Skills</p>
+
+                      <div className="space-y-1">
+                        <p>Empathy</p>
+                        <p>Time Management</p>
+                        <p>Adaptability</p>
+                        <p>Determination</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Languages */}
+                  <div>
+                    <div className="space-y-3">
+                      <p className="text-[1.5rem] font-semibold">Languages</p>
+
+                      <div className="space-y-1">
+                        <p>Bangla</p>
+                        <p>English</p>
+                        <p>Hindi</p>
+                        <p>Urdu</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Links */}
+                  <div>
+                    <div className="space-y-3">
+                      <p className="text-[1.5rem] font-semibold">Links</p>
+
+                      <div className="space-y-1">
+                        <p className="underline">Portfolio</p>
+                        <p className="underline">LinkedIn</p>
+                        <p className="underline">Github</p>
+                        <p className="underline">Certificates</p>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-          <hr className="my-2" />
-          <hr className="my-2" />
-          <div className="text-[8px] md:text-sm flex">
-            <h2 className="w-1/3 font-bold mb-2">Work Experience</h2>
-            <div className="w-2/3">
-              <p>{candidate?.position}</p>
-              <p>{candidate?.experience} years</p>
-            </div>
-          </div>
-          <hr className="my-2" />
-          <div className="text-[8px] md:text-sm flex">
-            <h2 className="font-bold mb-2 w-1/3">Training Courses</h2>
-            <p className="w-2/3">{candidate?.training_courses}</p>
-          </div>
-          <hr className="my-2" />
-          <hr className="my-2" />
-          <div className="text-[8px] md:text-sm flex">
-            <h2 className="font-bold mb-2 w-1/3">Skills</h2>
-            <ul className="w-2/3">
-              {candidate?.skills.map((skill, skillIndex) => (
-                <li key={skillIndex}>
-                  <p className="flex">
-                    <span className="mr-2">{/* Add your bullet point/icon here */}</span>
-                    <span>{skill}</span>
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        
-          <hr className="my-2" />
-          <div className="text-[8px] md:text-sm flex">
-            <h2 className="w-1/3 font-bold mb-2">Accomplishment</h2>
-            <p className="w-2/3">{candidate?.bio}</p>
-          </div>
-          <hr className="my-2" />
-          <div className="text-[8px] md:text-sm flex">
-            <h2 className="font-bold mb-2 w-1/3">Portfolio</h2>
-            <p className="w-2/3">
-              <a
-                href={candidate?.portfolio}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {candidate?.portfolio}
-              </a>
-            </p>
+            {/* right column */}
+            <div></div>
           </div>
         </div>
       </div>
