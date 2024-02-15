@@ -304,7 +304,12 @@ const JobsDetails: React.FC = () => {
                       onClick={() => handleApply()}
                       className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
                     >
-                      APPLY HERE
+                      Quick Apply
+                    </button>
+                  </div>
+                  <div>
+                    <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                      Apply
                     </button>
                   </div>
                   <div className="skeleton flex flex-col bg-[#F2F5FE] items-center p-8">
