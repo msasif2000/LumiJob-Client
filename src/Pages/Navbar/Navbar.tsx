@@ -22,9 +22,20 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
       <li key="Job">
-        <NavLink className="text-lg font-heading font-medium" to="/findjob">
+        {/* <NavLink className="text-lg font-heading font-medium" to="/findjob">
           Jobs
-        </NavLink>
+        </NavLink> */}
+        {
+          role === "company" ? (
+            <NavLink className="text-lg font-heading font-medium"  to="/find-candidate">          
+                Candidates
+            </NavLink>
+          ) : (
+            <NavLink className="text-lg font-heading font-medium"  to="/find-job">             
+                Jobs 
+            </NavLink>
+          )
+        }
       </li>
       <li key="Insights">
         <NavLink className="text-lg font-heading font-medium" to="/insights">
@@ -123,8 +134,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "font-black underline text-lg"
-                      : "text-lg"
+                        ? "font-black underline text-lg"
+                        : "text-lg"
                   }
                 >
                   <div className="flex items-center gap-2 ">
@@ -151,8 +162,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "font-black underline text-lg"
-                      : "text-lg"
+                        ? "font-black underline text-lg"
+                        : "text-lg"
                   }
                 >
                   <div className="flex items-center gap-2 ">
@@ -179,8 +190,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "font-black underline text-lg"
-                      : "text-lg"
+                        ? "font-black underline text-lg"
+                        : "text-lg"
                   }
                 >
                   <div className="flex items-center gap-2 ">
@@ -212,11 +223,10 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div
-                    className={`w-20 rounded-full ${
-                      premium === "premium"
+                    className={`w-20 rounded-full ${premium === "premium"
                         ? "ring-4 ring-blue-400 ring-offset-2"
                         : ""
-                    }`}
+                      }`}
                   >
                     {user ? (
                       <img
