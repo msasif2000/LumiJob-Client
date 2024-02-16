@@ -6,6 +6,7 @@ import FindJobCard from "../../Pages/FindJob/FindJobCard";
 import Job from "../../Pages/Home/PopularJobs/Job";
 //import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
 import Seminers from "../../Pages/Blogs/components/Seminers";
+// import TopCompanyBlogs from "./TopCompanyBlogs";
 
 
 const TopCompanyProfile = () => {
@@ -13,17 +14,16 @@ const TopCompanyProfile = () => {
   const axiosPublic = useAxiosPublic();
   const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
   const [CompanyProfile, setCompanyProfile] = useState<any>(null);
+
   useEffect(() => {
     axiosPublic
       .get(`/company-profile/${id}`)
       .then((res) => {
         setCompanyProfile(res.data);
         console.log(res.data);
-  
-
       })
       .catch((error) => console.log(error));
-  });
+  }, []);
 
 
   // company posted jobs
@@ -45,8 +45,8 @@ const TopCompanyProfile = () => {
     <div className="">
       <div>
         {/* company details pages  */}
-        <div className=" pt-5 pb-5  px-7 bg-[#4360ca]">
-          <p className=" pb-8 lg:text-4xl font-bold text-center text-white  ">
+        <div className=" pt-5 pb-5  px-7 bg-[#e1e8ff]">
+          <p className=" pb-8 lg:text-4xl font-bold text-center   ">
             Company Profile {`> `}
             {CompanyProfile?.name}{" "}
           </p>
@@ -60,41 +60,41 @@ const TopCompanyProfile = () => {
                   src={CompanyProfile?.photo}
                 />
                 <div>
-                  <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">
+                  <p className="text-sm md:text-base font-semibold uppercase  mb-1">
                     Company Name{" "}
                   </p>
-                  <p className="text-sm md:text-lg text-[#d6dfe9] pl-1">
+                  <p className="text-sm md:text-lg pl-1">
                     {CompanyProfile?.name}
                   </p>
-                  <div className="flex flex-col justify-center  text-white mt-5 mb-5">
-                    <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">
+                  <div className="flex flex-col justify-center   mt-5 mb-5">
+                    <p className="text-sm md:text-base font-semibold uppercase  mb-1 ">
                       Founding Year
                     </p>
-                    <p className="text-sm md:text-lg text-[#d6dfe9] pl-1">
+                    <p className="text-sm md:text-lg pl-1">
                       {CompanyProfile?.founding}
                     </p>
                   </div>
-                  <p className="text-sm md:text-base font-semibold uppercase text-white mb-1">
+                  <p className="text-sm md:text-base font-semibold uppercase  mb-1">
                     Industry
                   </p>
-                  <p className="text-sm md:text-lg text-[#d6dfe9] pl-1">
+                  <p className="text-sm md:text-lg pl-1">
                     {CompanyProfile?.industry}
                   </p>
                   <div className="mt-5">
-                    <p className="text-sm md:text-base font-semibold uppercase text-white mb-1 ">
+                    <p className="text-sm md:text-base font-semibold uppercase  mb-1 ">
                       address{" "}
                     </p>
-                    <p className="text-sm md:text-lg  text-[#d6dfe9] pl-1">
+                    <p className="text-sm md:text-lg  pl-1">
                       {CompanyProfile?.city} - {CompanyProfile?.postal},{" "}
                       {CompanyProfile?.country}
                     </p>
-                    <p className="text-sm md:text-lg uppercase text-[#d6dfe9] pt-1 pl-1">
+                    <p className="text-sm md:text-lg uppercase pt-1 pl-1">
                       Phone: {CompanyProfile?.phone}
                     </p>
-                    <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1 pl-1">
+                    <p className=" text-sm md:text-lg md:pt-1 pl-1">
                       E-mail: {CompanyProfile?.email}
                     </p>
-                    <p className=" text-sm md:text-lg text-[#d6dfe9] md:pt-1 pl-1">
+                    <p className=" text-sm md:text-lg md:pt-1 pl-1">
                       Website: {CompanyProfile?.website}
                     </p>
                   </div>
@@ -146,7 +146,7 @@ const TopCompanyProfile = () => {
                   <span className="text-[#486DD9] text-4xl">{companyPostedJobs?.length}</span> Jobs Available
                 </h4>
               </div>
-            <div className="grid grid-cols-1 gap-8 p-3 w-10/12 mx-auto ">
+            <div className="grid grid-cols-2 gap-8 w-10/12 mx-auto ">
                 {
                   companyPostedJobs?.map((job: Job) => (
                     <FindJobCard key={job._id} job={job}></FindJobCard>
@@ -155,7 +155,7 @@ const TopCompanyProfile = () => {
               </div>
             </TabPanel>
             <TabPanel>
-           
+              
                 {/* <FeaturedArticle /> */}
             </TabPanel>
             <TabPanel>
