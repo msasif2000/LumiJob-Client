@@ -30,7 +30,7 @@ const FeaturedArticle = () => {
     return array;
   };
 
-  const slicedData = datas && shuffleArray(datas.slice(0, 23));
+  const slicedData = datas && shuffleArray(datas.slice(0, 13));
 
   const truncateDetails = (details: string, limit: number) => {
     const words = details.split(" ");
