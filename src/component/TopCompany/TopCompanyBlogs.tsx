@@ -48,10 +48,10 @@ const TopCompanyBlogs = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
+    <div className="min-h-screen pb-10">
       <div className="max-w-screen-2xl mx-auto px-4">
-        <h1 className="text-3xl lg:text-6xl font-heading font-semibold py-8">
-          Featured Articles
+        <h1 className="md:text-2xl lg:text-4xl font-heading font-semibold py-8">
+          Articles
         </h1>
         {/* for computer */}
         <div className="hidden xl:block">
@@ -69,7 +69,7 @@ const TopCompanyBlogs = () => {
                     }`}
                   >
                     <div>
-                      <div className=" p-2 bg-white hover:shadow-xl duration-700">
+                      <div className=" p-2 bg-white border-2 hover:shadow-xl duration-700">
                         <figure className="relative">
                           {idx === 0 ? (
                             <img

@@ -137,7 +137,7 @@ const TopCompanyProfile = () => {
           <Tabs>
             <TabList className={`text-2xl font-bold text-center pt-4 pb-10`}>
               <Tab >Posted Jobs</Tab>
-              <Tab>Blog</Tab>
+              <Tab>Blogs</Tab>
               <Tab>Seminar</Tab>
             </TabList>
 
