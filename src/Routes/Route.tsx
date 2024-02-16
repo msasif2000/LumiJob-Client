@@ -32,7 +32,6 @@ import ManagePayments from "../Admin/ManagePayments";
 import ManageCandidate from "../Admin/ManageCandidate";
 import Payment from "../Pages/Payment/Payment";
 import OptionSubscribe from "../Pages/Subscription/OptionSubscribe";
-import CompanyDetails from "../Pages/CompanyDetails";
 // import TopCompany from "../component/TopCompany/TopCompany";
 import TopCompanyProfile from "../component/TopCompany/TopCompanyProfile";
 import Blogs from "../Company/Blogs";
@@ -116,10 +115,6 @@ export const router = createBrowserRouter([
     path: "/signup/role",
     errorElement: <NotFound />,
     element: <Roles />,
-  },
-  {
-    path: "/company-detailsProfile/:id",
-    element: <CompanyDetails></CompanyDetails>,
   },
   {
     path: "/candidate-detailsProfile/:id",
