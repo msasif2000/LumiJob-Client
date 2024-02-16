@@ -85,6 +85,9 @@ const DashBoard = () => {
           <NavLink to="/dashboard/blog-posted">Blogs</NavLink>
         </li>
         <li>
+          <NavLink to="/dashboard/seminar-posted">Seminars</NavLink>
+        </li>
+        <li>
           <NavLink to="/dashboard/companyAnalytics">Analytics</NavLink>
         </li>
         <li>

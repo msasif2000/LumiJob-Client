@@ -42,6 +42,7 @@ import FindCandidate from "../Pages/FindCandidate/FindCandidate";
 import CompleteResume from "../Candidate/UpdateCmponents/CompleteResume";
 
 import EditBlog from "../Company/EditBlog";
+import Seminars from "../Company/Seminars";
 
 
 export const router = createBrowserRouter([
@@ -179,7 +180,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "candidateProfile/resume/create_resume",
-        element: <CompleteResume/>,
+        element: <CompleteResume />,
       },
       {
         path: "candidateProfile/resume",
@@ -223,10 +224,14 @@ export const router = createBrowserRouter([
         path: "post-a-blog",
         element: <Post_A_Blog />,
       },
-{
-  path: ":id/edit-blog",
-  element: <EditBlog />
-},
+      {
+        path: "seminar-posted",
+        element: <Seminars />
+      },
+      {
+        path: ":id/edit-blog",
+        element: <EditBlog />
+      },
       {
         path: "companyAnalytics",
         element: <CompanyAnalytics />,
