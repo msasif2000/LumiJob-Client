@@ -6,6 +6,7 @@ import FindJobCard from "../../Pages/FindJob/FindJobCard";
 import Job from "../../Pages/Home/PopularJobs/Job";
 //import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
 import Seminers from "../../Pages/Blogs/components/Seminers";
+import TopCompanyBlogs from "./TopCompanyBlogs";
 // import TopCompanyBlogs from "./TopCompanyBlogs";
 
 
@@ -155,7 +156,7 @@ const TopCompanyProfile = () => {
               </div>
             </TabPanel>
             <TabPanel>
-              
+              <TopCompanyBlogs></TopCompanyBlogs>
                 {/* <FeaturedArticle /> */}
             </TabPanel>
             <TabPanel>
