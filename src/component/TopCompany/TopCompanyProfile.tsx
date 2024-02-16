@@ -147,7 +147,7 @@ const TopCompanyProfile = () => {
                   <span className="text-[#486DD9] text-4xl">{companyPostedJobs?.length}</span> Jobs Available
                 </h4>
               </div>
-            <div className="grid grid-cols-2 gap-8 w-10/12 mx-auto ">
+            <div className="grid grid-cols-1 gap-8 w-10/12 mx-auto ">
                 {
                   companyPostedJobs?.map((job: Job) => (
                     <FindJobCard key={job._id} job={job}></FindJobCard>
