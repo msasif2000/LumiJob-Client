@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FindJobCard from "../../Pages/FindJob/FindJobCard";
 import Job from "../../Pages/Home/PopularJobs/Job";
-import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
+//import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
 import Seminers from "../../Pages/Blogs/components/Seminers";
 
 
@@ -156,7 +156,7 @@ const TopCompanyProfile = () => {
             </TabPanel>
             <TabPanel>
            
-                <FeaturedArticle />
+                {/* <FeaturedArticle /> */}
             </TabPanel>
             <TabPanel>
             <Seminers />
