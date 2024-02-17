@@ -43,6 +43,7 @@ import CompleteResume from "../Candidate/UpdateCmponents/CompleteResume";
 
 import EditBlog from "../Company/EditBlog";
 import Seminars from "../Company/Seminars";
+import Post_A_Seminar from "../Company/Post_A_Seminar";
 
 
 export const router = createBrowserRouter([
@@ -225,12 +226,16 @@ export const router = createBrowserRouter([
         element: <Post_A_Blog />,
       },
       {
+        path: ":id/edit-blog",
+        element: <EditBlog />
+      },
+      {
         path: "seminar-posted",
         element: <Seminars />
       },
       {
-        path: ":id/edit-blog",
-        element: <EditBlog />
+        path: "post-a-seminar",
+        element: <Post_A_Seminar />
       },
       {
         path: "companyAnalytics",

@@ -57,7 +57,7 @@ const Seminars = () => {
             });
     };
     const handleBlogPosts = () => {
-        navigate('/dashboard/post-a-blog')
+        navigate('/dashboard/post-a-seminar')
     }
     return (
         <div>
