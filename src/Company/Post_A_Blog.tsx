@@ -35,8 +35,7 @@ const Post_A_Blog = () => {
     //console.log(date);
     useEffect(() => {
         if (user?.email) {
-            axiosPublic
-                .get(`/user-profile/${user.email}`)
+            axiosPublic.get(`/user-profile/${user.email}`)
                 .then((res) => {
                     setCompany(res.data);
                     //console.log(res.data);
@@ -86,17 +85,17 @@ const Post_A_Blog = () => {
                 };
 
                 axiosPublic.post("/post-the-blog", updateBlog)
-                .then(res => {
-                    //console.log(res.data);
-                    if(res.data.insertedId){
-                        toast.success("Blog Posted Successfully");
-                        navigate("/dashboard/blog-posted");
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                    toast.error("Failed to post Blog");
-                })
+                    .then(res => {
+                        //console.log(res.data);
+                        if (res.data.insertedId) {
+                            toast.success("Blog Posted Successfully");
+                            navigate("/dashboard/blog-posted");
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        toast.error("Failed to post Blog");
+                    })
 
             } else {
                 toast.error("Failed to upload photo");
