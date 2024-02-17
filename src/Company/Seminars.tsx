@@ -44,7 +44,16 @@ const Seminars = () => {
     const axiosPublic = useAxiosPublic();
     const [company, setCompany] = useState<SeminarData | null>(null);
     const { register, handleSubmit } = useForm<FormData>();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const openModal = () => {
+        setIsModalOpen(true);
+      };
+    
+      const closeModal = () => {
+        setIsModalOpen(false);
+      };
+      
     useEffect(() => {
         if (user?.email) {
             axiosPublic.get(`/get-posted-Seminars/${user?.email}`)
