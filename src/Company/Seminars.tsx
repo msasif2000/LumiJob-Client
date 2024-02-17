@@ -14,7 +14,7 @@ interface FormData {
     location: string;
     description: string;
     speaker: string;
-    name: string;
+    author: string;
 }
 
 interface SeminarData {
@@ -33,7 +33,7 @@ interface Seminar {
     location: string,
     description: string,
     speaker: string,
-    name: string,
+    author: string,
 }
 
 const Seminars = () => {
@@ -43,7 +43,7 @@ const Seminars = () => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const [company, setCompany] = useState<SeminarData | null>(null);
-    const { register, handleSubmit, setValue } = useForm<FormData>();
+    const { register, handleSubmit } = useForm<FormData>();
 
     useEffect(() => {
         if (user?.email) {
@@ -87,6 +87,32 @@ const Seminars = () => {
             });
     };
 
+    const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+        const seminarData = {
+            ...data,
+            email: company?.email,
+            companyId: company?._id,
+            role: company?.role,
+            author: company?.name,
+        };
+        axiosPublic.post("post-the-seminar", seminarData)
+            .then((res) => {
+                if (res.data) {
+                    toast.success("Seminar Posted Successfully", {
+                        hideProgressBar: true,
+                        autoClose: 2000,
+                        position: "top-center",
+                    });
+                    navigate('/dashboard/seminar-posted');
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                toast.error("Failed to post Seminar");
+            })
+
+    };
+
     return (
         <div>
             <div className="navbar">
@@ -110,7 +136,7 @@ const Seminars = () => {
                         <a href="#my_modal_8" className="btn">open modal</a>
                     </ul>
                     <div className="modal" role="dialog" id="my_modal_8">
-                        <div className=" bg-white px-2 py-5">
+                        <div className="modal-box bg-white px-2 py-5">
                             <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
 
                                 <div className="pb-10 space-y-6">
@@ -118,7 +144,30 @@ const Seminars = () => {
                                         <input
                                             type="text"
                                             {...register("title", { required: "Title is required" })}
-                                            placeholder="Blog Title"
+                                            placeholder="Seminar Topic"
+                                            className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                                        />
+                                    </div>
+                                    <div className="form-control w-full">
+                                        <input
+                                            type="datetime-local"
+                                            {...register("startTime", { required: "Time is required" })}
+
+                                            className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                                        />
+                                    </div>
+                                    <div className="form-control w-full">
+                                        <input
+                                            type="datetime-local"
+                                            {...register("title")}
+                                            className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                                        />
+                                    </div>
+                                    <div className="form-control w-full">
+                                        <input
+                                            type="text"
+                                            {...register("location", { required: "Location is required" })}
+                                            placeholder="Venue"
                                             className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                                         />
                                     </div>
@@ -150,6 +199,11 @@ const Seminars = () => {
                                     )}
                                 </button>
                             </form>
+                            <h3 className="font-bold text-lg">Hello!</h3>
+                            <p className="py-4">This modal works with anchor links</p>
+                            <div className="modal-action">
+                                <a href="#" className="btn">Yay!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
