@@ -86,7 +86,7 @@ const Seminars = () => {
                         position: "top-center",
                     });
                     setCompanyPostedSeminars(companyPostedSeminars?.filter((seminar: any) => seminar._id !== seminarId));
-                    setIsModalOpen(false);
+                    navigate("/dashboard/seminar-posted");
                 }
             })
             .catch((err) => {
@@ -112,7 +112,8 @@ const Seminars = () => {
                         autoClose: 2000,
                         position: "top-center",
                     });
-                    navigate("/dashboard/seminar-posted");
+                    setIsModalOpen(false);
+                    setCompanyPostedSeminars([...companyPostedSeminars, res.data]);
                 }
             })
             .catch((err) => {
