@@ -22,15 +22,15 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
       <li key="Job">
-       
+
         {
           role === "company" ? (
-            <NavLink className="text-lg font-heading font-medium"  to="/find-candidate">          
-                Candidates
+            <NavLink className="text-lg font-heading font-medium" to="/find-candidate">
+              Candidates
             </NavLink>
           ) : (
-            <NavLink className="text-lg font-heading font-medium"  to="/find-job">             
-                Jobs 
+            <NavLink className="text-lg font-heading font-medium" to="/find-job">
+              Jobs
             </NavLink>
           )
         }
@@ -125,17 +125,11 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         <div className="navbar-end">
           <div className="mr-24 hidden md:block ">
             {role === "candidate" ? (
-              <button className="button ">
-                <NavLink
-                  to="/subscriptionsUiCandidate"
-                  className={({ isActive, isPending }) =>
-                    isPending
-                      ? "pending"
-                      : isActive
-                        ? "font-black underline text-lg"
-                        : "text-lg"
-                  }
-                >
+
+              <Link
+                to="/subscriptionsUiCandidate"
+              >
+                <button className="button ">
                   <div className="flex items-center gap-2 ">
                     Upgrade
                     <svg
@@ -150,20 +144,15 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                       ></path>
                     </svg>
                   </div>
-                </NavLink>
-              </button>
+                </button>
+              </Link>
+
             ) : role === "company" ? (
-              <button className="button ">
-                <NavLink
-                  to="/subscriptionsUiCompany"
-                  className={({ isActive, isPending }) =>
-                    isPending
-                      ? "pending"
-                      : isActive
-                        ? "font-black underline text-lg"
-                        : "text-lg"
-                  }
-                >
+
+              <Link
+                to="/subscriptionsUiCompany"
+              >
+                <button className="button ">
                   <div className="flex items-center gap-2 ">
                     Upgrade
                     <svg
@@ -178,20 +167,15 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                       ></path>
                     </svg>
                   </div>
-                </NavLink>
-              </button>
+                </button>
+              </Link>
+
             ) : (
-              <button className="button ">
-                <NavLink
-                  to="/optionsSubscribe"
-                  className={({ isActive, isPending }) =>
-                    isPending
-                      ? "pending"
-                      : isActive
-                        ? "font-black underline text-lg"
-                        : "text-lg"
-                  }
-                >
+
+              <Link
+                to="/optionsSubscribe"
+              >
+                <button className="button ">
                   <div className="flex items-center gap-2 ">
                     Upgrade
                     <svg
@@ -206,8 +190,9 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                       ></path>
                     </svg>
                   </div>
-                </NavLink>
-              </button>
+                </button>
+              </Link>
+
             )}
           </div>
 
@@ -222,8 +207,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                 >
                   <div
                     className={`w-20 rounded-full ${premium === "premium"
-                        ? "ring-4 ring-blue-400 ring-offset-2"
-                        : ""
+                      ? "ring-4 ring-blue-400 ring-offset-2"
+                      : ""
                       }`}
                   >
                     {user ? (
@@ -253,15 +238,6 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                       to="/Profile"
                     >
                       Profile
-                    </NavLink>
-                  </li>
-                  ,
-                  <li>
-                    <NavLink
-                      className="mr-2 font-semibold text-lg"
-                      to="/Settings"
-                    >
-                      Settings
                     </NavLink>
                   </li>
                   ,
