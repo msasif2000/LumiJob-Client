@@ -18,7 +18,8 @@ const Banner = () => {
       <div className="max-w-screen-xl mx-auto px-4 py-10 relative">
         <div className="flex flex-col justify-center items-center text-center min-h-[60vh] md:min-h-[40vh] lg:min-h-[90vh] 2xl:min-h-[80vh]">
           <h2 className="text-2xl md:text-4xl lg:text-6xl font-heading font-semibold my-12 z-10">
-            <span className="text-accentTwo">Empowering </span> Tech Careers <br />
+            <span className="text-accentTwo">Empowering </span> Tech Careers{" "}
+            <br />
             with Innovation and <br />
             <span className="text-accentTwo"> Boundless </span> Opportunities
           </h2>
@@ -28,15 +29,12 @@ const Banner = () => {
             and Limitless Possibilities
           </p>
 
-
           <button className="btn bg-btnbg text-light text-lg font-heading font-medium rounded-sm border-none px-12 lg:px-20 my-12 hover:bg-accent">
-            {
-              role === "company" ? (
-                <NavLink to="/find-candidate">Find Skilled Candidates</NavLink>
-              ) : (
-                <NavLink to="/findjob">Find Your Future</NavLink>
-              )
-            }
+            {role === "company" ? (
+              <NavLink to="/find-candidate">Find Skilled Candidates</NavLink>
+            ) : (
+              <NavLink to="/findjob">Find Your Future</NavLink>
+            )}
           </button>
 
           {/* <img
