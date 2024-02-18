@@ -1,3 +1,7 @@
+import { GrUserManager } from "react-icons/gr"; 
+import { ImLocation } from "react-icons/im";
+import { CgTime } from "react-icons/cg";
+import { MdDateRange } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -35,10 +39,12 @@ const SeminarCard: React.FC<prop> = ({ seminar, handleDelete }) => {
                     <div className="card-body space-y-2">
                         <h2 className="text-2xl font-bold">{seminar?.title}</h2>
                         <div className="flex justify-between items-center">
-                            <p className="font-semibold">{seminar?.category}</p>
+                            <p className="font-semibold flex items-center gap-1 "><ImLocation className="text-xl text-violet-500" />{seminar?.location}</p>
                         </div>
-                        <p className="font-semibold text-violet-500">{seminar?.postTime?.split("T")[0]}</p>
-                        <p>{seminar?.description.slice(0, 100)}...</p>
+                        <p className="flex items-center gap-1 font-semibold text-violet-500"><MdDateRange className="text-xl" /> {seminar?.date}</p>
+                        <p className="flex items-center gap-1 font-semibold text-violet-500"><CgTime className="text-xl" />{seminar?.startTime} - {seminar?.endTime}</p>
+                        <p className="flex items-center gap-1 font-semibold text-violet-500"><GrUserManager className="text-xl"/>{seminar?.speaker} </p>
+                        <p>{seminar?.description.slice(0, 60)}...</p>
                     </div>
                 </div>
             </Link>
