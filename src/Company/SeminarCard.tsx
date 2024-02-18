@@ -38,7 +38,7 @@ const SeminarCard: React.FC<prop> = ({ seminar, handleDelete }) => {
                             <p className="font-semibold">{seminar?.category}</p>
                         </div>
                         <p className="font-semibold text-violet-500">{seminar?.postTime?.split("T")[0]}</p>
-                        <p>{seminar?.details.slice(0, 100)}...</p>
+                        <p>{seminar?.description.slice(0, 100)}...</p>
                     </div>
                 </div>
             </Link>

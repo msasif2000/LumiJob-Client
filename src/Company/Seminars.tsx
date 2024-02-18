@@ -7,9 +7,10 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import SeminarCard from "./SeminarCard";
 
 interface FormData {
+    title: string;
+    date: Date;
     startTime: Date;
     endTime: Date;
-    title: string;
     location: string;
     description: string;
     speaker: string;
@@ -26,7 +27,8 @@ interface SeminarData {
 interface Seminar {
     _id: string;
     title: string;
-    startDate: Date;
+    date: Date;
+    startTime: Date;
     endTime: Date;
     email: string;
     location: string;
@@ -75,8 +77,7 @@ const Seminars = () => {
     const length = companyPostedSeminars?.length;
 
     const handleDelete = (seminarId: string) => {
-        axiosPublic
-            .delete(`/delete-seminar/${seminarId}`)
+        axiosPublic.delete(`/delete-seminar/${seminarId}`)
             .then((res) => {
                 if (res.data.acknowledged) {
                     toast.success(`Seminar deleted successfully`, {
@@ -85,7 +86,7 @@ const Seminars = () => {
                         position: "top-center",
                     });
                     setCompanyPostedSeminars(companyPostedSeminars?.filter((seminar: any) => seminar._id !== seminarId));
-                    navigate("/dashboard/seminar-posted");
+                    setIsModalOpen(false);
                 }
             })
             .catch((err) => {
@@ -103,7 +104,7 @@ const Seminars = () => {
             author: company?.name,
         };
         axiosPublic
-            .post("post-the-seminar", seminarData)
+            .post("/post-the-seminar", seminarData)
             .then((res) => {
                 if (res.data) {
                     toast.success("Seminar Posted Successfully", {
@@ -130,11 +131,11 @@ const Seminars = () => {
                             <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200">
                                 <a href="#my_modal_8">{length}</a>
                             </button>
-                            <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200" onClick={openModal}>
-                                Open modal
-                            </button>
+                            <a href="#my_modal_8" className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200" onClick={openModal}>
+                                Post Seminar
+                            </a>
                         </div>
-                        <a className="text-xl md:text-3xl font-semibold">Your Posted Blogs</a>
+                        <a className="text-xl md:text-3xl font-semibold">Your Posted Seminars</a>
                     </div>
                 </div>
                 {/* for large device */}
@@ -144,7 +145,7 @@ const Seminars = () => {
                             {length}
                         </a>
                         <a href="#my_modal_8" onClick={openModal} className="btn">
-                            Open Modal
+                            Post Seminar
                         </a>
                     </ul>
                 </div>
@@ -171,10 +172,20 @@ const Seminars = () => {
                                 </div>
                                 <div className="form-control w-full">
                                     <label>
+                                        Date
+                                    </label>
+                                    <input
+                                        type="date"
+                                        {...register("date", { required: "Time is required" })}
+                                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                                    />
+                                </div>
+                                <div className="form-control w-full">
+                                    <label>
                                         Start Time
                                     </label>
                                     <input
-                                        type="datetime-local"
+                                        type="time"
                                         {...register("startTime", { required: "Time is required" })}
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                                     />
@@ -184,8 +195,8 @@ const Seminars = () => {
                                         End Time
                                     </label>
                                     <input
-                                        type="datetime-local"
-                                        {...register("title")}
+                                        type="time"
+                                        {...register("endTime")}
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                                     />
                                 </div>
@@ -210,7 +221,7 @@ const Seminars = () => {
                                         type="text"
                                         {...register("description", { required: "Description is required" })}
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                        placeholder="Write Details"
+                                        placeholder="Description"
                                     />
                                 </div>
                             </div>
@@ -218,9 +229,11 @@ const Seminars = () => {
                                 {loading ? <span className="loading loading-ring loading-lg"></span> : "Submit"}
                             </button>
                         </form>
-                        <button onClick={closeModal} className="btn">
-                            Close Modal
-                        </button>
+                        <div className="flex items-center mt-2 justify-end ">
+                            <button onClick={closeModal} className="btn">
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
