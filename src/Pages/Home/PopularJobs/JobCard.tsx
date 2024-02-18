@@ -26,7 +26,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
   return (
     <div
       data-aos="fade-up"
-      className="card w-full bg-base-100 border rounded-md "
+      className="card w-full bg-base-100 border rounded-md"
     >
       {/*================ >> Content Box <<=============== */}
 
@@ -83,7 +83,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
         <div>
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <Link to={`details/${jobPostId}`}
-            className="py-3 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-3xl"
+            className="py-2 px-4 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-3xl"
           >
             See Details
           </Link>
