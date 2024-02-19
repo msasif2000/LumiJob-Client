@@ -54,6 +54,9 @@ const DashBoard = () => {
           <NavLink to="/dashboard/candidateProfile">Profile</NavLink>
         </li>
         <li>
+          <NavLink to="/dashboard/resume">Resume</NavLink>
+        </li>
+        <li>
           <NavLink to="/dashboard/appliedJobs">Applied Jobs</NavLink>
         </li>
         <li>

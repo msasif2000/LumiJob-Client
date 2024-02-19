@@ -45,6 +45,8 @@ import EditBlog from "../Company/EditBlog";
 import Seminars from "../Company/Seminars";
 import Post_A_Seminar from "../Company/Post_A_Seminar";
 import ManageApplicants from "../Company/ManageApplicants";
+import CandidateResume from "../Candidate/CandidateResume";
+import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 
 
 export const router = createBrowserRouter([
@@ -191,6 +193,14 @@ export const router = createBrowserRouter([
       {
         path: "candidateProfile/resume",
         element: <Resume></Resume>,
+      },
+      {
+        path: "resume",
+        element: <CandidateResume></CandidateResume>
+      },
+      {
+        path: "resume/update",
+        element: <CandidateResumeUpdate></CandidateResumeUpdate>
       },
       {
         path: "appliedJobs",
