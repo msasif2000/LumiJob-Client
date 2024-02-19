@@ -1,3 +1,4 @@
+import { ImLocation } from "react-icons/im";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link, useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -154,12 +155,23 @@ const ManageApplicants = () => {
                                                     className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                                                 >
                                                     <div className="space-y-1 flex">
-                                                        <div>
-                                                            <img src={preSelects?.profile} alt="" className=" rounded-full h-[]"/>
-                                                            <Link to={``}><button className="btn ">Profile</button></Link>
+                                                        <div className="p-2">
+                                                            <img src={preSelects?.profile} alt="" className=" rounded-full h-[80px] w-[80px] p-1" />
+                                                            <Link to={`/candidate-detailsProfile/${preSelects?.cID}`} className="m-1"><button className="btn btn-sm bg-accent">Profile</button></Link>
                                                         </div>
                                                         <div>
-                                                            <h2 className="font-bold">{preSelects.email}</h2>
+                                                            <h2 className="font-bold bg-[#dbe4ff] p-1 rounded-xl">{preSelects?.position}</h2>
+                                                            <p className="font-bold p-1">{preSelects?.Cname}</p>
+                                                            <p className="flex justify-center items-center"><ImLocation className="text-xl" />{preSelects?.city}, {preSelects?.country}</p>
+                                                            <div className="flex text-sm gap-1 my-2">
+                                                                {
+                                                                    preSelects?.Cskills?.map((skill: any, idx: number) => (
+                                                                        <p key={idx}>
+                                                                            <p className="p-1 bg-violet-300 rounded-xl">{skill}</p>
+                                                                        </p>
+                                                                    ))
+                                                                }
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
