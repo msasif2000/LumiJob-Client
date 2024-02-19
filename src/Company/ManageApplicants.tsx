@@ -113,8 +113,8 @@ const ManageApplicants = () => {
                 <div>
                   {infos?.map((task:any, index:number) => (
                     <Draggable
-                      key={task._id}
-                      draggableId={task._id}
+                      key={task.email}
+                      draggableId={task.email}
                       index={index}
                     >
                       {(provided) => (
@@ -155,8 +155,8 @@ const ManageApplicants = () => {
                 <div>
                   {preSelected?.map((task: any, index:number) => (
                     <Draggable
-                      key={task._id}
-                      draggableId={task._id}
+                      key={task.email}
+                      draggableId={task.email}
                       index={index}
                     >
                       {(provided) => (
@@ -195,8 +195,8 @@ const ManageApplicants = () => {
                 <div>
                   {interviews?.map((task:any, index:number) => (
                     <Draggable
-                      key={task._id}
-                      draggableId={task._id}
+                      key={task.email}
+                      draggableId={task.email}
                       index={index}
                     >
                       {(provided) => (
@@ -234,8 +234,8 @@ const ManageApplicants = () => {
                 <div>
                   {selected?.map((task:any, index:number) => (
                     <Draggable
-                      key={task._id}
-                      draggableId={task._id}
+                      key={task.email}
+                      draggableId={task.email}
                       index={index}
                     >
                       {(provided) => (
