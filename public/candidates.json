@@ -1,0 +1,1006 @@
+[
+  {
+    "name": "Alice White",
+    "email": "alice.white@example.com",
+    "phone": "+1-555-1111",
+    "location": "Los Angeles, USA",
+    "education": "Bachelor's in Graphic Design",
+    "work_experience": "4 years",
+    "positions_responsibility": "Graphic Designer",
+    "training_courses": "Adobe Creative Suite Certification",
+    "academic_personal_projects": "Redesigned company branding",
+    "skills": [
+      "Adobe Photoshop",
+      "Illustrator",
+      "UI/UX Design"
+    ],
+    "portfolio": "https://alice.white/portfolio",
+    "accomplishment": "Received design awards"
+  },
+  {
+    "name": "Nasim Ahamed Rifat",
+    "email": "rifat@gmail.com",
+    "password": "Rr@123456",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Hey im Rifat",
+    "city": "Dhaka",
+    "country": "Bangladesh",
+    "education": [
+      {
+        "university": "Savar collage ",
+        "subject": "Humanities",
+        "fromDate": "08/01/2024",
+        "toDate": "01/02/2024"
+      }
+    ],
+    "experience": "1",
+    "experienceDetails": [
+      {
+        "company": "zxab",
+        "position": "Software Developer",
+        "fromDate": "08/01/2024",
+        "toDate": "03/02/2024"
+      },
+      {
+        "company": "Dream",
+        "position": "Frontend Developer",
+        "fromDate": "31/01/2024",
+        "toDate": "03/02/2024"
+      }
+    ],
+    "phone": "+8801992787306",
+    "photo": {
+      "0": {}
+    },
+    "position": "Front-end Dev",
+    "skills": [
+      "Html",
+      "Css",
+      "Javascript",
+      "React js",
+      "Typescript",
+      "Node js",
+      "Express js",
+      "MongoDB",
+      "TailwindCss"
+    ],
+    "village": "Kalma",
+    "work": "Remote"
+  },
+  {
+    "name": "Jessica Smith",
+    "email": "jessica@example.com",
+    "password": "Pass123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Passionate about creating responsive and user-friendly interfaces.",
+    "city": "New York City",
+    "country": "United States",
+    "education": [
+      {
+        "university": "New York University",
+        "subject": "Computer Science",
+        "fromDate": "09/2017",
+        "toDate": "05/2021"
+      }
+    ],
+    "experience": "2",
+    "experienceDetails": [
+      {
+        "company": "Tech Solutions",
+        "position": "Frontend Developer",
+        "fromDate": "06/2021",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+1122334455",
+    "photo": {},
+    "position": "Front-end Developer",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vue.js",
+      "Sass",
+      "Bootstrap"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Michael Johnson",
+    "email": "michael@example.com",
+    "password": "P@ssword123",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Experienced back-end developer specializing in database management.",
+    "city": "Los Angeles",
+    "country": "United States",
+    "education": [
+      {
+        "university": "UCLA",
+        "subject": "Computer Science",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "DataTech",
+        "position": "Backend Developer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+3344556677",
+    "photo": {},
+    "position": "Back-end Developer",
+    "skills": [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "MySQL",
+      "RESTful API"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Emily Brown",
+    "email": "emily@example.com",
+    "password": "Passw0rd!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Passionate about creating intuitive user experiences and optimizing website performance.",
+    "city": "London",
+    "country": "United Kingdom",
+    "education": [
+      {
+        "university": "Imperial College London",
+        "subject": "Computer Science",
+        "fromDate": "09/2018",
+        "toDate": "05/2022"
+      }
+    ],
+    "experience": "3",
+    "experienceDetails": [
+      {
+        "company": "WebSolutions",
+        "position": "Frontend Developer",
+        "fromDate": "06/2022",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+4477668899",
+    "photo": {},
+    "position": "Front-end Developer",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React.js",
+      "Angular",
+      "Bootstrap"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "David Lee",
+    "email": "david@example.com",
+    "password": "Pass1234!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Back-end developer with a focus on scalable architecture and performance optimization.",
+    "city": "Berlin",
+    "country": "Germany",
+    "education": [
+      {
+        "university": "Technical University of Berlin",
+        "subject": "Computer Science",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "5",
+    "experienceDetails": [
+      {
+        "company": "Tech Solutions GmbH",
+        "position": "Backend Developer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+49123456789",
+    "photo": {},
+    "position": "Back-end Developer",
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "Hibernate",
+      "MySQL",
+      "RESTful API"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Sophia Martinez",
+    "email": "sophia@example.com",
+    "password": "Password1234",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Passionate about creating responsive and visually appealing web interfaces.",
+    "city": "Madrid",
+    "country": "Spain",
+    "education": [
+      {
+        "university": "Universidad Complutense de Madrid",
+        "subject": "Computer Engineering",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "3",
+    "experienceDetails": [
+      {
+        "company": "WebWorks",
+        "position": "Frontend Developer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+34123456789",
+    "photo": {},
+    "position": "Front-end Developer",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vue.js",
+      "Bootstrap"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Daniel Kim",
+    "email": "daniel@example.com",
+    "password": "Passw0rd",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Backend developer with a focus on building robust and scalable server-side applications.",
+    "city": "Seoul",
+    "country": "South Korea",
+    "education": [
+      {
+        "university": "Seoul National University",
+        "subject": "Computer Science",
+        "fromDate": "09/2017",
+        "toDate": "05/2021"
+      }
+    ],
+    "experience": "2",
+    "experienceDetails": [
+      {
+        "company": "TechSolutions",
+        "position": "Backend Developer",
+        "fromDate": "06/2021",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+821012345678",
+    "photo": {},
+    "position": "Back-end Developer",
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "Hibernate",
+      "MySQL",
+      "RESTful API"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Emma Wilson",
+    "email": "emma@example.com",
+    "password": "P@ssword123",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Front-end developer passionate about creating interactive and engaging user experiences.",
+    "city": "Sydney",
+    "country": "Australia",
+    "education": [
+      {
+        "university": "University of Sydney",
+        "subject": "Computer Science",
+        "fromDate": "09/2018",
+        "toDate": "05/2022"
+      }
+    ],
+    "experience": "1",
+    "experienceDetails": [
+      {
+        "company": "WebWorks",
+        "position": "Frontend Developer",
+        "fromDate": "06/2022",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+61123456789",
+    "photo": {},
+    "position": "Front-end Developer",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React.js",
+      "Redux",
+      "Material-UI"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Alexandre Dupont",
+    "email": "alexandre@example.com",
+    "password": "Pass12345!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Experienced back-end developer with a focus on performance optimization and database management.",
+    "city": "Paris",
+    "country": "France",
+    "education": [
+      {
+        "university": "École Polytechnique",
+        "subject": "Computer Science",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "Tech Solutions",
+        "position": "Backend Developer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+33123456789",
+    "photo": {},
+    "position": "Back-end Developer",
+    "skills": [
+      "Python",
+      "Django",
+      "Flask",
+      "PostgreSQL",
+      "RESTful API"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Liam Johnson",
+    "email": "liam@example.com",
+    "password": "Pass123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Passionate about creating dynamic and scalable software solutions.",
+    "city": "New York",
+    "country": "United States",
+    "education": [
+      {
+        "university": "New York University",
+        "subject": "Computer Science",
+        "fromDate": "09/2018",
+        "toDate": "05/2022"
+      }
+    ],
+    "experience": "2",
+    "experienceDetails": [
+      {
+        "company": "Tech Solutions",
+        "position": "Software Engineer",
+        "fromDate": "06/2022",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+11234567890",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "Hibernate",
+      "MySQL",
+      "RESTful API"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Elena Petrova",
+    "email": "elena@example.com",
+    "password": "Password123",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Experienced software engineer specializing in backend development.",
+    "city": "Moscow",
+    "country": "Russia",
+    "education": [
+      {
+        "university": "Moscow State University",
+        "subject": "Computer Engineering",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "3",
+    "experienceDetails": [
+      {
+        "company": "Code Masters",
+        "position": "Software Engineer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+79123456789",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "Python",
+      "Django",
+      "Flask",
+      "PostgreSQL",
+      "RESTful API"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Isabella Rossi",
+    "email": "isabella@example.com",
+    "password": "Pass1234",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Front-end software engineer with a passion for crafting user-friendly interfaces.",
+    "city": "Milan",
+    "country": "Italy",
+    "education": [
+      {
+        "university": "Politecnico di Milano",
+        "subject": "Computer Engineering",
+        "fromDate": "09/2017",
+        "toDate": "05/2021"
+      }
+    ],
+    "experience": "2",
+    "experienceDetails": [
+      {
+        "company": "WebWorks",
+        "position": "Software Engineer",
+        "fromDate": "06/2021",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+39123456789",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React.js",
+      "Vue.js",
+      "Angular"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Maximilian Müller",
+    "email": "maximilian@example.com",
+    "password": "Max12345!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Backend software engineer experienced in building robust and scalable server-side applications.",
+    "city": "Berlin",
+    "country": "Germany",
+    "education": [
+      {
+        "university": "Technische Universität Berlin",
+        "subject": "Computer Science",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "WebWorks",
+        "position": "Software Engineer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+49123456789",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "Hibernate",
+      "MySQL",
+      "RESTful API"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Sophie Chen",
+    "email": "sophie@example.com",
+    "password": "Sophie123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Software engineer with a focus on full-stack development.",
+    "city": "San Francisco",
+    "country": "United States",
+    "education": [
+      {
+        "university": "Stanford University",
+        "subject": "Computer Science",
+        "fromDate": "09/2017",
+        "toDate": "05/2021"
+      }
+    ],
+    "experience": "3",
+    "experienceDetails": [
+      {
+        "company": "Tech Innovations",
+        "position": "Software Engineer",
+        "fromDate": "06/2021",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+11234567890",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "JavaScript",
+      "React.js",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "HTML5",
+      "CSS3"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Anna Petrov",
+    "email": "anna@example.com",
+    "password": "Anna12345!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Passionate software engineer with expertise in building scalable web applications.",
+    "city": "Toronto",
+    "country": "Canada",
+    "education": [
+      {
+        "university": "University of Toronto",
+        "subject": "Computer Engineering",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "Tech Solutions",
+        "position": "Software Engineer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+14161234567",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "MySQL",
+      "React.js",
+      "Node.js",
+      "Express.js"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Yuki Tanaka",
+    "email": "yuki@example.com",
+    "password": "Yuki123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Software engineer specializing in backend development and cloud computing.",
+    "city": "Tokyo",
+    "country": "Japan",
+    "education": [
+      {
+        "university": "University of Tokyo",
+        "subject": "Computer Science",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "5",
+    "experienceDetails": [
+      {
+        "company": "Cloud Solutions",
+        "position": "Software Engineer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+81123456789",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "Python",
+      "Django",
+      "Flask",
+      "AWS",
+      "Google Cloud",
+      "Microsoft Azure"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Mohammed Ali",
+    "email": "mohammed@example.com",
+    "password": "Mohammed123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Experienced software engineer with a focus on building high-performance web applications.",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "education": [
+      {
+        "university": "American University of Dubai",
+        "subject": "Computer Engineering",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "Dubai Tech Solutions",
+        "position": "Software Engineer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+97123456789",
+    "photo": {},
+    "position": "Software Engineer",
+    "skills": [
+      "JavaScript",
+      "React.js",
+      "Angular",
+      "Node.js",
+      "MongoDB",
+      "AWS"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Emma Johnson",
+    "email": "emma@example.com",
+    "password": "Emma123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Passionate graphic designer with a keen eye for detail.",
+    "city": "New York City",
+    "country": "United States",
+    "education": [
+      {
+        "university": "Parsons School of Design",
+        "subject": "Graphic Design",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "3",
+    "experienceDetails": [
+      {
+        "company": "Creative Solutions",
+        "position": "Graphic Designer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+11234567890",
+    "photo": {},
+    "position": "Designer",
+    "skills": [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Adobe InDesign",
+      "Sketch",
+      "Typography",
+      "Color Theory"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Luis Garcia",
+    "email": "luis@example.com",
+    "password": "Luis123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Experienced UX/UI designer passionate about creating intuitive and visually appealing interfaces.",
+    "city": "San Francisco",
+    "country": "United States",
+    "education": [
+      {
+        "university": "San Francisco State University",
+        "subject": "Design",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "UX Design Co.",
+        "position": "UX/UI Designer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+14161234567",
+    "photo": {},
+    "position": "Designer",
+    "skills": [
+      "User Experience Design",
+      "User Interface Design",
+      "Wireframing",
+      "Prototyping",
+      "Adobe XD",
+      "Figma"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Sophie Lee",
+    "email": "sophie@example.com",
+    "password": "Sophie123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Creative visual designer with a passion for storytelling through design.",
+    "city": "London",
+    "country": "United Kingdom",
+    "education": [
+      {
+        "university": "Central Saint Martins",
+        "subject": "Graphic Design",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "3",
+    "experienceDetails": [
+      {
+        "company": "Design Agency XYZ",
+        "position": "Visual Designer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+44123456789",
+    "photo": {},
+    "position": "Designer",
+    "skills": [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Adobe InDesign",
+      "Typography",
+      "Layout Design",
+      "Brand Identity"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Hiroshi Yamamoto",
+    "email": "hiroshi@example.com",
+    "password": "Hiroshi123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Visual communication designer passionate about crafting compelling brand experiences.",
+    "city": "Tokyo",
+    "country": "Japan",
+    "education": [
+      {
+        "university": "Tokyo University of the Arts",
+        "subject": "Visual Communication Design",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "Creative Studio ABC",
+        "position": "Visual Communication Designer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+81123456789",
+    "photo": {},
+    "position": "Designer",
+    "skills": [
+      "Visual Communication Design",
+      "Brand Strategy",
+      "Illustration",
+      "Motion Graphics",
+      "Adobe Creative Suite",
+      "Sketching"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "John Smith",
+    "email": "john.smith@example.com",
+    "password": "Password123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Experienced hardware engineer with a passion for designing innovative electronic devices.",
+    "city": "San Jose",
+    "country": "United States",
+    "education": [
+      {
+        "university": "Stanford University",
+        "subject": "Electrical Engineering",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "5",
+    "experienceDetails": [
+      {
+        "company": "Tech Innovations Inc.",
+        "position": "Hardware Engineer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+1234567890",
+    "photo": {},
+    "position": "Hardware Engineer",
+    "skills": [
+      "Digital Circuit Design",
+      "Analog Circuit Design",
+      "PCB Layout",
+      "Embedded Systems",
+      "FPGA Design",
+      "Signal Processing",
+      "Microcontroller Programming",
+      "Hardware Testing"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Elena Rodriguez",
+    "email": "elena.rodriguez@example.com",
+    "password": "Password123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Hardware engineer with expertise in designing and testing electronic systems.",
+    "city": "Barcelona",
+    "country": "Spain",
+    "education": [
+      {
+        "university": "Polytechnic University of Catalonia",
+        "subject": "Electrical Engineering",
+        "fromDate": "09/2014",
+        "toDate": "05/2018"
+      }
+    ],
+    "experience": "6",
+    "experienceDetails": [
+      {
+        "company": "Tech Solutions Ltd.",
+        "position": "Senior Hardware Engineer",
+        "fromDate": "06/2018",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+34123456789",
+    "photo": {},
+    "position": "Hardware Engineer",
+    "skills": [
+      "Digital Circuit Design",
+      "Analog Circuit Design",
+      "PCB Layout",
+      "Embedded Systems",
+      "ASIC Design",
+      "RF Engineering",
+      "Microcontroller Programming",
+      "Hardware Testing"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Li Wei",
+    "email": "li.wei@example.com",
+    "password": "Password123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Hardware engineer specializing in hardware design and verification.",
+    "city": "Beijing",
+    "country": "China",
+    "education": [
+      {
+        "university": "Tsinghua University",
+        "subject": "Electrical Engineering",
+        "fromDate": "09/2016",
+        "toDate": "05/2020"
+      }
+    ],
+    "experience": "3",
+    "experienceDetails": [
+      {
+        "company": "Innovate Technologies",
+        "position": "Hardware Design Engineer",
+        "fromDate": "06/2020",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+861234567890",
+    "photo": {},
+    "position": "Hardware Engineer",
+    "skills": [
+      "Digital Circuit Design",
+      "Analog Circuit Design",
+      "VHDL",
+      "Verilog",
+      "ASIC Design",
+      "FPGA Design",
+      "Hardware Verification"
+    ],
+    "work": "Remote"
+  },
+  {
+    "name": "Hiroshi Tanaka",
+    "email": "hiroshi.tanaka@example.com",
+    "password": "Password123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Hardware engineer with a strong background in integrated circuit design and simulation.",
+    "city": "Tokyo",
+    "country": "Japan",
+    "education": [
+      {
+        "university": "University of Tokyo",
+        "subject": "Electrical Engineering",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "Hardware Innovations Co.",
+        "position": "Integrated Circuit Engineer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+811234567890",
+    "photo": {},
+    "position": "Hardware Engineer",
+    "skills": [
+      "Integrated Circuit Design",
+      "Analog Circuit Design",
+      "Digital Circuit Design",
+      "VLSI Design",
+      "SPICE Simulation",
+      "Cadence Virtuoso",
+      "Hardware Verification"
+    ],
+    "work": "Remote"
+  }
+]

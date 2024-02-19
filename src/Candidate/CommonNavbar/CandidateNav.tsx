@@ -1,0 +1,41 @@
+interface CandidateNavProps {
+  text: string;
+  btn: string;
+  btn2: string;
+  handleClick: () => void;
+  handleClick2: () => void;
+}
+
+const CandidateNav: React.FC<CandidateNavProps> = ({
+  text,
+  btn,
+  btn2,
+  handleClick,
+  handleClick2,
+}) => {
+  return (   
+    <div className="navbar">
+        
+      <div className="md:navbar-start">
+         {/* for small device */}
+        <div>
+          <div className=" flex justify-end gap-2 text-xs mb-5 lg:hidden">
+            <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200"> <a onClick={handleClick2} className="">{btn2}</a></button>
+            <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200"><a onClick={handleClick} className="">{btn}</a></button>
+          </div>
+          <a className="text-xl md:text-3xl font-semibold">{text}</a>
+        </div>
+      </div>
+           {/* for large device  */}
+      <div className="navbar-end hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 gap-2">
+          <a onClick={handleClick2} className="btn">{btn2}</a>
+          <a onClick={handleClick} className="btn">{btn}</a>
+        </ul>
+      </div>
+    </div>
+
+  );
+};
+
+export default CandidateNav;

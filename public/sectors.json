@@ -1,0 +1,71 @@
+[
+  {
+    "_id": "0",
+    "sectorType": "Technology"
+  },
+  {
+    "_id": "1",
+    "sectorType": "Design"
+  },
+  {
+    "_id": "2",
+    "sectorType": "Software Development"
+  },
+  {
+    "_id": "3",
+    "sectorType": "Data Science"
+  },
+  {
+    "_id": "4",
+    "sectorType": "Logistics"
+  },
+  {
+    "_id": "5",
+    "sectorType": "Social Media"
+  },
+  {
+    "_id": "6",
+    "sectorType": "Creative"
+  },
+  {
+    "_id": "7",
+    "sectorType": "Marketing"
+  },
+  {
+    "_id": "8",
+    "sectorType": "E-Commerce"
+  },
+  {
+    "_id": "9",
+    "sectorType": "Automotive"
+  },
+  {
+    "_id": "10",
+    "sectorType": "Entertainment"
+  },
+  {
+    "_id": "11",
+    "sectorType": "Hardware Engineering"
+  },
+  {
+    "_id": "12",
+    "sectorType": "Sports"
+  },
+  {
+    "_id": "13",
+    "sectorType": "Travel"
+  },
+  {
+    "_id": "14",
+    "sectorType": "Food and Beverage"
+  },
+  {
+    "_id": "15",
+    "sectorType": "Transportation"
+  },
+  {
+    "_id": "16",
+    "sectorType": "Music"
+  }
+  
+]

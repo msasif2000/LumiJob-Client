@@ -1,0 +1,43 @@
+[
+   
+    {
+    "name": "Hiroshi Tanaka",
+    "email": "hiroshi.tanaka@example.com",
+    "password": "Password123!",
+    "role": "candidate",
+    "availability": "Full Time",
+    "bio": "Hardware engineer with a strong background in integrated circuit design and simulation.",
+    "city": "Tokyo",
+    "country": "Japan",
+    "education": [
+      {
+        "university": "University of Tokyo",
+        "subject": "Electrical Engineering",
+        "fromDate": "09/2015",
+        "toDate": "05/2019"
+      }
+    ],
+    "experience": "4",
+    "experienceDetails": [
+      {
+        "company": "Hardware Innovations Co.",
+        "position": "Integrated Circuit Engineer",
+        "fromDate": "06/2019",
+        "toDate": "Present"
+      }
+    ],
+    "phone": "+811234567890",
+    "photo": {},
+    "position": "Hardware Engineer",
+    "skills": [
+      "Integrated Circuit Design",
+      "Analog Circuit Design",
+      "Digital Circuit Design",
+      "VLSI Design",
+      "SPICE Simulation",
+      "Cadence Virtuoso",
+      "Hardware Verification"
+    ],
+    "work": "Remote"
+  }
+]

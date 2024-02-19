@@ -1,0 +1,42 @@
+[
+    {
+      "name": "Free",
+      "price": 0,
+      "description": "Your essential toolkit for job hunting. Access diverse job listings and apply seamlessly.",
+      "features": [
+        "Limited to 5 active job listings at a time",
+        "Basic company profile visibility",
+        "Basic application tracking functionality",
+        "Standard support via email."
+      ],
+      "canPost": 5,
+      "popular": false
+    },
+    {
+      "name": "Standard",
+      "price": 79,
+      "description": "Relevant for multiple users, extended & premium support.",
+      "features": [
+        "Up to 20 active job listings at a time",
+        "Access job listings and apply easily.",
+        "Enhanced company profile visibility with logo and branding",
+        "Advanced application tracking with filtering and sorting options"
+      ],
+      "canPost": 20,
+      "popular": true
+    },
+    {
+      "name": "Premium",
+      "price": 499,
+      "description": "Best for large scale uses and extended redistribution rights.",
+      "features": [
+        "Unlimited active job listings.",
+        "Premium profile visibility",
+        "Personalized support and assistance",
+        "Advanced application tracking"
+      ],
+      "canPost": 100000,
+      "popular": false
+    }
+  ]
+  
