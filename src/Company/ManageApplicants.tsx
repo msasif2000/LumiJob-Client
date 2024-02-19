@@ -1,40 +1,25 @@
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer } from "react-toastify";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery} from "@tanstack/react-query";
 
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
-  const { id } = useParams();
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    // Manually trigger the queries when user data is available
-    if (id) {
-      queryClient.refetchQueries([
-        { queryKey: ["info", id] },
-        { queryKey: ["preSelect", id] },
-        { queryKey: ["interview", id] },
-        { queryKey: ["selected", id] }
-      ]);
-    }
-  }, [id, queryClient]);
+  const { id } = useParams(); 
 
   const { data: infos, refetch: refetchInfo } = useQuery({
-    queryKey: ["info", id],
+    queryKey: ["infos", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/dnd-applicants/${id}`);
       return res.data;
     },
     enabled: !!id,
   });
-
-  console.log(infos);
+;
 
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
-    queryKey: ["preSelect", id],
+    queryKey: ["preSelected", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/dnd-pre-select/${id}`);
       return res.data;
@@ -42,7 +27,6 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-  console.log(preSelected);
 
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
@@ -53,7 +37,6 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-  console.log(interviews);
 
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
@@ -64,7 +47,7 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-  console.log(selected);
+
 
   // Drag and Drop Functions
   const onDragEnd = (result: any) => {
@@ -79,18 +62,24 @@ const ManageApplicants = () => {
     }
 
     const updatedTasks = Array.from(infos);
+    console.log(updatedTasks);
     const [movedTask] = updatedTasks.splice(source.index, 1);
     updatedTasks.splice(destination.index, 0, movedTask);
 
+    const payload = {
+      jobId: id,
+      dndStats: destination.droppableId,
+    };
+
     axiosPublic
-      .put(`/updateTaskStatus/${draggableId}`, {
-        newStatus: destination.droppableId,
-      })
-      .then(() => {
-        refetchInfo();
-        refetchInterview();
-        refetchPreSelect();
-        refetchSelect();
+      .put(`/updateApplicantsStatus/${draggableId}`, payload)
+      .then((res) => {
+        if (res.data.message === "Applicant status updated successfully") {
+          refetchInfo();
+          refetchInterview();
+          refetchPreSelect();
+          refetchSelect();
+        }
       });
   };
 
@@ -111,7 +100,7 @@ const ManageApplicants = () => {
                     : "Applicants"}
                 </h1>
                 <div>
-                  {infos?.map((task:any, index:number) => (
+                  {infos?.map((task: any, index: number) => (
                     <Draggable
                       key={task.email}
                       draggableId={task.email}
@@ -128,7 +117,6 @@ const ManageApplicants = () => {
                             <div className="flex justify-between items-center">
                               <h2 className="font-bold">{task.email}</h2>
                             </div>
-                           
                           </div>
                         </div>
                       )}
@@ -153,7 +141,7 @@ const ManageApplicants = () => {
                     : "Pre-Selected"}
                 </h1>
                 <div>
-                  {preSelected?.map((task: any, index:number) => (
+                  {preSelected?.map((task: any, index: number) => (
                     <Draggable
                       key={task.email}
                       draggableId={task.email}
@@ -164,11 +152,11 @@ const ManageApplicants = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 shadow-xl"
+                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
                           <div className="card-body space-y-1">
-                            <p className="text-xs">{task?.email}</p>
-                            <div className="md:flex justify-between"></div>
+                          <h2 className="font-bold">{task.email}</h2>
+                           
                           </div>
                         </div>
                       )}
@@ -193,7 +181,7 @@ const ManageApplicants = () => {
                     : "Interviews"}
                 </h1>
                 <div>
-                  {interviews?.map((task:any, index:number) => (
+                  {interviews?.map((task: any, index: number) => (
                     <Draggable
                       key={task.email}
                       draggableId={task.email}
@@ -204,11 +192,10 @@ const ManageApplicants = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 shadow-xl"
+                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
                           <div className="card-body space-y-1">
-                            <p className="text-xs">{task?.email}</p>
-                            <div className="md:flex justify-between"></div>
+                          <h2 className="font-bold">{task.email}</h2>
                           </div>
                         </div>
                       )}
@@ -232,7 +219,7 @@ const ManageApplicants = () => {
                     : "Selected"}
                 </h1>
                 <div>
-                  {selected?.map((task:any, index:number) => (
+                  {selected?.map((task: any, index: number) => (
                     <Draggable
                       key={task.email}
                       draggableId={task.email}
@@ -243,11 +230,10 @@ const ManageApplicants = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 shadow-xl"
+                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
                           <div className="card-body space-y-1">
-                            <p className="text-xs">{task?.email}</p>
-                            <div className="md:flex justify-between"></div>
+                          <h2 className="font-bold">{task.email}</h2>
                           </div>
                         </div>
                       )}
