@@ -95,7 +95,6 @@ const JobsDetails: React.FC = () => {
   const formattedPostTime = post_time ? formatDateTime(post_time) : "";
 
   const handlePremiumApply = () => {
-    console.log("btn clicked");
     const jobDetails = {
       ...job,
       candidate: user?.email,
