@@ -1,21 +1,26 @@
-import { FaBackward } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import errsvg from "../../assets/svg/err.svg";
 
 const NotFound = () => {
   return (
     <>
-      <div className="hero h-screen flex items-center justify-center bg-gradient-to-tr from-[#abf1c0] from-5% via-[#D0FBD0] via-20% to-[#F2F8F5] to-65% ...">
-        <div className="hero-content text-center">
-          <div className="-mt-48">
-            <h1 className="text-[650px] font-black">404</h1>
-            <p className="-mt-32 text-xl">Page Not Found</p>
-            <div className="mt-10 flex justify-center">
-              <Link to="/" className="btn btn-accent">
-                <FaBackward />
-                <span>Go Home</span>
-              </Link>
-            </div>
-          </div>
+      <div className="max-w-screen-lg mx-auto px-4 min-h-screen flex flex-col items-center justify-center">
+        <figure>
+          <img src={errsvg} alt="err" className="w-full" />
+        </figure>
+        <div className="text-center">
+          <h2 className="text-4xl md:text-5xl xl:text-6xl font-heading font-semibold mt-5 text-black">
+            Oh no. We lost this page
+          </h2>
+          <p className="my-1 md:my-4 xl:my-8 md:mx-[14%]">
+            We searched everywhere but couldn’t find what you’re looking for.
+            Let’s find a better place for you to go.
+          </p>
+          <Link to="/">
+            <button className="rounded py-2 xl:px-5 px-3 bg-accent hover:bg-accentTwo text-white mt-3">
+              Back to Homepage
+            </button>
+          </Link>
         </div>
       </div>
     </>
