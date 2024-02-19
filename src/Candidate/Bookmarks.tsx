@@ -6,7 +6,7 @@ import { PiMoney } from "react-icons/pi";
 import useBookmark from "../hooks/useBookmarks";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import CandidateNav from "./CommonNavbar/CandidateNav";
+
 
 interface Bookmark {
     _id: string;  
@@ -63,7 +63,10 @@ const Bookmarks: React.FC = () => {
 
     return (
         <div>
-            <CandidateNav text='Bookmarked jobs' btn={length} btn2="" handleClick={() => {}} handleClick2={() => {}}/>
+            
+            <div>
+                <h3 className="md:text-3xl font-bold my-12">Bookmarked jobs <span className="text-accent">{length}</span></h3>
+            </div>
 
             <div className="grid grid-cols-2 gap-5 mx-auto">
                 {bookmarks.map((bookmark: Bookmark) => (
