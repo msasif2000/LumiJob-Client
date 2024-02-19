@@ -131,7 +131,8 @@ const DashBoard = () => {
         <UniLoader />
       ) : (
         <div className="md:flex">
-          <div className="lg:w-2/12 xl:max-w-[18rem] border-r md:flex-shrink-0">
+          <div className="lg:w-2/12 xl:max-w-[18rem] border-r">
+            {/* === Mobile Menu */}
             <div className="navbar-start lg:hidden">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -176,24 +177,32 @@ const DashBoard = () => {
                 </ul>
               </div>
             </div>
-            <div className="lg:flex hidden  min-h-screen pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
-              <ul className="menu text-xl">
-                {Links}
 
+            {/* === Large Screen Menu */}
+            <div className="hidden lg:flex lg:flex-col lg:justify-between min-h-screen pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+              <div>
+                <ul className="menu text-xl">{Links}</ul>
+              </div>
+              <div>
                 <div className="divider"></div>
-
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  <button onClick={handleLogout} className="flex items-center">
-                    <BiLogOut className="text-2xl" />
-                    <span>Sign Out</span>
-                  </button>
-                </li>
-              </ul>
+                <ul className="menu text-xl">
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center"
+                    >
+                      <BiLogOut className="text-2xl" />
+                      <span>Sign Out</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
+
           <div className="md:flex-1 overflow-x-auto px-5 bg-[#FAFAFA]">
             <Outlet></Outlet>
           </div>
