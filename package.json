@@ -31,6 +31,7 @@
     "pdfmake": "^0.2.9",
     "rc-slider": "^10.5.0",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-datepicker": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@types/aos": "^3.0.7",
     "@types/react": "^18.2.43",
+    "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-datepicker": "^4.19.5",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
