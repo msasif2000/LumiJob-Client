@@ -242,15 +242,15 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
               </div>
             ) : (
               //   if user doesn't Exist
-              <button className="cta flex items-center">
-                <span>
-                  <Link to="/login">Login</Link>
-                </span>
-                <svg width="15px" height="10px" viewBox="0 0 13 10">
-                  <path d="M1,5 L11,5"></path>
-                  <polyline points="8 1 12 5 8 9"></polyline>
-                </svg>
-              </button>
+              <Link to="/login">
+                <button className="cta flex items-center">
+                  <span>Login</span>
+                  <svg width="15px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </Link>
             )}
           </div>
         </div>
