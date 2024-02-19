@@ -13,10 +13,12 @@ const ManageApplicants = () => {
   useEffect(() => {
     // Manually trigger the queries when user data is available
     if (id) {
-      queryClient.refetchQueries(["info"]);
-      queryClient.refetchQueries(["preSelected"]);
-      queryClient.refetchQueries(["interview"]);
-      queryClient.refetchQueries(["selected"]);
+      queryClient.refetchQueries([
+        { queryKey: ["info", id] },
+        { queryKey: ["preSelect", id] },
+        { queryKey: ["interview", id] },
+        { queryKey: ["selected", id] }
+      ]);
     }
   }, [id, queryClient]);
 
@@ -109,7 +111,7 @@ const ManageApplicants = () => {
                     : "Applicants"}
                 </h1>
                 <div>
-                  {infos?.map((task, index) => (
+                  {infos?.map((task:any, index:number) => (
                     <Draggable
                       key={task._id}
                       draggableId={task._id}
@@ -120,13 +122,13 @@ const ManageApplicants = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 shadow-xl"
+                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
                           <div className="card-body space-y-1">
                             <div className="flex justify-between items-center">
                               <h2 className="font-bold">{task.email}</h2>
                             </div>
-                            <p className="text-xs">{task?.name}</p>
+                           
                           </div>
                         </div>
                       )}
@@ -151,7 +153,7 @@ const ManageApplicants = () => {
                     : "Pre-Selected"}
                 </h1>
                 <div>
-                  {preSelected?.map((task, index) => (
+                  {preSelected?.map((task: any, index:number) => (
                     <Draggable
                       key={task._id}
                       draggableId={task._id}
@@ -191,7 +193,7 @@ const ManageApplicants = () => {
                     : "Interviews"}
                 </h1>
                 <div>
-                  {interviews?.map((task, index) => (
+                  {interviews?.map((task:any, index:number) => (
                     <Draggable
                       key={task._id}
                       draggableId={task._id}
@@ -230,7 +232,7 @@ const ManageApplicants = () => {
                     : "Selected"}
                 </h1>
                 <div>
-                  {selected?.map((task, index) => (
+                  {selected?.map((task:any, index:number) => (
                     <Draggable
                       key={task._id}
                       draggableId={task._id}
