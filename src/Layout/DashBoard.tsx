@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
@@ -51,11 +51,6 @@ const DashBoard = () => {
     role === "candidate" ? (
       <>
         <li>
-          <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">
-            Candidate DashBoard
-          </h2>
-        </li>
-        <li>
           <NavLink to="/dashboard/candidateProfile">Profile</NavLink>
         </li>
         <li>
@@ -70,11 +65,6 @@ const DashBoard = () => {
       </>
     ) : role === "company" ? (
       <>
-        <li>
-          <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
-            Company DashBoard
-          </h2>
-        </li>
         <li>
           <NavLink to="/dashboard/companyProfile">Profile</NavLink>
         </li>
@@ -96,11 +86,6 @@ const DashBoard = () => {
       </>
     ) : role === "admin" ? (
       <>
-        <li>
-          <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
-            Admin DashBoard
-          </h2>
-        </li>
         <li>
           <NavLink to="/dashboard/adminDashboard">DashBoard</NavLink>
         </li>
@@ -131,7 +116,8 @@ const DashBoard = () => {
         <UniLoader />
       ) : (
         <div className="md:flex">
-          <div className="lg:w-2/12 xl:max-w-[18rem] border-r md:flex-shrink-0">
+          <div className="lg:w-2/12 xl:max-w-[18rem] border-r">
+            {/* === Mobile Menu */}
             <div className="navbar-start lg:hidden">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -176,26 +162,59 @@ const DashBoard = () => {
                 </ul>
               </div>
             </div>
-            <div className="lg:flex hidden  min-h-screen pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
-              <ul className="menu text-xl">
-                {Links}
 
-                <div className="divider"></div>
-
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  <button onClick={handleLogout} className="flex items-center">
-                    <BiLogOut className="text-2xl" />
-                    <span>Sign Out</span>
-                  </button>
-                </li>
-              </ul>
+            {/* === Large Screen Menu */}
+            <div className="hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+              <div>
+                <Link to="/">
+                  <h3 className="text-3xl font-bold text-center">
+                    Lumi<span className="text-[#4869DD]">Jobs</span>
+                  </h3>
+                </Link>
+                <div className="divider mt-[0.7rem]"></div>
+                <ul className="menu text-xl">{Links}</ul>
+              </div>
+              <div>
+                <div className="divider mx-4"></div>
+                <ul className="menu text-xl">
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center"
+                    >
+                      <BiLogOut className="text-2xl" />
+                      <span>Sign Out</span>
+                    </button>
+                  </li>
+                </ul>
+                <h6 className="text-center capitalize text-xs text-gray-300">
+                  {role} Dashboard
+                </h6>
+              </div>
             </div>
           </div>
-          <div className="md:flex-1 overflow-x-auto px-5 bg-[#FAFAFA]">
-            <Outlet></Outlet>
+
+          <div className="md:flex-1 bg-[#FAFAFA]">
+            <div className="hidden lg:flex min-h-16 border-b bg-white sticky top-0 z-40">
+              <h3>this is top nav</h3>
+            </div>
+            <div className="text-sm breadcrumbs ml-4">
+              <ul>
+                <li>
+                  <a>Home</a>
+                </li>
+                <li>
+                  <a>Documents</a>
+                </li>
+                <li>Add Document</li>
+              </ul>
+            </div>
+            <div className="p-6">
+              <Outlet></Outlet>
+            </div>
           </div>
         </div>
       )}

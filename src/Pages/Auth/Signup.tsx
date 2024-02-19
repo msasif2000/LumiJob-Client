@@ -19,9 +19,8 @@ interface SignUpFormData {
 }
 const Signup: React.FC = () => {
   const axiosPublic = useAxiosPublic();
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile, loading, setLoading } = useAuth();
   const navigate = useNavigate();
-  const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -31,7 +30,7 @@ const Signup: React.FC = () => {
   } = useForm<SignUpFormData>();
 
   const onSubmit = async (data: SignUpFormData) => {
-    setIsCreatingAccount(true);
+    setLoading(true);
     try {
       const userCredential = await createUser(data.email, data.password);
       console.log(userCredential);
@@ -54,7 +53,7 @@ const Signup: React.FC = () => {
         });
       });
 
-      setIsCreatingAccount(false);
+      setLoading(false);
       navigate("/signup/role");
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
@@ -74,7 +73,7 @@ const Signup: React.FC = () => {
       }
 
       console.error("Error creating user:", error);
-      setIsCreatingAccount(false);
+      setLoading(false);
     }
   };
 
@@ -144,17 +143,18 @@ const Signup: React.FC = () => {
                 <p className="text-red-500">{errors.password.message}</p>
               )}
             </div>
-            {isCreatingAccount ? (
-              <div className="flex items-center justify-center">
-                <span className="loading loading-infinity loading-lg"></span>
-              </div>
-            ) : (
-              <input
+            {
+              <button
                 type="submit"
-                value="Create account"
                 className="btn md:btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500"
-              />
-            )}
+              >
+                {loading ? (
+                  <span className="loading loading-dots loading-md"></span>
+                ) : (
+                  "Create account"
+                )}
+              </button>
+            }
             <div className="divider divider-neutral">
               <Link to="/" className="text-2xl">
                 <TbHomeShare />
