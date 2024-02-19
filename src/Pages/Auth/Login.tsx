@@ -17,7 +17,7 @@ interface LoginData {
 }
 
 const Login: React.FC = () => {
-  const { signInUser } = useAuth();
+  const { signInUser, loading, setLoading } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -28,13 +28,15 @@ const Login: React.FC = () => {
 
   const onSubmit = async (data: LoginData) => {
     try {
+      setLoading(true);
       await signInUser(data.email, data.password);
       toast.success("Login Successful", {
         position: "top-center",
         hideProgressBar: true,
         autoClose: 2000,
       });
-      console.log("Login Successful");
+      setLoading(false);
+      // console.log("Login Successful");
       navigate("/");
     } catch (error) {
       toast.error("Invalid user credentials.", {
@@ -42,7 +44,8 @@ const Login: React.FC = () => {
         hideProgressBar: true,
         autoClose: 2000,
       });
-      console.log(error);
+      setLoading(false);
+      // console.log(error);
     }
   };
 
@@ -55,13 +58,13 @@ const Login: React.FC = () => {
             <h1 className="text-2xl md:text-4xl xl:text-5xl font-semibold">
               Welcome Back <span className="lg:text-5xl">👋🏻</span>
             </h1>
-            <p className="md:text-xl xl:text-2xl text-gray-500 font-medium ">
+            <p className="md:text-xl xl:text-2xl text-gray-500 font-normal">
               Today is a new day. It's your day. You shape it. Sign in to start
               managing your Career path.
             </p>
           </div>
           {/* from starts here */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 mt-4">
             <div className="form-control w-full">
               <label htmlFor="email" className="font-bold text-lg ">
                 Email
@@ -106,11 +109,17 @@ const Login: React.FC = () => {
                 Forgot Password?
               </p>
             </div>
-            <input
+            <button
               type="submit"
-              value="Sign in"
+              value=""
               className="btn md:btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500 "
-            />
+            >
+              {loading ? (
+                <span className="loading loading-dots loading-md"></span>
+              ) : (
+                "Sign in"
+              )}
+            </button>
           </form>
           <div className="divider divider-neutral">
             <Link to="/" className="text-2xl">
