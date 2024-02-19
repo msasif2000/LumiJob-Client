@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { LuDot } from "react-icons/lu";
 import { FaDollarSign } from "react-icons/fa";
@@ -290,20 +290,23 @@ const JobsDetails: React.FC = () => {
                     {" "}
                     Applicants
                   </h2>
-                  <div className="flex space-x-5">
-                    {job?.applicants?.map((details: any, index: number) => (
-                      <div key={index} className="avatar">
-                        <div className=" w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                          <img src={details?.profile} alt="user Image" />
+                  <div>
+                    <div className="space-x-4">
+                      {job?.applicants?.map((details: any, index: number) => (
+                        <div key={index} className="avatar">
+                          <div className=" w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src={details?.profile} alt="user Image" />
+                          </div>
                         </div>
-                      </div>
-
-                      // selection first phrase
-
-                      // selection Second phrase
-
-                      // Final selection
-                    ))}
+                      ))}
+                    </div>
+                    <div className="mt-4">
+                      <Link to={`/manage-applicants/${job?._id}`}>
+                        <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                          Manage Applicants
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ) : (

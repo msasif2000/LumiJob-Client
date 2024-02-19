@@ -44,6 +44,7 @@ import CompleteResume from "../Candidate/UpdateCmponents/CompleteResume";
 import EditBlog from "../Company/EditBlog";
 import Seminars from "../Company/Seminars";
 import Post_A_Seminar from "../Company/Post_A_Seminar";
+import ManageApplicants from "../Company/ManageApplicants";
 
 
 export const router = createBrowserRouter([
@@ -100,6 +101,10 @@ export const router = createBrowserRouter([
             <JobsDetails></JobsDetails>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/manage-applicants/:id",
+        element: <ManageApplicants />
       },
       {
         path: "/top-company-detailsProfiles/:id",
