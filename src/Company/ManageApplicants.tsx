@@ -113,9 +113,24 @@ const ManageApplicants = () => {
                                                     {...provided.dragHandleProps}
                                                     className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                                                 >
-                                                    <div className="card-body space-y-1">
-                                                        <div className="flex justify-between items-center">
-                                                            <h2 className="font-bold">{info.email}</h2>
+                                                    <div className="space-y-1 flex">
+                                                        <div className="p-2">
+                                                            <img src={info?.profile} alt="" className=" rounded-full h-[80px] w-[80px] p-1" />
+                                                            <Link to={`/candidate-detailsProfile/${info?.cID}`} className="m-1"><button className="btn btn-sm bg-accent">Profile</button></Link>
+                                                        </div>
+                                                        <div>
+                                                            <h2 className="font-bold bg-[#dbe4ff] p-1 rounded-xl">{info?.position}</h2>
+                                                            <p className="font-bold p-1">{info?.Cname}</p>
+                                                            <p className="flex justify-center items-center"><ImLocation className="text-xl" />{info?.city}, {info?.country}</p>
+                                                            <div className="flex text-sm gap-1 my-2">
+                                                                {
+                                                                    info?.Cskills?.map((skill: any, idx: number) => (
+                                                                        <p key={idx}>
+                                                                            <p className="p-1 bg-violet-300 rounded-xl">{skill}</p>
+                                                                        </p>
+                                                                    ))
+                                                                }
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -210,8 +225,25 @@ const ManageApplicants = () => {
                                                     {...provided.dragHandleProps}
                                                     className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                                                 >
-                                                    <div className="card-body space-y-1">
-                                                        <h2 className="font-bold">{interview.email}</h2>
+                                                    <div className="space-y-1 flex">
+                                                        <div className="p-2">
+                                                            <img src={interview?.profile} alt="" className=" rounded-full h-[80px] w-[80px] p-1" />
+                                                            <Link to={`/candidate-detailsProfile/${interview?.cID}`} className="m-1"><button className="btn btn-sm bg-accent">Profile</button></Link>
+                                                        </div>
+                                                        <div>
+                                                            <h2 className="font-bold bg-[#dbe4ff] p-1 rounded-xl">{interview?.position}</h2>
+                                                            <p className="font-bold p-1">{interview?.Cname}</p>
+                                                            <p className="flex justify-center items-center"><ImLocation className="text-xl" />{interview?.city}, {interview?.country}</p>
+                                                            <div className="flex text-sm gap-1 my-2">
+                                                                {
+                                                                    interview?.Cskills?.map((skill: any, idx: number) => (
+                                                                        <p key={idx}>
+                                                                            <p className="p-1 bg-violet-300 rounded-xl">{skill}</p>
+                                                                        </p>
+                                                                    ))
+                                                                }
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             )}
@@ -248,8 +280,25 @@ const ManageApplicants = () => {
                                                     {...provided.dragHandleProps}
                                                     className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                                                 >
-                                                    <div className="card-body space-y-1">
-                                                        <h2 className="font-bold">{marked.email}</h2>
+                                                    <div className="space-y-1 flex">
+                                                        <div className="p-2">
+                                                            <img src={marked?.profile} alt="" className=" rounded-full h-[80px] w-[80px] p-1" />
+                                                            <Link to={`/candidate-detailsProfile/${marked?.cID}`} className="m-1"><button className="btn btn-sm bg-accent">Profile</button></Link>
+                                                        </div>
+                                                        <div>
+                                                            <h2 className="font-bold bg-[#dbe4ff] p-1 rounded-xl">{marked?.position}</h2>
+                                                            <p className="font-bold p-1">{marked?.Cname}</p>
+                                                            <p className="flex justify-center items-center"><ImLocation className="text-xl" />{marked?.city}, {marked?.country}</p>
+                                                            <div className="flex text-sm gap-1 my-2">
+                                                                {
+                                                                    marked?.Cskills?.map((skill: any, idx: number) => (
+                                                                        <p key={idx}>
+                                                                            <p className="p-1 bg-violet-300 rounded-xl">{skill}</p>
+                                                                        </p>
+                                                                    ))
+                                                                }
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             )}
