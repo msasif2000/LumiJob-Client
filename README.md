@@ -1,9 +1,10 @@
 # LumiJobs - Where Opportunities Meet Expertise
 
+- Sneak-peak : https://lumijobs-84d3b.web.app/
 
 ## Overview
 
-LumiJobs is a cutting-edge hiring agency and communication platform crafted to connect companies with skilled professionals in the tech industry. This platform streamlines the hiring process, enhances user experience, and nurtures a vibrant community for networking and knowledge sharing.
+LumiJobs is designed to revolutionize the hiring process by providing a feature-rich platform that caters to the diverse needs of both companies and job seekers. With an emphasis on real-time information, community building, and user-friendly interfaces, the platform ensures a seamless and transparent experience throughout the hiring journey.
 
 ## Features
 
@@ -46,6 +47,12 @@ LumiJobs is a cutting-edge hiring agency and communication platform crafted to c
 - **Feedback and Ratings:**
   Collects and displays feedback from candidates and hiring managers, including ratings and reviews for recruiters.
 
+- **Suggestion Integration:**
+  Job recommendations based on user preferences and skills.
+
+- **Analytics:**
+  Providing insights and analytics for companies to optimize their hiring processes.
+
 ## Future Additions
 
 In future releases, we plan to introduce additional features such as:
@@ -53,7 +60,7 @@ In future releases, we plan to introduce additional features such as:
 - **Advanced Analytics:**
   Providing insights and analytics for companies to optimize their hiring processes.
 
-- **Advance Suggesion Integration:**
+- **Advance Suggestion Integration:**
   Enhancing job recommendations based on user preferences and skills.
 
 - **Collaborative Tools:**
@@ -69,14 +76,18 @@ In future releases, we plan to introduce additional features such as:
 
 - **Backend:**
   - Node.js for server-side development.
- 
 
 - **Database:**
- 
   - MongoDB (to be added in future releases).
 
 - **Authentication:**
   - Firebase Authentication for secure user authentication.
+
+- **Image Upload:**
+  - ImageBB API for uploading user profile pictures.
+
+- **Payment Gateway:**
+  - Stripe for handling transactions.
 
 ## Setup Environment
 
@@ -104,12 +115,14 @@ In future releases, we plan to introduce additional features such as:
      VITE_STORAGEBUCKET=xxxxxxxxxxxxxxx
      VITE_MESSAGINGSENDERID=xxxxxxxxxxxxxxxxxx
      VITE_APPID=1:xxxxxxxxxxxxxxxxxxxxxxxxxx
+     VITE_IMAGEBB_API_KEY:xxxxxxxxxxxxxxxxxxxxx
+     VITE_PAYMENT_GATEWAY_PK:xxxxxxxxxxxxxxxxxxxxxxx (stripe)
+
      ```
-    
 
+4. Your `firebase.config.ts` file should look like this:
 
-4. Your firebase.config.ts file should look like this 
-    ```
+    ```typescript
     const firebaseConfig: FirebaseConfig = {
      apiKey: import.meta.env.VITE_APIKEY,
      authDomain: import.meta.env.VITE_AUTHDOMAIN,
@@ -125,7 +138,6 @@ In future releases, we plan to introduce additional features such as:
     ```bash
     npm start
     ```
-    
 
 ## Conclusion
 
