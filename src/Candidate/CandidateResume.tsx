@@ -215,6 +215,7 @@ const CandidateResume: React.FC = () => {
                                         meaningful contributions to significant projects.
                                     </p>
                                 </div>
+                                
                                 {/* Experience */}
                                 <div className="space-y-3">
                                     <p className="text-[1.5rem] font-semibold">Experience</p>
