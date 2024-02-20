@@ -218,7 +218,7 @@ const CandidateResumeUpdate: React.FC = () => {
             // Handle response accordingly
             if (updateUserDataResponse.data.message === "true") {
                 toast.success("Profile Updated Successfully");
-                navigate("/dashboard/candidateProfile");
+                navigate("/dashboard/resume");
             } else {
                 toast.error("Failed to update profile data");
             }
