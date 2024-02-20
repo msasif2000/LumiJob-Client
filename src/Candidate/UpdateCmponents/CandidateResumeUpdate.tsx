@@ -734,3 +734,6 @@ const CandidateResumeUpdate: React.FC = () => {
 };
 
 export default CandidateResumeUpdate;
+
+
+

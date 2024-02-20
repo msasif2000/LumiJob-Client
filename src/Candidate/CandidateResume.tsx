@@ -302,3 +302,6 @@ const CandidateResume: React.FC = () => {
 };
 
 export default CandidateResume;
+
+
+
