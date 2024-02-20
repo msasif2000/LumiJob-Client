@@ -73,12 +73,15 @@ In future releases, we plan to introduce additional features such as:
   - React Hook Form for efficient form handling.
   - Axios for making HTTP requests.
   - TypeScript for a strongly typed codebase.
+  - React Router for navigation.
+  - Tailwind CSS for styling.
 
 - **Backend:**
   - Node.js for server-side development.
+  - Express.js as the web application framework.
 
 - **Database:**
-  - MongoDB (to be added in future releases).
+  - MongoDB
 
 - **Authentication:**
   - Firebase Authentication for secure user authentication.
@@ -143,6 +146,8 @@ In future releases, we plan to introduce additional features such as:
 
 LumiJobs aims to revolutionize the hiring process by providing a feature-rich platform that caters to the diverse needs of both companies and job seekers. With an emphasis on real-time information, community building, and user-friendly interfaces, the platform ensures a seamless and transparent experience throughout the hiring journey. The implementation of features such as personalized dashboards and interactive forums further enhances user engagement, making LumiJobs a go-to platform for connecting opportunities with expertise in the tech industry. Join us on this journey of redefining recruitment and career growth!
 
+---
+- Backend : https://github.com/msasif2000/LumiJob-Server
 ---
 - PS: This project is in development. More information about this project and technologies used will be updated.
 ---
