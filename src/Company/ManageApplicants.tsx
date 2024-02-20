@@ -55,36 +55,36 @@ const ManageApplicants = () => {
     const { destination, source, draggableId } = result;
 
     if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) {
-        return;
+      return;
     }
 
     // Check if `infos` is defined and iterable
     if (!infos || !Array.isArray(infos)) {
-        console.error('Invalid `infos` data:', infos);
-        return;
+      console.error('Invalid `infos` data:', infos);
+      return;
     }
 
- 
-    const updatedState = [...infos]; 
+
+    const updatedState = [...infos];
     console.log(updatedState);
 
     const [movedCard] = updatedState.splice(source.index, 1);
     updatedState.splice(destination.index, 0, movedCard);
 
     const payload = {
-        jobId: id,
-        dndStats: destination.droppableId,
+      jobId: id,
+      dndStats: destination.droppableId,
     };
 
     axiosPublic
-        .put(`/updateApplicantsStatus/${draggableId}`, payload)
-        .then(() => {
-            refetchInfo();
-            refetchInterview();
-            refetchPreSelect();
-            refetchSelect();
-        });
-};
+      .put(`/updateApplicantsStatus/${draggableId}`, payload)
+      .then(() => {
+        refetchInfo();
+        refetchInterview();
+        refetchPreSelect();
+        refetchSelect();
+      });
+  };
 
 
   const perHour = (n: any) => {
@@ -153,6 +153,9 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
+                              <div className="flex justify-end">
+                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -191,7 +194,7 @@ const ManageApplicants = () => {
                           {...provided.dragHandleProps}
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
-                           <div className="space-x-3 flex p-2">
+                          <div className="space-x-3 flex p-2">
                             <div className="p-5 bg-blue-100 rounded-xl">
                               <img
                                 src={info?.profile}
@@ -219,6 +222,9 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
+                              </div>
+                              <div className="flex justify-end">
+                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
                               </div>
                             </div>
                           </div>
@@ -258,7 +264,7 @@ const ManageApplicants = () => {
                           {...provided.dragHandleProps}
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
-                           <div className="space-x-3 flex p-2">
+                          <div className="space-x-3 flex p-2">
                             <div className="p-5 bg-blue-100 rounded-xl">
                               <img
                                 src={info?.profile}
@@ -286,6 +292,9 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
+                              </div>
+                              <div className="flex justify-end">
+                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
                               </div>
                             </div>
                           </div>
@@ -324,7 +333,7 @@ const ManageApplicants = () => {
                           {...provided.dragHandleProps}
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
-                           <div className="space-x-3 flex p-2">
+                          <div className="space-x-3 flex p-2">
                             <div className="p-5 bg-blue-100 rounded-xl">
                               <img
                                 src={info?.profile}
@@ -352,6 +361,9 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
+                              </div>
+                              <div className="flex justify-end">
+                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
                               </div>
                             </div>
                           </div>
