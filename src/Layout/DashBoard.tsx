@@ -201,20 +201,6 @@ const DashBoard = () => {
           </div>
 
           <div className="md:flex-1 bg-[#FAFAFA]">
-            <div className="hidden lg:flex min-h-16 border-b bg-white sticky top-0 z-40">
-              <h3>this is top nav</h3>
-            </div>
-            <div className="text-sm breadcrumbs ml-4">
-              <ul>
-                <li>
-                  <a>Home</a>
-                </li>
-                <li>
-                  <a>Documents</a>
-                </li>
-                <li>Add Document</li>
-              </ul>
-            </div>
             <div className="p-6">
               <Outlet></Outlet>
             </div>
