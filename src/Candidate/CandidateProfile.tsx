@@ -151,8 +151,6 @@ const CandidateProfile = () => {
     }
   };
 
- 
-
   return (
     <div className="min-h-screen">
       <div className="flex justify-between items-center px-5 pt-5">
@@ -164,7 +162,7 @@ const CandidateProfile = () => {
           </button>
         </Link>
       </div>
-      
+
       <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10 py-5">
         {/* profile card div */}
         <div className="bg-white h-fit lg:w-1/3 rounded-2xl space-y-5 p-5 relative">
@@ -246,25 +244,44 @@ const CandidateProfile = () => {
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Location</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  {profile?.city}, {profile?.country}
+                  {profile ? (
+                    <>
+                      {" "}
+                      {profile?.city}, {profile?.country}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Years of experience</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  {profile?.experience} years
+                  {profile ? <> {profile?.experience} years</> : ""}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Availability</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  {profile?.availability} - {profile?.work}
+                  {profile ? (
+                    <>
+                      {profile?.availability} - {profile?.work}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Expected salary</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  ${profile?.salaryRangeMin} - ${profile?.salaryRangeMax}
+                  {profile ? (
+                    <>
+                      ${profile?.salaryRangeMin} - ${profile?.salaryRangeMax}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </p>
               </div>
             </div>
