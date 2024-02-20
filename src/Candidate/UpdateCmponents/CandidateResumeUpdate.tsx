@@ -213,19 +213,7 @@ const CandidateResumeUpdate: React.FC = () => {
 
             console.log(candidateData);
 
-            // Send the updated candidate data to your database
-            // const updateUserDataResponse = await axiosPublic.put(
-            //     `/user-update/${user?.email}`,
-            //     candidateData
-            // );
 
-            // // Handle response accordingly
-            // if (updateUserDataResponse.data.message === "true") {
-            //     toast.success("Profile Updated Successfully");
-            //     navigate("/dashboard/candidateProfile");
-            // } else {
-            //     toast.error("Failed to update profile data");
-            // }
 
         } catch (error) {
             console.error(error);
