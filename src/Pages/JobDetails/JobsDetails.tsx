@@ -300,11 +300,19 @@ const JobsDetails: React.FC = () => {
                       ))}
                     </div>
                     <div className="mt-4">
-                      <Link to={`/manage-applicants/${job?._id}`}>
+                     {
+                      job?.applicants?.length > 0 ?(
+                        <Link to={`/manage-applicants/${job?._id}`}>
                         <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
                           Manage Applicants
                         </button>
                       </Link>
+                      ) : (
+                        <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                          No Applicants
+                        </button>
+                      )
+                     }
                     </div>
                   </div>
                 </div>
