@@ -13,6 +13,7 @@ import { GrAdd } from "react-icons/gr";
 interface ExperienceData {
     company: string;
     position: string;
+    details: string;
     fromDate: Date | null;
     toDate: Date | null;
 }
@@ -39,10 +40,9 @@ interface FormData {
     name: string;
     email: string;
     phone: string;
-    address: string;
+    designation: string;
     objective: string;
     skills: string[];
-    experience: number;
     education: EducationData[];
     experienceDetails: ExperienceData[];
     link: LinkData[];
@@ -51,11 +51,6 @@ interface FormData {
     village: string;
     city: string;
     country: string;
-    availability: string;
-    position: string;
-    work: string;
-    salaryRangeMin: number;
-    salaryRangeMax: number;
 }
 
 interface UserData {
@@ -140,6 +135,7 @@ const CandidateResumeUpdate: React.FC = () => {
             {
                 company: "",
                 position: "",
+                details: "",
                 fromDate: null,
                 toDate: null,
             },
@@ -213,19 +209,19 @@ const CandidateResumeUpdate: React.FC = () => {
 
             console.log(candidateData);
 
-            // Send the updated candidate data to your database
-            // const updateUserDataResponse = await axiosPublic.put(
-            //     `/user-update/${user?.email}`,
-            //     candidateData
-            // );
+            // Send the updated candidate data to the database
+            const updateUserDataResponse = await axiosPublic.put(
+                `/user-update/${user?.email}`,
+                candidateData
+            );
 
-            // // Handle response accordingly
-            // if (updateUserDataResponse.data.message === "true") {
-            //     toast.success("Profile Updated Successfully");
-            //     navigate("/dashboard/candidateProfile");
-            // } else {
-            //     toast.error("Failed to update profile data");
-            // }
+            // Handle response accordingly
+            if (updateUserDataResponse.data.message === "true") {
+                toast.success("Profile Updated Successfully");
+                navigate("/dashboard/candidateProfile");
+            } else {
+                toast.error("Failed to update profile data");
+            }
 
         } catch (error) {
             console.error(error);
@@ -258,7 +254,7 @@ const CandidateResumeUpdate: React.FC = () => {
                 <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
 
 
-                    <div className="pb-10 space-y-6">
+                    <div className="pb-2 space-y-6">
                         {/* Second div group */}
                         <div className="md:flex md:space-x-10">
                             <div className="form-control w-full">
@@ -317,52 +313,17 @@ const CandidateResumeUpdate: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="md:flex md:space-x-10">
-                            <div className="form-control w-full">
-                                <input
-                                    type="number"
-                                    {...register("experience")}
-                                    placeholder="Years of experience"
-                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                                />
-                            </div>
-
-                            <select
-                                {...register("availability", {
-                                    required: "Availability is required",
-                                })}
-                                name="availability"
-                                id="availability"
-                                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                                defaultValue=""
-                            >
-                                <option value="" disabled>
-                                    Availability
-                                </option>
-                                <option value="Full Time">Full Time</option>
-                                <option value="Part Time">Part Time</option>
-                            </select>
-
-                            <select
-                                {...register("work", {
-                                    required: "Work type is required",
-                                })}
-                                name="work"
-                                id="work"
-                                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                                defaultValue=""
-                            >
-                                <option value="" disabled>
-                                    Preferred work setting
-                                </option>
-                                <option value="Remote">Remote</option>
-                                <option value="Office">Office</option>
-                                <option value="Hybrid">Hybrid</option>
-                            </select>
-                        </div>
                     </div>
 
-                    <div className="pb-10 space-y-6">
+                    <div className="pb-10 space-y-3">
+                        <div className="form-control w-full ">
+                            <input
+                                type="text"
+                                {...register("designation")}
+                                placeholder="Designation (optional)"
+                                className="py-4 my-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
+                            />
+                        </div>
                         <div className="form-control w-full">
                             <textarea
                                 rows={3}
@@ -418,24 +379,7 @@ const CandidateResumeUpdate: React.FC = () => {
                         {errors.skills && <p>{errors.skills.message}</p>}
                     </div>
 
-                    <div className="md:flex md:space-x-10 pb-10">
-                        <div className="form-control w-full">
-                            <input
-                                type="number"
-                                {...register("salaryRangeMin")}
-                                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                                placeholder="$ Expected Min Salary"
-                            />
-                        </div>
-                        <div className="form-control w-full">
-                            <input
-                                type="number"
-                                {...register("salaryRangeMax")}
-                                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                                placeholder="$ Expected Max Salary"
-                            />
-                        </div>
-                    </div>
+
 
 
                     <p className=" md:text-2xl font-bold mb-4 md:py-6">Work Experience</p>
@@ -463,6 +407,16 @@ const CandidateResumeUpdate: React.FC = () => {
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                                     />
                                 </div>
+                            </div>
+                            <div className="w-">
+                                <textarea
+                                    rows={3}
+                                    {...register(`experienceDetails.${index}.details`,
+                                    )}
+                                    placeholder="Details"
+                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
+                                ></textarea>
+
                             </div>
                             <div className="flex space-x-4 mt-4">
                                 <div className="w-1/2">
@@ -518,7 +472,10 @@ const CandidateResumeUpdate: React.FC = () => {
                             onClick={addExperience}
                             className="text-blue-500 text-xs md:text-xl font-semibold"
                         >
-                            Add Work Experience
+                            <div className="flex items-center gap-2">
+                                <GrAdd></GrAdd>   Add Work Experience
+                            </div>
+
                         </button>
                     </div>
 
@@ -654,9 +611,8 @@ const CandidateResumeUpdate: React.FC = () => {
                                     <input
                                         type="text"
                                         {...register(`education.${index}.subject`, {
-                                            required: "Subject studied is required",
                                         })}
-                                        placeholder="Studied Subject"
+                                        placeholder="Studied Subject (optional)"
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                                     />
                                 </div>
@@ -715,7 +671,10 @@ const CandidateResumeUpdate: React.FC = () => {
                             onClick={addEducation}
                             className="text-blue-500 text-xs md:text-xl font-semibold"
                         >
-                            Add Education
+                            <div className="flex items-center gap-2">
+                                <GrAdd></GrAdd>  Add Education
+                            </div>
+
                         </button>
                     </div>
 
@@ -734,3 +693,6 @@ const CandidateResumeUpdate: React.FC = () => {
 };
 
 export default CandidateResumeUpdate;
+
+
+
