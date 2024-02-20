@@ -20,6 +20,7 @@ const ManagePayments = () => {
             <th>#</th>
             <th>NAME</th>
             <th>EMAIL</th>
+            <th>User Role</th>
             <th>STATUS</th>
             <th>TransactionId</th>
             <th>Price</th>
@@ -35,6 +36,9 @@ const ManagePayments = () => {
               </td>
               <td>
                 <h3 className="font-normal text-lg">{payment?.email}</h3>
+              </td>
+              <td>
+                <h3 className="font-normal text-lg">{payment?.userRole}</h3>
               </td>
               <td>
                 <h3 className="font-normal text-lg">{payment?.userStatus}</h3>
