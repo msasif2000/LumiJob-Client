@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import CandidateNav from "./CommonNavbar/CandidateNav";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { GoVerified } from "react-icons/go";
+import { BiEdit } from "react-icons/bi";
 
 interface UserProfile {
   _id: string;
@@ -48,7 +48,6 @@ interface UserProfile {
 const CandidateProfile = () => {
   const { user, premium } = useAuth();
   const [activeTab, setActiveTab] = useState("experience");
-  const navigate = useNavigate();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const axiosPublic = useAxiosPublic();
 
@@ -152,22 +151,20 @@ const CandidateProfile = () => {
     }
   };
 
-  const buttonClicked = () => {
-    navigate("/dashboard/candidateProfile/update");
-  };
-  const buttonClicked2 = () => {
-    navigate("/dashboard/candidateProfile/resume");
-  };
+ 
 
   return (
     <div className="min-h-screen">
-      <CandidateNav
-        text={"Profile"}
-        btn={"Update Information"}
-        btn2={"Resume"}
-        handleClick2={buttonClicked2}
-        handleClick={buttonClicked}
-      />
+      <div className="flex justify-between items-center px-5 pt-5">
+        <div className="text-xl md:text-3xl font-semibold">Profile</div>
+        <Link to="update">
+          <button className="btn">
+            <BiEdit></BiEdit>
+            Edit profile
+          </button>
+        </Link>
+      </div>
+      
       <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10 py-5">
         {/* profile card div */}
         <div className="bg-white h-fit lg:w-1/3 rounded-2xl space-y-5 p-5 relative">

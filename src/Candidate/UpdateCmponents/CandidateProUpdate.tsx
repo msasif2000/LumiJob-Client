@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import CandidateNav from "../CommonNavbar/CandidateNav";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
@@ -208,9 +207,6 @@ const CandidateProUpdate: React.FC = () => {
     }
   };
 
-  const backToResume = () => {
-    navigate("/dashboard/candidateProfile/resume");
-  };
 
   // useEffect(() => {
   //   if (user?.email) {
@@ -225,13 +221,10 @@ const CandidateProUpdate: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      <CandidateNav
-        text="Upgrade your information"
-        btn="Return"
-        btn2="See Resume"
-        handleClick={backToProfile}
-        handleClick2={backToResume}
-      />
+      <div className="flex justify-between items-center px-5 pt-5">
+        <div className="text-xl md:text-3xl font-semibold">Update Your Profile</div>
+        <div><button className="btn" onClick={backToProfile}>Back</button></div>
+      </div>
 
       <div className=" bg-white p-2 ">
         <form className="space-y-5 p-10" onSubmit={handleSubmit(onSubmit)}>
