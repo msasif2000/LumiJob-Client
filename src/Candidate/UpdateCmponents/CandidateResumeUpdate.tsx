@@ -13,6 +13,7 @@ import { GrAdd } from "react-icons/gr";
 interface ExperienceData {
     company: string;
     position: string;
+    details: string;
     fromDate: Date | null;
     toDate: Date | null;
 }
@@ -140,6 +141,7 @@ const CandidateResumeUpdate: React.FC = () => {
             {
                 company: "",
                 position: "",
+                details:"",
                 fromDate: null,
                 toDate: null,
             },
@@ -213,7 +215,19 @@ const CandidateResumeUpdate: React.FC = () => {
 
             console.log(candidateData);
 
+            // Send the updated candidate data to the database
+            const updateUserDataResponse = await axiosPublic.put(
+                `/user-update/${user?.email}`,
+                candidateData
+            );
 
+            // Handle response accordingly
+            if (updateUserDataResponse.data.message === "true") {
+                toast.success("Profile Updated Successfully");
+                navigate("/dashboard/candidateProfile");
+            } else {
+                toast.error("Failed to update profile data");
+            }
 
         } catch (error) {
             console.error(error);
@@ -451,6 +465,16 @@ const CandidateResumeUpdate: React.FC = () => {
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
                                     />
                                 </div>
+                            </div>
+                            <div className="w-">
+                                <textarea
+                                    rows={3}
+                                    {...register(`experienceDetails.${index}.details`,
+                                    )}
+                                    placeholder="Details"
+                                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
+                                ></textarea>
+
                             </div>
                             <div className="flex space-x-4 mt-4">
                                 <div className="w-1/2">
