@@ -7,6 +7,7 @@ import "./contact.css";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { BiSolidPhoneCall } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
 
@@ -22,7 +23,8 @@ const Contact = () => {
 
       console.log("Form Data:", formDataObject);
 
-      emailjs.sendForm(
+      emailjs
+        .sendForm(
           "service_k3fx78t",
           "template_vtm5tif",
           form.current,
@@ -43,6 +45,9 @@ const Contact = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Contacts | LumiJobs</title>
+      </Helmet>
       <div className="min-h-screen bg-[#fdfdfd]">
         <div className="max-w-screen-2xl mx-auto">
           <div>
@@ -213,7 +218,9 @@ const Contact = () => {
 
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text text-[16px] font-semibold">Select Subject?</span>
+                          <span className="label-text text-[16px] font-semibold">
+                            Select Subject?
+                          </span>
                         </label>
                         <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-start">
                           <div className="flex gap-2">
@@ -259,7 +266,6 @@ const Contact = () => {
                         </div>
                       </div>
 
-
                       <div
                         className="form-control mt-5"
                         style={{ borderBottom: "1px solid gray" }}
@@ -273,8 +279,7 @@ const Contact = () => {
                           name="user_message"
                           placeholder="Write your message.."
                           className=" input "
-                        >
-                        </textarea>
+                        ></textarea>
                       </div>
 
                       <div className="flex justify-end">

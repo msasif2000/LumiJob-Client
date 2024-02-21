@@ -7,7 +7,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import UniLoader from "../../component/err & loading/UniLoader";
 import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
-import {PiShieldWarning  } from "react-icons/pi";
+import { Helmet } from "react-helmet-async";
+import { PiShieldWarning } from "react-icons/pi";
 
 interface JobDetails {
   _id: string;
@@ -38,7 +39,7 @@ const JobsDetails: React.FC = () => {
   const [job, setJobs] = useState<JobDetails>();
   const { user, role, premium } = useAuth();
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log(role);
   console.log(job);
@@ -155,12 +156,15 @@ const JobsDetails: React.FC = () => {
     });
   };
 
-const  handleCompleteProfile =()=>{
-  navigate('/dashboard/candidateProfile/update')
-}
+  const handleCompleteProfile = () => {
+    navigate("/dashboard/candidateProfile/update");
+  };
 
   return (
     <>
+      <Helmet>
+        <title> {`${title}`} | LumiJobs</title>
+      </Helmet>
       <div className="max-w-screen-2xl mx-auto py-8 px-4">
         <div>
           {/* Display jobs */}
@@ -390,8 +394,7 @@ const  handleCompleteProfile =()=>{
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                    
-                   <PiShieldWarning />
+                      <PiShieldWarning />
                     </div>
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                       <h3
@@ -413,15 +416,16 @@ const  handleCompleteProfile =()=>{
                   <button
                     type="button"
                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-300 text-base font-medium text-white hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                    onClick={()=>handleCompleteProfile()}
+                    onClick={() => handleCompleteProfile()}
                   >
                     Complete Profile
                   </button>
                   <button
                     type="button"
                     className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-gray-700 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                    onClick={()=>{setShowProfileModal(false)}}
-                    
+                    onClick={() => {
+                      setShowProfileModal(false);
+                    }}
                   >
                     Cancel
                   </button>
