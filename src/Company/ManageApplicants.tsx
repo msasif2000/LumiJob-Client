@@ -2,13 +2,29 @@ import { CiLocationOn } from "react-icons/ci";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { GoVerified } from "react-icons/go";
+import { FormEvent, useEffect, useState } from "react";
+import { MdCancel } from "react-icons/md";
 
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+  
+
+  const { data: infosJobs } = useQuery({
+    queryKey: ["infosJobs", id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/jobInfo/${id}`);
+      return res.data;
+    },
+    enabled: !!id,
+  });
+ 
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
+  const [selectedId, setSelectedId] = useState<any | null>(null)
 
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
@@ -19,7 +35,6 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
     queryKey: ["preSelected", id],
     queryFn: async () => {
@@ -29,8 +44,6 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-
-
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
     queryFn: async () => {
@@ -39,8 +52,6 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-
-
 
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
@@ -54,44 +65,118 @@ const ManageApplicants = () => {
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
 
-    if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) {
-        return;
+    if (
+      !destination ||
+      (destination.droppableId === source.droppableId &&
+        destination.index === source.index)
+    ) {
+      return;
     }
 
     // Check if `infos` is defined and iterable
     if (!infos || !Array.isArray(infos)) {
-        console.error('Invalid `infos` data:', infos);
-        return;
+      console.error("Invalid `infos` data:", infos);
+      return;
     }
 
- 
-    const updatedState = [...infos]; 
+    const updatedState = [...infos];
     console.log(updatedState);
 
     const [movedCard] = updatedState.splice(source.index, 1);
     updatedState.splice(destination.index, 0, movedCard);
 
     const payload = {
-        jobId: id,
-        dndStats: destination.droppableId,
+      jobId: id,
+      dndStats: destination.droppableId,
     };
 
     axiosPublic
-        .put(`/updateApplicantsStatus/${draggableId}`, payload)
-        .then(() => {
-            refetchInfo();
-            refetchInterview();
-            refetchPreSelect();
-            refetchSelect();
-        });
-};
-
+      .put(`/updateApplicantsStatus/${draggableId}`, payload)
+      .then(() => {
+        refetchInfo();
+        refetchInterview();
+        refetchPreSelect();
+        refetchSelect();
+      });
+  };
 
   const perHour = (n: any) => {
     const salary = parseFloat(n);
     const daily = salary / 30;
     const hourly = daily / 24;
     return hourly.toFixed(2);
+  };
+  interface Comments {
+    // anyCements: string;
+    comments: string;
+    position: string;
+    companyEmail: string;
+    cadetteEmail: string | null;
+    
+  }
+  const [comments, setComments] = useState<string>('');
+  const feedBack = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // const form = e.currentTarget;
+    // const anyCements = (form.elements.namedItem("anyCements") as HTMLInputElement).value;
+     const position = infos[0].position;
+     const cadetteEmail = infos[0]?.email;
+     const companyEmail = infosJobs.email;
+    const allText: Comments = {  comments, position, cadetteEmail, companyEmail };
+     console.log(allText);
+    // console.log(infosJobs)
+    axiosPublic
+    .post('/sendFeedback' , allText)
+    .then((response: any) => {
+      console.log(response.data)
+        if (response.data.insertedId)
+        {
+          console.log("data send")
+        }
+        else{
+          console.log("data Not a send")
+        }
+    })
+    .catch((error: any) => {
+      console.log(error);
+      toast.error("Job Posting Failed", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+       
+      });
+    });
+
+    
+
+  };
+
+  const handleOpenModal = (candidate: any) => {
+    setSelectedCandidate(candidate);
+    setOpenModal(true);
+    setSelectedId(candidate.id)
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const googleMeetLink = formData.get("googleMeetLink");
+    const time = formData.get("time");
+    const date = formData.get("date");
+    const candidate = selectedId;
+    const jobId = id
+
+    // Now you have access to the values of the form fields
+    console.log("Google Meet Link:", googleMeetLink);
+    console.log("Time:", time);
+    console.log("Date:", date);
+    console.log("Candidate:", candidate);
+    console.log("jobId:", jobId);
+
+
+    // Perform any further actions such as validation or submitting the form data
   };
 
   return (
@@ -153,6 +238,62 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
+
+                              <div className="flex justify-center  ">
+                                <label
+                                  htmlFor="my_modal_6"
+                                  className="btn btn-sm bg-accent hover:bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </label>
+                                <input
+                                  type="checkbox"
+                                  id="my_modal_6"
+                                  className="modal-toggle"
+                                />
+                                <div className="modal " role="dialog">
+                                  <div className="modal-box bg-gray-100 mb-10">
+                                  <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                      <label
+                                        htmlFor="my_modal_6"
+                                        className=" btn  text-black text-2xl "
+                                      >
+                                        <MdCancel />
+                                      </label>
+                                    </div>
+                                    <form onSubmit={feedBack} className="space-y-4 ">
+                                      
+                                      <div className="p-4
+                                     bg-white rounded-2xl">
+                                        <label
+                                          htmlFor="additionalInfo"
+                                          className="block text-xl font-bold text-black"
+                                        >
+                                          Anything than can be improved?
+                                        </label>
+                                        <textarea
+                                          id="additionalInfo"
+                                          name="additionalInfo"
+                                          value={comments}
+                                          onChange={(e) =>
+                                            setComments(e.target.value)
+                                          }
+                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                          rows={4}
+                                          placeholder="Enter Your Feedback..."
+                                        ></textarea>
+                                      </div>
+                                     <input  className="w-full btn bg-green-600 hover:bg-green-600 text-white " type="submit" value="submit" />
+                                     
+
+                                    </form>
+                                    
+
+                                    
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -191,7 +332,7 @@ const ManageApplicants = () => {
                           {...provided.dragHandleProps}
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
-                           <div className="space-x-3 flex p-2">
+                          <div className="space-x-3 flex p-2">
                             <div className="p-5 bg-blue-100 rounded-xl">
                               <img
                                 src={info?.profile}
@@ -219,6 +360,14 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
+                              </div>
+                              <div className="flex justify-center ">
+                                <button
+                                  className="btn btn-sm bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -258,7 +407,7 @@ const ManageApplicants = () => {
                           {...provided.dragHandleProps}
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
-                           <div className="space-x-3 flex p-2">
+                          <div className="space-x-3 flex p-2 relative">
                             <div className="p-5 bg-blue-100 rounded-xl">
                               <img
                                 src={info?.profile}
@@ -287,7 +436,69 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
+                              <div className="flex justify-center ">
+                                <button
+                                  className="btn btn-sm bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </button>
+                              </div>
                             </div>
+                            {openModal && selectedCandidate && (
+                              <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+                                <form
+                                  onSubmit={handleSubmit}
+                                  className="bg-white p-8 rounded-lg"
+                                >
+                                  <h2 className="text-lg font-bold mb-4">
+                                    Schedule Interview for{" "}
+                                    {selectedCandidate?.name}
+                                  </h2>
+
+                                  <div className="mb-4">
+                                    <input
+                                      type="text"
+                                      name="googleMeetLink"
+                                      placeholder="Google meet link"
+                                      className="w-full border border-gray-300 rounded-md p-2"
+                                    />
+                                  </div>
+                                  <div className="flex space-x-3">
+                                    <div className="mb-4">
+                                      <input
+                                        type="time"
+                                        name="time"
+                                        className="border border-gray-300 rounded-md p-2 w-[180px]"
+                                      />
+                                    </div>
+                                    <div className="mb-4">
+                                      <input
+                                        type="date"
+                                        name="date"
+                                        className="border border-gray-300 rounded-md p-2 w-[180px]"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="flex justify-end">
+                                    <button
+                                      type="submit"
+                                      className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-600 w-1/2"
+                                    >
+                                      Schedule
+                                    </button>
+                                    <button
+                                      className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 w-1/2"
+                                      onClick={() => {
+                                        setOpenModal(false);
+                                      }}
+                                    >
+                                      Cancel
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
@@ -324,7 +535,7 @@ const ManageApplicants = () => {
                           {...provided.dragHandleProps}
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
-                           <div className="space-x-3 flex p-2">
+                          <div className="space-x-3 flex p-2">
                             <div className="p-5 bg-blue-100 rounded-xl">
                               <img
                                 src={info?.profile}
@@ -352,6 +563,14 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
+                              </div>
+                              <div className="flex justify-center ">
+                                <button
+                                  className="btn btn-sm bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </button>
                               </div>
                             </div>
                           </div>

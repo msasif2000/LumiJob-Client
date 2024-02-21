@@ -43,7 +43,7 @@ import CompleteResume from "../Candidate/UpdateCmponents/CompleteResume";
 
 import EditBlog from "../Company/EditBlog";
 import Seminars from "../Company/Seminars";
-import Post_A_Seminar from "../Company/Post_A_Seminar";
+// import Post_A_Seminar from "../Company/Post_A_Seminar";
 import ManageApplicants from "../Company/ManageApplicants";
 import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
@@ -248,10 +248,10 @@ export const router = createBrowserRouter([
         path: "seminar-posted",
         element: <Seminars />
       },
-      {
-        path: "post-a-seminar",
-        element: <Post_A_Seminar />
-      },
+      // {
+      //   path: "post-a-seminar",
+      //   element: <Post_A_Seminar />
+      // },
       {
         path: "companyAnalytics",
         element: <CompanyAnalytics />,

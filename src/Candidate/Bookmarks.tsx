@@ -65,7 +65,7 @@ const Bookmarks: React.FC = () => {
         <div>
             
             <div>
-                <h3 className="md:text-3xl font-bold my-12">Bookmarked jobs <span className="text-accent">{length}</span></h3>
+                <h3 className="md:text-3xl font-bold mb-12 mt-3">Bookmarked jobs <span className="text-accent">{length}</span></h3>
             </div>
 
             <div className="grid grid-cols-2 gap-5 mx-auto">

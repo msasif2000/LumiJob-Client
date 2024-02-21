@@ -2,6 +2,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import useCompanyData from "../hooks/useCompanyData";
+import { useState } from "react";
+import CPagination from "../Pages/FindCandidate/CPagination";
 
 interface Company {
   _id: string;
@@ -15,6 +17,13 @@ const ManageCompany = () => {
   const axiosPublic = useAxiosPublic();
   const [companyData, refetch] = useCompanyData();
 
+  const [dataPerPage] = useState<number>(10);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleDelete = (id: string, email: string) => {
     Swal.fire({
@@ -74,7 +83,8 @@ const ManageCompany = () => {
           </thead>
           <tbody>
             {
-              companyData.map((company: Company, index: number) => <tr key={company._id}>
+              companyData
+                .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((company: Company, index: number) => <tr key={company._id}>
                 <th>
                   {index + 1}
                 </th>
@@ -99,6 +109,17 @@ const ManageCompany = () => {
 
           </tbody>
         </table>
+        {companyData.length > dataPerPage && (
+          <div className="py-12">
+            {/* ==>  Pagination <== */}
+            <CPagination
+              totalData={companyData.length}
+              dataPerPage={dataPerPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            ></CPagination>
+          </div>
+        )}
       </div>
     </div>
   );

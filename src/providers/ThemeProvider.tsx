@@ -93,7 +93,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      //console.log("Observed User:", currentUser);
+      // console.log("Observed User:", currentUser);
     });
 
     return () => {

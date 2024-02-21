@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import CandidateNav from "./CommonNavbar/CandidateNav";
 import useAuth from "../hooks/useAuth";
 import AppliedCard from "./AppliedCard";
 // import { toast } from "react-toastify";
@@ -25,19 +24,14 @@ const AppliedJobs = () => {
   const length = jobs?.length;
 
   const handleDelete = (jobId: string) => {
-   console.log(jobId)
+    console.log(jobId)
   };
 
   return (
     <>
-      <CandidateNav
-        text="Jobs you applied for"
-        btn={length}
-        btn2=""
-        handleClick={() => {}}
-        handleClick2={() => {}}
-      />
-
+      <div>
+        <h3 className="md:text-3xl font-bold mb-12 mt-3">Applied jobs <span className="text-accent">{length}</span></h3>
+      </div>
       <div>
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
           {jobs?.map((job: any) => (

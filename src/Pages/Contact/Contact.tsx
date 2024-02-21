@@ -15,12 +15,20 @@ const Contact = () => {
     e.preventDefault();
 
     if (form.current) {
+      const formData = new FormData(form.current);
+      const formDataObject: any = {};
+      formData.forEach((value, key) => {
+        formDataObject[key] = value;
+      });
+
+      console.log("Form Data:", formDataObject);
+
       emailjs
         .sendForm(
-          "YOUR_SERVICE_ID",
-          "YOUR_TEMPLATE_ID",
+          "service_k3fx78t",
+          "template_vtm5tif",
           form.current,
-          "YOUR_PUBLIC_KEY"
+          "0N8CKLdWb0pnRf50u"
         )
         .then(
           (result) => {
@@ -208,15 +216,14 @@ const Contact = () => {
                         </div>
                       </div>
 
-                      <div className="form-control ">
+                      <div className="form-control">
                         <label className="label">
                           <span className="label-text text-[16px] font-semibold">
                             Select Subject?
                           </span>
                         </label>
-
                         <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-start">
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="feedback"
@@ -226,32 +233,31 @@ const Contact = () => {
                             />
                             <label htmlFor="feedback">Feedback</label>
                           </div>
-
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="question"
-                              name="Select_subject"
+                              name="select_subject"
                               value="question"
                               className="input-radio"
                             />
                             <label htmlFor="question">Question</label>
                           </div>
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="partnership"
-                              name="Select_subject"
+                              name="select_subject"
                               value="partnership"
                               className="input-radio"
                             />
                             <label htmlFor="partnership">Partnership</label>
                           </div>
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="issue"
-                              name="Select_subject"
+                              name="select_subject"
                               value="issue"
                               className="input-radio"
                             />
@@ -269,12 +275,11 @@ const Contact = () => {
                             Message
                           </span>
                         </label>
-                        <input
-                          type="text"
+                        <textarea
                           name="user_message"
                           placeholder="Write your message.."
                           className=" input "
-                        />
+                        ></textarea>
                       </div>
 
                       <div className="flex justify-end">

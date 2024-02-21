@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { LuDot } from "react-icons/lu";
 import { FaDollarSign } from "react-icons/fa";
@@ -8,6 +8,7 @@ import UniLoader from "../../component/err & loading/UniLoader";
 import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { PiShieldWarning } from "react-icons/pi";
 
 interface JobDetails {
   _id: string;
@@ -37,6 +38,8 @@ const JobsDetails: React.FC = () => {
   const axiosPublic = useAxiosPublic();
   const [job, setJobs] = useState<JobDetails>();
   const { user, role, premium } = useAuth();
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const navigate = useNavigate();
 
   console.log(role);
   console.log(job);
@@ -115,6 +118,8 @@ const JobsDetails: React.FC = () => {
             autoClose: 2000,
             closeOnClick: true,
           });
+        } else if (res.data.message === "Please fill profile information") {
+          setShowProfileModal(true);
         } else if (res.data.message === "Already applied") {
           toast.success("You have Already Applied", {
             position: "top-center",
@@ -151,6 +156,10 @@ const JobsDetails: React.FC = () => {
     });
   };
 
+  const handleCompleteProfile = () => {
+    navigate("/dashboard/candidateProfile/update");
+  };
+
   return (
     <>
       <Helmet>
@@ -171,11 +180,11 @@ const JobsDetails: React.FC = () => {
                   <p className="text-xl opacity-80">{description}</p>
                 </div>
                 <div className="mt-5 mb-2 flex gap-6">
-                  <p className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     {" "}
                     <FaLocationDot />{" "}
                     <p className="text-xl md:text-base">{location}</p>
-                  </p>
+                  </div>
                   <p className="flex items-center gap-2">
                     <FaDollarSign />
                     <p className="text-lg md:text-base">
@@ -304,11 +313,17 @@ const JobsDetails: React.FC = () => {
                       ))}
                     </div>
                     <div className="mt-4">
-                      <Link to={`/manage-applicants/${job?._id}`}>
+                      {job?.applicants?.length > 0 ? (
+                        <Link to={`/manage-applicants/${job?._id}`}>
+                          <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                            Manage Applicants
+                          </button>
+                        </Link>
+                      ) : (
                         <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
-                          Manage Applicants
+                          No Applicants
                         </button>
-                      </Link>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -336,7 +351,10 @@ const JobsDetails: React.FC = () => {
                     </div>
                   )}
                   <div>
-                    <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                    <button
+                      onClick={() => handlePremiumApply()}
+                      className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                    >
                       Apply
                     </button>
                   </div>
@@ -364,6 +382,58 @@ const JobsDetails: React.FC = () => {
           )}
         </div>
         <ToastContainer />
+        {showProfileModal && (
+          <div className="fixed z-10 inset-0 overflow-y-auto">
+            <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <div className="fixed inset-0 transition-opacity">
+                <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+              </div>
+              <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
+              &#8203;
+              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                  <div className="sm:flex sm:items-start">
+                    <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                      <PiShieldWarning />
+                    </div>
+                    <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                      <h3
+                        className="text-lg leading-6 font-medium text-gray-900"
+                        id="modal-title"
+                      >
+                        Complete Your Profile
+                      </h3>
+                      <div className="mt-2">
+                        <p className="text-sm text-gray-500">
+                          You need to complete your profile before applying to
+                          jobs.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex  justify-center">
+                  <button
+                    type="button"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-300 text-base font-medium text-white hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                    onClick={() => handleCompleteProfile()}
+                  >
+                    Complete Profile
+                  </button>
+                  <button
+                    type="button"
+                    className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-gray-700 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                    onClick={() => {
+                      setShowProfileModal(false);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

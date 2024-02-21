@@ -1,4 +1,5 @@
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { RxAvatar } from "react-icons/rx";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
@@ -11,8 +12,10 @@ const DashBoard = () => {
   const [isLoading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [userData, setUserData] = useState({} as any);
   const [role, setRole] = useState("");
 
+  console.log(user);
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isNavOpen) {
@@ -33,6 +36,7 @@ const DashBoard = () => {
         .then((res) => {
           // console.log(res.data.role);
           setRole(res.data.role);
+          setUserData(res.data);
           setLoading(false);
         })
         .catch((error) => {
@@ -121,7 +125,7 @@ const DashBoard = () => {
         <div className="md:flex">
           <div className="lg:w-2/12 xl:max-w-[18rem] border-r">
             {/* === Mobile Menu */}
-            <div className="navbar-start lg:hidden">
+            <div className="dash navbar-start lg:hidden">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
                   <svg
@@ -167,14 +171,26 @@ const DashBoard = () => {
             </div>
 
             {/* === Large Screen Menu */}
-            <div className="hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
               <div>
-                <Link to="/">
-                  <h3 className="text-3xl font-bold text-center">
-                    Lumi<span className="text-[#4869DD]">Jobs</span>
-                  </h3>
-                </Link>
+                <h3 className="text-3xl font-bold text-center">
+                  Lumi<span className="text-[#4869DD]">Jobs</span>
+                </h3>
                 <div className="divider mt-[0.7rem]"></div>
+                <div className="flex items-center m-4 gap-2">
+                  <div>
+                    {
+                      userData?.photo ?
+                        <img src={userData.photo} alt="" className="rounded-full h-10 w-10" />
+                        :
+                        <RxAvatar className="text-2xl" />
+                    }
+                  </div>
+                  <div>
+                    <h6 className="text-center capitalize text-accent">{userData?.name || "Your name"}</h6>
+                  </div>
+                </div>
+
                 <ul className="menu text-xl">{Links}</ul>
               </div>
               <div>
@@ -201,7 +217,7 @@ const DashBoard = () => {
           </div>
 
           <div className="md:flex-1 bg-[#FAFAFA]">
-            <div className="p-6">
+            <div className="px-6 pb-6">
               <Outlet></Outlet>
             </div>
           </div>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import CandidateNav from "./CommonNavbar/CandidateNav";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { GoVerified } from "react-icons/go";
+import { BiEdit } from "react-icons/bi";
 
 interface UserProfile {
   _id: string;
@@ -48,7 +48,6 @@ interface UserProfile {
 const CandidateProfile = () => {
   const { user, premium } = useAuth();
   const [activeTab, setActiveTab] = useState("experience");
-  const navigate = useNavigate();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const axiosPublic = useAxiosPublic();
 
@@ -74,31 +73,34 @@ const CandidateProfile = () => {
           <div>
             {profile?.experienceDetails?.map((job: any, index: number) => {
               // Convert fromDate and toDate to Date objects
-              const startDate = new Date(job.fromDate);
-              const endDate = new Date(job.toDate);
-
+              // const startDate = new Date(job.fromDate);
+              // const endDate = new Date(job.toDate);
+              // console.log(job?.fromDate);
               // Format dates in the desired format (e.g., "21-Jan-2024")
-              const formattedStartDate = `${startDate.getDate()}-${startDate.toLocaleString(
-                "en-us",
-                { month: "short" }
-              )}-${startDate.getFullYear()}`;
-              const formattedEndDate = `${endDate.getDate()}-${endDate.toLocaleString(
-                "en-us",
-                { month: "short" }
-              )}-${endDate.getFullYear()}`;
+              // const formattedStartDate = `${startDate?.getDate()}-${startDate?.toLocaleString(
+              //   "en-us",
+              //   { month: "short" }
+              // )}-${startDate?.getFullYear()}`;
+              // const formattedEndDate = `${endDate?.getDate()}-${endDate?.toLocaleString(
+              //   "en-us",
+              //   { month: "short" }
+              // )}-${endDate?.getFullYear()}`;
 
               return (
                 <div key={index} className="mb-4">
                   <div>
                     <p className="text-xs md:text-xl font-bold">
-                      {job.position}
+                      {job?.position}
                     </p>
                     <p className="text-xs md:text-lg font-bold text-gray-400">
-                      {job.company}
+                      {job?.company}
                     </p>
-                    <p className="text-xs md:text-lg font-semibold text-gray-400">
-                      {formattedStartDate} - {formattedEndDate}
-                    </p>
+                    {
+                      job?.fromDate ?
+                        <p className="text-xs md:text-lg font-semibold text-gray-400">{job?.fromDate} - {job?.toDate} </p>
+                        :
+                        ""
+                    }
                   </div>
 
                   <div className="mt-4">
@@ -152,22 +154,18 @@ const CandidateProfile = () => {
     }
   };
 
-  const buttonClicked = () => {
-    navigate("/dashboard/candidateProfile/update");
-  };
-  const buttonClicked2 = () => {
-    navigate("/dashboard/candidateProfile/resume");
-  };
-
   return (
     <div className="min-h-screen">
-      <CandidateNav
-        text={"Profile"}
-        btn={"Update Information"}
-        btn2={"Resume"}
-        handleClick2={buttonClicked2}
-        handleClick={buttonClicked}
-      />
+      <div className="flex justify-between items-center px-5 pt-3">
+        <div className="text-xl md:text-3xl font-semibold">Profile</div>
+        <Link to="update">
+          <button className="btn">
+            <BiEdit></BiEdit>
+            Edit profile
+          </button>
+        </Link>
+      </div>
+
       <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10 py-5">
         {/* profile card div */}
         <div className="bg-white h-fit lg:w-1/3 rounded-2xl space-y-5 p-5 relative">
@@ -249,25 +247,44 @@ const CandidateProfile = () => {
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Location</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  {profile?.city}, {profile?.country}
+                  {profile ? (
+                    <>
+                      {" "}
+                      {profile?.city}, {profile?.country}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Years of experience</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  {profile?.experience} years
+                  {profile ? <> {profile?.experience} years</> : ""}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Availability</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  {profile?.availability} - {profile?.work}
+                  {profile ? (
+                    <>
+                      {profile?.availability} - {profile?.work}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Expected salary</p>
                 <p className=" text-xs md:text-xl font-semibold">
-                  ${profile?.salaryRangeMin} - ${profile?.salaryRangeMax}
+                  {profile ? (
+                    <>
+                      ${profile?.salaryRangeMin} - ${profile?.salaryRangeMax}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </p>
               </div>
             </div>
@@ -277,18 +294,16 @@ const CandidateProfile = () => {
             <div role="tablist" className="tabs tabs-bordered relative">
               <a
                 role="tab"
-                className={`tab ${
-                  activeTab === "experience" ? "tab-active" : ""
-                } text-xs md:text-xl font-bold`}
+                className={`tab ${activeTab === "experience" ? "tab-active" : ""
+                  } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("experience")}
               >
                 Experience
               </a>
               <a
                 role="tab"
-                className={`tab ${
-                  activeTab === "education" ? "tab-active" : ""
-                } text-xs md:text-xl font-bold`}
+                className={`tab ${activeTab === "education" ? "tab-active" : ""
+                  } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("education")}
               >
                 Education
