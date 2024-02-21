@@ -219,7 +219,7 @@ const DashBoard = () => {
           </div>
 
           <div className="md:flex-1 bg-[#FAFAFA]">
-            <div className="p-6">
+            <div className="px-6 pb-6">
               <Outlet></Outlet>
             </div>
           </div>

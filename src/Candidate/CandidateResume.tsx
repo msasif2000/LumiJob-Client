@@ -83,7 +83,7 @@ const CandidateResume: React.FC = () => {
 
     return (
         <>
-            <div className="flex justify-between items-center px-5 pt-5">
+            <div className="flex justify-between items-center px-5 pt-3">
                 <div className="text-xl md:text-3xl font-semibold">Update Your Resume</div>
                 <Link to="update">
                     <button className="btn">

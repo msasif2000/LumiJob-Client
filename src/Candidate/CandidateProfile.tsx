@@ -153,7 +153,7 @@ const CandidateProfile = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="flex justify-between items-center px-5 pt-5">
+      <div className="flex justify-between items-center px-5 pt-3">
         <div className="text-xl md:text-3xl font-semibold">Profile</div>
         <Link to="update">
           <button className="btn">
