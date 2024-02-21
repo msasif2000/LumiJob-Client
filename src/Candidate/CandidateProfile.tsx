@@ -73,31 +73,34 @@ const CandidateProfile = () => {
           <div>
             {profile?.experienceDetails?.map((job: any, index: number) => {
               // Convert fromDate and toDate to Date objects
-              const startDate = new Date(job.fromDate);
-              const endDate = new Date(job.toDate);
-
+              // const startDate = new Date(job.fromDate);
+              // const endDate = new Date(job.toDate);
+              // console.log(job?.fromDate);
               // Format dates in the desired format (e.g., "21-Jan-2024")
-              const formattedStartDate = `${startDate.getDate()}-${startDate.toLocaleString(
-                "en-us",
-                { month: "short" }
-              )}-${startDate.getFullYear()}`;
-              const formattedEndDate = `${endDate.getDate()}-${endDate.toLocaleString(
-                "en-us",
-                { month: "short" }
-              )}-${endDate.getFullYear()}`;
+              // const formattedStartDate = `${startDate?.getDate()}-${startDate?.toLocaleString(
+              //   "en-us",
+              //   { month: "short" }
+              // )}-${startDate?.getFullYear()}`;
+              // const formattedEndDate = `${endDate?.getDate()}-${endDate?.toLocaleString(
+              //   "en-us",
+              //   { month: "short" }
+              // )}-${endDate?.getFullYear()}`;
 
               return (
                 <div key={index} className="mb-4">
                   <div>
                     <p className="text-xs md:text-xl font-bold">
-                      {job.position}
+                      {job?.position}
                     </p>
                     <p className="text-xs md:text-lg font-bold text-gray-400">
-                      {job.company}
+                      {job?.company}
                     </p>
-                    <p className="text-xs md:text-lg font-semibold text-gray-400">
-                      {formattedStartDate} - {formattedEndDate}
-                    </p>
+                    {
+                      job?.fromDate ?
+                        <p className="text-xs md:text-lg font-semibold text-gray-400">{job?.fromDate} - {job?.toDate} </p>
+                        :
+                        ""
+                    }
                   </div>
 
                   <div className="mt-4">
@@ -291,18 +294,16 @@ const CandidateProfile = () => {
             <div role="tablist" className="tabs tabs-bordered relative">
               <a
                 role="tab"
-                className={`tab ${
-                  activeTab === "experience" ? "tab-active" : ""
-                } text-xs md:text-xl font-bold`}
+                className={`tab ${activeTab === "experience" ? "tab-active" : ""
+                  } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("experience")}
               >
                 Experience
               </a>
               <a
                 role="tab"
-                className={`tab ${
-                  activeTab === "education" ? "tab-active" : ""
-                } text-xs md:text-xl font-bold`}
+                className={`tab ${activeTab === "education" ? "tab-active" : ""
+                  } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("education")}
               >
                 Education

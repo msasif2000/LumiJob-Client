@@ -1,5 +1,5 @@
 import { RxAvatar } from "react-icons/rx";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
@@ -125,7 +125,7 @@ const DashBoard = () => {
         <div className="md:flex">
           <div className="lg:w-2/12 xl:max-w-[18rem] border-r">
             {/* === Mobile Menu */}
-            <div className="navbar-start lg:hidden">
+            <div className="dash navbar-start lg:hidden">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
                   <svg
@@ -171,19 +171,17 @@ const DashBoard = () => {
             </div>
 
             {/* === Large Screen Menu */}
-            <div className="hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
               <div>
-                <Link to="/">
-                  <h3 className="text-3xl font-bold text-center">
-                    Lumi<span className="text-[#4869DD]">Jobs</span>
-                  </h3>
-                </Link>
+                <h3 className="text-3xl font-bold text-center">
+                  Lumi<span className="text-[#4869DD]">Jobs</span>
+                </h3>
                 <div className="divider mt-[0.7rem]"></div>
                 <div className="flex items-center m-4 gap-2">
                   <div>
                     {
                       userData?.photo ?
-                        <img src={userData.photo} alt="" className="rounded-full h-10 w-10"/>
+                        <img src={userData.photo} alt="" className="rounded-full h-10 w-10" />
                         :
                         <RxAvatar className="text-2xl" />
                     }
