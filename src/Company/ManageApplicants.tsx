@@ -130,6 +130,9 @@ const ManageApplicants = () => {
         {
           console.log("data send")
         }
+        else{
+          console.log("data Not a send")
+        }
     })
     .catch((error: any) => {
       console.log(error);
