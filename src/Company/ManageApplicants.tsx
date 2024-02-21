@@ -19,7 +19,6 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
     queryKey: ["preSelected", id],
     queryFn: async () => {
@@ -29,8 +28,6 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-
-
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
     queryFn: async () => {
@@ -39,8 +36,6 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-
-
 
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
@@ -54,16 +49,19 @@ const ManageApplicants = () => {
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
 
-    if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) {
+    if (
+      !destination ||
+      (destination.droppableId === source.droppableId &&
+        destination.index === source.index)
+    ) {
       return;
     }
 
     // Check if `infos` is defined and iterable
     if (!infos || !Array.isArray(infos)) {
-      console.error('Invalid `infos` data:', infos);
+      console.error("Invalid `infos` data:", infos);
       return;
     }
-
 
     const updatedState = [...infos];
     console.log(updatedState);
@@ -85,7 +83,6 @@ const ManageApplicants = () => {
         refetchSelect();
       });
   };
-
 
   const perHour = (n: any) => {
     const salary = parseFloat(n);
@@ -153,8 +150,38 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
-                              <div className="flex justify-end">
-                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
+
+                              <div className="flex justify-center ">
+                                <label
+                                  htmlFor="my_modal_6"
+                                  className="btn btn-sm bg-accent hover:bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </label>
+                                <input
+                                  type="checkbox"
+                                  id="my_modal_6"
+                                  className="modal-toggle"
+                                />
+                                <div className="modal" role="dialog">
+                                  <div className="modal-box">
+                                    <form>
+                                      <input type="text" name="" id="" />
+
+                                    </form>
+                                    
+                                    {/* submit buttons */}
+                                    <div className="modal-action flex justify-center">
+                                      <label
+                                        htmlFor="my_modal_6"
+                                        className="btn bg-green-600 hover:bg-green-600 text-white "
+                                      >
+                                        Submit
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -223,8 +250,13 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
-                              <div className="flex justify-end">
-                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
+                              <div className="flex justify-center ">
+                                <button
+                                  className="btn btn-sm bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -293,8 +325,13 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
-                              <div className="flex justify-end">
-                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
+                              <div className="flex justify-center ">
+                                <button
+                                  className="btn btn-sm bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -362,8 +399,13 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
-                              <div className="flex justify-end">
-                                <button className="btn btn-sm bg-accent text-white">Feedback</button>
+                              <div className="flex justify-center ">
+                                <button
+                                  className="btn btn-sm bg-accent
+                                 text-white px-10 pt-3 pb-7"
+                                >
+                                  Feedback
+                                </button>
                               </div>
                             </div>
                           </div>
