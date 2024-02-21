@@ -1,21 +1,24 @@
+import { Link } from "react-router-dom";
 import cta from "../../../assets/signUp.jpg"
 
 const CallToAction = () => {
     return (
-        <div className="max-w-7xl m-4">
-            <div className="flex flex-col items-center justify-center">
-                <h2 className="text-4xl font-bold text-center mt-10">
-                    Ready to get started?
-                </h2>
-                <p className="text-lg text-center mt-4">
-                    Create an account to find the best jobs that match your skills
-                </p>
-                <div className="">
-                    <img src={cta} alt="" className="h-[400px] w-full"/>
+        <div className="max-w-7xl lg:my-4 bg-[#dbe4ff] mx-auto">
+            <div className="md:flex  justify-between items-center lg:px-12 px-4 py-4">
+                <div>
+                    <h2 className="text-4xl font-bold font-heading mt-10 md:text-left text-center">
+                        Ready to get started?
+                    </h2>
+                    <Link to="/signup" className="flex justify-center md:justify-start">
+                        <button className="bg-btnbg text-white px-8 py-2 rounded-lg mt-6">
+                            Create Account
+                        </button>
+                    </Link>
                 </div>
-                <button className="bg-accent text-white px-8 py-2 rounded-lg mt-6">
-                    Create Account
-                </button>
+                <div className="md:flex md:mt-0 mt-4">
+                    <img src={cta} alt="" className="h-[400px] w-full rounded-xl shadow-lg shadow-pink-400" />
+                </div>
+
             </div>
 
         </div>
