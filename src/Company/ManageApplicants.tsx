@@ -5,12 +5,23 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { GoVerified } from "react-icons/go";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { MdCancel } from "react-icons/md";
 
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+  
+
+  const { data: infosJobs } = useQuery({
+    queryKey: ["infosJobs", id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/jobInfo/${id}`);
+      return res.data;
+    },
+    enabled: !!id,
+  });
+ 
 
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
@@ -93,18 +104,25 @@ const ManageApplicants = () => {
     return hourly.toFixed(2);
   };
   interface Comments {
-    anyCements: string;
-    additionalInfo: string;
+    // anyCements: string;
+    comments: string;
+    position: string;
+    companyEmail: string;
+    cadetteEmail: string | null;
     
   }
-  const [additionalInfo, setAdditionalInfo] = useState<string>('');
+  const [comments, setComments] = useState<string>('');
   const feedBack = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const anyCements = (form.elements.namedItem("anyCements") as HTMLInputElement).value;
-
-    const allText: Comments = { anyCements, additionalInfo };
+    // const form = e.currentTarget;
+    // const anyCements = (form.elements.namedItem("anyCements") as HTMLInputElement).value;
+     const position = infos[0].position;
+     const cadetteEmail = infos[0]?.email;
+     const companyEmail = infosJobs.email;
+    const allText: Comments = {  comments, position, cadetteEmail, companyEmail };
     console.log(allText);
+    console.log(infosJobs)
+    
 
   };
 
@@ -204,9 +222,9 @@ const ManageApplicants = () => {
                                         <textarea
                                           id="additionalInfo"
                                           name="additionalInfo"
-                                          value={additionalInfo}
+                                          value={comments}
                                           onChange={(e) =>
-                                            setAdditionalInfo(e.target.value)
+                                            setComments(e.target.value)
                                           }
                                           className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
                                           rows={4}
