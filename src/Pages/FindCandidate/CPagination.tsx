@@ -1,17 +1,17 @@
 interface CPaginationProps {
-    totalCandidates: number;
-    candidatesPerPage: number;
+    totalData: number;
+    dataPerPage: number;
     currentPage: number;
     onPageChange: (pageNumber: number) => void;
   }
   
   const CPagination: React.FC<CPaginationProps> = ({
-    totalCandidates,
-    candidatesPerPage,
+    totalData,
+    dataPerPage,
     currentPage,
     onPageChange,
   }) => {
-    const numberOfPages = Math.ceil(totalCandidates / candidatesPerPage);
+    const numberOfPages = Math.ceil(totalData / dataPerPage);
     const pages = Array.from({ length: numberOfPages }, (_, index) => index + 1);
   
     const handlePageChange = (pageNumber: number) => {

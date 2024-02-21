@@ -3,6 +3,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import usePostedJob from "../hooks/usePostedJob";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import CPagination from "../Pages/FindCandidate/CPagination";
 
 
 
@@ -21,6 +23,16 @@ const ManageJobs = () => {
 
   const axiosPublic = useAxiosPublic();
   const [PostedData, refetch] = usePostedJob();
+
+  const [dataPerPage] = useState<number>(10);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+
   const handleDelete = (id: string) => {
     Swal.fire({
       title: "Are you want to delete this post from database?",
@@ -83,7 +95,8 @@ const ManageJobs = () => {
             </thead>
             <tbody>
               {
-                PostedData.map((jobs: PostedJob, index: number) => <tr key={jobs._id}>
+                PostedData
+                  .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((jobs: PostedJob, index: number) => <tr key={jobs._id}>
                   <th>
                     {index + 1}
                   </th>
@@ -117,6 +130,17 @@ const ManageJobs = () => {
 
             </tbody>
           </table>
+          {PostedData.length > dataPerPage && (
+            <div className="py-12">
+              {/* ==>  Pagination <== */}
+              <CPagination
+                totalData={PostedData.length}
+                dataPerPage={dataPerPage}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              ></CPagination>
+            </div>
+          )}
         </div>
       </div>
     </div>
