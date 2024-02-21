@@ -2,9 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
+import CPagination from "../Pages/FindCandidate/CPagination";
+import { useState } from "react";
 
 const ManageCandidate = () => {
   const axiosPublic = useAxiosPublic();
+  const [candidatesPerPage] = useState<number>(10);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const { refetch, data: candidates = [] } = useQuery({
     queryKey: ["candidates"],
@@ -13,6 +17,10 @@ const ManageCandidate = () => {
       return res.data;
     },
   });
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   // console.log(candidates);
   const handleDelete = (id: string) => {
@@ -64,7 +72,8 @@ const ManageCandidate = () => {
             </tr>
           </thead>
           <tbody>
-            {candidates?.map((candidate: any, index: number) => (
+            {candidates
+              .slice((currentPage - 1) * candidatesPerPage, currentPage * candidatesPerPage).map((candidate: any, index: number) => (
               <tr key={candidate._id}>
                 <th>{index + 1}</th>
 
@@ -90,6 +99,17 @@ const ManageCandidate = () => {
             ))}
           </tbody>
         </table>
+        {candidates.length > candidatesPerPage && (
+          <div className="py-12">
+            {/* ==>  Pagination <== */}
+            <CPagination
+              totalCandidates={candidates.length}
+              candidatesPerPage={candidatesPerPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            ></CPagination>
+          </div>
+        )}
       </div>
     </>
   );
