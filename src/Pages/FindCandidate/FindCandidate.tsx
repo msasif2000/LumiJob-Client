@@ -7,7 +7,7 @@ import FindCandidateCard from "./FindCandidateCard";
 import Candidate from "./CandidateType";
 import CPagination from "./CPagination";
 import CSearch from "./CSearch";
-
+import { Helmet } from "react-helmet-async";
 
 const FindCandidate: React.FC = () => {
   const [currentCandidates, setCurrentCandidates] = useState<Candidate[]>([]);
@@ -26,10 +26,10 @@ const FindCandidate: React.FC = () => {
     setCurrentCandidates(allCandidates);
   }, [allCandidates]);
 
-//   const handleFilterChange = (filteredData: Job[]) => {
-//     setCurrentCandidates(filteredData);
-//     setCurrentPage(1); // Reset to first page when filtering
-//   };
+  //   const handleFilterChange = (filteredData: Job[]) => {
+  //     setCurrentCandidates(filteredData);
+  //     setCurrentPage(1); // Reset to first page when filtering
+  //   };
 
   const handleSearchResult = (searchData: any[]) => {
     setCurrentCandidates(searchData);
@@ -42,10 +42,11 @@ const FindCandidate: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Find Candidate | LumiJobs</title>
+      </Helmet>
       <div className="">
         <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
-          
-
           {/*=======> Search <============= */}
           <CSearch onSearchResult={handleSearchResult}></CSearch>
         </div>
@@ -54,18 +55,23 @@ const FindCandidate: React.FC = () => {
           <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:px-5 xl:gap-6">
             {/* <div className="lg:w-1/4 md:w-1/3">
               {/*=======> Left column <============= */}
-              {/* <CFIlters onFilterChange={handleFilterChange} /> */}
-            {/* </div> */} 
+            {/* <CFIlters onFilterChange={handleFilterChange} /> */}
+            {/* </div> */}
 
             {/* =============> Middle column <============== */}
             <div className="lg:w-2/4 md:w-2/3">
-
               {/* ===> Showing jobs <=== */}
               <div className="grid grid-cols-1 px-3">
                 {currentCandidates
-                  .slice((currentPage - 1) * candidatesPerPage, currentPage * candidatesPerPage)
+                  .slice(
+                    (currentPage - 1) * candidatesPerPage,
+                    currentPage * candidatesPerPage
+                  )
                   .map((candidate: Candidate) => (
-                    <FindCandidateCard key={candidate._id} candidate={candidate}></FindCandidateCard>
+                    <FindCandidateCard
+                      key={candidate._id}
+                      candidate={candidate}
+                    ></FindCandidateCard>
                   ))}
               </div>
 

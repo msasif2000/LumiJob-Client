@@ -5,10 +5,14 @@ import HowItWorks from "./HowItWorks/HowItWorks";
 
 import TopCompany from "../../component/TopCompany/TopCompany";
 import TrustedByCompany from "./TrustedByCompany/TrustedByCompany";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Home | LumiJobs</title>
+      </Helmet>
       <Banner />
       <TrustedByCompany></TrustedByCompany>
       <HowItWorks />

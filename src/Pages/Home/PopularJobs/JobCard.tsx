@@ -9,7 +9,7 @@ import "aos/dist/aos.css";
 import BookmarkButton from "../../../component/Shared/BookmarkButton";
 import Job from "./Job";
 import { useEffect } from "react";
-import './quickly-button.css';
+import "./quickly-button.css";
 import { Link } from "react-router-dom";
 interface JobCardsProps {
   job: Job;
@@ -18,7 +18,7 @@ interface JobCardsProps {
 const JobCard: React.FC<JobCardsProps> = ({ job }) => {
   const { _id, picture, location, title, salaryRange, deadline } = job;
   const jobPostId = _id;
- 
+
   useEffect(() => {
     Aos.init();
   }, []);
@@ -75,19 +75,19 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
 
       {/* =========> Company Logo And Action <============== */}
 
-      <div className="flex items-center justify-between py-4 px-10">
+      <div className="flex items-center justify-between py-8 px-4">
         <div>
           <img src={picture} alt="logo" className=" h-6 " />
         </div>
         {/*Quickly Apply button with model react form */}
         <div>
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
-          <Link to={`details/${jobPostId}`}
-            className="py-2 px-4 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-3xl"
+          <Link
+            to={`details/${jobPostId}`}
+            className="py-2 px-6 bg-black  hover:bg-accentTwo text-white font-semibold text-sm rounded-3xl"
           >
-            See Details
+            Details
           </Link>
-         
         </div>
       </div>
     </div>

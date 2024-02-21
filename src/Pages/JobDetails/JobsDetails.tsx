@@ -7,6 +7,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import UniLoader from "../../component/err & loading/UniLoader";
 import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 interface JobDetails {
   _id: string;
@@ -152,6 +153,9 @@ const JobsDetails: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title> {`${title}`} | LumiJobs</title>
+      </Helmet>
       <div className="max-w-screen-2xl mx-auto py-8 px-4">
         <div>
           {/* Display jobs */}

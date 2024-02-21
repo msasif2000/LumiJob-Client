@@ -7,6 +7,7 @@ import "./contact.css";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { BiSolidPhoneCall } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
 
@@ -36,6 +37,9 @@ const Contact = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Contacts | LumiJobs</title>
+      </Helmet>
       <div className="min-h-screen bg-[#fdfdfd]">
         <div className="max-w-screen-2xl mx-auto">
           <div>

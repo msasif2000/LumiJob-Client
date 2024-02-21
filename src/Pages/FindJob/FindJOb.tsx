@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import Job from "../Home/PopularJobs/Job";
 import Pagination from "./Pagination";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const FindJob: React.FC = () => {
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
@@ -42,6 +43,9 @@ const FindJob: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Find Jobs | LumiJobs</title>
+      </Helmet>
       <div className="">
         <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
@@ -64,14 +68,18 @@ const FindJob: React.FC = () => {
             <div className="lg:w-2/4 md:w-2/3">
               <div className="flex justify-between items-center min-h-32 px-4">
                 <h4 className="font-semibold font-heading text-2xl">
-                  <span className="text-[#486DD9]">{currentJobs.length}</span> Jobs Available
+                  <span className="text-[#486DD9]">{currentJobs.length}</span>{" "}
+                  Jobs Available
                 </h4>
               </div>
 
               {/* ===> Showing jobs <=== */}
               <div className="grid grid-cols-1 gap-8 p-3">
                 {currentJobs
-                  .slice((currentPage - 1) * jobsPerPage, currentPage * jobsPerPage)
+                  .slice(
+                    (currentPage - 1) * jobsPerPage,
+                    currentPage * jobsPerPage
+                  )
                   .map((job: Job) => (
                     <FindJobCard key={job._id} job={job}></FindJobCard>
                   ))}
