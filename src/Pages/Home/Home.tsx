@@ -5,6 +5,7 @@ import HowItWorks from "./HowItWorks/HowItWorks";
 
 import TopCompany from "../../component/TopCompany/TopCompany";
 import TrustedByCompany from "./TrustedByCompany/TrustedByCompany";
+import CallToAction from "./CallToAction/CallToAction";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       {/* <Step></Step> */}
       <PopularJobs />
       <TopCompany />
+      <CallToAction />
     </div>
   );
 };
