@@ -5,6 +5,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { GoVerified } from "react-icons/go";
+import { FormEvent, useState } from "react";
+import { MdCancel } from "react-icons/md";
 
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
@@ -90,6 +92,21 @@ const ManageApplicants = () => {
     const hourly = daily / 24;
     return hourly.toFixed(2);
   };
+  interface Comments {
+    anyCements: string;
+    additionalInfo: string;
+    
+  }
+  const [additionalInfo, setAdditionalInfo] = useState<string>('');
+  const feedBack = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const anyCements = (form.elements.namedItem("anyCements") as HTMLInputElement).value;
+
+    const allText: Comments = { anyCements, additionalInfo };
+    console.log(allText);
+
+  };
 
   return (
     <div className=" mx-auto my-3">
@@ -151,7 +168,7 @@ const ManageApplicants = () => {
                                 </p>
                               </div>
 
-                              <div className="flex justify-center ">
+                              <div className="flex justify-center  ">
                                 <label
                                   htmlFor="my_modal_6"
                                   className="btn btn-sm bg-accent hover:bg-accent
@@ -164,22 +181,45 @@ const ManageApplicants = () => {
                                   id="my_modal_6"
                                   className="modal-toggle"
                                 />
-                                <div className="modal" role="dialog">
-                                  <div className="modal-box">
-                                    <form>
-                                      <input type="text" name="" id="" />
+                                <div className="modal " role="dialog">
+                                  <div className="modal-box bg-gray-100 mb-10">
+                                  <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                      <label
+                                        htmlFor="my_modal_6"
+                                        className=" btn  text-black text-2xl "
+                                      >
+                                        <MdCancel />
+                                      </label>
+                                    </div>
+                                    <form onSubmit={feedBack} className="space-y-4 ">
+                                      
+                                      <div className="p-4
+                                     bg-white rounded-2xl">
+                                        <label
+                                          htmlFor="additionalInfo"
+                                          className="block text-xl font-bold text-black"
+                                        >
+                                          Anything than can be improved?
+                                        </label>
+                                        <textarea
+                                          id="additionalInfo"
+                                          name="additionalInfo"
+                                          value={additionalInfo}
+                                          onChange={(e) =>
+                                            setAdditionalInfo(e.target.value)
+                                          }
+                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                          rows={4}
+                                          placeholder="Enter Your Feedback..."
+                                        ></textarea>
+                                      </div>
+                                     <input  className="w-full btn bg-green-600 hover:bg-green-600 text-white " type="submit" value="submit" />
+                                     
 
                                     </form>
                                     
-                                    {/* submit buttons */}
-                                    <div className="modal-action flex justify-center">
-                                      <label
-                                        htmlFor="my_modal_6"
-                                        className="btn bg-green-600 hover:bg-green-600 text-white "
-                                      >
-                                        Submit
-                                      </label>
-                                    </div>
+
+                                    
                                   </div>
                                 </div>
                               </div>
