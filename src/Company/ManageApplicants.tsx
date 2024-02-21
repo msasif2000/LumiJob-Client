@@ -2,7 +2,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { GoVerified } from "react-icons/go";
 import { FormEvent, useEffect, useState } from "react";
@@ -120,8 +120,28 @@ const ManageApplicants = () => {
      const cadetteEmail = infos[0]?.email;
      const companyEmail = infosJobs.email;
     const allText: Comments = {  comments, position, cadetteEmail, companyEmail };
-    console.log(allText);
-    console.log(infosJobs)
+     console.log(allText);
+    // console.log(infosJobs)
+    axiosPublic
+    .post('/sendFeedback' , allText)
+    .then((response: any) => {
+      console.log(response.data)
+        if (response.data.insertedId)
+        {
+          console.log("data send")
+        }
+    })
+    .catch((error: any) => {
+      console.log(error);
+      toast.error("Job Posting Failed", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+       
+      });
+    });
+
     
 
   };
