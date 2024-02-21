@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const ManageCandidate = () => {
   const axiosPublic = useAxiosPublic();
-  const [candidatesPerPage] = useState<number>(10);
+  const [dataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const { refetch, data: candidates = [] } = useQuery({
@@ -17,6 +17,7 @@ const ManageCandidate = () => {
       return res.data;
     },
   });
+
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -73,7 +74,7 @@ const ManageCandidate = () => {
           </thead>
           <tbody>
             {candidates
-              .slice((currentPage - 1) * candidatesPerPage, currentPage * candidatesPerPage).map((candidate: any, index: number) => (
+              .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((candidate: any, index: number) => (
               <tr key={candidate._id}>
                 <th>{index + 1}</th>
 
@@ -99,12 +100,12 @@ const ManageCandidate = () => {
             ))}
           </tbody>
         </table>
-        {candidates.length > candidatesPerPage && (
+        {candidates.length > dataPerPage && (
           <div className="py-12">
             {/* ==>  Pagination <== */}
             <CPagination
-              totalCandidates={candidates.length}
-              candidatesPerPage={candidatesPerPage}
+              totalData={candidates.length}
+              dataPerPage={dataPerPage}
               currentPage={currentPage}
               onPageChange={handlePageChange}
             ></CPagination>
