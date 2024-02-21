@@ -1,5 +1,5 @@
 import { RxAvatar } from "react-icons/rx";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
@@ -173,17 +173,15 @@ const DashBoard = () => {
             {/* === Large Screen Menu */}
             <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
               <div>
-                <Link to="/">
-                  <h3 className="text-3xl font-bold text-center">
-                    Lumi<span className="text-[#4869DD]">Jobs</span>
-                  </h3>
-                </Link>
+                <h3 className="text-3xl font-bold text-center">
+                  Lumi<span className="text-[#4869DD]">Jobs</span>
+                </h3>
                 <div className="divider mt-[0.7rem]"></div>
                 <div className="flex items-center m-4 gap-2">
                   <div>
                     {
                       userData?.photo ?
-                        <img src={userData.photo} alt="" className="rounded-full h-10 w-10"/>
+                        <img src={userData.photo} alt="" className="rounded-full h-10 w-10" />
                         :
                         <RxAvatar className="text-2xl" />
                     }
