@@ -12,7 +12,7 @@ import CSearch from "./CSearch";
 const FindCandidate: React.FC = () => {
   const [currentCandidates, setCurrentCandidates] = useState<Candidate[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [candidatesPerPage] = useState<number>(4);
+  const [dataPerPage] = useState<number>(4);
   const axiosPublic = useAxiosPublic();
   const { data: allCandidates = [] } = useQuery({
     queryKey: ["allCandidates"],
@@ -63,18 +63,18 @@ const FindCandidate: React.FC = () => {
               {/* ===> Showing jobs <=== */}
               <div className="grid grid-cols-1 px-3">
                 {currentCandidates
-                  .slice((currentPage - 1) * candidatesPerPage, currentPage * candidatesPerPage)
+                  .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage)
                   .map((candidate: Candidate) => (
                     <FindCandidateCard key={candidate._id} candidate={candidate}></FindCandidateCard>
                   ))}
               </div>
 
-              {currentCandidates.length > candidatesPerPage && (
+              {currentCandidates.length > dataPerPage && (
                 <div className="py-12">
                   {/* ==>  Pagination <== */}
                   <CPagination
-                    totalCandidates={currentCandidates.length}
-                    candidatesPerPage={candidatesPerPage}
+                    totalData={currentCandidates.length}
+                    dataPerPage={dataPerPage}
                     currentPage={currentPage}
                     onPageChange={handlePageChange}
                   ></CPagination>

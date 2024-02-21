@@ -201,7 +201,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   >
                     {user ? (
                       <img
-                        alt="Tailwind CSS Navbar component"
+                        alt=""
                         src={
                           photo
                             ? photo

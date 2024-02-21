@@ -22,6 +22,9 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
  
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
+  const [selectedId, setSelectedId] = useState<any | null>(null)
 
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
@@ -147,6 +150,33 @@ const ManageApplicants = () => {
 
     
 
+  };
+
+  const handleOpenModal = (candidate: any) => {
+    setSelectedCandidate(candidate);
+    setOpenModal(true);
+    setSelectedId(candidate.id)
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const googleMeetLink = formData.get("googleMeetLink");
+    const time = formData.get("time");
+    const date = formData.get("date");
+    const candidate = selectedId;
+    const jobId = id
+
+    // Now you have access to the values of the form fields
+    console.log("Google Meet Link:", googleMeetLink);
+    console.log("Time:", time);
+    console.log("Date:", date);
+    console.log("Candidate:", candidate);
+    console.log("jobId:", jobId);
+
+
+    // Perform any further actions such as validation or submitting the form data
   };
 
   return (
@@ -377,7 +407,7 @@ const ManageApplicants = () => {
                           {...provided.dragHandleProps}
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
-                          <div className="space-x-3 flex p-2">
+                          <div className="space-x-3 flex p-2 relative">
                             <div className="p-5 bg-blue-100 rounded-xl">
                               <img
                                 src={info?.profile}
@@ -415,6 +445,60 @@ const ManageApplicants = () => {
                                 </button>
                               </div>
                             </div>
+                            {openModal && selectedCandidate && (
+                              <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+                                <form
+                                  onSubmit={handleSubmit}
+                                  className="bg-white p-8 rounded-lg"
+                                >
+                                  <h2 className="text-lg font-bold mb-4">
+                                    Schedule Interview for{" "}
+                                    {selectedCandidate?.name}
+                                  </h2>
+
+                                  <div className="mb-4">
+                                    <input
+                                      type="text"
+                                      name="googleMeetLink"
+                                      placeholder="Google meet link"
+                                      className="w-full border border-gray-300 rounded-md p-2"
+                                    />
+                                  </div>
+                                  <div className="flex space-x-3">
+                                    <div className="mb-4">
+                                      <input
+                                        type="time"
+                                        name="time"
+                                        className="border border-gray-300 rounded-md p-2 w-[180px]"
+                                      />
+                                    </div>
+                                    <div className="mb-4">
+                                      <input
+                                        type="date"
+                                        name="date"
+                                        className="border border-gray-300 rounded-md p-2 w-[180px]"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="flex justify-end">
+                                    <button
+                                      type="submit"
+                                      className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-600 w-1/2"
+                                    >
+                                      Schedule
+                                    </button>
+                                    <button
+                                      className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 w-1/2"
+                                      onClick={() => {
+                                        setOpenModal(false);
+                                      }}
+                                    >
+                                      Cancel
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
