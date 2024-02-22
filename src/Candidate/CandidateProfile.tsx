@@ -102,10 +102,14 @@ const CandidateProfile = () => {
                         ""
                     }
                   </div>
-
-                  <div className="mt-4">
-                    <hr />
-                  </div>
+                  {
+                    job?.fromDate ?
+                      <div className="mt-4">
+                        <hr />
+                      </div>
+                      :
+                      ""
+                  }
                 </div>
               );
             })}
