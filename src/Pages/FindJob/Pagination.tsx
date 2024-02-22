@@ -21,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   const renderPageNumbers = () => {
-    const pageNumbersToShow = 4; 
+    const pageNumbersToShow = window.innerWidth < 768 ? 4 : 7; 
 
     if (numberOfPages <= pageNumbersToShow) {
       return pages.map((page) => (
