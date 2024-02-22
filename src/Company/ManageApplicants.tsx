@@ -179,8 +179,9 @@ const ManageApplicants = () => {
     const date = formData.get("date");
     const candidate = selectedId;
     const jobId = id;
+    const email = selectedCandidate.email
 
-    console.log(googleMeetLink, time, date, candidate, jobId)
+    console.log(googleMeetLink, time, date, candidate, jobId, email)
   };
 
   return (
