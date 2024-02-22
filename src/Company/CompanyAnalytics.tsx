@@ -69,6 +69,8 @@ const CompanyAnalytics: FunctionComponent = () => {
         ];
     }
 
+    const colors = ["#0088FE", "#00C49F", "#f682d3"];
+
     return (
         <div>
             <div className="min-h-20 mt-4  rounded-md p-6 pb-10">
@@ -126,7 +128,7 @@ const CompanyAnalytics: FunctionComponent = () => {
                                 {pieChartData.map((entry, index) => (
                                     <Cell
                                         key={`cell-${index}`}
-                                        fill={`#${Math.floor(Math.random() * 16777215).toString(16)}`}
+                                        fill={colors[index % colors.length]} // Assign predefined colors
                                     />
                                 ))}
                             </Pie>

@@ -1,45 +1,46 @@
 import { MdOutlineModeEdit } from "react-icons/md";
-import {
-  Bar,
-  BarChart,
-  Cell,
-  Legend,
-  Pie,
-  PieChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-} from "recharts";
-import { PiBagSimpleFill } from "react-icons/pi";
-import { LiaIndustrySolid } from "react-icons/lia";
-import { IoIosPeople } from "react-icons/io";
-import { IoMailOpen } from "react-icons/io5";
-import { GiConfirmed } from "react-icons/gi";
-import { FunctionComponent, useEffect, useState } from "react";
+// import {
+//   Bar,
+//   BarChart,
+//   Cell,
+//   Legend,
+//   Pie,
+//   PieChart,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+// } from "recharts";
+// import { PiBagSimpleFill } from "react-icons/pi";
+// import { LiaIndustrySolid } from "react-icons/lia";
+// import { IoIosPeople } from "react-icons/io";
+// import { IoMailOpen } from "react-icons/io5";
+// import { GiConfirmed } from "react-icons/gi";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
 import UniLoader from "../component/err & loading/UniLoader";
+import CompanyAnalytics from "./CompanyAnalytics";
 
-interface CustomizedLabelProps {
-  cx: number;
-  cy: number;
-  midAngle: number;
-  innerRadius: number;
-  outerRadius: number;
-  percent: number;
-}
+// interface CustomizedLabelProps {
+//   cx: number;
+//   cy: number;
+//   midAngle: number;
+//   innerRadius: number;
+//   outerRadius: number;
+//   percent: number;
+// }
 
-interface JobData {
-  name: string;
-  value: number;
-}
+// interface JobData {
+//   name: string;
+//   value: number;
+// }
 
-interface JobChartData {
-  name: string;
-  pv: number;
-}
+// interface JobChartData {
+//   name: string;
+//   pv: number;
+// }
 
 const CompanyProfile = () => {
   const axiosPublic = useAxiosPublic();
@@ -58,67 +59,67 @@ const CompanyProfile = () => {
     }
   }, [user]);
 
-  const data: JobData[] = [
-    { name: "Total job", value: 8 },
-    { name: "Total applied", value: 4 },
-    { name: "Total visitor", value: 10 },
-  ];
-  const data2: JobChartData[] = [
-    {
-      name: "Controls Engineer",
-      pv: 55,
-    },
-    {
-      name: "Software Engineer",
-      pv: 100,
-    },
-    {
-      name: "Designer",
-      pv: 80,
-    },
-    {
-      name: "Supervisor",
-      pv: 90,
-    },
-    {
-      name: "Project Engineer at Tesla",
-      pv: 70,
-    },
-    {
-      name: "Data Specialist",
-      pv: 150,
-    },
-    {
-      name: "Solar Installer at Tesla",
-      pv: 300,
-    },
-  ];
-  const COLORS = ["#0088FE", "#00C49F", "#FF8042"];
+  // const data: JobData[] = [
+  //   { name: "Total job", value: 8 },
+  //   { name: "Total applied", value: 4 },
+  //   { name: "Total visitor", value: 10 },
+  // ];
+  // const data2: JobChartData[] = [
+  //   {
+  //     name: "Controls Engineer",
+  //     pv: 55,
+  //   },
+  //   {
+  //     name: "Software Engineer",
+  //     pv: 100,
+  //   },
+  //   {
+  //     name: "Designer",
+  //     pv: 80,
+  //   },
+  //   {
+  //     name: "Supervisor",
+  //     pv: 90,
+  //   },
+  //   {
+  //     name: "Project Engineer at Tesla",
+  //     pv: 70,
+  //   },
+  //   {
+  //     name: "Data Specialist",
+  //     pv: 150,
+  //   },
+  //   {
+  //     name: "Solar Installer at Tesla",
+  //     pv: 300,
+  //   },
+  // ];
+  // const COLORS = ["#0088FE", "#00C49F", "#FF8042"];
 
-  const renderCustomizedLabel: FunctionComponent<CustomizedLabelProps> = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-  }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos((-midAngle * Math.PI) / 180);
-    const y = cy + radius * Math.sin((-midAngle * Math.PI) / 180);
+  // const renderCustomizedLabel: FunctionComponent<CustomizedLabelProps> = ({
+  //   cx,
+  //   cy,
+  //   midAngle,
+  //   innerRadius,
+  //   outerRadius,
+  //   percent,
+  // }) => {
+  //   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  //   const x = cx + radius * Math.cos((-midAngle * Math.PI) / 180);
+  //   const y = cy + radius * Math.sin((-midAngle * Math.PI) / 180);
 
-    return (
-      <text
-        x={x}
-        y={y}
-        fill="white"
-        textAnchor={x > cx ? "start" : "end"}
-        dominantBaseline="central"
-      >
-        {`${(percent * 100).toFixed(0)}%`}
-      </text>
-    );
-  };
+  //   return (
+  //     <text
+  //       x={x}
+  //       y={y}
+  //       fill="white"
+  //       textAnchor={x > cx ? "start" : "end"}
+  //       dominantBaseline="central"
+  //     >
+  //       {`${(percent * 100).toFixed(0)}%`}
+  //     </text>
+  //   );
+  // };
 
   if (!profile) {
     return <UniLoader />;
@@ -244,9 +245,11 @@ const CompanyProfile = () => {
             </div>
           </div>
         </div>
-        <div className="min-h-20 mt-4  rounded-md p-6 pb-10">
+        <div>
+           <CompanyAnalytics></CompanyAnalytics>
+        </div>
+        {/* <div className="min-h-20 mt-4  rounded-md p-6 pb-10">
           {" "}
-          {/* border-2 border-[#6886968f] */}
           <h3 className="text-3xl font-medium text-[#688696]">
             Company analytics
           </h3>
@@ -362,7 +365,7 @@ const CompanyProfile = () => {
               </h2>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
