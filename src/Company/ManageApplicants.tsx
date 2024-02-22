@@ -36,7 +36,7 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-  // For dnd 
+  // For dnd
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
     queryFn: async () => {
@@ -74,7 +74,6 @@ const ManageApplicants = () => {
   });
   // Dnd data fetching ends here
 
-
   // Drag and drop logical func
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
@@ -87,7 +86,6 @@ const ManageApplicants = () => {
       return;
     }
 
-   
     if (!infos || !Array.isArray(infos)) {
       console.error("Invalid `infos` data:", infos);
       return;
@@ -114,7 +112,6 @@ const ManageApplicants = () => {
       });
   };
 
-
   // For converting candidate salary to hourly rate
   const perHour = (n: any) => {
     const salary = parseFloat(n);
@@ -122,8 +119,6 @@ const ManageApplicants = () => {
     const hourly = daily / 24;
     return hourly.toFixed(2);
   };
- 
-
 
   // logical func for feedback
   const feedBack = (e: FormEvent<HTMLFormElement>) => {
@@ -179,9 +174,27 @@ const ManageApplicants = () => {
     const date = formData.get("date");
     const candidate = selectedId;
     const jobId = id;
-    const email = selectedCandidate.email
+    const email = selectedCandidate.email;
 
-    console.log(googleMeetLink, time, date, candidate, jobId, email)
+    const interviewData = {
+      googleMeetLink,
+      time,
+      date,
+      candidate,
+      jobId,
+      email,
+    };
+
+    console.log(interviewData);
+
+    axiosPublic
+      .post("/schedule-interview", interviewData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
