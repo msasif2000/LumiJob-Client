@@ -18,7 +18,7 @@ const DashBoard = () => {
   const [userData, setUserData] = useState({} as any);
   const [role, setRole] = useState("");
 
-  console.log(user);
+  //console.log(user);
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isNavOpen) {

@@ -59,7 +59,7 @@ const CheackoutForm = () => {
     }
   }, [user]);
 
-  console.log(subs);
+  //console.log(subs);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
