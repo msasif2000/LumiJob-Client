@@ -25,14 +25,14 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     setShowConfirmation(false);
   };
 
-  const shortDesc = (desc: string, maxWord: number)=>{
+  const shortDesc = (desc: string, maxWord: number) => {
     const words = desc.split(" ");
     if (words.length > maxWord) {
       return words.slice(0, maxWord).join(" ") + "...";
     } else {
       return desc;
     }
-  }
+  };
 
   return (
     <div
@@ -53,7 +53,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.jobType}</p>
               <p className="text-violet-500 text-right font-semibold">
-                {job?.status}
+                {job?.status === "applicant" ? "up-opened" : job?.status}
               </p>
             </div>
             <div className="flex justify-between items-center">

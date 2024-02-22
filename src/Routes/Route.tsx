@@ -48,7 +48,6 @@ import ManageApplicants from "../Company/ManageApplicants";
 import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -106,7 +105,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/manage-applicants/:id",
-        element: <ManageApplicants />
+        element: (
+          <PrivateRoute>
+            <ManageApplicants />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/top-company-detailsProfiles/:id",
@@ -196,11 +199,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "resume",
-        element: <CandidateResume></CandidateResume>
+        element: <CandidateResume></CandidateResume>,
       },
       {
         path: "resume/update",
-        element: <CandidateResumeUpdate></CandidateResumeUpdate>
+        element: <CandidateResumeUpdate></CandidateResumeUpdate>,
       },
       {
         path: "appliedJobs",
@@ -242,11 +245,11 @@ export const router = createBrowserRouter([
       },
       {
         path: ":id/edit-blog",
-        element: <EditBlog />
+        element: <EditBlog />,
       },
       {
         path: "seminar-posted",
-        element: <Seminars />
+        element: <Seminars />,
       },
       // {
       //   path: "post-a-seminar",
