@@ -1,14 +1,18 @@
-import { MdOutlineWorkHistory } from "react-icons/md"; 
-import { SiSimpleanalytics } from "react-icons/si"; 
-import { GrGroup } from "react-icons/gr"; 
-import { MdOutlineEventAvailable } from "react-icons/md"; 
-import { GrBlog } from "react-icons/gr"; 
-import { BiBuildingHouse } from "react-icons/bi"; 
-import { BsFillBookmarkCheckFill } from "react-icons/bs"; 
-import { GrWorkshop } from "react-icons/gr"; 
-import { AiOutlineFileDone } from "react-icons/ai"; 
-import { MdManageAccounts } from "react-icons/md"; 
-import { BiHomeSmile } from "react-icons/bi"; 
+import { BiBookmark } from "react-icons/bi"; 
+import { MdOutlinePayments } from "react-icons/md"; 
+import { BiLineChart } from "react-icons/bi";
+import { MdOutlineAddHomeWork } from "react-icons/md";
+import { MdOutlineWorkOutline } from "react-icons/md";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { MdOutlineWorkHistory } from "react-icons/md";
+import { GrGroup } from "react-icons/gr";
+import { MdOutlineEventAvailable } from "react-icons/md";
+import { GrBlog } from "react-icons/gr";
+import { BiBuildingHouse } from "react-icons/bi";
+import { GrWorkshop } from "react-icons/gr";
+import { AiOutlineFileDone } from "react-icons/ai";
+import { MdManageAccounts } from "react-icons/md";
+import { BiHomeSmile } from "react-icons/bi";
 import { RxAvatar } from "react-icons/rx";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
@@ -69,13 +73,13 @@ const DashBoard = () => {
           <NavLink to="/dashboard/candidateProfile"><MdManageAccounts className="text-2xl" />Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/resume"><AiOutlineFileDone className="text-xl font-bold" />Resume</NavLink>
+          <NavLink to="/dashboard/resume"><AiOutlineFileDone className="text-2xl" />Resume</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/appliedJobs"><GrWorkshop className="text-xl font-bold" />Applied Jobs</NavLink>
+          <NavLink to="/dashboard/appliedJobs"><GrWorkshop className="text-xl" />Applied Jobs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/bookmarks"><BsFillBookmarkCheckFill />Bookmarks</NavLink>
+          <NavLink to="/dashboard/bookmarks"><BiBookmark className="text-2xl"/>Bookmarks</NavLink>
         </li>
         {/* <li>
           <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
@@ -84,44 +88,40 @@ const DashBoard = () => {
     ) : role === "company" ? (
       <>
         <li>
-          <NavLink to="/dashboard/companyProfile"><BiBuildingHouse  className="text-xl"/>Profile</NavLink>
+          <NavLink to="/dashboard/companyProfile"><BiBuildingHouse className="text-xl" />Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/postedJobs"><MdOutlineWorkHistory className="text-xl"/>Job Posts</NavLink>
+          <NavLink to="/dashboard/postedJobs"><MdOutlineWorkHistory className="text-xl" />Job Posts</NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/blog-posted"><GrBlog />Blogs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/seminar-posted"><MdOutlineEventAvailable className="text-xl"/>Seminars</NavLink>
+          <NavLink to="/dashboard/seminar-posted"><MdOutlineEventAvailable className="text-xl" />Seminars</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/companyAnalytics"><SiSimpleanalytics />Analytics</NavLink>
+          <NavLink to="/dashboard/companyAnalytics"><BiLineChart className="text-xl" />Analytics</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/employees"><GrGroup className="text-xl"/>Employees</NavLink>
+          <NavLink to="/dashboard/employees"><GrGroup className="text-xl" />Employees</NavLink>
         </li>
       </>
     ) : role === "admin" ? (
       <>
         <li>
-          <NavLink to="/dashboard/adminDashboard">DashBoard</NavLink>
+          <NavLink to="/dashboard/adminDashboard"><BiLineChart className="text-2xl" />Analytics</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-candidate">
-            Manage Candidate
-          </NavLink>
+          <NavLink to="/dashboard/admin/manage-candidate"><AiOutlineUsergroupAdd className="text-2xl" />Manage Candidate</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-company">Manage Company</NavLink>
+          <NavLink to="/dashboard/admin/manage-company"><MdOutlineAddHomeWork className="text-2xl" />Manage Company</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-jobs">Manage Jobs</NavLink>
+          <NavLink to="/dashboard/admin/manage-jobs"><MdOutlineWorkOutline className="text-2xl" />Manage Jobs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-payments">
-            Manage Payments
-          </NavLink>
+          <NavLink to="/dashboard/admin/manage-payments"><MdOutlinePayments className="text-2xl"/>Manage Payments</NavLink>
         </li>
       </>
     ) : (
@@ -208,7 +208,7 @@ const DashBoard = () => {
                 <div className="divider mx-4"></div>
                 <ul className="menu text-xl">
                   <li>
-                    <NavLink to="/"><BiHomeSmile  className="text-2xl" /> Home</NavLink>
+                    <NavLink to="/"><BiHomeSmile className="text-2xl" /> Home</NavLink>
                   </li>
                   <li>
                     <button
@@ -220,7 +220,7 @@ const DashBoard = () => {
                     </button>
                   </li>
                 </ul>
-                <h6 className="text-center capitalize text-xs text-gray-300">
+                <h6 className="text-center capitalize text-xs text-gray-300 border-t-2 mx-4">
                   {role} Dashboard
                 </h6>
               </div>
