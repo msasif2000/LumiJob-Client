@@ -1,3 +1,9 @@
+import { MdOutlineWorkHistory } from "react-icons/md"; 
+import { SiSimpleanalytics } from "react-icons/si"; 
+import { GrGroup } from "react-icons/gr"; 
+import { MdOutlineEventAvailable } from "react-icons/md"; 
+import { GrBlog } from "react-icons/gr"; 
+import { BiBuildingHouse } from "react-icons/bi"; 
 import { BsFillBookmarkCheckFill } from "react-icons/bs"; 
 import { GrWorkshop } from "react-icons/gr"; 
 import { AiOutlineFileDone } from "react-icons/ai"; 
@@ -78,22 +84,22 @@ const DashBoard = () => {
     ) : role === "company" ? (
       <>
         <li>
-          <NavLink to="/dashboard/companyProfile">Profile</NavLink>
+          <NavLink to="/dashboard/companyProfile"><BiBuildingHouse  className="text-xl"/>Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/postedJobs">Posted Job</NavLink>
+          <NavLink to="/dashboard/postedJobs"><MdOutlineWorkHistory className="text-xl"/>Job Posts</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/blog-posted">Blogs</NavLink>
+          <NavLink to="/dashboard/blog-posted"><GrBlog />Blogs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/seminar-posted">Seminars</NavLink>
+          <NavLink to="/dashboard/seminar-posted"><MdOutlineEventAvailable className="text-xl"/>Seminars</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/companyAnalytics">Analytics</NavLink>
+          <NavLink to="/dashboard/companyAnalytics"><SiSimpleanalytics />Analytics</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/employees">Employees</NavLink>
+          <NavLink to="/dashboard/employees"><GrGroup className="text-xl"/>Employees</NavLink>
         </li>
       </>
     ) : role === "admin" ? (
