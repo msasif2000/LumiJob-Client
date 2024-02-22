@@ -212,22 +212,22 @@ const ManageApplicants = () => {
   };
 
   // convert time
-  function convertTo12HourFormat(time24:any) {
-    let [hours, minutes] = time24.split(':').map(Number);
-  
-    let period = 'AM';
-  
+  function convertTo12HourFormat(time24: any) {
+    let [hours, minutes] = time24.split(":").map(Number);
+
+    let period = "AM";
+
     if (hours === 0) {
       hours = 12;
     } else if (hours === 12) {
-      period = 'PM';
+      period = "PM";
     } else if (hours > 12) {
       hours -= 12;
-      period = 'PM';
+      period = "PM";
     }
-  
+
     const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  
+
     return `${hours}:${paddedMinutes} ${period}`;
   }
 
@@ -236,7 +236,6 @@ const ManageApplicants = () => {
     const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
     return formattedDate;
   }
-  
 
   return (
     <div className=" mx-auto my-3">
@@ -520,7 +519,13 @@ const ManageApplicants = () => {
                           className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                         >
                           <div className="space-x-3 flex p-2 relative">
-                            <div className="p-5 bg-blue-100 rounded-xl">
+                            <div
+                              className={`p-5 ${
+                                info?.scheduleInterview
+                                  ? "bg-green-100"
+                                  : "bg-blue-100"
+                              } rounded-xl`}
+                            >
                               <img
                                 src={info?.profile}
                                 alt=""
@@ -528,7 +533,13 @@ const ManageApplicants = () => {
                               />
                             </div>
                             <div className="space-y-1">
-                              <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
+                              <h2
+                                className={`font-bold text-xs  ${
+                                  info?.scheduleInterview
+                                    ? "bg-green-100"
+                                    : "bg-blue-100"
+                                } p-2 w-fit rounded-lg`}
+                              >
                                 {info?.position}
                               </h2>
                               <div className="flex space-x-1 items-center">
@@ -553,11 +564,25 @@ const ManageApplicants = () => {
                                   <div className="flex items-center text-sm space-x-2 pt-1">
                                     <p className="pl-1">Interview at:</p>
                                     <div className="flex items-center text-sm space-x-3">
-                                    <Link to={info?.scheduleInterview?.googleMeet} target="_blank" title="Google Meet" className="hover:scale-150 duration-500">
-                                      <SiGooglemeet />
-                                    </Link>
-                                    <p>{convertTo12HourFormat(info?.scheduleInterview?.interviewTime)}</p>
-                                   <p> {formatDate(info?.scheduleInterview?.interviewDate)}</p>
+                                      <Link
+                                        to={info?.scheduleInterview?.googleMeet}
+                                        target="_blank"
+                                        title="Google Meet"
+                                        className="hover:scale-150 duration-500"
+                                      >
+                                        <SiGooglemeet />
+                                      </Link>
+                                      <p>
+                                        {convertTo12HourFormat(
+                                          info?.scheduleInterview?.interviewTime
+                                        )}
+                                      </p>
+                                      <p>
+                                        {" "}
+                                        {formatDate(
+                                          info?.scheduleInterview?.interviewDate
+                                        )}
+                                      </p>
                                     </div>
                                   </div>
                                 ) : (
