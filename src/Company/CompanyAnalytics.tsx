@@ -19,7 +19,23 @@ interface JobData {
 const CompanyAnalytics: FunctionComponent = () => {
     const axiosPublic = useAxiosPublic();
     const [profile, setProfile] = useState<any>(null);
+    const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
     const { user } = useAuth();
+
+
+    useEffect(() => {
+        if (user?.email) {
+          axiosPublic
+            .get(`/get-company-posted-jobs/${user?.email}`)
+            .then((res) => {
+              setCompanyPostedJobs(res.data);
+              console.log(res.data);
+            })
+            .catch((err) => console.log(err));
+        }
+      }, [user]);
+    
+      const jobPosts = companyPostedJobs ? companyPostedJobs.length : 0;
 
     useEffect(() => {
         if (user?.email) {
@@ -32,13 +48,13 @@ const CompanyAnalytics: FunctionComponent = () => {
         }
     }, [user]);
 
-    let postedJobs = 0;
+    let appliedJobs = 0;
     let candidatesApplied = new Set<string>();
     let confirmedJobs = 0;
     let pieChartData: JobData[] = [];
 
     if (profile) {
-        postedJobs = profile.length;
+        appliedJobs = profile.length;
         profile.forEach((job: any) => {
             candidatesApplied.add(job.candidate);
             if (job.status === "selected") {
@@ -47,8 +63,8 @@ const CompanyAnalytics: FunctionComponent = () => {
         });
 
         pieChartData = [
-            { name: "Posted Job", value: postedJobs },
-            { name: "Interview", value: candidatesApplied.size },
+            { name: "Applied", value: appliedJobs },
+            { name: "In Process", value: appliedJobs-confirmedJobs },
             { name: "Confirm", value: confirmedJobs },
         ];
     }
@@ -68,7 +84,7 @@ const CompanyAnalytics: FunctionComponent = () => {
                             <h3 className="text-lg font-semibold text-gray-600">
                                 Posted Jobs
                             </h3>
-                            <p className="text-3xl font-semibold">{postedJobs}</p>
+                            <p className="text-3xl font-semibold">{jobPosts}</p>
                         </div>
                     </div>
                     <div className="flex justify-between items-center gap-5 border-4 border-gray-100 rounded-lg shadow-xl p-5">
