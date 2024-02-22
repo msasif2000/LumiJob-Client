@@ -58,7 +58,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
 
   function formatDate(dateString: any) {
     const parts = dateString.split("-");
-    const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
     return formattedDate;
   }
 
@@ -74,7 +74,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
         }  hover:shadow-xl duration-1000 h-full`}
       >
         <div className="card-body ">
-          <Link key={job._id} to={`/details/${job._id}`} className="space-y-2">
+          <Link key={job._id} to={`/details/${job._id}`} className="space-y-4">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.title}</p>
@@ -88,36 +88,39 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
                 {job?.status === "applicant" ? "up-opened" : job?.status}
               </p>
             </div>
+          </Link>
+          {job?.scheduleInterview ? (
+            <div className="pt-1">
+              {job?.scheduleInterview ? (
+                <div className="flex items-center font-medium">
+                  <div className="flex items-center  space-x-4">
+                    <p className="font-semibold">Interview at:</p>
+                    <Link
+                      to={job?.scheduleInterview?.googleMeet}
+                      target="_blank"
+                      title="Google Meet"
+                      className="hover:scale-150 duration-500 text-lg"
+                    >
+                      <SiGooglemeet />
+                    </Link>
+                    <p>
+                      {convertTo12HourFormat(
+                        job?.scheduleInterview?.interviewTime
+                      )}
+                    </p>
+                    <p> {formatDate(job?.scheduleInterview?.interviewDate)}</p>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
             <div className="flex justify-between items-center">
               <p className="">{job?.location}</p>
               <p className="text-right">{formatDeadlineDate(job?.deadline)}</p>
             </div>
-          </Link>
-          <div className="pt-1">
-            {job?.scheduleInterview ? (
-              <div className="flex items-center text-sm font-semibold">
-                <div className="flex items-center text-sm space-x-6">
-                  <p className="">Interview at:</p>
-                  <Link
-                    to={job?.scheduleInterview?.googleMeet}
-                    target="_blank"
-                    title="Google Meet"
-                    className="hover:scale-150 duration-500 text-lg"
-                  >
-                    <SiGooglemeet />
-                  </Link>
-                  <p>
-                    {convertTo12HourFormat(
-                      job?.scheduleInterview?.interviewTime
-                    )}
-                  </p>
-                  <p> {formatDate(job?.scheduleInterview?.interviewDate)}</p>
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
+          )}
         </div>
       </div>
       {cancel && (
