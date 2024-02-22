@@ -1,3 +1,8 @@
+import { BsFillBookmarkCheckFill } from "react-icons/bs"; 
+import { GrWorkshop } from "react-icons/gr"; 
+import { AiOutlineFileDone } from "react-icons/ai"; 
+import { MdManageAccounts } from "react-icons/md"; 
+import { BiHomeSmile } from "react-icons/bi"; 
 import { RxAvatar } from "react-icons/rx";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
@@ -55,20 +60,20 @@ const DashBoard = () => {
     role === "candidate" ? (
       <>
         <li>
-          <NavLink to="/dashboard/candidateProfile">Profile</NavLink>
+          <NavLink to="/dashboard/candidateProfile"><MdManageAccounts className="text-2xl" />Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/resume">Resume</NavLink>
+          <NavLink to="/dashboard/resume"><AiOutlineFileDone className="text-xl font-bold" />Resume</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/appliedJobs">Applied Jobs</NavLink>
+          <NavLink to="/dashboard/appliedJobs"><GrWorkshop className="text-xl font-bold" />Applied Jobs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
+          <NavLink to="/dashboard/bookmarks"><BsFillBookmarkCheckFill />Bookmarks</NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
-        </li>
+        </li> */}
       </>
     ) : role === "company" ? (
       <>
@@ -197,7 +202,7 @@ const DashBoard = () => {
                 <div className="divider mx-4"></div>
                 <ul className="menu text-xl">
                   <li>
-                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/"><BiHomeSmile  className="text-2xl" /> Home</NavLink>
                   </li>
                   <li>
                     <button
