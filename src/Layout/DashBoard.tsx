@@ -1,22 +1,10 @@
-import { BiBookmark } from "react-icons/bi"; 
-import { MdOutlinePayments } from "react-icons/md"; 
-import { BiLineChart } from "react-icons/bi";
-import { MdOutlineAddHomeWork } from "react-icons/md";
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import { MdOutlineWorkHistory } from "react-icons/md";
-import { GrGroup } from "react-icons/gr";
-import { MdOutlineEventAvailable } from "react-icons/md";
-import { GrBlog } from "react-icons/gr";
-import { BiBuildingHouse } from "react-icons/bi";
-import { GrWorkshop } from "react-icons/gr";
-import { AiOutlineFileDone } from "react-icons/ai";
-import { MdManageAccounts } from "react-icons/md";
-import { BiHomeSmile } from "react-icons/bi";
+import { BiBookmark, BiBuildingHouse, BiHomeSmile, BiLogOut, BiLineChart } from "react-icons/bi";
+import { MdOutlinePayments, MdOutlineAddHomeWork, MdOutlineWorkOutline, MdOutlineWorkHistory, MdOutlineEventAvailable, MdManageAccounts } from "react-icons/md";
+import { AiOutlineUsergroupAdd, AiOutlineFileDone } from "react-icons/ai";
+import { GrGroup, GrBlog, GrWorkshop } from "react-icons/gr";
 import { RxAvatar } from "react-icons/rx";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import UniLoader from "../component/err & loading/UniLoader";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -79,7 +67,7 @@ const DashBoard = () => {
           <NavLink to="/dashboard/appliedJobs"><GrWorkshop className="text-xl" />Applied Jobs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/bookmarks"><BiBookmark className="text-2xl"/>Bookmarks</NavLink>
+          <NavLink to="/dashboard/bookmarks"><BiBookmark className="text-2xl" />Bookmarks</NavLink>
         </li>
         {/* <li>
           <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
@@ -121,7 +109,7 @@ const DashBoard = () => {
           <NavLink to="/dashboard/admin/manage-jobs"><MdOutlineWorkOutline className="text-2xl" />Manage Jobs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-payments"><MdOutlinePayments className="text-2xl"/>Manage Payments</NavLink>
+          <NavLink to="/dashboard/admin/manage-payments"><MdOutlinePayments className="text-2xl" />Manage Payments</NavLink>
         </li>
       </>
     ) : (
