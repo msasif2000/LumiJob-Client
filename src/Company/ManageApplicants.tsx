@@ -10,13 +10,23 @@ import { MdCancel } from "react-icons/md";
 import { LuCalendarRange } from "react-icons/lu";
 import { VscFeedback } from "react-icons/vsc";
 
+interface Comments {
+  // anyCements: string;
+  comments: string;
+  position: string;
+  companyEmail: string;
+  cadetteEmail: string | null;
+}
+
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
   const [openModal, setOpenModal] = useState(false);
   const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
   const [selectedId, setSelectedId] = useState<any | null>(null);
+  const [comments, setComments] = useState<string>("");
 
+  // Getting job info
   const { data: infosJobs } = useQuery({
     queryKey: ["infosJobs", id],
     queryFn: async () => {
@@ -26,6 +36,7 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
+  // For dnd 
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
     queryFn: async () => {
@@ -61,7 +72,10 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  // Dnd data fetching ends here
 
+
+  // Drag and drop logical func
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
 
@@ -73,7 +87,7 @@ const ManageApplicants = () => {
       return;
     }
 
-    // Check if `infos` is defined and iterable
+   
     if (!infos || !Array.isArray(infos)) {
       console.error("Invalid `infos` data:", infos);
       return;
@@ -100,20 +114,18 @@ const ManageApplicants = () => {
       });
   };
 
+
+  // For converting candidate salary to hourly rate
   const perHour = (n: any) => {
     const salary = parseFloat(n);
     const daily = salary / 30;
     const hourly = daily / 24;
     return hourly.toFixed(2);
   };
-  interface Comments {
-    // anyCements: string;
-    comments: string;
-    position: string;
-    companyEmail: string;
-    cadetteEmail: string | null;
-  }
-  const [comments, setComments] = useState<string>("");
+ 
+
+
+  // logical func for feedback
   const feedBack = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // const form = e.currentTarget;
@@ -150,12 +162,14 @@ const ManageApplicants = () => {
       });
   };
 
+  // func for opening modal of interview scheduling
   const handleOpenModal = (candidate: any) => {
     setSelectedCandidate(candidate);
     setOpenModal(true);
     setSelectedId(candidate.id);
   };
 
+  // func for submitting interview time for candidates
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
@@ -166,14 +180,7 @@ const ManageApplicants = () => {
     const candidate = selectedId;
     const jobId = id;
 
-    // Now you have access to the values of the form fields
-    console.log("Google Meet Link:", googleMeetLink);
-    console.log("Time:", time);
-    console.log("Date:", date);
-    console.log("Candidate:", candidate);
-    console.log("jobId:", jobId);
-
-    // Perform any further actions such as validation or submitting the form data
+    console.log(googleMeetLink, time, date, candidate, jobId)
   };
 
   return (
