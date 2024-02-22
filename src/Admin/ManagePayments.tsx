@@ -15,7 +15,7 @@ const ManagePayments = () => {
   return (
     <>
       <Helmet>
-        <title>Manage Payments</title>
+        <title>Manage Payments | LumiJobs</title>
       </Helmet>
 
       <div className="overflow-x-auto max-w-screen-xl border mx-auto bg-white p-6 rounded-b-lg">
@@ -26,10 +26,10 @@ const ManagePayments = () => {
               <th>#</th>
               <th>NAME</th>
               <th>EMAIL</th>
-              <th>User Role</th>
+              <th>USER</th>
               <th>STATUS</th>
-              <th>TransactionId</th>
-              <th>Price</th>
+              <th>TNXID</th>
+              <th>PRICE</th>
             </tr>
           </thead>
           <tbody>
@@ -51,7 +51,7 @@ const ManagePayments = () => {
                 </td>
                 <td>
                   <h3 className="font-normal text-lg">
-                    {payment?.transactionId}
+                    {payment?.transactionId.slice(3,15)}
                   </h3>
                 </td>
                 <td>

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ManageCandidate = () => {
   const axiosPublic = useAxiosPublic();
@@ -52,6 +53,9 @@ const ManageCandidate = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Manage Candidate | LumiJobs</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg my-2">
         <h2 className="text-3xl">
           <b>Manage Candidates</b>
