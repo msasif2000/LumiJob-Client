@@ -1,6 +1,6 @@
 import { CiLocationOn } from "react-icons/ci";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
@@ -9,6 +9,7 @@ import { FormEvent, useState } from "react";
 import { MdCancel } from "react-icons/md";
 import { LuCalendarRange } from "react-icons/lu";
 import { VscFeedback } from "react-icons/vsc";
+import { SiGooglemeet } from "react-icons/si";
 
 interface Comments {
   // anyCements: string;
@@ -167,7 +168,7 @@ const ManageApplicants = () => {
   // func for submitting interview time for candidates
   const handleSubmit = (event: any) => {
     event.preventDefault();
-  
+
     const formData = new FormData(event.target);
     const googleMeetLink = formData.get("googleMeetLink");
     const time = formData.get("time");
@@ -175,7 +176,7 @@ const ManageApplicants = () => {
     const candidate = selectedId;
     const jobId = id;
     const email = selectedCandidate.email;
-  
+
     const interviewData = {
       googleMeetLink,
       time,
@@ -184,9 +185,9 @@ const ManageApplicants = () => {
       jobId,
       email,
     };
-  
+
     console.log(interviewData);
-  
+
     axiosPublic
       .post("/schedule-interview", interviewData)
       .then((res) => {
@@ -196,12 +197,11 @@ const ManageApplicants = () => {
             autoClose: 2000,
             hideProgressBar: true,
             position: "top-center",
-            closeOnClick: true
+            closeOnClick: true,
           });
-  
+
           setOpenModal(false);
         } else {
-         
           toast.warning("Something went wrong!");
         }
       })
@@ -210,6 +210,32 @@ const ManageApplicants = () => {
         toast.error("Error scheduling interview!");
       });
   };
+
+  // convert time
+  function convertTo12HourFormat(time24:any) {
+    let [hours, minutes] = time24.split(':').map(Number);
+  
+    let period = 'AM';
+  
+    if (hours === 0) {
+      hours = 12;
+    } else if (hours === 12) {
+      period = 'PM';
+    } else if (hours > 12) {
+      hours -= 12;
+      period = 'PM';
+    }
+  
+    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  
+    return `${hours}:${paddedMinutes} ${period}`;
+  }
+
+  function formatDate(dateString: any) {
+    const parts = dateString.split("-");
+    const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    return formattedDate;
+  }
   
 
   return (
@@ -521,6 +547,22 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
+                              </div>
+                              <div>
+                                {info?.scheduleInterview ? (
+                                  <div className="flex items-center text-sm space-x-2 pt-1">
+                                    <p className="pl-1">Interview at:</p>
+                                    <div className="flex items-center text-sm space-x-3">
+                                    <Link to={info?.scheduleInterview?.googleMeet} target="_blank" title="Google Meet" className="hover:scale-150 duration-500">
+                                      <SiGooglemeet />
+                                    </Link>
+                                    <p>{convertTo12HourFormat(info?.scheduleInterview?.interviewTime)}</p>
+                                   <p> {formatDate(info?.scheduleInterview?.interviewDate)}</p>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
                               </div>
                               <div className="absolute top-2 right-12">
                                 <label
