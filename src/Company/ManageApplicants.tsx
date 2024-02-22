@@ -5,12 +5,16 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { GoVerified } from "react-icons/go";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { MdCancel } from "react-icons/md";
+import { LuCalendarRange } from "react-icons/lu";
 
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
+  const [selectedId, setSelectedId] = useState<any | null>(null)
   
 
   const { data: infosJobs } = useQuery({
@@ -22,9 +26,6 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
  
-  const [openModal, setOpenModal] = useState(false);
-  const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
-  const [selectedId, setSelectedId] = useState<any | null>(null)
 
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
@@ -442,6 +443,15 @@ const ManageApplicants = () => {
                                  text-white px-10 pt-3 pb-7"
                                 >
                                   Feedback
+                                </button>
+                              </div>
+                              <div className="absolute top-1 right-2">
+                                <button
+                                  className="text-xl p-1 hover:text-green-300 duration-1000"
+                                  title="Schedule Interview"
+                                  onClick={() => handleOpenModal(info)}
+                                >
+                                  <LuCalendarRange />
                                 </button>
                               </div>
                             </div>
