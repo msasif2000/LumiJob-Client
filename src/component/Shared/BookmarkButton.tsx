@@ -122,7 +122,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
     <button
       onClick={handleAddToBookmark}
       title={isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
-      className={` border p-2 border-black rounded-lg hover:text-accent hover:border-accent ${isBookmarked ? "bg-blue-400" : ""}`}
+      className={` border p-2 border-black rounded-lg hover:text-accent hover:border-accent ${isBookmarked ? "bg-blue-300" : ""}`}
     >
       <MdBookmarkAdd />
     </button>
