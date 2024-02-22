@@ -167,7 +167,7 @@ const ManageApplicants = () => {
   // func for submitting interview time for candidates
   const handleSubmit = (event: any) => {
     event.preventDefault();
-
+  
     const formData = new FormData(event.target);
     const googleMeetLink = formData.get("googleMeetLink");
     const time = formData.get("time");
@@ -175,7 +175,7 @@ const ManageApplicants = () => {
     const candidate = selectedId;
     const jobId = id;
     const email = selectedCandidate.email;
-
+  
     const interviewData = {
       googleMeetLink,
       time,
@@ -184,18 +184,33 @@ const ManageApplicants = () => {
       jobId,
       email,
     };
-
+  
     console.log(interviewData);
-
+  
     axiosPublic
       .post("/schedule-interview", interviewData)
       .then((res) => {
         console.log(res.data);
+        if (res.data.message === "Interview scheduled successfully") {
+          toast.success("Interview Scheduled Successfully", {
+            autoClose: 2000,
+            hideProgressBar: true,
+            position: "top-center",
+            closeOnClick: true
+          });
+  
+          setOpenModal(false);
+        } else {
+         
+          toast.warning("Something went wrong!");
+        }
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Error scheduling interview!");
       });
   };
+  
 
   return (
     <div className=" mx-auto my-3">
