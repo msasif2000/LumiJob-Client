@@ -8,15 +8,25 @@ import { GoVerified } from "react-icons/go";
 import { FormEvent, useState } from "react";
 import { MdCancel } from "react-icons/md";
 import { LuCalendarRange } from "react-icons/lu";
+import { VscFeedback } from "react-icons/vsc";
+
+interface Comments {
+  // anyCements: string;
+  comments: string;
+  position: string;
+  companyEmail: string;
+  cadetteEmail: string | null;
+}
 
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
   const [openModal, setOpenModal] = useState(false);
   const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
-  const [selectedId, setSelectedId] = useState<any | null>(null)
-  
+  const [selectedId, setSelectedId] = useState<any | null>(null);
+  const [comments, setComments] = useState<string>("");
 
+  // Getting job info
   const { data: infosJobs } = useQuery({
     queryKey: ["infosJobs", id],
     queryFn: async () => {
@@ -25,8 +35,8 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
- 
 
+  // For dnd 
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
     queryFn: async () => {
@@ -62,7 +72,10 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  // Dnd data fetching ends here
 
+
+  // Drag and drop logical func
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
 
@@ -74,7 +87,7 @@ const ManageApplicants = () => {
       return;
     }
 
-    // Check if `infos` is defined and iterable
+   
     if (!infos || !Array.isArray(infos)) {
       console.error("Invalid `infos` data:", infos);
       return;
@@ -101,64 +114,62 @@ const ManageApplicants = () => {
       });
   };
 
+
+  // For converting candidate salary to hourly rate
   const perHour = (n: any) => {
     const salary = parseFloat(n);
     const daily = salary / 30;
     const hourly = daily / 24;
     return hourly.toFixed(2);
   };
-  interface Comments {
-    // anyCements: string;
-    comments: string;
-    position: string;
-    companyEmail: string;
-    cadetteEmail: string | null;
-    
-  }
-  const [comments, setComments] = useState<string>('');
+ 
+
+
+  // logical func for feedback
   const feedBack = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // const form = e.currentTarget;
     // const anyCements = (form.elements.namedItem("anyCements") as HTMLInputElement).value;
-     const position = infos[0].position;
-     const cadetteEmail = infos[0]?.email;
-     const companyEmail = infosJobs.email;
-    const allText: Comments = {  comments, position, cadetteEmail, companyEmail };
-     console.log(allText);
+    const position = infos[0].position;
+    const cadetteEmail = infos[0]?.email;
+    const companyEmail = infosJobs.email;
+    const allText: Comments = {
+      comments,
+      position,
+      cadetteEmail,
+      companyEmail,
+    };
+    console.log(allText);
     // console.log(infosJobs)
     axiosPublic
-    .post('/sendFeedback' , allText)
-    .then((response: any) => {
-      console.log(response.data)
-        if (response.data.insertedId)
-        {
-          console.log("data send")
+      .post("/sendFeedback", allText)
+      .then((response: any) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          console.log("data send");
+        } else {
+          console.log("data Not a send");
         }
-        else{
-          console.log("data Not a send")
-        }
-    })
-    .catch((error: any) => {
-      console.log(error);
-      toast.error("Job Posting Failed", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-       
+      })
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Job Posting Failed", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+        });
       });
-    });
-
-    
-
   };
 
+  // func for opening modal of interview scheduling
   const handleOpenModal = (candidate: any) => {
     setSelectedCandidate(candidate);
     setOpenModal(true);
-    setSelectedId(candidate.id)
+    setSelectedId(candidate.id);
   };
 
+  // func for submitting interview time for candidates
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
@@ -167,17 +178,10 @@ const ManageApplicants = () => {
     const time = formData.get("time");
     const date = formData.get("date");
     const candidate = selectedId;
-    const jobId = id
+    const jobId = id;
+    const email = selectedCandidate.email
 
-    // Now you have access to the values of the form fields
-    console.log("Google Meet Link:", googleMeetLink);
-    console.log("Time:", time);
-    console.log("Date:", date);
-    console.log("Candidate:", candidate);
-    console.log("jobId:", jobId);
-
-
-    // Perform any further actions such as validation or submitting the form data
+    console.log(googleMeetLink, time, date, candidate, jobId, email)
   };
 
   return (
@@ -218,7 +222,7 @@ const ManageApplicants = () => {
                                 className=" rounded-full h-[80px] w-[80px] p-2"
                               />
                             </div>
-                            <div className="space-y-1">
+                            <div className="space-y-1 relative">
                               <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
                                 {info?.position}
                               </h2>
@@ -240,13 +244,13 @@ const ManageApplicants = () => {
                                 </p>
                               </div>
 
-                              <div className="flex justify-center  ">
+                              <div className="absolute top-0 -right-20">
                                 <label
                                   htmlFor="my_modal_6"
-                                  className="btn btn-sm bg-accent hover:bg-accent
-                                 text-white px-10 pt-3 pb-7"
+                                  className="cursor-pointer ... text-xl"
+                                  title="Feedback"
                                 >
-                                  Feedback
+                                  <VscFeedback />
                                 </label>
                                 <input
                                   type="checkbox"
@@ -255,7 +259,7 @@ const ManageApplicants = () => {
                                 />
                                 <div className="modal " role="dialog">
                                   <div className="modal-box bg-gray-100 mb-10">
-                                  <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                    <div className="modal-action flex justify-end -mt-5 -mr-5">
                                       <label
                                         htmlFor="my_modal_6"
                                         className=" btn  text-black text-2xl "
@@ -263,10 +267,14 @@ const ManageApplicants = () => {
                                         <MdCancel />
                                       </label>
                                     </div>
-                                    <form onSubmit={feedBack} className="space-y-4 ">
-                                      
-                                      <div className="p-4
-                                     bg-white rounded-2xl">
+                                    <form
+                                      onSubmit={feedBack}
+                                      className="space-y-4 "
+                                    >
+                                      <div
+                                        className="p-4
+                                     bg-white rounded-2xl"
+                                      >
                                         <label
                                           htmlFor="additionalInfo"
                                           className="block text-xl font-bold text-black"
@@ -285,13 +293,12 @@ const ManageApplicants = () => {
                                           placeholder="Enter Your Feedback..."
                                         ></textarea>
                                       </div>
-                                     <input  className="w-full btn bg-green-600 hover:bg-green-600 text-white " type="submit" value="submit" />
-                                     
-
+                                      <input
+                                        className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+                                        type="submit"
+                                        value="submit"
+                                      />
                                     </form>
-                                    
-
-                                    
                                   </div>
                                 </div>
                               </div>
@@ -362,13 +369,63 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
-                              <div className="flex justify-center ">
-                                <button
-                                  className="btn btn-sm bg-accent
-                                 text-white px-10 pt-3 pb-7"
+                              <div className="absolute top-2 right-4">
+                                <label
+                                  htmlFor="my_modal_6"
+                                  className="cursor-pointer ... text-xl"
+                                  title="Feedback"
                                 >
-                                  Feedback
-                                </button>
+                                  <VscFeedback />
+                                </label>
+                                <input
+                                  type="checkbox"
+                                  id="my_modal_6"
+                                  className="modal-toggle"
+                                />
+                                <div className="modal " role="dialog">
+                                  <div className="modal-box bg-gray-100 mb-10">
+                                    <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                      <label
+                                        htmlFor="my_modal_6"
+                                        className=" btn  text-black text-2xl "
+                                      >
+                                        <MdCancel />
+                                      </label>
+                                    </div>
+                                    <form
+                                      onSubmit={feedBack}
+                                      className="space-y-4 "
+                                    >
+                                      <div
+                                        className="p-4
+                                     bg-white rounded-2xl"
+                                      >
+                                        <label
+                                          htmlFor="additionalInfo"
+                                          className="block text-xl font-bold text-black"
+                                        >
+                                          Anything than can be improved?
+                                        </label>
+                                        <textarea
+                                          id="additionalInfo"
+                                          name="additionalInfo"
+                                          value={comments}
+                                          onChange={(e) =>
+                                            setComments(e.target.value)
+                                          }
+                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                          rows={4}
+                                          placeholder="Enter Your Feedback..."
+                                        ></textarea>
+                                      </div>
+                                      <input
+                                        className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+                                        type="submit"
+                                        value="submit"
+                                      />
+                                    </form>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -437,13 +494,63 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
-                              <div className="flex justify-center ">
-                                <button
-                                  className="btn btn-sm bg-accent
-                                 text-white px-10 pt-3 pb-7"
+                              <div className="absolute top-2 right-12">
+                                <label
+                                  htmlFor="my_modal_6"
+                                  className="cursor-pointer ... text-xl"
+                                  title="Feedback"
                                 >
-                                  Feedback
-                                </button>
+                                  <VscFeedback />
+                                </label>
+                                <input
+                                  type="checkbox"
+                                  id="my_modal_6"
+                                  className="modal-toggle"
+                                />
+                                <div className="modal " role="dialog">
+                                  <div className="modal-box bg-gray-100 mb-10">
+                                    <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                      <label
+                                        htmlFor="my_modal_6"
+                                        className=" btn  text-black text-2xl "
+                                      >
+                                        <MdCancel />
+                                      </label>
+                                    </div>
+                                    <form
+                                      onSubmit={feedBack}
+                                      className="space-y-4 "
+                                    >
+                                      <div
+                                        className="p-4
+                                     bg-white rounded-2xl"
+                                      >
+                                        <label
+                                          htmlFor="additionalInfo"
+                                          className="block text-xl font-bold text-black"
+                                        >
+                                          Anything than can be improved?
+                                        </label>
+                                        <textarea
+                                          id="additionalInfo"
+                                          name="additionalInfo"
+                                          value={comments}
+                                          onChange={(e) =>
+                                            setComments(e.target.value)
+                                          }
+                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                          rows={4}
+                                          placeholder="Enter Your Feedback..."
+                                        ></textarea>
+                                      </div>
+                                      <input
+                                        className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+                                        type="submit"
+                                        value="submit"
+                                      />
+                                    </form>
+                                  </div>
+                                </div>
                               </div>
                               <div className="absolute top-1 right-2">
                                 <button
@@ -573,14 +680,6 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
-                              </div>
-                              <div className="flex justify-center ">
-                                <button
-                                  className="btn btn-sm bg-accent
-                                 text-white px-10 pt-3 pb-7"
-                                >
-                                  Feedback
-                                </button>
                               </div>
                             </div>
                           </div>
