@@ -9,10 +9,13 @@ import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { PiShieldWarning } from "react-icons/pi";
+import { BiShareAlt } from "react-icons/bi";
+import Share from "./Share";
 
 interface JobDetails {
   _id: string;
   title: string;
+  id: string;
   location: string;
   salaryRange: {
     min: number;
@@ -41,8 +44,6 @@ const JobsDetails: React.FC = () => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const navigate = useNavigate();
 
-  console.log(role);
-  console.log(job);
 
   useEffect(() => {
     axiosPublic
@@ -159,6 +160,11 @@ const JobsDetails: React.FC = () => {
   const handleCompleteProfile = () => {
     navigate("/dashboard/candidateProfile/update");
   };
+
+  // share related 
+  const modal = document.getElementById('my_modal_3') as HTMLDialogElement;
+
+  const shareUrl = window.location.href;
 
   return (
     <>
@@ -370,9 +376,26 @@ const JobsDetails: React.FC = () => {
                       </span>
                     </div>
 
-                    <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
-                      Login to get your link
-                    </button>
+                    {user ?
+                      <>
+
+                        <button className="btn" onClick={() => modal.showModal()}>
+                          <div>
+                            <div className="flex justify-center items-center gap-2">
+                              Share
+                              <BiShareAlt></BiShareAlt>
+                            </div>
+
+                          </div>
+                        </button>
+                        <Share id="my_modal_3" shareUrl={shareUrl} title={title}></Share>
+                      </>
+                      :
+                      <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
+                        Login to get your link
+                      </button>
+
+                    }
                   </div>
                 </div>
               )}

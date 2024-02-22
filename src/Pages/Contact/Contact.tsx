@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 import emailjs from "@emailjs/browser";
@@ -8,9 +8,10 @@ import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
-
+  const navigate =useNavigate()
   const handlefrom = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -32,6 +33,15 @@ const Contact = () => {
         )
         .then(
           (result) => {
+            resetForm();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `Message send successfully .`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+            navigate('/')
             console.log(result.text);
           },
           (error) => {
@@ -40,6 +50,12 @@ const Contact = () => {
         );
     } else {
       console.error("Form reference is null");
+    }
+  };
+
+  const resetForm = () => {
+    if (form.current) {
+      form.current.reset();
     }
   };
 
