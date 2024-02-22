@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MdCancelScheduleSend } from "react-icons/md";
+import { SiGooglemeet } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 interface prop {
@@ -14,6 +15,8 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const handleConfirm = () => {
     setShowConfirmation(true);
   };
+
+  console.log(job);
 
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
@@ -34,15 +37,44 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     }
   };
 
+  function convertTo12HourFormat(time24: any) {
+    let [hours, minutes] = time24.split(":").map(Number);
+
+    let period = "AM";
+
+    if (hours === 0) {
+      hours = 12;
+    } else if (hours === 12) {
+      period = "PM";
+    } else if (hours > 12) {
+      hours -= 12;
+      period = "PM";
+    }
+
+    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+    return `${hours}:${paddedMinutes} ${period}`;
+  }
+
+  function formatDate(dateString: any) {
+    const parts = dateString.split("-");
+    const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    return formattedDate;
+  }
+
   return (
     <div
       className="relative"
       onMouseEnter={() => setCancel(true)}
       onMouseLeave={() => setCancel(false)}
     >
-      <Link key={job._id} to={`/details/${job._id}`}>
-        <div className="card bg-base-100 hover:shadow-xl duration-1000 h-full">
-          <div className="card-body space-y-2">
+      <div
+        className={`card ${
+          job?.scheduleInterview ? "bg-green-100 bg-opacity-60" : "bg-base-100"
+        }  hover:shadow-xl duration-1000 h-full`}
+      >
+        <div className="card-body ">
+          <Link key={job._id} to={`/details/${job._id}`} className="space-y-2">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.title}</p>
@@ -60,9 +92,34 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
               <p className="">{job?.location}</p>
               <p className="text-right">{formatDeadlineDate(job?.deadline)}</p>
             </div>
+          </Link>
+          <div className="pt-1">
+            {job?.scheduleInterview ? (
+              <div className="flex items-center text-sm font-semibold">
+                <div className="flex items-center text-sm space-x-6">
+                  <p className="">Interview at:</p>
+                  <Link
+                    to={job?.scheduleInterview?.googleMeet}
+                    target="_blank"
+                    title="Google Meet"
+                    className="hover:scale-150 duration-500 text-lg"
+                  >
+                    <SiGooglemeet />
+                  </Link>
+                  <p>
+                    {convertTo12HourFormat(
+                      job?.scheduleInterview?.interviewTime
+                    )}
+                  </p>
+                  <p> {formatDate(job?.scheduleInterview?.interviewDate)}</p>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
-      </Link>
+      </div>
       {cancel && (
         <div className="absolute top-10 right-8">
           <MdCancelScheduleSend
