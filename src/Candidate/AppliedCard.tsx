@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdCancelScheduleSend } from "react-icons/md";
 import { SiGooglemeet } from "react-icons/si";
+import { TbMessage } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 interface prop {
@@ -76,8 +77,10 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
         <div className="card-body ">
           <Link key={job._id} to={`/details/${job._id}`} className="space-y-4">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
+            <p>{job._id}</p>
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.title}</p>
+              
 
               <p className="text-right">${job?.salaryRange.min}</p>
             </div>
@@ -129,6 +132,13 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
             className="text-red-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
             onClick={handleConfirm}
           />
+        </div>
+      )}
+      {cancel && (
+        <div className="absolute top-10 -right-8">
+          <TbMessage className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+            />
+          
         </div>
       )}
       {showConfirmation && (
