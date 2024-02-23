@@ -36,7 +36,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-
+  console.log(infosJobs);
   // For dnd
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
@@ -46,6 +46,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  console.log(infos);
 
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
     queryKey: ["preSelected", id],
@@ -55,6 +56,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  console.log(preSelected);
 
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
@@ -64,7 +66,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-
+  console.log(interviews);
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
     queryFn: async () => {
@@ -73,6 +75,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  console.log(selected);
   // Dnd data fetching ends here
 
   // Drag and drop logical func
@@ -120,15 +123,18 @@ const ManageApplicants = () => {
     const hourly = daily / 24;
     return hourly.toFixed(2);
   };
-
+  
   // logical func for feedback
   const feedBack = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // const form = e.currentTarget;
     // const anyCements = (form.elements.namedItem("anyCements") as HTMLInputElement).value;
-    const position = infos[0].position;
-    const cadetteEmail = infos[0]?.email;
-    const companyEmail = infosJobs.email;
+     
+    if(infos[0]?.name)
+    {
+      const position = infos[0].position;
+      const cadetteEmail = infos[0]?.email;
+      const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
       position,
@@ -156,6 +162,45 @@ const ManageApplicants = () => {
           closeOnClick: true,
         });
       });
+    }
+
+    if(preSelected[0]?.dndStats === "pre-selected")
+    {
+      const position = preSelected[0].position;
+      const cadetteEmail = preSelected[0]?.email;
+      const companyEmail = infosJobs.email;
+    const allText: Comments = {
+      comments,
+      position,
+      cadetteEmail,
+      companyEmail,
+    };
+    console.log(allText);
+    // console.log(infosJobs)
+    axiosPublic
+      .post("/sendFeedback", allText)
+      .then((response: any) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          console.log("data send for pre slected");
+        } else {
+          console.log("data Not a send");
+        }
+      })
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Job Posting Failed", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+        });
+      });
+    }
+    
+    
+    
+    
   };
 
   // func for opening modal of interview scheduling
