@@ -181,7 +181,7 @@ export const router = createBrowserRouter([
         element: <ManagePayments />,
       },
       {
-        path: "/admin/add-data",
+        path: "admin/add-data",
         element: <Add_Data />
       },
 
