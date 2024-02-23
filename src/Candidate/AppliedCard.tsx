@@ -1,13 +1,17 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { MdCancelScheduleSend } from "react-icons/md";
 import { SiGooglemeet } from "react-icons/si";
 import { TbMessage } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface prop {
   job: any;
   handleDelete: (jobId: string) => void;
+  id: string | any;
 }
+
 
 const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const [cancel, setCancel] = useState(false);
@@ -16,8 +20,10 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const handleConfirm = () => {
     setShowConfirmation(true);
   };
-
-  console.log(job);
+ 
+  
+  const id = job._id;
+  console.log(id);
 
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
@@ -62,6 +68,16 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
     return formattedDate;
   }
+  const axiosPublic = useAxiosPublic();
+  const { data: companyFeedbacks } = useQuery({
+    queryKey: ["companyFeedbacks", id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/companyFeedback/${job._id}`);
+      return res.data;
+    },
+    enabled: !!id,
+  });
+  console.log(companyFeedbacks);
 
   return (
     <div
@@ -142,9 +158,10 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
     <div className="p-4 bg-white rounded-lg">
-    <h3 className="font-bold text-2xl text-left">Feedback</h3>
+    <h3 className="font-bold text-2xl text-left">Feedback for you</h3>
     <div>
-    <p className="py-4">feedback : </p>
+    <p className="py-4 mb-2"> <p className="font-bold">feedback :</p> {companyFeedbacks?.comments} </p>
+    <p>if your any issue contact us : {companyFeedbacks?.companyEmail}</p>
     </div>
     </div>
     
