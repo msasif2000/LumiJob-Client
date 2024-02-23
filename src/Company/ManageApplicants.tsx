@@ -231,6 +231,39 @@ const ManageApplicants = () => {
         });
       });
     }
+    if(selected[0]?.dndStats === "selected")
+    {
+      const position = selected[0].position;
+      const cadetteEmail = selected[0]?.email;
+      const companyEmail = infosJobs.email;
+    const allText: Comments = {
+      comments,
+      position,
+      cadetteEmail,
+      companyEmail,
+    };
+    console.log(allText);
+    // console.log(infosJobs)
+    axiosPublic
+      .post("/sendFeedback", allText)
+      .then((response: any) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          console.log("data send for sleeted candied");
+        } else {
+          console.log("data Not a send");
+        }
+      })
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Job Posting Failed", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+        });
+      });
+    }
     
     
     
