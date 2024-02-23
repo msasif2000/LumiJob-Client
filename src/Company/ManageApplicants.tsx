@@ -175,7 +175,7 @@ const ManageApplicants = () => {
       const position = preSelected[0].position;
       const cadetteEmail = preSelected[0]?.email;
       const id = preSelected[0]?.id;
-      
+      const status = preSelected[0]?.dndStats; 
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
@@ -183,6 +183,8 @@ const ManageApplicants = () => {
       cadetteEmail,
       companyEmail,
       id,
+      status
+      
     };
     console.log(allText);
     // console.log(infosJobs)
