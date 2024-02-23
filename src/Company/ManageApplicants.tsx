@@ -18,6 +18,7 @@ interface Comments {
   companyEmail: string;
   cadetteEmail: string | null;
   id: string | any;
+  status: string;
 }
 
 const ManageApplicants = () => {
@@ -136,6 +137,7 @@ const ManageApplicants = () => {
       const position = infos[0].position;
       const cadetteEmail = infos[0]?.email;
       const id = infos[0]?.id;
+      const status = "Applicants";
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
@@ -143,6 +145,7 @@ const ManageApplicants = () => {
       cadetteEmail,
       companyEmail,
       id,
+      status
     };
     console.log(allText);
     // console.log(infosJobs)
@@ -172,6 +175,7 @@ const ManageApplicants = () => {
       const position = preSelected[0].position;
       const cadetteEmail = preSelected[0]?.email;
       const id = preSelected[0]?.id;
+      
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
