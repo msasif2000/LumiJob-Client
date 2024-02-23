@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet-async";
 import { PiShieldWarning } from "react-icons/pi";
 import { BiShareAlt } from "react-icons/bi";
 import Share from "./Share";
+import { IoPeopleOutline } from "react-icons/io5";
 
 interface JobDetails {
   _id: string;
@@ -165,7 +166,7 @@ const JobsDetails: React.FC = () => {
   const modal = document.getElementById('my_modal_3') as HTMLDialogElement;
 
   const shareUrl = window.location.href;
-  const modalId : string = 'my_modal_3';
+  const modalId: string = 'my_modal_3';
 
   return (
     <>
@@ -389,7 +390,15 @@ const JobsDetails: React.FC = () => {
 
                           </div>
                         </button>
-                          <Share id={modalId} shareUrl={shareUrl} title={title}></Share>
+                        <Share id={modalId} shareUrl={shareUrl} title={title}></Share>
+                         <div className="mt-2">
+                            {
+                              user && <div className="flex items-center gap-2 text-lg font-semibold border-2 p-1 rounded-lg">
+                                <IoPeopleOutline className="text-xl"></IoPeopleOutline>
+                                <p>{job?.applicants?.length} applicants</p>
+                              </div>
+                            }
+                         </div>
                       </>
                       :
                       <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
@@ -405,6 +414,7 @@ const JobsDetails: React.FC = () => {
             <UniLoader />
           )}
         </div>
+       
         <ToastContainer />
         {showProfileModal && (
           <div className="fixed z-10 inset-0 overflow-y-auto">
