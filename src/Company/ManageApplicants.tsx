@@ -156,7 +156,7 @@ const ManageApplicants = () => {
         if (response.data.insertedId) {
           toast.success('Successfully your feedback receive !')
         } else {
-          toast.error("This didn't work.")
+          toast.error("didn't receive  your  message")
         }
       })
       .catch((error: any) => {
@@ -193,7 +193,7 @@ const ManageApplicants = () => {
       .then((response: any) => {
         console.log(response.data);
         if (response.data.insertedId) {
-          console.log("data send for pre slected");
+          toast.success('Successfully your feedback receive !')
         } else {
           console.log("data Not a send");
         }
