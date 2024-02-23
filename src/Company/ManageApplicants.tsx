@@ -231,7 +231,7 @@ const ManageApplicants = () => {
       .then((response: any) => {
         console.log(response.data);
         if (response.data.insertedId) {
-          console.log("data send for pre interviews candied");
+          toast.success('Successfully your feedback receive !')
         } else {
           console.log("data Not a send");
         }
