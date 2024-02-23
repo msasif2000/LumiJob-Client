@@ -251,6 +251,7 @@ const ManageApplicants = () => {
       const position = selected[0].position;
       const cadetteEmail = selected[0]?.email;
       const id = selected[0]?.id;
+      const status = selected[0]?.dndStats;
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
@@ -258,6 +259,7 @@ const ManageApplicants = () => {
       cadetteEmail,
       companyEmail,
       id,
+      status
     };
     console.log(allText);
     // console.log(infosJobs)
