@@ -17,6 +17,7 @@ interface Comments {
   position: string;
   companyEmail: string;
   cadetteEmail: string | null;
+  id: string | any;
 }
 
 const ManageApplicants = () => {
@@ -134,12 +135,14 @@ const ManageApplicants = () => {
     {
       const position = infos[0].position;
       const cadetteEmail = infos[0]?.email;
+      const id = infos[0]?.id;
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
       position,
       cadetteEmail,
       companyEmail,
+      id,
     };
     console.log(allText);
     // console.log(infosJobs)
@@ -168,12 +171,14 @@ const ManageApplicants = () => {
     {
       const position = preSelected[0].position;
       const cadetteEmail = preSelected[0]?.email;
+      const id = preSelected[0]?.id;
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
       position,
       cadetteEmail,
       companyEmail,
+      id,
     };
     console.log(allText);
     // console.log(infosJobs)
@@ -202,12 +207,14 @@ const ManageApplicants = () => {
     {
       const position = interviews[0].position;
       const cadetteEmail = interviews[0]?.email;
+      const id = interviews[0]?.id;
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
       position,
       cadetteEmail,
       companyEmail,
+      id
     };
     console.log(allText);
     // console.log(infosJobs)
@@ -235,12 +242,14 @@ const ManageApplicants = () => {
     {
       const position = selected[0].position;
       const cadetteEmail = selected[0]?.email;
+      const id = selected[0]?.id;
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
       position,
       cadetteEmail,
       companyEmail,
+      id,
     };
     console.log(allText);
     // console.log(infosJobs)
