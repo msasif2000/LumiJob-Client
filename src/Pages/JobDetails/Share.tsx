@@ -1,7 +1,7 @@
 
 import { FacebookIcon, FacebookShareButton, FacebookShareCount, LinkedinIcon, LinkedinShareButton, TelegramIcon, TelegramShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton, XIcon } from "react-share";
 
-const Share = ({ shareUrl, title }: { id: string, shareUrl: string, title: string | undefined })=> {
+const Share = ({id, shareUrl, title }: { id: string, shareUrl: string, title: string | undefined })=> {
 
     return (
         <dialog id="my_modal_3" className="modal">
