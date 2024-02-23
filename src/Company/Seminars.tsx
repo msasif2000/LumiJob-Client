@@ -231,7 +231,7 @@ const Seminars = () => {
                             </button>
                         </form>
                         <div className="flex items-center mt-2 justify-end ">
-                            <button onClick={closeModal} className="btn">
+                            <button onClick={closeModal} className="btn bg-red-600 text-white hover:bg-red-500">
                                 Close
                             </button>
                         </div>
