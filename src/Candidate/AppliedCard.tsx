@@ -71,7 +71,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       <div
         className={`card ${
           job?.scheduleInterview ? "bg-green-100 bg-opacity-60" : "bg-base-100"
-        }  hover:shadow-xl duration-1000 h-full`}
+        }  hover:shadow-xl duration-1000 h-full w-96`}
       >
         <div className="card-body ">
           <Link key={job._id} to={`/details/${job._id}`} className="space-y-4">

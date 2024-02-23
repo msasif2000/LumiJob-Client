@@ -17,8 +17,9 @@ interface Comments {
   position: string;
   companyEmail: string;
   cadetteEmail: string | null;
-  id: string | any;
+  CandiedId: string | any;
   status: string;
+  jobId: string | any;
 }
 
 const ManageApplicants = () => {
@@ -136,16 +137,18 @@ const ManageApplicants = () => {
     {
       const position = infos[0].position;
       const cadetteEmail = infos[0]?.email;
-      const id = infos[0]?.id;
+      const CandiedId = infos[0]?.id;
       const status = "Applicants";
       const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
     const allText: Comments = {
       comments,
       position,
       cadetteEmail,
       companyEmail,
-      id,
-      status
+      CandiedId,
+      status,
+      jobId
     };
     console.log(allText);
     // console.log(infosJobs)
@@ -174,15 +177,17 @@ const ManageApplicants = () => {
     {
       const position = preSelected[0].position;
       const cadetteEmail = preSelected[0]?.email;
-      const id = preSelected[0]?.id;
+      const CandiedId = preSelected[0]?.id;
       const status = preSelected[0]?.dndStats; 
       const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
     const allText: Comments = {
+      jobId,
       comments,
       position,
       cadetteEmail,
       companyEmail,
-      id,
+      CandiedId,
       status
       
     };
@@ -213,15 +218,17 @@ const ManageApplicants = () => {
     {
       const position = interviews[0].position;
       const cadetteEmail = interviews[0]?.email;
-      const id = interviews[0]?.id;
+      const CandiedId = interviews[0]?.id;
       const status = interviews[0]?.dndStats;
       const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
     const allText: Comments = {
+      jobId,
       comments,
       position,
       cadetteEmail,
       companyEmail,
-      id,
+      CandiedId,
       status
     };
     console.log(allText);
@@ -250,15 +257,17 @@ const ManageApplicants = () => {
     {
       const position = selected[0].position;
       const cadetteEmail = selected[0]?.email;
-      const id = selected[0]?.id;
+      const CandiedId = selected[0]?.id;
       const status = selected[0]?.dndStats;
       const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
     const allText: Comments = {
+      jobId,
       comments,
       position,
       cadetteEmail,
       companyEmail,
-      id,
+      CandiedId,
       status
     };
     console.log(allText);
