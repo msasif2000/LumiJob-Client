@@ -156,12 +156,12 @@ const ManageApplicants = () => {
         if (response.data.insertedId) {
           toast.success('Successfully your feedback receive !')
         } else {
-          console.log("data Not a send");
+          toast.error("This didn't work.")
         }
       })
       .catch((error: any) => {
         console.log(error);
-        toast.error("Job Posting Failed", {
+        toast.error("Failed your feedback", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: true,
