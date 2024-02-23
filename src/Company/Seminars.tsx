@@ -159,7 +159,7 @@ const Seminars = () => {
             <ToastContainer />
 
             {isModalOpen && (
-                <div className="modal" role="dialog" id="my_modal_8">
+                <div className="modal" role="dialog" id="seminar_modal">
                     <div className="modal-box bg-white px-2 py-5">
                         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
                             <div className="pb-10 space-y-6">
