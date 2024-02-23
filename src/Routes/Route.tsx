@@ -47,6 +47,7 @@ import Seminars from "../Company/Seminars";
 import ManageApplicants from "../Company/ManageApplicants";
 import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
+import Add_Data from "../Admin/Add_Data";
 
 export const router = createBrowserRouter([
   {
@@ -178,6 +179,10 @@ export const router = createBrowserRouter([
       {
         path: "admin/manage-payments",
         element: <ManagePayments />,
+      },
+      {
+        path: "admin/add-data",
+        element: <Add_Data />
       },
 
       // Candidate Dashboard Routes
