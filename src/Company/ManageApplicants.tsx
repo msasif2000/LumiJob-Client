@@ -214,13 +214,15 @@ const ManageApplicants = () => {
       const position = interviews[0].position;
       const cadetteEmail = interviews[0]?.email;
       const id = interviews[0]?.id;
+      const status = interviews[0]?.dndStats;
       const companyEmail = infosJobs.email;
     const allText: Comments = {
       comments,
       position,
       cadetteEmail,
       companyEmail,
-      id
+      id,
+      status
     };
     console.log(allText);
     // console.log(infosJobs)
