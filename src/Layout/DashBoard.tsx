@@ -1,3 +1,4 @@
+import { BsDatabaseAdd } from "react-icons/bs";
 import { BiBookmark, BiBuildingHouse, BiHomeSmile, BiLogOut, BiLineChart } from "react-icons/bi";
 import { MdOutlinePayments, MdOutlineAddHomeWork, MdOutlineWorkOutline, MdOutlineWorkHistory, MdOutlineEventAvailable, MdManageAccounts } from "react-icons/md";
 import { AiOutlineUsergroupAdd, AiOutlineFileDone } from "react-icons/ai";
@@ -110,6 +111,9 @@ const DashBoard = () => {
         </li>
         <li>
           <NavLink to="/dashboard/admin/manage-payments"><MdOutlinePayments className="text-2xl" />Manage Payments</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/admin/add-data"><BsDatabaseAdd className="text-2xl" />Add Data</NavLink>
         </li>
       </>
     ) : (
