@@ -1,12 +1,17 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { MdCancelScheduleSend } from "react-icons/md";
 import { SiGooglemeet } from "react-icons/si";
+import { TbMessage } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface prop {
   job: any;
   handleDelete: (jobId: string) => void;
+  id: string | any;
 }
+
 
 const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const [cancel, setCancel] = useState(false);
@@ -15,8 +20,10 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const handleConfirm = () => {
     setShowConfirmation(true);
   };
-
-  console.log(job);
+ 
+  
+  const id = job._id;
+  console.log(id);
 
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
@@ -61,6 +68,16 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
     return formattedDate;
   }
+  const axiosPublic = useAxiosPublic();
+  const { data: companyFeedbacks } = useQuery({
+    queryKey: ["companyFeedbacks", id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/companyFeedback/${job._id}`);
+      return res.data;
+    },
+    enabled: !!id,
+  });
+  console.log(companyFeedbacks);
 
   return (
     <div
@@ -71,14 +88,13 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       <div
         className={`card ${
           job?.scheduleInterview ? "bg-green-100 bg-opacity-60" : "bg-base-100"
-        }  hover:shadow-xl duration-1000 h-full`}
+        }  hover:shadow-xl duration-1000 h-full w-96`}
       >
         <div className="card-body ">
           <Link key={job._id} to={`/details/${job._id}`} className="space-y-4">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.title}</p>
-
               <p className="text-right">${job?.salaryRange.min}</p>
             </div>
             <p>{shortDesc(job?.description, 15)}</p>
@@ -129,6 +145,29 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
             className="text-red-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
             onClick={handleConfirm}
           />
+        </div>
+      )}
+      {(cancel && companyFeedbacks )  && (
+        <div className="absolute top-10 -right-36 xl:right-1">
+          <TbMessage onClick={()=>document.getElementById('my_modal_3').showModal()} className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+            />
+   <dialog id="my_modal_3" className="modal">
+  <div className="modal-box bg-gray-100 shadow-xl">
+  <form method="dialog">
+      {/* if there is a button in form, it will close the modal */}
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div className="p-4 bg-white rounded-lg">
+    <h3 className="font-bold text-2xl text-left">Feedback for you</h3>
+    <div>
+    <p className="py-4 mb-2 text-justify"> <p className="font-bold">feedback :</p> {companyFeedbacks?.comments} </p>
+    <p className="text-xl text-gray-500">if your any issue contact us : <span className="font-bold">{companyFeedbacks?.companyEmail}.</span></p>
+    </div>
+    </div>
+    
+  </div>
+</dialog>
+          
         </div>
       )}
       {showConfirmation && (

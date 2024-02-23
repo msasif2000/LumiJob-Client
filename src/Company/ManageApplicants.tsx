@@ -17,6 +17,9 @@ interface Comments {
   position: string;
   companyEmail: string;
   cadetteEmail: string | null;
+  CandiedId: string | any;
+  status: string;
+  jobId: string | any;
 }
 
 const ManageApplicants = () => {
@@ -36,7 +39,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-
+  console.log(infosJobs);
   // For dnd
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
@@ -46,6 +49,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  console.log(infos);
 
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
     queryKey: ["preSelected", id],
@@ -55,6 +59,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  console.log(preSelected);
 
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
@@ -64,7 +69,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-
+  console.log(interviews);
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
     queryFn: async () => {
@@ -73,6 +78,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
+  console.log(selected);
   // Dnd data fetching ends here
 
   // Drag and drop logical func
@@ -120,20 +126,29 @@ const ManageApplicants = () => {
     const hourly = daily / 24;
     return hourly.toFixed(2);
   };
-
+  
   // logical func for feedback
   const feedBack = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // const form = e.currentTarget;
     // const anyCements = (form.elements.namedItem("anyCements") as HTMLInputElement).value;
-    const position = infos[0].position;
-    const cadetteEmail = infos[0]?.email;
-    const companyEmail = infosJobs.email;
+     
+    if(infos[0]?.name)
+    {
+      const position = infos[0].position;
+      const cadetteEmail = infos[0]?.email;
+      const CandiedId = infos[0]?.id;
+      const status = "Applicants";
+      const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
     const allText: Comments = {
       comments,
       position,
       cadetteEmail,
       companyEmail,
+      CandiedId,
+      status,
+      jobId
     };
     console.log(allText);
     // console.log(infosJobs)
@@ -142,20 +157,145 @@ const ManageApplicants = () => {
       .then((response: any) => {
         console.log(response.data);
         if (response.data.insertedId) {
-          console.log("data send");
+          toast.success('Successfully your feedback receive !')
         } else {
-          console.log("data Not a send");
+          toast.error("didn't receive  your  message")
         }
       })
       .catch((error: any) => {
         console.log(error);
-        toast.error("Job Posting Failed", {
+        toast.error("Failed your feedback", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: true,
           closeOnClick: true,
         });
       });
+    }
+
+    if(preSelected[0]?.dndStats === "pre-selected")
+    {
+      const position = preSelected[0].position;
+      const cadetteEmail = preSelected[0]?.email;
+      const CandiedId = preSelected[0]?.id;
+      const status = preSelected[0]?.dndStats; 
+      const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
+    const allText: Comments = {
+      jobId,
+      comments,
+      position,
+      cadetteEmail,
+      companyEmail,
+      CandiedId,
+      status
+      
+    };
+    console.log(allText);
+    // console.log(infosJobs)
+    axiosPublic
+      .post("/sendFeedback", allText)
+      .then((response: any) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          toast.success('Successfully your feedback receive !')
+        } else {
+          toast.error("didn't receive  your  message")
+        }
+      })
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Failed your feedback session", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+        });
+      });
+    }
+
+    if(interviews[0]?.dndStats === "interview")
+    {
+      const position = interviews[0].position;
+      const cadetteEmail = interviews[0]?.email;
+      const CandiedId = interviews[0]?.id;
+      const status = interviews[0]?.dndStats;
+      const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
+    const allText: Comments = {
+      jobId,
+      comments,
+      position,
+      cadetteEmail,
+      companyEmail,
+      CandiedId,
+      status
+    };
+    console.log(allText);
+    // console.log(infosJobs)
+    axiosPublic
+      .post("/sendFeedback", allText)
+      .then((response: any) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          toast.success('Successfully your feedback receive !')
+        } else {
+          toast.error("didn't receive  your  message")
+        }
+      })
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Failed your Feedback", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+        });
+      });
+    }
+    if(selected[0]?.dndStats === "selected")
+    {
+      const position = selected[0].position;
+      const cadetteEmail = selected[0]?.email;
+      const CandiedId = selected[0]?.id;
+      const status = selected[0]?.dndStats;
+      const companyEmail = infosJobs.email;
+      const jobId = infosJobs._id;
+    const allText: Comments = {
+      jobId,
+      comments,
+      position,
+      cadetteEmail,
+      companyEmail,
+      CandiedId,
+      status
+    };
+    console.log(allText);
+    // console.log(infosJobs)
+    axiosPublic
+      .post("/sendFeedback", allText)
+      .then((response: any) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          toast.success('Successfully your feedback receive !')
+        } else {
+          toast.error("didn't receive  your  message")
+        }
+      })
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Failed your feedback", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+        });
+      });
+    }
+    
+    
+    
+    
   };
 
   // func for opening modal of interview scheduling
@@ -297,7 +437,7 @@ const ManageApplicants = () => {
                                 </p>
                               </div>
 
-                              <div className="absolute top-0 -right-20">
+                              <div className="absolute top-0 -right-0">
                                 <label
                                   htmlFor="my_modal_6"
                                   className="cursor-pointer ... text-xl"
@@ -422,6 +562,7 @@ const ManageApplicants = () => {
                                   {info?.city}, {info?.country}
                                 </p>
                               </div>
+                              {/* feedback for pre - selected */}
                               <div className="absolute top-2 right-4">
                                 <label
                                   htmlFor="my_modal_6"
@@ -589,6 +730,7 @@ const ManageApplicants = () => {
                                   ""
                                 )}
                               </div>
+                              {/* Candide feedback for Interview */}
                               <div className="absolute top-2 right-12">
                                 <label
                                   htmlFor="my_modal_6"
@@ -775,6 +917,64 @@ const ManageApplicants = () => {
                                   <CiLocationOn className="text-sm" />
                                   {info?.city}, {info?.country}
                                 </p>
+                                <div className="absolute top-3 right-5">
+                                <label
+                                  htmlFor="my_modal_6"
+                                  className="cursor-pointer ... text-xl"
+                                  title="Feedback"
+                                >
+                                  <VscFeedback />
+                                </label>
+                                <input
+                                  type="checkbox"
+                                  id="my_modal_6"
+                                  className="modal-toggle"
+                                />
+                                <div className="modal " role="dialog">
+                                  <div className="modal-box bg-gray-100 mb-10">
+                                    <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                      <label
+                                        htmlFor="my_modal_6"
+                                        className=" btn  text-black text-2xl "
+                                      >
+                                        <MdCancel />
+                                      </label>
+                                    </div>
+                                    <form
+                                      onSubmit={feedBack}
+                                      className="space-y-4 "
+                                    >
+                                      <div
+                                        className="p-4
+                                     bg-white rounded-2xl"
+                                      >
+                                        <label
+                                          htmlFor="additionalInfo"
+                                          className="block text-xl font-bold text-black"
+                                        >
+                                          Anything than can be improved?
+                                        </label>
+                                        <textarea
+                                          id="additionalInfo"
+                                          name="additionalInfo"
+                                          value={comments}
+                                          onChange={(e) =>
+                                            setComments(e.target.value)
+                                          }
+                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                          rows={4}
+                                          placeholder="Enter Your Feedback..."
+                                        ></textarea>
+                                      </div>
+                                      <input
+                                        className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+                                        type="submit"
+                                        value="submit"
+                                      />
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                               </div>
                             </div>
                           </div>
