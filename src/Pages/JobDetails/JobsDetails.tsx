@@ -15,7 +15,7 @@ import Share from "./Share";
 interface JobDetails {
   _id: string;
   title: string;
-  id: string;
+  modalId: string;
   location: string;
   salaryRange: {
     min: number;
@@ -165,6 +165,7 @@ const JobsDetails: React.FC = () => {
   const modal = document.getElementById('my_modal_3') as HTMLDialogElement;
 
   const shareUrl = window.location.href;
+  const modalId : string = 'my_modal_3';
 
   return (
     <>
@@ -388,7 +389,7 @@ const JobsDetails: React.FC = () => {
 
                           </div>
                         </button>
-                        <Share id="my_modal_3" shareUrl={shareUrl} title={title}></Share>
+                          <Share id={modalId} shareUrl={shareUrl} title={title}></Share>
                       </>
                       :
                       <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
