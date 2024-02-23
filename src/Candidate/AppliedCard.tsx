@@ -147,7 +147,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
           />
         </div>
       )}
-      {cancel && (
+      {(cancel && companyFeedbacks )  && (
         <div className="absolute top-10 -right-36 xl:right-1">
           <TbMessage onClick={()=>document.getElementById('my_modal_3').showModal()} className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
             />
@@ -160,8 +160,8 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     <div className="p-4 bg-white rounded-lg">
     <h3 className="font-bold text-2xl text-left">Feedback for you</h3>
     <div>
-    <p className="py-4 mb-2"> <p className="font-bold">feedback :</p> {companyFeedbacks?.comments} </p>
-    <p>if your any issue contact us : {companyFeedbacks?.companyEmail}</p>
+    <p className="py-4 mb-2 text-justify"> <p className="font-bold">feedback :</p> {companyFeedbacks?.comments} </p>
+    <p className="text-xl text-gray-500">if your any issue contact us : <span className="font-bold">{companyFeedbacks?.companyEmail}.</span></p>
     </div>
     </div>
     
