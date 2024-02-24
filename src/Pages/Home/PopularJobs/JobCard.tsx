@@ -82,8 +82,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
         {/*Quickly Apply button with model react form */}
         <div>
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
-          <Link
-            to={`details/${jobPostId}`}
+          <Link to={`details/${jobPostId}`}
             className="py-2 px-6 bg-black  hover:bg-accentTwo text-white font-semibold text-sm rounded-3xl"
           >
             Details
