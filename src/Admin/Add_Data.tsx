@@ -3,6 +3,7 @@ import { FcBriefcase, FcDecision } from "react-icons/fc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 interface SectorAdded {
     sectorType: string;
@@ -14,13 +15,14 @@ interface SkillAdded {
 
 const Add_Data = () => {
     const loading = false;
+    const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
     const { register: registerSector, handleSubmit: handleSubmitSector } = useForm<SectorAdded>();
     const { register: registerSkill, handleSubmit: handleSubmitSkill } = useForm<SkillAdded>();
     const [isModalOpen1, setIsModalOpen1] = useState(false);
     const [isModalOpen2, setIsModalOpen2] = useState(false);
-    const [sectors, setSectors] = useState<string[]>([]);
-    const [skills, setSkills] = useState<string[]>([]);
+    const [sectors, setSectors] = useState<any | null>(null);
+    const [skills, setSkills] = useState<any | null>(null);
 
     const openModal1 = () => {
         setIsModalOpen1(true);
@@ -69,6 +71,7 @@ const Add_Data = () => {
                         position: "top-center",
                     });
                     setIsModalOpen1(false);
+                    setSectors([...sectors, res.data]);
                 }
             })
             .catch((err) => {
@@ -76,8 +79,8 @@ const Add_Data = () => {
                 toast.error("Failed to add job sector");
             });
     };
-    // console.log(sectors);
-    // console.log(skills);
+     console.log(sectors);
+     console.log(skills);
     const onSubmitSkill: SubmitHandler<SkillAdded> = async (data: SkillAdded) => {
         axiosPublic
             .post("/add-skill", data)
@@ -89,6 +92,7 @@ const Add_Data = () => {
                         position: "top-center",
                     });
                     setIsModalOpen2(false);
+                    setSkills([...skills, res.data]);
                 }
             })
             .catch((err) => {
@@ -100,28 +104,28 @@ const Add_Data = () => {
         <div className="h-screen max-w-2xl mx-auto">
             <div className="flex justify-center items-center h-full gap-4">
                 <div className="w-[200px] h-[200px] mx-auto bg-slate-300 flex flex-col justify-center items-center">
-                    <a href="#sector-add-modal">
-                        <button onClick={openModal1} className="p-10 flex flex-col justify-center items-center text-2xl"><FcBriefcase className="text-7xl" /> Add Job Sector</button>
+                    <a href="#sector-modal" onClick={openModal1}>
+                        <button className="p-10 flex flex-col justify-center items-center text-2xl"><FcBriefcase className="text-7xl" /> Add Job Sector</button>
                     </a>
 
                 </div>
                 <div className="w-[200px] h-[200px] mx-auto bg-slate-300 flex flex-col justify-center items-center">
-                    <a href="#skill-add-modal" onClick={openModal2}>
+                    <a href="#skill-modal" onClick={openModal2}>
                         <button className="p-10 flex flex-col justify-center items-center text-2xl"><FcDecision className="text-7xl" /> Add Skills</button>
                     </a>
                 </div>
             </div>
             <ToastContainer />
             {isModalOpen1 && (
-                <div className="modal" role="dialog" id="sector-add-modal">
-                    <div className="modal-box bg-white px-2 py-5">
-                        <h2 className="text-2xl font-bold text-center">Add Job Sector</h2>
+                <div className="modal" role="dialog" id="sector-modal">
+                    <div className="modal-box bg-white px-4 py-8">
+                        <h2 className="text-2xl font-bold text-center mb-4">Add Job Sector</h2>
                         <div>
-                            <ul className="dropdown">
-                                {sectors.map((sector: any) => (
-                                    <li key={sector.id} className="dropdown-item">
+                            <ul className="dropdown mb-4">
+                                {sectors.map((sector: any, idx: number) => (
+                                    <li key={sector._id} className="dropdown-item">
                                         <p className="dropdown-link">
-                                            {sector}
+                                           <span className="font-bold">{idx+1}.</span> {sector?.sectorType}
                                         </p>
                                     </li>
                                 ))}
@@ -135,7 +139,7 @@ const Add_Data = () => {
                                         type="text"
                                         {...registerSector("sectorType", { required: "Job Sector name is required" })}
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                        placeholder="Job Sector"
+                                        placeholder="Add Job Sector"
                                     />
                                 </div>
                             </div>
@@ -152,15 +156,15 @@ const Add_Data = () => {
                 </div>
             )}
             {isModalOpen2 && (
-                <div className="modal" role="dialog" id="skill-add-modal">
-                    <div className="modal-box bg-white px-2 py-5">
-                        <h2 className="text-2xl font-bold text-center">Add Skill</h2>
+                <div className="modal" role="dialog" id="skill-modal">
+                    <div className="modal-box bg-white px-4 py-8">
+                        <h2 className="text-2xl font-bold text-center mb-4">Add Skill</h2>
                         <div>
                             <ul className="dropdown">
-                                {skills.map((skill: any) => (
-                                    <li key={skill.id} className="dropdown-item">
+                                {skills.map((skill: any, idx:number) => (
+                                    <li key={skill._id} className="dropdown-item">
                                         <a href="#" className="dropdown-link">
-                                            {skill}
+                                           <span className="font-bold">{idx+1}.</span> {skill?.skill}
                                         </a>
                                     </li>
                                 ))}
@@ -173,7 +177,7 @@ const Add_Data = () => {
                                         type="text"
                                         {...registerSkill("skill", { required: "Job Sector name is required" })}
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                        placeholder="Job Sector"
+                                        placeholder="Add New Skill"
                                     />
                                 </div>
                             </div>
