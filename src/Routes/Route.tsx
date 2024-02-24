@@ -116,6 +116,11 @@ export const router = createBrowserRouter([
         path: "/top-company-detailsProfiles/:id",
         element: <TopCompanyProfile></TopCompanyProfile>,
       },
+
+      {
+        path: "/candidate-detailsProfile/:id",
+        element: <CandidateDetails></CandidateDetails>,
+      },
     ],
   },
 
@@ -128,10 +133,6 @@ export const router = createBrowserRouter([
     path: "/signup/role",
     errorElement: <NotFound />,
     element: <Roles />,
-  },
-  {
-    path: "/candidate-detailsProfile/:id",
-    element: <CandidateDetails></CandidateDetails>,
   },
 
   //Login
@@ -182,7 +183,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "admin/add-data",
-        element: <Add_Data />
+        element: <Add_Data />,
       },
 
       // Candidate Dashboard Routes
