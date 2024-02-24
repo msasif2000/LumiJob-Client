@@ -10,19 +10,19 @@ import {
 import { PiBagSimpleFill } from "react-icons/pi";
 import { IoIosPeople } from "react-icons/io";
 import { GiConfirmed } from "react-icons/gi";
-
+ 
 interface JobData {
     name: string;
     value: number;
 }
-
+ 
 const CompanyAnalytics: FunctionComponent = () => {
     const axiosPublic = useAxiosPublic();
     const [profile, setProfile] = useState<any>(null);
     const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
     const { user } = useAuth();
-
-
+ 
+ 
     useEffect(() => {
         if (user?.email) {
           axiosPublic
@@ -36,7 +36,7 @@ const CompanyAnalytics: FunctionComponent = () => {
       }, [user]);
     
       const jobPosts = companyPostedJobs ? companyPostedJobs.length : 0;
-
+ 
     useEffect(() => {
         if (user?.email) {
             axiosPublic
@@ -47,12 +47,12 @@ const CompanyAnalytics: FunctionComponent = () => {
                 .catch((err) => console.log(err));
         }
     }, [user]);
-
+ 
     let appliedJobs = 0;
     let candidatesApplied = new Set<string>();
     let confirmedJobs = 0;
     let pieChartData: JobData[] = [];
-
+ 
     if (profile) {
         appliedJobs = profile.length;
         profile.forEach((job: any) => {
@@ -61,16 +61,16 @@ const CompanyAnalytics: FunctionComponent = () => {
                 confirmedJobs++;
             }
         });
-
+ 
         pieChartData = [
             { name: "Applied", value: appliedJobs },
             { name: "In Process", value: appliedJobs-confirmedJobs },
             { name: "Confirm", value: confirmedJobs },
         ];
     }
-
+ 
     const colors = ["#0088FE", "#00C49F", "#f682d3"];
-
+ 
     return (
         <div>
             <div className="min-h-20 mt-4  rounded-md p-6 pb-10">
@@ -125,7 +125,9 @@ const CompanyAnalytics: FunctionComponent = () => {
                                 fill="#8884d8"
                                 dataKey="value"
                             >
+
                                 {pieChartData.map((entry: any, index: number) => (
+
                                     <Cell
                                         key={`cell-${index}`}
                                         fill={colors[index % colors.length]} // Assign predefined colors
@@ -142,5 +144,5 @@ const CompanyAnalytics: FunctionComponent = () => {
         </div>
     );
 };
-
+ 
 export default CompanyAnalytics;
