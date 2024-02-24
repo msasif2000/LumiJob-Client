@@ -8,7 +8,9 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
  
 interface prop {
   job: any;
-  handleDelete: (jobId: string) => void;
+  handleDelete: (id: string, jobId: string) => void;
+  key: any;
+
 }
  
  
@@ -30,7 +32,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   };
  
   const handleDeleteConfirmation = () => {
-    handleDelete(job._id);
+    handleDelete(job._id, job.jobId);
     setShowConfirmation(false);
   };
  
@@ -76,8 +78,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     },
     enabled: !!id,
   });
-  //console.log(companyFeedbacks);
- 
+
   return (
     <div
       className="relative"
@@ -90,7 +91,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
         }  hover:shadow-xl duration-1000 h-full w-96`}
       >
         <div className="card-body ">
-          <Link key={job._id} to={`/details/${job._id}`} className="space-y-4">
+          <Link key={job._id} to={`/details/${job.jobId}`} className="space-y-4">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.title}</p>
