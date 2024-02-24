@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Job from "./Job";
-import Sector from "./sector";
 import JobCard from "./JobCard";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import axios from "axios";
+import useSectorAndSkills from "../../../hooks/useSectorAndSkills";
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
-  const [sectors, setSectors] = useState<Sector[]>([]);
   const [tabIndex, setTabIndex] = useState(0);
   const axiosPublic = useAxiosPublic();
+
+  const { sectors } = useSectorAndSkills();
 
   useEffect(() => {
     axiosPublic
@@ -23,13 +23,6 @@ const PopularJobs = () => {
       .catch((error) => console.log(error));
   }, []);
 
-
-  useEffect(() => {
-    axios.get("/sectors.json").then((res) => {
-      setSectors(res.data);
-      //console.log("Sectors:", res.data); // Log sector data
-    });
-  }, []);
 
   const slicedSectors = sectors.slice(0, 10)
 
@@ -59,11 +52,11 @@ const PopularJobs = () => {
 
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
-            {slicedSectors?.map((sector) => (
+            {slicedSectors?.map((sector: any) => (
               <Tab key={sector._id}>{sector.sectorType}</Tab>
             ))}
           </TabList>
-          {sectors?.map((sector) => (
+          {sectors?.map((sector: any) => (
             <TabPanel key={sector._id}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
                 {slicedJobs?.map((job) => (

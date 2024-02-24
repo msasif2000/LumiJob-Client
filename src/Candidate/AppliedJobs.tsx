@@ -1,49 +1,72 @@
-import { useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import CandidateNav from "./CommonNavbar/CandidateNav";
 import useAuth from "../hooks/useAuth";
 import AppliedCard from "./AppliedCard";
-// import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 const AppliedJobs = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const [jobs, setJobs] = useState<any | null>(null);
 
-  useEffect(() => {
-    if (user?.email) {
-      axiosPublic
-        .get(`/get-applied-jobs/${user?.email}`)
-        .then((res) => {
-          setJobs(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [user]);
+  const userEmail = user?.email;
 
-  const length = jobs?.length;
+  const { data: jobs, refetch: jobsRefetch } = useQuery({
+    queryKey: ["jobs"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/get-applied-jobs/${userEmail}`);
+      return res.data;
+    },
+  });
 
-  const handleDelete = (jobId: string) => {
-   console.log(jobId)
+  // console.log(jobs)
+
+  const length = jobs?.length
+ 
+
+  const handleDelete = (id: string, jobId : string) => {
+    const data = {
+      jobId,
+      userEmail,
+      id
+    };
+    // console.log(data)
+
+    axiosPublic
+      .post("/delete-jobs-from-candidate", data)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === "true") {
+          toast.success("Cancel successfull", {
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            position: "top-center",
+          });
+          jobsRefetch();
+        } else {
+          toast.warn("Cancel failed");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.warn("Something went wrong");
+      });
   };
 
   return (
     <>
-      <CandidateNav
-        text="Jobs you applied for"
-        btn={length}
-        btn2=""
-        handleClick={() => {}}
-        handleClick2={() => {}}
-      />
-
+      <div>
+        <h3 className="md:text-3xl font-bold mb-12 mt-3">
+          Applied jobs <span className="text-accent">{length}</span>
+        </h3>
+      </div>
       <div>
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
           {jobs?.map((job: any) => (
             <AppliedCard key={job._id} job={job} handleDelete={handleDelete} />
           ))}
         </div>
+        <ToastContainer />
       </div>
     </>
   );

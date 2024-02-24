@@ -130,9 +130,9 @@ const Seminars = () => {
                     <div>
                         <div className="flex justify-end gap-2 text-xs mb-5 lg:hidden">
                             <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200">
-                                <a href="#my_modal_8">{length}</a>
+                                <a href="#seminar_modal">{length}</a>
                             </button>
-                            <a href="#my_modal_8" className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200" onClick={openModal}>
+                            <a href="#seminar_modal" className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200" onClick={openModal}>
                                 Post Seminar
                             </a>
                         </div>
@@ -142,10 +142,10 @@ const Seminars = () => {
                 {/* for large device */}
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-2">
-                        <a className="btn" href="#my_modal_8" onClick={openModal}>
+                        <a className="btn" href="#seminar_modal" onClick={openModal}>
                             {length}
                         </a>
-                        <a href="#my_modal_8" onClick={openModal} className="btn">
+                        <a href="#seminar_modal" onClick={openModal} className="btn">
                             Post Seminar
                         </a>
                     </ul>
@@ -159,7 +159,7 @@ const Seminars = () => {
             <ToastContainer />
 
             {isModalOpen && (
-                <div className="modal" role="dialog" id="my_modal_8">
+                <div className="modal" role="dialog" id="seminar_modal">
                     <div className="modal-box bg-white px-2 py-5">
                         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
                             <div className="pb-10 space-y-6">
@@ -231,7 +231,7 @@ const Seminars = () => {
                             </button>
                         </form>
                         <div className="flex items-center mt-2 justify-end ">
-                            <button onClick={closeModal} className="btn">
+                            <button onClick={closeModal} className="btn bg-red-600 text-white hover:bg-red-500">
                                 Close
                             </button>
                         </div>

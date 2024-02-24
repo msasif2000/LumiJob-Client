@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 import emailjs from "@emailjs/browser";
@@ -7,22 +7,41 @@ import "./contact.css";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { BiSolidPhoneCall } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
-
+  const navigate =useNavigate()
   const handlefrom = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (form.current) {
+      const formData = new FormData(form.current);
+      const formDataObject: any = {};
+      formData.forEach((value, key) => {
+        formDataObject[key] = value;
+      });
+
+      console.log("Form Data:", formDataObject);
+
       emailjs
         .sendForm(
-          "YOUR_SERVICE_ID",
-          "YOUR_TEMPLATE_ID",
+          "service_k3fx78t",
+          "template_vtm5tif",
           form.current,
-          "YOUR_PUBLIC_KEY"
+          "0N8CKLdWb0pnRf50u"
         )
         .then(
           (result) => {
+            resetForm();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `Message send successfully .`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+            navigate('/')
             console.log(result.text);
           },
           (error) => {
@@ -34,8 +53,17 @@ const Contact = () => {
     }
   };
 
+  const resetForm = () => {
+    if (form.current) {
+      form.current.reset();
+    }
+  };
+
   return (
     <div>
+      <Helmet>
+        <title>Contacts | LumiJobs</title>
+      </Helmet>
       <div className="min-h-screen bg-[#fdfdfd]">
         <div className="max-w-screen-2xl mx-auto">
           <div>
@@ -204,15 +232,14 @@ const Contact = () => {
                         </div>
                       </div>
 
-                      <div className="form-control ">
+                      <div className="form-control">
                         <label className="label">
                           <span className="label-text text-[16px] font-semibold">
                             Select Subject?
                           </span>
                         </label>
-
                         <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-start">
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="feedback"
@@ -222,32 +249,31 @@ const Contact = () => {
                             />
                             <label htmlFor="feedback">Feedback</label>
                           </div>
-
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="question"
-                              name="Select_subject"
+                              name="select_subject"
                               value="question"
                               className="input-radio"
                             />
                             <label htmlFor="question">Question</label>
                           </div>
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="partnership"
-                              name="Select_subject"
+                              name="select_subject"
                               value="partnership"
                               className="input-radio"
                             />
                             <label htmlFor="partnership">Partnership</label>
                           </div>
-                          <div className="flex  gap-2">
+                          <div className="flex gap-2">
                             <input
                               type="radio"
                               id="issue"
-                              name="Select_subject"
+                              name="select_subject"
                               value="issue"
                               className="input-radio"
                             />
@@ -265,12 +291,11 @@ const Contact = () => {
                             Message
                           </span>
                         </label>
-                        <input
-                          type="text"
+                        <textarea
                           name="user_message"
                           placeholder="Write your message.."
                           className=" input "
-                        />
+                        ></textarea>
                       </div>
 
                       <div className="flex justify-end">

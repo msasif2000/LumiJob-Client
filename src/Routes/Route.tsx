@@ -43,8 +43,11 @@ import CompleteResume from "../Candidate/UpdateCmponents/CompleteResume";
 
 import EditBlog from "../Company/EditBlog";
 import Seminars from "../Company/Seminars";
-import Post_A_Seminar from "../Company/Post_A_Seminar";
-
+// import Post_A_Seminar from "../Company/Post_A_Seminar";
+import ManageApplicants from "../Company/ManageApplicants";
+import CandidateResume from "../Candidate/CandidateResume";
+import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
+import Add_Data from "../Admin/Add_Data";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +101,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <JobsDetails></JobsDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/manage-applicants/:id",
+        element: (
+          <PrivateRoute>
+            <ManageApplicants />
           </PrivateRoute>
         ),
       },
@@ -169,6 +180,10 @@ export const router = createBrowserRouter([
         path: "admin/manage-payments",
         element: <ManagePayments />,
       },
+      {
+        path: "admin/add-data",
+        element: <Add_Data />
+      },
 
       // Candidate Dashboard Routes
       {
@@ -186,6 +201,14 @@ export const router = createBrowserRouter([
       {
         path: "candidateProfile/resume",
         element: <Resume></Resume>,
+      },
+      {
+        path: "resume",
+        element: <CandidateResume></CandidateResume>,
+      },
+      {
+        path: "resume/update",
+        element: <CandidateResumeUpdate></CandidateResumeUpdate>,
       },
       {
         path: "appliedJobs",
@@ -227,16 +250,16 @@ export const router = createBrowserRouter([
       },
       {
         path: ":id/edit-blog",
-        element: <EditBlog />
+        element: <EditBlog />,
       },
       {
         path: "seminar-posted",
-        element: <Seminars />
+        element: <Seminars />,
       },
-      {
-        path: "post-a-seminar",
-        element: <Post_A_Seminar />
-      },
+      // {
+      //   path: "post-a-seminar",
+      //   element: <Post_A_Seminar />
+      // },
       {
         path: "companyAnalytics",
         element: <CompanyAnalytics />,

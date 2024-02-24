@@ -3,6 +3,9 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import usePostedJob from "../hooks/usePostedJob";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import CPagination from "../Pages/FindCandidate/CPagination";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -21,6 +24,16 @@ const ManageJobs = () => {
 
   const axiosPublic = useAxiosPublic();
   const [PostedData, refetch] = usePostedJob();
+
+  const [dataPerPage] = useState<number>(10);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+
   const handleDelete = (id: string) => {
     Swal.fire({
       title: "Are you want to delete this post from database?",
@@ -60,6 +73,9 @@ const ManageJobs = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Manage Jobs | Lumijobs</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg my-2">
         <h2 className="text-3xl font-bold">Job Posts</h2>
         <h2 className="text-3xl">
@@ -83,40 +99,52 @@ const ManageJobs = () => {
             </thead>
             <tbody>
               {
-                PostedData.map((jobs: PostedJob, index: number) => <tr key={jobs._id}>
-                  <th>
-                    {index + 1}
-                  </th>
-                  <td className="font-semibold">
-                    {jobs.platform}
-                  </td>
-                  <td className="font-bold">{jobs.title}</td>
-                  <td>{jobs.post_time.split("T")[0]}</td>
+                PostedData
+                  .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((jobs: PostedJob, index: number) => <tr key={jobs._id}>
+                    <th>
+                      {index + 1}
+                    </th>
+                    <td className="font-semibold">
+                      {jobs.platform}
+                    </td>
+                    <td className="font-bold">{jobs.title}</td>
+                    <td>{jobs.post_time.split("T")[0]}</td>
 
 
-                  <td>
-                    <Link className="inline-block relative group" to={`/details/${jobs._id}`}>
-                      <button className="text-white bg-accent hover:bg-accentTwo p-3 rounded text-md mr-4"><MdPreview className="text-2xl" /></button>
-                      <span className="opacity-0 group-hover:opacity-100 absolute top-full left-1/2 transform -translate-x-1/2 text-black  px-3 text-sm z-10 transition-opacity duration-300">
-                        View
-                      </span>
-                    </Link>
+                    <td>
+                      <Link className="inline-block relative group" to={`/details/${jobs._id}`}>
+                        <button className="text-white bg-accent hover:bg-accentTwo p-3 rounded text-md mr-4"><MdPreview className="text-2xl" /></button>
+                        <span className="opacity-0 group-hover:opacity-100 absolute top-full left-1/2 transform -translate-x-1/2 text-black  px-3 text-sm z-10 transition-opacity duration-300">
+                          View
+                        </span>
+                      </Link>
 
-                    <button onClick={() => handleDelete(jobs._id)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group">
-                      <MdDelete className="text-2xl" />
-                      <span className="opacity-0 group-hover:opacity-100 absolute top-full left-1/2 transform -translate-x-1/2 text-black  px-3 text-sm z-10 transition-opacity duration-300">
-                        Delete
-                      </span>
-                    </button>
+                      <button onClick={() => handleDelete(jobs._id)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group">
+                        <MdDelete className="text-2xl" />
+                        <span className="opacity-0 group-hover:opacity-100 absolute top-full left-1/2 transform -translate-x-1/2 text-black  px-3 text-sm z-10 transition-opacity duration-300">
+                          Delete
+                        </span>
+                      </button>
 
-                  </td>
+                    </td>
 
-                </tr>)
+                  </tr>)
               }
               {/* row 1 */}
 
             </tbody>
           </table>
+          {PostedData.length > dataPerPage && (
+            <div className="py-12">
+              {/* ==>  Pagination <== */}
+              <CPagination
+                totalData={PostedData.length}
+                dataPerPage={dataPerPage}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              ></CPagination>
+            </div>
+          )}
         </div>
       </div>
     </div>

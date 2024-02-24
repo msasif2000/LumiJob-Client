@@ -1,6 +1,11 @@
+import { BsDatabaseAdd } from "react-icons/bs";
+import { BiBookmark, BiBuildingHouse, BiHomeSmile, BiLogOut, BiLineChart } from "react-icons/bi";
+import { MdOutlinePayments, MdOutlineAddHomeWork, MdOutlineWorkOutline, MdOutlineWorkHistory, MdOutlineEventAvailable, MdManageAccounts } from "react-icons/md";
+import { AiOutlineUsergroupAdd, AiOutlineFileDone } from "react-icons/ai";
+import { GrGroup, GrBlog, GrWorkshop } from "react-icons/gr";
+import { RxAvatar } from "react-icons/rx";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import UniLoader from "../component/err & loading/UniLoader";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -11,8 +16,10 @@ const DashBoard = () => {
   const [isLoading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [userData, setUserData] = useState({} as any);
   const [role, setRole] = useState("");
 
+  //console.log(user);
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isNavOpen) {
@@ -33,6 +40,7 @@ const DashBoard = () => {
         .then((res) => {
           // console.log(res.data.role);
           setRole(res.data.role);
+          setUserData(res.data);
           setLoading(false);
         })
         .catch((error) => {
@@ -51,74 +59,61 @@ const DashBoard = () => {
     role === "candidate" ? (
       <>
         <li>
-          <h2 className="text-xl xl:text-2xl text-red-800 font-bold bg-white my-2">
-            Candidate DashBoard
-          </h2>
+          <NavLink to="/dashboard/candidateProfile"><MdManageAccounts className="text-2xl" />Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/candidateProfile">Profile</NavLink>
+          <NavLink to="/dashboard/resume"><AiOutlineFileDone className="text-2xl" />Resume</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/appliedJobs">Applied Jobs</NavLink>
+          <NavLink to="/dashboard/appliedJobs"><GrWorkshop className="text-xl" />Applied Jobs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/bookmarks">Bookmarks</NavLink>
+          <NavLink to="/dashboard/bookmarks"><BiBookmark className="text-2xl" />Bookmarks</NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
-        </li>
+        </li> */}
       </>
     ) : role === "company" ? (
       <>
         <li>
-          <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
-            Company DashBoard
-          </h2>
+          <NavLink to="/dashboard/companyProfile"><BiBuildingHouse className="text-xl" />Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/companyProfile">Profile</NavLink>
+          <NavLink to="/dashboard/postedJobs"><MdOutlineWorkHistory className="text-xl" />Job Posts</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/postedJobs">Posted Job</NavLink>
+          <NavLink to="/dashboard/blog-posted"><GrBlog />Blogs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/blog-posted">Blogs</NavLink>
+          <NavLink to="/dashboard/seminar-posted"><MdOutlineEventAvailable className="text-xl" />Seminars</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/seminar-posted">Seminars</NavLink>
+          <NavLink to="/dashboard/companyAnalytics"><BiLineChart className="text-xl" />Analytics</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/companyAnalytics">Analytics</NavLink>
-        </li>
-        <li>
-          <NavLink to="/dashboard/employees">Employees</NavLink>
+          <NavLink to="/dashboard/employees"><GrGroup className="text-xl" />Employees</NavLink>
         </li>
       </>
     ) : role === "admin" ? (
       <>
         <li>
-          <h2 className="text-2xl text-blue-800 font-bold bg-white my-2">
-            Admin DashBoard
-          </h2>
+          <NavLink to="/dashboard/adminDashboard"><BiLineChart className="text-2xl" />Analytics</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/adminDashboard">DashBoard</NavLink>
+          <NavLink to="/dashboard/admin/manage-candidate"><AiOutlineUsergroupAdd className="text-2xl" />Manage Candidate</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-candidate">
-            Manage Candidate
-          </NavLink>
+          <NavLink to="/dashboard/admin/manage-company"><MdOutlineAddHomeWork className="text-2xl" />Manage Company</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-company">Manage Company</NavLink>
+          <NavLink to="/dashboard/admin/manage-jobs"><MdOutlineWorkOutline className="text-2xl" />Manage Jobs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-jobs">Manage Jobs</NavLink>
+          <NavLink to="/dashboard/admin/manage-payments"><MdOutlinePayments className="text-2xl" />Manage Payments</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-payments">
-            Manage Payments
-          </NavLink>
+          <NavLink to="/dashboard/admin/add-data"><BsDatabaseAdd className="text-2xl" />Add Data</NavLink>
         </li>
       </>
     ) : (
@@ -131,8 +126,9 @@ const DashBoard = () => {
         <UniLoader />
       ) : (
         <div className="md:flex">
-          <div className="lg:w-2/12 xl:max-w-[18rem] border-r md:flex-shrink-0">
-            <div className="navbar-start lg:hidden">
+          <div className="lg:w-2/12 xl:max-w-[18rem] border-r">
+            {/* === Mobile Menu */}
+            <div className="dash navbar-start lg:hidden">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
                   <svg
@@ -176,26 +172,57 @@ const DashBoard = () => {
                 </ul>
               </div>
             </div>
-            <div className="lg:flex hidden  min-h-screen pt-12 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
-              <ul className="menu text-xl">
-                {Links}
 
-                <div className="divider"></div>
+            {/* === Large Screen Menu */}
+            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+              <div>
+                <h3 className="text-3xl font-bold text-center">
+                  Lumi<span className="text-[#4869DD]">Jobs</span>
+                </h3>
+                <div className="divider mt-[0.7rem]"></div>
+                <div className="flex items-center m-4 gap-2">
+                  <div>
+                    {
+                      userData?.photo ?
+                        <img src={userData.photo} alt="" className="rounded-full h-10 w-10" />
+                        :
+                        <RxAvatar className="text-2xl" />
+                    }
+                  </div>
+                  <div>
+                    <h6 className="text-center capitalize text-accent">{userData?.name || "Your name"}</h6>
+                  </div>
+                </div>
 
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  <button onClick={handleLogout} className="flex items-center">
-                    <BiLogOut className="text-2xl" />
-                    <span>Sign Out</span>
-                  </button>
-                </li>
-              </ul>
+                <ul className="menu text-xl">{Links}</ul>
+              </div>
+              <div>
+                <div className="divider mx-4"></div>
+                <ul className="menu text-xl">
+                  <li>
+                    <NavLink to="/"><BiHomeSmile className="text-2xl" /> Home</NavLink>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center"
+                    >
+                      <BiLogOut className="text-2xl" />
+                      <span>Sign Out</span>
+                    </button>
+                  </li>
+                </ul>
+                <h6 className="text-center capitalize text-xs text-gray-300 border-t-2 mx-4">
+                  {role} Dashboard
+                </h6>
+              </div>
             </div>
           </div>
-          <div className="md:flex-1 overflow-x-auto px-5 bg-[#FAFAFA]">
-            <Outlet></Outlet>
+
+          <div className="md:flex-1 bg-[#FAFAFA]">
+            <div className="px-6 pb-6">
+              <Outlet></Outlet>
+            </div>
           </div>
         </div>
       )}

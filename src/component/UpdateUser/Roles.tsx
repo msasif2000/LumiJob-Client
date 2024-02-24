@@ -22,20 +22,7 @@ const Roles = () => {
         }
       });
   };
-  const handleHr = () => {
-    // for dev
-    axiosPublic
-      .put(`/roles/${user?.email}`, { role: "hr", canPost: 5 })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.message === "true") {
-          toast.success("Role changed successfully");
-          navigate("/");
-        } else {
-          toast.warn("Error: User not found or another issue");
-        }
-      });
-  };
+ 
   const handleCandidate = () => {
     // for dev
     axiosPublic
@@ -83,25 +70,8 @@ const Roles = () => {
                     <h2 className="text-xl font-bold text-center">Company</h2>
                   </div>
                 </div>
+              
                 {/* card 2 */}
-                <div
-                  onClick={() => handleHr()}
-                  className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear cursor-pointer"
-                >
-                  <figure>
-                    <img
-                      src="https://i.postimg.cc/5tBRS74M/21404.jpg"
-                      alt="Shoes"
-                      className="h-72 w-full overflow-hidden"
-                    />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="text-xl font-bold text-center">
-                      Hiring Manager
-                    </h2>
-                  </div>
-                </div>
-                {/* card 3 */}
                 <div
                   onClick={() => handleCandidate()}
                   className="card card-compact w-96 bg-base-100 hover:shadow-xl duration-500 ease-linear cursor-pointer"
