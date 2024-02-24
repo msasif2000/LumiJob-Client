@@ -125,10 +125,12 @@ const CompanyAnalytics: FunctionComponent = () => {
                                 fill="#8884d8"
                                 dataKey="value"
                             >
-                                {pieChartData.map((entry, index) => (
+                                {pieChartData.map((entry: any, index: number) => (
                                     <Cell
                                         key={`cell-${index}`}
                                         fill={colors[index % colors.length]} // Assign predefined colors
+                                        {...entry}
+                                       
                                     />
                                 ))}
                             </Pie>
