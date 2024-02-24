@@ -9,9 +9,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 interface prop {
   job: any;
   handleDelete: (jobId: string) => void;
-  id: string | any;
+  key: any;
 }
-
 
 const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const [cancel, setCancel] = useState(false);
@@ -20,9 +19,8 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const handleConfirm = () => {
     setShowConfirmation(true);
   };
- 
-  
-  const id = job._id;
+
+  const id: any = job._id;
   console.log(id);
 
   const formatDeadlineDate = (deadline: any) => {
@@ -147,27 +145,48 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
           />
         </div>
       )}
-      {(cancel && companyFeedbacks )  && (
+      {cancel && companyFeedbacks && (
         <div className="absolute top-10 -right-36 xl:right-1">
-          <TbMessage onClick={()=>document.getElementById('my_modal_3').showModal()} className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
-            />
-   <dialog id="my_modal_3" className="modal">
-  <div className="modal-box bg-gray-100 shadow-xl">
-  <form method="dialog">
-      {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
-    <div className="p-4 bg-white rounded-lg">
-    <h3 className="font-bold text-2xl text-left">Feedback for you</h3>
-    <div>
-    <p className="py-4 mb-2 text-justify"> <p className="font-bold">feedback :</p> {companyFeedbacks?.comments} </p>
-    <p className="text-xl text-gray-500">if your any issue contact us : <span className="font-bold">{companyFeedbacks?.companyEmail}.</span></p>
-    </div>
-    </div>
-    
-  </div>
-</dialog>
-          
+          <TbMessage
+            onClick={() => {
+              const modalElement = document.getElementById(
+                "my_modal_3"
+              ) as HTMLDialogElement | null;
+              if (modalElement) {
+                modalElement.showModal();
+              }
+            }}
+            className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+          />
+
+          <dialog id="my_modal_3" className="modal">
+            <div className="modal-box bg-gray-100 shadow-xl">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <div className="p-4 bg-white rounded-lg">
+                <h3 className="font-bold text-2xl text-left">
+                  Feedback for you
+                </h3>
+                <div>
+                  <p className="py-4 mb-2 text-justify">
+                    {" "}
+                    <p className="font-bold">feedback :</p>{" "}
+                    {companyFeedbacks?.comments}{" "}
+                  </p>
+                  <p className="text-xl text-gray-500">
+                    if your any issue contact us :{" "}
+                    <span className="font-bold">
+                      {companyFeedbacks?.companyEmail}.
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </dialog>
         </div>
       )}
       {showConfirmation && (
