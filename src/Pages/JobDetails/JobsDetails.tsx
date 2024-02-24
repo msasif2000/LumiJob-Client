@@ -179,7 +179,7 @@ const JobsDetails: React.FC = () => {
   };
 
   // share related
-  const modal = document.getElementById("my_modal_3") as HTMLDialogElement;
+  // const modal = ;  
 
   const shareUrl = window.location.href;
   const modalId: string = "my_modal_3";
@@ -396,10 +396,16 @@ const JobsDetails: React.FC = () => {
 
                     {user ? (
                       <>
-                        <button
-                          className="btn"
-                          onClick={() => modal.showModal()}
-                        >
+                          <button
+                            className="btn"
+                            onClick={() => {
+                              const modal = document.getElementById("my_modal_3") as HTMLDialogElement | null;
+                              if (modal) {
+                                modal.showModal();
+                              }
+                            }}
+                          >
+
                           <div>
                             <div className="flex justify-center items-center gap-2">
                               Share
