@@ -21,8 +21,15 @@ const Add_Data = () => {
     const { register: registerSkill, handleSubmit: handleSubmitSkill, reset: resetSkill } = useForm<SkillAdded>();
     const [isModalOpen1, setIsModalOpen1] = useState(false);
     const [isModalOpen2, setIsModalOpen2] = useState(false);
-    // const [sectors, setSectors] = useState<any | null>(null);
-    // const [skills, setSkills] = useState<any | null>(null);
+    const [showSectors, setShowSectors] = useState(false);
+    const [showSkills, setShowSkills] = useState(false);
+
+    const toggleShowSectors = () => {
+        setShowSectors(!showSectors);
+    };
+    const toggleShowSkills = () => {
+        setShowSkills(!showSkills);
+    };
 
     const { sectors, skills, refetch } = useSectorAndSkills();
 
@@ -87,13 +94,13 @@ const Add_Data = () => {
     return (
         <div className="h-screen max-w-2xl mx-auto">
             <div className="flex justify-center items-center h-full gap-4">
-                <div className="w-[200px] h-[200px] mx-auto bg-slate-300 flex flex-col justify-center items-center">
+                <div className="w-[200px] h-[200px] mx-auto bg-[#dbe4ff] flex flex-col justify-center items-center">
                     <a href="#sector-modal" onClick={openModal1}>
                         <button className="p-10 flex flex-col justify-center items-center text-2xl"><FcBriefcase className="text-7xl" /> Add Job Sector</button>
                     </a>
 
                 </div>
-                <div className="w-[200px] h-[200px] mx-auto bg-slate-300 flex flex-col justify-center items-center">
+                <div className="w-[200px] h-[200px] mx-auto bg-[#dbe4ff] flex flex-col justify-center items-center">
                     <a href="#skill-modal" onClick={openModal2}>
                         <button className="p-10 flex flex-col justify-center items-center text-2xl"><FcDecision className="text-7xl" /> Add Skills</button>
                     </a>
@@ -104,17 +111,24 @@ const Add_Data = () => {
                 <div className="modal" role="dialog" id="sector-modal">
                     <div className="modal-box bg-white px-4 py-8">
                         <h2 className="text-2xl font-bold text-center mb-4">Add Job Sector</h2>
-                        <div>
-                            <ul className="dropdown mb-4">
-                                {sectors.map((sector: any, idx: number) => (
-                                    <li key={sector._id} className="dropdown-item">
-                                        <p className="dropdown-link">
-                                            <span className="font-bold">{idx + 1}.</span> {sector?.sectorType}
-                                        </p>
-                                    </li>
-                                ))}
-                            </ul>
+                        <div className="box bg-[#dbe4ff] rounded p-2 font-bold" onClick={toggleShowSectors}>
+                           {
+                                 showSectors ? "Click to Hide Sectors" : "Click to Show Sectors"
+                           }
                         </div>
+                        {showSectors && (
+                            <div>
+                                <ul className="dropdown mb-4">
+                                    {sectors.map((sector: any, idx: number) => (
+                                        <li key={sector._id} className="dropdown-item">
+                                            <p className="dropdown-link">
+                                                <span className="font-bold">{idx + 1}.</span> {sector?.sectorType}
+                                            </p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                         <form className="space-y-5" onSubmit={handleSubmitSector(onSubmitSector)}>
                             <div className="pb-10 space-y-6">
 
@@ -143,17 +157,26 @@ const Add_Data = () => {
                 <div className="modal" role="dialog" id="skill-modal">
                     <div className="modal-box bg-white px-4 py-8">
                         <h2 className="text-2xl font-bold text-center mb-4">Add Skill</h2>
-                        <div>
-                            <ul className="dropdown">
-                                {skills.map((skill: any, idx: number) => (
-                                    <li key={skill._id} className="dropdown-item">
-                                        <a href="#" className="dropdown-link">
-                                            <span className="font-bold">{idx + 1}.</span> {skill?.skill}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
+                        <div className="box bg-[#dbe4ff] rounded p-2 font-bold" onClick={toggleShowSkills}>
+                            {
+                                showSkills ? "Click to Hide Skills" : "Click to Show Skills"
+                            }
                         </div>
+                        {
+                            showSkills && (
+                                <div>
+                                    <ul className="dropdown mb-4">
+                                        {skills.map((skill: any, idx: number) => (
+                                            <li key={skill._id} className="dropdown-item">
+                                                <p className="dropdown-link">
+                                                    <span className="font-bold">{idx + 1}.</span> {skill?.skill}
+                                                </p>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )
+                        }
                         <form className="space-y-5" onSubmit={handleSubmitSkill(onSubmitSkill)}>
                             <div className="pb-10 space-y-6">
                                 <div className="form-control w-full">
