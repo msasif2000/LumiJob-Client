@@ -18,13 +18,18 @@ const AppliedJobs = () => {
     },
   });
 
-  const length = jobs?.length;
+  // console.log(jobs)
 
-  const handleDelete = (jobId: string) => {
+  const length = jobs?.length
+ 
+
+  const handleDelete = (id: string, jobId : string) => {
     const data = {
       jobId,
       userEmail,
+      id
     };
+    // console.log(data)
 
     axiosPublic
       .post("/delete-jobs-from-candidate", data)
