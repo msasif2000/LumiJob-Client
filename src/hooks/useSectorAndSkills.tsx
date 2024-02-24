@@ -11,7 +11,7 @@ const useSectorAndSkills = () => {
         }
     });
 
-    const { refetch: refetchSkills, data: skills = [] } = useQuery({
+    const { refetch: refetchSkills, data: skills = [] }: { refetch: () => void, data?: any[] } = useQuery({
         queryKey: ['skills'],
         queryFn: async () => {
             const res = await axiosPublic.get('/get-skills');
