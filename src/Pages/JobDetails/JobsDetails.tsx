@@ -45,7 +45,6 @@ const JobsDetails: React.FC = () => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     axiosPublic
       .get(`/single-job/${id}`)
@@ -74,6 +73,8 @@ const JobsDetails: React.FC = () => {
     application,
   } = job || {};
 
+
+
   const formatDateTime = (dateTimeString: any) => {
     const date = new Date(dateTimeString);
 
@@ -101,13 +102,18 @@ const JobsDetails: React.FC = () => {
   const formattedPostTime = post_time ? formatDateTime(post_time) : "";
 
   const handlePremiumApply = () => {
+
+    const { _id, ...jobWithoutId } = job as JobDetails;
+    
     const jobDetails = {
-      ...job,
+      ...jobWithoutId,
       candidate: user?.email,
       appliedTime: new Date(),
       jobId: job?._id,
       status: "unopened",
     };
+
+    console.log(jobDetails);
 
     axiosPublic
       .post(`/apply-to-jobs`, jobDetails)
@@ -122,6 +128,16 @@ const JobsDetails: React.FC = () => {
           });
         } else if (res.data.message === "Please fill profile information") {
           setShowProfileModal(true);
+        } else if (
+          res.data.message === "You have already applied for this job"
+        ) {
+          toast.success("You have Already Applied", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+        } else if (res.data.message === "Please update subscription") {
         } else if (res.data.message === "Already applied") {
           toast.success("You have Already Applied", {
             position: "top-center",
@@ -162,11 +178,11 @@ const JobsDetails: React.FC = () => {
     navigate("/dashboard/candidateProfile/update");
   };
 
-  // share related 
-  const modal = document.getElementById('my_modal_3') as HTMLDialogElement;
+  // share related
+  const modal = document.getElementById("my_modal_3") as HTMLDialogElement;
 
   const shareUrl = window.location.href;
-  const modalId: string = 'my_modal_3';
+  const modalId: string = "my_modal_3";
 
   return (
     <>
@@ -378,34 +394,38 @@ const JobsDetails: React.FC = () => {
                       </span>
                     </div>
 
-                    {user ?
+                    {user ? (
                       <>
-
-                        <button className="btn" onClick={() => modal.showModal()}>
+                        <button
+                          className="btn"
+                          onClick={() => modal.showModal()}
+                        >
                           <div>
                             <div className="flex justify-center items-center gap-2">
                               Share
                               <BiShareAlt></BiShareAlt>
                             </div>
-
                           </div>
                         </button>
-                        <Share id={modalId} shareUrl={shareUrl} title={title}></Share>
-                         <div className="mt-2">
-                            {
-                              user && <div className="flex items-center gap-2 text-lg font-semibold border-2 p-1 rounded-lg">
-                                <IoPeopleOutline className="text-xl"></IoPeopleOutline>
-                                <p>{job?.applicants?.length} applicants</p>
-                              </div>
-                            }
-                         </div>
+                        <Share
+                          id={modalId}
+                          shareUrl={shareUrl}
+                          title={title}
+                        ></Share>
+                        <div className="mt-2">
+                          {user && (
+                            <div className="flex items-center gap-2 text-lg font-semibold border-2 p-1 rounded-lg">
+                              <IoPeopleOutline className="text-xl"></IoPeopleOutline>
+                              <p>{job?.applicants?.length} applicants</p>
+                            </div>
+                          )}
+                        </div>
                       </>
-                      :
+                    ) : (
                       <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
                         Login to get your link
                       </button>
-
-                    }
+                    )}
                   </div>
                 </div>
               )}
@@ -414,7 +434,7 @@ const JobsDetails: React.FC = () => {
             <UniLoader />
           )}
         </div>
-       
+
         <ToastContainer />
         {showProfileModal && (
           <div className="fixed z-10 inset-0 overflow-y-auto">
