@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FcBriefcase, FcDecision } from "react-icons/fc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import useSector from "../hooks/useSector";
+import useSectorAndSkills from "../hooks/useSectorAndSkills";
+
 
 interface SectorAdded {
     sectorType: string;
@@ -21,9 +22,9 @@ const Add_Data = () => {
     const [isModalOpen1, setIsModalOpen1] = useState(false);
     const [isModalOpen2, setIsModalOpen2] = useState(false);
     // const [sectors, setSectors] = useState<any | null>(null);
-    const [skills, setSkills] = useState<any | null>(null);
+    // const [skills, setSkills] = useState<any | null>(null);
 
-    const [sectors, refetch] = useSector();
+    const { sectors, skills, refetch } = useSectorAndSkills();
 
     const openModal1 = () => {
         setIsModalOpen1(true);
@@ -40,19 +41,6 @@ const Add_Data = () => {
     const closeModal2 = () => {
         setIsModalOpen2(false);
     };
-
-    useEffect(() => {
-       
-
-        axiosPublic.get("/get-skills")
-            .then((res) => {
-                setSkills(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, [axiosPublic]);
-
 
     const onSubmitSector: SubmitHandler<SectorAdded> = async (data: SectorAdded) => {
         axiosPublic
@@ -87,7 +75,7 @@ const Add_Data = () => {
                         position: "top-center",
                     });
                     setIsModalOpen2(false);
-                    setSkills([...skills, res.data]);
+                    refetch();
                     resetSkill();
                 }
             })
