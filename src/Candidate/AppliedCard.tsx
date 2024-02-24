@@ -5,34 +5,35 @@ import { SiGooglemeet } from "react-icons/si";
 import { TbMessage } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-
+ 
 interface prop {
   job: any;
   handleDelete: (jobId: string) => void;
-  key: any;
 }
-
+ 
+ 
 const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const [cancel, setCancel] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
-
+ 
   const handleConfirm = () => {
     setShowConfirmation(true);
   };
-
-  const id: any = job._id;
-  console.log(id);
-
+ 
+  
+  const id = job._id;
+  //console.log(id);
+ 
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
     return formattedDate;
   };
-
+ 
   const handleDeleteConfirmation = () => {
     handleDelete(job._id);
     setShowConfirmation(false);
   };
-
+ 
   const shortDesc = (desc: string, maxWord: number) => {
     const words = desc.split(" ");
     if (words.length > maxWord) {
@@ -41,12 +42,12 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       return desc;
     }
   };
-
+ 
   function convertTo12HourFormat(time24: any) {
     let [hours, minutes] = time24.split(":").map(Number);
-
+ 
     let period = "AM";
-
+ 
     if (hours === 0) {
       hours = 12;
     } else if (hours === 12) {
@@ -55,12 +56,12 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       hours -= 12;
       period = "PM";
     }
-
+ 
     const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
+ 
     return `${hours}:${paddedMinutes} ${period}`;
   }
-
+ 
   function formatDate(dateString: any) {
     const parts = dateString.split("-");
     const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
@@ -75,8 +76,8 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     },
     enabled: !!id,
   });
-  console.log(companyFeedbacks);
-
+  //console.log(companyFeedbacks);
+ 
   return (
     <div
       className="relative"
@@ -145,48 +146,26 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
           />
         </div>
       )}
-      {cancel && companyFeedbacks && (
+      {(cancel && companyFeedbacks )  && (
         <div className="absolute top-10 -right-36 xl:right-1">
-          <TbMessage
-            onClick={() => {
-              const modalElement = document.getElementById(
-                "my_modal_3"
-              ) as HTMLDialogElement | null;
-              if (modalElement) {
-                modalElement.showModal();
-              }
-            }}
-            className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
-          />
-
-          <dialog id="my_modal_3" className="modal">
-            <div className="modal-box bg-gray-100 shadow-xl">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                  ✕
-                </button>
-              </form>
-              <div className="p-4 bg-white rounded-lg">
-                <h3 className="font-bold text-2xl text-left">
-                  Feedback for you
-                </h3>
-                <div>
-                  <p className="py-4 mb-2 text-justify">
-                    {" "}
-                    <p className="font-bold">feedback :</p>{" "}
-                    {companyFeedbacks?.comments}{" "}
-                  </p>
-                  <p className="text-xl text-gray-500">
-                    if your any issue contact us :{" "}
-                    <span className="font-bold">
-                      {companyFeedbacks?.companyEmail}.
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </dialog>
+          <TbMessage onClick={() => (document.getElementById('my_modal_3') as HTMLDialogElement)?.showModal()} className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150" />
+   <dialog id="my_modal_3" className="modal">
+  <div className="modal-box bg-gray-100 shadow-xl">
+  <form method="dialog">
+      {/* if there is a button in form, it will close the modal */}
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div className="p-4 bg-white rounded-lg">
+    <h3 className="font-bold text-2xl text-left">Feedback for you</h3>
+    <div>
+    <p className="py-4 mb-2 text-justify"> <p className="font-bold">feedback :</p> {companyFeedbacks?.comments} </p>
+    <p className="text-xl text-gray-500">if your any issue contact us : <span className="font-bold">{companyFeedbacks?.companyEmail}.</span></p>
+    </div>
+    </div>
+    
+  </div>
+</dialog>
+          
         </div>
       )}
       {showConfirmation && (
@@ -213,5 +192,5 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     </div>
   );
 };
-
+ 
 export default AppliedCard;
