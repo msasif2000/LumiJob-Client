@@ -1,6 +1,19 @@
 import { BsDatabaseAdd } from "react-icons/bs";
-import { BiBookmark, BiBuildingHouse, BiHomeSmile, BiLogOut, BiLineChart } from "react-icons/bi";
-import { MdOutlinePayments, MdOutlineAddHomeWork, MdOutlineWorkOutline, MdOutlineWorkHistory, MdOutlineEventAvailable, MdManageAccounts } from "react-icons/md";
+import {
+  BiBookmark,
+  BiBuildingHouse,
+  BiHomeSmile,
+  BiLogOut,
+  BiLineChart,
+} from "react-icons/bi";
+import {
+  MdOutlinePayments,
+  MdOutlineAddHomeWork,
+  MdOutlineWorkOutline,
+  MdOutlineWorkHistory,
+  MdOutlineEventAvailable,
+  MdManageAccounts,
+} from "react-icons/md";
 import { AiOutlineUsergroupAdd, AiOutlineFileDone } from "react-icons/ai";
 import { GrGroup, GrBlog, GrWorkshop } from "react-icons/gr";
 import { RxAvatar } from "react-icons/rx";
@@ -59,16 +72,28 @@ const DashBoard = () => {
     role === "candidate" ? (
       <>
         <li>
-          <NavLink to="/dashboard/candidateProfile"><MdManageAccounts className="text-2xl" />Profile</NavLink>
+          <NavLink to="/dashboard/candidateProfile">
+            <MdManageAccounts className="text-2xl" />
+            Profile
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/resume"><AiOutlineFileDone className="text-2xl" />Resume</NavLink>
+          <NavLink to="/dashboard/resume">
+            <AiOutlineFileDone className="text-2xl" />
+            Resume
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/appliedJobs"><GrWorkshop className="text-xl" />Applied Jobs</NavLink>
+          <NavLink to="/dashboard/appliedJobs">
+            <GrWorkshop className="text-xl" />
+            Applied Jobs
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/bookmarks"><BiBookmark className="text-2xl" />Bookmarks</NavLink>
+          <NavLink to="/dashboard/bookmarks">
+            <BiBookmark className="text-2xl" />
+            Bookmarks
+          </NavLink>
         </li>
         {/* <li>
           <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
@@ -77,43 +102,79 @@ const DashBoard = () => {
     ) : role === "company" ? (
       <>
         <li>
-          <NavLink to="/dashboard/companyProfile"><BiBuildingHouse className="text-xl" />Profile</NavLink>
+          <NavLink to="/dashboard/companyProfile">
+            <BiBuildingHouse className="text-xl" />
+            Profile
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/postedJobs"><MdOutlineWorkHistory className="text-xl" />Job Posts</NavLink>
+          <NavLink to="/dashboard/postedJobs">
+            <MdOutlineWorkHistory className="text-xl" />
+            Job Posts
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/blog-posted"><GrBlog />Blogs</NavLink>
+          <NavLink to="/dashboard/blog-posted">
+            <GrBlog />
+            Blogs
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/seminar-posted"><MdOutlineEventAvailable className="text-xl" />Seminars</NavLink>
+          <NavLink to="/dashboard/seminar-posted">
+            <MdOutlineEventAvailable className="text-xl" />
+            Seminars
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/companyAnalytics"><BiLineChart className="text-xl" />Analytics</NavLink>
+          <NavLink to="/dashboard/companyAnalytics">
+            <BiLineChart className="text-xl" />
+            Analytics
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/employees"><GrGroup className="text-xl" />Employees</NavLink>
+          <NavLink to="/dashboard/employees">
+            <GrGroup className="text-xl" />
+            Employees
+          </NavLink>
         </li>
       </>
     ) : role === "admin" ? (
       <>
         <li>
-          <NavLink to="/dashboard/adminDashboard"><BiLineChart className="text-2xl" />Analytics</NavLink>
+          <NavLink to="/dashboard/adminDashboard">
+            <BiLineChart className="text-2xl" />
+            Analytics
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-candidate"><AiOutlineUsergroupAdd className="text-2xl" />Manage Candidate</NavLink>
+          <NavLink to="/dashboard/admin/manage-candidate">
+            <AiOutlineUsergroupAdd className="text-2xl" />
+            Manage Candidate
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-company"><MdOutlineAddHomeWork className="text-2xl" />Manage Company</NavLink>
+          <NavLink to="/dashboard/admin/manage-company">
+            <MdOutlineAddHomeWork className="text-2xl" />
+            Manage Company
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-jobs"><MdOutlineWorkOutline className="text-2xl" />Manage Jobs</NavLink>
+          <NavLink to="/dashboard/admin/manage-jobs">
+            <MdOutlineWorkOutline className="text-2xl" />
+            Manage Jobs
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/manage-payments"><MdOutlinePayments className="text-2xl" />Manage Payments</NavLink>
+          <NavLink to="/dashboard/admin/manage-payments">
+            <MdOutlinePayments className="text-2xl" />
+            Manage Payments
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/admin/add-data"><BsDatabaseAdd className="text-2xl" />Add Data</NavLink>
+          <NavLink to="/dashboard/admin/add-data">
+            <BsDatabaseAdd className="text-2xl" />
+            Add Data
+          </NavLink>
         </li>
       </>
     ) : (
@@ -182,15 +243,20 @@ const DashBoard = () => {
                 <div className="divider mt-[0.7rem]"></div>
                 <div className="flex items-center m-4 gap-2">
                   <div>
-                    {
-                      userData?.photo ?
-                        <img src={userData.photo} alt="" className="rounded-full h-10 w-10" />
-                        :
-                        <RxAvatar className="text-2xl" />
-                    }
+                    {userData?.photo ? (
+                      <img
+                        src={userData.photo}
+                        alt=""
+                        className="rounded-full h-10 w-10"
+                      />
+                    ) : (
+                      <RxAvatar className="text-2xl" />
+                    )}
                   </div>
                   <div>
-                    <h6 className="text-center capitalize text-accent">{userData?.name || "Your name"}</h6>
+                    <h6 className="text-center capitalize text-accent">
+                      {userData?.name || "Your name"}
+                    </h6>
                   </div>
                 </div>
 
@@ -200,7 +266,9 @@ const DashBoard = () => {
                 <div className="divider mx-4"></div>
                 <ul className="menu text-xl">
                   <li>
-                    <NavLink to="/"><BiHomeSmile className="text-2xl" /> Home</NavLink>
+                    <NavLink to="/">
+                      <BiHomeSmile className="text-2xl" /> Home
+                    </NavLink>
                   </li>
                   <li>
                     <button
