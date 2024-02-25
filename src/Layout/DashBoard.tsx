@@ -134,7 +134,7 @@ const DashBoard = () => {
         <li>
           <NavLink to="/dashboard/employees">
             <GrGroup className="text-xl" />
-            Employees
+            Hired Employees
           </NavLink>
         </li>
       </>
