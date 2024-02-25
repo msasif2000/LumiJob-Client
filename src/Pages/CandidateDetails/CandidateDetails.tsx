@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";
 import { Helmet } from "react-helmet-async";
 
 interface Education {
@@ -71,7 +70,6 @@ const CandidateDetails = () => {
       </Helmet>
 
       <div className="max-w-screen-2xl mx-auto">
-        <Navbar></Navbar>
         <div className="mx-auto mt-8 px-4 md:px-6 lg:px-10 2xl:px-12">
           {candidate && ( // eta chara fetch howar agei load hoye undefined dekhabe
             <div className="flex justify-between flex-col md:flex-row">
