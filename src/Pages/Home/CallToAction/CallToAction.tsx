@@ -68,9 +68,9 @@ const CallToAction = () => {
                         {icons.map((Icon, index) => (
                             <div
                                 key={index}
-                                className="absolute text-5xl p-2 shadow-xl shadow-pink-200"
+                                className="absolute text-5xl p-2 shadow-sm shadow-pink-200"
                                 style={{
-                                    top: `${randomNumbers[index]}%`,
+                                    top: `${randomNumbers[index]-6}%`,
                                     left: `${getRandomNumber(0, 80, randomNumbers)}%`,
                                     transform: `translate(-${getRandomNumber(0, 10)}%, -${getRandomNumber(0, 10)}%)`
                                 }}
