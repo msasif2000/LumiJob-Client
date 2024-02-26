@@ -13,7 +13,7 @@ interface BlogData {
 }
 
 const FeaturedArticle = () => {
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const [datas, setData] = useState<BlogData[] | null>(null);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const FeaturedArticle = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-45% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
+    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
       <div className="max-w-screen-2xl mx-auto px-4">
         <h1 className="text-3xl lg:text-6xl font-heading font-semibold py-8">
           Featured Articles
@@ -79,11 +79,11 @@ const FeaturedArticle = () => {
                             />
                           )}
                           {idx === 0 ? (
-                            <p className="bg-green-300 text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[435px] right-5 ">
+                            <p className="bg-[#AC6DF8] text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[435px] right-5 ">
                               {item.category}
                             </p>
                           ) : (
-                            <p className="bg-green-300 text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
+                            <p className="bg-[#AC6DF8] text-gray-200 bg-opacity-50 p-1 rounded-sm font-semibold absolute top-[205px] right-5 ">
                               {item.category}
                             </p>
                           )}
