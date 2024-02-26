@@ -38,9 +38,6 @@ const ManageCompany = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/delete-company-postedJob/${email}`)
-          .then(res => {
-            console.log(res.data);
-          })
 
         axiosPublic.delete(`/delete-company/${id}`)
           .then(res => {

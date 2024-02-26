@@ -81,7 +81,7 @@ const JobPostingForm: React.FC = () => {
         .get(`/specific-company/${user.email}`)
         .then((res) => {
           setCompany(res.data);
-          console.log(res.data);
+          //console.log(res.data);
         })
         .catch((err) => console.log(err));
     }

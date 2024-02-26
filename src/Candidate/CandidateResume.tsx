@@ -79,7 +79,7 @@ const CandidateResume: React.FC = () => {
     const { name,
         email, phone, designation, objective, skills, education, experienceDetails, link, project, photo, village, city, country
     } = candidate || {};
-    console.log(candidate);
+    //console.log(candidate);
 
     return (
         <>

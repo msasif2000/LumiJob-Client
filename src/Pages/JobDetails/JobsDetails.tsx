@@ -113,12 +113,12 @@ const JobsDetails: React.FC = () => {
       status: "unopened",
     };
 
-    console.log(jobDetails);
+    //console.log(jobDetails);
 
     axiosPublic
       .post(`/apply-to-jobs`, jobDetails)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data.insertedId) {
           toast.success("Applied Successfully", {
             position: "top-center",

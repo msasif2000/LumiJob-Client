@@ -13,7 +13,7 @@ interface SearchProps {
         e.preventDefault();
         try {
             const response = await axiosPublic.get(`/job-Search?search=${searchText}`); 
-            console.log("Search Result:", response.data);
+            //console.log("Search Result:", response.data);
             onSearchResult(response.data);
         } catch (error) {
             console.error('Error:', error);

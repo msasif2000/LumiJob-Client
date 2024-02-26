@@ -47,8 +47,9 @@ interface ExperienceData {
 const CompleteResume: React.FC = () => {
   const navigate = useNavigate();
   //   const { user } = useAuth();
-  const [loading, setLoading] = useState<boolean>(false);
-  console.log(setLoading);
+  // const [loading, setLoading] = useState<boolean>(false);
+  //console.log(setLoading);
+  const loading = false;
 
   //   const axiosPublic = useAxiosPublic();
 

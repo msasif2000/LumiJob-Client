@@ -174,7 +174,7 @@ const CandidateProUpdate: React.FC = () => {
       // Check if image upload was successful
       if (imageUploadResponse.data.status === 200) {
         const imageUrl = imageUploadResponse.data.data.url;
-        console.log("ImageBB Response:", imageUploadResponse.data);
+        //console.log("ImageBB Response:", imageUploadResponse.data);
 
 
         // Prepare candidate data with the image URL

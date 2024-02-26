@@ -60,7 +60,7 @@ const Post_A_Blog = () => {
             const imageData = new FormData();
             imageData.append("image", data.photo);
 
-            console.log(imageData);
+            //console.log(imageData);
 
             const imageUploadResponse = await axios.post(
                 "https://api.imgbb.com/1/upload",

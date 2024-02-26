@@ -34,7 +34,7 @@ const AppliedJobs = () => {
     axiosPublic
       .post("/delete-jobs-from-candidate", data)
       .then((res) => {
-        console.log(res.data);
+       // console.log(res.data);
         if (res.data.message === "true") {
           toast.success("Cancel successfull", {
             autoClose: 2000,

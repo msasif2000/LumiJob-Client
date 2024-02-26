@@ -80,7 +80,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
         axiosPublic
           .delete(`/bookmarks/${bookmarkIdToRemove}`)
           .then((res) => {
-            console.log(res.data);
+            //console.log(res.data);
             if (res.data.deletedCount === 1) {
               setIsBookmarked(false);
               Swal.fire({
