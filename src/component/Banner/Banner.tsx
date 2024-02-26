@@ -37,7 +37,7 @@ const Banner = () => {
             and Limitless Possibilities
           </p>
 
-          <button className="btn bg-btnbg text-light text-lg font-heading font-medium rounded-sm border-none px-12 lg:px-20 my-12 hover:bg-accent">
+          <button className="btn  text-light text-lg font-heading font-bold  border-none px-12 lg:px-20 my-12 bg-accent hover:bg-accentTwo rounded-full">
             {role === "company" ? (
               <NavLink to="/find-candidate">Find Skilled Candidates</NavLink>
             ) : (
