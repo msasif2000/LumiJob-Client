@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface NavbarProps {
   color?: string;
@@ -8,11 +10,21 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const { user, logOut, premium, role, photo } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const [userData, setUserData] = useState<{ _id: string; value: number }>();
+
+  useEffect(() => {
+    axiosPublic.get(`/specific-candidate/${user?.email}`)
+      .then((res) => {
+        setUserData(res.data);
+      });
+  }, [user?.email])
+
 
   const handleLogout = () => {
     logOut();
   };
-
+console.log(userData);
   const Linking = (
     <>
       <li key="home">
@@ -40,36 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
 
-      {user && role === "admin" ? (
-        <li key="adminDashboard">
-          <NavLink
-            className="text-lg font-heading font-medium"
-            to="/dashboard/adminDashboard"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-      ) : user && role === "candidate" ? (
-        <li key="candidateDashboard">
-          <NavLink
-            className="text-lg font-heading font-medium"
-            to="/dashboard/candidateProfile"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-      ) : user && role === "company" ? (
-        <li key="companyDashboard">
-          <NavLink
-            className="text-lg font-heading font-medium"
-            to="/dashboard/companyProfile"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-      ) : (
-        ""
-      )}
+
 
       <li key="Contact">
         <NavLink className="text-lg font-heading font-medium" to="/Contact">
@@ -193,11 +176,10 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div
-                    className={`w-20 rounded-full ${
-                      premium === "premium"
-                        ? "ring-4 ring-blue-400 ring-offset-2"
-                        : ""
-                    }`}
+                    className={`w-20 rounded-full ${premium === "premium"
+                      ? "ring-4 ring-blue-400 ring-offset-2"
+                      : ""
+                      }`}
                   >
                     {user ? (
                       <img
@@ -220,15 +202,59 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   tabIndex={0}
                   className="mt-3 z-50 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
-                  <li>
-                    <NavLink
-                      className="mr-2 font-semibold text-lg"
-                      to="/Profile"
-                    >
-                      Profile
-                    </NavLink>
-                  </li>
-                  ,
+                  {user && role === "candidate" ? (
+                    <li key="candidateProfile View">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to={`/candidate-detailsProfile/${userData?._id}`}
+                      >
+                        Profile View
+                      </NavLink>
+                    </li>
+                  ) : user && role === "company" ? (
+                    <li key="companyProfile View">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to={`/companyProfileView/${user?.email}`}
+                      >
+                        Profile View
+                      </NavLink>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+
+
+                  {user && role === "admin" ? (
+                    <li key="adminDashboard">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to="/dashboard/adminDashboard"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ) : user && role === "candidate" ? (
+                    <li key="candidateDashboard">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to="/dashboard/candidateProfile"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ) : user && role === "company" ? (
+                    <li key="companyDashboard">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to="/dashboard/companyProfile"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ) : (
+                    ""
+                  )}
                   <li>
                     <button
                       className="mr-2 font-semibold text-lg"
@@ -237,7 +263,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                       Logout
                     </button>
                   </li>
-                  ,
+
                 </ul>
               </div>
             ) : (
