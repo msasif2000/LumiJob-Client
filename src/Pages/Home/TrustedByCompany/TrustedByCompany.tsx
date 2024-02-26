@@ -1,6 +1,6 @@
 const TrustedByCompany = () => {
   return (
-    <div className="w-full h-24 bg-[#f8f7f7] flex items-center">
+    <div className="w-full h-24 bg-gray-50 flex items-center">
       <div className="flex items-center justify-center w-9/12 lg:w-7/12  mx-auto  md:space-x-7 lg:md:space-x-0 ">
         <h1 className="text-3xl font-medium text-gray-700 mr-6 ">
           Trusted by :
