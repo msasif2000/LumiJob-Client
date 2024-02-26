@@ -124,10 +124,10 @@ export const router = createBrowserRouter([
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
       },
-      {
-        path: "/candidateProfileView/:email",
-        element: <CandidateDetails></CandidateDetails>,
-      },
+      // {
+      //   path: "/candidateProfileView/:id",
+      //   element: <CandidateDetails></CandidateDetails>,
+      // },
 
     ],
   },

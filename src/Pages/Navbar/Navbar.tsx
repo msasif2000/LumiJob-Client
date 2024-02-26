@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface NavbarProps {
   color?: string;
@@ -8,11 +10,21 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const { user, logOut, premium, role, photo } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const [userData, setUserData] = useState<{ _id: string; value: number }>();
+
+  useEffect(() => {
+    axiosPublic.get(`/specific-candidate/${user?.email}`)
+      .then((res) => {
+        setUserData(res.data);
+      });
+  }, [user?.email])
+
 
   const handleLogout = () => {
     logOut();
   };
-
+console.log(userData);
   const Linking = (
     <>
       <li key="home">
@@ -194,7 +206,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                     <li key="candidateProfile View">
                       <NavLink
                         className="mr-2 font-semibold text-lg"
-                        to={`/candidateProfileView/${user?.email}`}
+                        to={`/candidate-detailsProfile/${userData?._id}`}
                       >
                         Profile View
                       </NavLink>
