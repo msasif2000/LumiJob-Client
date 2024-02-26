@@ -2,12 +2,13 @@ import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import FindJobCard from "../../Pages/FindJob/FindJobCard";
+import SmallCards from "./SmallCards"
 import Job from "../../Pages/Home/PopularJobs/Job";
 //import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
 import Seminers from "../../Pages/Blogs/components/Seminers";
 import TopCompanyBlogs from "./TopCompanyBlogs";
 import { Helmet } from "react-helmet-async";
+import "./styles.css";
 // import TopCompanyBlogs from "./TopCompanyBlogs";
 
 const TopCompanyProfile = () => {
@@ -40,7 +41,7 @@ const TopCompanyProfile = () => {
   }, [CompanyProfile]);
 
   return (
-    <>
+    <div>
       <Helmet>
         <title>{`${CompanyProfile?.name}`} | Company Profile</title>
       </Helmet>
@@ -132,33 +133,34 @@ const TopCompanyProfile = () => {
           </div>
         </div>
         {/* tab sessions */}
-        <div className=" ">
+        <div className=" max-w-screen-xl mx-auto">
           <Tabs>
-            <TabList className={`text-2xl font-bold text-center pt-4 pb-10`}>
+            <TabList className={`text-lg font-bold pt-4 mt-12`}>
               <Tab>Posted Jobs</Tab>
               <Tab>Blogs</Tab>
               <Tab>Seminar</Tab>
             </TabList>
-
-            <TabPanel>
+            <div className=" border border-b-2"></div>
+         
+            <TabPanel className={`pt-10 `}>
               <div className=" items-center mb-3">
-                <h4 className="font-semibold font-heading text-2xl text-center">
-                  {" "}
-                  Currently Posted jobs for {CompanyProfile?.name} : {` `}
-                  <span className="text-[#486DD9] text-4xl">
+                <h4 className="font-semibold font-heading text-3xl text-center">
+                  <span className="text-[#486DD9] text-3xl">
                     {companyPostedJobs?.length}
                   </span>{" "}
                   Jobs Available
                 </h4>
               </div>
-              <div className="grid grid-cols-1 gap-8 w-10/12 mx-auto ">
+              <div className="grid grid-cols-2 gap-8 w-10/12 mx-auto ">
                 {companyPostedJobs?.map((job: Job) => (
-                  <FindJobCard key={job._id} job={job}></FindJobCard>
+                  <SmallCards key={job._id} job={job}></SmallCards>
                 ))}
               </div>
             </TabPanel>
             <TabPanel>
-              <TopCompanyBlogs></TopCompanyBlogs>
+              {CompanyProfile?.email && (
+                <TopCompanyBlogs key={CompanyProfile._id} email={CompanyProfile.email} />
+              )}
               {/* <FeaturedArticle /> */}
             </TabPanel>
             <TabPanel>
@@ -169,7 +171,7 @@ const TopCompanyProfile = () => {
 
         {/* company posted jobs */}
       </div>
-    </>
+    </div>
   );
 };
 

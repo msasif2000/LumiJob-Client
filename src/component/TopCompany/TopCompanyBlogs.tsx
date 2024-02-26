@@ -1,7 +1,7 @@
 import { Key, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import useAuth from "../../hooks/useAuth";
+
 
 
 interface BlogData {
@@ -13,19 +13,20 @@ interface BlogData {
   details: string;
   readTime: string;
 }
-
-const TopCompanyBlogs = () => {
+interface Props {
+  email: string; 
+}
+const TopCompanyBlogs: React.FC<Props> = ({ email }) => {
   const axiosPublic = useAxiosPublic();
-  const { user } = useAuth();
   const [datas, setData] = useState<BlogData[] | null>(null);
 
   useEffect(() => {
-    if (user?.email) {
-      axiosPublic.get(`/get-posted-blogs/${user.email}`).then((res) => {
+   
+      axiosPublic.get(`/get-posted-blogs/${email}`).then((res) => {
         setData(res.data);
       });
-    }
-  }, [user?.email]);
+    
+  }, []);
   
 
   const shuffleArray = (array: any) => {

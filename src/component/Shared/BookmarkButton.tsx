@@ -34,7 +34,9 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
 
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false); // State to track if the job is bookmarked
 
-  const handleAddToBookmark = () => {
+  const handleAddToBookmark = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+
     if (user && user.email) {
       const bookmarkItem = {
         userId: _id,
