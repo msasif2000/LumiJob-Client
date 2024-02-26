@@ -8,8 +8,6 @@ import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { GrAdd } from "react-icons/gr";
-import Candidate from "../../Pages/FindCandidate/CandidateType";
-
 
 interface ExperienceData {
     company: string;
@@ -18,6 +16,8 @@ interface ExperienceData {
     fromDate: Date | null;
     toDate: Date | null;
 }
+
+
 
 interface LinkData {
     name: string;
@@ -66,7 +66,7 @@ const CandidateResumeUpdate: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
     // const [currentUser, setCurrentUser] = useState(null);
     const [userData, setUserData] = useState<UserData | null>(null);
-    const [candidate, setCandidates] = useState<Candidate | null>(null);
+    const [candidate, setCandidates] = useState<FormData | null>(null);
     const axiosPublic = useAxiosPublic();
 
     const {
@@ -253,7 +253,7 @@ const CandidateResumeUpdate: React.FC = () => {
     }, [user]);
 
     const { name,
-        email, phone, designation, objective, skills, education, experienceDetails,  photo, village, city, country
+        email, phone, designation, objective,  village, city, country
     } = candidate || {};
 
 
@@ -359,7 +359,7 @@ const CandidateResumeUpdate: React.FC = () => {
                         <div className="form-control w-full">
                             <div className="flex flex-wrap">
                                 {Array.isArray(selectedSkills) &&
-                                  skills || selectedSkills.map((skill, idx) => (
+                                   selectedSkills.map((skill, idx) => (
                                         <div
                                             key={idx}
                                             className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"
