@@ -2,9 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
+import CPagination from "../Pages/FindCandidate/CPagination";
+import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ManageCandidate = () => {
   const axiosPublic = useAxiosPublic();
+  const [dataPerPage] = useState<number>(10);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const { refetch, data: candidates = [] } = useQuery({
     queryKey: ["candidates"],
@@ -13,6 +18,11 @@ const ManageCandidate = () => {
       return res.data;
     },
   });
+
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   // console.log(candidates);
   const handleDelete = (id: string) => {
@@ -43,6 +53,9 @@ const ManageCandidate = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Manage Candidate | LumiJobs</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg my-2">
         <h2 className="text-3xl">
           <b>Manage Candidates</b>
@@ -64,7 +77,8 @@ const ManageCandidate = () => {
             </tr>
           </thead>
           <tbody>
-            {candidates?.map((candidate: any, index: number) => (
+            {candidates
+              .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((candidate: any, index: number) => (
               <tr key={candidate._id}>
                 <th>{index + 1}</th>
 
@@ -90,6 +104,17 @@ const ManageCandidate = () => {
             ))}
           </tbody>
         </table>
+        {candidates.length > dataPerPage && (
+          <div className="py-12">
+            {/* ==>  Pagination <== */}
+            <CPagination
+              totalData={candidates.length}
+              dataPerPage={dataPerPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            ></CPagination>
+          </div>
+        )}
       </div>
     </>
   );

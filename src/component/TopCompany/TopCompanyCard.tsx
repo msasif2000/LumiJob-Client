@@ -32,7 +32,7 @@ const TopCompanyCard: React.FC<{ company: Company }> = ({ company }) => {
                 <p className="font-normal text-gray-500">{country}</p>
               </div>
               <p className="hidden md:flex font-normal text-gray-500">
-                Registration <b>{registration}</b>
+                Registration : <b>{registration}</b>
               </p>
               <p className="md:hidden font-normal text-gray-500">
                 Reg <b>{registration}</b>

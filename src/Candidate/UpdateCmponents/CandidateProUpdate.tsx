@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import CandidateNav from "../CommonNavbar/CandidateNav";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
@@ -57,6 +56,11 @@ const CandidateProUpdate: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   // const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState<UserData | null>(null);
+
+  // these two line for dropdown sectors 
+  const [sectors, setSectors] = useState<{ _id: string, sectorType: string }[]>([]);
+  const [selectedSector, setSelectedSector] = useState<string>('');
+
   const axiosPublic = useAxiosPublic();
 
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
@@ -208,9 +212,22 @@ const CandidateProUpdate: React.FC = () => {
     }
   };
 
-  const backToResume = () => {
-    navigate("/dashboard/candidateProfile/resume");
-  };
+
+
+
+  useEffect(() => {
+    const fetchSectors = async () => {
+      try {
+        const response = await axiosPublic.get('/get-sectors');
+        setSectors(response.data);
+      } catch (error) {
+        console.error('Error fetching sectors:', error);
+      }
+    };
+
+    fetchSectors();
+  }, []);
+
 
   // useEffect(() => {
   //   if (user?.email) {
@@ -225,13 +242,10 @@ const CandidateProUpdate: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      <CandidateNav
-        text="Upgrade your information"
-        btn="Return"
-        btn2="See Resume"
-        handleClick={backToProfile}
-        handleClick2={backToResume}
-      />
+      <div className="flex justify-between items-center px-5 pt-5">
+        <div className="text-xl md:text-3xl font-semibold">Update Your Profile</div>
+        <div><button className="btn" onClick={backToProfile}>Back</button></div>
+      </div>
 
       <div className=" bg-white p-2 ">
         <form className="space-y-5 p-10" onSubmit={handleSubmit(onSubmit)}>
@@ -272,14 +286,16 @@ const CandidateProUpdate: React.FC = () => {
               </div>
 
               <div className="form-control w-full">
-                <input
-                  type="text"
-                  {...register("position", {
-                    required: "position is required",
-                  })}
-                  placeholder="Interested Position"
+                <select
+                  value={selectedSector}
+                  onChange={(e) => setSelectedSector(e.target.value)}
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                />
+                >
+                  <option value="">Select Sector</option>
+                  {sectors.map(sector => (
+                    <option key={sector._id} value={sector.sectorType}>{sector.sectorType}</option>
+                  ))}
+                </select>
               </div>
               <div className="form-control w-full">
                 <input

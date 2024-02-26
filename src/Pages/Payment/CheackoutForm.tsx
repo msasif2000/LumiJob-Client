@@ -59,7 +59,7 @@ const CheackoutForm = () => {
     }
   }, [user]);
 
-  console.log(subs);
+  //console.log(subs);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -130,7 +130,7 @@ const CheackoutForm = () => {
           payment.canApply = subs?.selectedPlan?.canApply;
         }
 
-        console.log(payment)
+        // console.log(payment)
 
         const res = await axiosPublic.post("/payments", payment);
         console.log("payment saved", res.data);

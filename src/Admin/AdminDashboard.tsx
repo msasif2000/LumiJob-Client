@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import useAxiosPublic from '../hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const SECTOR_COLORS = ['#164070']; // Colors for different sectors
 const ROLE_COLORS = ['#0078FE', '#00C89F', '#FFBB98']; 
@@ -79,6 +80,9 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div className='mt-6'>
+      <Helmet>
+        <title>Analytics | LumiJobs</title>
+      </Helmet>
       <h3 className=' text-3xl font-bold my-6 text-gray-600'>Analytics</h3>
       <div className="block md:flex gap-5">
         <div className="w-full md:w-1/2 border-4">

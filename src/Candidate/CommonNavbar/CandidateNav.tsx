@@ -1,7 +1,7 @@
 interface CandidateNavProps {
   text: string;
   btn: string;
-  btn2: string;
+  btn2?: string;
   handleClick: () => void;
   handleClick2: () => void;
 }

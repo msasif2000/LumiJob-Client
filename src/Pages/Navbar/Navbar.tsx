@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 
-
 interface NavbarProps {
   color?: string;
 }
@@ -22,18 +21,18 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
       <li key="Job">
-
-        {
-          role === "company" ? (
-            <NavLink className="text-lg font-heading font-medium" to="/find-candidate">
-              Candidates
-            </NavLink>
-          ) : (
-            <NavLink className="text-lg font-heading font-medium" to="/find-job">
-              Jobs
-            </NavLink>
-          )
-        }
+        {role === "company" ? (
+          <NavLink
+            className="text-lg font-heading font-medium"
+            to="/find-candidate"
+          >
+            Candidates
+          </NavLink>
+        ) : (
+          <NavLink className="text-lg font-heading font-medium" to="/find-job">
+            Jobs
+          </NavLink>
+        )}
       </li>
       <li key="Insights">
         <NavLink className="text-lg font-heading font-medium" to="/insights">
@@ -41,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
 
-      {role === "admin" ? (
+      {user && role === "admin" ? (
         <li key="adminDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -50,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             Dashboard
           </NavLink>
         </li>
-      ) : role === "candidate" ? (
+      ) : user && role === "candidate" ? (
         <li key="candidateDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -59,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
             Dashboard
           </NavLink>
         </li>
-      ) : role === "company" ? (
+      ) : user && role === "company" ? (
         <li key="companyDashboard">
           <NavLink
             className="text-lg font-heading font-medium"
@@ -125,10 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         <div className="navbar-end">
           <div className="mr-24 hidden md:block ">
             {role === "candidate" ? (
-
-              <Link
-                to="/subscriptionsUiCandidate"
-              >
+              <Link to="/subscriptionsUiCandidate">
                 <button className="button ">
                   <div className="flex items-center gap-2 ">
                     Upgrade
@@ -146,12 +142,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   </div>
                 </button>
               </Link>
-
             ) : role === "company" ? (
-
-              <Link
-                to="/subscriptionsUiCompany"
-              >
+              <Link to="/subscriptionsUiCompany">
                 <button className="button ">
                   <div className="flex items-center gap-2 ">
                     Upgrade
@@ -169,12 +161,8 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   </div>
                 </button>
               </Link>
-
             ) : (
-
-              <Link
-                to="/optionsSubscribe"
-              >
+              <Link to="/optionsSubscribe">
                 <button className="button ">
                   <div className="flex items-center gap-2 ">
                     Upgrade
@@ -192,7 +180,6 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   </div>
                 </button>
               </Link>
-
             )}
           </div>
 
@@ -206,14 +193,15 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div
-                    className={`w-20 rounded-full ${premium === "premium"
-                      ? "ring-4 ring-blue-400 ring-offset-2"
-                      : ""
-                      }`}
+                    className={`w-20 rounded-full ${
+                      premium === "premium"
+                        ? "ring-4 ring-blue-400 ring-offset-2"
+                        : ""
+                    }`}
                   >
                     {user ? (
                       <img
-                        alt="Tailwind CSS Navbar component"
+                        alt=""
                         src={
                           photo
                             ? photo
@@ -254,15 +242,15 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
               </div>
             ) : (
               //   if user doesn't Exist
-              <button className="cta flex items-center">
-                <span>
-                  <Link to="/login">Login</Link>
-                </span>
-                <svg width="15px" height="10px" viewBox="0 0 13 10">
-                  <path d="M1,5 L11,5"></path>
-                  <polyline points="8 1 12 5 8 9"></polyline>
-                </svg>
-              </button>
+              <Link to="/login">
+                <button className="cta flex items-center">
+                  <span>Login</span>
+                  <svg width="15px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </Link>
             )}
           </div>
         </div>
