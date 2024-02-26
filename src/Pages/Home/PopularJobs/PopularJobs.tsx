@@ -23,8 +23,7 @@ const PopularJobs = () => {
       .catch((error) => console.log(error));
   }, []);
 
-
-  const slicedSectors = sectors.slice(0, 10)
+  const slicedSectors = sectors.slice(0, 10);
 
   // sort popular jobs by date here only show jobs that are away by 5 days from current date
 
@@ -32,15 +31,11 @@ const PopularJobs = () => {
     (job) => job.sectorType === sectors[tabIndex]?.sectorType
   );
 
-
   const slicedJobs = filterJob?.slice(0, 6);
-
-
-
 
   return (
     <>
-      <div className="max-w-screen-2xl mx-auto py-16 px-4">
+      <div className="max-w-screen-2xl mx-auto py-16 px-4 pjob">
         <div className="mb-14">
           <h3 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold text-center mb-4 xl:mb-7">
             Most <span className="text-accentTwo">popular</span> jobs for you
