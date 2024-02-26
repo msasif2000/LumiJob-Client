@@ -50,7 +50,7 @@ const CallToAction = () => {
             backgroundRepeat: "no-repeat",
         }}>
             <div className="md:flex justify-between items-center lg:px-20 px-4 py-4">
-                <div>
+                <div className="w-full">
                     <h2 className="text-4xl font-bold font-heading mt-10 md:text-left text-center">
                         Ready to get started?
                     </h2>
@@ -63,20 +63,22 @@ const CallToAction = () => {
                         </button>
                     </Link>
                 </div>
-                <div className="flex justify-center items-center h-96 w-96 py-4  relative">
-                    {icons.map((Icon, index) => (
-                        <div
-                            key={index}
-                            className="absolute text-5xl p-2"
-                            style={{
-                                top: `${randomNumbers[index]-6}%`,
-                                left: `${getRandomNumber(0, 80, randomNumbers)}%`,
-                                transform: `translate(-${getRandomNumber(0, 10)}%, -${getRandomNumber(0, 10)}%)`
-                            }}
-                        >
-                            {Icon}
-                        </div>
-                    ))}
+                <div className="flex justify-center h-96 w-full rounded-full py-4 ">
+                    <div className="w-full relative grid grid-cols-4">
+                        {icons.map((Icon, index) => (
+                            <div
+                                key={index}
+                                className="absolute text-5xl p-2"
+                                style={{
+                                    top: `${randomNumbers[index] - 6}%`,
+                                    left: `${getRandomNumber(0, 80, randomNumbers)}%`,
+                                    transform: `translate(-${getRandomNumber(0, 10)}%, -${getRandomNumber(0, 10)}%)`
+                                }}
+                            >
+                                {Icon}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
