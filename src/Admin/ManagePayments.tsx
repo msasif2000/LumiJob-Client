@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
+import CPagination from "../Pages/FindCandidate/CPagination";
 
 const ManagePayments = () => {
   const axiosPublic = useAxiosPublic();
@@ -12,6 +14,13 @@ const ManagePayments = () => {
     },
   });
 
+  // pagination 
+  const [dataPerPage] = useState<number>(10);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
   return (
     <>
       <Helmet>
@@ -33,7 +42,8 @@ const ManagePayments = () => {
             </tr>
           </thead>
           <tbody>
-            {payments?.map((payment: any, index: number) => (
+            {payments
+              .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage)?.map((payment: any, index: number) => (
               <tr key={payment._id}>
                 <th>{index + 1}</th>
 
@@ -61,6 +71,17 @@ const ManagePayments = () => {
             ))}
           </tbody>
         </table>
+        {payments.length > dataPerPage && (
+          <div className="py-12">
+            {/* ==>  Pagination <== */}
+            <CPagination
+              totalData={payments.length}
+              dataPerPage={dataPerPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            ></CPagination>
+          </div>
+        )}
       </div>
     </>
   );

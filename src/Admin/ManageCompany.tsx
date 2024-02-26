@@ -18,6 +18,7 @@ const ManageCompany = () => {
   const axiosPublic = useAxiosPublic();
   const [companyData, refetch] = useCompanyData();
 
+  // pagination 
   const [dataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -85,7 +86,7 @@ const ManageCompany = () => {
           <tbody>
             {
               companyData
-                .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((company: Company, index: number) => <tr key={company._id}>
+                .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage)?.map((company: Company, index: number) => <tr key={company._id}>
                   <th>
                     {index + 1}
                   </th>
