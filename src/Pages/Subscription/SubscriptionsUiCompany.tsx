@@ -26,7 +26,7 @@ const SubscriptionsUiCompany = () => {
       selectedPlan,
       user: userEmail,
     };
-    console.log(paymentInfo);
+    //console.log(paymentInfo);
 
     axiosPublic.post("/subscription", paymentInfo)
     .then((res) => {

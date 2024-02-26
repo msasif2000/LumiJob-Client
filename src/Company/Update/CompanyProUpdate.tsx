@@ -40,7 +40,7 @@ const CompanyProUpdate = () => {
 
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
-  console.log(api);
+  //console.log(api);
 
   const handleBack = () => {
     navigate(-1);

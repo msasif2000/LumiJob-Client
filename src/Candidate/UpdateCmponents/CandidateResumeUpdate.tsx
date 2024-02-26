@@ -207,7 +207,7 @@ const CandidateResumeUpdate: React.FC = () => {
                 role: userData?.role,
             };
 
-            console.log(candidateData);
+            //console.log(candidateData);
 
             // Send the updated candidate data to the database
             const updateUserDataResponse = await axiosPublic.put(
