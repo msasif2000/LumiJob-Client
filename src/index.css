@@ -28,7 +28,6 @@ body {
 .dash a:hover {
   background-color: rgba(0, 0, 0, 0) !important;
   text-decoration: underline;
-
 }
 .dash a.active {
   background-color: white !important;
@@ -52,21 +51,21 @@ body {
 
 /* For React Tabs Custom Design */
 
-.react-tabs__tab-list {
+.pjob .react-tabs__tab-list {
   text-align: center;
   border-bottom: 0 !important;
   margin: 0 0 10px;
   padding: 0;
 }
 
-.react-tabs__tab--selected {
+.pjob .react-tabs__tab--selected {
   background: #4869dd !important;
   border-color: none;
   color: white !important;
   border-radius: 0.2rem !important;
 }
 
-.react-tabs__tab {
+.pjob .react-tabs__tab {
   border: 1px solid #4869dd !important;
   margin: 0.7rem;
   padding: 0.4rem 1.1rem !important;
