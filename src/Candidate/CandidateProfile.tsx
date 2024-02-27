@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -66,6 +66,7 @@ const CandidateProfile = () => {
         .catch((err) => console.log(err));
     }
   }, [user]);
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "experience":
@@ -73,18 +74,22 @@ const CandidateProfile = () => {
           <div>
             {profile?.experienceDetails?.map((job: any, index: number) => {
               // Convert fromDate and toDate to Date objects
-              // const startDate = new Date(job.fromDate);
-              // const endDate = new Date(job.toDate);
-              // console.log(job?.fromDate);
-              // Format dates in the desired format (e.g., "21-Jan-2024")
-              // const formattedStartDate = `${startDate?.getDate()}-${startDate?.toLocaleString(
-              //   "en-us",
-              //   { month: "short" }
-              // )}-${startDate?.getFullYear()}`;
-              // const formattedEndDate = `${endDate?.getDate()}-${endDate?.toLocaleString(
-              //   "en-us",
-              //   { month: "short" }
-              // )}-${endDate?.getFullYear()}`;
+              const startDate = new Date(job.fromDate);
+              const endDate = new Date(job.toDate);
+
+              // Format dates in the desired format (e.g., "31/01/2024")
+              const formattedStartDate = `${startDate
+                .getDate()
+                .toString()
+                .padStart(2, "0")}/${(startDate.getMonth() + 1)
+                .toString()
+                .padStart(2, "0")}/${startDate.getFullYear()}`;
+              const formattedEndDate = `${endDate
+                .getDate()
+                .toString()
+                .padStart(2, "0")}/${(endDate.getMonth() + 1)
+                .toString()
+                .padStart(2, "0")}/${endDate.getFullYear()}`;
 
               return (
                 <div key={index} className="mb-4">
@@ -95,21 +100,21 @@ const CandidateProfile = () => {
                     <p className="text-xs md:text-lg font-bold text-gray-400">
                       {job?.company}
                     </p>
-                    {
-                      job?.fromDate ?
-                        <p className="text-xs md:text-lg font-semibold text-gray-400">{job?.fromDate} - {job?.toDate} </p>
-                        :
-                        ""
-                    }
-                  </div>
-                  {
-                    job?.fromDate ?
-                      <div className="mt-4">
-                        <hr />
-                      </div>
-                      :
+                    {job?.fromDate ? (
+                      <p className="text-xs md:text-lg font-semibold text-gray-400">
+                        {formattedStartDate} - {formattedEndDate}{" "}
+                      </p>
+                    ) : (
                       ""
-                  }
+                    )}
+                  </div>
+                  {job?.fromDate ? (
+                    <div className="mt-4">
+                      <hr />
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
               );
             })}
@@ -123,16 +128,19 @@ const CandidateProfile = () => {
               const startDate = new Date(uni.fromDate);
               const endDate = new Date(uni.toDate);
 
-              // Format dates in the desired format (e.g., "21-Jan-2024")
-              const formattedStartDate = `${startDate.getDate()}-${startDate.toLocaleString(
-                "en-us",
-                { month: "short" }
-              )}-${startDate.getFullYear()}`;
-              const formattedEndDate = `${endDate.getDate()}-${endDate.toLocaleString(
-                "en-us",
-                { month: "short" }
-              )}-${endDate.getFullYear()}`;
-
+              // Format dates in the desired format (e.g., "31/01/2024")
+              const formattedStartDate = `${startDate
+                .getDate()
+                .toString()
+                .padStart(2, "0")}/${(startDate.getMonth() + 1)
+                .toString()
+                .padStart(2, "0")}/${startDate.getFullYear()}`;
+              const formattedEndDate = `${endDate
+                .getDate()
+                .toString()
+                .padStart(2, "0")}/${(endDate.getMonth() + 1)
+                .toString()
+                .padStart(2, "0")}/${endDate.getFullYear()}`;
               return (
                 <div key={index} className="mb-4">
                   <div>
@@ -298,16 +306,18 @@ const CandidateProfile = () => {
             <div role="tablist" className="tabs tabs-bordered relative">
               <a
                 role="tab"
-                className={`tab ${activeTab === "experience" ? "tab-active" : ""
-                  } text-xs md:text-xl font-bold`}
+                className={`tab ${
+                  activeTab === "experience" ? "tab-active" : ""
+                } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("experience")}
               >
                 Experience
               </a>
               <a
                 role="tab"
-                className={`tab ${activeTab === "education" ? "tab-active" : ""
-                  } text-xs md:text-xl font-bold`}
+                className={`tab ${
+                  activeTab === "education" ? "tab-active" : ""
+                } text-xs md:text-xl font-bold`}
                 onClick={() => handleTabClick("education")}
               >
                 Education
