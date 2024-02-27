@@ -5,11 +5,13 @@ import Job from "./Job";
 import JobCard from "./JobCard";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useSectorAndSkills from "../../../hooks/useSectorAndSkills";
+import PopularJobsLoading from "../../../component/err & loading/popularJobsLoading";
 
 const PopularJobs = () => {
   const [popularJobs, setPopularJobs] = useState<Job[]>([]);
   const [tabIndex, setTabIndex] = useState(0);
   const axiosPublic = useAxiosPublic();
+  const [loading, setLoading] = useState(true);
 
   const { sectors } = useSectorAndSkills();
 
@@ -19,6 +21,7 @@ const PopularJobs = () => {
       .then((res) => {
         setPopularJobs(res.data);
         //console.log(res.data);
+        setLoading(false);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -53,11 +56,12 @@ const PopularJobs = () => {
           </TabList>
           {sectors?.map((sector: any) => (
             <TabPanel key={sector._id}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
+              {loading ? <PopularJobsLoading /> :
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
                 {slicedJobs?.map((job) => (
                   <JobCard key={job._id} job={job}></JobCard>
                 ))}
-              </div>
+              </div>}
             </TabPanel>
           ))}
         </Tabs>
