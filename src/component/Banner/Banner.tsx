@@ -9,29 +9,29 @@ const Banner = () => {
   return (
     <section className="bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:36px_36px] -mt-16">
       <div className="max-w-screen-xl mx-auto px-4 py-10 relative">
-        <div className="flex flex-col justify-center items-center text-center min-h-[60vh] md:min-h-[40vh] lg:min-h-[90vh] 2xl:min-h-[80vh] z-20 ">
-          <h2 className="text-[#3F3F46] text-2xl md:text-4xl lg:text-6xl 2xl:text-[5.3rem] font-heading font-semibold my-12 z-10 flex flex-wrap items-center justify-center">
+        <div className="flex flex-col justify-center items-center text-center min-h-[60svh] md:min-h-[40vh] lg:min-h-[80vh] 2xl:min-h-[80vh] z-20 mt-12 2xl:mt-0 ">
+          <h2 className="text-[#3F3F46] text-[1.4rem] md:text-5xl lg:text-6xl 2xl:text-[5.3rem] font-heading font-semibold my-12 z-10 flex flex-wrap items-center justify-center">
             Empowering
             <img
               src={empowering}
               alt="Empowering"
-              className="w-16 h-16 inline ml-[0.5rem] mr-[0.5rem]"
+              className="w-5 h-5  md:w-16 md:h-16 inline ml-[0.5rem] mr-[0.5rem]"
             />
             Tech Careers
             <img
               src={career}
               alt="career"
-              className="w-16 h-16 inline ml-[0.5rem] mr-[0.5rem]"
+              className="w-5 h-5  md:w-16 md:h-16 inline ml-[0.5rem] mr-[0.5rem]"
             />
             with Innovation
             <img
               src={innovation}
               alt="innovation"
-              className="w-16 h-16 inline ml-[0.5rem] mr-[0.5rem]"
+              className="w-5 h-5  md:w-16 md:h-16 inline ml-[0.5rem] mr-[0.5rem]"
             />
             and Boundless Opportunities
           </h2>
-          <p className="text-md md:text-lg xl:text-xl text-gray-600 px-5 md:px-28 lg:px-40 font-normal">
+          <p className="text-base md:text-lg xl:text-xl text-gray-600 px-5 md:px-28 lg:px-40 font-normal">
             Unlock the Door to Your Future: Let LumiJobs Empower Your Tech
             Career Journey with Continuous Innovation, Abundant Opportunities,
             and Limitless Possibilities
