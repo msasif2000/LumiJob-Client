@@ -41,7 +41,7 @@ const Banner = () => {
             {role === "company" ? (
               <NavLink to="/find-candidate">Find Skilled Candidates</NavLink>
             ) : (
-              <NavLink to="/findjob">Find Your Future</NavLink>
+              <NavLink to="/find-job">Find Your Future</NavLink>
             )}
           </button>
 
