@@ -9,13 +9,16 @@ import Job from "../Home/PopularJobs/Job";
 import Pagination from "./Pagination";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+// import Loading from "../Blogs/components/err/Loading";
+import JobLoading from "../../component/err & loading/JobLoading";
 
 const FindJob: React.FC = () => {
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [jobsPerPage] = useState<number>(6);
   const axiosPublic = useAxiosPublic();
-  const { data: popularJobs = [] } = useQuery({
+
+  const { data: popularJobs, isLoading = [] } = useQuery({
     queryKey: ["popularJobs"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/all-job-posts`);
@@ -23,9 +26,17 @@ const FindJob: React.FC = () => {
     },
   });
 
+
+
   useEffect(() => {
-    setCurrentJobs(popularJobs);
+    setCurrentJobs((prevJobs) => {
+      if (!popularJobs || !Array.isArray(popularJobs)) return prevJobs;
+      return popularJobs;
+    });
   }, [popularJobs]);
+
+
+
 
   const handleFilterChange = (filteredData: Job[]) => {
     setCurrentJobs(filteredData);
@@ -40,14 +51,14 @@ const FindJob: React.FC = () => {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
-
   return (
     <>
       <Helmet>
         <title>Find Jobs | LumiJobs</title>
       </Helmet>
       <div className="">
-        <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
+
+        <div className="mt-14 mb-5 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
             Navigate <span className="text-[#4869DD]">Opportunities</span> and
             Find Your Perfect Job Today!
@@ -74,16 +85,19 @@ const FindJob: React.FC = () => {
               </div>
 
               {/* ===> Showing jobs <=== */}
-              <div className="grid grid-cols-1 gap-8 p-3">
-                {currentJobs
-                  .slice(
-                    (currentPage - 1) * jobsPerPage,
-                    currentPage * jobsPerPage
-                  )
-                  .map((job: Job) => (
-                    <FindJobCard key={job._id} job={job}></FindJobCard>
-                  ))}
-              </div>
+              {isLoading ? <JobLoading></JobLoading> 
+              :
+                <div className="grid grid-cols-1 gap-8 p-3">
+                  {currentJobs
+                    .slice(
+                      (currentPage - 1) * jobsPerPage,
+                      currentPage * jobsPerPage
+                    )
+                    .map((job: Job) => (
+                      <FindJobCard key={job._id} job={job}></FindJobCard>
+                    ))}
+                </div>}
+
 
               {currentJobs.length > jobsPerPage && (
                 <div className="py-12">
