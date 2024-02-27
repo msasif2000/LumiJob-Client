@@ -121,9 +121,7 @@ const CompanyProfile = () => {
   //   );
   // };
 
-  if (!profile) {
-    return <UniLoader />;
-  }
+  { profile ? "" : <UniLoader /> }
 
   return (
     <>
@@ -246,7 +244,7 @@ const CompanyProfile = () => {
           </div>
         </div>
         <div>
-           <CompanyAnalytics></CompanyAnalytics>
+          <CompanyAnalytics></CompanyAnalytics>
         </div>
         {/* <div className="min-h-20 mt-4  rounded-md p-6 pb-10">
           {" "}
