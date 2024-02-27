@@ -6,7 +6,7 @@ import innovation from "../../assets/image/innovation.png";
 import { motion } from "framer-motion";
 
 const Banner = () => {
-  const { role } = useAuth();
+  const { role, user } = useAuth();
   return (
     <section className="bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:36px_36px] -mt-16">
       <div className="max-w-screen-xl mx-auto px-4 py-10 relative">
@@ -38,16 +38,18 @@ const Banner = () => {
             and Limitless Possibilities
           </p>
 
-          <motion.button
-            whileTap={{ scale: 0.85 }}
-            className="btn  text-light text-lg font-heading font-bold  border-none px-12 lg:px-20 my-12 bg-accent hover:bg-accent rounded-full"
+          <NavLink
+            to={user && role === "company" ? "/find-candidate" : "/find-job"}
           >
-            {role === "company" ? (
-              <NavLink to="/find-candidate">Find Skilled Candidates</NavLink>
-            ) : (
-              <NavLink to="/find-job">Find Your Future</NavLink>
-            )}
-          </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.85 }}
+              className="btn  text-light text-lg font-heading font-bold  border-none px-12 lg:px-20 my-12 bg-accent hover:bg-accent rounded-full"
+            >
+              {user && role === "company"
+                ? "Find Skilled Candidates"
+                : "Find Your Future"}
+            </motion.button>
+          </NavLink>
 
           {/* <img
             src={iconOne}
