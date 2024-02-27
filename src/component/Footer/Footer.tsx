@@ -3,10 +3,10 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { AiFillYoutube, AiFillInstagram } from "react-icons/ai";
 const Footer = () => {
   return (
-    <footer className="relative bg-gray-950 text-gray-600 lg:h-[360px]">
-      <div className="footer py-10 px-4 max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 font-semibold pt-20">
+    <footer className="relative bg-white text-[#74767e] border-t ">
+      <div className="footer py-10 px-4 max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 font-Macan font-normal text-lg lg:min-h-[22rem] pt-20 ">
         <div>
-          <span className="text-white uppercase font-heading text-xl">
+          <span className="capitalize font-Macan font-bold text-xl text-gray-900">
             Services
           </span>
           <Link className="link link-hover" to="#">
@@ -23,7 +23,7 @@ const Footer = () => {
           </Link>
         </div>
         <div>
-          <span className="text-white uppercase font-heading text-xl">
+          <span className="capitalize font-Macan font-bold text-xl text-gray-900">
             Terms
           </span>
           <Link className="link link-hover" to="#">
@@ -40,7 +40,7 @@ const Footer = () => {
           </Link>
         </div>
         <div>
-          <span className="text-white uppercase font-heading text-xl">
+          <span className="capitalize font-Macan font-bold text-xl text-gray-900">
             Company
           </span>
           <Link className="link link-hover" to="#">
@@ -57,7 +57,7 @@ const Footer = () => {
           </Link>
         </div>
         <nav>
-          <header className="text-white uppercase font-heading text-xl">
+          <header className="capitalize font-Macan font-bold text-xl text-gray-900">
             Explore
           </header>
           <a className="link link-hover">Features</a>
@@ -66,7 +66,7 @@ const Footer = () => {
           <a className="link link-hover">Pricing</a>
         </nav>
         <nav>
-          <header className="text-white uppercase font-heading text-xl">
+          <header className="capitalize font-Macan font-bold text-xl text-gray-900">
             Legal
           </header>
           <a className="link link-hover">Terms of use</a>
@@ -74,11 +74,14 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </nav>
       </div>
-      <div className="max-w-screen-2xl mx-auto px-4 pb-4">
-        <div className="lg:flex justify-between">
-          <span className="text-white font-bold text-2xl ">LumiJobs</span>
+      <div className="max-w-screen-2xl min-h-16 mx-auto px-4 pb-4 ">
+        <div className="divider"></div>
+        <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-between items-center">
+          <h5 className="text-center  font-normal">
+            Copyright © {new Date().getFullYear()} all rights reserved LumiJobs
+          </h5>
 
-          <div className="flex gap-3 pt-5 lg:pt-0">
+          <div className="flex justify-end items-center gap-3 ">
             <Link
               to="/"
               target="_blank"
@@ -111,12 +114,6 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-      </div>
-      <div className="bg-gray-950 border-t border-gray-700 flex justify-center items-center min-h-16">
-        <h5 className="text-center font-heading font-normal">
-          Copyright © {new Date().getFullYear()} all rights reserved to Dev
-          Dynasty.
-        </h5>
       </div>
     </footer>
   );

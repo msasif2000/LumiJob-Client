@@ -18,6 +18,7 @@ export default {
       fontFamily: {
         'heading': ['heading Grotesk', 'sans-serif'],
         'body': ['Inter', 'sans-serif'],
+        "Macan": ['MacanPanWeb-Book', 'sans-serif'],
       },
     },
   },

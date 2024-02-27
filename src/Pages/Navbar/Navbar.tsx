@@ -40,32 +40,32 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const Linking = (
     <>
       <li key="home">
-        <NavLink className="text-lg font-heading font-medium" to="/">
+        <NavLink className="text-lg font-heading font-base" to="/">
           Home
         </NavLink>
       </li>
       <li key="Job">
         {user && role === "company" ? (
           <NavLink
-            className="text-lg font-heading font-medium"
+            className="text-lg font-heading font-base"
             to="/find-candidate"
           >
             Candidates
           </NavLink>
         ) : (
-          <NavLink className="text-lg font-heading font-medium" to="/find-job">
+          <NavLink className="text-lg font-heading font-base" to="/find-job">
             Jobs
           </NavLink>
         )}
       </li>
       <li key="Insights">
-        <NavLink className="text-lg font-heading font-medium" to="/insights">
+        <NavLink className="text-lg font-heading font-base" to="/insights">
           Insights
         </NavLink>
       </li>
 
       <li key="Contact">
-        <NavLink className="text-lg font-heading font-medium" to="/Contact">
+        <NavLink className="text-lg font-heading font-base" to="/Contact">
           Contact
         </NavLink>
       </li>
@@ -78,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   return (
     <div
       className={`sticky top-0 z-30 ${
-        scrollPosition > 100 ? `${bgColor} border-b border-b-[#e4e5e7]` : ""
+        scrollPosition > 30 ? `${bgColor} border-b border-b-[#e4e5e7]` : ""
       }`}
     >
       <div className="navbar max-w-screen-2xl mx-auto px-4">
