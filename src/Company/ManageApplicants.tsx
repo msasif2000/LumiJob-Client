@@ -428,7 +428,7 @@ const ManageApplicants = () => {
                                 </p>
                               </div>
 
-                              <div className="absolute top-0 -right-10">
+                              <div className="absolute top-0 right-0 xl:-right-10">
                                 <label
                                   htmlFor="my_modal_6"
                                   className="cursor-pointer ... text-xl"
