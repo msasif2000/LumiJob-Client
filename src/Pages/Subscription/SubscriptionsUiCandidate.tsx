@@ -32,10 +32,10 @@ const SubscriptionsUiCandidate = () => {
       selectedPlan,
       user: userEmail,
     };
-    console.log(paymentInfo);
+    //console.log(paymentInfo);
 
     axiosPublic.post("/subscription", paymentInfo).then((res) => {
-      console.log(res.data);
+      //console.log(res.data);
       if (res.data.message === "data inserted") {
         navigate("/payment");
       }

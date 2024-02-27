@@ -1,17 +1,18 @@
+import { FcManager } from "react-icons/fc";
+import { FcConferenceCall } from "react-icons/fc";
+import { FcBriefcase } from "react-icons/fc";
 import React, { useState, useEffect } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import { Helmet } from 'react-helmet-async';
 
 const SECTOR_COLORS = ['#164070']; // Colors for different sectors
-const ROLE_COLORS = ['#0078FE', '#00C89F', '#FFBB98']; 
 const JOB_TYPE_COLORS = ['#FF8042', '#DD93CE', '#BBC49F']; // Colors for Remote, Onsite, Hybrid
 
 const AdminDashboard: React.FC = () => {
   const [jobTypeData, setJobTypeData] = useState<{ name: string; value: number }[]>([]);
   const [sectorTypeData, setSectorTypeData] = useState<{ name: string; value: number }[]>([]);
   const [userData, setUserData] = useState<{ name: string; value: number }[]>([]);
-  const [activeIndex1, setActiveIndex1] = useState(0);
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
@@ -72,10 +73,7 @@ const AdminDashboard: React.FC = () => {
     fetchUserData();
   }, [axiosPublic]);
 
-  const onPieEnter1 = (_data: any, index: number) => {
-    setActiveIndex1(index);
-  };
-
+  console.log(userData);
 
 
   return (
@@ -104,37 +102,18 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         <div className="w-full md:w-1/2  border-4">
-        <h5 className='text-xl font-semibold text-center text-gray-600 mt-6 mb-2'>User Roles</h5>
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie
-                activeIndex={activeIndex1}
-                data={userData}
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-                onMouseEnter={onPieEnter1}
-              >
-                {userData.map((_entry, index) => (
-                  <Cell key={`cell-${index}`} fill={ROLE_COLORS[index % ROLE_COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>   
-          </ResponsiveContainer>
-          <div className='flex justify-center gap-2 mb-5'>
-              <p className='bg-[#164070] py-1 px-2 text-white'>Company</p>
-              <p className='bg-[#00C89F] py-1 px-2 text-white'>Candidate</p>
-              <p className='bg-[#ffbb98] py-1 px-2 text-white'>Admin</p>
-             </div>
+          <h5 className='text-xl font-semibold text-center text-gray-600 mt-6 mb-2'>User Roles</h5>
+
+          <div className='flex justify-center items-center gap-2'>
+            <p className='bg-[#164070] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'><FcBriefcase className="text-5xl" /><span>{userData[0].value} Company</span></p>
+            <p className='bg-[#00C89F] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'> <FcConferenceCall className="text-5xl" /><span>{userData[1].value} Candidate</span></p>
+            <p className='bg-[#ffbb98] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'><FcManager className="text-5xl" /><span>{userData[2].value} Admin</span></p>
+          </div>
         </div>
       </div>
 
       <div className="mx-auto mt-12" style={{ width: '100%', display: 'inline-block' }}>
-      <h5 className='text-xl font-semibold text-center text-gray-600 mb-5'>Job Sectors</h5>
+        <h5 className='text-xl font-semibold text-center text-gray-600 mb-5'>Job Sectors</h5>
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={sectorTypeData}>
             <CartesianGrid strokeDasharray="3 3" />

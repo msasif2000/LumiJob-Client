@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
-  const navigate =useNavigate()
+  const navigate = useNavigate()
   const handlefrom = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -22,7 +22,7 @@ const Contact = () => {
         formDataObject[key] = value;
       });
 
-      console.log("Form Data:", formDataObject);
+      //console.log("Form Data:", formDataObject);
 
       emailjs
         .sendForm(
@@ -31,19 +31,18 @@ const Contact = () => {
           form.current,
           "0N8CKLdWb0pnRf50u"
         )
-        .then(
-          (result) => {
-            resetForm();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: `Message send successfully .`,
-              showConfirmButton: false,
-              timer: 1500
-            });
-            navigate('/')
-            console.log(result.text);
-          },
+        .then(() => {
+          resetForm();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Message send successfully .`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+          navigate('/')
+          //console.log(result.text);
+        },
           (error) => {
             console.log(error.text);
           }

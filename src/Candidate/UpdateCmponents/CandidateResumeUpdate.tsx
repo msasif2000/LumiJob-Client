@@ -9,7 +9,6 @@ import { ToastContainer, toast } from "react-toastify";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { GrAdd } from "react-icons/gr";
 
-
 interface ExperienceData {
     company: string;
     position: string;
@@ -17,6 +16,8 @@ interface ExperienceData {
     fromDate: Date | null;
     toDate: Date | null;
 }
+
+
 
 interface LinkData {
     name: string;
@@ -65,6 +66,7 @@ const CandidateResumeUpdate: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
     // const [currentUser, setCurrentUser] = useState(null);
     const [userData, setUserData] = useState<UserData | null>(null);
+    const [candidate, setCandidates] = useState<FormData | null>(null);
     const axiosPublic = useAxiosPublic();
 
     const {
@@ -207,7 +209,7 @@ const CandidateResumeUpdate: React.FC = () => {
                 role: userData?.role,
             };
 
-            console.log(candidateData);
+            //console.log(candidateData);
 
             // Send the updated candidate data to the database
             const updateUserDataResponse = await axiosPublic.put(
@@ -232,16 +234,29 @@ const CandidateResumeUpdate: React.FC = () => {
     };
 
 
-    // useEffect(() => {
-    //   if (user?.email) {
-    //     axiosPublic
-    //       .get(`/user-profile/${user.email}`)
-    //       .then((res) => {
-    //         setCurrentUser(res.data);
-    //       })
-    //       .catch((error) => console.log(error));
-    //   }
-    // }, [user]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user?.email) {
+                try {
+                    const res = await axiosPublic.get(`/specific-candidate/${user.email}`);
+                    setCandidates(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        };
+
+        fetchData();
+
+    }, [user]);
+
+    const { name,
+        email, phone, designation, objective,  village, city, country
+    } = candidate || {};
+
+
 
     return (
         <div className="min-h-screen">
@@ -262,6 +277,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                     type="text"
                                     {...register("name", { required: "Name is required" })}
                                     placeholder="Your Name"
+                                    defaultValue={name}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                                 />
                             </div>
@@ -273,6 +289,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                         required: "email is required",
                                     })}
                                     placeholder="Your Email"
+                                    defaultValue={email}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                                 />
                             </div>
@@ -281,6 +298,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                     type="text"
                                     {...register("phone", { required: "phone is required" })}
                                     placeholder="Contact Number"
+                                    defaultValue={phone}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                                 />
                             </div>
@@ -292,6 +310,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                     type="text"
                                     {...register("village", { required: "Village is required" })}
                                     placeholder="Your Village / Area"
+                                    defaultValue={village}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                                 />
                             </div>
@@ -300,6 +319,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                     type="text"
                                     {...register("city", { required: "City is required" })}
                                     placeholder="Your City"
+                                    defaultValue={city}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                                 />
                             </div>
@@ -308,6 +328,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                     type="text"
                                     {...register("country", { required: "Country is required" })}
                                     placeholder="Your Country"
+                                    defaultValue={country}
                                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                                 />
                             </div>
@@ -321,6 +342,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                 type="text"
                                 {...register("designation")}
                                 placeholder="Designation (optional)"
+                                defaultValue={designation}
                                 className="py-4 my-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                             />
                         </div>
@@ -329,6 +351,7 @@ const CandidateResumeUpdate: React.FC = () => {
                                 rows={3}
                                 {...register("objective", { required: "objective is required" })}
                                 placeholder="Your Objective"
+                                defaultValue={objective}
                                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                             ></textarea>
                         </div>
@@ -336,7 +359,7 @@ const CandidateResumeUpdate: React.FC = () => {
                         <div className="form-control w-full">
                             <div className="flex flex-wrap">
                                 {Array.isArray(selectedSkills) &&
-                                    selectedSkills.map((skill, idx) => (
+                                   selectedSkills.map((skill, idx) => (
                                         <div
                                             key={idx}
                                             className="bg-green-300 font-bold rounded-full px-4 py-2 m-2 flex items-center"

@@ -46,14 +46,14 @@ const ManageJobs = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/delete-jobs-bookmarks/${id}`)
-          .then(res => {
-            console.log(res.data);
-          })
+          // .then(() => {
+          //  // console.log(res.data);
+          // })
 
         axiosPublic.delete(`/delete-jobs-applyJobsCollection/${id}`)
-          .then(res => {
-            console.log(res.data);
-          })
+          // .then(res => {
+          //   console.log(res.data);
+          // })
 
         axiosPublic.delete(`/delete-jobs/${id}`)
           .then(res => {

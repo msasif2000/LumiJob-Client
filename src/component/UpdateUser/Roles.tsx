@@ -13,7 +13,7 @@ const Roles = () => {
     axiosPublic
       .put(`/roles/${user?.email}`, { role: "company", canPost: 5 })
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data.message === "true") {
           toast.success("Role changed successfully");
           navigate("/dashboard/companyProfile/update");
@@ -28,7 +28,7 @@ const Roles = () => {
     axiosPublic
       .put(`/roles/${user?.email}`, { role: "candidate", canApply: 20 })
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data.message === "true") {
           toast.success("Role changed successfully");
           navigate("/dashboard/candidateProfile/update");

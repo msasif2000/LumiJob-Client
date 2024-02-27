@@ -30,7 +30,7 @@ const PostedJobs = () => {
     axiosPublic
       .delete(`/delete-job/${jobId}`)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data.message === 'true') {
           toast.success(`Job post deleted successfully`, {
             hideProgressBar: true,
