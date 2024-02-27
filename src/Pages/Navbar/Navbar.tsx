@@ -12,6 +12,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const { user, logOut, premium, role, photo } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [userData, setUserData] = useState<{ _id: string; value: number }>();
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     axiosPublic.get(`/specific-candidate/${user?.email}`).then((res) => {
@@ -19,10 +20,23 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
     });
   }, [user?.email]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setScrollPosition(position);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleLogout = () => {
     logOut();
   };
-  console.log(userData);
+  // console.log(userData);
   const Linking = (
     <>
       <li key="home">
@@ -31,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
         </NavLink>
       </li>
       <li key="Job">
-        {role === "company" ? (
+        {user && role === "company" ? (
           <NavLink
             className="text-lg font-heading font-medium"
             to="/find-candidate"
@@ -62,7 +76,11 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
   const bgColor = color ? color : " bg-white";
 
   return (
-    <div className={`border-b border-b-[#e4e5e7] sticky top-0 z-30 ${bgColor}`}>
+    <div
+      className={`sticky top-0 z-30 ${
+        scrollPosition > 100 ? `${bgColor} border-b border-b-[#e4e5e7]` : ""
+      }`}
+    >
       <div className="navbar max-w-screen-2xl mx-auto px-4">
         <div className="navbar-start">
           <div className="dropdown">
