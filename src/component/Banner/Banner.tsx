@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import empowering from "../../assets/image/empowering.png";
 import career from "../../assets/image/Career.png";
 import innovation from "../../assets/image/innovation.png";
+import { motion } from "framer-motion";
 
 const Banner = () => {
   const { role } = useAuth();
@@ -37,13 +38,16 @@ const Banner = () => {
             and Limitless Possibilities
           </p>
 
-          <button className="btn  text-light text-lg font-heading font-bold  border-none px-12 lg:px-20 my-12 bg-accent hover:bg-accentTwo rounded-full">
+          <motion.button
+            whileTap={{ scale: 0.85 }}
+            className="btn  text-light text-lg font-heading font-bold  border-none px-12 lg:px-20 my-12 bg-accent hover:bg-accent rounded-full"
+          >
             {role === "company" ? (
               <NavLink to="/find-candidate">Find Skilled Candidates</NavLink>
             ) : (
-              <NavLink to="/findjob">Find Your Future</NavLink>
+              <NavLink to="/find-job">Find Your Future</NavLink>
             )}
-          </button>
+          </motion.button>
 
           {/* <img
             src={iconOne}
