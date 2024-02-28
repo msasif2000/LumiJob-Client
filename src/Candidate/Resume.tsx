@@ -40,7 +40,7 @@ const Resume: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCandidates(res.data);
-          //console.log(res.data);
+          console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -51,7 +51,7 @@ const Resume: React.FC = () => {
   };
 
   const handleUpdate = () => {
-    navigate("/dashboard/candidateProfile/Resume/create_resume");
+    navigate("/dashboard/resume/update");
   };
 
   return (
