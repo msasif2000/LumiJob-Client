@@ -1,31 +1,24 @@
-import { FcFlashOn, FcFactory, FcEmptyFilter, FcWorkflow, FcAndroidOs, FcApprove, FcDebt, FcConferenceCall, FcCollaboration, FcCalendar, FcBusinessman, FcApproval, FcBullish, FcBriefcase, FcBiotech, FcAssistant } from "react-icons/fc";
-import { MdOutlineTroubleshoot, MdMonetizationOn } from "react-icons/md";
+import { FcFlashOn, FcWorkflow, FcAndroidOs, FcApprove, FcDebt, FcConferenceCall, FcCollaboration, FcCalendar, FcApproval, FcBullish, FcBriefcase, FcBiotech } from "react-icons/fc";
+import { MdMonetizationOn } from "react-icons/md";
 import { GiNetworkBars } from "react-icons/gi";
-import { FaBattleNet } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../assets/image/banner-bg1.jpg";
-
+import actionImg from "../../../assets/image/action1.jpg";
 const CallToAction = () => {
     const icons = [
-        <FaBattleNet />,
         <GiNetworkBars />,
         <MdMonetizationOn />,
-        <MdOutlineTroubleshoot />,
         <FcWorkflow />,
         <FcAndroidOs />,
         <FcApprove />,
         <FcApproval />,
-        <FcAssistant />,
         <FcBiotech />,
         <FcBriefcase />,
         <FcBullish />,
-        <FcBusinessman />,
         <FcCalendar />,
         <FcCollaboration />,
         <FcConferenceCall />,
         <FcDebt />,
-        <FcEmptyFilter />,
-        <FcFactory />,
         <FcFlashOn />
     ];
 
@@ -63,7 +56,7 @@ const CallToAction = () => {
                         </button>
                     </Link>
                 </div>
-                <div className="flex justify-center h-96 w-full rounded-full py-4 ">
+                <div className="md:flex hidden justify-center h-96 w-full rounded-full py-4 ">
                     <div className="w-full relative grid grid-cols-4">
                         {icons.map((Icon, index) => (
                             <div
@@ -80,6 +73,10 @@ const CallToAction = () => {
                         ))}
                     </div>
                 </div>
+                <div className="w-full h-full">
+                    <img src={actionImg} alt="" className="shadow-pink-300 shadow-lg" />
+                </div>
+
             </div>
         </section>
     );
