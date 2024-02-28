@@ -16,7 +16,7 @@ const Home = () => {
         <title>Home | LumiJobs</title>
       </Helmet>
       <Banner />
-      <TrustedByCompany></TrustedByCompany>
+      <TrustedByCompany />
       <HowItWorks />
       {/* <Step></Step> */}
       <PopularJobs />
