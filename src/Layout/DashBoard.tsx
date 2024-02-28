@@ -125,12 +125,13 @@ const DashBoard = () => {
             Seminars
           </NavLink>
         </li>
-        <li>
+        {/* ##########hide company analytics */}
+        {/* <li>
           <NavLink to="/dashboard/companyAnalytics">
             <BiLineChart className="text-xl" />
             Analytics
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/dashboard/employees">
             <GrGroup className="text-xl" />

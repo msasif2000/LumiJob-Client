@@ -205,11 +205,11 @@ const CompanyProfile = () => {
             <h3 className="text-xl md:text-3xl font-medium text-[#688696]">
               Company details
             </h3>
-            <div className="flex justify-center items-center bg-[#6886964f] rounded-xl px-2 py-1">
+            {/* <div className="flex justify-center items-center bg-[#6886964f] rounded-xl px-2 py-1">
               <p className=" text-xs md:text-xl font-semibold text-[#6560fb] p-1 md:p-2 ">
                 See All Jobs
               </p>
-            </div>
+            </div> */}
           </div>
           <div className="md:flex mt-5 gap-16">
             <div className="flex flex-col justify-center">
