@@ -51,20 +51,24 @@ interface UserData {
 }
 
 const CandidateProUpdate: React.FC = () => {
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [loading, setLoading] = useState<boolean>(false);
-  // const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<any | null>(null);
   const [userData, setUserData] = useState<UserData | null>(null);
-
+  const [inputValue, setInputValue] = useState<string>("");
+  const [additionalExperiences, setAdditionalExperiences] = useState<
+    ExperienceData[]
+  >([]);
+  const [additionalEducations, setAdditionalEducations] = useState<
+    EducationData[]
+  >([]);
   // these two line for dropdown sectors
   const [sectors, setSectors] = useState<{ _id: string; sectorType: string }[]>(
     []
   );
   const [selectedSector, setSelectedSector] = useState<string>("");
-
-  const axiosPublic = useAxiosPublic();
-
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
   const {
@@ -80,14 +84,6 @@ const CandidateProUpdate: React.FC = () => {
       experienceDetails: [],
     },
   });
-
-  const [inputValue, setInputValue] = useState<string>("");
-  const [additionalExperiences, setAdditionalExperiences] = useState<
-    ExperienceData[]
-  >([]);
-  const [additionalEducations, setAdditionalEducations] = useState<
-    EducationData[]
-  >([]);
 
   const selectedSkills = watch("skills");
 
@@ -226,16 +222,66 @@ const CandidateProUpdate: React.FC = () => {
     fetchSectors();
   }, []);
 
-  // useEffect(() => {
-  //   if (user?.email) {
-  //     axiosPublic
-  //       .get(`/user-profile/${user.email}`)
-  //       .then((res) => {
-  //         setCurrentUser(res.data);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    if (user?.email) {
+      axiosPublic
+        .get(`/specific-candidate/${user.email}`)
+        .then((res) => {
+          setCurrentUser(res.data);
+          console.log(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
+
+
+  useEffect(() => {
+    // Check if currentUser has data
+    if (currentUser) {
+      // Set default values for inputs using setValue
+      setValue("name", currentUser.name);
+      setValue("phone", currentUser.phone);
+      setValue("village", currentUser.village);
+      setValue("city", currentUser.city);
+      setValue("country", currentUser.country);
+      setValue("bio", currentUser.bio);
+      setValue("availability", currentUser.availability);
+      setValue("position", currentUser.position);
+      setValue("work", currentUser.work);
+      setValue("salaryRangeMin", currentUser.salaryRangeMin);
+      setValue("salaryRangeMax", currentUser.salaryRangeMax);
+      setValue("experience", currentUser.experience)
+  
+      // Set default values for skills (assuming currentUser.skills is an array of strings)
+      if (Array.isArray(currentUser.skills)) {
+        currentUser.skills.forEach((skill:any, index:number) => {
+          setValue(`skills.${index}`, skill);
+        });
+      }
+  
+      // Set default values for additional experiences
+      if (Array.isArray(currentUser.experienceDetails)) {
+        currentUser.experienceDetails.forEach((experience:any, index:number) => {
+          setValue(`experienceDetails.${index}.company`, experience.company);
+          setValue(`experienceDetails.${index}.position`, experience.position);
+          setValue(`experienceDetails.${index}.fromDate`, new Date(experience.fromDate));
+          setValue(`experienceDetails.${index}.toDate`, new Date(experience.toDate));
+        });
+      }
+  
+      // Set default values for education
+      if (Array.isArray(currentUser.education)) {
+        currentUser.education.forEach((education:any, index:number) => {
+          setValue(`education.${index}.university`, education.university);
+          setValue(`education.${index}.degree`, education.degree);
+          setValue(`education.${index}.subject`, education.subject);
+          setValue(`education.${index}.fromDate`, new Date(education.fromDate));
+          setValue(`education.${index}.toDate`, new Date(education.toDate));
+        });
+      }
+    }
+  }, [currentUser, setValue]);
+  
 
   return (
     <div className="min-h-screen">
@@ -438,211 +484,211 @@ const CandidateProUpdate: React.FC = () => {
             {errors.skills && <p>{errors.skills.message}</p>}
           </div>
 
-          <div className='bg-white p-8  pb-10'>
+          <div className="bg-white p-8  pb-10">
             <p>Salary Expectation</p>
-          <div className="md:flex md:space-x-10">
-            <div className="form-control w-full">
-              <input
-                type="number"
-                {...register("salaryRangeMin")}
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                placeholder="$ Expected Min Salary"
-              />
+            <div className="md:flex md:space-x-10">
+              <div className="form-control w-full">
+                <input
+                  type="number"
+                  {...register("salaryRangeMin")}
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
+                  placeholder="$ Expected Min Salary"
+                />
+              </div>
+              <div className="form-control w-full">
+                <input
+                  type="number"
+                  {...register("salaryRangeMax")}
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
+                  placeholder="$ Expected Max Salary"
+                />
+              </div>
             </div>
-            <div className="form-control w-full">
-              <input
-                type="number"
-                {...register("salaryRangeMax")}
-                className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                placeholder="$ Expected Max Salary"
-              />
-            </div>
-          </div>
           </div>
 
-         <div className="bg-white p-8">
-         <p className="md:pb-10">Experiences</p>
-          {additionalExperiences.map((experience, index) => (
-            <div key={index} className="form-control w-full mt-6 space-y-1">
-              <h2 className="text-sm md:text-lg text-blue-600 opacity-70 font-bold mb-4">
-                Experience {index + 1}
-              </h2>
-              <div className="flex space-x-4 pb-10">
-                <div className="w-1/2">
-                  <input
-                    type="text"
-                    {...register(`experienceDetails.${index}.company`, {
-                      required: "Company name is required",
-                    })}
-                    placeholder="Company Name"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
+          <div className="bg-white p-8">
+            <p className="md:pb-10">Experiences</p>
+            {additionalExperiences.map((experience, index) => (
+              <div key={index} className="form-control w-full mt-6 space-y-1">
+                <h2 className="text-sm md:text-lg text-blue-600 opacity-70 font-bold mb-4">
+                  Experience {index + 1}
+                </h2>
+                <div className="flex space-x-4 pb-10">
+                  <div className="w-1/2">
+                    <input
+                      type="text"
+                      {...register(`experienceDetails.${index}.company`, {
+                        required: "Company name is required",
+                      })}
+                      placeholder="Company Name"
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <input
+                      type="text"
+                      {...register(`experienceDetails.${index}.position`, {
+                        required: "Position is required",
+                      })}
+                      placeholder="Position"
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
                 </div>
-                <div className="w-1/2">
-                  <input
-                    type="text"
-                    {...register(`experienceDetails.${index}.position`, {
-                      required: "Position is required",
-                    })}
-                    placeholder="Position"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
+                <div className="flex space-x-4 mt-4">
+                  <div className="w-1/2">
+                    <DatePicker
+                      selected={experience.fromDate}
+                      onChange={(date: Date | null) => {
+                        if (date) {
+                          setAdditionalExperiences((prevState) => {
+                            const updatedExperiences = [...prevState];
+                            updatedExperiences[index].fromDate = date;
+                            return updatedExperiences;
+                          });
+                          setValue(`experienceDetails.${index}.fromDate`, date);
+                        }
+                      }}
+                      dateFormat="dd-MM-yyyy"
+                      placeholderText="From Date"
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <DatePicker
+                      selected={experience.toDate}
+                      onChange={(date: Date | null) => {
+                        if (date) {
+                          setAdditionalExperiences((prevState) => {
+                            const updatedExperiences = [...prevState];
+                            updatedExperiences[index].toDate = date;
+                            return updatedExperiences;
+                          });
+                          setValue(`experienceDetails.${index}.toDate`, date);
+                        }
+                      }}
+                      dateFormat="dd-MM-yyyy"
+                      placeholderText="To Date"
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
                 </div>
+                <button
+                  type="button"
+                  onClick={() => removeExperience(index)}
+                  className="text-red-500 mt-2 text-xs md:text-base text-right"
+                >
+                  Remove
+                </button>
               </div>
-              <div className="flex space-x-4 mt-4">
-                <div className="w-1/2">
-                  <DatePicker
-                    selected={experience.fromDate}
-                    onChange={(date: Date | null) => {
-                      if (date) {
-                        setAdditionalExperiences((prevState) => {
-                          const updatedExperiences = [...prevState];
-                          updatedExperiences[index].fromDate = date;
-                          return updatedExperiences;
-                        });
-                        setValue(`experienceDetails.${index}.fromDate`, date);
-                      }
-                    }}
-                    dateFormat="dd-MM-yyyy"
-                    placeholderText="From Date"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
-                </div>
-                <div className="w-1/2">
-                  <DatePicker
-                    selected={experience.toDate}
-                    onChange={(date: Date | null) => {
-                      if (date) {
-                        setAdditionalExperiences((prevState) => {
-                          const updatedExperiences = [...prevState];
-                          updatedExperiences[index].toDate = date;
-                          return updatedExperiences;
-                        });
-                        setValue(`experienceDetails.${index}.toDate`, date);
-                      }
-                    }}
-                    dateFormat="dd-MM-yyyy"
-                    placeholderText="To Date"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
-                </div>
-              </div>
+            ))}
+
+            <div className="">
               <button
                 type="button"
-                onClick={() => removeExperience(index)}
-                className="text-red-500 mt-2 text-xs md:text-base text-right"
+                onClick={addExperience}
+                className="text-blue-500 text-xs md:text-lg font-semibold"
               >
-                Remove
+                Add Experience
               </button>
             </div>
-          ))}
-
-          <div className="">
-            <button
-              type="button"
-              onClick={addExperience}
-              className="text-blue-500 text-xs md:text-lg font-semibold"
-            >
-              Add Experience
-            </button>
           </div>
-         </div>
-         
-         <div className="bg-white p-8">
-         <p className=" md:py-10">Educations</p>
-          {additionalEducations.map((education, index) => (
-            <div key={index} className="form-control w-full mt-6">
-              <h2 className="text-sm md:text-lg text-blue-600 opacity-70 font-bold mb-4">
-                Education {index + 1}
-              </h2>
-              <div className="md:flex md:space-x-4">
-                <div className="md:w-1/2">
-                  <input
-                    type="text"
-                    {...register(`education.${index}.university`, {
-                      required: "University name is required",
-                    })}
-                    placeholder="University / Collage Name"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
+
+          <div className="bg-white p-8">
+            <p className=" md:py-10">Educations</p>
+            {additionalEducations.map((education, index) => (
+              <div key={index} className="form-control w-full mt-6">
+                <h2 className="text-sm md:text-lg text-blue-600 opacity-70 font-bold mb-4">
+                  Education {index + 1}
+                </h2>
+                <div className="md:flex md:space-x-4">
+                  <div className="md:w-1/2">
+                    <input
+                      type="text"
+                      {...register(`education.${index}.university`, {
+                        required: "University name is required",
+                      })}
+                      placeholder="University / Collage Name"
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
+                  <div className="md:w-1/2">
+                    <input
+                      type="text"
+                      {...register(`education.${index}.degree`)}
+                      placeholder="Degree"
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
+                  <div className="md:w-1/2">
+                    <input
+                      type="text"
+                      {...register(`education.${index}.subject`, {
+                        required: "Subject studied is required",
+                      })}
+                      placeholder="Studied Subject"
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
                 </div>
-                <div className="md:w-1/2">
-                  <input
-                    type="text"
-                    {...register(`education.${index}.degree`)}
-                    placeholder="Degree"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
+                <div className="flex space-x-4 mt-4">
+                  <div className="w-1/2">
+                    <DatePicker
+                      selected={education.fromDate}
+                      onChange={(date: Date | null) => {
+                        if (date) {
+                          setAdditionalEducations((prevState) => {
+                            const updatedEducations = [...prevState];
+                            updatedEducations[index].fromDate = date;
+                            return updatedEducations;
+                          });
+                          setValue(`education.${index}.fromDate`, date);
+                        }
+                      }}
+                      placeholderText="From Date"
+                      dateFormat="dd-MM-yyyy" // Add date format if needed
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <DatePicker
+                      selected={education.toDate}
+                      onChange={(date: Date | null) => {
+                        if (date) {
+                          setAdditionalEducations((prevState) => {
+                            const updatedEducations = [...prevState];
+                            updatedEducations[index].toDate = date;
+                            return updatedEducations;
+                          });
+                          setValue(`education.${index}.toDate`, date);
+                        }
+                      }}
+                      placeholderText="To Date"
+                      dateFormat="dd-MM-yyyy" // Add date format if needed
+                      className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
+                    />
+                  </div>
                 </div>
-                <div className="md:w-1/2">
-                  <input
-                    type="text"
-                    {...register(`education.${index}.subject`, {
-                      required: "Subject studied is required",
-                    })}
-                    placeholder="Studied Subject"
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
-                </div>
+                <button
+                  type="button"
+                  onClick={() => removeEducation(index)}
+                  className="text-red-500 mt-2 text-xs md:text-base text-right"
+                >
+                  Remove
+                </button>
               </div>
-              <div className="flex space-x-4 mt-4">
-                <div className="w-1/2">
-                  <DatePicker
-                    selected={education.fromDate}
-                    onChange={(date: Date | null) => {
-                      if (date) {
-                        setAdditionalEducations((prevState) => {
-                          const updatedEducations = [...prevState];
-                          updatedEducations[index].fromDate = date;
-                          return updatedEducations;
-                        });
-                        setValue(`education.${index}.fromDate`, date);
-                      }
-                    }}
-                    placeholderText="From Date"
-                    dateFormat="dd-MM-yyyy" // Add date format if needed
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
-                </div>
-                <div className="w-1/2">
-                  <DatePicker
-                    selected={education.toDate}
-                    onChange={(date: Date | null) => {
-                      if (date) {
-                        setAdditionalEducations((prevState) => {
-                          const updatedEducations = [...prevState];
-                          updatedEducations[index].toDate = date;
-                          return updatedEducations;
-                        });
-                        setValue(`education.${index}.toDate`, date);
-                      }
-                    }}
-                    placeholderText="To Date"
-                    dateFormat="dd-MM-yyyy" // Add date format if needed
-                    className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-50"
-                  />
-                </div>
-              </div>
+            ))}
+
+            <div className="">
               <button
                 type="button"
-                onClick={() => removeEducation(index)}
-                className="text-red-500 mt-2 text-xs md:text-base text-right"
+                onClick={addEducation}
+                className="text-blue-500 text-xs md:text-lg font-semibold"
               >
-                Remove
+                Add Education
               </button>
             </div>
-          ))}
-
-          <div className="">
-            <button
-              type="button"
-              onClick={addEducation}
-              className="text-blue-500 text-xs md:text-lg font-semibold"
-            >
-              Add Education
-            </button>
           </div>
-         </div>
 
           <button type="submit" className="btn btn-accent mb-10 w-full ">
             {loading ? (
