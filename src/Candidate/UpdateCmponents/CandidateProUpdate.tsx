@@ -57,9 +57,11 @@ const CandidateProUpdate: React.FC = () => {
   // const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState<UserData | null>(null);
 
-  // these two line for dropdown sectors 
-  const [sectors, setSectors] = useState<{ _id: string, sectorType: string }[]>([]);
-  const [selectedSector, setSelectedSector] = useState<string>('');
+  // these two line for dropdown sectors
+  const [sectors, setSectors] = useState<{ _id: string; sectorType: string }[]>(
+    []
+  );
+  const [selectedSector, setSelectedSector] = useState<string>("");
 
   const axiosPublic = useAxiosPublic();
 
@@ -176,7 +178,6 @@ const CandidateProUpdate: React.FC = () => {
         const imageUrl = imageUploadResponse.data.data.url;
         //console.log("ImageBB Response:", imageUploadResponse.data);
 
-
         // Prepare candidate data with the image URL
         const candidateData = {
           ...data,
@@ -212,22 +213,18 @@ const CandidateProUpdate: React.FC = () => {
     }
   };
 
-
-
-
   useEffect(() => {
     const fetchSectors = async () => {
       try {
-        const response = await axiosPublic.get('/get-sectors');
+        const response = await axiosPublic.get("/get-sectors");
         setSectors(response.data);
       } catch (error) {
-        console.error('Error fetching sectors:', error);
+        console.error("Error fetching sectors:", error);
       }
     };
 
     fetchSectors();
   }, []);
-
 
   // useEffect(() => {
   //   if (user?.email) {
@@ -243,21 +240,21 @@ const CandidateProUpdate: React.FC = () => {
   return (
     <div className="min-h-screen">
       <div className="flex justify-between items-center px-5 pt-5">
-        <div className="text-xl md:text-3xl font-semibold">Update Your Profile</div>
-        <div><button className="btn" onClick={backToProfile}>Back</button></div>
+        <div className="text-xl md:text-3xl font-semibold">
+          Update Your Profile
+        </div>
+        <div>
+          <button className="btn" onClick={backToProfile}>
+            Back
+          </button>
+        </div>
       </div>
 
-      <div className=" bg-white p-2 ">
-        <form className="space-y-5 p-10" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex space-x-10 pb-10 ">
+      <div className="p-2 ">
+        <form className="space-y-5 py-5" onSubmit={handleSubmit(onSubmit)}>
+          <div className="bg-white p-8 flex space-x-10 pb-10 ">
             <div className="form-control w-full">
-              <label
-                className="font-bold text-gray-400 text-xs md:text-xl"
-                htmlFor="photo"
-              >
-                Profile Picture
-              </label>
-
+              <p>Profile Picture</p>
               <input
                 type="file"
                 name="photo"
@@ -273,8 +270,9 @@ const CandidateProUpdate: React.FC = () => {
             </div>
           </div>
 
-          <div className="pb-10 space-y-6">
+          <div className="bg-white p-8 pb-10 space-y-6">
             {/* Second div group */}
+            <p>General Information</p>
             <div className="md:flex md:space-x-10">
               <div className="form-control w-full">
                 <input
@@ -292,8 +290,10 @@ const CandidateProUpdate: React.FC = () => {
                   className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
                 >
                   <option value="">Select Sector</option>
-                  {sectors.map(sector => (
-                    <option key={sector._id} value={sector.sectorType}>{sector.sectorType}</option>
+                  {sectors.map((sector) => (
+                    <option key={sector._id} value={sector.sectorType}>
+                      {sector.sectorType}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -379,16 +379,19 @@ const CandidateProUpdate: React.FC = () => {
             </div>
           </div>
 
-          <div className="pb-10 space-y-6">
+          <div className=" bg-white p-8 pb-10 space-y-6">
+            <p>Bio</p>
             <div className="form-control w-full">
               <textarea
                 rows={3}
                 {...register("bio", { required: "bio is required" })}
-                placeholder="Your Bio"
+                placeholder="Write within 50 words"
                 className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
               ></textarea>
             </div>
-
+          </div>
+          <div className=" bg-white p-8 pb-10 space-y-6">
+            <p>Enter your Skills</p>
             <div className="form-control w-full">
               <div className="flex flex-wrap">
                 {Array.isArray(selectedSkills) &&
@@ -435,7 +438,9 @@ const CandidateProUpdate: React.FC = () => {
             {errors.skills && <p>{errors.skills.message}</p>}
           </div>
 
-          <div className="md:flex md:space-x-10 pb-10">
+          <div className='bg-white p-8  pb-10'>
+            <p>Salary Expectation</p>
+          <div className="md:flex md:space-x-10">
             <div className="form-control w-full">
               <input
                 type="number"
@@ -453,11 +458,15 @@ const CandidateProUpdate: React.FC = () => {
               />
             </div>
           </div>
+          </div>
 
-          <p className=" md:text-2xl font-bold mb-4 md:pb-10">Experience</p>
+         <div className="bg-white p-8">
+         <p className="md:pb-10">Experiences</p>
           {additionalExperiences.map((experience, index) => (
             <div key={index} className="form-control w-full mt-6 space-y-1">
-              <h2 className="text-sm md:text-lg opacity-70 font-bold mb-4">Experience {index + 1}</h2>
+              <h2 className="text-sm md:text-lg text-blue-600 opacity-70 font-bold mb-4">
+                Experience {index + 1}
+              </h2>
               <div className="flex space-x-4 pb-10">
                 <div className="w-1/2">
                   <input
@@ -523,24 +532,29 @@ const CandidateProUpdate: React.FC = () => {
                 onClick={() => removeExperience(index)}
                 className="text-red-500 mt-2 text-xs md:text-base text-right"
               >
-                Remove Experience
+                Remove
               </button>
             </div>
           ))}
 
-          <div className="mt-4">
+          <div className="">
             <button
               type="button"
               onClick={addExperience}
-              className="text-blue-500 text-xs md:text-xl font-semibold"
+              className="text-blue-500 text-xs md:text-lg font-semibold"
             >
               Add Experience
             </button>
           </div>
-          <p className=" md:text-2xl font-bold mb-4 md:py-10">Education</p>
+         </div>
+         
+         <div className="bg-white p-8">
+         <p className=" md:py-10">Educations</p>
           {additionalEducations.map((education, index) => (
             <div key={index} className="form-control w-full mt-6">
-              <h2 className="text-sm md:text-lg opacity-70 font-bold mb-4">Education {index + 1}</h2>
+              <h2 className="text-sm md:text-lg text-blue-600 opacity-70 font-bold mb-4">
+                Education {index + 1}
+              </h2>
               <div className="md:flex md:space-x-4">
                 <div className="md:w-1/2">
                   <input
@@ -614,20 +628,21 @@ const CandidateProUpdate: React.FC = () => {
                 onClick={() => removeEducation(index)}
                 className="text-red-500 mt-2 text-xs md:text-base text-right"
               >
-                Remove Education
+                Remove
               </button>
             </div>
           ))}
 
-          <div className="mt-4">
+          <div className="">
             <button
               type="button"
               onClick={addEducation}
-              className="text-blue-500 text-xs md:text-xl font-semibold"
+              className="text-blue-500 text-xs md:text-lg font-semibold"
             >
               Add Education
             </button>
           </div>
+         </div>
 
           <button type="submit" className="btn btn-accent mb-10 w-full ">
             {loading ? (
