@@ -234,7 +234,6 @@ const CandidateProUpdate: React.FC = () => {
     }
   }, [user]);
 
-
   useEffect(() => {
     // Check if currentUser has data
     if (currentUser) {
@@ -250,28 +249,39 @@ const CandidateProUpdate: React.FC = () => {
       setValue("work", currentUser.work);
       setValue("salaryRangeMin", currentUser.salaryRangeMin);
       setValue("salaryRangeMax", currentUser.salaryRangeMax);
-      setValue("experience", currentUser.experience)
-  
+      setValue("experience", currentUser.experience);
+
       // Set default values for skills (assuming currentUser.skills is an array of strings)
       if (Array.isArray(currentUser.skills)) {
-        currentUser.skills.forEach((skill:any, index:number) => {
+        currentUser.skills.forEach((skill: any, index: number) => {
           setValue(`skills.${index}`, skill);
         });
       }
-  
+
       // Set default values for additional experiences
       if (Array.isArray(currentUser.experienceDetails)) {
-        currentUser.experienceDetails.forEach((experience:any, index:number) => {
-          setValue(`experienceDetails.${index}.company`, experience.company);
-          setValue(`experienceDetails.${index}.position`, experience.position);
-          setValue(`experienceDetails.${index}.fromDate`, new Date(experience.fromDate));
-          setValue(`experienceDetails.${index}.toDate`, new Date(experience.toDate));
-        });
+        currentUser.experienceDetails.forEach(
+          (experience: any, index: number) => {
+            setValue(`experienceDetails.${index}.company`, experience.company);
+            setValue(
+              `experienceDetails.${index}.position`,
+              experience.position
+            );
+            setValue(
+              `experienceDetails.${index}.fromDate`,
+              new Date(experience.fromDate)
+            );
+            setValue(
+              `experienceDetails.${index}.toDate`,
+              new Date(experience.toDate)
+            );
+          }
+        );
       }
-  
+
       // Set default values for education
       if (Array.isArray(currentUser.education)) {
-        currentUser.education.forEach((education:any, index:number) => {
+        currentUser.education.forEach((education: any, index: number) => {
           setValue(`education.${index}.university`, education.university);
           setValue(`education.${index}.degree`, education.degree);
           setValue(`education.${index}.subject`, education.subject);
@@ -281,7 +291,6 @@ const CandidateProUpdate: React.FC = () => {
       }
     }
   }, [currentUser, setValue]);
-  
 
   return (
     <div className="min-h-screen">
@@ -298,23 +307,50 @@ const CandidateProUpdate: React.FC = () => {
 
       <div className="p-2 ">
         <form className="space-y-5 py-5" onSubmit={handleSubmit(onSubmit)}>
-          <div className="bg-white p-8 flex space-x-10 pb-10 ">
-            <div className="form-control w-full">
-              <p>Profile Picture</p>
-              <input
-                type="file"
-                name="photo"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) {
-                    setValue("photo", file);
-                  }
-                }}
-                className="py-4 outline-none font-bold bg-transparent border-b-2
+          {currentUser?.photo ? (
+            <div className="bg-white p-8 flex space-x-10 pb-10 ">
+              <div className="form-control w-full">
+                <p className="py-2">Profile Picture</p>
+                <div className="flex gap-5">
+                  <img
+                    src={currentUser?.photo}
+                    alt="User Current picture"
+                    className="w-20 h-20 rounded-full"
+                  />
+                  <input
+                    type="file"
+                    name="photo"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setValue("photo", file);
+                      }
+                    }}
+                    className="py-4 outline-none font-bold bg-transparent border-b-2
                  w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-              />
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="bg-white p-8 flex space-x-10 pb-10 ">
+              <div className="form-control w-full">
+                <p>Profile Picture</p>
+                <input
+                  type="file"
+                  name="photo"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      setValue("photo", file);
+                    }
+                  }}
+                  className="py-4 outline-none font-bold bg-transparent border-b-2
+               w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
+                />
+              </div>
+            </div>
+          )}
 
           <div className="bg-white p-8 pb-10 space-y-6">
             {/* Second div group */}
