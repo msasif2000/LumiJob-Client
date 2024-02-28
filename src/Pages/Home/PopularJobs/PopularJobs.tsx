@@ -26,7 +26,7 @@ const PopularJobs = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  const slicedSectors = sectors.slice(0, 10);
+  const slicedSectors = sectors.slice(0, 8);
 
   // sort popular jobs by date here only show jobs that are away by 5 days from current date
 
