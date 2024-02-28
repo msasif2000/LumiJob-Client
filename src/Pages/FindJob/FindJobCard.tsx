@@ -65,14 +65,14 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
             </div>
             <Link className="md:flex justify-end hidden" to={`/details/${_id}`}>
               <button className="mt-4 py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
-                Apply
+                Details
               </button>
             </Link>
             <div className="flex items-center justify-center mt-4 gap-2 md:hidden">
               <BookmarkButton job={job} />
               <Link className="flex justify-end" to={`/details/${_id}`}>
                 <button className=" py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
-                  Apply
+                 Details
                 </button>
               </Link>
             </div>
