@@ -30,7 +30,7 @@ const TopCompany = () => {
         <p className="text-sm md:text-lg xl:text-2xl text-[#999999] text-center mx-4">
           Elevate Your Career with the Most Coveted Companies
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-16">
           {filterJob?.map((company, _id) => (
             <TopCompanyCard key={_id} company={company}></TopCompanyCard> /* Changed key={job._id} to key={idx} */
           ))}

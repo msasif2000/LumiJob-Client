@@ -30,8 +30,8 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
     >
       {/*================ >> Content Box <<=============== */}
 
-      <div className=" px-3 pt-3 ">
-        <div className="bg-[#dbe4ff] min-h-48 rounded-md p-4">
+      <div className=" px-3 pt-3 h-full">
+        <div className="bg-[#dbe4ff] min-h-48 rounded-md p-4 h-full">
           <div className="flex justify-between items-center">
             <div className="flex gap-3 items-center">
               <span className="bg-[#F9CB5B] py-1 px-4 rounded flex items-center text-sm text-gray-600">
