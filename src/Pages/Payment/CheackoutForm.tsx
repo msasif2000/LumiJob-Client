@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import bgimg from "../../assets/svg/bg-glow.svg";
 import useAuth from "../../hooks/useAuth";
@@ -29,12 +29,14 @@ const CheackoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosPublic = useAxiosPublic();
+  const { planId } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { user, role } = useAuth();
   const [subs, setSubs] = useState<any | null>(null);
 
-  const price = subs?.selectedPlan?.price;
+
+  const price = subs?.price;
 
   useEffect(() => {
     price > 0 &&
@@ -47,19 +49,18 @@ const CheackoutForm = () => {
   }, [axiosPublic, price]);
 
   useEffect(() => {
-    if (user?.email) {
       axiosPublic
-        .get(`/get-subs-details/${user.email}`)
+        .get(`/subscriptions/${planId}`) 
         .then((res) => {
           setSubs(res.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }
-  }, [user]);
+  }, [user, planId]);
 
-  //console.log(subs);
+  console.log(subs);
+
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -113,10 +114,10 @@ const CheackoutForm = () => {
 
         const payment: Payment = {
           name: user?.displayName,
-          packages: subs?.selectedPlan?.name,
+          packages: subs?.name,
           email: user?.email,
-          price: subs?.selectedPlan?.price,
-          Features: subs?.selectedPlan?.features,
+          price: subs?.price,
+          Features: subs?.features,
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js
           userStatus: "premium",
@@ -125,9 +126,9 @@ const CheackoutForm = () => {
 
         // Depending on the user's role, set the appropriate permission
         if (role === "company") {
-          payment.canPost = subs?.selectedPlan?.canPost;
+          payment.canPost = subs?.canPost;
         } else {
-          payment.canApply = subs?.selectedPlan?.canApply;
+          payment.canApply = subs?.canApply;
         }
 
         // console.log(payment)
@@ -161,7 +162,7 @@ const CheackoutForm = () => {
         toast.warn("Something went wrong");
       }
     });
-  };
+  }; 
   return (
     <div className=" bg-white rounded-sm border flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 rounded-md">
@@ -189,16 +190,16 @@ const CheackoutForm = () => {
                 </figure>
                 <div>
                   <h3 className="text-gray-500 text-xl">
-                    {subs?.selectedPlan?.name}
+                    {subs?.name}
                   </h3>
                   <h3 className="font-bold">
-                    Price: ${subs?.selectedPlan?.price}
+                    Price: ${subs?.price}
                   </h3>
                 </div>
               </div>
             </div>
             <ul role="list" className="my-8  space-y-4 text-left">
-              {subs?.selectedPlan?.features?.map(
+              {subs?.features?.map(
                 (feature: any, index: number) => (
                   <li key={index} className="flex items-center space-x-3">
                     {/* Icon */}

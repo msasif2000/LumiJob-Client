@@ -122,7 +122,7 @@ export const router = createBrowserRouter([
   },
 
   {
-    path: "payment",
+    path: "payment/:planId",
     element: <Payment />,
   },
 
