@@ -6,6 +6,11 @@ import { GoVerified } from "react-icons/go";
 import { BiEdit } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import { ToastContainer, toast } from "react-toastify";
+import { useDropzone } from "react-dropzone";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+import { storage } from "../config/Firebase.config";
 
 interface UserProfile {
   _id: string;
@@ -52,6 +57,17 @@ const CandidateProfile = () => {
   const [activeTab, setActiveTab] = useState("experience");
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const axiosPublic = useAxiosPublic();
+  const [resume, setResume] = useState<any | null>(null);
+  const [showResumeModal, setShowResumeModal] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const onDrop = (acceptedFiles: File[]) => {
+    setSelectedFile(acceptedFiles[0]);
+  };
+
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    onDrop,
+  });
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -63,6 +79,7 @@ const CandidateProfile = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setProfile(res.data);
+          setResume(res.data.resume);
           // console.log(res.data);
         })
         .catch((err) => console.log(err));
@@ -172,16 +189,135 @@ const CandidateProfile = () => {
     }
   };
 
+  const handleUpload = () => {
+    if (selectedFile) {
+      if (selectedFile.size > 500 * 1024) {
+        toast.warn("Please upload a file smaller than 500 KB.", {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 4000,
+          closeOnClick: true,
+        });
+        return;
+      }
+
+      const storageRef = ref(storage, `resume/${selectedFile.name}`);
+
+      // Upload file to Firebase Storage
+      uploadBytes(storageRef, selectedFile)
+        .then((snapshot) => {
+          // Get download URL
+          getDownloadURL(snapshot.ref)
+            .then((downloadURL) => {
+              // axios post to database
+              const data = {
+                resume: downloadURL,
+                user: user?.email,
+              };
+              axiosPublic
+                .post("/set-resume", data)
+                .then((res) => {
+                  console.log(res.data);
+                  if (res.data.message === "true") {
+                    toast.success("Resume update successfull", {
+                      position: "top-center",
+                      hideProgressBar: true,
+                      autoClose: 2000,
+                      closeOnClick: true,
+                    });
+                    setShowResumeModal(false)
+                  } else {
+                    toast.error("Failed to upload resume", {
+                      position: "top-center",
+                      hideProgressBar: true,
+                      autoClose: 2000,
+                      closeOnClick: true,
+                    });
+                    setShowResumeModal(false)
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error posting resume to database: ", error);
+                  toast.error("Failed to upload resume", {
+                    position: "top-center",
+                    hideProgressBar: true,
+                    autoClose: 2000,
+                    closeOnClick: true,
+                  });
+                  setShowResumeModal(false)
+                });
+            })
+            .catch((error) => {
+              console.error("Error getting download URL: ", error);
+              toast.error("Failed to get download URL", {
+                position: "top-center",
+                hideProgressBar: true,
+                autoClose: 2000,
+                closeOnClick: true,
+              });
+              setShowResumeModal(false)
+            });
+        })
+        .catch((error) => {
+          console.error("Error uploading resume: ", error);
+          toast.error("Failed to upload resume", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+          setShowResumeModal(false)
+        });
+    } else {
+      toast.error("Please select a file to upload", {
+        position: "top-center",
+        hideProgressBar: true,
+        autoClose: 2000,
+        closeOnClick: true,
+      });
+    }
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <div className="flex justify-between items-center px-5 pt-3">
         <div className="text-xl md:text-3xl font-semibold">Profile</div>
-        <Link to="update">
-          <button className="btn">
-            <BiEdit></BiEdit>
-            Edit profile
-          </button>
-        </Link>
+        <div className="space-x-2">
+          {premium === "premium" ? (
+            <>
+              {resume ? (
+                <button
+                  onClick={() => {
+                    setShowResumeModal(true);
+                  }}
+                  className="btn"
+                >
+                  <BiEdit></BiEdit>
+                  Update resume
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setShowResumeModal(true);
+                  }}
+                  className="btn"
+                >
+                  <BiEdit></BiEdit>
+                  Upload resume
+                </button>
+              )}
+            </>
+          ) : (
+            ""
+          )}
+
+          <Link to="update">
+            <button className="btn">
+              <BiEdit></BiEdit>
+              Edit profile
+            </button>
+          </Link>
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10 py-5">
@@ -339,6 +475,63 @@ const CandidateProfile = () => {
         </div>
         {/*  */}
       </div>
+      {showResumeModal && (
+        <div className="fixed z-10 inset-0 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div className="fixed inset-0 transition-opacity">
+              <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
+            &#8203;
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+              <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div className="sm:flex sm:items-start">
+                  <div
+                    {...getRootProps()}
+                    className="dropzone bg-blue-100 hover:bg-blue-300 duration-1000 p-10 w-full rounded-2xl cursor-pointer"
+                  >
+                    <input {...getInputProps()} />
+
+                    {acceptedFiles.length > 0 ? (
+                      <div>
+                        <h4>Selected File:</h4>
+                        <ul>
+                          {acceptedFiles.map((file, idx) => (
+                            <li key={idx}>
+                              {file.name} - {file.size / 1000} KB
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <p className="font-black text-center">
+                        Drag 'n' drop your resume file here, or click to select
+                        a file
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex  justify-center">
+                <button onClick={handleUpload} className="btn">
+                  Update
+                </button>
+
+                <button
+                  type="button"
+                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-gray-700 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                  onClick={() => {
+                    setShowResumeModal(false);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <ToastContainer />
     </div>
   );
 };
