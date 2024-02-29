@@ -60,6 +60,10 @@ const JobsDetails: React.FC = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     axiosPublic
       .get(`/single-job/${id}`)
       .then((res) => {
