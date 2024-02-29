@@ -8,6 +8,7 @@ import Candidate from "./CandidateType";
 import CPagination from "./CPagination";
 import CSearch from "./CSearch";
 import { Helmet } from "react-helmet-async";
+import GoToTop from "../../component/GoToTop/GoToTop";
 
 const FindCandidate: React.FC = () => {
   const [currentCandidates, setCurrentCandidates] = useState<Candidate[]>([]);
@@ -45,6 +46,7 @@ const FindCandidate: React.FC = () => {
       <Helmet>
         <title>Find Candidate | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="">
         <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           {/*=======> Search <============= */}

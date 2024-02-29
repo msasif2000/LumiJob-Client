@@ -4,6 +4,8 @@ import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { GoVerified } from "react-icons/go";
 import { BiEdit } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
+import GoToTop from "../component/GoToTop/GoToTop";
 
 interface UserProfile {
   _id: string;
@@ -122,7 +124,11 @@ const CandidateProfile = () => {
         );
       case "education":
         return (
-          <div>
+          <>
+            <Helmet>
+              <title>Candidate Profile | Dashboard</title>
+            </Helmet>
+            <GoToTop />
             {profile?.education?.map((uni: any, index: number) => {
               // Convert startDate and endDate to Date objects
               const startDate = new Date(uni.fromDate);
@@ -161,7 +167,7 @@ const CandidateProfile = () => {
                 </div>
               );
             })}
-          </div>
+          </>
         );
     }
   };

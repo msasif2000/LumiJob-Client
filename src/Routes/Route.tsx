@@ -84,11 +84,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/insights/:_id",
-        element: (
-          <PrivateRoute>
-            <ArticleDetails />
-          </PrivateRoute>
-        ),
+        element: <ArticleDetails />,
       },
       {
         path: "/contact",
@@ -96,11 +92,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: (
-          <PrivateRoute>
-            <JobsDetails></JobsDetails>
-          </PrivateRoute>
-        ),
+        element: <JobsDetails></JobsDetails>,
       },
       {
         path: "/manage-applicants/:id",

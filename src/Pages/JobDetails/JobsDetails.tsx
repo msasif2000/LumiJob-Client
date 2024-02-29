@@ -12,6 +12,7 @@ import { PiShieldWarning } from "react-icons/pi";
 import { BiShareAlt } from "react-icons/bi";
 import Share from "./Share";
 import { IoPeopleOutline } from "react-icons/io5";
+import GoToTop from "../../component/GoToTop/GoToTop";
 import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
@@ -262,6 +263,7 @@ const JobsDetails: React.FC = () => {
       <Helmet>
         <title> {`${title}`} | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="max-w-screen-2xl mx-auto py-8 px-4">
         <div>
           {/* Display jobs */}
