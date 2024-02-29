@@ -22,6 +22,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
 import UniLoader from "../component/err & loading/UniLoader";
 import CompanyAnalytics from "./CompanyAnalytics";
+import { Helmet } from "react-helmet-async";
+import GoToTop from "../component/GoToTop/GoToTop";
 
 // interface CustomizedLabelProps {
 //   cx: number;
@@ -121,10 +123,16 @@ const CompanyProfile = () => {
   //   );
   // };
 
-  { profile ? "" : <UniLoader /> }
+  {
+    profile ? "" : <UniLoader />;
+  }
 
   return (
     <>
+      <Helmet>
+        <title>Company Profile | Dashboard</title>
+      </Helmet>
+      <GoToTop />
       <div className="">
         <div className="md:h-60 mt-10 px-7 bg-gradient-to-r from-[#228bedde] to-[#6565C7]">
           <div className="flex justify-between items-center my-2 pt-2">

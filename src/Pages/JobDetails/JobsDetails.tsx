@@ -12,6 +12,7 @@ import { PiShieldWarning } from "react-icons/pi";
 import { BiShareAlt } from "react-icons/bi";
 import Share from "./Share";
 import { IoPeopleOutline } from "react-icons/io5";
+import GoToTop from "../../component/GoToTop/GoToTop";
 import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
@@ -213,17 +214,92 @@ const JobsDetails: React.FC = () => {
       // Upload file to Firebase Storage
       uploadBytes(storageRef, selectedFile)
         .then((snapshot) => {
-          toast.success("Resume uploaded successfully", {
-            position: "top-center",
-            hideProgressBar: true,
-            autoClose: 2000,
-            closeOnClick: true,
-          });
-
           // Get download URL
           getDownloadURL(snapshot.ref)
             .then((downloadURL) => {
               setResumeURL(downloadURL);
+              // axios post to database
+
+              const data = {
+                resume: downloadURL,
+                user: user?.email,
+              };
+              axiosPublic
+                .post("/set-resume", data)
+                .then((res) => {
+                  console.log(res.data);
+                  if (res.data.message === "true") {
+                    const { _id, ...jobWithoutId } = job as JobDetails;
+
+                    const jobDetails = {
+                      ...jobWithoutId,
+                      candidate: user?.email,
+                      appliedTime: new Date(),
+                      jobId: job?._id,
+                      status: "unopened",
+                    };
+
+                    //console.log(jobDetails);
+
+                    axiosPublic
+                      .post(`/apply-to-jobs`, jobDetails)
+                      .then((res) => {
+                        //console.log(res.data);
+                        if (res.data.insertedId) {
+                          toast.success("Applied Successfully", {
+                            position: "top-center",
+                            hideProgressBar: true,
+                            autoClose: 2000,
+                            closeOnClick: true,
+                          });
+                        } else if (
+                          res.data.message === "Please fill profile information"
+                        ) {
+                          setShowProfileModal(true);
+                        } else if (
+                          res.data.message ===
+                          "You have already applied for this job"
+                        ) {
+                          toast.success("You have Already Applied", {
+                            position: "top-center",
+                            hideProgressBar: true,
+                            autoClose: 2000,
+                            closeOnClick: true,
+                          });
+                        } else if (
+                          res.data.message === "Please update subscription"
+                        ) {
+                        } else if (res.data.message === "Already applied") {
+                          toast.success("You have Already Applied", {
+                            position: "top-center",
+                            hideProgressBar: true,
+                            autoClose: 2000,
+                            closeOnClick: true,
+                          });
+                        } else if (
+                          res.data.message === "Please update subscription"
+                        ) {
+                          toast.success("You've reached your apply limit", {
+                            position: "top-center",
+                            hideProgressBar: true,
+                            autoClose: 2000,
+                            closeOnClick: true,
+                          });
+                        }
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                        toast.warn("Something went wrong", {
+                          position: "top-center",
+                          hideProgressBar: true,
+                          autoClose: 2000,
+                          closeOnClick: true,
+                        });
+                      });
+                  }
+                })
+                .catch((error) => console.log(error));
+
               setShowResumeModal(false);
             })
             .catch((error) => {
@@ -262,6 +338,7 @@ const JobsDetails: React.FC = () => {
       <Helmet>
         <title> {`${title}`} | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="max-w-screen-2xl mx-auto py-8 px-4">
         <div>
           {/* Display jobs */}
@@ -558,7 +635,7 @@ const JobsDetails: React.FC = () => {
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex  justify-center">
                   <button onClick={handleUpload} className="btn">
-                    Upload Resume
+                    Apply Now
                   </button>
 
                   <button

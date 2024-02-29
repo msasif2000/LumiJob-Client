@@ -3,6 +3,8 @@ import useAuth from "../hooks/useAuth";
 import AppliedCard from "./AppliedCard";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
+import GoToTop from "../component/GoToTop/GoToTop";
+import { Helmet } from "react-helmet-async";
 
 const AppliedJobs = () => {
   const { user } = useAuth();
@@ -20,21 +22,20 @@ const AppliedJobs = () => {
 
   // console.log(jobs)
 
-  const length = jobs?.length
- 
+  const length = jobs?.length;
 
-  const handleDelete = (id: string, jobId : string) => {
+  const handleDelete = (id: string, jobId: string) => {
     const data = {
       jobId,
       userEmail,
-      id
+      id,
     };
     // console.log(data)
 
     axiosPublic
       .post("/delete-jobs-from-candidate", data)
       .then((res) => {
-       // console.log(res.data);
+        // console.log(res.data);
         if (res.data.message === "true") {
           toast.success("Cancel successfull", {
             autoClose: 2000,
@@ -55,6 +56,10 @@ const AppliedJobs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Applied jobs | Dashboard</title>
+      </Helmet>
+      <GoToTop />
       <div>
         <h3 className="md:text-3xl font-bold mb-12 mt-3">
           Applied jobs <span className="text-accent">{length}</span>

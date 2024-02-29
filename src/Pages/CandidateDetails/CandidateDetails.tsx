@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import GoToTop from "../../component/GoToTop/GoToTop";
 
 interface Education {
   degree: string;
@@ -68,6 +69,7 @@ const CandidateDetails = () => {
       <Helmet>
         <title> {`${candidate?.name}`} | Candidate Details</title>
       </Helmet>
+      <GoToTop />
 
       <div className="max-w-screen-2xl mx-auto">
         <div className="mx-auto my-8 px-4 md:px-6 lg:px-10 2xl:px-12">
