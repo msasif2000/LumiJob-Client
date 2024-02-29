@@ -208,6 +208,7 @@ const DashBoard = () => {
                     />
                   </svg>
                 </label>
+                
                 <ul
                   tabIndex={0}
                   className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-600 rounded-box  w-52 "
@@ -236,7 +237,7 @@ const DashBoard = () => {
             </div>
 
             {/* === Large Screen Menu */}
-            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen  lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
               <div>
                 <h3 className="text-3xl font-bold text-center">
                   Lumi<span className="text-[#4869DD]">Jobs</span>

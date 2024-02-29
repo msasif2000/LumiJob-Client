@@ -94,9 +94,9 @@ const CandidateProfile = () => {
                 .padStart(2, "0")}/${endDate.getFullYear()}`;
 
               return (
-                <div key={index} className="mb-4">
+                <div key={index} className="mb-4 pl-2">
                   <div>
-                    <p className="text-xs md:text-xl font-bold">
+                    <p className="text-sm md:text-xl font-bold">
                       {job?.position}
                     </p>
                     <p className="text-xs md:text-lg font-bold text-gray-400">
@@ -148,9 +148,9 @@ const CandidateProfile = () => {
                 .toString()
                 .padStart(2, "0")}/${endDate.getFullYear()}`;
               return (
-                <div key={index} className="mb-4">
+                <div key={index} className="mb-4 pl-2">
                   <div>
-                    <p className="text-xs md:text-xl font-bold">
+                    <p className="text-sm md:text-xl font-bold">
                       {uni.university}
                     </p>
                     <p className="text-xs md:text-lg font-bold text-gray-400">
@@ -184,7 +184,7 @@ const CandidateProfile = () => {
         </Link>
       </div>
 
-      <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10 py-5">
+      <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 xl:space-x-10 lg:space-x-4 py-5">
         {/* profile card div */}
         <div className="bg-white h-fit lg:w-1/3 rounded-2xl space-y-5 p-5 relative">
           <div className="bg-accent h-48 rounded-2xl relative">
@@ -221,7 +221,7 @@ const CandidateProfile = () => {
           </div>
           {/* Bio */}
           <div>
-            <h1 className="font-medium text-xs md:text-lg">{profile?.bio}</h1>
+            <h1 className="font-medium text-sm md:text-lg">{profile?.bio}</h1>
           </div>
           {/* skills */}
           <div className="space-y-5">
@@ -248,23 +248,23 @@ const CandidateProfile = () => {
             <p className="text-base md:text-2xl font-bold">
               Personal Information
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 ">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Name</p>
-                <p className=" text-xs md:text-xl font-semibold">
+                <p className=" text-sm md:text-xl font-semibold">
                   {profile?.name}
                 </p>
               </div>
 
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Contact</p>
-                <p className=" text-xs md:text-xl font-semibold">
+                <p className=" text-sm md:text-xl font-semibold">
                   {profile?.phone}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Location</p>
-                <p className=" text-xs md:text-xl font-semibold">
+                <p className=" text-sm md:text-xl font-semibold">
                   {profile ? (
                     <>
                       {" "}
@@ -277,13 +277,13 @@ const CandidateProfile = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Years of experience</p>
-                <p className=" text-xs md:text-xl font-semibold">
+                <p className=" text-sm md:text-xl font-semibold">
                   {profile ? <> {profile?.experience} years</> : ""}
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Availability</p>
-                <p className=" text-xs md:text-xl font-semibold">
+                <p className=" text-sm md:text-xl font-semibold">
                   {profile ? (
                     <>
                       {profile?.availability} - {profile?.work}
@@ -295,7 +295,7 @@ const CandidateProfile = () => {
               </div>
               <div className="space-y-2">
                 <p className="text-xs md:text-lg">Expected salary</p>
-                <p className=" text-xs md:text-xl font-semibold">
+                <p className=" text-sm md:text-xl font-semibold">
                   {profile ? (
                     <>
                       ${profile?.salaryRangeMin} - ${profile?.salaryRangeMax}
@@ -314,7 +314,7 @@ const CandidateProfile = () => {
                 role="tab"
                 className={`tab ${
                   activeTab === "experience" ? "tab-active" : ""
-                } text-xs md:text-xl font-bold`}
+                } text-sm md:text-xl font-bold`}
                 onClick={() => handleTabClick("experience")}
               >
                 Experience
@@ -323,7 +323,7 @@ const CandidateProfile = () => {
                 role="tab"
                 className={`tab ${
                   activeTab === "education" ? "tab-active" : ""
-                } text-xs md:text-xl font-bold`}
+                } text-sm md:text-xl font-bold`}
                 onClick={() => handleTabClick("education")}
               >
                 Education
