@@ -41,7 +41,9 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-  //console.log(infosJobs);
+  
+  // console.log(infosJobs);
+
   // For dnd
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
@@ -435,7 +437,7 @@ const ManageApplicants = () => {
                                   </p>
                                 </div>
 
-                                <div className="absolute top-0 right-0 xl:-right-10">
+                                <div className="absolute top-0 right-0 xl:-right-20">
                                   <label
                                     htmlFor="my_modal_6"
                                     className="cursor-pointer ... text-xl"
