@@ -19,7 +19,7 @@ const CallToAction = () => {
                         <p className="mt-2 text-slate-100">
                             "The secret of getting ahead is getting started."
                         </p>
-                        <Link to="/signup" className="flex ">
+                        <Link to="/signup" className="flex pl-4 md:pl-0">
                             <button className="bg-btnbg text-white px-8 py-2 rounded-lg mt-6">
                                 Start Now
                             </button>
