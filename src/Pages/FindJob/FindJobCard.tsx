@@ -56,7 +56,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                 <PiSuitcaseSimpleLight className="mr-1" />{" "}
-                {experience.split("years")[0]} years
+                {experience.split("year")[0]} years
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                 <PiMoney className="mr-1" /> $ {salaryRange.min} - ${" "}

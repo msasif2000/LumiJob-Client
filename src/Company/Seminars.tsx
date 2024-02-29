@@ -128,30 +128,37 @@ const Seminars = () => {
                 <div className="md:navbar-start">
                     {/* for small device */}
                     <div>
-                        <div className="flex justify-end gap-2 text-xs mb-5 lg:hidden">
-                            <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200">
-                                <a href="#seminar_modal">{length}</a>
-                            </button>
-                            <a href="#seminar_modal" className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200" onClick={openModal}>
-                                Post Seminar
-                            </a>
+                        <div className="flex gap-5 justify-end">
+                            <a className="text-xl md:text-3xl font-semibold">Seminars</a>
+                            <div className=" flex justify-end gap-2 text-xs mb-5 md:hidden">
+                                {
+                                    length ? <a className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200">
+                                        {length}
+                                    </a> : null
+                                }
+                                <a href="#seminar_modal" className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200" onClick={openModal}>
+                                    Post Seminar
+                                </a>
+                            </div>
                         </div>
-                        <a className="text-xl md:text-3xl font-semibold">Your Posted Seminars</a>
+
                     </div>
                 </div>
                 {/* for large device */}
-                <div className="navbar-end hidden lg:flex">
+                <div className="navbar-end hidden md:flex">
                     <ul className="menu menu-horizontal px-1 gap-2">
-                        <a className="btn" href="#seminar_modal" onClick={openModal}>
-                            {length}
-                        </a>
+                        {
+                            length ? <a className="btn ">
+                                {length}
+                            </a> : null
+                        }
                         <a href="#seminar_modal" onClick={openModal} className="btn">
                             Post Seminar
                         </a>
                     </ul>
                 </div>
             </div>
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                 {companyPostedSeminars?.map((seminar: Seminar) => (
                     <SeminarCard key={seminar._id} seminar={seminar} handleDelete={handleDelete} />
                 ))}
@@ -160,7 +167,7 @@ const Seminars = () => {
 
             {isModalOpen && (
                 <div className="modal" role="dialog" id="seminar_modal">
-                    <div className="modal-box bg-white px-2 py-5">
+                    <div className="modal-box bg-white px-6 py-5">
                         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
                             <div className="pb-10 space-y-6">
                                 <div className="form-control w-full">
@@ -181,25 +188,27 @@ const Seminars = () => {
                                         className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
                                     />
                                 </div>
-                                <div className="form-control w-full">
-                                    <label>
-                                        Start Time
-                                    </label>
-                                    <input
-                                        type="time"
-                                        {...register("startTime", { required: "Time is required" })}
-                                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    />
-                                </div>
-                                <div className="form-control w-full">
-                                    <label>
-                                        End Time
-                                    </label>
-                                    <input
-                                        type="time"
-                                        {...register("endTime")}
-                                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
-                                    />
+                                <div className="flex items-center justify-between gap-6">
+                                    <div className="form-control w-full">
+                                        <label>
+                                            Start Time
+                                        </label>
+                                        <input
+                                            type="time"
+                                            {...register("startTime", { required: "Time is required" })}
+                                            className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                                        />
+                                    </div>
+                                    <div className="form-control w-full">
+                                        <label>
+                                            End Time
+                                        </label>
+                                        <input
+                                            type="time"
+                                            {...register("endTime")}
+                                            className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                                        />
+                                    </div>
                                 </div>
                                 <div className="form-control w-full">
                                     <input

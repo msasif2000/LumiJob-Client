@@ -31,7 +31,9 @@ const CandidateNav: React.FC<CandidateNavProps> = ({
       {/* for large device  */}
       <div className="navbar-end hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-2">
-          <a onClick={handleClick2} className="btn">{btn2}</a>
+          {
+            btn2 && <a onClick={handleClick2} className="btn">{btn2}</a>
+          }
           <a onClick={handleClick} className="btn">{btn}</a>
         </ul>
       </div>
