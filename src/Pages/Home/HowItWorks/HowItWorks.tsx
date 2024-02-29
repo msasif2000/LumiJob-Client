@@ -1,3 +1,6 @@
+import finding from "../../../assets/image/finding.png";
+import profile from "../../../assets/image/profile.png";
+
 const HowItWorks = () => {
   return (
     <section className="max-w-screen-2xl mx-auto px-4 py-12">
@@ -27,6 +30,9 @@ const HowItWorks = () => {
         {/* =========> Step: 1 <========= */}
         <div className="lg:col-span-2 p-6 border rounded-md ">
           <div>
+            <figure>
+              <img src={finding} alt="finding" className="w-3/4 mx-auto" />
+            </figure>
             <h4 className="text-2xl font-heading font-semibold mb-4">
               Discover Opportunities
             </h4>
@@ -54,6 +60,13 @@ const HowItWorks = () => {
               customization a seamless experience.
             </p>
           </div>
+          <figure>
+            <img
+              src={profile}
+              alt="finding"
+              className="w-full lg:w-3/4 mx-auto"
+            />
+          </figure>
         </div>
 
         {/* =========> Step: 3 <========= */}
