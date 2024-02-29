@@ -12,6 +12,7 @@ import { PiShieldWarning } from "react-icons/pi";
 import { BiShareAlt } from "react-icons/bi";
 import Share from "./Share";
 import { IoPeopleOutline } from "react-icons/io5";
+import GoToTop from "../../component/GoToTop/GoToTop";
 
 interface JobDetails {
   _id: string;
@@ -73,8 +74,6 @@ const JobsDetails: React.FC = () => {
     application,
   } = job || {};
 
-
-
   const formatDateTime = (dateTimeString: any) => {
     const date = new Date(dateTimeString);
 
@@ -102,9 +101,8 @@ const JobsDetails: React.FC = () => {
   const formattedPostTime = post_time ? formatDateTime(post_time) : "";
 
   const handlePremiumApply = () => {
-
     const { _id, ...jobWithoutId } = job as JobDetails;
-    
+
     const jobDetails = {
       ...jobWithoutId,
       candidate: user?.email,
@@ -179,7 +177,7 @@ const JobsDetails: React.FC = () => {
   };
 
   // share related
-  // const modal = ;  
+  // const modal = ;
 
   const shareUrl = window.location.href;
   const modalId: string = "my_modal_3";
@@ -189,6 +187,7 @@ const JobsDetails: React.FC = () => {
       <Helmet>
         <title> {`${title}`} | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="max-w-screen-2xl mx-auto py-8 px-4">
         <div>
           {/* Display jobs */}
@@ -396,16 +395,17 @@ const JobsDetails: React.FC = () => {
 
                     {user ? (
                       <>
-                          <button
-                            className="btn"
-                            onClick={() => {
-                              const modal = document.getElementById("my_modal_3") as HTMLDialogElement | null;
-                              if (modal) {
-                                modal.showModal();
-                              }
-                            }}
-                          >
-
+                        <button
+                          className="btn"
+                          onClick={() => {
+                            const modal = document.getElementById(
+                              "my_modal_3"
+                            ) as HTMLDialogElement | null;
+                            if (modal) {
+                              modal.showModal();
+                            }
+                          }}
+                        >
                           <div>
                             <div className="flex justify-center items-center gap-2">
                               Share

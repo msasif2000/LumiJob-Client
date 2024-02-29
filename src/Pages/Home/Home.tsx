@@ -16,6 +16,7 @@ const Home = () => {
       <Helmet>
         <title>Home | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <Banner />
       <TrustedByCompany />
       <HowItWorks />
@@ -23,7 +24,6 @@ const Home = () => {
       <PopularJobs />
       <TopCompany />
       {user ? null : <CallToAction />}
-      <GoToTop />
     </div>
   );
 };

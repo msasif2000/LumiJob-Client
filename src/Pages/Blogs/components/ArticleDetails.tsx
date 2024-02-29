@@ -4,6 +4,8 @@ import Nodata from "./err/Nodata";
 import Loading from "./err/Loading";
 import { FaCircleUser } from "react-icons/fa6";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import GoToTop from "../../../component/GoToTop/GoToTop";
+import { Helmet } from "react-helmet-async";
 
 interface BlogData {
   id: number;
@@ -106,10 +108,14 @@ const ArticleDetails = () => {
       ) : (
         <>
           <div className="fixed w-full"></div>
+          <Helmet>
+            <title>{data ? data.title : "Article Details"}</title>
+          </Helmet>
           <div
-            className="h-[6px] bg-gradient-to-r from-[#98ff98] via-[#fff45c] to-[#ff4739] fixed"
+            className="h-[2px] bg-accentTwo backdrop-blur-md fixed"
             style={{ width: `${scrollPercentage}%` }}
           ></div>
+          <GoToTop />
           <div className="max-w-screen-2xl mx-auto py-20 px-4">
             {data ? (
               <div className="lg:flex py-6">

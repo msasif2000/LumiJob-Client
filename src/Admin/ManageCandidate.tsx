@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import GoToTop from "../component/GoToTop/GoToTop";
 
 const ManageCandidate = () => {
   const axiosPublic = useAxiosPublic();
@@ -18,7 +19,6 @@ const ManageCandidate = () => {
       return res.data;
     },
   });
-
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -53,9 +53,10 @@ const ManageCandidate = () => {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Manage Candidate | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg my-2">
         <h2 className="text-3xl">
           <b>Manage Candidates</b>
@@ -78,30 +79,38 @@ const ManageCandidate = () => {
           </thead>
           <tbody>
             {candidates
-              .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((candidate: any, index: number) => (
-              <tr key={candidate._id}>
-                <th>{index + 1}</th>
+              .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage)
+              .map((candidate: any, index: number) => (
+                <tr key={candidate._id}>
+                  <th>{index + 1}</th>
 
-                <td>
-                  <div className="font-bold">{candidate?.name}</div>
-                </td>
-                <td>
-                  <h3 className="font-semibold text-lg">{candidate?.email}</h3>
-                </td>
-                <td>
-                  <h3 className="font-semibold text-lg">{candidate?.status}</h3>
-                </td>
-                {/* <td>{company?.subscription}</td> */}
                   <td>
-                    <button onClick={() => handleDelete(candidate?._id)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group">
+                    <div className="font-bold">{candidate?.name}</div>
+                  </td>
+                  <td>
+                    <h3 className="font-semibold text-lg">
+                      {candidate?.email}
+                    </h3>
+                  </td>
+                  <td>
+                    <h3 className="font-semibold text-lg">
+                      {candidate?.status}
+                    </h3>
+                  </td>
+                  {/* <td>{company?.subscription}</td> */}
+                  <td>
+                    <button
+                      onClick={() => handleDelete(candidate?._id)}
+                      className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group"
+                    >
                       <MdDelete className="text-2xl" />
                       <span className="opacity-0 group-hover:opacity-100 absolute top-full left-1/2 transform -translate-x-1/2 text-black  px-3 text-sm z-10 transition-opacity duration-300">
                         Delete
                       </span>
                     </button>
                   </td>
-              </tr>
-            ))}
+                </tr>
+              ))}
           </tbody>
         </table>
         {candidates.length > dataPerPage && (
