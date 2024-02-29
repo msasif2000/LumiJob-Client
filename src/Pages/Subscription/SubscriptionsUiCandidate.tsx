@@ -1,45 +1,48 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SubScriptions.css";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
+  const [subscription, setSubscription] = useState<any | null>(null);
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const navigate = useNavigate();
-
-  const userEmail = user?.email;
 
   useEffect(() => {
-    const fetchPlans = async () => {
-      try {
-        const response = await fetch("/userPlan.json");
-        const data = await response.json();
-        setPlans(data);
-      } catch (error) {
-        console.error("Error fetching plans:", error);
-      }
-    };
-
-    fetchPlans();
+    axiosPublic
+      .get("/packages/candidate")
+      .then((res) => {
+        // console.log(res.data);
+        setPlans(res.data);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
-  const handleSelectPlan = (selectedPlan: any) => {
-    const paymentInfo = {
-      selectedPlan,
-      user: userEmail,
-    };
-    //console.log(paymentInfo);
+  useEffect(() => {
+    if (user?.email) {
+      axiosPublic.get(`/payment/${user.email}`)
+        .then((res) => {
+          console.log(res.data);
+          setSubscription(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
 
-    axiosPublic.post("/subscription", paymentInfo).then((res) => {
-      //console.log(res.data);
-      if (res.data.message === "data inserted") {
-        navigate("/payment");
-      }
-    });
+  console.log(subscription);
+
+  const handleChoosePlan = (plan: any) => {
+    if (subscription && subscription.packages === plan.name) {
+      toast.error('You already have this plan!', {
+        position: 'top-center' // Adjust the position as needed
+      });
+    } else {
+      window.location.href = user ? `/payment/${plan._id}` : '/login';
+    }
   };
 
   return (
@@ -64,12 +67,11 @@ const SubscriptionsUiCandidate = () => {
             </div>
             <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
               {/* Render subscription cards dynamically */}
-              {plans?.map((plan: any, index: number) => (
+              {plans?.map((plan: any) => (
                 <div
-                  key={index}
-                  className={`flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 ${
-                    plan.popular ? "scale-110" : "scale-100"
-                  } border-gray-100 xl:p-8`}
+                  key={plan._id} // Use plan._id as the key
+                  className={`flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 ${plan.popular ? "scale-110" : "scale-100"
+                    } border-gray-100 xl:p-8`}
                 >
                   {plan.popular && (
                     <p className="absolute top-2 right-2 bg-blue-200 p-1 px-2 rounded-2xl font-semibold">
@@ -107,19 +109,11 @@ const SubscriptionsUiCandidate = () => {
                     ))}
                   </ul>
                   <div className="action">
-                    {index === 0 ? (
-                      <button className="button w-full">Current Plan</button>
-                    ) : (
-                      <Link
-                        to={{
-                          pathname: user ? "/payment" : "/login",
-                        }}
-                        className="button"
-                        onClick={() => handleSelectPlan(plan)}
-                      >
-                        Choose plan
-                      </Link>
-                    )}
+                    <div className="flex justify-center">
+                      <button className="button" onClick={() => handleChoosePlan(plan)}>
+                        {subscription && subscription?.packages === plan.name ? 'Choose Plan' : 'Choose Plan'}
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -127,6 +121,7 @@ const SubscriptionsUiCandidate = () => {
           </div>
         </section>
       </div>
+      <ToastContainer position="top-center" />
     </>
   );
 };
