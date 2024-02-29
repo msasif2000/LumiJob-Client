@@ -61,6 +61,10 @@ const JobsDetails: React.FC = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     axiosPublic
       .get(`/single-job/${id}`)
       .then((res) => {
@@ -328,6 +332,10 @@ const JobsDetails: React.FC = () => {
     }
   };
 
+  const isApplied = job?.applicants?.find(
+    (applicant: any) => applicant.email === user?.email
+  );
+
   return (
     <>
       <Helmet>
@@ -498,37 +506,45 @@ const JobsDetails: React.FC = () => {
                 </div>
               ) : (
                 <div className=" md:w-1/2 mx-auto mt-10 lg:mt-0 lg:w-4/12 xl:w-3/12">
-                  {premium === "premium" ? (
-                    <div>
-                      <button
-                        onClick={() => handlePremiumApply()}
-                        className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
-                      >
-                        Quick Apply
-                      </button>
-                    </div>
+                  {isApplied ? (
+                    <p className="p-5 my-2 text-xl bg-blue-50 text-center">
+                      Already applied
+                    </p>
                   ) : (
-                    <div>
-                      <button
-                        className="btn w-full bg-blue-300 text-white py-2 px-4 rounded hover:bg-red-300 mb-5 duration-500 border-none"
-                        onClick={() => {
-                          handleNotPremium();
-                        }}
-                      >
-                        Quick Apply
-                      </button>
-                    </div>
+                    <>
+                      {premium === "premium" ? (
+                        <div>
+                          <button
+                            onClick={() => handlePremiumApply()}
+                            className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                          >
+                            Quick Apply
+                          </button>
+                        </div>
+                      ) : (
+                        <div>
+                          <button
+                            className="btn w-full bg-blue-300 text-white py-2 px-4 rounded hover:bg-red-300 mb-5 duration-500 border-none"
+                            onClick={() => {
+                              handleNotPremium();
+                            }}
+                          >
+                            Quick Apply
+                          </button>
+                        </div>
+                      )}
+                      <div>
+                        <button
+                          onClick={() => {
+                            setShowResumeModal(true);
+                          }}
+                          className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                        >
+                          Apply
+                        </button>
+                      </div>
+                    </>
                   )}
-                  <div>
-                    <button
-                      onClick={() => {
-                        setShowResumeModal(true);
-                      }}
-                      className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
-                    >
-                      Apply
-                    </button>
-                  </div>
                   <div className="skeleton flex flex-col bg-[#F2F5FE] items-center p-8">
                     <hr className="border-b-2 border-gray-400 mb-4" />
 
@@ -566,19 +582,26 @@ const JobsDetails: React.FC = () => {
                           shareUrl={shareUrl}
                           title={title}
                         ></Share>
-                        <div className="mt-2">
-                          {user && (
-                            <div className="flex items-center gap-2 text-lg font-semibold border-2 p-1 rounded-lg">
-                              <IoPeopleOutline className="text-xl"></IoPeopleOutline>
-                              <p>{job?.applicants?.length} applicants</p>
-                            </div>
-                          )}
-                        </div>
                       </>
                     ) : (
                       <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
                         Login to get your link
                       </button>
+                    )}
+                  </div>
+
+                  <div className="mt-2">
+                    {user && (
+                      <div className="flex items-center gap-2 text-lg font-semibold p-1 rounded-lg bg-blue-50">
+                        <IoPeopleOutline className="text-xl m-2"></IoPeopleOutline>
+                        {job?.applicants?.length > 0 ? (
+                          <p className="py-2">
+                            {job?.applicants?.length} People have applied
+                          </p>
+                        ) : (
+                          <p className="py-2">Be the first one to apply :)</p>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -604,7 +627,7 @@ const JobsDetails: React.FC = () => {
                   <div className="sm:flex sm:items-start">
                     <div
                       {...getRootProps()}
-                      className="dropzone bg-violet-100 hover:bg-violet-300 duration-1000 p-10 w-full rounded-2xl cursor-pointer"
+                      className="dropzone bg-blue-100 hover:bg-blue-300 duration-1000 p-10 w-full rounded-2xl cursor-pointer"
                     >
                       <input {...getInputProps()} />
 
