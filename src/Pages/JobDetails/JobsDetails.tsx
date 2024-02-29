@@ -50,7 +50,6 @@ const JobsDetails: React.FC = () => {
   const navigate = useNavigate();
   const [showResumeModal, setShowResumeModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [resumeURL, setResumeURL] = useState<string>("");
 
   const onDrop = (acceptedFiles: File[]) => {
     setSelectedFile(acceptedFiles[0]);
@@ -216,9 +215,7 @@ const JobsDetails: React.FC = () => {
           // Get download URL
           getDownloadURL(snapshot.ref)
             .then((downloadURL) => {
-              setResumeURL(downloadURL);
               // axios post to database
-
               const data = {
                 resume: downloadURL,
                 user: user?.email,
@@ -329,8 +326,6 @@ const JobsDetails: React.FC = () => {
       });
     }
   };
-
-  console.log(resumeURL);
 
   return (
     <>
