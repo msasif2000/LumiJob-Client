@@ -9,9 +9,10 @@ import { MdEmail } from "react-icons/md";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import GoToTop from "../../component/GoToTop/GoToTop";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handlefrom = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -31,18 +32,19 @@ const Contact = () => {
           form.current,
           "0N8CKLdWb0pnRf50u"
         )
-        .then(() => {
-          resetForm();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `Message send successfully .`,
-            showConfirmButton: false,
-            timer: 1500
-          });
-          navigate('/')
-          //console.log(result.text);
-        },
+        .then(
+          () => {
+            resetForm();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `Message send successfully .`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+            //console.log(result.text);
+          },
           (error) => {
             console.log(error.text);
           }
@@ -63,6 +65,7 @@ const Contact = () => {
       <Helmet>
         <title>Contacts | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="min-h-screen bg-[#fdfdfd]">
         <div className="max-w-screen-2xl mx-auto">
           <div>
