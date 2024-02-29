@@ -1,25 +1,19 @@
-import { FcFlashOn, FcWorkflow, FcAndroidOs, FcApprove, FcDebt, FcConferenceCall, FcCollaboration, FcCalendar, FcApproval, FcBullish, FcBriefcase, FcBiotech } from "react-icons/fc";
+import { FcWorkflow, FcApprove, FcDebt, FcConferenceCall, FcCollaboration, FcCalendar, FcApproval, FcBriefcase } from "react-icons/fc";
 import { MdMonetizationOn } from "react-icons/md";
-import { GiNetworkBars } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../assets/image/banner-bg1.jpg";
 import actionImg from "../../../assets/image/action1.jpg";
 const CallToAction = () => {
     const icons = [
-        <GiNetworkBars />,
         <MdMonetizationOn />,
         <FcWorkflow />,
-        <FcAndroidOs />,
         <FcApprove />,
         <FcApproval />,
-        <FcBiotech />,
         <FcBriefcase />,
-        <FcBullish />,
         <FcCalendar />,
         <FcCollaboration />,
         <FcConferenceCall />,
         <FcDebt />,
-        <FcFlashOn />
     ];
 
     const getRandomNumber = (min: number, max: number, exclude: number[] = []): number => {
@@ -74,7 +68,7 @@ const CallToAction = () => {
                     </div>
                 </div>
                 <div className="w-full h-full">
-                    <img src={actionImg} alt="" className="shadow-pink-300 shadow-lg" />
+                    <img src={actionImg} alt="" className="shadow-pink-300 shadow-sm" />
                 </div>
 
             </div>

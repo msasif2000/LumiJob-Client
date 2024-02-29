@@ -172,7 +172,7 @@ const CompanyProfile = () => {
                 <p className="text-sm md:text-base uppercase text-white md:mt-5">
                   Industry
                 </p>
-                <p className="text-sm md:text-xl font-semibold text-white ">
+                <p className="text-sm md:text-xl font-semibold text-white">
                   {profile?.industry}
                 </p>
               </div>

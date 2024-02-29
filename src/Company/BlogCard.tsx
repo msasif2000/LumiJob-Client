@@ -43,7 +43,7 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
         >
             <Link key={blog._id} to={`/insights/${blog._id}`}>
                 <div className="card shadow-md hover:shadow-xl duration-1000 h-full">
-                    <div className="card-body space-y-2">
+                    <div className="card-body lg:p-4 xl:p-6">
                         <h2 className="text-2xl font-bold">{blog?.title}</h2>
                         <div className="flex justify-between items-center">
                             <p className="font-semibold">{blog?.category}</p>
