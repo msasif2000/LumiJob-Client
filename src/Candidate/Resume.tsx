@@ -5,8 +5,6 @@ import CandidateNav from "./CommonNavbar/CandidateNav";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { Helmet } from "react-helmet-async";
-import GoToTop from "../component/GoToTop/GoToTop";
 
 interface Candidate {
   name: string;
@@ -58,10 +56,6 @@ const Resume: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Resume | Dashboard</title>
-      </Helmet>
-      <GoToTop />
       <CandidateNav
         text="Resume"
         btn="Go Back"

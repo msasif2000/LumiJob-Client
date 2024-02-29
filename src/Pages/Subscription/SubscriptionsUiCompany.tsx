@@ -1,39 +1,48 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import "./SubScriptions.css";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../../component/GoToTop/GoToTop";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SubscriptionsUiCompany = () => {
   const { user } = useAuth();
   const [companyPlan, setCompanyPlan] = useState<any | null>(null);
-  const navigate = useNavigate();
+  const [subscription, setSubscription] = useState<any | null>(null);
   const axiosPublic = useAxiosPublic();
 
-  const userEmail = user?.email;
-
   useEffect(() => {
-    axios.get("/companyPlans.json").then((res) => {
-      setCompanyPlan(res.data);
-      //console.log(res.data);
-    });
+    axiosPublic
+      .get("/packages/company")
+      .then((res) => {
+        // console.log(res.data);
+        setCompanyPlan(res.data);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
-  const handleSelectPlan = (selectedPlan: any) => {
-    const paymentInfo = {
-      selectedPlan,
-      user: userEmail,
-    };
-    //console.log(paymentInfo);
 
-    axiosPublic.post("/subscription", paymentInfo).then((res) => {
-      if (res.data) {
-        navigate("/payment");
-      }
-    });
+  useEffect(() => {
+    if (user?.email) {
+      axiosPublic.get(`/payment/${user.email}`)
+        .then((res) => {
+          console.log(res.data);
+          setSubscription(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
+
+  const handleChoosePlan = (plan: any) => {
+    if (subscription && subscription?.packages === plan?.name) {
+      toast.error('You already have this plan!', {
+        position: 'top-center' // Adjust the position as needed
+      });
+    } else {
+      window.location.href = user ? `/payment/${plan._id}` : '/login';
+    }
   };
 
   return (
@@ -41,6 +50,7 @@ const SubscriptionsUiCompany = () => {
       <Helmet>
         <title>Company Subscription | LumiJobs</title>
       </Helmet>
+      <ToastContainer />
       <GoToTop />
       <div className="max-w-screen-2xl mx-auto px-4">
         <section className="bg-white">
@@ -101,19 +111,11 @@ const SubscriptionsUiCompany = () => {
                     ))}
                   </ul>
                   <div className="action">
-                    {index === 0 ? (
-                      <button className="button w-full">Current Plan</button>
-                    ) : (
-                      <Link
-                        to={{
-                          pathname: user ? "/payment" : "/login",
-                        }}
-                        className="button"
-                        onClick={() => handleSelectPlan(plan)}
-                      >
-                        Choose plan
-                      </Link>
-                    )}
+                  <div className="flex justify-center">
+                      <button className="button" onClick={() => handleChoosePlan(plan)}>
+                        {subscription && subscription?.packages === plan.name ? 'Choose Plan' : 'Choose Plan'}
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
