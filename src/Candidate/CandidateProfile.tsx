@@ -9,7 +9,7 @@ import GoToTop from "../component/GoToTop/GoToTop";
 import { ToastContainer, toast } from "react-toastify";
 import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
+import { MdOutlineContactPage } from "react-icons/md";
 import { storage } from "../config/Firebase.config";
 
 interface UserProfile {
@@ -225,7 +225,7 @@ const CandidateProfile = () => {
                       autoClose: 2000,
                       closeOnClick: true,
                     });
-                    setShowResumeModal(false)
+                    setShowResumeModal(false);
                   } else {
                     toast.error("Failed to upload resume", {
                       position: "top-center",
@@ -233,7 +233,7 @@ const CandidateProfile = () => {
                       autoClose: 2000,
                       closeOnClick: true,
                     });
-                    setShowResumeModal(false)
+                    setShowResumeModal(false);
                   }
                 })
                 .catch((error) => {
@@ -244,7 +244,7 @@ const CandidateProfile = () => {
                     autoClose: 2000,
                     closeOnClick: true,
                   });
-                  setShowResumeModal(false)
+                  setShowResumeModal(false);
                 });
             })
             .catch((error) => {
@@ -255,7 +255,7 @@ const CandidateProfile = () => {
                 autoClose: 2000,
                 closeOnClick: true,
               });
-              setShowResumeModal(false)
+              setShowResumeModal(false);
             });
         })
         .catch((error) => {
@@ -266,7 +266,7 @@ const CandidateProfile = () => {
             autoClose: 2000,
             closeOnClick: true,
           });
-          setShowResumeModal(false)
+          setShowResumeModal(false);
         });
     } else {
       toast.error("Please select a file to upload", {
@@ -286,15 +286,20 @@ const CandidateProfile = () => {
           {premium === "premium" ? (
             <>
               {resume ? (
-                <button
-                  onClick={() => {
-                    setShowResumeModal(true);
-                  }}
-                  className="btn"
-                >
-                  <BiEdit></BiEdit>
-                  Update resume
-                </button>
+                <>
+                  <button
+                    onClick={() => {
+                      setShowResumeModal(true);
+                    }}
+                    className="btn"
+                  >
+                    <BiEdit></BiEdit>
+                    Update resume
+                  </button>
+                  <Link to={resume} className="btn" title="Download resume">
+                    <MdOutlineContactPage></MdOutlineContactPage>
+                  </Link>
+                </>
               ) : (
                 <button
                   onClick={() => {
