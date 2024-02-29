@@ -13,6 +13,9 @@ import { BiShareAlt } from "react-icons/bi";
 import Share from "./Share";
 import { IoPeopleOutline } from "react-icons/io5";
 import { useDropzone } from "react-dropzone";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+import { storage } from "../../config/Firebase.config";
 
 interface JobDetails {
   _id: string;
@@ -47,6 +50,7 @@ const JobsDetails: React.FC = () => {
   const navigate = useNavigate();
   const [showResumeModal, setShowResumeModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [resumeURL, setResumeURL] = useState<string>("");
 
   const onDrop = (acceptedFiles: File[]) => {
     setSelectedFile(acceptedFiles[0]);
@@ -195,7 +199,7 @@ const JobsDetails: React.FC = () => {
   const handleUpload = () => {
     if (selectedFile) {
       if (selectedFile.size > 500 * 1024) {
-        toast.warn("Please 500 KB or smaller file.", {
+        toast.warn("Please upload a file smaller than 500 KB.", {
           position: "top-center",
           hideProgressBar: true,
           autoClose: 4000,
@@ -203,22 +207,45 @@ const JobsDetails: React.FC = () => {
         });
         return;
       }
-      const formData = new FormData();
-      formData.append("resume", selectedFile);
-      console.log(selectedFile);
-      setShowResumeModal(false);
-      // formData.append("candidateId", user?.id);
 
-      // Perform the upload using axios or fetch
-      // axios.post("/upload-resume", formData)
-      //   .then((response) => {
-      //     // Handle success
-      //   })
-      //   .catch((error) => {
-      //     // Handle error
-      //   });
+      const storageRef = ref(storage, `resume/${selectedFile.name}`);
+
+      // Upload file to Firebase Storage
+      uploadBytes(storageRef, selectedFile)
+        .then((snapshot) => {
+          toast.success("Resume uploaded successfully", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+
+          // Get download URL
+          getDownloadURL(snapshot.ref)
+            .then((downloadURL) => {
+              setResumeURL(downloadURL);
+              setShowResumeModal(false);
+            })
+            .catch((error) => {
+              console.error("Error getting download URL: ", error);
+              toast.error("Failed to get download URL", {
+                position: "top-center",
+                hideProgressBar: true,
+                autoClose: 2000,
+                closeOnClick: true,
+              });
+            });
+        })
+        .catch((error) => {
+          console.error("Error uploading resume: ", error);
+          toast.error("Failed to upload resume", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+        });
     } else {
-      // Display a message to the user to select a file
       toast.error("Please select a file to upload", {
         position: "top-center",
         hideProgressBar: true,
@@ -227,6 +254,8 @@ const JobsDetails: React.FC = () => {
       });
     }
   };
+
+  console.log(resumeURL);
 
   return (
     <>
