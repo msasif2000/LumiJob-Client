@@ -22,7 +22,7 @@ const TopCompanyProfile = () => {
       .get(`/company-profile/${id}`)
       .then((res) => {
         setCompanyProfile(res.data);
-        //console.log(res.data);
+        console.log(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -34,7 +34,7 @@ const TopCompanyProfile = () => {
         .get(`/company-postedJobs/${CompanyProfile?.email}`)
         .then((res) => {
           setCompanyPostedJobs(res.data);
-          //console.log(res.data);
+          console.log(res.data);
         })
         .catch((err) => console.log(err));
     }

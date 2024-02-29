@@ -12,14 +12,29 @@ const Navbar: React.FC<NavbarProps> = () => {
   const { user, logOut, premium, role, photo } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [userData, setUserData] = useState<{ _id: string; value: number }>();
+  const [companyData, setCompanyData] = useState<{ _id: string; value: number }>();
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  useEffect(() => {
-    axiosPublic.get(`/specific-candidate/${user?.email}`).then((res) => {
-      setUserData(res.data);
-    });
-  }, [user?.email]);
 
+  useEffect(() => {
+
+    if (role === "candidate") {
+      axiosPublic.get(`/specific-candidate/${user?.email}`)
+        .then((res) => {
+          setUserData(res.data);
+        });
+    }
+    else if (role === "company") {
+      axiosPublic.get(`/specific-company/${user?.email}`)
+        .then((res) => {
+          setCompanyData(res.data);
+        });
+    }
+
+
+  }, [user?.email, role, axiosPublic]);
+
+  console.log(companyData?._id);
   useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
@@ -74,11 +89,10 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <div
-      className={`sticky top-0 z-30 ${
-        scrollPosition > 30
-          ? `backdrop-blur-md bg-white/30 border-b border-b-[#e4e5e7]`
-          : ""
-      }`}
+      className={`sticky top-0 z-30 ${scrollPosition > 30
+        ? `backdrop-blur-md bg-white/30 border-b border-b-[#e4e5e7]`
+        : ""
+        }`}
     >
       <div className="navbar max-w-screen-2xl mx-auto px-4">
         <div className="navbar-start">
@@ -189,11 +203,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div
-                    className={`w-20 rounded-full ${
-                      premium === "premium"
-                        ? "ring-4 ring-blue-400 ring-offset-2"
-                        : ""
-                    }`}
+                    className={`w-20 rounded-full ${premium === "premium"
+                      ? "ring-4 ring-blue-400 ring-offset-2"
+                      : ""
+                      }`}
                   >
                     {user ? (
                       <img
@@ -229,7 +242,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <li key="companyProfile View">
                       <NavLink
                         className="mr-2 font-semibold text-lg"
-                        to={`/companyProfileView/${user?.email}`}
+                        to={`/company-details-profile/${companyData?._id}`}
                       >
                         Profile View
                       </NavLink>

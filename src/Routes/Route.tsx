@@ -111,13 +111,13 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/top-company-detailsProfiles/:id",
+        path: "/company-details-profile/:id",
         element: <TopCompanyProfile></TopCompanyProfile>,
       },
-      {
-        path: "/companyProfileView/:email",
-        element: <TopCompanyProfile></TopCompanyProfile>,
-      },
+      // {
+      //   path: "/companyProfileView/:id",
+      //   element: <TopCompanyProfile></TopCompanyProfile>,
+      // },
       {
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
