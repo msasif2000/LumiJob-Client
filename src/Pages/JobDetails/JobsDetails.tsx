@@ -61,6 +61,10 @@ const JobsDetails: React.FC = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     axiosPublic
       .get(`/single-job/${id}`)
       .then((res) => {
@@ -623,7 +627,7 @@ const JobsDetails: React.FC = () => {
                   <div className="sm:flex sm:items-start">
                     <div
                       {...getRootProps()}
-                      className="dropzone bg-violet-100 hover:bg-violet-300 duration-1000 p-10 w-full rounded-2xl cursor-pointer"
+                      className="dropzone bg-blue-100 hover:bg-blue-300 duration-1000 p-10 w-full rounded-2xl cursor-pointer"
                     >
                       <input {...getInputProps()} />
 
