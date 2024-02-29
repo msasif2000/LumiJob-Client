@@ -12,7 +12,6 @@ const Navbar: React.FC<NavbarProps> = () => {
   const { user, logOut, premium, role, photo } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [userData, setUserData] = useState<{ _id: string; value: number }>();
-  const [companyData, setCompanyData] = useState<{ _id: string; value: number }>();
   const [scrollPosition, setScrollPosition] = useState(0);
 
 
@@ -27,14 +26,13 @@ const Navbar: React.FC<NavbarProps> = () => {
     else if (role === "company") {
       axiosPublic.get(`/specific-company/${user?.email}`)
         .then((res) => {
-          setCompanyData(res.data);
+          setUserData(res.data);
         });
     }
 
 
   }, [user?.email, role, axiosPublic]);
 
-  console.log(companyData?._id);
   useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
@@ -242,7 +240,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <li key="companyProfile View">
                       <NavLink
                         className="mr-2 font-semibold text-lg"
-                        to={`/company-details-profile/${companyData?._id}`}
+                        to={`/company-details-profile/${userData?._id}`}
                       >
                         Profile View
                       </NavLink>
