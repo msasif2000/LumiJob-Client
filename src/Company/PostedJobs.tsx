@@ -63,7 +63,7 @@ const PostedJobs = () => {
         handleClick={() => {handlePostJob()}}
         handleClick2={() => {}}
       />
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
         {companyPostedJobs?.map((job: Job) => (
           <PostedJobsCard key={job._id} job={job} handleDelete={handleDelete} />
         ))}
