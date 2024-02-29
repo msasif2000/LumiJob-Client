@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import Payment from './Payment';
 
+
 interface Payment {
   name: string;
   packages: string;
@@ -49,17 +50,17 @@ const CheackoutForm = () => {
   }, [axiosPublic, price]);
 
   useEffect(() => {
-      axiosPublic
-        .get(`/subscriptions/${planId}`) 
-        .then((res) => {
-          setSubs(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    axiosPublic
+      .get(`/subscriptions/${planId}`)
+      .then((res) => {
+        setSubs(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [user, planId]);
 
-  console.log(subs);
+  console.log(subs?.price);
 
 
   const handleSubmit = async (event: any) => {
@@ -150,19 +151,17 @@ const CheackoutForm = () => {
     setLoading(false);
   };
 
-  const handleCancel = (id: string) => {
-    axiosPublic.delete(`/delete-subs-plan/${id}`).then((res) => {
-      if (res.data.deletedCount > 0) {
-        if (role === "company") {
-          navigate(`/subscriptionsUiCompany`);
-        } else {
-          navigate("/subscriptionsUiCandidate");
-        }
-      } else {
-        toast.warn("Something went wrong");
-      }
-    });
-  }; 
+
+  const handleCancel = () => {
+    // Go back to the previous route
+    navigate(-1);
+  };
+
+  const handlePaymentConfirmation = () => {
+    toast.success('Payment confirmed!');
+    navigate('/');
+  };
+
   return (
     <div className=" bg-white rounded-sm border flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 rounded-md">
@@ -221,12 +220,11 @@ const CheackoutForm = () => {
               )}
             </ul>
             <div className="flex justify-center">
-              <button
-                onClick={() => handleCancel(subs?._id)}
-                className="underline text-violet-400"
-              >
-                Cancel Plan
-              </button>
+              <Link to={"/subscriptionsUiCandidate"}>
+                <button className="underline text-violet-400" onClick={handleCancel} >
+                  Cancel Plan
+                </button>
+              </Link>
             </div>
           </div>
         )}
@@ -238,42 +236,54 @@ const CheackoutForm = () => {
           </h3>
           <div className="divider w-2/3 mx-auto"></div>
         </Link>
-        <div className="pt-14 md:pt-[10rem]">
-          <form onSubmit={handleSubmit}>
-            <CardElement
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#424770",
-                    "::placeholder": {
-                      color: "#aab7c4",
-                    },
-                  },
-                  invalid: {
-                    color: "#9e2146",
-                  },
-                },
-              }}
-            ></CardElement>
-
-            <div className="w-full pt-8 flex justify-center">
-              <button
-                type="submit"
-                disabled={!stripe || !clientSecret || loading}
-                className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
-              >
-                {loading ? "Processing..." : "Pay Now"}
+        {subs?.price === 0 ? (
+          <div>
+            <p className=" text:sm md:text-xl font-semibold opacity-90 mt-10">Confirm Subscription for free</p>
+            <div className="flex justify-center">
+              <button onClick={handlePaymentConfirmation} className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-6">
+                Confirm
               </button>
             </div>
-            <p className="text-red-600 mt-5">{error}</p>
-            {transactionId && (
-              <p className="text-green-600 mt-5">
-                Transaction Id: {transactionId}
-              </p>
-            )}
-          </form>
-        </div>
+          </div>
+        ) : (
+          <div className="pt-14 md:pt-[10rem]">
+            <form onSubmit={handleSubmit}>
+              <CardElement
+                options={{
+                  style: {
+                    base: {
+                      fontSize: "16px",
+                      color: "#424770",
+                      "::placeholder": {
+                        color: "#aab7c4",
+                      },
+                    },
+                    invalid: {
+                      color: "#9e2146",
+                    },
+                  },
+                }}
+              ></CardElement>
+
+              <div className="w-full pt-8 flex justify-center">
+                <button
+                  type="submit"
+                  disabled={!stripe || !clientSecret || loading}
+                  className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
+                >
+                  {loading ? "Processing..." : "Pay Now"}
+                </button>
+              </div>
+              <p className="text-red-600 mt-5">{error}</p>
+              {transactionId && (
+                <p className="text-green-600 mt-5">
+                  Transaction Id: {transactionId}
+                </p>
+              )}
+            </form>
+          </div>
+        )}
+
       </div>
       <ToastContainer />
     </div>
