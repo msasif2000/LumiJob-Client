@@ -155,7 +155,7 @@ const JobPostingForm: React.FC = () => {
         <div className=" bg-white px-2 pb-5">
           <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             {/* Company Info */}
-            <div className="flex space-x-10 py-10">
+            <div className="md:flex md:space-x-10 py-10">
               <div className="form-control w-full">
                 <input
                   type="text"
@@ -371,16 +371,14 @@ const JobPostingForm: React.FC = () => {
                       required: "Job Type is required",
                     })}
                   >
-                    <option value="Work" disabled>
-                      Work Time
-                    </option>
+                    <option value="Work" disabled>Work Time</option>
                     <option value="Part Time">Part Time</option>
                     <option value="Full Time">Full Time</option>
                   </select>
                 </div>
               </div>
               {/* Deadline Experience */}
-              <div className="flex space-x-10">
+              <div className="md:flex md:space-x-10">
                 <div className="form-control w-full">
                   <DatePicker
                     selected={dates}

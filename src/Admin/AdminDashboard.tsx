@@ -73,8 +73,6 @@ const AdminDashboard: React.FC = () => {
     fetchUserData();
   }, [axiosPublic]);
 
-  console.log(userData);
-
 
   return (
     <div className='mt-6'>
@@ -105,9 +103,9 @@ const AdminDashboard: React.FC = () => {
           <h5 className='text-xl font-semibold text-center text-gray-600 mt-6 mb-2'>User Roles</h5>
 
           <div className='flex justify-center items-center gap-2'>
-            <p className='bg-[#164070] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'><FcBriefcase className="text-5xl" /><span>{userData[0].value} Company</span></p>
-            <p className='bg-[#00C89F] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'> <FcConferenceCall className="text-5xl" /><span>{userData[1].value} Candidate</span></p>
-            <p className='bg-[#ffbb98] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'><FcManager className="text-5xl" /><span>{userData[2].value} Admin</span></p>
+            <p className='bg-[#164070] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'><FcBriefcase className="text-5xl" /><span>{userData[0]?.value} Company</span></p>
+            <p className='bg-[#00C89F] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'> <FcConferenceCall className="text-5xl" /><span>{userData[1]?.value} Candidate</span></p>
+            <p className='bg-[#ffbb98] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1'><FcManager className="text-5xl" /><span>{userData[2]?.value} Admin</span></p>
           </div>
         </div>
       </div>
