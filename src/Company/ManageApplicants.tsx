@@ -10,6 +10,8 @@ import { MdCancel } from "react-icons/md";
 import { LuCalendarRange } from "react-icons/lu";
 import { VscFeedback } from "react-icons/vsc";
 import { SiGooglemeet } from "react-icons/si";
+import { Helmet } from "react-helmet-async";
+import GoToTop from "../component/GoToTop/GoToTop";
 
 interface Comments {
   // anyCements: string;
@@ -369,546 +371,71 @@ const ManageApplicants = () => {
   }
 
   return (
-    <div className=" mx-auto my-3">
-      <DragDropContext onDragEnd={onDragEnd}>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2 px-1">
-          <Droppable droppableId="applicant">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className="flex-1 bg-base-300 min-h-screen"
-              >
-                <h1 className="text-center bg-violet-300 p-3 font-bold text-base-100 rounded-t-xl">
-                  {infos?.length > 0
-                    ? `${infos?.length} Applicants`
-                    : "Applicants"}
-                </h1>
-                <div>
-                  {infos?.map((info: any, index: number) => (
-                    <Draggable
-                      key={info.id}
-                      draggableId={info.id}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
-                        >
-                          <div className="space-x-3 flex p-2">
-                            <div className="p-5 bg-blue-100 rounded-xl">
-                              <img
-                                src={info?.profile}
-                                alt=""
-                                className=" rounded-full h-[80px] w-[80px] p-2"
-                              />
-                            </div>
-                            <div className="space-y-1 relative">
-                              <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
-                                {info?.position}
-                              </h2>
-                              <div className="flex space-x-1 items-center">
-                                <p className="font-bold p-1">{info?.name}</p>
-                                {info?.premium === "premium" ? (
-                                  <GoVerified />
-                                ) : (
-                                  ""
-                                )}
-                              </div>
-                              <div className="flex space-x-3 pl-1">
-                                <p className="text-sm">
-                                  ${perHour(info?.maxSalary)} / hr
-                                </p>
-                                <p className="flex items-center text-sm space-x-1">
-                                  <CiLocationOn className="text-sm" />
-                                  {info?.city}, {info?.country}
-                                </p>
-                              </div>
-
-                              <div className="absolute top-0 right-0 xl:-right-10">
-                                <label
-                                  htmlFor="my_modal_6"
-                                  className="cursor-pointer ... text-xl"
-                                  title="Feedback"
-                                >
-                                  <VscFeedback />
-                                </label>
-                                <input
-                                  type="checkbox"
-                                  id="my_modal_6"
-                                  className="modal-toggle"
+    <>
+      <Helmet>
+        <title>Manage Applicants</title>
+      </Helmet>
+      <GoToTop />
+      <div className=" mx-auto my-3">
+        <DragDropContext onDragEnd={onDragEnd}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2 px-1">
+            <Droppable droppableId="applicant">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="flex-1 bg-base-300 min-h-screen"
+                >
+                  <h1 className="text-center bg-violet-300 p-3 font-bold text-base-100 rounded-t-xl">
+                    {infos?.length > 0
+                      ? `${infos?.length} Applicants`
+                      : "Applicants"}
+                  </h1>
+                  <div>
+                    {infos?.map((info: any, index: number) => (
+                      <Draggable
+                        key={info.id}
+                        draggableId={info.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
+                          >
+                            <div className="space-x-3 flex p-2">
+                              <div className="p-5 bg-blue-100 rounded-xl">
+                                <img
+                                  src={info?.profile}
+                                  alt=""
+                                  className=" rounded-full h-[80px] w-[80px] p-2"
                                 />
-                                <div className="modal " role="dialog">
-                                  <div className="modal-box bg-gray-100 mb-10">
-                                    <div className="modal-action flex justify-end -mt-5 -mr-5">
-                                      <label
-                                        htmlFor="my_modal_6"
-                                        className=" btn  text-black text-2xl "
-                                      >
-                                        <MdCancel />
-                                      </label>
-                                    </div>
-                                    <form
-                                      onSubmit={feedBack}
-                                      className="space-y-4 "
-                                    >
-                                      <div
-                                        className="p-4
-                                     bg-white rounded-2xl"
-                                      >
-                                        <label
-                                          htmlFor="additionalInfo"
-                                          className="block text-xl font-bold text-black"
-                                        >
-                                          Anything than can be improved?
-                                        </label>
-                                        <textarea
-                                          id="additionalInfo"
-                                          name="additionalInfo"
-                                          value={comments}
-                                          onChange={(e) =>
-                                            setComments(e.target.value)
-                                          }
-                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
-                                          rows={4}
-                                          placeholder="Enter Your Feedback..."
-                                        ></textarea>
-                                      </div>
-                                      <input
-                                        className="w-full btn bg-green-600 hover:bg-green-600 text-white "
-                                        type="submit"
-                                        value="submit"
-                                      />
-                                    </form>
-                                  </div>
+                              </div>
+                              <div className="space-y-1 relative">
+                                <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
+                                  {info?.position}
+                                </h2>
+                                <div className="flex space-x-1 items-center">
+                                  <p className="font-bold p-1">{info?.name}</p>
+                                  {info?.premium === "premium" ? (
+                                    <GoVerified />
+                                  ) : (
+                                    ""
+                                  )}
                                 </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                </div>
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-
-          <Droppable droppableId="pre-selected">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className="flex-1 bg-base-300 min-h-screen"
-              >
-                <h1 className="text-center bg-violet-400 p-3 font-bold text-base-300 rounded-t-xl">
-                  {preSelected?.length > 0
-                    ? `${preSelected?.length} Pre-Selected`
-                    : "Pre-Selected"}
-                </h1>
-                <div>
-                  {preSelected?.map((info: any, index: number) => (
-                    <Draggable
-                      key={info.id}
-                      draggableId={info.id}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
-                        >
-                          <div className="space-x-3 flex p-2">
-                            <div className="p-5 bg-blue-100 rounded-xl">
-                              <img
-                                src={info?.profile}
-                                alt=""
-                                className=" rounded-full h-[80px] w-[80px] p-2"
-                              />
-                            </div>
-                            <div className="space-y-1">
-                              <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
-                                {info?.position}
-                              </h2>
-                              <div className="flex space-x-1 items-center">
-                                <p className="font-bold p-1">{info?.name}</p>
-                                {info?.premium === "premium" ? (
-                                  <GoVerified />
-                                ) : (
-                                  ""
-                                )}
-                              </div>
-                              <div className="flex space-x-3 pl-1">
-                                <p className="text-sm">
-                                  ${perHour(info?.maxSalary)} / hr
-                                </p>
-                                <p className="flex items-center text-sm space-x-1">
-                                  <CiLocationOn className="text-sm" />
-                                  {info?.city}, {info?.country}
-                                </p>
-                              </div>
-                              {/* feedback for pre - selected */}
-                              <div className="absolute top-2 right-4">
-                                <label
-                                  htmlFor="my_modal_6"
-                                  className="cursor-pointer ... text-xl"
-                                  title="Feedback"
-                                >
-                                  <VscFeedback />
-                                </label>
-                                <input
-                                  type="checkbox"
-                                  id="my_modal_6"
-                                  className="modal-toggle"
-                                />
-                                <div className="modal " role="dialog">
-                                  <div className="modal-box bg-gray-100 mb-10">
-                                    <div className="modal-action flex justify-end -mt-5 -mr-5">
-                                      <label
-                                        htmlFor="my_modal_6"
-                                        className=" btn  text-black text-2xl "
-                                      >
-                                        <MdCancel />
-                                      </label>
-                                    </div>
-                                    <form
-                                      onSubmit={feedBack}
-                                      className="space-y-4 "
-                                    >
-                                      <div
-                                        className="p-4
-                                     bg-white rounded-2xl"
-                                      >
-                                        <label
-                                          htmlFor="additionalInfo"
-                                          className="block text-xl font-bold text-black"
-                                        >
-                                          Anything than can be improved?
-                                        </label>
-                                        <textarea
-                                          id="additionalInfo"
-                                          name="additionalInfo"
-                                          value={comments}
-                                          onChange={(e) =>
-                                            setComments(e.target.value)
-                                          }
-                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
-                                          rows={4}
-                                          placeholder="Enter Your Feedback..."
-                                        ></textarea>
-                                      </div>
-                                      <input
-                                        className="w-full btn bg-green-600 hover:bg-green-600 text-white "
-                                        type="submit"
-                                        value="submit"
-                                      />
-                                    </form>
-                                  </div>
+                                <div className="flex space-x-3 pl-1">
+                                  <p className="text-sm">
+                                    ${perHour(info?.maxSalary)} / hr
+                                  </p>
+                                  <p className="flex items-center text-sm space-x-1">
+                                    <CiLocationOn className="text-sm" />
+                                    {info?.city}, {info?.country}
+                                  </p>
                                 </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                </div>
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
 
-          <Droppable droppableId="interview">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className="flex-1 bg-base-300 min-h-screen"
-              >
-                <h1 className="text-center bg-violet-500 p-3 font-bold text-base-300 rounded-t-xl">
-                  {interviews?.length > 0
-                    ? `${interviews?.length} Interviews`
-                    : "Interviews"}
-                </h1>
-                <div>
-                  {interviews?.map((info: any, index: number) => (
-                    <Draggable
-                      key={info.id}
-                      draggableId={info.id}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
-                        >
-                          <div className="space-x-3 flex p-2 relative">
-                            <div
-                              className={`p-5 ${
-                                info?.scheduleInterview
-                                  ? "bg-green-100"
-                                  : "bg-blue-100"
-                              } rounded-xl`}
-                            >
-                              <img
-                                src={info?.profile}
-                                alt=""
-                                className=" rounded-full h-[80px] w-[80px] p-2"
-                              />
-                            </div>
-                            <div className="space-y-1">
-                              <h2
-                                className={`font-bold text-xs  ${
-                                  info?.scheduleInterview
-                                    ? "bg-green-100"
-                                    : "bg-blue-100"
-                                } p-2 w-fit rounded-lg`}
-                              >
-                                {info?.position}
-                              </h2>
-                              <div className="flex space-x-1 items-center">
-                                <p className="font-bold p-1">{info?.name}</p>
-                                {info?.premium === "premium" ? (
-                                  <GoVerified />
-                                ) : (
-                                  ""
-                                )}
-                              </div>
-                              <div className="flex space-x-3 pl-1">
-                                <p className="text-sm">
-                                  ${perHour(info?.maxSalary)} / hr
-                                </p>
-                                <p className="flex items-center text-sm space-x-1">
-                                  <CiLocationOn className="text-sm" />
-                                  {info?.city}, {info?.country}
-                                </p>
-                              </div>
-                              <div>
-                                {info?.scheduleInterview ? (
-                                  <div className="flex items-center text-sm space-x-2 pt-1">
-                                    <p className="pl-1">Interview at:</p>
-                                    <div className="flex items-center text-sm space-x-3">
-                                      <Link
-                                        to={info?.scheduleInterview?.googleMeet}
-                                        target="_blank"
-                                        title="Google Meet"
-                                        className="hover:scale-150 duration-500"
-                                      >
-                                        <SiGooglemeet />
-                                      </Link>
-                                      <p>
-                                        {convertTo12HourFormat(
-                                          info?.scheduleInterview?.interviewTime
-                                        )}
-                                      </p>
-                                      <p>
-                                        {" "}
-                                        {formatDate(
-                                          info?.scheduleInterview?.interviewDate
-                                        )}
-                                      </p>
-                                    </div>
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </div>
-                              {/* Candide feedback for Interview */}
-                              <div className="absolute top-2 right-12">
-                                <label
-                                  htmlFor="my_modal_6"
-                                  className="cursor-pointer ... text-xl"
-                                  title="Feedback"
-                                >
-                                  <VscFeedback />
-                                </label>
-                                <input
-                                  type="checkbox"
-                                  id="my_modal_6"
-                                  className="modal-toggle"
-                                />
-                                <div className="modal " role="dialog">
-                                  <div className="modal-box bg-gray-100 mb-10">
-                                    <div className="modal-action flex justify-end -mt-5 -mr-5">
-                                      <label
-                                        htmlFor="my_modal_6"
-                                        className=" btn  text-black text-2xl "
-                                      >
-                                        <MdCancel />
-                                      </label>
-                                    </div>
-                                    <form
-                                      onSubmit={feedBack}
-                                      className="space-y-4 "
-                                    >
-                                      <div
-                                        className="p-4
-                                     bg-white rounded-2xl"
-                                      >
-                                        <label
-                                          htmlFor="additionalInfo"
-                                          className="block text-xl font-bold text-black"
-                                        >
-                                          Anything than can be improved?
-                                        </label>
-                                        <textarea
-                                          id="additionalInfo"
-                                          name="additionalInfo"
-                                          value={comments}
-                                          onChange={(e) =>
-                                            setComments(e.target.value)
-                                          }
-                                          className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
-                                          rows={4}
-                                          placeholder="Enter Your Feedback..."
-                                        ></textarea>
-                                      </div>
-                                      <input
-                                        className="w-full btn bg-green-600 hover:bg-green-600 text-white "
-                                        type="submit"
-                                        value="submit"
-                                      />
-                                    </form>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="absolute top-1 right-2">
-                                <button
-                                  className="text-xl p-1 hover:text-green-300 duration-1000"
-                                  title="Schedule Interview"
-                                  onClick={() => handleOpenModal(info)}
-                                >
-                                  <LuCalendarRange />
-                                </button>
-                              </div>
-                            </div>
-                            {openModal && selectedCandidate && (
-                              <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
-                                <form
-                                  onSubmit={handleSubmit}
-                                  className="bg-white p-8 rounded-lg"
-                                >
-                                  <h2 className="text-lg font-bold mb-4">
-                                    Schedule Interview for{" "}
-                                    {selectedCandidate?.name}
-                                  </h2>
-
-                                  <div className="mb-4">
-                                    <input
-                                      type="text"
-                                      name="googleMeetLink"
-                                      placeholder="Google meet link"
-                                      className="w-full border border-gray-300 rounded-md p-2"
-                                    />
-                                  </div>
-                                  <div className="flex space-x-3">
-                                    <div className="mb-4">
-                                      <input
-                                        type="time"
-                                        name="time"
-                                        className="border border-gray-300 rounded-md p-2 w-[180px]"
-                                      />
-                                    </div>
-                                    <div className="mb-4">
-                                      <input
-                                        type="date"
-                                        name="date"
-                                        className="border border-gray-300 rounded-md p-2 w-[180px]"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="flex justify-end">
-                                    <button
-                                      type="submit"
-                                      className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-600 w-1/2"
-                                    >
-                                      Schedule
-                                    </button>
-                                    <button
-                                      className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 w-1/2"
-                                      onClick={() => {
-                                        setOpenModal(false);
-                                      }}
-                                    >
-                                      Cancel
-                                    </button>
-                                  </div>
-                                </form>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                </div>
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-          <Droppable droppableId="selected">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className="flex-1 bg-base-300 min-h-screen"
-              >
-                <h1 className="text-center bg-violet-600 p-3 font-bold text-base-300 rounded-t-xl">
-                  {selected?.length > 0
-                    ? `${selected?.length} Selected`
-                    : "Selected"}
-                </h1>
-                <div>
-                  {selected?.map((info: any, index: number) => (
-                    <Draggable
-                      key={info.id}
-                      draggableId={info.id}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
-                        >
-                          <div className="space-x-3 flex p-2">
-                            <div className="p-5 bg-blue-100 rounded-xl">
-                              <img
-                                src={info?.profile}
-                                alt=""
-                                className=" rounded-full h-[80px] w-[80px] p-2"
-                              />
-                            </div>
-                            <div className="space-y-1">
-                              <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
-                                {info?.position}
-                              </h2>
-                              <div className="flex space-x-1 items-center">
-                                <p className="font-bold p-1">{info?.name}</p>
-                                {info?.premium === "premium" ? (
-                                  <GoVerified />
-                                ) : (
-                                  ""
-                                )}
-                              </div>
-                              <div className="flex space-x-3 pl-1">
-                                <p className="text-sm">
-                                  ${perHour(info?.maxSalary)} / hr
-                                </p>
-                                <p className="flex items-center text-sm space-x-1">
-                                  <CiLocationOn className="text-sm" />
-                                  {info?.city}, {info?.country}
-                                </p>
-                                <div className="absolute top-3 right-5">
+                                <div className="absolute top-0 right-0 xl:-right-10">
                                   <label
                                     htmlFor="my_modal_6"
                                     className="cursor-pointer ... text-xl"
@@ -969,19 +496,504 @@ const ManageApplicants = () => {
                               </div>
                             </div>
                           </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
+                        )}
+                      </Draggable>
+                    ))}
+                  </div>
+                  {provided.placeholder}
                 </div>
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </div>
-      </DragDropContext>
-      <ToastContainer />
-    </div>
+              )}
+            </Droppable>
+
+            <Droppable droppableId="pre-selected">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="flex-1 bg-base-300 min-h-screen"
+                >
+                  <h1 className="text-center bg-violet-400 p-3 font-bold text-base-300 rounded-t-xl">
+                    {preSelected?.length > 0
+                      ? `${preSelected?.length} Pre-Selected`
+                      : "Pre-Selected"}
+                  </h1>
+                  <div>
+                    {preSelected?.map((info: any, index: number) => (
+                      <Draggable
+                        key={info.id}
+                        draggableId={info.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
+                          >
+                            <div className="space-x-3 flex p-2">
+                              <div className="p-5 bg-blue-100 rounded-xl">
+                                <img
+                                  src={info?.profile}
+                                  alt=""
+                                  className=" rounded-full h-[80px] w-[80px] p-2"
+                                />
+                              </div>
+                              <div className="space-y-1">
+                                <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
+                                  {info?.position}
+                                </h2>
+                                <div className="flex space-x-1 items-center">
+                                  <p className="font-bold p-1">{info?.name}</p>
+                                  {info?.premium === "premium" ? (
+                                    <GoVerified />
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                                <div className="flex space-x-3 pl-1">
+                                  <p className="text-sm">
+                                    ${perHour(info?.maxSalary)} / hr
+                                  </p>
+                                  <p className="flex items-center text-sm space-x-1">
+                                    <CiLocationOn className="text-sm" />
+                                    {info?.city}, {info?.country}
+                                  </p>
+                                </div>
+                                {/* feedback for pre - selected */}
+                                <div className="absolute top-2 right-4">
+                                  <label
+                                    htmlFor="my_modal_6"
+                                    className="cursor-pointer ... text-xl"
+                                    title="Feedback"
+                                  >
+                                    <VscFeedback />
+                                  </label>
+                                  <input
+                                    type="checkbox"
+                                    id="my_modal_6"
+                                    className="modal-toggle"
+                                  />
+                                  <div className="modal " role="dialog">
+                                    <div className="modal-box bg-gray-100 mb-10">
+                                      <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                        <label
+                                          htmlFor="my_modal_6"
+                                          className=" btn  text-black text-2xl "
+                                        >
+                                          <MdCancel />
+                                        </label>
+                                      </div>
+                                      <form
+                                        onSubmit={feedBack}
+                                        className="space-y-4 "
+                                      >
+                                        <div
+                                          className="p-4
+                                     bg-white rounded-2xl"
+                                        >
+                                          <label
+                                            htmlFor="additionalInfo"
+                                            className="block text-xl font-bold text-black"
+                                          >
+                                            Anything than can be improved?
+                                          </label>
+                                          <textarea
+                                            id="additionalInfo"
+                                            name="additionalInfo"
+                                            value={comments}
+                                            onChange={(e) =>
+                                              setComments(e.target.value)
+                                            }
+                                            className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                            rows={4}
+                                            placeholder="Enter Your Feedback..."
+                                          ></textarea>
+                                        </div>
+                                        <input
+                                          className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+                                          type="submit"
+                                          value="submit"
+                                        />
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                  </div>
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+
+            <Droppable droppableId="interview">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="flex-1 bg-base-300 min-h-screen"
+                >
+                  <h1 className="text-center bg-violet-500 p-3 font-bold text-base-300 rounded-t-xl">
+                    {interviews?.length > 0
+                      ? `${interviews?.length} Interviews`
+                      : "Interviews"}
+                  </h1>
+                  <div>
+                    {interviews?.map((info: any, index: number) => (
+                      <Draggable
+                        key={info.id}
+                        draggableId={info.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
+                          >
+                            <div className="space-x-3 flex p-2 relative">
+                              <div
+                                className={`p-5 ${
+                                  info?.scheduleInterview
+                                    ? "bg-green-100"
+                                    : "bg-blue-100"
+                                } rounded-xl`}
+                              >
+                                <img
+                                  src={info?.profile}
+                                  alt=""
+                                  className=" rounded-full h-[80px] w-[80px] p-2"
+                                />
+                              </div>
+                              <div className="space-y-1">
+                                <h2
+                                  className={`font-bold text-xs  ${
+                                    info?.scheduleInterview
+                                      ? "bg-green-100"
+                                      : "bg-blue-100"
+                                  } p-2 w-fit rounded-lg`}
+                                >
+                                  {info?.position}
+                                </h2>
+                                <div className="flex space-x-1 items-center">
+                                  <p className="font-bold p-1">{info?.name}</p>
+                                  {info?.premium === "premium" ? (
+                                    <GoVerified />
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                                <div className="flex space-x-3 pl-1">
+                                  <p className="text-sm">
+                                    ${perHour(info?.maxSalary)} / hr
+                                  </p>
+                                  <p className="flex items-center text-sm space-x-1">
+                                    <CiLocationOn className="text-sm" />
+                                    {info?.city}, {info?.country}
+                                  </p>
+                                </div>
+                                <div>
+                                  {info?.scheduleInterview ? (
+                                    <div className="flex items-center text-sm space-x-2 pt-1">
+                                      <p className="pl-1">Interview at:</p>
+                                      <div className="flex items-center text-sm space-x-3">
+                                        <Link
+                                          to={
+                                            info?.scheduleInterview?.googleMeet
+                                          }
+                                          target="_blank"
+                                          title="Google Meet"
+                                          className="hover:scale-150 duration-500"
+                                        >
+                                          <SiGooglemeet />
+                                        </Link>
+                                        <p>
+                                          {convertTo12HourFormat(
+                                            info?.scheduleInterview
+                                              ?.interviewTime
+                                          )}
+                                        </p>
+                                        <p>
+                                          {" "}
+                                          {formatDate(
+                                            info?.scheduleInterview
+                                              ?.interviewDate
+                                          )}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                                {/* Candide feedback for Interview */}
+                                <div className="absolute top-2 right-12">
+                                  <label
+                                    htmlFor="my_modal_6"
+                                    className="cursor-pointer ... text-xl"
+                                    title="Feedback"
+                                  >
+                                    <VscFeedback />
+                                  </label>
+                                  <input
+                                    type="checkbox"
+                                    id="my_modal_6"
+                                    className="modal-toggle"
+                                  />
+                                  <div className="modal " role="dialog">
+                                    <div className="modal-box bg-gray-100 mb-10">
+                                      <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                        <label
+                                          htmlFor="my_modal_6"
+                                          className=" btn  text-black text-2xl "
+                                        >
+                                          <MdCancel />
+                                        </label>
+                                      </div>
+                                      <form
+                                        onSubmit={feedBack}
+                                        className="space-y-4 "
+                                      >
+                                        <div
+                                          className="p-4
+                                     bg-white rounded-2xl"
+                                        >
+                                          <label
+                                            htmlFor="additionalInfo"
+                                            className="block text-xl font-bold text-black"
+                                          >
+                                            Anything than can be improved?
+                                          </label>
+                                          <textarea
+                                            id="additionalInfo"
+                                            name="additionalInfo"
+                                            value={comments}
+                                            onChange={(e) =>
+                                              setComments(e.target.value)
+                                            }
+                                            className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                            rows={4}
+                                            placeholder="Enter Your Feedback..."
+                                          ></textarea>
+                                        </div>
+                                        <input
+                                          className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+                                          type="submit"
+                                          value="submit"
+                                        />
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="absolute top-1 right-2">
+                                  <button
+                                    className="text-xl p-1 hover:text-green-300 duration-1000"
+                                    title="Schedule Interview"
+                                    onClick={() => handleOpenModal(info)}
+                                  >
+                                    <LuCalendarRange />
+                                  </button>
+                                </div>
+                              </div>
+                              {openModal && selectedCandidate && (
+                                <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+                                  <form
+                                    onSubmit={handleSubmit}
+                                    className="bg-white p-8 rounded-lg"
+                                  >
+                                    <h2 className="text-lg font-bold mb-4">
+                                      Schedule Interview for{" "}
+                                      {selectedCandidate?.name}
+                                    </h2>
+
+                                    <div className="mb-4">
+                                      <input
+                                        type="text"
+                                        name="googleMeetLink"
+                                        placeholder="Google meet link"
+                                        className="w-full border border-gray-300 rounded-md p-2"
+                                      />
+                                    </div>
+                                    <div className="flex space-x-3">
+                                      <div className="mb-4">
+                                        <input
+                                          type="time"
+                                          name="time"
+                                          className="border border-gray-300 rounded-md p-2 w-[180px]"
+                                        />
+                                      </div>
+                                      <div className="mb-4">
+                                        <input
+                                          type="date"
+                                          name="date"
+                                          className="border border-gray-300 rounded-md p-2 w-[180px]"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="flex justify-end">
+                                      <button
+                                        type="submit"
+                                        className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-600 w-1/2"
+                                      >
+                                        Schedule
+                                      </button>
+                                      <button
+                                        className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 w-1/2"
+                                        onClick={() => {
+                                          setOpenModal(false);
+                                        }}
+                                      >
+                                        Cancel
+                                      </button>
+                                    </div>
+                                  </form>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                  </div>
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+            <Droppable droppableId="selected">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="flex-1 bg-base-300 min-h-screen"
+                >
+                  <h1 className="text-center bg-violet-600 p-3 font-bold text-base-300 rounded-t-xl">
+                    {selected?.length > 0
+                      ? `${selected?.length} Selected`
+                      : "Selected"}
+                  </h1>
+                  <div>
+                    {selected?.map((info: any, index: number) => (
+                      <Draggable
+                        key={info.id}
+                        draggableId={info.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
+                          >
+                            <div className="space-x-3 flex p-2">
+                              <div className="p-5 bg-blue-100 rounded-xl">
+                                <img
+                                  src={info?.profile}
+                                  alt=""
+                                  className=" rounded-full h-[80px] w-[80px] p-2"
+                                />
+                              </div>
+                              <div className="space-y-1">
+                                <h2 className="font-bold text-xs bg-blue-100 p-2 w-fit rounded-lg">
+                                  {info?.position}
+                                </h2>
+                                <div className="flex space-x-1 items-center">
+                                  <p className="font-bold p-1">{info?.name}</p>
+                                  {info?.premium === "premium" ? (
+                                    <GoVerified />
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                                <div className="flex space-x-3 pl-1">
+                                  <p className="text-sm">
+                                    ${perHour(info?.maxSalary)} / hr
+                                  </p>
+                                  <p className="flex items-center text-sm space-x-1">
+                                    <CiLocationOn className="text-sm" />
+                                    {info?.city}, {info?.country}
+                                  </p>
+                                  <div className="absolute top-3 right-5">
+                                    <label
+                                      htmlFor="my_modal_6"
+                                      className="cursor-pointer ... text-xl"
+                                      title="Feedback"
+                                    >
+                                      <VscFeedback />
+                                    </label>
+                                    <input
+                                      type="checkbox"
+                                      id="my_modal_6"
+                                      className="modal-toggle"
+                                    />
+                                    <div className="modal " role="dialog">
+                                      <div className="modal-box bg-gray-100 mb-10">
+                                        <div className="modal-action flex justify-end -mt-5 -mr-5">
+                                          <label
+                                            htmlFor="my_modal_6"
+                                            className=" btn  text-black text-2xl "
+                                          >
+                                            <MdCancel />
+                                          </label>
+                                        </div>
+                                        <form
+                                          onSubmit={feedBack}
+                                          className="space-y-4 "
+                                        >
+                                          <div
+                                            className="p-4
+                                     bg-white rounded-2xl"
+                                          >
+                                            <label
+                                              htmlFor="additionalInfo"
+                                              className="block text-xl font-bold text-black"
+                                            >
+                                              Anything than can be improved?
+                                            </label>
+                                            <textarea
+                                              id="additionalInfo"
+                                              name="additionalInfo"
+                                              value={comments}
+                                              onChange={(e) =>
+                                                setComments(e.target.value)
+                                              }
+                                              className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+                                              rows={4}
+                                              placeholder="Enter Your Feedback..."
+                                            ></textarea>
+                                          </div>
+                                          <input
+                                            className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+                                            type="submit"
+                                            value="submit"
+                                          />
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                  </div>
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
+        </DragDropContext>
+        <ToastContainer />
+      </div>
+    </>
   );
 };
 

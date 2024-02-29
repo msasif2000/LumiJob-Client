@@ -5,6 +5,8 @@ import CandidateNav from "./CommonNavbar/CandidateNav";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
+import GoToTop from "../component/GoToTop/GoToTop";
 
 interface Candidate {
   name: string;
@@ -40,7 +42,7 @@ const Resume: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCandidates(res.data);
-          //console.log(res.data);
+          console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -51,11 +53,15 @@ const Resume: React.FC = () => {
   };
 
   const handleUpdate = () => {
-    navigate("/dashboard/candidateProfile/Resume/create_resume");
+    navigate("/dashboard/resume/update");
   };
 
   return (
     <>
+      <Helmet>
+        <title>Resume | Dashboard</title>
+      </Helmet>
+      <GoToTop />
       <CandidateNav
         text="Resume"
         btn="Go Back"

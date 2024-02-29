@@ -84,15 +84,15 @@ const Signup: React.FC = () => {
       <Helmet>
         <title>SignUp | LumiJobs</title>
       </Helmet>
-      <div className="w-full min-h-screen flex px-3 mb-4">
+      <div className="w-full min-h-screen flex lg:px-3 md:px-12 px-8  mb-4 mt-8">
         {/* form Div */}
         <div className="lg:w-1/2 flex flex-col items-center justify-center">
           <div className="w-full md:px-10 lg:px-4 xl:px-28">
-            <div className="space-y-6">
+            <div className="space-y-3">
               <h1 className="text-2xl md:text-4xl xl:text-5xl font-semibold">
                 Hey There
               </h1>
-              <p className="xl:text-2xl text-gray-500 pb-3">
+              <p className="xl:text-2xl lg:text-xl text-gray-500 pb-3">
                 Create an account and start you career journey with us &
                 recruiters from all around globe.
               </p>

@@ -7,6 +7,7 @@ import TrustedByCompany from "./TrustedByCompany/TrustedByCompany";
 import { Helmet } from "react-helmet-async";
 import CallToAction from "./CallToAction/CallToAction";
 import useAuth from "../../hooks/useAuth";
+import GoToTop from "../../component/GoToTop/GoToTop";
 
 const Home = () => {
   const { user } = useAuth();
@@ -15,8 +16,9 @@ const Home = () => {
       <Helmet>
         <title>Home | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <Banner />
-      <TrustedByCompany></TrustedByCompany>
+      <TrustedByCompany />
       <HowItWorks />
       {/* <Step></Step> */}
       <PopularJobs />

@@ -4,6 +4,8 @@ import Nodata from "./err/Nodata";
 import Loading from "./err/Loading";
 import { FaCircleUser } from "react-icons/fa6";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import GoToTop from "../../../component/GoToTop/GoToTop";
+import { Helmet } from "react-helmet-async";
 
 interface BlogData {
   id: number;
@@ -22,8 +24,17 @@ const ArticleDetails = () => {
 
   const [data, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
+  const [readingTime, setReadingTime] = useState("");
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const axiosPublic = useAxiosPublic();
+
+  const calculateReadingTime = (text: string): string => {
+    const wordsPerMinute = 200; // Average reading speed in words per minute
+    const words = text.split(/\s+/).length; // Split text by spaces to count words
+    const minutes = words / wordsPerMinute; // Calculate reading time in minutes
+    const readingTime = Math.ceil(minutes); // Round up to the nearest minute
+    return `${readingTime} min read`; // Format the reading time
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -34,6 +45,8 @@ const ArticleDetails = () => {
         // console.log(res.data);
         setData(res.data);
         setLoading(false);
+        const readingTime = calculateReadingTime(res.data.details);
+        setReadingTime(readingTime);
       })
       .catch((error) => {
         console.error("Error fetching blog details:", error);
@@ -65,8 +78,8 @@ const ArticleDetails = () => {
         "pageYOffset" in window
           ? window.pageYOffset
           : "scrollTop" in document.documentElement
-          ? document.documentElement.scrollTop
-          : document.body.scrollTop;
+            ? document.documentElement.scrollTop
+            : document.body.scrollTop;
 
       const scrollPercentage =
         (scrollTop / (documentHeight - windowHeight)) * 100;
@@ -106,10 +119,14 @@ const ArticleDetails = () => {
       ) : (
         <>
           <div className="fixed w-full"></div>
+          <Helmet>
+            <title>{data ? data.title : "Article Details"}</title>
+          </Helmet>
           <div
-            className="h-[6px] bg-gradient-to-r from-[#98ff98] via-[#fff45c] to-[#ff4739] fixed"
+            className="h-[2px] bg-accentTwo backdrop-blur-md fixed"
             style={{ width: `${scrollPercentage}%` }}
           ></div>
+          <GoToTop />
           <div className="max-w-screen-2xl mx-auto py-20 px-4">
             {data ? (
               <div className="lg:flex py-6">
@@ -126,7 +143,7 @@ const ArticleDetails = () => {
                   <div className="flex justify-between items-center text-lg font-normal text-gray-500">
                     <p>{data.date}</p>
                     <p className="text-accentTwo  font-semibold">
-                      {data.readTime} read
+                      {readingTime} 
                     </p>
                   </div>
                 </div>

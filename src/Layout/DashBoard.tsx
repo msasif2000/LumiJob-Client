@@ -260,8 +260,7 @@ const DashBoard = () => {
                     </h6>
                   </div>
                 </div>
-
-                <ul className="menu text-xl">{Links}</ul>
+                <ul className="menu text-xl ">{Links}</ul>
               </div>
               <div>
                 <div className="divider mx-4"></div>

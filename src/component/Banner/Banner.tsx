@@ -10,7 +10,15 @@ const Banner = () => {
   return (
     <section className="bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:36px_36px] -mt-16">
       <div className="max-w-screen-xl mx-auto px-4 py-10 relative">
-        <div className="flex flex-col justify-center items-center text-center min-h-[60svh] md:min-h-[40vh] lg:min-h-[80vh] 2xl:min-h-[80vh] z-20 mt-12 2xl:mt-0 ">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            transition: { delay: 0.5, duration: 1.5 },
+          }}
+          className="flex flex-col justify-center items-center text-center min-h-[60svh] md:min-h-[40vh] lg:min-h-[80vh] 2xl:min-h-[78vh] z-20 mt-12 2xl:mt-0 "
+        >
           <h2 className="text-[#3F3F46] text-[1.4rem] md:text-5xl lg:text-6xl 2xl:text-[5.3rem] font-heading font-semibold my-12 z-10 flex flex-wrap items-center justify-center">
             Empowering
             <img
@@ -61,7 +69,7 @@ const Banner = () => {
             alt="icon"
             className="w-20 absolute bottom-[40%] right-16 opacity-50 z-[1]"
           /> */}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

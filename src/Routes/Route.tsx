@@ -39,13 +39,11 @@ import Post_A_Blog from "../Company/Post_A_Blog";
 import CandidateDetails from "../Pages/CandidateDetails/CandidateDetails";
 import FindCandidate from "../Pages/FindCandidate/FindCandidate";
 
-import CompleteResume from "../Candidate/UpdateCmponents/CompleteResume";
-
 import EditBlog from "../Company/EditBlog";
 import Seminars from "../Company/Seminars";
 // import Post_A_Seminar from "../Company/Post_A_Seminar";
 import ManageApplicants from "../Company/ManageApplicants";
-import CandidateResume from "../Candidate/CandidateResume";
+// import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
 
@@ -86,11 +84,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/insights/:_id",
-        element: (
-          <PrivateRoute>
-            <ArticleDetails />
-          </PrivateRoute>
-        ),
+        element: <ArticleDetails />,
       },
       {
         path: "/contact",
@@ -98,11 +92,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: (
-          <PrivateRoute>
-            <JobsDetails></JobsDetails>
-          </PrivateRoute>
-        ),
+        element: <JobsDetails></JobsDetails>,
       },
       {
         path: "/manage-applicants/:id",
@@ -113,13 +103,13 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/top-company-detailsProfiles/:id",
+        path: "/company-details-profile/:id",
         element: <TopCompanyProfile></TopCompanyProfile>,
       },
-      {
-        path: "/companyProfileView/:email",
-        element: <TopCompanyProfile></TopCompanyProfile>,
-      },
+      // {
+      //   path: "/companyProfileView/:id",
+      //   element: <TopCompanyProfile></TopCompanyProfile>,
+      // },
       {
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
@@ -128,7 +118,6 @@ export const router = createBrowserRouter([
       //   path: "/candidateProfileView/:id",
       //   element: <CandidateDetails></CandidateDetails>,
       // },
-
     ],
   },
 
@@ -203,18 +192,15 @@ export const router = createBrowserRouter([
         path: "candidateProfile/update",
         element: <CandidateProUpdate />,
       },
-      {
-        path: "candidateProfile/resume/create_resume",
-        element: <CompleteResume />,
-      },
-      {
-        path: "candidateProfile/resume",
-        element: <Resume></Resume>,
-      },
+
       {
         path: "resume",
-        element: <CandidateResume></CandidateResume>,
+        element: <Resume></Resume>,
       },
+      // {
+      //   path: "resume",
+      //   element: <CandidateResume></CandidateResume>,
+      // },
       {
         path: "resume/update",
         element: <CandidateResumeUpdate></CandidateResumeUpdate>,

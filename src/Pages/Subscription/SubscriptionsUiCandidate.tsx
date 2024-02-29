@@ -5,6 +5,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GoToTop from "../../component/GoToTop/GoToTop";
 
 const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
@@ -50,6 +51,7 @@ const SubscriptionsUiCandidate = () => {
       <Helmet>
         <title>Candidate Subscription | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="max-w-screen-2xl mx-auto px-4">
         <section className="bg-white ">
           <div className="py-8 lg:py-16 ">

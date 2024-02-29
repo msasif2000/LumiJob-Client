@@ -55,11 +55,11 @@ const Login: React.FC = () => {
       <Helmet>
         <title>Login | LumiJobs</title>
       </Helmet>
-      <div className="w-full min-h-screen flex px-3 mb-4">
+      <div className="w-full min-h-screen flex lg:px-3 md:px-12 px-8  mb-4 mt-8">
         {/* form div */}
         <div className="lg:w-1/2 flex flex-col items-center justify-center">
           <div className="w-full md:px-10 lg:px-4 xl:px-28">
-            <div className="space-y-6">
+            <div className="space-y-3">
               <h1 className="text-2xl md:text-4xl xl:text-5xl font-semibold">
                 Welcome Back <span className="lg:text-5xl">👋🏻</span>
               </h1>

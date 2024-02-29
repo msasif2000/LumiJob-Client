@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+import GoToTop from "../../component/GoToTop/GoToTop";
 
 const SubscriptionsUiCompany = () => {
   const { user } = useAuth();
@@ -28,8 +29,7 @@ const SubscriptionsUiCompany = () => {
     };
     //console.log(paymentInfo);
 
-    axiosPublic.post("/subscription", paymentInfo)
-    .then((res) => {
+    axiosPublic.post("/subscription", paymentInfo).then((res) => {
       if (res.data) {
         navigate("/payment");
       }
@@ -41,6 +41,7 @@ const SubscriptionsUiCompany = () => {
       <Helmet>
         <title>Company Subscription | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="max-w-screen-2xl mx-auto px-4">
         <section className="bg-white">
           <div className="py-8 lg:py-16">

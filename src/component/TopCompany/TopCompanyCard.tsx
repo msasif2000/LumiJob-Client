@@ -17,7 +17,7 @@ const TopCompanyCard: React.FC<{ company: Company }> = ({ company }) => {
 
   return (
     <div>
-      <Link to={`/top-company-detailsProfiles/${_id}`}>
+      <Link to={`/company-details-profile/${_id}`}>
         <div className="border p-4 rounded-lg shadow-none lg:shadow-sm transform transition-transform hover:translate-y-[-3px] ease-in-out duration-300 hover:border-accent cursor-pointer">
           <div className="flex gap-5 items-center">
             <div className=" gap-4 items-center">
