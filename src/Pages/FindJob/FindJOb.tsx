@@ -11,6 +11,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 // import Loading from "../Blogs/components/err/Loading";
 import JobLoading from "../../component/err & loading/JobLoading";
+import GoToTop from "../../component/GoToTop/GoToTop";
 
 const FindJob: React.FC = () => {
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
@@ -26,17 +27,12 @@ const FindJob: React.FC = () => {
     },
   });
 
-
-
   useEffect(() => {
     setCurrentJobs((prevJobs) => {
       if (!popularJobs || !Array.isArray(popularJobs)) return prevJobs;
       return popularJobs;
     });
   }, [popularJobs]);
-
-
-
 
   const handleFilterChange = (filteredData: Job[]) => {
     setCurrentJobs(filteredData);
@@ -57,7 +53,6 @@ const FindJob: React.FC = () => {
         <title>Find Jobs | LumiJobs</title>
       </Helmet>
       <div className="">
-
         <div className="mt-14 mb-5 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
             Navigate <span className="text-[#4869DD]">Opportunities</span> and
@@ -85,8 +80,9 @@ const FindJob: React.FC = () => {
               </div>
 
               {/* ===> Showing jobs <=== */}
-              {isLoading ? <JobLoading></JobLoading> 
-              :
+              {isLoading ? (
+                <JobLoading></JobLoading>
+              ) : (
                 <div className="grid grid-cols-1 gap-8 p-3">
                   {currentJobs
                     .slice(
@@ -96,8 +92,8 @@ const FindJob: React.FC = () => {
                     .map((job: Job) => (
                       <FindJobCard key={job._id} job={job}></FindJobCard>
                     ))}
-                </div>}
-
+                </div>
+              )}
 
               {currentJobs.length > jobsPerPage && (
                 <div className="py-12">
@@ -119,6 +115,7 @@ const FindJob: React.FC = () => {
           </div>
         </div>
       </div>
+      <GoToTop />
     </>
   );
 };
