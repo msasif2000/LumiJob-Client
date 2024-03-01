@@ -336,6 +336,7 @@ const ManageApplicants = () => {
           });
 
           setOpenModal(false);
+          refetchInterview();
         } else {
           toast.warning("Something went wrong!");
         }
