@@ -19,7 +19,7 @@ const TopCompany = () => {
     fetchData();
   }, [axiosPublic]);
 
-  const filterJob = allCompany.slice(0, 6);
+  const filterJob = allCompany.slice(2, 8);
 
   return (
     <div className="max-w-screen-2xl mx-auto py-16 px-4">
