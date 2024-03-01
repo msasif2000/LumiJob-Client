@@ -5,7 +5,7 @@
 
 const Hero = () => {
   return (
-    <div className="h-[440px] md:h-[560px] lg:min-h-screen  relative overflow-hidden bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
+    <div className="h-[440px] md:h-[660px] lg:min-h-screen  relative overflow-hidden bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pt-20 pb-10 -mt-20">
       <div className="max-w-screen-2xl mx-auto px-4">
         <div className="space-y-10 lg:space-y-20 relative z-10">
           <h3 className="text-4xl md:text-7xl lg:text-9xl font-heading font-bold pt-20 relative z-10">
