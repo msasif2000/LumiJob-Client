@@ -26,10 +26,12 @@ const TrustedByCompany = () => {
 
   return (
     <>
-      <div className="w-full min-h-24 bg-gray-50 flex items-center py-6">
+      <div className="w-full min-h-20 bg-gray-50 flex items-center py-6 px-4">
         <div className="flex w-full flex-wrap items-center justify-center mx-auto">
-          <h3 className="text-xl underline mb-3">Trusted By</h3>
-          <div className="flex w-full flex-wrap  items-center justify-center gap-10 ">
+          <h3 className="text-xl font-semibold underline mb-3 -mt-28">
+            Trusted By
+          </h3>
+          <div className="flex w-full flex-wrap  items-center justify-center gap-10 lg:gap-24 ">
             {images.map((image, index) => (
               <motion.img
                 key={index}
