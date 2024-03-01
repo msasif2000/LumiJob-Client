@@ -13,7 +13,7 @@ import GoToTop from "../../component/GoToTop/GoToTop";
 const FindCandidate: React.FC = () => {
   const [currentCandidates, setCurrentCandidates] = useState<Candidate[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [dataPerPage] = useState<number>(4);
+  const [dataPerPage] = useState<number>(9);
   const axiosPublic = useAxiosPublic();
   const { data: allCandidates = [] } = useQuery({
     queryKey: ["allCandidates"],
@@ -48,9 +48,10 @@ const FindCandidate: React.FC = () => {
       </Helmet>
       <GoToTop />
       <div className="">
-        <div className="my-16 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
+        <div className=" my-4 md:my-8 xl:my-12  w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
           {/*=======> Search <============= */}
           <CSearch onSearchResult={handleSearchResult}></CSearch>
+          <hr />
         </div>
 
         <div className="">
@@ -61,9 +62,9 @@ const FindCandidate: React.FC = () => {
             {/* </div> */}
 
             {/* =============> Middle column <============== */}
-            <div className="lg:w-2/4 md:w-2/3">
+            <div className="">
               {/* ===> Showing jobs <=== */}
-              <div className="grid grid-cols-1 px-3 gap-2 ">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 px-3 gap-4 ">
                 {currentCandidates
                   .slice(
                     (currentPage - 1) * dataPerPage,
