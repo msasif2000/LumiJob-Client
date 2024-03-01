@@ -17,6 +17,8 @@ interface Job {
   salaryRange: any;
   jobType: string;
   experience: string;
+  workTime: string;
+
 }
 
 export default Job;
