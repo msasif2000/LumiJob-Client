@@ -13,24 +13,26 @@ const Navbar: React.FC<NavbarProps> = () => {
   const axiosPublic = useAxiosPublic();
   const [userData, setUserData] = useState<{ _id: string; value: number }>();
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  const [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
+    if (user && premium === "premium") {
+      setIsPremium(true);
+    } else {
+      setIsPremium(false);
+    }
+  }, [user]);
 
+  useEffect(() => {
     if (role === "candidate") {
-      axiosPublic.get(`/specific-candidate/${user?.email}`)
-        .then((res) => {
-          setUserData(res.data);
-        });
+      axiosPublic.get(`/specific-candidate/${user?.email}`).then((res) => {
+        setUserData(res.data);
+      });
+    } else if (role === "company") {
+      axiosPublic.get(`/specific-company/${user?.email}`).then((res) => {
+        setUserData(res.data);
+      });
     }
-    else if (role === "company") {
-      axiosPublic.get(`/specific-company/${user?.email}`)
-        .then((res) => {
-          setUserData(res.data);
-        });
-    }
-
-
   }, [user?.email, role, axiosPublic]);
 
   useEffect(() => {
@@ -87,10 +89,11 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <div
-      className={`sticky top-0 z-30 ${scrollPosition > 30
-        ? `backdrop-blur-md bg-white/30 border-b border-b-[#e4e5e7]`
-        : ""
-        }`}
+      className={`sticky top-0 z-30 ${
+        scrollPosition > 30
+          ? `backdrop-blur-md bg-white/30 border-b border-b-[#e4e5e7]`
+          : ""
+      }`}
     >
       <div className="navbar max-w-screen-2xl mx-auto px-4">
         <div className="navbar-start">
@@ -130,66 +133,70 @@ const Navbar: React.FC<NavbarProps> = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="mr-24 hidden md:block ">
-            {role === "candidate" ? (
-              <Link to="/subscriptionsUiCandidate">
-                <button className="button ">
-                  <div className="flex items-center gap-2 ">
-                    Upgrade
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="icon"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </button>
-              </Link>
-            ) : role === "company" ? (
-              <Link to="/subscriptionsUiCompany">
-                <button className="button ">
-                  <div className="flex items-center gap-2 ">
-                    Upgrade
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="icon"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </button>
-              </Link>
-            ) : (
-              <Link to="/optionsSubscribe">
-                <button className="button ">
-                  <div className="flex items-center gap-2 ">
-                    Upgrade
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="icon"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </button>
-              </Link>
-            )}
-          </div>
+          {!isPremium ? (
+            <div className="mr-24 hidden md:block ">
+              {role === "candidate" ? (
+                <Link to="/subscriptionsUiCandidate">
+                  <button className="button ">
+                    <div className="flex items-center gap-2 ">
+                      Upgrade
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        className="icon"
+                      >
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </button>
+                </Link>
+              ) : role === "company" ? (
+                <Link to="/subscriptionsUiCompany">
+                  <button className="button ">
+                    <div className="flex items-center gap-2 ">
+                      Upgrade
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        className="icon"
+                      >
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/optionsSubscribe">
+                  <button className="button ">
+                    <div className="flex items-center gap-2 ">
+                      Upgrade
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        className="icon"
+                      >
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </button>
+                </Link>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
 
           <div>
             {user ? (
@@ -201,10 +208,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div
-                    className={`w-20 rounded-full ${premium === "premium"
-                      ? "ring-4 ring-blue-400 ring-offset-2"
-                      : ""
-                      }`}
+                    className={`w-20 rounded-full ${
+                      premium === "premium"
+                        ? "ring-4 ring-blue-400 ring-offset-2"
+                        : ""
+                    }`}
                   >
                     {user ? (
                       <img
