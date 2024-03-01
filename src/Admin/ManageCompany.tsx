@@ -108,18 +108,19 @@ const ManageCompany = () => {
             {/* row 1 */}
           </tbody>
         </table>
-        {companyData.length > dataPerPage && (
-          <div className="py-12">
-            {/* ==>  Pagination <== */}
-            <CPagination
-              totalData={companyData.length}
-              dataPerPage={dataPerPage}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            ></CPagination>
-          </div>
-        )}
+
       </div>
+      {companyData.length > dataPerPage && (
+        <div className="py-12">
+          {/* ==>  Pagination <== */}
+          <CPagination
+            totalData={companyData.length}
+            dataPerPage={dataPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          ></CPagination>
+        </div>
+      )}
     </div>
   );
 };

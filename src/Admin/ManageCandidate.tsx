@@ -36,17 +36,18 @@ const ManageCandidate = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/delCandidate/${id}`).then((res) => {
-          // console.log(res);
-          if (res.data.deletedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Deleted!",
-              text: "Delete Successfully",
-              icon: "success",
-            });
-          }
-        });
+        axiosPublic.delete(`/delCandidate/${id}`)
+          .then((res) => {
+            // console.log(res);
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Delete Successfully",
+                icon: "success",
+              });
+            }
+          });
       }
     });
   };
@@ -113,18 +114,18 @@ const ManageCandidate = () => {
               ))}
           </tbody>
         </table>
-        {candidates.length > dataPerPage && (
-          <div className="py-12">
-            {/* ==>  Pagination <== */}
-            <CPagination
-              totalData={candidates.length}
-              dataPerPage={dataPerPage}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            ></CPagination>
-          </div>
-        )}
       </div>
+      {candidates.length > dataPerPage && (
+        <div className="py-12">
+          {/* ==>  Pagination <== */}
+          <CPagination
+            totalData={candidates.length}
+            dataPerPage={dataPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          ></CPagination>
+        </div>
+      )}
     </>
   );
 };

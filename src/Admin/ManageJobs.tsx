@@ -98,7 +98,7 @@ const ManageJobs = () => {
                   <td className="font-bold">{jobs.title}</td>
                   <td>{jobs.post_time.split("T")[0]}</td>
 
-                  <td>
+                  <td className="flex">
                     <Link
                       className="inline-block relative group"
                       to={`/details/${jobs._id}`}
@@ -126,18 +126,18 @@ const ManageJobs = () => {
               {/* row 1 */}
             </tbody>
           </table>
-          {PostedData.length > dataPerPage && (
-            <div className="py-12">
-              {/* ==>  Pagination <== */}
-              <CPagination
-                totalData={PostedData.length}
-                dataPerPage={dataPerPage}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-              ></CPagination>
-            </div>
-          )}
         </div>
+        {PostedData.length > dataPerPage && (
+          <div className="py-12">
+            {/* ==>  Pagination <== */}
+            <CPagination
+              totalData={PostedData.length}
+              dataPerPage={dataPerPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            ></CPagination>
+          </div>
+        )}
       </div>
     </div>
   );

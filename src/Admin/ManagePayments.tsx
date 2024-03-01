@@ -77,18 +77,19 @@ const ManagePayments = () => {
               ))}
           </tbody>
         </table>
-        {payments.length > dataPerPage && (
-          <div className="py-12">
-            {/* ==>  Pagination <== */}
-            <CPagination
-              totalData={payments.length}
-              dataPerPage={dataPerPage}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            ></CPagination>
-          </div>
-        )}
+
       </div>
+      {payments.length > dataPerPage && (
+        <div className="py-12">
+          {/* ==>  Pagination <== */}
+          <CPagination
+            totalData={payments.length}
+            dataPerPage={dataPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          ></CPagination>
+        </div>
+      )}
     </>
   );
 };

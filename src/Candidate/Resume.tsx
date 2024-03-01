@@ -40,7 +40,7 @@ const Resume: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCandidates(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -63,8 +63,8 @@ const Resume: React.FC = () => {
         btn2="Complete Resume"
         handleClick2={handleUpdate}
       />
-      <div className="p-5 bg-base-100">
-        <div className="border-2 p-20">
+      <div className="overflow-x-auto max-w-screen-xl mx-auto p-5 bg-base-100">
+        <div className="border-2 xl:p-20 lg:p-8 md:p-4 p-2">
           {/* Head */}
           <div>
             <p className="text-[3rem]">{candidate?.name}</p>
