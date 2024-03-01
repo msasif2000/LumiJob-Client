@@ -12,9 +12,7 @@ interface prop {
   job: any;
   handleDelete: (id: string, jobId: string) => void;
   key: any;
-
 }
-
 
 const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const [cancel, setCancel] = useState(false);
@@ -23,7 +21,6 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const handleConfirm = () => {
     setShowConfirmation(true);
   };
-
 
   const id = job._id;
   //console.log(id);
@@ -88,11 +85,16 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       onMouseLeave={() => setCancel(false)}
     >
       <div
-        className={`card ${job?.scheduleInterview ? "bg-green-100 bg-opacity-60" : "bg-base-100"
-          }  hover:shadow-xl duration-1000 h-full`}
+        className={`card ${
+          job?.scheduleInterview ? "bg-green-100 bg-opacity-60" : "bg-base-100"
+        }  hover:shadow-xl duration-1000 h-full`}
       >
         <div className="card-body lg:p-4 xl:p-6">
-          <Link key={job._id} to={`/details/${job.jobId}`} className="space-y-4">
+          <Link
+            key={job._id}
+            to={`/details/${job.jobId}`}
+            className="space-y-4"
+          >
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.title}</p>
@@ -133,9 +135,14 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
               )}
             </div>
           ) : (
-            <div>
-              <p className="flex items-center gap-1"><ImLocation className="text-xl" /> {job?.location}</p>
-              <p className="flex items-center justify-end gap-1">{formatDeadlineDate(job?.deadline)}<CgTime className="text-xl" /></p>
+            <div className="flex items-center justify-between">
+              <p className="flex items-center gap-1">
+                <ImLocation className="text-xl" /> {job?.location}
+              </p>
+              <p className="flex items-center justify-end gap-1">
+                <CgTime className="text-xl" />
+                {formatDeadlineDate(job?.deadline)}
+              </p>
             </div>
           )}
         </div>
@@ -148,26 +155,44 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
           />
         </div>
       )}
-      {(cancel && companyFeedbacks) && (
+      {cancel && companyFeedbacks && (
         <div className="absolute top-10 -right-36 xl:right-1">
-          <TbMessage onClick={() => (document.getElementById('my_modal_3') as HTMLDialogElement)?.showModal()} className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150" />
+          <TbMessage
+            onClick={() =>
+              (
+                document.getElementById("my_modal_3") as HTMLDialogElement
+              )?.showModal()
+            }
+            className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+          />
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box bg-gray-100 shadow-xl">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
               </form>
               <div className="p-4 bg-white rounded-lg">
-                <h3 className="font-bold text-2xl text-left">Feedback for you</h3>
+                <h3 className="font-bold text-2xl text-left">
+                  Feedback for you
+                </h3>
                 <div>
-                  <p className="py-4 mb-2 text-justify"> <p className="font-bold">feedback :</p> {companyFeedbacks?.comments} </p>
-                  <p className="text-xl text-gray-500">if your any issue contact us : <span className="font-bold">{companyFeedbacks?.companyEmail}.</span></p>
+                  <p className="py-4 mb-2 text-justify">
+                    {" "}
+                    <p className="font-bold">feedback :</p>{" "}
+                    {companyFeedbacks?.comments}{" "}
+                  </p>
+                  <p className="text-xl text-gray-500">
+                    if your any issue contact us :{" "}
+                    <span className="font-bold">
+                      {companyFeedbacks?.companyEmail}.
+                    </span>
+                  </p>
                 </div>
               </div>
-
             </div>
           </dialog>
-
         </div>
       )}
       {showConfirmation && (

@@ -152,10 +152,10 @@ const JobPostingForm: React.FC = () => {
         handleClick2={() => {}}
       />
       <div className="min-h-screen">
-        <div className=" bg-white px-2 pb-5">
+        <div className="py-5">
           <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             {/* Company Info */}
-            <div className="md:flex md:space-x-10 py-10">
+            <div className="md:flex bg-white md:space-x-10 p-10">
               <div className="form-control w-full">
                 <input
                   type="text"
@@ -165,7 +165,7 @@ const JobPostingForm: React.FC = () => {
                   placeholder="Job Title"
                 />
               </div>
-              <div className="form-control w-full">
+              <div className=" form-control w-full">
                 <input
                   type="text"
                   {...register("sectorType")}
@@ -187,7 +187,7 @@ const JobPostingForm: React.FC = () => {
 
             {/* Job Details */}
             <div className="pb-10 space-y-6">
-              <div className="flex space-x-10">
+              <div className="flex bg-white p-10 space-x-10">
                 <div className="form-control w-full">
                   <textarea
                     rows={3}
@@ -198,7 +198,7 @@ const JobPostingForm: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex space-x-10">
+              <div className="flex bg-white p-10 space-x-10">
                 <div className="form-control w-full">
                   <textarea
                     rows={3}
@@ -210,7 +210,7 @@ const JobPostingForm: React.FC = () => {
               </div>
 
               {/* Requirements */}
-              <div className="form-control w-full pt-10">
+              <div className="form-control bg-white p-10 w-full pt-10">
                 <label
                   className="font-bold text-gray-400 text-xl"
                   htmlFor="requirements"
@@ -244,7 +244,7 @@ const JobPostingForm: React.FC = () => {
               </div>
 
               {/* Responsibility */}
-              <div className="form-control w-full">
+              <div className="form-control bg-white p-10 w-full">
                 <label
                   className="font-bold text-gray-400 text-xl"
                   htmlFor="requirements"
@@ -278,7 +278,7 @@ const JobPostingForm: React.FC = () => {
               </div>
 
               {/* Skills */}
-              <div className="form-control w-full">
+              <div className="form-control bg-white p-10 w-full">
                 <label
                   className="font-bold text-gray-400 text-xl"
                   htmlFor="requirements"
@@ -312,7 +312,7 @@ const JobPostingForm: React.FC = () => {
               </div>
 
               {/* Perks */}
-              <div className="form-control w-full">
+              <div className="form-control bg-white p-10 w-full">
                 <label
                   className="font-bold text-gray-400 text-xl"
                   htmlFor="requirements"
@@ -346,7 +346,7 @@ const JobPostingForm: React.FC = () => {
               </div>
 
               {/* Job type */}
-              <div className="flex space-x-10">
+              <div className="flex bg-white p-10 space-x-10">
                 <div className="form-control w-full">
                   <select
                     defaultValue="Job Type"
@@ -378,7 +378,7 @@ const JobPostingForm: React.FC = () => {
                 </div>
               </div>
               {/* Deadline Experience */}
-              <div className="md:flex md:space-x-10">
+              <div className="md:flex bg-white p-10 md:space-x-10">
                 <div className="form-control w-full">
                   <DatePicker
                     selected={dates}
@@ -401,7 +401,7 @@ const JobPostingForm: React.FC = () => {
               </div>
 
               {/* Salary Range */}
-              <div className="flex space-x-10">
+              <div className="flex bg-white p-10 space-x-10">
                 <div className="form-control w-full">
                   <input
                     type="number"
@@ -420,7 +420,7 @@ const JobPostingForm: React.FC = () => {
                 </div>
               </div>
               <div>
-                <div className="form-control w-full">
+                <div className="form-control bg-white p-10 w-full">
                   <textarea
                     {...register("application")}
                     className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"

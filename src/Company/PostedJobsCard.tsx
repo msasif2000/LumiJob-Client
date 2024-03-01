@@ -52,7 +52,7 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
               <p className="text-right">${job?.salaryRange.min}</p>
             </div>
             <p>{job?.description}</p>
-            <div className="">
+            <div className="flex">
             <p className="flex gap-1 items-center"><CgWorkAlt className="text-2xl"/>{job?.sectorType}</p>
               <p className="text-violet-500 text-right font-semibold">
                 {
@@ -62,12 +62,12 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
                     </>
                     :
                     <>
-                      <p className="flex gap-1 items-center justify-end">No Applicants <HiUserGroup className="text-xl" /></p>
+                      <p className="flex gap-1 items-center justify-end">None<HiUserGroup className="text-xl" /></p>
                     </>
                 }
               </p>
             </div>
-            <div className="">
+            <div className="flex">
               <p className="flex gap-1 items-center"><GoLocation className="text-xl" />{job?.location}</p>
               <p className="flex items-center justify-end gap-1 text-violet-500 font-semibold">
                 {formatDeadlineDate(job?.deadline)} <BiTime className="text-xl" />
@@ -77,7 +77,7 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
         </div>
       </Link>
       {showDeleteIcon && (
-        <div className="absolute top-8 right-8 bg-red-600 p-2 rounded">
+        <div className="absolute top-4 right-6 bg-red-600 p-2 rounded">
           <RiDeleteBinLine
             className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
             onClick={confirmDelete} // Show confirmation dialog on click
