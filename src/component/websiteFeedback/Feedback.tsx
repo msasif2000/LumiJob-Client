@@ -9,20 +9,25 @@ interface Comments {
 
 
 const Feedback = () => {
-  const [rating, setRating] = useState<number>(0);
-  const handleRatingChange = (value: number) => {
+  const [InterfaceRating, setRating] = useState<number>(0);
+  const [supportRating, setRating1] = useState<number>(0);
+  const websiteInterfaceRating = (value: number) => {
     setRating(value);
+  };
+  const supportTeamRating = (value: number) => {
+    setRating1(value);
   };
 
 //const [comments, setComments] = useState<string | any>("");
 const feedBack = (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   const form = e.currentTarget;
-  const anyCements = (
-    form.elements.namedItem("additionalInfo") as HTMLInputElement
-  ).value;
+  const anyCements = (form.elements.namedItem("additionalInfo") as HTMLInputElement).value;
+  const allFeedback = {
+    anyCements, InterfaceRating, supportRating
+  }
 
-  console.log(anyCements, rating);
+  console.log(allFeedback);
 };
   return (
     <div className="pt-8 ">
@@ -30,6 +35,7 @@ const feedBack = (e: FormEvent<HTMLFormElement>) => {
         Lumi-Jobs website Feedback
       </h1>
       <form onSubmit={feedBack} className="space-y-4 mt-4">
+        {/* Rating our website interface */}
         <div className="p-4 bg-white rounded-2xl">
           <label
             htmlFor="additionalInfo"
@@ -42,7 +48,23 @@ const feedBack = (e: FormEvent<HTMLFormElement>) => {
             emptySymbol={<FaRegStar />}
             fullSymbol={<FaStar />}
             fractions={2}
-            onChange={handleRatingChange}
+            onChange={websiteInterfaceRating}
+          />
+        </div>
+        {/* support team Rating */}
+        <div className="p-4 bg-white rounded-2xl">
+          <label
+            htmlFor="additionalInfo"
+            className="block text-xl font-bold text-black"
+          >
+            How would you rating the support team at Lumijobs website?
+          </label>
+          <Rating
+          className="my-4 text-2xl"
+            emptySymbol={<FaRegStar />}
+            fullSymbol={<FaStar />}
+            fractions={2}
+            onChange={supportTeamRating}
           />
         </div>
 
