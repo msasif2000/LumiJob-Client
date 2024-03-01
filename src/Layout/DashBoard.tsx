@@ -96,6 +96,13 @@ const DashBoard = () => {
             Bookmarks
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/dashboard/feedback">
+          <GoCodeReview className="text-xl" />
+            Website Feedback
+          </NavLink>
+        </li>
+        
         {/* <li>
           <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
         </li> */}

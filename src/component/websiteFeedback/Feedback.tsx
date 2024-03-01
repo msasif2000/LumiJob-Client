@@ -31,7 +31,7 @@ const feedBack = (e: FormEvent<HTMLFormElement>) => {
 };
   return (
     <div className="pt-8 ">
-      <h1 className="text-4xl font-bold text-center">
+      <h1 className="text-4xl font-extrabold text-center">
         Lumi-Jobs website Feedback
       </h1>
       <form onSubmit={feedBack} className="space-y-4 mt-4">
@@ -41,12 +41,12 @@ const feedBack = (e: FormEvent<HTMLFormElement>) => {
             htmlFor="additionalInfo"
             className="block text-xl font-bold text-black"
           >
-            Could you please Rating our website interface?
+            1. Could you please Rating our website interface?
           </label>
           <Rating
-          className="my-4 text-2xl"
-            emptySymbol={<FaRegStar />}
-            fullSymbol={<FaStar />}
+          className="my-4 text-2xl md:text-3xl lg:text-4xl"
+            emptySymbol={<FaRegStar className="text-[#4869DD]" />}
+            fullSymbol={<FaStar className="text-[#4869DD]" />}
             fractions={2}
             onChange={websiteInterfaceRating}
           />
@@ -57,12 +57,12 @@ const feedBack = (e: FormEvent<HTMLFormElement>) => {
             htmlFor="additionalInfo"
             className="block text-xl font-bold text-black"
           >
-            How would you rating the support team at Lumijobs website?
+            2. How would you rating the support team at Lumijobs website?
           </label>
           <Rating
-          className="my-4 text-2xl"
-            emptySymbol={<FaRegStar />}
-            fullSymbol={<FaStar />}
+          className="my-4 text-2xl md:text-3xl lg:text-4xl"
+            emptySymbol={<FaRegStar className="text-[#4869DD]" />}
+            fullSymbol={<FaStar className="text-[#4869DD]" />}
             fractions={2}
             onChange={supportTeamRating}
           />
@@ -73,7 +73,7 @@ const feedBack = (e: FormEvent<HTMLFormElement>) => {
             htmlFor="additionalInfo"
             className="block text-xl font-bold text-black"
           >
-            Anything Feedback for Lumi-Jobs Website?
+            3. Anything Feedback for Lumi-Jobs Website?
           </label>
           <textarea
             id="additionalInfo"
@@ -84,7 +84,7 @@ const feedBack = (e: FormEvent<HTMLFormElement>) => {
           ></textarea>
         </div>
         <input
-          className="w-full btn bg-green-600 hover:bg-green-600 text-white "
+          className="w-full btn bg-[#4869DD] hover:bg-[#3150c0] text-white "
           type="submit"
           value="submit"
         />
