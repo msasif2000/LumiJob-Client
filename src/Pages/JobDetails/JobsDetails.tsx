@@ -161,6 +161,13 @@ const JobsDetails: React.FC = () => {
             autoClose: 2000,
             closeOnClick: true,
           });
+        } else if (res.data.message === "Please upload a resume") {
+          toast.warn("Please upload a resume", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
         } else if (res.data.message === "Please update subscription") {
           toast.success("You've reached your apply limit", {
             position: "top-center",
@@ -272,6 +279,15 @@ const JobsDetails: React.FC = () => {
                         ) {
                         } else if (res.data.message === "Already applied") {
                           toast.success("You have Already Applied", {
+                            position: "top-center",
+                            hideProgressBar: true,
+                            autoClose: 2000,
+                            closeOnClick: true,
+                          });
+                        } else if (
+                          res.data.message === "Please upload a resume"
+                        ) {
+                          toast.warn("Please upload a resume", {
                             position: "top-center",
                             hideProgressBar: true,
                             autoClose: 2000,
