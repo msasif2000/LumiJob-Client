@@ -11,6 +11,7 @@ import { LuCalendarRange } from "react-icons/lu";
 import { VscFeedback } from "react-icons/vsc";
 import { SiGooglemeet } from "react-icons/si";
 import { Helmet } from "react-helmet-async";
+import { MdOutlineContactPage } from "react-icons/md";
 import GoToTop from "../component/GoToTop/GoToTop";
 
 interface Comments {
@@ -41,7 +42,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-  
+
   // console.log(infosJobs);
 
   // For dnd
@@ -336,6 +337,7 @@ const ManageApplicants = () => {
           });
 
           setOpenModal(false);
+          refetchInterview();
         } else {
           toast.warning("Something went wrong!");
         }
@@ -436,7 +438,17 @@ const ManageApplicants = () => {
                                     {info?.city}, {info?.country}
                                   </p>
                                 </div>
-
+                                {/* Resume */}
+                                <div className="absolute top-0 right-10 xl:-right-12">
+                                  <Link
+                                    to={info ? info.resume : ""}
+                                    className="cursor-pointer ... text-xl"
+                                    title="Resume"
+                                  >
+                                    <MdOutlineContactPage />
+                                  </Link>
+                                </div>
+                                {/* Feedback */}
                                 <div className="absolute top-0 right-0 xl:-right-20">
                                   <label
                                     htmlFor="my_modal_6"
@@ -561,6 +573,16 @@ const ManageApplicants = () => {
                                     <CiLocationOn className="text-sm" />
                                     {info?.city}, {info?.country}
                                   </p>
+                                </div>
+                                  {/* Resume */}
+                                  <div className="absolute top-2 right-10 xl:right-12">
+                                  <Link
+                                    to={info ? info.resume : ""}
+                                    className="cursor-pointer ... text-xl"
+                                    title="Resume"
+                                  >
+                                    <MdOutlineContactPage />
+                                  </Link>
                                 </div>
                                 {/* feedback for pre - selected */}
                                 <div className="absolute top-2 right-4">
@@ -734,8 +756,18 @@ const ManageApplicants = () => {
                                     ""
                                   )}
                                 </div>
+                                {/* Resume */}
+                                <div className="absolute top-2 right-10 xl:right-20">
+                                  <Link
+                                    to={info ? info.resume : ""}
+                                    className="cursor-pointer ... text-xl"
+                                    title="Resume"
+                                  >
+                                    <MdOutlineContactPage />
+                                  </Link>
+                                </div>
                                 {/* Candide feedback for Interview */}
-                                <div className="absolute top-2 right-12">
+                                <div className="absolute top-2 right-11">
                                   <label
                                     htmlFor="my_modal_6"
                                     className="cursor-pointer ... text-xl"
