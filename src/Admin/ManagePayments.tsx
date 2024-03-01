@@ -16,11 +16,16 @@ const ManagePayments = () => {
   });
 
   // pagination
-  const [dataPerPage] = useState<number>(10);
+  const [dataPerPage, setDataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleDataPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setDataPerPage(Number(event.target.value));
+    setCurrentPage(1); // Reset to the first page when changing data per page
   };
   return (
     <>
@@ -77,19 +82,35 @@ const ManagePayments = () => {
               ))}
           </tbody>
         </table>
-
       </div>
-      {payments.length > dataPerPage && (
-        <div className="py-12">
-          {/* ==>  Pagination <== */}
-          <CPagination
-            totalData={payments.length}
-            dataPerPage={dataPerPage}
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-          ></CPagination>
+      <div className="flex justify-center gap-12">
+        {payments.length > dataPerPage && (
+          <div className="py-12">
+            {/* ==>  Pagination <== */}
+            <CPagination
+              totalData={payments.length}
+              dataPerPage={dataPerPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            ></CPagination>
+          </div>
+
+        )}
+        <div className="flex justify-end py-12 items-center">
+          
+          <select
+            id="dataPerPage"
+            value={dataPerPage}
+            onChange={handleDataPerPageChange}
+            className="px-2 py-1 border rounded-md"
+          >
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={30}>30</option>
+            {/* Add more options as needed */}
+          </select>
         </div>
-      )}
+      </div>
     </>
   );
 };
