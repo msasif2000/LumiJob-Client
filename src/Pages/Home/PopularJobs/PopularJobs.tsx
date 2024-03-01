@@ -38,7 +38,7 @@ const PopularJobs = () => {
 
   return (
     <>
-      <div className="max-w-screen-2xl mx-auto pt-16 px-4 md:px-16 2xl:px-16">
+      <div className="max-w-screen-2xl mx-auto pt-16 px-4">
         <div className="mb-14">
           <h3 className="text-3xl md:text-5xl lg:text-6xl font-heading font-semibold text-center mb-4 xl:mb-7">
             Most <span className="text-accentTwo">popular</span> jobs for you
