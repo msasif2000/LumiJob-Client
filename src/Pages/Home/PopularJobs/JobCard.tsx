@@ -10,6 +10,7 @@ import BookmarkButton from "../../../component/Shared/BookmarkButton";
 import Job from "./Job";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./quickly-button.css";
 
 interface JobCardsProps {
   job: Job;
