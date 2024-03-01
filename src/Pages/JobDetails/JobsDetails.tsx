@@ -89,8 +89,7 @@ const JobsDetails: React.FC = () => {
     skills,
     experience,
     perks,
-    application,
-    email,
+    application
   } = job || {};
 
   const formatDateTime = (dateTimeString: any) => {
