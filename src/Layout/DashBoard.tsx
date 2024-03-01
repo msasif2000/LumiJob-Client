@@ -22,6 +22,7 @@ import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import UniLoader from "../component/err & loading/UniLoader";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { GoCodeReview } from "react-icons/go";
 
 const DashBoard = () => {
   const { user, logOut } = useAuth();
@@ -136,6 +137,12 @@ const DashBoard = () => {
           <NavLink to="/dashboard/employees">
             <GrGroup className="text-xl" />
             Hired Employees
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/feedback">
+          <GoCodeReview className="text-xl" />
+            Website Feedback
           </NavLink>
         </li>
       </>
