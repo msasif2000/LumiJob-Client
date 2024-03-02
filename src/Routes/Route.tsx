@@ -80,6 +80,7 @@ export const router = createBrowserRouter([
         path: "/optionsSubscribe",
         element: <OptionSubscribe></OptionSubscribe>,
       },
+      
 
       {
         path: "/insights",
