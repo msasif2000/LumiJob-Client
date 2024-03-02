@@ -46,7 +46,7 @@ import ManageApplicants from "../Company/ManageApplicants";
 // import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
-import Challenges from "../Admin/Challenges";
+import Challenges from "../Admin/Challenges/Challenges";
 
 export const router = createBrowserRouter([
   {
