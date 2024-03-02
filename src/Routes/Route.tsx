@@ -46,7 +46,7 @@ import ManageApplicants from "../Company/ManageApplicants";
 // import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
-import Feedback from "../component/websiteFeedback/Feedback";
+// import Feedback from "../component/websiteFeedback/Feedback";
 
 export const router = createBrowserRouter([
   {
@@ -264,10 +264,10 @@ export const router = createBrowserRouter([
         path: "employees",
         element: <Employees />,
       },
-      {
-        path : "feedback",
-        element: <Feedback></Feedback>
-      }
+      // {
+      //   path : "feedback",
+      //   element: <Feedback></Feedback>
+      // }
     ],
   },
 ]);
