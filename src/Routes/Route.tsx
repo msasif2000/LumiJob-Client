@@ -47,6 +47,7 @@ import ManageApplicants from "../Company/ManageApplicants";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
 import Challenges from "../Admin/Challenges/Challenges";
+import Feedback from "../component/websiteFeedback/Feedback";
 
 export const router = createBrowserRouter([
   {
@@ -267,6 +268,10 @@ export const router = createBrowserRouter([
       {
         path: "employees",
         element: <Employees />,
+      },
+      {
+        path: "feedback",
+        element: <Feedback></Feedback>,
       },
     ],
   },
