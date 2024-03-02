@@ -46,12 +46,9 @@ import ManageApplicants from "../Company/ManageApplicants";
 // import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
-<<<<<<< HEAD
 import Challenges from "../Admin/Challenges/Challenges";
-import Feedback from "../component/websiteFeedback/Feedback";
-=======
-// import Feedback from "../component/websiteFeedback/Feedback";
->>>>>>> 147b0a55abbf4e49ba7433eb97291cd97da2a43a
+import CollaborationHub from "../Pages/CollaborationHub/CollaborationHub";
+import TaskDetails from "../Pages/CollaborationHub/TaskDetails";
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +88,14 @@ export const router = createBrowserRouter([
       {
         path: "/insights/:_id",
         element: <ArticleDetails />,
+      },
+      {
+        path: "/collaboration-hub",
+        element: <CollaborationHub />
+      },
+      {
+        path: "/task-details",
+        element: <TaskDetails />
       },
       {
         path: "/contact",
@@ -273,17 +278,12 @@ export const router = createBrowserRouter([
         path: "employees",
         element: <Employees />,
       },
-<<<<<<< HEAD
-      {
-        path: "feedback",
-        element: <Feedback></Feedback>,
-      },
-=======
+
       // {
-      //   path : "feedback",
-      //   element: <Feedback></Feedback>
-      // }
->>>>>>> 147b0a55abbf4e49ba7433eb97291cd97da2a43a
+      //   path: "feedback",
+      //   element: <Feedback></Feedback>,
+      // },
+
     ],
   },
 ]);

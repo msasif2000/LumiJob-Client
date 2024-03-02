@@ -79,6 +79,12 @@ const Navbar: React.FC<NavbarProps> = () => {
         </NavLink>
       </li>
 
+      <li key="CollaborationHub">
+        <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
+          Collaboration Hub
+        </NavLink>
+      </li>
+
       <li key="Contact">
         <NavLink className="text-lg font-heading font-base" to="/Contact">
           Contact
