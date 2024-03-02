@@ -46,6 +46,7 @@ import ManageApplicants from "../Company/ManageApplicants";
 // import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
+import Challenges from "../Admin/Challenges";
 
 export const router = createBrowserRouter([
   {
@@ -177,6 +178,10 @@ export const router = createBrowserRouter([
       {
         path: "admin/manage-payments",
         element: <ManagePayments />,
+      },
+      {
+        path: "admin/challenges",
+        element: <Challenges />,
       },
       {
         path: "admin/add-data",
