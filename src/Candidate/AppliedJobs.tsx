@@ -5,11 +5,13 @@ import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import GoToTop from "../component/GoToTop/GoToTop";
 import { Helmet } from "react-helmet-async";
+import NoData from "../component/NoData/NoData";
+import { useNavigate } from "react-router-dom";
 
 const AppliedJobs = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-
+  const navigate = useNavigate();
   const userEmail = user?.email;
 
   const { data: jobs, refetch: jobsRefetch } = useQuery({
@@ -22,8 +24,18 @@ const AppliedJobs = () => {
 
   // console.log(jobs)
 
+  const handleNoData = () => {
+    navigate('/find-job')
+  };
   const length = jobs?.length;
 
+  if (length === 0) {
+    return (
+      <div className="min-h-screen">
+        <NoData text="You have not applied for any job yet" btn="Apply Job Now" noDataClick={handleNoData} />
+      </div>
+    )
+  }
   const handleDelete = (id: string, jobId: string) => {
     const data = {
       jobId,
