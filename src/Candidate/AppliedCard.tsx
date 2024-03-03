@@ -85,9 +85,8 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       onMouseLeave={() => setCancel(false)}
     >
       <div
-        className={`card ${
-          job?.scheduleInterview ? "bg-green-100 bg-opacity-60" : "bg-base-100"
-        }  hover:shadow-xl duration-1000 h-full`}
+        className={`card ${job?.scheduleInterview ? "bg-green-100 bg-opacity-60" : "bg-base-100"
+          }  hover:shadow-xl duration-1000 h-full`}
       >
         <div className="card-body lg:p-4 xl:p-6">
           <Link
@@ -111,23 +110,25 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
           {job?.scheduleInterview ? (
             <div className="pt-1">
               {job?.scheduleInterview ? (
-                <div className="flex items-center font-medium">
-                  <div className="flex items-center  space-x-4">
+                <div className="flex  items-center font-medium">
+                  <div className="flex justify-center  items-center space-x-4">
                     <p className="font-semibold">Interview at:</p>
-                    <Link
-                      to={job?.scheduleInterview?.googleMeet}
-                      target="_blank"
-                      title="Google Meet"
-                      className="hover:scale-150 duration-500 text-lg"
-                    >
-                      <SiGooglemeet />
-                    </Link>
-                    <p>
-                      {convertTo12HourFormat(
-                        job?.scheduleInterview?.interviewTime
-                      )}
-                    </p>
-                    <p> {formatDate(job?.scheduleInterview?.interviewDate)}</p>
+                    <div>
+                      <Link
+                        to={job?.scheduleInterview?.googleMeet}
+                        target="_blank"
+                        title="Google Meet"
+                        className="hover:scale-150 duration-500 text-lg"
+                      >
+                        <SiGooglemeet />
+                      </Link>
+                      <p>
+                        {convertTo12HourFormat(
+                          job?.scheduleInterview?.interviewTime
+                        )}
+                      </p>
+                      <p> {formatDate(job?.scheduleInterview?.interviewDate)}</p>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -150,7 +151,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
       {cancel && (
         <div className="absolute top-10 right-8">
           <MdCancelScheduleSend
-            className="text-red-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+            className="text-red-500 text-2xl cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
             onClick={handleConfirm}
           />
         </div>
@@ -163,7 +164,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
                 document.getElementById("my_modal_3") as HTMLDialogElement
               )?.showModal()
             }
-            className="text-green-500 cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
+            className="text-green-500 text-2xl cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
           />
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box bg-gray-100 shadow-xl">
