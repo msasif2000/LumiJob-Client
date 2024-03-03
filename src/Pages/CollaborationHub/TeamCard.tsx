@@ -1,47 +1,56 @@
-import React, { useState } from 'react';
-
-interface AccordionData {
+import React, { useEffect, useState } from 'react';
+interface TeamData {
+    team_name: string;
+    coloredText: any;
+    id: number;
+    name: string;
     title: string;
-    coloredText: string;
-    description: string;
+    img: string;
+    members: any;
+    member: string;
+    designation: string;
 }
 
 const TeamCard: React.FC = () => {
     const [isOpen, setIsOpen] = useState<number | null>(null);
 
-    const accordionsData: AccordionData[] = [{ title: "Dav Dynasty", coloredText: "fix now", description: 'To create an account, click on the "Sign Up" button and fill out the required information. Once done, you can enjoy the benefits of being a registered member.', }, { title: "Team Alpa", coloredText: "", description: "Our return policy allows you to return items within 30 days of purchase. Please visit our returns page for detailed instructions and to initiate a return.", }, { title: "Shaka Laka Boom Boom", coloredText: "Complete your profile", description: "Yes, you can change your shipping address before your order is shipped. Go to your account settings and update the shipping information accordingly.", }]
+    const [teamData, setTeamData] = useState<TeamData[] | null>(null);
+
+    useEffect(() => {
+        fetch("../../../public/teams.json")
+            .then((res) => res.json())
+            .then((data) => {
+                setTeamData(data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+
+
     const handleToggle = (idx: number) => setIsOpen(prevIdx => prevIdx === idx ? null : idx);
 
     return (
         <div className="my-5  rounded-lg">
-            {accordionsData.map((data, idx) => (
-                <div key={idx}>
-                    <div onClick={() => handleToggle(idx)} className={`${idx === accordionsData.length - 1 ? "border-none" : "border-b border-gray-400/10"} py-4 px-6 flex items-center gap-4`}>
+            {teamData?.map((data, idx) => (
+                <div key={idx} className='border-2 rounded-lg my-2'>
+                    <div onClick={() => handleToggle(idx)} className={`${idx === teamData.length - 1 ? "border-none" : "border-b border-gray-400/10"} py-4 px-6 flex items-center gap-4`}>
                         <div className="flex-1">
                             <div className='flex justify-between items-center'>
-                                <p className="font-medium text-lg ">{data?.title}</p>
+                                <p className="font-medium text-lg ">{data?.team_name}</p>
+
                                 <div className="avatar-group -space-x-6 rtl:space-x-reverse">
-                                    <div className="avatar">
-                                        <div className="w-8">
-                                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                    {data?.members?.map((member: { img: string | undefined; }, idx: React.Key | null | undefined) => (
+                                        <div key={idx} className="avatar">
+                                            <div className="w-8">
+                                                <img src={member.img} />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="avatar">
-                                        <div className="w-8">
-                                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                        </div>
-                                    </div>
-                                    <div className="avatar">
-                                        <div className="w-8">
-                                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                        </div>
-                                    </div>
-                                    <div className="avatar">
-                                        <div className="w-8">
-                                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                        </div>
-                                    </div>
+                                    ))}
+
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -54,78 +63,37 @@ const TeamCard: React.FC = () => {
                     <div className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 ${isOpen === idx ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                         <div className='overflow-hidden'>
                             <div className={` p-6  `}>
-                                <div >
                                     <div className="flex justify-between items-center">
                                         <p className="text-lg font-semibold">Team Members</p>
                                         <button className="btn btn-sm bg-blue-400">Join Request</button>
                                     </div>
-                                    <div className="flex justify-between items-center my-3 border-2 rounded-lg  p-2">
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="https://i.ibb.co/qdh1BmN/christopher-campbell-r-DEOVt-E7v-Os-unsplash.jpg" alt="Avatar Tailwind CSS Component" />
+                                {
+                                    data?.members?.map((member: {
+                                        title: string | undefined;
+                                        img: string | undefined; name: string | undefined; designation: string | undefined;
+                                    }, idx: React.Key | null | undefined) => (
+                                        <div key={idx} >
+                                            <div className="flex justify-between items-center my-3 border-2 rounded-lg  p-2">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle w-12 h-12">
+                                                            <img src={member.img} alt="Avatar Tailwind CSS Component" />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-bold">{member.name}</div>
+                                                        <div className="text-sm opacity-50">{member.title}</div>
+                                                    </div>
+                                                </div>
+                                                <div className="badge badge-primary">
+                                                    {member.designation}
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                        <div className="badge badge-primary">
-                                            Leader
+
                                         </div>
 
-                                    </div>
-                                    <div className="flex justify-between items-center my-3 border-2 rounded-lg  p-2">
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="https://i.ibb.co/x2RN8Pq/vince-veras-AJIq-ZDAUD7-A-unsplash.jpgg" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                        <div className="badge badge-primary">
-                                            Member
-                                        </div>
-
-                                    </div>
-                                    <div className="flex justify-between items-center my-3 border-2 rounded-lg  p-2">
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="https://i.ibb.co/x2RN8Pq/vince-veras-AJIq-ZDAUD7-A-unsplash.jpgg" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                        <div className="badge badge-primary">
-                                            Member
-                                        </div>
-                                    </div>
-                                    <div className="flex justify-between items-center my-3 border-2 rounded-lg  p-2">
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="https://i.ibb.co/x2RN8Pq/vince-veras-AJIq-ZDAUD7-A-unsplash.jpgg" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                        <div className="badge badge-primary">
-                                            Member
-                                        </div>
-                                    </div>
-                                </div>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>

@@ -36,6 +36,15 @@ const TaskDetails = () => {
                         </div>
                         <button className="btn btn-primary">Create</button>
                     </div>
+
+                    {/* <div className="p-3 hover:bg-blue-100 duration-500 mt-4 border-2 rounded-lg flex justify-between items-center">
+                        <div>
+                            <p className="text-lg font-semibold text-center">Rules</p>
+                        </div>
+                    </div> */}
+
+
+
                     <p className="text-lg font-semibold mt-6 mb-1">Available Team</p>
                     <div className="space-y-4">
                         <TeamCard />
