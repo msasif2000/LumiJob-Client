@@ -6,7 +6,7 @@ const TaskDetails = () => {
 
             <div className="lg:flex py-6">
                 <div className="flex flex-col lg:w-3/4 space-y-3 pb-10 lg:pb-0">
-                    <img src="https://i.ibb.co/KxKCszF/1-Svz-Kct-RCi8bw-B0-QPd-OZk-BP0p-Rhs-Oq-Zpl0wjs6y0.png" className="w-[600px]" alt="" />
+                    <img src="https://i.ibb.co/KxKCszF/1-Svz-Kct-RCi8bw-B0-QPd-OZk-BP0p-Rhs-Oq-Zpl0wjs6y0.png" className="w-full" alt="" />
                     <h2 className="text-3xl font-heading font-semibold">
                         Task management website
                     </h2>
@@ -34,14 +34,21 @@ const TaskDetails = () => {
                             <p className="text-lg font-semibold">Create Team</p>
                             <p className="text-sm text-gray-500">Each team required 6 member</p>
                         </div>
-                        <button className="btn btn-primary">Add</button>
+                        <button className="btn btn-primary">Create</button>
                     </div>
+
+                    {/* <div className="p-3 hover:bg-blue-100 duration-500 mt-4 border-2 rounded-lg flex justify-between items-center">
+                        <div>
+                            <p className="text-lg font-semibold text-center">Rules</p>
+                        </div>
+                    </div> */}
+
+
+
                     <p className="text-lg font-semibold mt-6 mb-1">Available Team</p>
                     <div className="space-y-4">
                         <TeamCard />
-                        <TeamCard />
-                        <TeamCard />
-                        <TeamCard />
+                        
 
                     </div>
 
