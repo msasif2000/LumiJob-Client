@@ -1,0 +1,284 @@
+ [
+        {
+            "team_name": "Team Alpha",
+            "members": [
+                {
+                    "id": 1,
+                    "name": "John Doe",
+                    "title": "Software Engineer",
+                    "profile": "Experienced software engineer with expertise in Java, Python, and JavaScript. Skilled in developing web applications and solving complex algorithms.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 2,
+                    "name": "Jane Smith",
+                    "title": "Data Scientist",
+                    "profile": "Data scientist proficient in machine learning algorithms, statistical analysis, and data visualization. Experienced with tools like Python, R, and TensorFlow.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "Michael Johnson",
+                    "title": "DevOps Engineer",
+                    "profile": "DevOps engineer specializing in automation, cloud infrastructure, and CI/CD pipelines. Proficient in tools such as Docker, Kubernetes, and Jenkins.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "Emily Brown",
+                    "title": "Cybersecurity Analyst",
+                    "profile": "Cybersecurity analyst with expertise in threat detection, vulnerability assessment, and incident response. Skilled in tools like Splunk, Wireshark, and Metasploit.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "David Wilson",
+                    "title": "Network Engineer",
+                    "profile": "Network engineer experienced in designing, implementing, and troubleshooting enterprise networks. Proficient in routing protocols, firewall configurations, and network security.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 6,
+                    "name": "Sarah Lee",
+                    "title": "Full Stack Developer",
+                    "profile": "Full stack developer proficient in both front-end and back-end development. Experienced with technologies like HTML, CSS, JavaScript, Node.js, and React.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
+            ]
+        },
+        {
+            "team_name": "Team Beta",
+            "members": [
+                {
+                    "id": 7,
+                    "name": "Alex Rodriguez",
+                    "title": "UX/UI Designer",
+                    "profile": "Creative UX/UI designer with experience in creating intuitive and visually appealing user interfaces. Proficient in tools like Adobe XD, Sketch, and Figma.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 8,
+                    "name": "Eva Martinez",
+                    "title": "Frontend Developer",
+                    "profile": "Frontend developer specializing in responsive web design and modern UI frameworks. Skilled in HTML, CSS, JavaScript, and React.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 9,
+                    "name": "Mark Thompson",
+                    "title": "Cloud Architect",
+                    "profile": "Cloud architect with expertise in designing and implementing scalable cloud solutions. Experienced with AWS, Azure, and Google Cloud Platform.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 10,
+                    "name": "Sophia Garcia",
+                    "title": "Machine Learning Engineer",
+                    "profile": "Machine learning engineer passionate about developing algorithms for predictive modeling and data analysis. Proficient in Python, TensorFlow, and scikit-learn.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 11,
+                    "name": "James Brown",
+                    "title": "Backend Developer",
+                    "profile": "Backend developer experienced in building scalable and efficient server-side applications. Proficient in technologies like Node.js, Express, and MongoDB.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 12,
+                    "name": "Lily Evans",
+                    "title": "QA Engineer",
+                    "profile": "QA engineer with expertise in designing and implementing test plans, test cases, and automated testing frameworks. Skilled in tools like Selenium and JUnit.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
+            ]
+        },
+        {
+            "team_name": "Team Gamma",
+            "members": [
+                {
+                    "id": 13,
+                    "name": "Ryan Taylor",
+                    "title": "Data Engineer",
+                    "profile": "Data engineer specializing in data warehousing, ETL processes, and big data technologies. Proficient in SQL, Hadoop, and Spark.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 14,
+                    "name": "Olivia Hernandez",
+                    "title": "System Administrator",
+                    "profile": "System administrator experienced in managing and maintaining enterprise-level IT infrastructure. Skilled in Linux, Windows Server, and Active Directory.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 15,
+                    "name": "Daniel White",
+                    "title": "AI Research Scientist",
+                    "profile": "AI research scientist focusing on deep learning algorithms and neural network architectures. Experienced with TensorFlow, PyTorch, and Keras.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 16,
+                    "name": "Emma Rodriguez",
+                    "title": "Product Manager",
+                    "profile": "Product manager with expertise in product development lifecycle, market analysis, and product roadmap planning. Skilled in Agile methodologies and project management tools.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 17,
+                    "name": "William Johnson",
+                    "title": "UI Developer",
+                    "profile": "UI developer specializing in creating interactive and user-friendly interfaces. Proficient in HTML, CSS, JavaScript, and Vue.js.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 18,
+                    "name": "Ava Martinez",
+                    "title": "Database Administrator",
+                    "profile": "Database administrator experienced in managing, monitoring, and optimizing database systems. Skilled in SQL, MySQL, and MongoDB.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
+            ]
+        },
+        {
+            "team_name": "Team Delta",
+            "members": [
+                {
+                    "id": 19,
+                    "name": "Gabriel Brown",
+                    "title": "Software Developer",
+                    "profile": "Software developer specializing in designing and implementing scalable software solutions. Proficient in Java, Python, and C++.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 20,
+                    "name": "Mia Thompson",
+                    "title": "UX Researcher",
+                    "profile": "UX researcher with experience in user research, usability testing, and persona development. Skilled in qualitative and quantitative research methods.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 21,
+                    "name": "Nathan Wilson",
+                    "title": "Cloud Security Engineer",
+                    "profile": "Cloud security engineer specializing in implementing and maintaining security controls in cloud environments. Experienced with AWS, Azure, and Google Cloud Platform.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 22,
+                    "name": "Sophie Thomas",
+                    "title": "Frontend Engineer",
+                    "profile": "Frontend engineer experienced in building responsive and user-friendly web interfaces. Proficient in HTML, CSS, JavaScript, and React.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 23,
+                    "name": "Ethan Martinez",
+                    "title": "Network Security Analyst",
+                    "profile": "Network security analyst with expertise in implementing and managing network security solutions. Skilled in firewall configurations, intrusion detection systems, and VPNs.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 24,
+                    "name": "Isabella Johnson",
+                    "title": "AI Engineer",
+                    "profile": "AI engineer specializing in developing and deploying machine learning models. Experienced with Python, TensorFlow, and scikit-learn.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
+            ]
+        },
+        {
+            "team_name": "Team Epsilon",
+            "members": [
+                {
+                    "id": 25,
+                    "name": "Lucas Brown",
+                    "title": "Backend Engineer",
+                    "profile": "Backend engineer specializing in building scalable and efficient server-side applications. Proficient in Node.js, Express, and MongoDB.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 26,
+                    "name": "Chloe Taylor",
+                    "title": "UI/UX Designer",
+                    "profile": "UI/UX designer with a passion for creating intuitive and visually appealing user interfaces. Experienced in Adobe XD, Sketch, and Figma.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 27,
+                    "name": "Jackson Rodriguez",
+                    "title": "Cloud Engineer",
+                    "profile": "Cloud engineer experienced in designing and implementing cloud-based solutions. Proficient in AWS, Azure, and Google Cloud Platform.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 28,
+                    "name": "Mila Hernandez",
+                    "title": "Data Analyst",
+                    "profile": "Data analyst specializing in analyzing large datasets and generating actionable insights. Skilled in SQL, Python, and data visualization tools like Tableau.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 29,
+                    "name": "Noah Martinez",
+                    "title": "QA Tester",
+                    "profile": "QA tester with experience in manual and automated testing. Proficient in test case design, execution, and defect tracking.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 30,
+                    "name": "Aria Johnson",
+                    "title": "Systems Analyst",
+                    "profile": "Systems analyst experienced in analyzing business requirements and translating them into technical solutions. Skilled in systems design and process improvement.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
+            ]
+        },
+        {
+            "team_name": "Team Zeta",
+            "members": [
+                {
+                    "id": 31,
+                    "name": "Elijah Wilson",
+                    "title": "Software Architect",
+                    "profile": "Software architect specializing in designing and implementing high-level software solutions. Experienced in system design, scalability, and performance optimization.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 32,
+                    "name": "Scarlett Thompson",
+                    "title": "UX Designer",
+                    "profile": "UX designer with a focus on creating seamless user experiences. Skilled in wireframing, prototyping, and usability testing.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 33,
+                    "name": "Carter Brown",
+                    "title": "Cloud Solutions Architect",
+                    "profile": "Cloud solutions architect experienced in designing and implementing cloud-based architectures. Proficient in AWS, Azure, and Google Cloud Platform.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 34,
+                    "name": "Hannah Martinez",
+                    "title": "Data Engineer",
+                    "profile": "Data engineer specializing in data pipeline development and data integration. Experienced with SQL, Apache Spark, and Kafka.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 35,
+                    "name": "Liam Johnson",
+                    "title": "Frontend Designer",
+                    "profile": "Frontend designer with a passion for creating visually stunning and engaging web interfaces. Skilled in HTML, CSS, JavaScript, and UI frameworks like Bootstrap.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                },
+                {
+                    "id": 36,
+                    "name": "Zoe Wilson",
+                    "title": "Security Consultant",
+                    "profile": "Security consultant experienced in assessing and mitigating security risks in IT systems. Skilled in penetration testing, vulnerability assessment, and security auditing.",
+                    "img": "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                }
+            ]
+        }
+    ]
