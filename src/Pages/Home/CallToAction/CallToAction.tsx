@@ -1,32 +1,27 @@
 import { Link } from "react-router-dom";
-import actionImg from "../../../assets/image/action.jpg";
+import actionImg from "../../../assets/image/callaction.jpg";
 
 const CallToAction = () => {
     return (
-        <div className="xl:px-12 lg:px-8 md:px-6 px-2">
-            <section className="max-w-7xl lg:my-4 mx-auto rounded relative overflow-hidden" style={{
-                backgroundImage: `url(${actionImg})`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                height: "500px",
-            }}>
-                <div className="md:flex  items-center h-full lg:px-20 py-4 absolute top-0 left-0 right-0 bottom-0">
-                    <div className="text-center text-white pl-4">
-                        <h2 className="text-4xl font-bold font-heading mt-10 md:text-left text-center text-white">
-                            Ready to get started?
-                        </h2>
-                        <p className="mt-2 text-slate-100">
-                            "The secret of getting ahead is getting started."
-                        </p>
-                        <Link to="/signup" className="flex pl-4 md:pl-0">
-                            <button className="bg-btnbg text-white px-8 py-2 rounded-lg mt-6">
-                                Start Now
-                            </button>
-                        </Link>
-                    </div>
+        <div className="max-w-screen-2xl mx-auto py-16 px-4">
+            <div className="md:flex justify-center gap-20 bg-[#3826F6] rounded">
+                <div className=" flex flex-col items-start justify-center w-full lg:px-12 md:px-4 px-2">
+                    <h2 className="text-4xl font-bold font-heading mt-10 md:text-left text-center text-white">
+                        Ready to get started?
+                    </h2>
+                    <p className="my-2 text-sm md:text-lg xl:text-2xl text-slate-300">
+                        "Ready to revolutionize your hiring process and enhance communication? Join us today and unlock the power of seamless recruitment and effective collaboration!"
+                    </p>
+                    <Link to="/signup" className="flex  pl-0 mb-8">
+                        <button className="bg-btnbg text-white px-8 py-2 rounded-lg mt-2">
+                            Start Now
+                        </button>
+                    </Link>
                 </div>
-            </section>
+                <div className="flex items-center justify-center py-2 w-full lg:px-12 md:px-4 px-2">
+                    <img src={actionImg} alt="" className="xl:h-[350px] h-[300px]  w-full" />
+                </div>
+            </div>
         </div>
     );
 };
