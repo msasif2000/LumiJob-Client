@@ -46,7 +46,16 @@ import ManageApplicants from "../Company/ManageApplicants";
 // import CandidateResume from "../Candidate/CandidateResume";
 import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
-import Feedback from "../component/websiteFeedback/Feedback";
+import Challenges from "../Admin/Challenges/Challenges";
+import CollaborationHub from "../Pages/CollaborationHub/CollaborationHub";
+import TaskDetails from "../Pages/CollaborationHub/TaskDetails";
+import AboutUs from "../component/Footer/FooterPages/AboutUs";
+import TermsConditions from "../component/Footer/FooterPages/TermsConditions";
+import PrivacyPolicy from "../component/Footer/FooterPages/PrivacyPolicy";
+import Features from "../component/Footer/FooterPages/Features";
+import ProductAndService from "../component/Footer/FooterPages/ProductAndService";
+import FAQs from "../component/Footer/FooterPages/FAQs";
+import Supports from "../component/Footer/FooterPages/Supports";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +87,7 @@ export const router = createBrowserRouter([
         path: "/optionsSubscribe",
         element: <OptionSubscribe></OptionSubscribe>,
       },
+      
 
       {
         path: "/insights",
@@ -86,6 +96,14 @@ export const router = createBrowserRouter([
       {
         path: "/insights/:_id",
         element: <ArticleDetails />,
+      },
+      {
+        path: "/collaboration-hub",
+        element: <CollaborationHub />
+      },
+      {
+        path: "/task-details",
+        element: <TaskDetails />
       },
       {
         path: "/contact",
@@ -115,10 +133,35 @@ export const router = createBrowserRouter([
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
       },
-      // {
-      //   path: "/candidateProfileView/:id",
-      //   element: <CandidateDetails></CandidateDetails>,
-      // },
+      // footer 
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/terms&conditions",
+        element: <TermsConditions></TermsConditions>,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+      {
+        path: "/features",
+        element: <Features></Features>,
+      },
+      {
+        path: "/services",
+        element: <ProductAndService></ProductAndService>,
+      },
+      {
+        path: "/faqs",
+        element: <FAQs></FAQs>,
+      },
+      {
+        path: "/supports",
+        element: <Supports></Supports>
+      },
     ],
   },
 
@@ -178,6 +221,10 @@ export const router = createBrowserRouter([
       {
         path: "admin/manage-payments",
         element: <ManagePayments />,
+      },
+      {
+        path: "admin/challenges",
+        element: <Challenges />,
       },
       {
         path: "admin/add-data",
@@ -264,10 +311,12 @@ export const router = createBrowserRouter([
         path: "employees",
         element: <Employees />,
       },
-      {
-        path : "feedback",
-        element: <Feedback></Feedback>
-      }
+
+      // {
+      //   path: "feedback",
+      //   element: <Feedback></Feedback>,
+      // },
+
     ],
   },
 ]);

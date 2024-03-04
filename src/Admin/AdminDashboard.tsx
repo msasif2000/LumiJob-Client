@@ -105,8 +105,8 @@ const AdminDashboard: React.FC = () => {
       </Helmet>
       <GoToTop />
       <h3 className=" text-3xl font-bold my-6 text-gray-600">Analytics</h3>
-      <div className="block md:flex gap-5">
-        <div className="w-full md:w-1/2 border-4">
+      <div className="xl:flex gap-6 space-y-6 xl:space-y-0 justify-center mx-auto">
+        <div className="w-full xl:w-1/2 border-4 ">
           <h5 className="text-xl font-semibold text-center text-gray-600 mt-6 mb-5">
             Job Types
           </h5>
@@ -129,12 +129,12 @@ const AdminDashboard: React.FC = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="w-full md:w-1/2  border-4">
+        <div className="w-full xl:w-1/2  border-4 pb-6">
           <h5 className="text-xl font-semibold text-center text-gray-600 mt-6 mb-2">
-            User Roles
+            Users
           </h5>
 
-          <div className="flex justify-center items-center gap-2">
+          <div className="flex flex-wrap justify-center items-center gap-2">
             <p className="bg-[#164070] py-8 px-4 text-white text-2xl flex flex-col items-center gap-1">
               <FcBriefcase className="text-5xl" />
               <span>{userData[0]?.value} Company</span>
@@ -153,7 +153,7 @@ const AdminDashboard: React.FC = () => {
       </div>
 
       <div
-        className="mx-auto mt-12"
+        className="mx-auto mt-12 "
         style={{ width: "100%", display: "inline-block" }}
       >
         <h5 className="text-xl font-semibold text-center text-gray-600 mb-5">

@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import NoData from "../component/NoData/NoData";
+
 
 interface Bookmark {
   _id: string;
@@ -54,6 +56,16 @@ const Bookmarks: React.FC = () => {
 
   const length = bookmarks.length;
 
+  const handleNoData = () => {
+  };
+
+  if (length === 0) {
+    return (
+      <div className="min-h-screen">
+        <NoData text="Bookmarked Jobs is Empty" btn="" noDataClick={handleNoData} />
+      </div>
+    )
+  }
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
     return formattedDate;
@@ -72,47 +84,51 @@ const Bookmarks: React.FC = () => {
         </h3>
       </div>
 
-      <div className="grid grid-cols-2 gap-5 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 mx-auto">
         {bookmarks.map((bookmark: Bookmark) => (
-          <div className="my-2" key={bookmark._id}>
-            <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-accent py-5 text-gray-700 bg-white">
-              <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
-                <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
-                  <img
-                    src={bookmark.picture}
-                    alt="logo"
-                    className="w-full text-gray-700"
-                  />
-                </div>
-              </div>
-              <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
-                <p className="flex justify-between flex-wrap sm:flex-nowrap">
+          <div className="my-2 " key={bookmark._id}>
+            <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg h-full border hover:border-accent py-5 text-gray-700 bg-white">
+              {/* <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
+                
+              </div> */}
+              <div className="col-span-11 flex flex-col  text-left px-4">
+                <p>
                   <div>
+                    <div className="flex justify-between items-center">
+                      <div className="group relative h-16 w-16 overflow-hidden rounded-lg mb-2">
+                        <img
+                          src={bookmark.picture}
+                          alt="logo"
+                          className="w-full text-gray-700"
+                        />
+                      </div>
+                      <div className="flex gap-2 items-center justify-between">
+                        <button
+                          onClick={() => handleDelete(bookmark._id)}
+                          className=""
+                        >
+                          <MdDelete className="text-red-600 hover:text-accent" />
+                        </button>
+                        <Link className="" to={`/details/${bookmark.userId}`}>
+                          <button className="py-1 px-3 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-sm rounded-lg">
+                            Quick Apply
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
                     <h3 className="mb-1 overflow-hidden pr-7 text-xl font-semibold sm:text-xl">
                       {bookmark.title}
                     </h3>
-                    <p className="md:hidden text-sm opacity-90">
+                    {/* <p className="md:hidden text-sm opacity-90">
                       {bookmark.location}
-                    </p>
+                    </p> */}
                   </div>
-                  <div className="flex gap-2 items-center justify-between">
-                    <button
-                      onClick={() => handleDelete(bookmark._id)}
-                      className=""
-                    >
-                      <MdDelete className="text-red-600 hover:text-accent"></MdDelete>
-                    </button>
-                    <Link className="" to={`/details/${bookmark.userId}`}>
-                      <button className="py-1 px-3 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-sm rounded-lg">
-                        Quick Apply
-                      </button>
-                    </Link>
-                  </div>
+
                 </p>
-                <p className="hidden md:flex text-sm opacity-90">
+                <p className="flex text-sm opacity-90">
                   {bookmark.location}
                 </p>
-                <div className="hidden md:flex flex-wrap gap-3 items-center mt-5">
+                <div className="flex flex-wrap gap-3 items-center mt-5">
                   <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                     <MdDateRange className="mr-1" />{" "}
                     {formatDeadlineDate(bookmark.deadline)}

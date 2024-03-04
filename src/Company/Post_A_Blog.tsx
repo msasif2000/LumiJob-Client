@@ -5,6 +5,7 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 
 
 interface FormData {
@@ -106,8 +107,18 @@ const Post_A_Blog = () => {
         }
     };
 
+    const handlePostedBlog = () => {
+        navigate('/dashboard/blog-posted');
+    }
     return (
         <div>
+            <CandidateNav
+                text="Post Your Blog"
+                btn="Go Back"
+                btn2=""
+                handleClick={() => { handlePostedBlog() }}
+                handleClick2={() => { }}
+            />
             <div className=" bg-white px-2 py-5">
                 <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
 

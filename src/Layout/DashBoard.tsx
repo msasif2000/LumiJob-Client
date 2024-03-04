@@ -14,6 +14,7 @@ import {
   MdOutlineEventAvailable,
   MdManageAccounts,
 } from "react-icons/md";
+import { TbTargetArrow } from "react-icons/tb";
 import { AiOutlineUsergroupAdd, AiOutlineFileDone } from "react-icons/ai";
 import { GrGroup, GrBlog, GrWorkshop } from "react-icons/gr";
 import { RxAvatar } from "react-icons/rx";
@@ -186,6 +187,12 @@ const DashBoard = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/dashboard/admin/challenges">
+            <TbTargetArrow className="text-2xl" />
+            Challenges
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/dashboard/admin/add-data">
             <BsDatabaseAdd className="text-2xl" />
             Add Data
@@ -222,6 +229,7 @@ const DashBoard = () => {
                     />
                   </svg>
                 </label>
+
                 <ul
                   tabIndex={0}
                   className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-600 rounded-box  w-52 "
@@ -250,7 +258,7 @@ const DashBoard = () => {
             </div>
 
             {/* === Large Screen Menu */}
-            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen  lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
               <div>
                 <h3 className="text-3xl font-bold text-center">
                   Lumi<span className="text-[#4869DD]">Jobs</span>

@@ -1,5 +1,7 @@
 import finding from "../../../assets/image/finding.png";
 import profile from "../../../assets/image/profile.png";
+import application from "../../../assets/image/application.png";
+import communication from "../../../assets/image/communication.png";
 
 const HowItWorks = () => {
   return (
@@ -83,10 +85,24 @@ const HowItWorks = () => {
               providing transparency and control over your job-seeking journey.
             </p>
           </div>
+          <figure>
+            <img
+              src={application}
+              alt="application"
+              className="w-full lg:w-3/4 mx-auto"
+            />
+          </figure>
         </div>
 
         {/* =========> Step: 4 <========= */}
-        <div className="lg:col-span-2 p-6 border rounded-md ">
+        <div className="lg:col-span-2 p-6 border rounded-md flex flex-col justify-around ">
+          <figure>
+            <img
+              src={communication}
+              alt="communication"
+              className="w-full  mx-auto"
+            />
+          </figure>
           <div>
             <h4 className="text-2xl font-heading font-semibold mb-4">
               Engage and Excel

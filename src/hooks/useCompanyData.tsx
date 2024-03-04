@@ -9,7 +9,7 @@ const useCompanyData = () => {
     const {refetch, data: companyData = [] } = useQuery({
         queryKey: ['companyData', user?.email],
         queryFn: async() => {
-            const res = await axiosPublic.get('/company-data');
+            const res = await axiosPublic.get('/user?role=company');
             return res.data;
         }
     })

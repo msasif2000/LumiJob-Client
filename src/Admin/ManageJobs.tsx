@@ -20,11 +20,16 @@ const ManageJobs = () => {
   const axiosPublic = useAxiosPublic();
   const [PostedData, refetch] = usePostedJob();
 
-  const [dataPerPage] = useState<number>(10);
+  const [dataPerPage, setDataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleDataPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setDataPerPage(Number(event.target.value));
+    setCurrentPage(1); // Reset to the first page when changing data per page
   };
 
   const handleDelete = (id: string) => {
@@ -98,7 +103,7 @@ const ManageJobs = () => {
                   <td className="font-bold">{jobs.title}</td>
                   <td>{jobs.post_time.split("T")[0]}</td>
 
-                  <td>
+                  <td className="flex">
                     <Link
                       className="inline-block relative group"
                       to={`/details/${jobs._id}`}
@@ -126,6 +131,8 @@ const ManageJobs = () => {
               {/* row 1 */}
             </tbody>
           </table>
+        </div>
+        <div className="flex justify-center gap-12">
           {PostedData.length > dataPerPage && (
             <div className="py-12">
               {/* ==>  Pagination <== */}
@@ -136,7 +143,22 @@ const ManageJobs = () => {
                 onPageChange={handlePageChange}
               ></CPagination>
             </div>
+
           )}
+          <div className="flex justify-end py-12 items-center">
+            
+            <select
+              id="dataPerPage"
+              value={dataPerPage}
+              onChange={handleDataPerPageChange}
+              className="px-2 py-1 border rounded-md"
+            >
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+              <option value={30}>30</option>
+              {/* Add more options as needed */}
+            </select>
+          </div>
         </div>
       </div>
     </div>

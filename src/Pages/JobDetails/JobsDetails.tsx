@@ -89,7 +89,7 @@ const JobsDetails: React.FC = () => {
     skills,
     experience,
     perks,
-    application,
+    application
   } = job || {};
 
   const formatDateTime = (dateTimeString: any) => {
@@ -156,6 +156,13 @@ const JobsDetails: React.FC = () => {
         } else if (res.data.message === "Please update subscription") {
         } else if (res.data.message === "Already applied") {
           toast.success("You have Already Applied", {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 2000,
+            closeOnClick: true,
+          });
+        } else if (res.data.message === "Please upload a resume") {
+          toast.warn("Please upload a resume", {
             position: "top-center",
             hideProgressBar: true,
             autoClose: 2000,
@@ -272,6 +279,15 @@ const JobsDetails: React.FC = () => {
                         ) {
                         } else if (res.data.message === "Already applied") {
                           toast.success("You have Already Applied", {
+                            position: "top-center",
+                            hideProgressBar: true,
+                            autoClose: 2000,
+                            closeOnClick: true,
+                          });
+                        } else if (
+                          res.data.message === "Please upload a resume"
+                        ) {
+                          toast.warn("Please upload a resume", {
                             position: "top-center",
                             hideProgressBar: true,
                             autoClose: 2000,
@@ -491,11 +507,13 @@ const JobsDetails: React.FC = () => {
                     </div>
                     <div className="mt-4">
                       {job?.applicants?.length > 0 ? (
-                        <Link to={`/manage-applicants/${job?._id}`}>
-                          <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
-                            Manage Applicants
-                          </button>
-                        </Link>
+                        job?.email === user?.email && (
+                          <Link to={`/manage-applicants/${job?._id}`}>
+                            <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
+                              Manage Applicants
+                            </button>
+                          </Link>
+                        )
                       ) : (
                         <button className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5">
                           No Applicants
