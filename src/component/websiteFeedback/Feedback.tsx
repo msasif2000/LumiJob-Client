@@ -11,6 +11,8 @@ interface FeedbackFormData {
   supportRating: number;
   UserNames: string;
   email: string;
+  role: string;
+  PostedDate: Date;
 }
 
 const Feedback: React.FC = () => {
@@ -18,7 +20,7 @@ const Feedback: React.FC = () => {
   const [supportRating, setSupportRating] = useState<number>(0);
   const [anyComments, setAnyComments] = useState<string>("");
 
-  const { user } = useAuth();
+  const { user, role } = useAuth();
   const axiosPublic = useAxiosPublic();
 
   // console.log(user.displayName, user.email);
@@ -46,6 +48,8 @@ const Feedback: React.FC = () => {
       supportRating,
       UserNames: user?.displayName,
       email: user?.email,
+      role : role,
+      PostedDate :  new Date(),
     };
 
     axiosPublic
