@@ -1,6 +1,8 @@
 import React, { FormEvent, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
 
 interface FeedbackFormData {
   anyComments: string;
@@ -18,8 +20,9 @@ const Feedback: React.FC = () => {
   const [anyComments, setAnyComments] = useState<string>("");
 
   const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
 
-  console.log(user.displayName, user.email);
+ // console.log(user.displayName, user.email);
   
 
 
@@ -47,7 +50,18 @@ const Feedback: React.FC = () => {
 
     };
 
-    console.log(formData);
+    axiosPublic
+    .post("/websiteFeedback", formData)
+    .then((response: any) => {
+      // console.log(response.data);
+      if (response.data.insertedId) {
+        toast.success("Thanks your feedback receive !");
+      } else {
+        toast.error("didn't receive  your  feedback");
+      }
+    })
+
+   
   };
 
   const renderStarRating = (value: number, onChange: (value: number) => void) => {
@@ -58,9 +72,9 @@ const Feedback: React.FC = () => {
           return (
             <span key={index} onClick={() => onChange(ratingValue)}>
               {value >= ratingValue ? (
-                <FaStar className="text-[#4869DD] cursor-pointer text-2xl mx-1" />
+                <FaStar className="text-[#4869DD] cursor-pointer text-4xl mx-1" />
               ) : (
-                <FaRegStar className="text-[#4869DD] cursor-pointer text-2xl mx-1" />
+                <FaRegStar className="text-[#4869DD] cursor-pointer text-4xl mx-1" />
               )}
             </span>
           );
