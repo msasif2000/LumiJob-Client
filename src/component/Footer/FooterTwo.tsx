@@ -77,9 +77,9 @@ const FooterTwo = () => {
                   )}
 
                   <li>
-                    <a className=" transition hover:/75" href="/">
+                    <Link className=" transition hover:/75" to={"/features"}>
                       List of Features
-                    </a>
+                    </Link>
                   </li>
 
 
@@ -92,11 +92,13 @@ const FooterTwo = () => {
 
               <nav className="mt-6">
                 <ul className="space-y-4 text-xs md:text-sm">
-                  <li>
-                    <a className=" transition hover:/75" href="/">
-                      Create Account
-                    </a>
-                  </li>
+                  {user ? null : (
+                    <li>
+                      <Link className="transition hover:/75" to={"/signup"}>
+                        Create Account
+                      </Link>
+                    </li>
+                  )}
 
                   <li>
                     <a className=" transition hover:/75" href="/">
