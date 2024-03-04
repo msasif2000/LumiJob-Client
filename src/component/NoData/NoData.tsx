@@ -11,7 +11,7 @@ const NoData: React.FC<NoDataProps> = ({ text, btn, noDataClick }) => {
 
             <div className="md:navbar-start md:hidden">
                 {/* for small device */}
-                <div className="flex flex-col items-center gap-3 justify-center">
+                <div className="flex flex-col items-center gap-3 justify-center mt-4">
                     <img src={noDataImg} alt="" />
                     <a className="text-xl md:text-3xl font-semibold pb-2">{text}!</a>
                     <div className=" flex justify-end gap-2 text-xs mb-5 md:hidden">
@@ -23,7 +23,7 @@ const NoData: React.FC<NoDataProps> = ({ text, btn, noDataClick }) => {
                 </div>
             </div>
             {/* for large device  */}
-            <div className="lg:w-2/3 xl:w-3/5 hidden md:flex flex-col items-center justify-center mx-auto mt-12">
+            <div className="lg:w-2/3 xl:w-3/5 hidden md:flex flex-col items-center justify-center mx-auto mt-2">
                 <img src={noDataImg} alt="" className='w-full'/>
                 <a className="text-xl md:text-3xl font-semibold pb-2">{text}!</a>
                 <ul className="menu menu-horizontal px-1 gap-2">

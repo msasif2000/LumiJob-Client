@@ -145,7 +145,7 @@ const JobPostingForm: React.FC = () => {
   return (
     <>
       <CandidateNav
-        text="Post Jobs"
+        text="Post Job"
         btn="Go Back"
         btn2=""
         handleClick={() => {handlePosted()}}
