@@ -55,6 +55,7 @@ import PrivacyPolicy from "../component/Footer/FooterPages/PrivacyPolicy";
 import Features from "../component/Footer/FooterPages/Features";
 import ProductAndService from "../component/Footer/FooterPages/ProductAndService";
 import FAQs from "../component/Footer/FooterPages/FAQs";
+import Supports from "../component/Footer/FooterPages/Supports";
 
 export const router = createBrowserRouter([
   {
@@ -156,6 +157,10 @@ export const router = createBrowserRouter([
       {
         path: "/faqs",
         element: <FAQs></FAQs>,
+      },
+      {
+        path: "/supports",
+        element: <Supports></Supports>
       },
     ],
   },
