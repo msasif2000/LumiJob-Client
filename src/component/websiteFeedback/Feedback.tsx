@@ -56,6 +56,9 @@ const Feedback: React.FC = () => {
       // console.log(response.data);
       if (response.data.insertedId) {
         toast.success("Thanks your feedback receive !");
+        setInterfaceRating(0);
+        setSupportRating(0);
+        setAnyComments('');
       } else {
         toast.error("didn't receive  your  feedback");
       }
