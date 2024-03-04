@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
         element: <CollaborationHub />
       },
       {
-        path: "/task-details",
+        path: "/task-details/:id",
         element: <TaskDetails />
       },
       {
