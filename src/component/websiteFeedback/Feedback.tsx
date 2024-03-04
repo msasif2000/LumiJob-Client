@@ -48,7 +48,9 @@ const Feedback: React.FC = () => {
       email: user?.email,
     };
 
-    axiosPublic.post("/websiteFeedback", formData).then((response: any) => {
+    axiosPublic
+    .post("/websiteFeedback", formData)
+    .then((response: any) => {
       // console.log(response.data);
       if (response.data.insertedId) {
         Swal.fire({
@@ -62,10 +64,24 @@ const Feedback: React.FC = () => {
         setSupportRating(0);
         setAnyComments("");
         console.log(response.data);
-      } else {
+      }
+       else {
         toast.error("didn't receive  your  feedback");
       }
+
+      
+    })
+
+    .catch((error: any) => {
+      console.log(error);
+      toast.error("Failed your feedback", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+      });
     });
+    
   };
 
   const renderStarRating = (
