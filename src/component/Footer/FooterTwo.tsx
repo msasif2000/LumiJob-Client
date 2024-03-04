@@ -40,7 +40,7 @@ const FooterTwo = () => {
                   </li>
 
                   <li>
-                    <a className=" transition hover:/75" href="/">
+                    <a className=" transition hover:/75" href="/privacy-policy">
                       Privacy Policy
                     </a>
                   </li>

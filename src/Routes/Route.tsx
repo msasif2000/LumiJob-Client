@@ -51,6 +51,7 @@ import CollaborationHub from "../Pages/CollaborationHub/CollaborationHub";
 import TaskDetails from "../Pages/CollaborationHub/TaskDetails";
 import AboutUs from "../component/Footer/FooterPages/AboutUs";
 import TermsConditions from "../component/Footer/FooterPages/TermsConditions";
+import PrivacyPolicy from "../component/Footer/FooterPages/PrivacyPolicy";
 
 export const router = createBrowserRouter([
   {
@@ -135,6 +136,10 @@ export const router = createBrowserRouter([
       {
         path: "/terms&conditions",
         element: <TermsConditions></TermsConditions>,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
       },
     ],
   },
