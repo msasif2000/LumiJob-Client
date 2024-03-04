@@ -12,7 +12,7 @@ const CollaborationHubCard = () => {
                 <div className="px-6 py-4">
                     <h3 className="text-xl font-bold text-gray-900">Task management website</h3>
                     <p className="text-sm text-gray-600">Website</p>
-                    <p className="text-sm text-gray-600">2-2-2024</p>
+                    <p className="text-sm text-gray-600">02-02-2024</p>
                     <p className="text-sm text-gray-600 mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, corporis.</p>
                 </div>
             </div>

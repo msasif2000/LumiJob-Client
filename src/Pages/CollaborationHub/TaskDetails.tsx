@@ -13,7 +13,7 @@ const TaskDetails = () => {
         const discordLink = e.target.discordLink.value;
         console.log(teamName, leaderName, leaderEmail, discordLink);
     }
-    
+
     return (
         <div className="max-w-screen-2xl mx-auto py-3 px-4">
 
@@ -63,7 +63,7 @@ const TaskDetails = () => {
                                         {/* Leader */}
                                         <label htmlFor="leaderName" className="block">Leader Name*</label>
                                         <div className="relative">
-                                            <input id="leaderName" name="leaderName" type="text" required placeholder="Enter Leader Name" className="p-3 block w-full  drop-shadow-lg rounded-lg outline-none" />
+                                            <input id="leaderName" name="leaderName" defaultValue={user?.displayName} type="text" disabled required placeholder={user?.displayName} className="p-3 block w-full  drop-shadow-lg rounded-lg outline-none" />
                                         </div>
 
                                         {/* Link  */}
