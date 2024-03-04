@@ -2,12 +2,43 @@ import { Helmet } from "react-helmet-async";
 import { FaPlusSquare } from "react-icons/fa";
 import ChallengeCard from "./ChallengeCard";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import DatePicker from "react-datepicker";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Challenges = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedDate, setSelectedDate] = useState<any>(null);
+  const axiosPublic = useAxiosPublic();
 
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const handleDateChange = (date: any) => {
+    setSelectedDate(date);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data: any) => {
+    const addChallenge = {
+      challengeTitle: data.title,
+      description: data.description,
+      submissionDate: selectedDate,
+    };
+
+    // console.log(addChallenge);
+
+    const Res = await axiosPublic.post("/add-challenge", addChallenge);
+    console.log(Res.data);
+    if (Res.data.insertedId) {
+      toggleModal();
+    }
   };
 
   return (
@@ -36,76 +67,80 @@ const Challenges = () => {
             <ChallengeCard />
             <ChallengeCard />
           </div>
+          {/* Modal */}
           {showModal && (
-            <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-              <div className="relative p-4 w-full max-w-2xl max-h-full">
-                {/* Modal content */}
-                <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                  {/* Modal header */}
-                  <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                      Terms of Service
-                    </h3>
-                    <button
-                      type="button"
-                      className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                      data-modal-hide="default-modal"
-                    >
-                      <svg
-                        className="w-3 h-3"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 14 14"
+            <div className="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex items-center justify-center">
+              <div className="bg-white p-4 rounded-md w-full max-w-md">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="flex flex-wrap pb-3">
+                    <div className="w-full px-4">
+                      <label className="block  text-left text-gray-600 font-medium text-md mb-2 mt-8">
+                        Title
+                      </label>
+                      <input
+                        className="border rounded w-full py-2 px-3 text-gray-700"
+                        {...register("title", { required: true })}
+                        name="title"
+                        type="text"
+                        placeholder="Add Title"
+                      />
+                      {errors.title && (
+                        <span className="text-red-600 mt-2">
+                          Title is required
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="w-full px-4">
+                      <label className="block text-left text-gray-600 font-medium text-md mb-2 mt-8">
+                        Description
+                      </label>
+
+                      <textarea
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        {...register("description", { required: true })}
+                        name="description"
+                        maxLength={200}
+                        placeholder="note about the booking"
+                        required
+                      ></textarea>
+                      {errors.description && (
+                        <span className="text-red-600 mt-2">
+                          Description is required
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="w-full px-4">
+                      <label className="block  text-left text-gray-600 font-medium text-md mb-2 mt-8">
+                        Submission Date
+                      </label>
+                      <DatePicker
+                        selected={selectedDate}
+                        onChange={handleDateChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholderText="Select a date"
+                        required
+                      />
+                    </div>
+
+                    <div className="flex justify-center w-full px-4 mt-12 mb-12 md:mb-0">
+                      <button
+                        className="bg-accentTwo hover:bg-accent text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline mr-8"
+                        type="submit"
                       >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                        />
-                      </svg>
-                      <span className="sr-only">Close modal</span>
-                    </button>
+                        Add New Challenge
+                      </button>
+
+                      <button
+                        onClick={toggleModal}
+                        className="bg-black hover:bg-red-600 text-white font-bold  py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
-                  {/* Modal body */}
-                  <div className="p-4 md:p-5 space-y-4">
-                    <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                      With less than a month to go before the European Union
-                      enacts new consumer privacy laws for its citizens,
-                      companies around the world are updating their terms of
-                      service agreements to comply.
-                    </p>
-                    <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                      The European Union’s General Data Protection Regulation
-                      (G.D.P.R.) goes into effect on May 25 and is meant to
-                      ensure a common set of data rights in the European Union.
-                      It requires organizations to notify users as soon as
-                      possible of high-risk data breaches that could personally
-                      affect them.
-                    </p>
-                  </div>
-                  {/* Modal footer */}
-                  <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button
-                      data-modal-hide="default-modal"
-                      type="button"
-                      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      I accept
-                    </button>
-                    <button
-                      onClick={() => {
-                        setShowModal(false);
-                      }}
-                      type="button"
-                      className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                    >
-                      Decline
-                    </button>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           )}
