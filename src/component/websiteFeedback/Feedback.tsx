@@ -2,19 +2,18 @@ import React, { FormEvent, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 interface FeedbackFormData {
   anyComments: string;
   interfaceRating: number;
   supportRating: number;
   UserNames: string;
-  email : string;
-
+  email: string;
 }
 
 const Feedback: React.FC = () => {
-
   const [interfaceRating, setInterfaceRating] = useState<number>(0);
   const [supportRating, setSupportRating] = useState<number>(0);
   const [anyComments, setAnyComments] = useState<string>("");
@@ -22,9 +21,7 @@ const Feedback: React.FC = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
- // console.log(user.displayName, user.email);
-  
-
+  // console.log(user.displayName, user.email);
 
   const handleInterfaceRatingChange = (value: number) => {
     setInterfaceRating(value);
@@ -34,7 +31,9 @@ const Feedback: React.FC = () => {
     setSupportRating(value);
   };
 
-  const handleCommentsChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleCommentsChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setAnyComments(event.target.value);
   };
 
@@ -45,29 +44,34 @@ const Feedback: React.FC = () => {
       anyComments,
       interfaceRating,
       supportRating,
-       UserNames : user?.displayName,
-       email : user?.email,
-
+      UserNames: user?.displayName,
+      email: user?.email,
     };
 
-    axiosPublic
-    .post("/websiteFeedback", formData)
-    .then((response: any) => {
+    axiosPublic.post("/websiteFeedback", formData).then((response: any) => {
       // console.log(response.data);
       if (response.data.insertedId) {
-        toast.success("Thanks your feedback receive !");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         setInterfaceRating(0);
         setSupportRating(0);
-        setAnyComments('');
+        setAnyComments("");
+        console.log(response.data);
       } else {
         toast.error("didn't receive  your  feedback");
       }
-    })
-
-   
+    });
   };
 
-  const renderStarRating = (value: number, onChange: (value: number) => void) => {
+  const renderStarRating = (
+    value: number,
+    onChange: (value: number) => void
+  ) => {
     return (
       <div className="flex">
         {[...Array(5)].map((_, index) => {
@@ -97,9 +101,9 @@ const Feedback: React.FC = () => {
             htmlFor="interfaceRating"
             className="block text-xl font-bold text-black mb-4"
           >
-             Please Rating our website over all interface?
+            Please Rating our website over all interface?
           </label>
-          { renderStarRating(interfaceRating, handleInterfaceRatingChange)}
+          {renderStarRating(interfaceRating, handleInterfaceRatingChange)}
         </div>
         <div className="p-4 bg-white rounded-2xl">
           <label
