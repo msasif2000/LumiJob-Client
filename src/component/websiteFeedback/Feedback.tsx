@@ -1,92 +1,105 @@
-import { FormEvent, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
-import Rating from "react-rating";
 
-interface Comments {
-  anyCements: string;
-  comments: string;
+interface FeedbackFormData {
+  anyComments: string;
+  interfaceRating: number;
+  supportRating: number;
 }
 
+const Feedback: React.FC = () => {
+  const [interfaceRating, setInterfaceRating] = useState<number>(0);
+  const [supportRating, setSupportRating] = useState<number>(0);
+  const [anyComments, setAnyComments] = useState<string>("");
 
-const Feedback = () => {
-  const [InterfaceRating, setRating] = useState<number>(0);
-  const [supportRating, setRating1] = useState<number>(0);
-  const websiteInterfaceRating = (value: number) => {
-    setRating(value);
-  };
-  const supportTeamRating = (value: number) => {
-    setRating1(value);
+  const handleInterfaceRatingChange = (value: number) => {
+    setInterfaceRating(value);
   };
 
-//const [comments, setComments] = useState<string | any>("");
-const feedBack = (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const anyCements = (form.elements.namedItem("additionalInfo") as HTMLInputElement).value;
-  const allFeedback = {
-    anyCements, InterfaceRating, supportRating
-  }
+  const handleSupportRatingChange = (value: number) => {
+    setSupportRating(value);
+  };
 
-  console.log(allFeedback);
-};
+  const handleCommentsChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setAnyComments(event.target.value);
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData: FeedbackFormData = {
+      anyComments,
+      interfaceRating,
+      supportRating,
+    };
+
+    console.log(formData);
+  };
+
+  const renderStarRating = (value: number, onChange: (value: number) => void) => {
+    return (
+      <div className="flex">
+        {[...Array(5)].map((_, index) => {
+          const ratingValue = index + 1;
+          return (
+            <span key={index} onClick={() => onChange(ratingValue)}>
+              {value >= ratingValue ? (
+                <FaStar className="text-[#4869DD] cursor-pointer text-2xl" />
+              ) : (
+                <FaRegStar className="text-[#4869DD] cursor-pointer text-2xl" />
+              )}
+            </span>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
-    <div className="pt-8 ">
+    <div className="pt-8">
       <h1 className="text-4xl font-extrabold text-center">
         Lumi-Jobs website Feedback
       </h1>
-      <form onSubmit={feedBack} className="space-y-4 mt-4">
-        {/* Rating our website interface */}
+      <form onSubmit={handleSubmit} className="space-y-4 mt-4">
         <div className="p-4 bg-white rounded-2xl">
           <label
-            htmlFor="additionalInfo"
+            htmlFor="interfaceRating"
             className="block text-xl font-bold text-black"
           >
-            1. Could you please Rating our website interface?
+             Could you please rate our website interface?
           </label>
-          <Rating
-          className="my-4 text-2xl md:text-3xl lg:text-4xl"
-            emptySymbol={<FaRegStar className="text-[#4869DD]" />}
-            fullSymbol={<FaStar className="text-[#4869DD]" />}
-            fractions={2}
-            onChange={websiteInterfaceRating}
-          />
+          { renderStarRating(interfaceRating, handleInterfaceRatingChange)}
         </div>
-        {/* support team Rating */}
         <div className="p-4 bg-white rounded-2xl">
           <label
-            htmlFor="additionalInfo"
+            htmlFor="supportRating"
             className="block text-xl font-bold text-black"
           >
-            2. How would you rating the support team at Lumijobs website?
+            How would you rate the support team at Lumi-Jobs website?
           </label>
-          <Rating
-          className="my-4 text-2xl md:text-3xl lg:text-4xl"
-            emptySymbol={<FaRegStar className="text-[#4869DD]" />}
-            fullSymbol={<FaStar className="text-[#4869DD]" />}
-            fractions={2}
-            onChange={supportTeamRating}
-          />
+          {renderStarRating(supportRating, handleSupportRatingChange)}
         </div>
-
         <div className="p-4 bg-white rounded-2xl">
           <label
             htmlFor="additionalInfo"
             className="block text-xl font-bold text-black"
           >
-            3. Anything Feedback for Lumi-Jobs Website?
+            Any feedback for Lumi-Jobs Website?
           </label>
           <textarea
             id="additionalInfo"
             name="additionalInfo"
-            className="mt-1   p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2 "
+            className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-400 rounded-md border-2"
             rows={4}
             placeholder="Enter Your Feedback..."
-          ></textarea>
+            value={anyComments}
+            onChange={handleCommentsChange}
+          />
         </div>
         <input
-          className="w-full btn bg-[#4869DD] hover:bg-[#3150c0] text-white "
+          className="w-full btn bg-[#4869DD] hover:bg-[#3150c0] text-white"
           type="submit"
-          value="submit"
+          value="Submit"
         />
       </form>
     </div>
