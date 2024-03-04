@@ -35,7 +35,6 @@ const TermsConditions: React.FC = () => {
                 <p className="text-lg mb-4">
                     Lumijobs reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive, or causes breach of these Terms and Conditions.
                 </p>
-                {/* Add more terms and conditions here */}
             </div>
         </div>
     );

@@ -54,6 +54,7 @@ import TermsConditions from "../component/Footer/FooterPages/TermsConditions";
 import PrivacyPolicy from "../component/Footer/FooterPages/PrivacyPolicy";
 import Features from "../component/Footer/FooterPages/Features";
 import ProductAndService from "../component/Footer/FooterPages/ProductAndService";
+import FAQs from "../component/Footer/FooterPages/FAQs";
 
 export const router = createBrowserRouter([
   {
@@ -131,6 +132,7 @@ export const router = createBrowserRouter([
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
       },
+      // footer 
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
@@ -150,6 +152,10 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <ProductAndService></ProductAndService>,
+      },
+      {
+        path: "/faqs",
+        element: <FAQs></FAQs>,
       },
     ],
   },

@@ -102,7 +102,7 @@ const FooterTwo = () => {
 
                   <li>
                     <Link className=" transition hover:/75" to={"services"}>
-                      Products/Service
+                      Services
                     </Link>
                   </li>
                   <li>
@@ -121,9 +121,9 @@ const FooterTwo = () => {
               <nav className="mt-6">
                 <ul className="space-y-4 text-xs md:text-sm">
                   <li>
-                    <a className=" transition hover:/75" href="/">
+                    <Link className=" transition hover:/75" to="/faqs">
                       FAQs
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
