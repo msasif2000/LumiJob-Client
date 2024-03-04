@@ -6,6 +6,7 @@ import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import NoData from "../component/NoData/NoData";
 
 const PostedJobs = () => {
   const axiosPublic = useAxiosPublic();
@@ -48,28 +49,37 @@ const PostedJobs = () => {
       });
   };
 
-  const length = companyPostedJobs?.length;
-
-  const handlePostJob = () =>{
-    navigate('/dashboard/postJob')
+  const handlePostJob = () => {
+    navigate('/dashboard/postJob');
   }
 
+  const length = companyPostedJobs?.length;
+
   return (
-    <div>
-      <CandidateNav
-        text="Your Posted Jobs"
-        btn="Post Jobs"
-        btn2={length}
-        handleClick={() => {handlePostJob()}}
-        handleClick2={() => {}}
-      />
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-        {companyPostedJobs?.map((job: Job) => (
-          <PostedJobsCard key={job._id} job={job} handleDelete={handleDelete} />
-        ))}
-      </div>
-      <ToastContainer/>
-    </div>
+    <>
+      {
+        length ? (
+          <div>
+            <CandidateNav
+              text="Your Posted Jobs"
+              btn="Post Jobs"
+              btn2={length}
+              handleClick={() => { handlePostJob() }}
+              handleClick2={() => { }}
+            />
+            <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+              {companyPostedJobs?.map((job: Job) => (
+                <PostedJobsCard key={job._id} job={job} handleDelete={handleDelete} />
+              ))}
+            </div>
+            <ToastContainer />
+          </div >
+        )
+          :
+          (
+            <NoData text="You have not posted any jobs yet" btn="Post Job" noDataClick={handlePostJob} />
+          )
+      }</>
   );
 };
 

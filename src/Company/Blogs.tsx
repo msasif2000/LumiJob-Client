@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
+import NoData from "../component/NoData/NoData";
 
 interface Blog {
     _id: string,
@@ -32,6 +33,10 @@ const Blogs = () => {
                 })
         }
     }, [user]);
+    const handleBlogPosts = () => {
+        navigate('/dashboard/post-a-blog')
+    }
+
     const length = companyPostedBlogs?.length;
 
     const handleDelete = (blogId: string) => {
@@ -56,25 +61,31 @@ const Blogs = () => {
                 toast.error("An error occurred while deleting the Blog.");
             });
     };
-    const handleBlogPosts = () => {
-        navigate('/dashboard/post-a-blog')
-    }
+
     return (
-        <div>
-            <CandidateNav
-                text="Your Posted Blogs"
-                btn="Post Blog"
-                btn2={length}
-                handleClick={() => { handleBlogPosts() }}
-                handleClick2={() => { }}
-            />
-            <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-                {companyPostedBlogs?.map((blog: Blog) => (
-                    <BlogCard key={blog._id} blog={blog} handleDelete={handleDelete} />
-                ))}
-            </div>
-            <ToastContainer />
-        </div>
+        <>
+            {length ? (
+                <div>
+                    <CandidateNav
+                        text="Your Posted Blogs"
+                        btn="Post Blog"
+                        btn2={length}
+                        handleClick={() => { handleBlogPosts() }}
+                        handleClick2={() => { }}
+                    />
+                    <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+                        {companyPostedBlogs?.map((blog: Blog) => (
+                            <BlogCard key={blog._id} blog={blog} handleDelete={handleDelete} />
+                        ))}
+                    </div>
+                    <ToastContainer />
+                </div>
+            )
+                :
+                (
+                    <NoData text="You have not posted any blogs yet" btn="Post Blog" noDataClick={handleBlogPosts} />
+                )}
+        </>
     );
 };
 
