@@ -38,6 +38,7 @@ const Supports: React.FC = () => {
               <p>To search for jobs, use the search bar on the jobs page to enter keywords related to the type of job you're looking for. You can also use filters to narrow down your search results.</p>
             </div>
           </div>
+          <Link className=" text-blue-600" to={"/faqs"}>More</Link>
          
         </div>
 

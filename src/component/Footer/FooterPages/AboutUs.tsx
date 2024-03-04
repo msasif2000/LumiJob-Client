@@ -1,55 +1,43 @@
 import React from "react";
+import { FaHandshake, FaLightbulb, FaUsers } from "react-icons/fa";
 
 const AboutUs: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">About Us</h1>
         <p className="text-xs md:text-lg lg:text-xl mb-8">
           Welcome to LumiJobs, a revolutionary hiring agency and communication platform that connects talented professionals with top-notch companies in the tech industry. Our mission is to facilitate seamless interactions between job seekers and employers, creating opportunities where expertise meets innovation.
         </p>
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Key Features</h2>
-          <ul className="list-disc pl-6 text-xs md:text-lg lg:text-xl">
-            <li className="mb-2">
-              <strong>User Roles:</strong> Admin, Company, Hiring Team, and Job Seeker.
-            </li>
-            <li className="mb-2">
-              <strong>Profile Customization:</strong> Allow users to create detailed profiles showcasing their skills, experience, and preferences.
-            </li>
-            <li className="mb-2">
-              <strong>Real-time Job Listings:</strong> Post and manage job listings with real-time synchronization for accurate and timely information.
-            </li>
-            <li className="mb-2">
-              <strong>Interactive Forums:</strong> Build a community by incorporating forums for tech discussions, networking, and knowledge sharing.
-            </li>
-            <li className="mb-2">
-              <strong>Event Integration:</strong> Facilitate industry-related events and webinars to promote continuous learning and networking organized by registered companies.
-            </li>
-            <li className="mb-2">
-              <strong>Quick Apply Button:</strong> Enable a one-click "Quick Apply" or “Apply Now” button for job listings, allowing candidates to express interest efficiently.
-            </li>
-            <li className="mb-2">
-              <strong>Job Bookmarking:</strong> Allow users to bookmark or save job listings for future reference, providing a convenient way to revisit preferred opportunities.
-            </li>
-            <li className="mb-2">
-              <strong>Search Filters:</strong> Incorporate intuitive search filters to help users refine job searches based on location, salary range, date and time, job experiences, job category, skills, and other relevant criteria.
-            </li>
-            <li className="mb-2">
-              <strong>Personalized Dashboard:</strong> Create a personalized dashboard for each user, displaying a summary of their job applications, bookmarked listings, and relevant notifications for a quick overview of their activity.
-            </li>
-            <li className="mb-2">
-              <strong>Application Tracking:</strong> Offer a feature that allows candidates to track the status of their applications, providing transparency in the hiring process.
-            </li>
-            <li className="mb-2">
-              <strong>Interview Scheduling:</strong> Implement interview scheduling and real-time notifications for job seekers.
-            </li>
-            <li className="mb-2">
-              <strong>Feedback and Ratings:</strong> Collect and display feedback from candidates and hiring managers, including ratings and reviews for recruiters.
-            </li>
-           
-          </ul>
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4">Our Story</h2>
+          <p className="mb-4">LumiJobs was founded in 2024 with a vision to revolutionize the hiring process and connect talented professionals with meaningful job opportunities. Our journey began with a passion for technology and a desire to create a platform that empowers both job seekers and employers.</p>
+          <p className="mb-4">Over the years, we've grown into a trusted name in the recruitment industry, serving thousands of companies and millions of job seekers worldwide. Our commitment to innovation, integrity, and excellence drives everything we do, as we continue to evolve and adapt to meet the changing needs of the workforce.</p>
         </div>
+
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4">Our Mission</h2>
+          <p className="mb-4">At LumiJobs, our mission is to connect opportunities with expertise, empowering individuals and organizations to achieve their full potential. We strive to foster a diverse and inclusive community where talent thrives, innovation flourishes, and meaningful connections are made.</p>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4">Our Values</h2>
+          <div className="flex flex-col">
+            <div className="flex items-start mb-4 md:mr-8">
+              <FaLightbulb className="mr-2 text-blue-500" />
+              <span className="font-bold">Innovation: </span> We embrace creativity and strive for continuous improvement in everything we do.
+            </div>
+            <div className="flex items-center mb-4 md:mr-8">
+              <FaHandshake className="mr-2 text-blue-500" />
+              <span className="font-bold">Integrity: </span> We operate with honesty, transparency, and ethical principles at all times.
+            </div>
+            <div className="flex items-center mb-4">
+              <FaUsers className="mr-2 text-blue-500" />
+              <span className="font-bold">Inclusivity: </span> We celebrate diversity and promote a culture of inclusion, respect, and equality.
+            </div>
+          </div>
+        </div>
+
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Perfect Sectors for LumiJobs</h2>
           <p className="mb-4 text-xs md:text-lg lg:text-xl">

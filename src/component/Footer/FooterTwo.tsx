@@ -106,10 +106,11 @@ const FooterTwo = () => {
                     </Link>
                   </li>
                   <li>
-                    <a className=" transition hover:/75" href="/">
-                      Post a Job
-                    </a>
+                    <Link className=" transition hover:/75" to={"/find-candidate"}>
+                      Candidates
+                    </Link>
                   </li>
+                 
 
                 </ul>
               </nav>
@@ -132,9 +133,9 @@ const FooterTwo = () => {
                     </Link>
                   </li>
                   <li>
-                    <a className=" transition hover:/75" href="/">
+                    <Link className=" transition hover:/75" to={"/Contact"}>
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
 
                 </ul>
