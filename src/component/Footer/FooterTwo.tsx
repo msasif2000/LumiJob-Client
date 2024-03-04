@@ -16,19 +16,19 @@ const FooterTwo = () => {
               </h3>
             </div>
 
-            <p className="max-w-md mx-auto mt-4 leading-relaxed text-center text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left text-sm font-normal">
+            <p className="max-w-md mx-auto mt-4 leading-relaxed text-center text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left font-normal text-xs md:text-sm lg:text-lg">
               LumiJobs is designed to revolutionize the hiring process by
               providing a feature-rich platform that caters to the diverse needs
               of both companies and job seekers.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4">
+          <div className="grid gap-8 grid-cols-2 lg:col-span-2 md:grid-cols-4">
             <div className="text-center sm:text-left">
-              <p className="text-sm md:text-base font-medium ">About</p>
-
+              <p className="text-xs md:text-sm lg:text-lg font-medium ">About</p>
+              <hr />
               <nav className="mt-6">
-                <ul className="space-y-4 text-xs md:text-sm">
+                <ul className="space-y-4 text-xs md:text-sm lg:text-lg">
                   <li>
                     <a className=" transition hover:/75" href="/aboutUs">
                       About Lumijobs
@@ -58,10 +58,10 @@ const FooterTwo = () => {
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-sm md:text-base font-medium ">Job Seekers</p>
-
+              <p className="text-xs md:text-sm lg:text-lg font-medium ">Job Seekers</p>
+              <hr />
               <nav className="mt-6">
-                <ul className="space-y-4 text-xs md:text-sm">
+                <ul className="space-y-4 text-xs md:text-sm lg:text-lg">
                   <li>
                     <Link to={"/find-job"} className=" transition hover:/75" >
                       Find Job
@@ -88,10 +88,10 @@ const FooterTwo = () => {
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-sm md:text-base font-medium ">Recruiter</p>
-
+              <p className="text-xs md:text-sm lg:text-lg font-medium ">Recruiter</p>
+              <hr />
               <nav className="mt-6">
-                <ul className="space-y-4 text-xs md:text-sm">
+                <ul className="space-y-4 text-xs md:text-sm lg:text-lg">
                   {user ? null : (
                     <li>
                       <Link className="transition hover:/75" to={"/signup"}>
@@ -110,17 +110,17 @@ const FooterTwo = () => {
                       Candidates
                     </Link>
                   </li>
-                 
+
 
                 </ul>
               </nav>
             </div>
 
             <div className="text-center sm:text-left">
-              <p className="text-sm md:text-base font-medium ">Helpful Links</p>
-
+              <p className="text-xs md:text-sm lg:text-lg font-medium ">Helpful Links</p>
+              <hr />
               <nav className="mt-6">
-                <ul className="space-y-4 text-xs md:text-sm">
+                <ul className="space-y-4 text-xs md:text-sm lg:text-lg">
                   <li>
                     <Link className=" transition hover:/75" to="/faqs">
                       FAQs
@@ -145,8 +145,8 @@ const FooterTwo = () => {
         </div>
 
         <div className="pt-6 mt-12 border-t border-gray-300">
-          <div className="text-center sm:flex sm:justify-between sm:text-left">
-            <p className="mt-4 text-base text-gray-500 sm:order-first sm:mt-0">
+          <div className="text-center md:flex md:justify-between items-center sm:text-left">
+            <p className="mt-4 text-xs md:text-sm lg:text-lg text-gray-500 sm:order-first sm:mt-0">
               <b>LumiJobs</b> &copy; {new Date().getFullYear()} all rights
               reserved
             </p>

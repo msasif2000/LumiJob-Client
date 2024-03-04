@@ -6,7 +6,7 @@ import { BiCheckCircle } from "react-icons/bi";
 const PrivacyPolicy: React.FC = () => {
     return (
         <div className="container mx-auto px-4 md:py-8">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto text-justify">
                 <h1 className="md:text-4xl font-bold mb-8 text-center">Privacy Policy</h1>
                 <div className="text-gray-700 leading-relaxed">
                     <p className="mb-6 text-xs md:text-sm xl:text-lg">
