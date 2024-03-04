@@ -101,9 +101,9 @@ const FooterTwo = () => {
                   )}
 
                   <li>
-                    <a className=" transition hover:/75" href="/">
+                    <Link className=" transition hover:/75" to={"services"}>
                       Products/Service
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a className=" transition hover:/75" href="/">
