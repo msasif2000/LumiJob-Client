@@ -127,9 +127,9 @@ const FooterTwo = () => {
                   </li>
 
                   <li>
-                    <a className=" transition hover:/75" href="/">
+                    <Link className=" transition hover:/75" to={"/supports"}>
                       Support
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a className=" transition hover:/75" href="/">
