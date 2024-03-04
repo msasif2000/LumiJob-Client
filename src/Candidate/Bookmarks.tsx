@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import NoData from "../component/NoData/NoData";
+
 
 interface Bookmark {
   _id: string;
@@ -54,6 +56,16 @@ const Bookmarks: React.FC = () => {
 
   const length = bookmarks.length;
 
+  const handleNoData = () => {
+  };
+
+  if (length === 0) {
+    return (
+      <div className="min-h-screen">
+        <NoData text="Bookmarked Jobs is Empty" btn="" noDataClick={handleNoData} />
+      </div>
+    )
+  }
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");
     return formattedDate;
