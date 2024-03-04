@@ -54,7 +54,7 @@ const Feedback: React.FC = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Thank for Your Feedback",
           showConfirmButton: false,
           timer: 1500,
         });
