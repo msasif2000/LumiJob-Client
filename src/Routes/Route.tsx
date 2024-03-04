@@ -49,6 +49,8 @@ import Add_Data from "../Admin/Add_Data";
 import Challenges from "../Admin/Challenges/Challenges";
 import CollaborationHub from "../Pages/CollaborationHub/CollaborationHub";
 import TaskDetails from "../Pages/CollaborationHub/TaskDetails";
+import AboutUs from "../component/Footer/FooterPages/AboutUs";
+import TermsConditions from "../component/Footer/FooterPages/TermsConditions";
 
 export const router = createBrowserRouter([
   {
@@ -126,10 +128,14 @@ export const router = createBrowserRouter([
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
       },
-      // {
-      //   path: "/candidateProfileView/:id",
-      //   element: <CandidateDetails></CandidateDetails>,
-      // },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/terms&conditions",
+        element: <TermsConditions></TermsConditions>,
+      },
     ],
   },
 
