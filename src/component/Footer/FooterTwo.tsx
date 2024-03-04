@@ -1,8 +1,10 @@
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const FooterTwo = () => {
+  const { user } = useAuth();
   return (
     <footer className="bg-white border-t">
       <div className="max-w-screen-2xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24">
@@ -46,11 +48,11 @@ const FooterTwo = () => {
                   </li>
 
                   <li>
-                    <a className=" transition hover:/75" href="/">
+                    <Link to={"/"} className=" transition hover:/75" >
                       Feedback
-                    </a>
+                    </Link>
                   </li>
-                  
+
                 </ul>
               </nav>
             </div>
@@ -61,16 +63,18 @@ const FooterTwo = () => {
               <nav className="mt-6">
                 <ul className="space-y-4 text-xs md:text-sm">
                   <li>
-                    <a className=" transition hover:/75" href="/">
-                      Find Jobs
-                    </a>
+                    <Link to={"/find-job"} className=" transition hover:/75" >
+                      Find Job
+                    </Link>
                   </li>
 
-                  <li>
-                    <a className=" transition hover:/75" href="/">
-                      Create Account
-                    </a>
-                  </li>
+                  {user ? null : (
+                    <li>
+                      <Link className="transition hover:/75" to={"/signup"}>
+                        Create Account
+                      </Link>
+                    </li>
+                  )}
 
                   <li>
                     <a className=" transition hover:/75" href="/">
@@ -78,7 +82,7 @@ const FooterTwo = () => {
                     </a>
                   </li>
 
-                  
+
                 </ul>
               </nav>
             </div>
@@ -104,7 +108,7 @@ const FooterTwo = () => {
                       Post a Job
                     </a>
                   </li>
-                 
+
                 </ul>
               </nav>
             </div>
