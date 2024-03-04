@@ -1,16 +1,27 @@
 import React, { FormEvent, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
 
 interface FeedbackFormData {
   anyComments: string;
   interfaceRating: number;
   supportRating: number;
+  UserNames: string;
+  email : string;
+
 }
 
 const Feedback: React.FC = () => {
+
   const [interfaceRating, setInterfaceRating] = useState<number>(0);
   const [supportRating, setSupportRating] = useState<number>(0);
   const [anyComments, setAnyComments] = useState<string>("");
+
+  const { user } = useAuth();
+
+  console.log(user.displayName, user.email);
+  
+
 
   const handleInterfaceRatingChange = (value: number) => {
     setInterfaceRating(value);
@@ -31,6 +42,9 @@ const Feedback: React.FC = () => {
       anyComments,
       interfaceRating,
       supportRating,
+       UserNames : user?.displayName,
+       email : user?.email,
+
     };
 
     console.log(formData);
@@ -44,9 +58,9 @@ const Feedback: React.FC = () => {
           return (
             <span key={index} onClick={() => onChange(ratingValue)}>
               {value >= ratingValue ? (
-                <FaStar className="text-[#4869DD] cursor-pointer text-2xl" />
+                <FaStar className="text-[#4869DD] cursor-pointer text-2xl mx-1" />
               ) : (
-                <FaRegStar className="text-[#4869DD] cursor-pointer text-2xl" />
+                <FaRegStar className="text-[#4869DD] cursor-pointer text-2xl mx-1" />
               )}
             </span>
           );
@@ -64,16 +78,16 @@ const Feedback: React.FC = () => {
         <div className="p-4 bg-white rounded-2xl">
           <label
             htmlFor="interfaceRating"
-            className="block text-xl font-bold text-black"
+            className="block text-xl font-bold text-black mb-4"
           >
-             Could you please rate our website interface?
+             Please Rating our website over all interface?
           </label>
           { renderStarRating(interfaceRating, handleInterfaceRatingChange)}
         </div>
         <div className="p-4 bg-white rounded-2xl">
           <label
             htmlFor="supportRating"
-            className="block text-xl font-bold text-black"
+            className="block text-xl font-bold text-black mb-4"
           >
             How would you rate the support team at Lumi-Jobs website?
           </label>
