@@ -2,7 +2,6 @@ import Marquee from "react-fast-marquee";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import FeedbackCard from "./FeedbackCard";
-import info from './info';
 interface Data {
     _id: string;
     anyComments: string;
@@ -18,7 +17,7 @@ interface Data {
 const FeedbackForWebsiteHome = () => {
 
     const axiosPublic = useAxiosPublic();
-    const { data: feedback, refetch: feedbackRefetch } = useQuery({
+    const { data: feedback} = useQuery({
         queryKey: ["feedback"],
         queryFn: async () => {
           const res = await axiosPublic.get(`/websiteFeedback`);

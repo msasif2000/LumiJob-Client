@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../Blogs/components/err/Loading";
 interface TaskData {
-    id: number;
+    _id: number;
     title: string;
     description: string;
     date: number;
@@ -16,8 +16,9 @@ const CollaborationHub = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const axiosPublic = useAxiosPublic()
     console.log(taskData);
+    
     useEffect(() => {
-        axiosPublic.get("/get-challenges").then((res) => {
+        axiosPublic.get("/challenges").then((res) => {
             setTaskData(res.data);
             setLoading(false);
         });
@@ -41,7 +42,7 @@ const CollaborationHub = () => {
 
                 {
                     loading ? <Loading /> : taskData?.map((task, idx) =>
-                        <Link to={`/task-details/${task.id}`} key={idx} >
+                        <Link to={`/task-details/${task._id}`} key={idx} >
                             <CollaborationHubCard task={task} ></CollaborationHubCard>
                         </Link>
                     )

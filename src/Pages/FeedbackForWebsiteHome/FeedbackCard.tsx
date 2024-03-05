@@ -9,14 +9,14 @@ interface Data {
 
 const FeedbackCard: React.FC<Data> = ({ info }) => {
   const {
-    _id,
+    // _id,
     anyComments,
     interfaceRating,
-    supportRating,
+    // supportRating,
     UserNames,
-    email,
+    // email,
     role,
-    PostedDate,
+
   } = info;
   
 
