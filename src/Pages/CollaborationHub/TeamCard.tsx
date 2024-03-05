@@ -5,6 +5,7 @@ interface TeamData {
     teamName: string;
     coloredText: any;
     id: number;
+    _id: string;
     name: string;
     title: string;
     img: string;
