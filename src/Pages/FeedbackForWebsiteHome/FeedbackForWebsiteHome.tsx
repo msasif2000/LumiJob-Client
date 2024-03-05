@@ -1,6 +1,44 @@
 import Marquee from "react-fast-marquee";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+interface Data {
+    _id: string;
+    anyComments: string;
+    interfaceRating: number;
+    supportRating: number;
+    UserNames: string;
+    email: string;
+    role: string;
+    PostedDate: string;
+}
+
 
 const FeedbackForWebsiteHome = () => {
+
+    const axiosPublic = useAxiosPublic();
+    const { data: feedback, refetch: feedbackRefetch } = useQuery({
+        queryKey: ["feedback"],
+        queryFn: async () => {
+          const res = await axiosPublic.get(`/websiteFeedback`);
+          return res.data;
+        },
+      });
+      console.log(feedback);
+      const filteredData = feedback.reduce((acc : any, currentItem : any) => {
+        if (currentItem.role === 'candidate') {
+            acc.candidates.push(currentItem);
+        } else if (currentItem.role === 'company') {
+            acc.companies.push(currentItem);
+        }
+        return acc;
+    }, { candidates: [], companies: [] });
+    
+    const candidateData: Data[] = filteredData.candidates;
+    const companyData: Data[] = filteredData.companies;
+
+    console.log(candidateData);
+    console.log(companyData);
+      
     return (
         <div>
             <div className="mb-10">
@@ -13,6 +51,8 @@ const FeedbackForWebsiteHome = () => {
             </div>
             <div className="space-y-10">
             <Marquee pauseOnHover={true} direction="right"  gradient gradientWidth={400}>
+                <h1 className="text-5xl font-bold">hello</h1>
+                <h1 className="text-5xl font-bold">hello</h1>
                 <h1 className="text-5xl font-bold">hello</h1>
             </Marquee>
             
