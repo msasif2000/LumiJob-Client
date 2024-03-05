@@ -52,7 +52,7 @@ const FeedbackForWebsiteHome = () => {
         </p>
             </div>
             <div className="space-y-10">
-            <Marquee pauseOnHover={true} direction="right"  gradient gradientWidth={100}>
+            <Marquee pauseOnHover={true} direction="right"  gradient gradientWidth={50}>
             <div className="flex  ">
                   {companyData?.map((info) => (
                     <FeedbackCard key={info._id} info={info}></FeedbackCard>

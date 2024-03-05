@@ -61,20 +61,20 @@ const FeedbackCard: React.FC<Data> = ({ info }) => {
   const top = extractFirst100Words(anyComments);
   return (
     <div className="mx-8 ">
-      <div className="card1">
+      <div className="card1 backdrop-blur-xl">
         
         
-        <p className="message text-justify">
-          { top }
+        <p className="message text-justify ">
+          { top } 
         </p>
-        <div className="header1">
+        <div className="header1 mt-4">
           
-          <div>
-            <div className="stars1">
+          <div className="">
+            <div className="">
               {/* rating */}
               {renderStarRating(interfaceRating)}
             </div>
-            <p className="name1 grid "> <span>{UserNames}</span></p>
+            <p className="name1 grid "> <span>{UserNames}, {role}.</span></p>
           </div>
         </div>
       </div>
