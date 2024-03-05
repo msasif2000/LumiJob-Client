@@ -69,7 +69,6 @@ const ChallengeDetails = () => {
 
         axiosPublic.post("/teams", teamData)
             .then(res => {
-                console.log(res.data);
                 if (res.data.insertedId) {
                     toast.success("Team Create Successfully");
                     e.target.reset()
