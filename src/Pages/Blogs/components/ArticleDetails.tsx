@@ -123,7 +123,7 @@ const ArticleDetails = () => {
             <title>{data ? data.title : "Article Details"}</title>
           </Helmet>
           <div
-            className="h-[2px] bg-accentTwo backdrop-blur-md fixed"
+            className="h-[4px] bg-accentTwo backdrop-blur-md fixed"
             style={{ width: `${scrollPercentage}%` }}
           ></div>
           <GoToTop />

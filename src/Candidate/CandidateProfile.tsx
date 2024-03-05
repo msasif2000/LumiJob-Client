@@ -296,7 +296,7 @@ const CandidateProfile = () => {
                     <BiEdit></BiEdit>
                     Update resume
                   </button>
-                  <Link to={resume} className="btn" title="Download resume">
+                  <Link to={resume} target="_blank" className="btn" title="Download resume">
                     <MdOutlineContactPage></MdOutlineContactPage>
                   </Link>
                 </>

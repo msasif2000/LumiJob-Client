@@ -93,10 +93,7 @@ export const router = createBrowserRouter([
         path: "/insights",
         element: <Insights />,
       },
-      {
-        path: "/insights/:_id",
-        element: <ArticleDetails />,
-      },
+     
       {
         path: "/collaboration-hub",
         element: <CollaborationHub />
@@ -184,6 +181,10 @@ export const router = createBrowserRouter([
     element: <Login />,
   },
 
+  {
+    path: "/insights/:_id",
+    element: <ArticleDetails />,
+  },
   //SignUp
   {
     path: "/signup",
