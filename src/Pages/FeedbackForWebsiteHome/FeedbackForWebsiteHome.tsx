@@ -1,6 +1,8 @@
 import Marquee from "react-fast-marquee";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import FeedbackCard from "./FeedbackCard";
+import info from './info';
 interface Data {
     _id: string;
     anyComments: string;
@@ -51,9 +53,11 @@ const FeedbackForWebsiteHome = () => {
             </div>
             <div className="space-y-10">
             <Marquee pauseOnHover={true} direction="right"  gradient gradientWidth={400}>
-                <h1 className="text-5xl font-bold">hello</h1>
-                <h1 className="text-5xl font-bold">hello</h1>
-                <h1 className="text-5xl font-bold">hello</h1>
+            <div className="flex  ">
+                  {companyData?.map((info) => (
+                    <FeedbackCard key={info._id} info={info}></FeedbackCard>
+                  ))}
+            </div>
             </Marquee>
             
             <Marquee>
