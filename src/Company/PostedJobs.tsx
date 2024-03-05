@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import NoData from "../component/NoData/NoData";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const PostedJobs = () => {
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   //console.log(user?.email);
   const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
@@ -17,7 +19,7 @@ const PostedJobs = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/get-company-posted-jobs/${user?.email}`)
         .then((res) => {
           setCompanyPostedJobs(res.data);

@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface EducationData {
   university: string;
@@ -52,6 +53,7 @@ interface UserData {
 
 const CandidateProUpdate: React.FC = () => {
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [loading, setLoading] = useState<boolean>(false);
@@ -182,7 +184,7 @@ const CandidateProUpdate: React.FC = () => {
         console.log(candidateData);
 
         // Send the updated candidate data to your database
-        const updateUserDataResponse = await axiosPublic.put(
+        const updateUserDataResponse = await axiosSecure.put(
           `/user-update/${user?.email}`,
           candidateData
         );
@@ -207,7 +209,7 @@ const CandidateProUpdate: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);

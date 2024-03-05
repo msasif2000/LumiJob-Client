@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageCandidate = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [dataPerPage, setDataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -21,7 +21,7 @@ const ManageCandidate = () => {
   const { refetch, data: candidates = [] } = useQuery({
     queryKey: ["candidates"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/user?role=candidate`);
+      const res = await axiosSecure.get(`/user?role=candidate`);
       return res.data;
     },
   });
@@ -42,7 +42,7 @@ const ManageCandidate = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/delCandidate/${id}`)
+        axiosSecure.delete(`/delCandidate/${id}`)
           .then((res) => {
             // console.log(res);
             if (res.data.deletedCount > 0) {

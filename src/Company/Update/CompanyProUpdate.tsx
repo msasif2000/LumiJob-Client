@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface FormData {
   photo: File;
@@ -34,6 +35,7 @@ const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const { register, handleSubmit, setValue } = useForm<FormData>();
@@ -97,7 +99,7 @@ const CompanyProUpdate = () => {
         };
 
         // Send the updated company data to your database
-        const updateUserDataResponse = await axiosPublic.put(
+        const updateUserDataResponse = await axiosSecure.put(
           `/user-update/${user?.email}`,
           updatedCompanyData
         );
