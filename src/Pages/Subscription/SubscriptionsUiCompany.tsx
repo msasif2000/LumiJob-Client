@@ -17,7 +17,7 @@ const SubscriptionsUiCompany = () => {
     axiosPublic
       .get("/packages/company")
       .then((res) => {
-        // console.log(res.data);
+       
         setCompanyPlan(res.data);
       })
       .catch((error) => console.log(error));
@@ -28,7 +28,6 @@ const SubscriptionsUiCompany = () => {
     if (user?.email) {
       axiosPublic.get(`/payment/${user.email}`)
         .then((res) => {
-          console.log(res.data);
           setSubscription(res.data);
         })
         .catch((error) => console.log(error));

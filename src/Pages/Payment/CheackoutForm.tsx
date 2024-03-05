@@ -44,7 +44,7 @@ const CheackoutForm = () => {
       axiosPublic
         .post("/create-payment-intent", { price: price })
         .then((res) => {
-          // console.log(res.data.clientSecret);
+        
           setClientSecret(res.data.clientSecret);
         });
   }, [axiosPublic, price]);
@@ -60,7 +60,6 @@ const CheackoutForm = () => {
       });
   }, [user, planId]);
 
-  console.log(subs?.price);
 
 
   const handleSubmit = async (event: any) => {
@@ -108,9 +107,9 @@ const CheackoutForm = () => {
     if (confirmError) {
       console.log("confirm error");
     } else {
-      //   console.log("payment intent", paymentIntent);
+    
       if (paymentIntent.status === "succeeded") {
-        // console.log("transaction Id", paymentIntent.id);
+      
         setTransactionId(paymentIntent.id);
 
         const payment: Payment = {
@@ -132,10 +131,10 @@ const CheackoutForm = () => {
           payment.canApply = subs?.canApply;
         }
 
-        // console.log(payment)
+       
 
         const res = await axiosPublic.post("/payments", payment);
-        console.log("payment saved", res.data);
+       
         if (res.data?.paymentResult?.insertedId) {
           Swal.fire({
             position: "center",

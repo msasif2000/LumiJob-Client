@@ -96,7 +96,6 @@ const AdminDashboard: React.FC = () => {
     fetchUserData();
   }, [axiosPublic]);
 
-  // console.log(userData);
 
   return (
     <div className="mt-6">

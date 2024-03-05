@@ -65,12 +65,11 @@ const Add_Data = () => {
                 }
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err)
                 toast.error("Failed to add job sector");
             });
     };
-    //  console.log(sectors);
-    //  console.log(skills);
+ 
     const onSubmitSkill: SubmitHandler<SkillAdded> = async (data: SkillAdded) => {
         axiosPublic
             .post("/add-skill", data)
@@ -87,7 +86,7 @@ const Add_Data = () => {
                 }
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err)
                 toast.error("Failed to add skill");
             });
     };

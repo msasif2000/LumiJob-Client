@@ -37,7 +37,7 @@ const Login: React.FC = () => {
         autoClose: 2000,
       });
       setLoading(false);
-      // console.log("Login Successful");
+     
       navigate("/");
     } catch (error) {
       toast.error("Invalid user credentials.", {
@@ -46,7 +46,7 @@ const Login: React.FC = () => {
         autoClose: 2000,
       });
       setLoading(false);
-      // console.log(error);
+     
     }
   };
 

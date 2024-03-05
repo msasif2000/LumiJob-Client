@@ -45,12 +45,12 @@ const ManageJobs = () => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/delete-jobs-bookmarks/${id}`);
         // .then(() => {
-        //  // console.log(res.data);
+    
         // })
 
         axiosPublic.delete(`/delete-jobs-applyJobsCollection/${id}`);
         // .then(res => {
-        //   console.log(res.data);
+     
         // })
 
         axiosPublic.delete(`/delete-jobs/${id}`).then((res) => {

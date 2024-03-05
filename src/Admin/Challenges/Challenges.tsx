@@ -32,10 +32,8 @@ const Challenges = () => {
       submissionDate: selectedDate,
     };
 
-    // console.log(addChallenge);
 
     const Res = await axiosPublic.post("/add-challenge", addChallenge);
-    console.log(Res.data);
     if (Res.data.insertedId) {
       toggleModal();
     }

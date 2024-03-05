@@ -17,7 +17,7 @@ const SubscriptionsUiCandidate = () => {
     axiosPublic
       .get("/packages/candidate")
       .then((res) => {
-        // console.log(res.data);
+      
         setPlans(res.data);
       })
       .catch((error) => console.log(error));
@@ -27,14 +27,14 @@ const SubscriptionsUiCandidate = () => {
     if (user?.email) {
       axiosPublic.get(`/payment/${user.email}`)
         .then((res) => {
-          console.log(res.data);
+      
           setSubscription(res.data);
         })
         .catch((error) => console.log(error));
     }
   }, [user]);
 
-  console.log(subscription);
+
 
   const handleChoosePlan = (plan: any) => {
     if (subscription && subscription.packages === plan.name) {

@@ -21,9 +21,7 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
   };
 
   const applicants = job.applicants?.length
-  //console.log(applicants)
-
-
+ 
   const confirmDelete = () => {
     setShowConfirmation(true);
   };
