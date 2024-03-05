@@ -33,6 +33,7 @@ interface ThemeInfo {
   premium: any;
   photo: any;
   packages: any;
+  name: any;
   userRefetch: () => void;
 }
 
@@ -50,6 +51,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [photo, setPhoto] = useState(null);
   const [packages, setPackages] = useState(null);
   const axiosPublic = useAxiosPublic();
+  const [name, setName] = useState("");
 
   const createUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
@@ -95,7 +97,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      // console.log("Observed User:", currentUser);
+
     });
 
     return () => {
@@ -138,6 +140,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       setPremium(infos?.status);
       setPhoto(infos?.photo);
       setPackages(infos?.packages);
+      setName(infos?.name);
     }
   }, [infos]);
 
@@ -157,6 +160,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     photo,
     packages,
     userRefetch,
+    name
   };
 
   return (

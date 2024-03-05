@@ -16,7 +16,7 @@ const CollaborationHub = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const axiosPublic = useAxiosPublic()
     console.log(taskData);
-    
+
     useEffect(() => {
         axiosPublic.get("/challenges").then((res) => {
             setTaskData(res.data);

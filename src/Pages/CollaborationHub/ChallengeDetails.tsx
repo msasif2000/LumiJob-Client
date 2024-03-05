@@ -8,14 +8,13 @@ import { ToastContainer, toast } from "react-toastify";
 
 const ChallengeDetails = () => {
     const { id } = useParams()
-    console.log(id);
     const { user } = useAuth()
     const [openModal, setOpenModal] = useState(false);
     const [challengeData, setChallengeData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const axiosPublic = useAxiosPublic();
     const { challengeTitle, description, img, time, type } = challengeData || {};
-
+    console.log(challengeData);
     const formatDateTime = (dateTimeString: any) => {
         const date = new Date(dateTimeString);
 
@@ -61,15 +60,16 @@ const ChallengeDetails = () => {
     const handleSubmitTeamForm = (e: any) => {
         e.preventDefault();
         const teamName = e.target.teamName.value;
-        const leaderName = e.target.leaderName.value;
-        const leaderEmail = user.email;
+        const memberName = e.target.memberName.value;
+        const memberEmail = user.email;
+        const memberImg = user.photoURL;
         const discordLink = e.target.discordLink.value;
         const challengeId = id;
-        const teamData = { teamName, leaderName, leaderEmail, discordLink, challengeId };
+        const designation = "Leader"
+        const teamData = { teamName, memberName, memberEmail, memberImg, discordLink, challengeId, designation };
 
         axiosPublic.post("/teams", teamData)
             .then(res => {
-                console.log(res.data);
                 if (res.data.insertedId) {
                     toast.success("Team Create Successfully");
                     e.target.reset()
@@ -84,7 +84,6 @@ const ChallengeDetails = () => {
                 console.log(err);
                 toast.error("Failed to post team");
             })
-
     }
 
 
@@ -136,9 +135,9 @@ const ChallengeDetails = () => {
                                                 </div>
 
                                                 {/* Leader */}
-                                                <label htmlFor="leaderName" className="block">Leader Name*</label>
+                                                <label htmlFor="memberName" className="block">Leader Name*</label>
                                                 <div className="relative">
-                                                    <input id="leaderName" name="leaderName" defaultValue={user?.displayName} type="text" disabled required placeholder={user?.displayName} className="p-3 block w-full  drop-shadow-lg rounded-lg outline-none" />
+                                                    <input id="memberName" name="memberName" defaultValue={user?.displayName} type="text" disabled required placeholder={user?.displayName} className="p-3 block w-full  drop-shadow-lg rounded-lg outline-none" />
                                                 </div>
 
                                                 {/* Link  */}
@@ -154,7 +153,7 @@ const ChallengeDetails = () => {
 
                                                 </div>
                                             </div>
-                                            <button type="submit" className="py-2 px-5 mb-4 mt-6 shadow-lg rounded-lg before:block before:-left-1 before:-top-1 before:bg-black before:rounded-lg before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 before:-z-40 after:block after:-right-1 after:-bottom-1 after:bg-black after:rounded-lg after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 bg-white relative inline-block">Submit</button>
+                                            <button type="submit" className="py-2 px-5 w-full bg-blue-400 mb-4 mt-6 text-white shadow-lg rounded-lg before:block before:-left-1 before:-top-1 before:bg-black before:rounded-lg before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 before:-z-40 after:block after:-right-1 after:-bottom-1 after:bg-black after:rounded-lg after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 relative inline-block">Submit</button>
                                         </form>
                                     </div>
                                 </div>
@@ -170,7 +169,7 @@ const ChallengeDetails = () => {
 
                             <p className="text-lg font-semibold mt-6 mb-1">Available Team</p>
                             <div className="space-y-4">
-                                <TeamCard />
+                                <TeamCard teams={challengeData?.teams} challengeId={id} />
                             </div>
 
                         </div>

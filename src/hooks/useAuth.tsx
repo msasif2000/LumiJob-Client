@@ -14,6 +14,7 @@ interface AuthContextType {
   role: any;
   premium: any;
   photo: any;
+  name: string;
   userRefetch: () => void;
   packages: any;
 }
