@@ -48,44 +48,40 @@ const Feedback: React.FC = () => {
       supportRating,
       UserNames: user?.displayName,
       email: user?.email,
-      role : role,
-      PostedDate :  new Date(),
+      role: role,
+      PostedDate: new Date(),
     };
 
     axiosPublic
-    .post("/websiteFeedback", formData)
-    .then((response: any) => {
-      // console.log(response.data);
-      if (response.data.insertedId) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Thank for Your Feedback",
-          showConfirmButton: false,
-          timer: 1500,
+      .post("/websiteFeedback", formData)
+      .then((response: any) => {
+        // console.log(response.data);
+        if (response.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thank for Your Feedback",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setInterfaceRating(0);
+          setSupportRating(0);
+          setAnyComments("");
+          console.log(response.data);
+        } else {
+          toast.error("didn't receive  your  feedback");
+        }
+      })
+
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Failed your feedback", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
         });
-        setInterfaceRating(0);
-        setSupportRating(0);
-        setAnyComments("");
-        console.log(response.data);
-      }
-       else {
-        toast.error("didn't receive  your  feedback");
-      }
-
-      
-    })
-
-    .catch((error: any) => {
-      console.log(error);
-      toast.error("Failed your feedback", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
       });
-    });
-    
   };
 
   const renderStarRating = (
@@ -157,6 +153,7 @@ const Feedback: React.FC = () => {
           value="Submit"
         />
       </form>
+      <ToastContainer />
     </div>
   );
 };
