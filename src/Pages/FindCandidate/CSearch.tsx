@@ -14,7 +14,7 @@ interface CSearchProps {
         e.preventDefault();
         try {
             const response = await axiosPublic.get(`/candidate-Search?search=${searchText}`); 
-            console.log("Search Result:", response.data);
+          
             onSearchResult(response.data);
         } catch (error) {
             console.error('Error:', error);

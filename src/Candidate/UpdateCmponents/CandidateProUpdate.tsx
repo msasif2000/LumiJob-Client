@@ -168,7 +168,7 @@ const CandidateProUpdate: React.FC = () => {
       // Check if image upload was successful
       if (imageUploadResponse.data.status === 200) {
         const imageUrl = imageUploadResponse.data.data.url;
-        //console.log("ImageBB Response:", imageUploadResponse.data);
+     
 
         // Prepare candidate data with the image URL
         const candidateData = {
@@ -179,7 +179,6 @@ const CandidateProUpdate: React.FC = () => {
           photo: imageUrl,
         };
 
-        console.log(candidateData);
 
         // Send the updated candidate data to your database
         const updateUserDataResponse = await axiosPublic.put(
@@ -211,7 +210,7 @@ const CandidateProUpdate: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);
-          // console.log(res.data);
+         
         })
         .catch((error) => console.log(error));
     }

@@ -51,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   const handleLogout = () => {
     logOut();
   };
-  // console.log(userData);
+
   const Linking = (
     <>
       <li key="home">

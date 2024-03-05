@@ -55,6 +55,7 @@ import Features from "../component/Footer/FooterPages/Features";
 import ProductAndService from "../component/Footer/FooterPages/ProductAndService";
 import FAQs from "../component/Footer/FooterPages/FAQs";
 import Supports from "../component/Footer/FooterPages/Supports";
+import Feedback from "../component/websiteFeedback/Feedback";
 
 export const router = createBrowserRouter([
   {
@@ -256,6 +257,10 @@ export const router = createBrowserRouter([
         path: "candidateAnalytics",
         element: <CompanyAnalytics />,
       },
+      {
+        path: "feedback",
+        element: <Feedback></Feedback>,
+      },
 
       // Company Dashboard Routes
       {
@@ -299,10 +304,18 @@ export const router = createBrowserRouter([
         element: <Employees />,
       },
 
+
+      {
+        path: "feedback",
+        element: <Feedback></Feedback>,
+      },
+
+
       // {
       //   path: "feedback",
       //   element: <Feedback></Feedback>,
       // },
+
     ],
   },
 ]);

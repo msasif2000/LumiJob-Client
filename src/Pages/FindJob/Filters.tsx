@@ -18,8 +18,6 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   const [jobTypes, setJobTypes] = useState<string[]>([]);
   //const [filteredData, setFilteredData] = useState<any[]>([]);
 
-  //console.log(filteredData)
-
   useEffect(() => {
     fetch("/sectors.json")
       .then((res) => res.json())

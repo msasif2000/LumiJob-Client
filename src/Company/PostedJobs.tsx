@@ -11,7 +11,6 @@ import NoData from "../component/NoData/NoData";
 const PostedJobs = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  //console.log(user?.email);
   const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
   const navigate = useNavigate()
 
@@ -21,7 +20,6 @@ const PostedJobs = () => {
         .get(`/get-company-posted-jobs/${user?.email}`)
         .then((res) => {
           setCompanyPostedJobs(res.data);
-          //console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -31,7 +29,7 @@ const PostedJobs = () => {
     axiosPublic
       .delete(`/delete-job/${jobId}`)
       .then((res) => {
-        //console.log(res.data);
+      
         if (res.data.message === 'true') {
           toast.success(`Job post deleted successfully`, {
             hideProgressBar: true,
