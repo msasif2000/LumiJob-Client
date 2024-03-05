@@ -13,7 +13,6 @@ interface TeamData {
 
 const TeamCard: React.FC = () => {
     const [isOpen, setIsOpen] = useState<number | null>(null);
-
     const [teamData, setTeamData] = useState<TeamData[] | null>(null);
 
     useEffect(() => {

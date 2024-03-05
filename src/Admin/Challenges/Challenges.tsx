@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { toast } from "react-toastify";
+import {ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -242,6 +242,7 @@ const Challenges = () => {
           )}
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };
