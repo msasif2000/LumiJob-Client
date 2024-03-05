@@ -5,7 +5,7 @@ interface TeamData {
     teamName: string;
     coloredText: any;
     id: number;
-    _id: string;
+    _id: string;    
     name: string;
     title: string;
     img: string;
@@ -16,11 +16,13 @@ interface TeamData {
 
 interface Prop {
     teams: TeamData[],
-    challengeId: any | null
+    challengeId: any | null,
+
 }
 
 const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
     const { user, name, photo } = useAuth()
+    console.log(name);
     const [isOpen, setIsOpen] = useState<number | null>(null);
     const axiosPublic = useAxiosPublic()
 

@@ -33,7 +33,8 @@ interface ThemeInfo {
   premium: any;
   photo: any;
   packages: any;
-  name: string;
+  name: any;
+
   userRefetch: () => void;
 }
 
