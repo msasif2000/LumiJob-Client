@@ -47,7 +47,7 @@ const Signup: React.FC = () => {
       // for dev Delete in prod
       axiosPublic.post("/users", userInfo)
       .then(() => {
-        //console.log(res.data);
+      
         toast.success("User created successfully", {
           position: "top-center",
           hideProgressBar: true,

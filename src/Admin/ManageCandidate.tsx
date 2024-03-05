@@ -30,7 +30,6 @@ const ManageCandidate = () => {
     setCurrentPage(pageNumber);
   };
 
-  // console.log(candidates);
   const handleDelete = (id: string) => {
     Swal.fire({
       title: "Are you sure?",
@@ -44,7 +43,7 @@ const ManageCandidate = () => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/delCandidate/${id}`)
           .then((res) => {
-            // console.log(res);
+           
             if (res.data.deletedCount > 0) {
               refetch();
               Swal.fire({

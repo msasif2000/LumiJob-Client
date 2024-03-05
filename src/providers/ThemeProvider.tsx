@@ -34,6 +34,7 @@ interface ThemeInfo {
   photo: any;
   packages: any;
   name: any;
+
   userRefetch: () => void;
 }
 

@@ -81,7 +81,7 @@ const JobPostingForm: React.FC = () => {
         .get(`/specific-company/${user.email}`)
         .then((res) => {
           setCompany(res.data);
-          //console.log(res.data);
+        
         })
         .catch((err) => console.log(err));
     }
@@ -98,14 +98,13 @@ const JobPostingForm: React.FC = () => {
       picture: company?.photo,
       post_time: date,
     };
-    // console.log(jobData);
 
     setLoading(true)
     
     axiosPublic
       .post("/post-jobs", jobData)
       .then((response: any) => {
-        console.log(response.data)
+    
         if (response.data.insertedId) {
           toast.success("Job Posted Successfully", {
             position: "top-center",

@@ -69,7 +69,7 @@ const JobsDetails: React.FC = () => {
       .get(`/single-job/${id}`)
       .then((res) => {
         setJobs(res.data);
-        // console.log(res.data);
+        
       })
       .catch((error) => console.log(error));
   }, []);
@@ -129,12 +129,10 @@ const JobsDetails: React.FC = () => {
       status: "unopened",
     };
 
-    //console.log(jobDetails);
-
     axiosPublic
       .post(`/apply-to-jobs`, jobDetails)
       .then((res) => {
-        //console.log(res.data);
+  
         if (res.data.insertedId) {
           toast.success("Applied Successfully", {
             position: "top-center",
@@ -235,7 +233,7 @@ const JobsDetails: React.FC = () => {
               axiosPublic
                 .post("/set-resume", data)
                 .then((res) => {
-                  console.log(res.data);
+                
                   if (res.data.message === "true") {
                     const { _id, ...jobWithoutId } = job as JobDetails;
 
@@ -247,12 +245,11 @@ const JobsDetails: React.FC = () => {
                       status: "unopened",
                     };
 
-                    //console.log(jobDetails);
 
                     axiosPublic
                       .post(`/apply-to-jobs`, jobDetails)
                       .then((res) => {
-                        //console.log(res.data);
+                       
                         if (res.data.insertedId) {
                           toast.success("Applied Successfully", {
                             position: "top-center",

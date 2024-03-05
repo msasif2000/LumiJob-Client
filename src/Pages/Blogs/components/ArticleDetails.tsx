@@ -20,8 +20,7 @@ interface BlogData {
 
 const ArticleDetails = () => {
   const { _id } = useParams();
-  //console.log(_id); // Log _id to the console
-
+  
   const [data, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
   const [readingTime, setReadingTime] = useState("");
@@ -42,7 +41,7 @@ const ArticleDetails = () => {
       .get(`/single-blog/${_id}`)
 
       .then((res) => {
-        // console.log(res.data);
+       
         setData(res.data);
         setLoading(false);
         const readingTime = calculateReadingTime(res.data.details);
@@ -54,7 +53,7 @@ const ArticleDetails = () => {
       });
   }, [_id]);
 
-  //console.log(`/single-blog/${_id}`);
+  
 
   useEffect(() => {
     const handleScroll = () => {

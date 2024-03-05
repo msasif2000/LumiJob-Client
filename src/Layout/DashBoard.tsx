@@ -15,7 +15,7 @@ import {
   MdManageAccounts,
 } from "react-icons/md";
 import { TbTargetArrow } from "react-icons/tb";
-import { AiOutlineUsergroupAdd, AiOutlineFileDone } from "react-icons/ai";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GrGroup, GrBlog, GrWorkshop } from "react-icons/gr";
 import { RxAvatar } from "react-icons/rx";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ const DashBoard = () => {
   const [userData, setUserData] = useState({} as any);
   const [role, setRole] = useState("");
 
-  //console.log(user);
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isNavOpen) {
@@ -53,7 +53,7 @@ const DashBoard = () => {
       axiosPublic
         .get(`/check-which-role/${user?.email}`)
         .then((res) => {
-          // console.log(res.data.role);
+         
           setRole(res.data.role);
           setUserData(res.data);
           setLoading(false);
