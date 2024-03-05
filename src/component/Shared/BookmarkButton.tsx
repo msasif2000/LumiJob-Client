@@ -53,7 +53,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
         axiosPublic
           .post("/bookmarks", bookmarkItem)
           .then((res) => {
-            // console.log(res.data);
+          
             if (res.data.insertedId) {
               setIsBookmarked(true);
               Swal.fire({
@@ -80,7 +80,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
         axiosPublic
           .delete(`/bookmarks/${bookmarkIdToRemove}`)
           .then((res) => {
-            //console.log(res.data);
+           
             if (res.data.deletedCount === 1) {
               setIsBookmarked(false);
               Swal.fire({

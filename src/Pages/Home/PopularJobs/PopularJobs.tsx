@@ -20,7 +20,7 @@ const PopularJobs = () => {
       .get("/all-job-posts")
       .then((res) => {
         setPopularJobs(res.data);
-        //console.log(res.data);
+    
         setLoading(false);
       })
       .catch((error) => console.log(error));

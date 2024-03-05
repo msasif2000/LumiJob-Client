@@ -55,7 +55,7 @@ const CompanyProfile = () => {
         .get(`/specific-company/${user?.email}`)
         .then((res) => {
           setProfile(res.data);
-          //console.log(res.data);
+      
         })
         .catch((err) => console.log(err));
     }

@@ -31,7 +31,7 @@ const BlogCard: React.FC<prop> = ({ blog, handleDelete }) => {
 
         navigate(`/dashboard/${blog._id}/edit-blog`, { state: { blog } });
     }
-     //console.log(blog._id);   
+  
     return (
         <div
             className="relative"

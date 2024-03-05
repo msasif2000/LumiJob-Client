@@ -23,7 +23,7 @@ const Feedback: React.FC = () => {
   const { user, role } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  // console.log(user.displayName, user.email);
+ 
 
   const handleInterfaceRatingChange = (value: number) => {
     setInterfaceRating(value);
@@ -55,7 +55,7 @@ const Feedback: React.FC = () => {
     axiosPublic
       .post("/websiteFeedback", formData)
       .then((response: any) => {
-        // console.log(response.data);
+       
         if (response.data.insertedId) {
           Swal.fire({
             position: "center",
@@ -67,7 +67,7 @@ const Feedback: React.FC = () => {
           setInterfaceRating(0);
           setSupportRating(0);
           setAnyComments("");
-          console.log(response.data);
+        
         } else {
           toast.error("didn't receive  your  feedback");
         }
