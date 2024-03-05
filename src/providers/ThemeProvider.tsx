@@ -141,8 +141,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
-        .get(`/user-profile/${user?.email}`)
+      axiosPublic.get(`/user-profile-data/${user?.email}`)
         .then((res) => {
           const { role, status, photo, packages } = res.data;
           setRole(role);

@@ -1,11 +1,12 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 interface FormData {
@@ -26,7 +27,8 @@ const Post_A_Blog = () => {
     const navigate = useNavigate();
     const loading = false;
     const { user } = useAuth();
-    const axiosPublic = useAxiosPublic();
+    // const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [company, setCompany] = useState<BlogData | null>(null);
     const { register, handleSubmit, setValue } = useForm<FormData>();
     const api = import.meta.env.VITE_IMAGEBB_API_KEY;
@@ -36,7 +38,7 @@ const Post_A_Blog = () => {
     //console.log(date);
     useEffect(() => {
         if (user?.email) {
-            axiosPublic.get(`/user-profile/${user.email}`)
+            axiosSecure.get(`/user-profile/${user.email}`)
                 .then((res) => {
                     setCompany(res.data);
                     //console.log(res.data);
@@ -85,7 +87,7 @@ const Post_A_Blog = () => {
                     img: imageUrl,
                 };
 
-                axiosPublic.post("/post-the-blog", updateBlog)
+                axiosSecure.post("/post-the-blog", updateBlog)
                     .then(res => {
                         //console.log(res.data);
                         if (res.data.insertedId) {

@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import SeminarCard from "./SeminarCard";
 import NoData from "../component/NoData/NoData";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface FormData {
     title: string;
@@ -44,6 +45,7 @@ const Seminars = () => {
     const [companyPostedSeminars, setCompanyPostedSeminars] = useState<any | null>(null);
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure= useAxiosSecure();
     const [company, setCompany] = useState<SeminarData | null>(null);
     const { register, handleSubmit } = useForm<FormData>();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,8 +60,7 @@ const Seminars = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axiosPublic
-                .get(`/get-posted-Seminars/${user?.email}`)
+            axiosPublic.get(`/get-posted-Seminars/${user?.email}`)
                 .then((res) => {
                     setCompanyPostedSeminars(res.data);
                 })
@@ -67,8 +68,7 @@ const Seminars = () => {
                     console.log(err);
                 });
         }
-        axiosPublic
-            .get(`/user-profile/${user.email}`)
+        axiosSecure.get(`/user-profile/${user.email}`)
             .then((res) => {
                 setCompany(res.data);
             })
@@ -78,7 +78,7 @@ const Seminars = () => {
     const length = companyPostedSeminars?.length;
 
     const handleDelete = (seminarId: string) => {
-        axiosPublic.delete(`/delete-seminar/${seminarId}`)
+        axiosSecure.delete(`/delete-seminar/${seminarId}`)
             .then((res) => {
                 if (res.data.acknowledged) {
                     toast.success(`Seminar deleted successfully`, {
@@ -104,8 +104,7 @@ const Seminars = () => {
             role: company?.role,
             author: company?.name,
         };
-        axiosPublic
-            .post("/post-the-seminar", seminarData)
+        axiosSecure.post("/post-the-seminar", seminarData)
             .then((res) => {
                 if (res.data) {
                     toast.success("Seminar Posted Successfully", {
