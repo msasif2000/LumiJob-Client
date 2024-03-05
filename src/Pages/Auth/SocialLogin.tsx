@@ -29,7 +29,7 @@ const SocialLogin: React.FC = () => {
 
   const handleGoogleSignin = () => {
     googleSignIn().then((res: any) => {
-      //console.log(res);
+   
 
       const userInfo = {
         email: res.user?.email,
@@ -37,12 +37,12 @@ const SocialLogin: React.FC = () => {
         photo: res.user?.photoURL,
       };
 
-      //console.log(userInfo);
+  
 
       // for dev
       axiosPublic.post("/users", userInfo)
         .then(() => {
-          //console.log(res.data);
+         
           checkRole(userInfo.email);
         });
 
@@ -52,7 +52,7 @@ const SocialLogin: React.FC = () => {
 
   const handleGithubSignin = () => {
     githubSignIn().then((res: any) => {
-      // console.log(res);
+    
 
       const userInfo = {
         email: res.user?.email,
@@ -60,12 +60,12 @@ const SocialLogin: React.FC = () => {
         photo: res.user?.photoURL,
       };
 
-      //console.log(userInfo);
+     
 
       // for dev
       axiosPublic.post("/users", userInfo)
         .then(() => {
-          //console.log(res.data);
+       
           checkRole(userInfo.email);
         });
       navigate("/");

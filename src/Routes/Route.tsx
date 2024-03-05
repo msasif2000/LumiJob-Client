@@ -44,7 +44,6 @@ import Seminars from "../Company/Seminars";
 // import Post_A_Seminar from "../Company/Post_A_Seminar";
 import ManageApplicants from "../Company/ManageApplicants";
 // import CandidateResume from "../Candidate/CandidateResume";
-import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
 import Challenges from "../Admin/Challenges/Challenges";
 import CollaborationHub from "../Pages/CollaborationHub/CollaborationHub";
@@ -88,23 +87,19 @@ export const router = createBrowserRouter([
         path: "/optionsSubscribe",
         element: <OptionSubscribe></OptionSubscribe>,
       },
-      
 
       {
         path: "/insights",
         element: <Insights />,
       },
-      {
-        path: "/insights/:_id",
-        element: <ArticleDetails />,
-      },
+
       {
         path: "/collaboration-hub",
-        element: <CollaborationHub />
+        element: <CollaborationHub />,
       },
       {
         path: "/task-details/:id",
-        element: <TaskDetails />
+        element: <TaskDetails />,
       },
       {
         path: "/contact",
@@ -134,7 +129,7 @@ export const router = createBrowserRouter([
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
       },
-      // footer 
+      // footer
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
@@ -161,7 +156,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/supports",
-        element: <Supports></Supports>
+        element: <Supports></Supports>,
       },
     ],
   },
@@ -185,6 +180,10 @@ export const router = createBrowserRouter([
     element: <Login />,
   },
 
+  {
+    path: "/insights/:_id",
+    element: <ArticleDetails />,
+  },
   //SignUp
   {
     path: "/signup",
@@ -246,14 +245,6 @@ export const router = createBrowserRouter([
         path: "resume",
         element: <Resume></Resume>,
       },
-      // {
-      //   path: "resume",
-      //   element: <CandidateResume></CandidateResume>,
-      // },
-      {
-        path: "resume/update",
-        element: <CandidateResumeUpdate></CandidateResumeUpdate>,
-      },
       {
         path: "appliedJobs",
         element: <AppliedJobs />,
@@ -304,10 +295,6 @@ export const router = createBrowserRouter([
         path: "seminar-posted",
         element: <Seminars />,
       },
-      // {
-      //   path: "post-a-seminar",
-      //   element: <Post_A_Seminar />
-      // },
       {
         path: "companyAnalytics",
         element: <CompanyAnalytics />,
@@ -317,10 +304,17 @@ export const router = createBrowserRouter([
         element: <Employees />,
       },
 
+
       {
         path: "feedback",
         element: <Feedback></Feedback>,
       },
+
+
+      // {
+      //   path: "feedback",
+      //   element: <Feedback></Feedback>,
+      // },
 
     ],
   },

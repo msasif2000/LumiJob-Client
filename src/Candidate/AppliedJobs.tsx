@@ -22,8 +22,6 @@ const AppliedJobs = () => {
     },
   });
 
-  // console.log(jobs)
-
   const handleNoData = () => {
     navigate('/find-job')
   };
@@ -42,12 +40,12 @@ const AppliedJobs = () => {
       userEmail,
       id,
     };
-    // console.log(data)
+  
 
     axiosPublic
       .post("/delete-jobs-from-candidate", data)
       .then((res) => {
-        // console.log(res.data);
+      
         if (res.data.message === "true") {
           toast.success("Cancel successfull", {
             autoClose: 2000,

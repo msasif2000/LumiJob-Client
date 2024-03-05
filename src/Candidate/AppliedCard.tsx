@@ -23,7 +23,6 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   };
 
   const id = job._id;
-  //console.log(id);
 
   const formatDeadlineDate = (deadline: any) => {
     const formattedDate = new Date(deadline).toLocaleDateString("en-GB");

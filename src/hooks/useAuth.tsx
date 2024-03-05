@@ -14,9 +14,9 @@ interface AuthContextType {
   role: any;
   premium: any;
   photo: any;
-  packages: any
+  userRefetch: () => void;
+  packages: any;
 }
-
 
 const useAuth: () => AuthContextType = () => {
   const auth = useContext(ThemeContext);

@@ -51,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   const handleLogout = () => {
     logOut();
   };
-  // console.log(userData);
+
   const Linking = (
     <>
       <li key="home">
@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
       <li key="CollaborationHub">
         <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
-          Collaboration Hub
+          Collab Hub
         </NavLink>
       </li>
 

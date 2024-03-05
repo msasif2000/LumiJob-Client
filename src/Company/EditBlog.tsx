@@ -17,13 +17,11 @@ const EditBlog = () => {
     const loading = false;
     const blog = location.state.blog;
     const axiosPublic = useAxiosPublic();
-    //console.log(blog);
     const { register, handleSubmit} = useForm<FormData>();
 
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         axiosPublic.patch(`/update-blog/${blog._id}`, data)
             .then(res => {
-                //console.log(res.data);
                 if (res.data._id) {
                     toast.success(`Blog post updated successfully`, {
                         hideProgressBar: true,

@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { auth } from "../config/Firebase.config";
+import { useQuery } from "@tanstack/react-query";
 
 const GoogleProvider = new GoogleAuthProvider();
 const GithubProvider = new GithubAuthProvider();
@@ -32,6 +33,7 @@ interface ThemeInfo {
   premium: any;
   photo: any;
   packages: any;
+  userRefetch: () => void;
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -93,7 +95,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      // console.log("Observed User:", currentUser);
+      
     });
 
     return () => {
@@ -122,22 +124,22 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   };
 
+  const { data: infos, refetch: userRefetch } = useQuery({
+    queryKey: ["infos", user],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/user-profile/${user?.email}`);
+      return res.data;
+    },
+  });
+
   useEffect(() => {
-    if (user?.email) {
-      axiosPublic
-        .get(`/user-profile/${user?.email}`)
-        .then((res) => {
-          const { role, status, photo, packages } = res.data;
-          setRole(role);
-          setPremium(status);
-          setPhoto(photo);
-          setPackages(packages);
-        })
-        .catch((error) => {
-          console.error("Error checking user role:", error);
-        });
+    if (infos) {
+      setRole(infos?.role);
+      setPremium(infos?.status);
+      setPhoto(infos?.photo);
+      setPackages(infos?.packages);
     }
-  }, [user]);
+  }, [infos]);
 
   const themeInfo: ThemeInfo = {
     googleSignIn,
@@ -154,6 +156,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     premium,
     photo,
     packages,
+    userRefetch,
   };
 
   return (

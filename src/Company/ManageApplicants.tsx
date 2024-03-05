@@ -43,7 +43,7 @@ const ManageApplicants = () => {
     enabled: !!id,
   });
 
-  // console.log(infosJobs);
+
 
   // For dnd
   const { data: infos, refetch: refetchInfo } = useQuery({
@@ -54,7 +54,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-  //console.log(infos);
+
 
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
     queryKey: ["preSelected", id],
@@ -64,7 +64,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-  //console.log(preSelected);
+
 
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
@@ -74,7 +74,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-  //console.log(interviews);
+
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
     queryFn: async () => {
@@ -83,7 +83,7 @@ const ManageApplicants = () => {
     },
     enabled: !!id,
   });
-  //console.log(selected);
+
   // Dnd data fetching ends here
 
   // Drag and drop logical func
@@ -104,7 +104,6 @@ const ManageApplicants = () => {
     }
 
     const updatedState = [...infos];
-    // console.log(updatedState);
 
     const [movedCard] = updatedState.splice(source.index, 1);
     updatedState.splice(destination.index, 0, movedCard);
@@ -154,12 +153,11 @@ const ManageApplicants = () => {
         status,
         jobId,
       };
-      //console.log(allText);
-      // console.log(infosJobs)
+   
       axiosPublic
         .post("/sendFeedback", allText)
         .then((response: any) => {
-          // console.log(response.data);
+         
           if (response.data.insertedId) {
             toast.success("Successfully your feedback receive !");
           } else {
@@ -193,12 +191,11 @@ const ManageApplicants = () => {
         CandiedId,
         status,
       };
-      //console.log(allText);
-      // console.log(infosJobs)
+     
       axiosPublic
         .post("/sendFeedback", allText)
         .then((response: any) => {
-          // console.log(response.data);
+         
           if (response.data.insertedId) {
             toast.success("Successfully your feedback receive !");
           } else {
@@ -232,12 +229,11 @@ const ManageApplicants = () => {
         CandiedId,
         status,
       };
-      //console.log(allText);
-      // console.log(infosJobs)
+     
       axiosPublic
         .post("/sendFeedback", allText)
         .then((response: any) => {
-          //console.log(response.data);
+         
           if (response.data.insertedId) {
             toast.success("Successfully your feedback receive !");
           } else {
@@ -270,12 +266,11 @@ const ManageApplicants = () => {
         CandiedId,
         status,
       };
-      //console.log(allText);
-      // console.log(infosJobs)
+    
       axiosPublic
         .post("/sendFeedback", allText)
         .then((response: any) => {
-          //console.log(response.data);
+        
           if (response.data.insertedId) {
             toast.success("Successfully your feedback receive !");
           } else {
@@ -322,12 +317,10 @@ const ManageApplicants = () => {
       email,
     };
 
-    //console.log(interviewData);
-
     axiosPublic
       .post("/schedule-interview", interviewData)
       .then((res) => {
-        //console.log(res.data);
+    
         if (res.data.message === "Interview scheduled successfully") {
           toast.success("Interview Scheduled Successfully", {
             autoClose: 2000,
@@ -442,6 +435,7 @@ const ManageApplicants = () => {
                                 <div className="absolute top-0 right-10 xl:-right-12">
                                   <Link
                                     to={info ? info.resume : ""}
+                                    target="_blank"
                                     className="cursor-pointer ... text-xl"
                                     title="Resume"
                                   >
@@ -578,6 +572,7 @@ const ManageApplicants = () => {
                                   <div className="absolute top-2 right-10 xl:right-12">
                                   <Link
                                     to={info ? info.resume : ""}
+                                    target="_blank"
                                     className="cursor-pointer ... text-xl"
                                     title="Resume"
                                   >
@@ -760,6 +755,7 @@ const ManageApplicants = () => {
                                 <div className="absolute top-2 right-10 xl:right-20">
                                   <Link
                                     to={info ? info.resume : ""}
+                                    target="_blank"
                                     className="cursor-pointer ... text-xl"
                                     title="Resume"
                                   >
