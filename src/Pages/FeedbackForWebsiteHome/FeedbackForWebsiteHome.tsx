@@ -60,7 +60,7 @@ const FeedbackForWebsiteHome = () => {
             </div>
             </Marquee>
             
-            <Marquee>
+            <Marquee pauseOnHover={true}   gradient gradientWidth={100}>
             <div className="flex  ">
                   {candidateData?.map((info) => (
                     <FeedbackCard key={info._id} info={info}></FeedbackCard>

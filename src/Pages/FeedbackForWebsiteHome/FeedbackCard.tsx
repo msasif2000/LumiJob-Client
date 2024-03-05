@@ -44,21 +44,29 @@ const FeedbackCard: React.FC<Data> = ({ info }) => {
     );
   };
 
-  function splitText(text: string): string {
-    if (text.length >= 100) {
-      const words = text.trim().split(/\s+/);
-      const halfIndex = Math.ceil(words.length / 2);
-      const firstHalf = words.slice(0, halfIndex).join(" ");
-      const secondHalf = words.slice(halfIndex).join(" ");
-      return `${firstHalf}\n${secondHalf}`;
-    } else {
-      return text;
-    }
-  }
+  function extractFirst100Words(text: string): string {
+    // Split the text into words
+    const words: string[] = text.trim().split(/\s+/);
   
+    // Slice the array to get the first 100 words
+    const first100Words: string[] = words.slice(0, 50);
+  
+    // Join the first 100 words back into a string
+    const extractedText: string = first100Words.join(' ');
+  
+    return extractedText;
+  }
+
+
+  const top = extractFirst100Words(anyComments);
   return (
     <div className="mx-8 ">
       <div className="card1">
+        
+        
+        <p className="message text-justify">
+          { top }
+        </p>
         <div className="header1">
           
           <div>
@@ -69,11 +77,8 @@ const FeedbackCard: React.FC<Data> = ({ info }) => {
             <p className="name1 grid "> <span>{UserNames}</span></p>
           </div>
         </div>
-        
-        <p className="message text-ellipsis">
-          { splitText(anyComments)}
-        </p>
       </div>
+      
     </div>
   );
 };
