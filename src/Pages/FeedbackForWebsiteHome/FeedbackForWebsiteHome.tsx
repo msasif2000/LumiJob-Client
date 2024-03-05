@@ -25,7 +25,7 @@ const FeedbackForWebsiteHome = () => {
         },
       });
       console.log(feedback);
-      const filteredData = feedback.reduce((acc : any, currentItem : any) => {
+      const filteredData = feedback?.reduce((acc : any, currentItem : any) => {
         if (currentItem.role === 'candidate') {
             acc.candidates.push(currentItem);
         } else if (currentItem.role === 'company') {
@@ -34,8 +34,8 @@ const FeedbackForWebsiteHome = () => {
         return acc;
     }, { candidates: [], companies: [] });
     
-    const candidateData: Data[] = filteredData.candidates;
-    const companyData: Data[] = filteredData.companies;
+    const candidateData: Data[] = filteredData?.candidates;
+    const companyData: Data[] = filteredData?.companies;
 
     console.log(candidateData);
     console.log(companyData);
