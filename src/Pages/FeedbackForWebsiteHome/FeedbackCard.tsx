@@ -43,9 +43,21 @@ const FeedbackCard: React.FC<Data> = ({ info }) => {
       </div>
     );
   };
+
+  function splitText(text: string): string {
+    if (text.length >= 100) {
+      const words = text.trim().split(/\s+/);
+      const halfIndex = Math.ceil(words.length / 2);
+      const firstHalf = words.slice(0, halfIndex).join(" ");
+      const secondHalf = words.slice(halfIndex).join(" ");
+      return `${firstHalf}\n${secondHalf}`;
+    } else {
+      return text;
+    }
+  }
   
   return (
-    <div className="mx-8">
+    <div className="mx-8 ">
       <div className="card1">
         <div className="header1">
           
@@ -58,8 +70,8 @@ const FeedbackCard: React.FC<Data> = ({ info }) => {
           </div>
         </div>
         
-        <p className="message">
-          {anyComments}
+        <p className="message text-ellipsis">
+          { splitText(anyComments)}
         </p>
       </div>
     </div>

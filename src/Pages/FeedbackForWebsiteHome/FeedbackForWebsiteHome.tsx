@@ -61,7 +61,11 @@ const FeedbackForWebsiteHome = () => {
             </Marquee>
             
             <Marquee>
-                <h1 className="text-5xl font-bold">Hello</h1>
+            <div className="flex  ">
+                  {candidateData?.map((info) => (
+                    <FeedbackCard key={info._id} info={info}></FeedbackCard>
+                  ))}
+            </div>
             </Marquee>
             </div>
             
