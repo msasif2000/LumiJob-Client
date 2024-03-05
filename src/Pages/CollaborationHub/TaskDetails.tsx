@@ -1,8 +1,11 @@
 import { useState } from "react";
 import TeamCard from "./TeamCard";
 import useAuth from "../../hooks/useAuth";
+import { useParams } from "react-router-dom";
 
 const TaskDetails = () => {
+    const {id} = useParams()
+    console.log(id);
     const { user } = useAuth()
     const [openModal, setOpenModal] = useState(false);
     const handleSubmitTeamForm = (e: any) => {
@@ -14,6 +17,7 @@ const TaskDetails = () => {
         console.log(teamName, leaderName, leaderEmail, discordLink);
     }
 
+    
     return (
         <div className="max-w-screen-2xl mx-auto py-3 px-4">
 

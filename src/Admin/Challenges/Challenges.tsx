@@ -5,11 +5,16 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Challenges = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<any>(null);
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+  const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -22,6 +27,8 @@ const Challenges = () => {
   const {
     register,
     handleSubmit,
+    reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -29,16 +36,63 @@ const Challenges = () => {
     const addChallenge = {
       challengeTitle: data.title,
       description: data.description,
+      type: data.type,
       submissionDate: selectedDate,
     };
 
-    // console.log(addChallenge);
+    console.log(addChallenge);
 
-    const Res = await axiosPublic.post("/add-challenge", addChallenge);
-    console.log(Res.data);
-    if (Res.data.insertedId) {
-      toggleModal();
+    try {
+      // Upload image to ImageBB
+      const imageData = new FormData();
+      imageData.append("image", data.photo);
+
+      //console.log(imageData);
+
+      const imageUploadResponse = await axios.post(
+        "https://api.imgbb.com/1/upload",
+        imageData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          params: {
+            key: api,
+          },
+        }
+      );
+      // Check if image upload was successful
+      if (imageUploadResponse.data.status === 200) {
+        const imageUrl = imageUploadResponse.data.data.url;
+
+        //set image to the field
+        const updateChallenge = {
+          ...addChallenge,
+          img: imageUrl,
+        };
+        axiosPublic.post("/add-challenge", updateChallenge)
+          .then(res => {
+            //console.log(res.data);
+            if (res.data.insertedId) {
+              toast.success("Challenge Posted Successfully");
+              toggleModal();
+              navigate("/dashboard/admin/challenges");
+              reset()
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            toast.error("Failed to post Blog");
+          })
+
+      } else {
+        toast.error("Failed to upload photo");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while uploading Image");
     }
+
   };
 
   return (
@@ -73,6 +127,29 @@ const Challenges = () => {
               <div className="bg-white p-4 rounded-md w-full max-w-md">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="flex flex-wrap pb-3">
+
+                    <div className="form-control w-full">
+                      <label
+                        className="font-bold text-gray-400 text-xl"
+                        htmlFor="photo"
+                      >
+                        Upload Image
+                      </label>
+
+                      <input
+                        type="file"
+                        name="photo"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            setValue("photo", file);
+                          }
+                        }}
+                        className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xl hover:border-accent duration-500"
+                      />
+                    </div>
+
+
                     <div className="w-full px-4">
                       <label className="block  text-left text-gray-600 font-medium text-md mb-2 mt-8">
                         Title
@@ -87,6 +164,25 @@ const Challenges = () => {
                       {errors.title && (
                         <span className="text-red-600 mt-2">
                           Title is required
+                        </span>
+                      )}
+                    </div>
+
+
+                    <div className="w-full px-4">
+                      <label className="block  text-left text-gray-600 font-medium text-md mb-2 mt-8">
+                        Type
+                      </label>
+                      <input
+                        className="border rounded w-full py-2 px-3 text-gray-700"
+                        {...register("type", { required: true })}
+                        name="type"
+                        type="text"
+                        placeholder="Add Type"
+                      />
+                      {errors.type && (
+                        <span className="text-red-600 mt-2">
+                          Type is required
                         </span>
                       )}
                     </div>
