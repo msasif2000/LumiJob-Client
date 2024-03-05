@@ -91,15 +91,32 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        //get token
+
+        const useInfo = { email: currentUser.email };
+        axiosPublic.post('/jwt', useInfo)
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('token', res.data.token);
+            }
+          })
+        setUser(currentUser);
+        setLoading(false);
+      }
+      else {
+        localStorage.removeItem('token');
+        setUser(null);
+        setLoading(false);
+      }
+
       // console.log("Observed User:", currentUser);
     });
 
     return () => {
       unSubscribe();
     };
-  }, [user]);
+  }, [user, axiosPublic]);
 
   const updateUserProfile = (name: string): Promise<void> => {
     setLoading(true);
