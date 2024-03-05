@@ -79,12 +79,12 @@ const DashBoard = () => {
             Profile
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/dashboard/resume">
             <AiOutlineFileDone className="text-2xl" />
             Resume
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/dashboard/appliedJobs">
             <GrWorkshop className="text-xl" />

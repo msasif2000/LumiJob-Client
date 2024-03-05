@@ -442,6 +442,7 @@ const ManageApplicants = () => {
                                 <div className="absolute top-0 right-10 xl:-right-12">
                                   <Link
                                     to={info ? info.resume : ""}
+                                    target="_blank"
                                     className="cursor-pointer ... text-xl"
                                     title="Resume"
                                   >
@@ -578,6 +579,7 @@ const ManageApplicants = () => {
                                   <div className="absolute top-2 right-10 xl:right-12">
                                   <Link
                                     to={info ? info.resume : ""}
+                                    target="_blank"
                                     className="cursor-pointer ... text-xl"
                                     title="Resume"
                                   >
@@ -760,6 +762,7 @@ const ManageApplicants = () => {
                                 <div className="absolute top-2 right-10 xl:right-20">
                                   <Link
                                     to={info ? info.resume : ""}
+                                    target="_blank"
                                     className="cursor-pointer ... text-xl"
                                     title="Resume"
                                   >

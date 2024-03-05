@@ -211,7 +211,7 @@ const CandidateProUpdate: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((error) => console.log(error));
     }
