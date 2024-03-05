@@ -14,6 +14,7 @@ import {
   Legend,
 } from "recharts";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
 
@@ -31,6 +32,7 @@ const AdminDashboard: React.FC = () => {
     []
   );
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +74,7 @@ const AdminDashboard: React.FC = () => {
     const fetchUserData = async () => {
       try {
         // Fetch user data
-        const responseUsers = await axiosPublic.get("/allUsers");
+        const responseUsers = await axiosSecure.get("/allUsers");
         const users = responseUsers.data;
 
         // Count user roles
