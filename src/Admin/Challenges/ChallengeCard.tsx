@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const ChallengeCard = (challenge: any) => {
   const [challengeData, setChallengeData] = useState<any>(null);
@@ -47,9 +48,9 @@ const ChallengeCard = (challenge: any) => {
         </div>
       </div>
       <div className="flex justify-center">
-        <button className="text-[#690BDD] text-sm font-bold border bg-white hover:bg-white rounded-full px-6 lg:px-12 py-2 mt-6">
+        <Link className="text-[#690BDD] text-sm font-bold border bg-white hover:bg-white rounded-full px-6 lg:px-12 py-2 mt-6" to={`/task-details/${challenge?.challenge?._id}`}>
           View Full Details
-        </button>
+        </Link>
       </div>
     </div>
   );
