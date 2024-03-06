@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface NavbarProps {
   color?: string;
@@ -10,7 +10,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = () => {
   const { user, logOut, premium, role, photo } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [userData, setUserData] = useState<{ _id: string; value: number }>();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isPremium, setIsPremium] = useState(false);
@@ -25,15 +25,15 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     if (role === "candidate") {
-      axiosPublic.get(`/specific-candidate/${user?.email}`).then((res) => {
+      axiosSecure.get(`/specific-candidate/${user?.email}`).then((res) => {
         setUserData(res.data);
       });
     } else if (role === "company") {
-      axiosPublic.get(`/specific-company/${user?.email}`).then((res) => {
+      axiosSecure.get(`/specific-company/${user?.email}`).then((res) => {
         setUserData(res.data);
       });
     }
-  }, [user?.email, role, axiosPublic]);
+  }, [user?.email, role, axiosSecure]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
       <li key="CollaborationHub">
         <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
-          Collab Hub
+          Co-Hub
         </NavLink>
       </li>
 
@@ -101,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           : ""
       }`}
     >
-      <div className="navbar max-w-screen-2xl mx-auto px-4">
+      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

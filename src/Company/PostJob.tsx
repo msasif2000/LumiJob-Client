@@ -6,8 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import useAuth from "../hooks/useAuth";
 import {ToastContainer ,toast } from "react-toastify";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import useSectorAndSkills from "../hooks/useSectorAndSkills";
 
 interface CompanyData {
@@ -33,7 +33,8 @@ const JobPostingForm: React.FC = () => {
   const [dates, setDate] = useState<Date | undefined>(undefined);
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure()
+  // const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const { sectors } = useSectorAndSkills();
 
@@ -84,7 +85,7 @@ const JobPostingForm: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/specific-company/${user.email}`)
         .then((res) => {
           setCompany(res.data);
@@ -108,7 +109,7 @@ const JobPostingForm: React.FC = () => {
 
     setLoading(true)
     
-    axiosPublic
+    axiosSecure
       .post("/post-jobs", jobData)
       .then((response: any) => {
     

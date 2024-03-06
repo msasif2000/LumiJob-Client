@@ -5,7 +5,7 @@ import communication from "../../../assets/image/communication.png";
 
 const HowItWorks = () => {
   return (
-    <section className="max-w-screen-2xl mx-auto px-4 py-12">
+    <section className="max-w-screen-2xl mx-auto px-4 lg:px-20 py-12">
       {/* =========> Section Title <========= */}
       <div className="py-12 grid grid-cols-1 lg:grid-cols-2 gap-4 ">
         <div>

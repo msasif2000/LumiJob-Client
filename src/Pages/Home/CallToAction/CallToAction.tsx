@@ -3,7 +3,7 @@ import actionImg from "../../../assets/image/action.jpg";
 
 const CallToAction = () => {
     return (
-        <div className="max-w-screen-2xl mx-auto py-16 px-4">
+        <div className="max-w-screen-2xl mx-auto py-16 px-4 lg:px-20">
             <div className="md:flex justify-center gap-20 bg-accent rounded-xl">
                 <div className=" flex flex-col items-start justify-center w-full lg:px-12 md:px-4 px-2">
                     <h2 className="text-4xl font-bold font-heading mt-10 md:text-left text-center text-white">

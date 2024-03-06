@@ -64,7 +64,7 @@ const FindJob: React.FC = () => {
         </div>
 
         <div className="bg-[#FAFAFA]">
-          <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:px-5 xl:gap-6">
+          <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:gap-6 lg:px-20">
             <div className="lg:w-1/4 md:w-1/3">
               {/*=======> Left column <============= */}
               <Filters onFilterChange={handleFilterChange} />

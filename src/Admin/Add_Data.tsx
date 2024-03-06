@@ -2,8 +2,8 @@ import { useState } from "react";
 import { FcBriefcase, FcDecision } from "react-icons/fc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import useSectorAndSkills from "../hooks/useSectorAndSkills";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 interface SectorAdded {
@@ -16,7 +16,7 @@ interface SkillAdded {
 
 const Add_Data = () => {
     const loading = false;
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { register: registerSector, handleSubmit: handleSubmitSector, reset: resetSector } = useForm<SectorAdded>();
     const { register: registerSkill, handleSubmit: handleSubmitSkill, reset: resetSkill } = useForm<SkillAdded>();
     const [isModalOpen1, setIsModalOpen1] = useState(false);
@@ -50,7 +50,7 @@ const Add_Data = () => {
     };
 
     const onSubmitSector: SubmitHandler<SectorAdded> = async (data: SectorAdded) => {
-        axiosPublic
+        axiosSecure
             .post("/add-job-sector", data)
             .then((res) => {
                 if (res.data) {
@@ -71,7 +71,7 @@ const Add_Data = () => {
     };
  
     const onSubmitSkill: SubmitHandler<SkillAdded> = async (data: SkillAdded) => {
-        axiosPublic
+        axiosSecure
             .post("/add-skill", data)
             .then((res) => {
                 if (res.data) {

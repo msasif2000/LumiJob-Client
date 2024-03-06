@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-const Seminers = () => {
+
+interface Props {
+  email: string;
+}
+const TopCompanySeminar: React.FC<Props> = ({ email }) => {
   const axiosPublic = useAxiosPublic();
   const [seminars, setSeminars] = useState([]);
 
   useEffect(() => {
-    axiosPublic.get("/seminars").then((res) => setSeminars(res.data));
+    axiosPublic.get(`/get-posted-Seminars/${email}`)
+      .then((res) => setSeminars(res.data));
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
-      <div className="max-w-screen-2xl mx-auto lg:flex lg:space-x-10 px-4 lg:px-20">
-        <div className="pt-10 lg:w-1/3 lg:pt-32">
+    <div className="min-h-screen  pb-10">
+      <div className="max-w-screen-2xl mx-auto  lg:flex lg:space-x-10">
+        <div className="pt-10 lg:w-1/3 lg:pt-8">
           <div className="space-y-8">
-            <h1 className="text-3xl md:text-6xl xl:text-7xl font-heading font-semibold">
+            <h1 className="text-3xl md:text-6xl font-heading font-semibold">
               Seminars
             </h1>
-            <p className="text-md md:text-lg xl:text-xl font-normal">
+            <p className="text-md md:text-lg  font-normal">
               Transform your mindset and elevate your career with our impactful
               seminars. Join us to revolutionize your thinking and stay ahead in
               your professional journey.
@@ -26,7 +31,7 @@ const Seminers = () => {
           </div>
         </div>
         {/* actual seminars part */}
-        <div className=" pt-10 lg:w-2/3 lg:pt-32">
+        <div className=" pt-10 lg:w-2/3 lg:pt-8">
           <div className="space-y-16 w-full">
             {seminars.map((seminar: any) => {
               return (
@@ -69,4 +74,4 @@ const Seminers = () => {
   );
 };
 
-export default Seminers;
+export default TopCompanySeminar;

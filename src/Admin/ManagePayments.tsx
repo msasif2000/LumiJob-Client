@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import GoToTop from "../component/GoToTop/GoToTop";
 
 const ManagePayments = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { data: payments = [] } = useQuery({
     queryKey: ["payments"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/payment`);
+      const res = await axiosSecure.get(`/payment-data`);
       return res.data;
     },
   });

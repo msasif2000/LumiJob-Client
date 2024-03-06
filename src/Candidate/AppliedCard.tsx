@@ -4,9 +4,10 @@ import { MdCancelScheduleSend } from "react-icons/md";
 import { SiGooglemeet } from "react-icons/si";
 import { TbMessage } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+
 import { ImLocation } from "react-icons/im";
 import { CgTime } from "react-icons/cg";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface prop {
   job: any;
@@ -67,11 +68,11 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
     return formattedDate;
   }
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { data: companyFeedbacks } = useQuery({
     queryKey: ["companyFeedbacks", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/companyFeedback/${job._id}`);
+      const res = await axiosSecure.get(`/companyFeedback/${job._id}`);
       return res.data;
     },
     enabled: !!id,

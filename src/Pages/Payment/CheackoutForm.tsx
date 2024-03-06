@@ -7,6 +7,7 @@ import bgimg from "../../assets/svg/bg-glow.svg";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import Payment from './Payment';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 interface Payment {
@@ -30,6 +31,7 @@ const CheackoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { planId } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -41,8 +43,7 @@ const CheackoutForm = () => {
 
   useEffect(() => {
     price > 0 &&
-      axiosPublic
-        .post("/create-payment-intent", { price: price })
+      axiosSecure.post("/create-payment-intent", { price: price })
         .then((res) => {
         
           setClientSecret(res.data.clientSecret);
@@ -50,8 +51,7 @@ const CheackoutForm = () => {
   }, [axiosPublic, price]);
 
   useEffect(() => {
-    axiosPublic
-      .get(`/subscriptions/${planId}`)
+    axiosPublic.get(`/subscriptions/${planId}`)
       .then((res) => {
         setSubs(res.data);
       })
@@ -133,8 +133,8 @@ const CheackoutForm = () => {
 
        
 
-        const res = await axiosPublic.post("/payments", payment);
-       
+        const res = await axiosSecure.post("/payments", payment);
+        console.log("payment saved", res.data);
         if (res.data?.paymentResult?.insertedId) {
           Swal.fire({
             position: "center",

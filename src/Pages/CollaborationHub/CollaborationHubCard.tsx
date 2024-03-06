@@ -1,7 +1,7 @@
 
 
 const CollaborationHubCard = (task: any) => {
-
+    //console.log(task);
     return (
         <div >
             <div className="rounded overflow-hidden border h-96">

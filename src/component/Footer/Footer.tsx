@@ -4,7 +4,7 @@ import { AiFillYoutube, AiFillInstagram } from "react-icons/ai";
 const Footer = () => {
   return (
     <footer className="relative bg-white text-[#74767e] border-t ">
-      <div className="footer py-10 px-4 max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 font-Macan font-normal text-lg lg:min-h-[22rem] pt-20 ">
+      <div className="footer py-10 px-4 max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-4 font-Macan font-normal text-lg lg:min-h-[22rem] pt-20 ">
         <div>
           <span className="capitalize font-Macan font-bold text-xl text-gray-900">
             Services

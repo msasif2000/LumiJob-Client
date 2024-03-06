@@ -13,7 +13,7 @@ import FeedbackForWebsiteHome from "../FeedbackForWebsiteHome/FeedbackForWebsite
 const Home = () => {
   const { user } = useAuth();
   return (
-    <div>
+    <div className="">
       <Helmet>
         <title>Home | LumiJobs</title>
       </Helmet>

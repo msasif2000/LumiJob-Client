@@ -1,5 +1,5 @@
 import { MdPreview, MdDelete } from "react-icons/md";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import usePostedJob from "../hooks/usePostedJob";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useState } from "react";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface PostedJob {
   _id: string;
@@ -17,7 +18,8 @@ interface PostedJob {
 }
 
 const ManageJobs = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [PostedData, refetch] = usePostedJob();
 
   const [dataPerPage, setDataPerPage] = useState<number>(10);
@@ -43,17 +45,17 @@ const ManageJobs = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/delete-jobs-bookmarks/${id}`);
+        axiosSecure.delete(`/delete-jobs-bookmarks/${id}`);
         // .then(() => {
     
         // })
 
-        axiosPublic.delete(`/delete-jobs-applyJobsCollection/${id}`);
+        axiosSecure.delete(`/delete-jobs-applyJobsCollection/${id}`);
         // .then(res => {
      
         // })
 
-        axiosPublic.delete(`/delete-jobs/${id}`).then((res) => {
+        axiosSecure.delete(`/delete-jobs/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
