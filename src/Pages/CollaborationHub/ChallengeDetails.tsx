@@ -64,7 +64,7 @@ const ChallengeDetails = () => {
         const teamName = e.target.teamName.value;
         const memberName = e.target.memberName.value;
         const memberEmail = user.email;
-        const memberImg = photo;
+        const memberImg = photo || user.photoURL;
         const discordLink = e.target.discordLink.value;
         const challengeId = id;
         const designation = "Leader"
@@ -112,7 +112,7 @@ const ChallengeDetails = () => {
                                     {description}
                                 </p>
                             </div>
-                            
+
                         </div>
                         {/* article */}
                         <div className="lg:w-1/4 lg:ml-10 ">
