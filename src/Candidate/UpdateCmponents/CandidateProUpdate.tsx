@@ -72,7 +72,6 @@ const CandidateProUpdate: React.FC = () => {
   >([]);
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
   const { sectors } = useSectorAndSkills();
-  console.log(sectors)
 
   const {
     register,

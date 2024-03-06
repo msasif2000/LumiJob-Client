@@ -8,6 +8,7 @@ import useAuth from "../hooks/useAuth";
 import {ToastContainer ,toast } from "react-toastify";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
+import useSectorAndSkills from "../hooks/useSectorAndSkills";
 
 interface CompanyData {
   email: string;
@@ -15,6 +16,11 @@ interface CompanyData {
   role: string;
   name: string;
   photo: string;
+}
+
+interface Sector {
+  _id: string;
+  sectorType: string;
 }
 
 const JobPostingForm: React.FC = () => {
@@ -27,8 +33,9 @@ const JobPostingForm: React.FC = () => {
   const [dates, setDate] = useState<Date | undefined>(undefined);
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
-  const axiosPublic = useAxiosPublic()
-  const navigate = useNavigate()
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+  const { sectors } = useSectorAndSkills();
 
   const addRequirement = () => {
     setRequirements((prevRequirements) => [
@@ -165,13 +172,16 @@ const JobPostingForm: React.FC = () => {
                 />
               </div>
               <div className=" form-control w-full">
-                <input
-                  type="text"
+                <select
                   {...register("sectorType")}
                   className="py-4 outline-none font-bold bg-transparent border-b-2
-                w-full border-gray-300 text-xl hover:border-accent duration-500"
-                  placeholder="Sector"
-                />
+                w-full border-gray-300 text-xl hover:border-accent duration-500">
+                {sectors.map((sector : Sector) => (
+                  <option key={sector?._id} value={sector?.sectorType}>
+                    {sector?.sectorType}
+                  </option>
+                ))}
+                </select>
               </div>
               <div className="form-control w-full">
                 <input
