@@ -4,7 +4,7 @@ import EmployeeCard from "./EmployeeCard";
 import Employee from "./Employee";
 import useAuth from "../hooks/useAuth";
 import NoData from "../component/NoData/NoData";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Employees = () => {
   const axiosSecure = useAxiosSecure();
