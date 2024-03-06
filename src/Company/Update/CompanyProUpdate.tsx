@@ -48,7 +48,7 @@ const CompanyProUpdate = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosSecure.get(`/user-profile/${user.email}`)
+      axiosPublic.get(`/user-profile/${user.email}`)
         .then((res) => {
           setCompany(res.data);
         

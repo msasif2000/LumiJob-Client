@@ -68,7 +68,7 @@ const Seminars = () => {
                     console.log(err);
                 });
         }
-        axiosSecure.get(`/user-profile/${user.email}`)
+        axiosPublic.get(`/user-profile/${user.email}`)
             .then((res) => {
                 setCompany(res.data);
             })
