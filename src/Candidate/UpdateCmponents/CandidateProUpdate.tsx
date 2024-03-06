@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
+import useSectorAndSkills from "../../hooks/useSectorAndSkills";
 
 interface EducationData {
   university: string;
@@ -50,6 +51,11 @@ interface UserData {
   role: string;
 }
 
+interface Sector {
+  _id: string;
+  sectorType: string;
+}
+
 const CandidateProUpdate: React.FC = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
@@ -65,7 +71,8 @@ const CandidateProUpdate: React.FC = () => {
     EducationData[]
   >([]);
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
-
+  const { sectors } = useSectorAndSkills();
+  console.log(sectors)
 
   const {
     register,
@@ -168,7 +175,7 @@ const CandidateProUpdate: React.FC = () => {
       // Check if image upload was successful
       if (imageUploadResponse.data.status === 200) {
         const imageUrl = imageUploadResponse.data.data.url;
-     
+
 
         // Prepare candidate data with the image URL
         const candidateData = {
@@ -210,7 +217,7 @@ const CandidateProUpdate: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);
-         
+
         })
         .catch((error) => console.log(error));
     }
@@ -348,14 +355,17 @@ const CandidateProUpdate: React.FC = () => {
               </div>
 
               <div className="form-control w-full">
-              <input
-                  type="text"
+                <select
                   {...register("position", {
                     required: "position is required",
                   })}
-                  placeholder="Desired Job Position"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                />
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500">
+                  {sectors.map((sector : Sector) => (
+                    <option key={sector._id} value={sector.sectorType}>
+                      {sector.sectorType}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="form-control w-full">
                 <input
