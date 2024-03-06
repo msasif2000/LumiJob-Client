@@ -4,14 +4,14 @@ import useAuth from "../../hooks/useAuth";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../Blogs/components/err/Loading";
-import { ToastContainer, toast } from "react-toastify";
+import toast, { Toaster } from 'react-hot-toast';
 
 const ChallengeDetails = () => {
     const { id } = useParams()
-    const { user } = useAuth()
+    const { user, photo } = useAuth()
     const [openModal, setOpenModal] = useState(false);
     const [challengeData, setChallengeData] = useState<any>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
     const { challengeTitle, description, img, time, type } = challengeData || {};
     console.log(challengeData);
@@ -39,6 +39,8 @@ const ChallengeDetails = () => {
         return `${formattedTime} - ${formattedDate}`;
     };
 
+
+
     useEffect(() => {
         setLoading(true);
         axiosPublic
@@ -62,7 +64,7 @@ const ChallengeDetails = () => {
         const teamName = e.target.teamName.value;
         const memberName = e.target.memberName.value;
         const memberEmail = user.email;
-        const memberImg = user.photoURL;
+        const memberImg = photo;
         const discordLink = e.target.discordLink.value;
         const challengeId = id;
         const designation = "Leader"
@@ -70,14 +72,13 @@ const ChallengeDetails = () => {
 
         axiosPublic.post("/teams", teamData)
             .then(res => {
-                if (res.data.insertedId) {
+                if (res.data.message === "data inserted") {
                     toast.success("Team Create Successfully");
                     e.target.reset()
                     setOpenModal(false)
                 }
                 else {
                     toast.error("You have already in a team");
-
                 }
             })
             .catch(err => {
@@ -85,8 +86,6 @@ const ChallengeDetails = () => {
                 toast.error("Failed to post team");
             })
     }
-
-
 
     return (
         <div className="max-w-screen-2xl mx-auto py-3 px-4">
@@ -175,7 +174,10 @@ const ChallengeDetails = () => {
                         </div>
                     </div>
             }
-            <ToastContainer />
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </div>
 
     );

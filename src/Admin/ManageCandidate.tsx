@@ -43,7 +43,7 @@ const ManageCandidate = () => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/delCandidate/${id}`)
           .then((res) => {
-           
+
             if (res.data.deletedCount > 0) {
               refetch();
               Swal.fire({
@@ -134,7 +134,7 @@ const ManageCandidate = () => {
 
         )}
         <div className="flex justify-end py-12 items-center">
-          
+
           <select
             id="dataPerPage"
             value={dataPerPage}
