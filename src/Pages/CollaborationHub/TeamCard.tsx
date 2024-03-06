@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { ToastContainer, toast } from 'react-toastify';
 interface TeamData {
     teamName: string;
     coloredText: any;
     id: number;
-    _id: string;    
+    _id: string;
     name: string;
     title: string;
     img: string;
@@ -21,31 +22,64 @@ interface Prop {
 }
 
 const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
-    const { user, name, photo } = useAuth()
-    console.log(name);
+    const { user, name } = useAuth()
     const [isOpen, setIsOpen] = useState<number | null>(null);
     const axiosPublic = useAxiosPublic()
+    const [leader, setLeader] = useState(false)
+    console.log(leader);
 
     const handleToggle = (idx: number) => setIsOpen(prevIdx => prevIdx === idx ? null : idx);
 
     const handleJoin = (id: string) => {
         const memberName = name;
         const memberEmail = user.email;
-        const memberImg = photo;
+        const memberImg = user.photoURL;
         const designation = "Member";
         const teamId = id;
         const cId = challengeId;
-
-
 
         const teamData = { memberName, memberEmail, memberImg, designation, teamId, cId }
         console.log(teamData);
         axiosPublic.post("/add-team-member", teamData)
             .then(res => {
                 console.log(res.data);
-            })
 
+                if (res.data.message === "Join Request Sent") {
+                    toast.success("Join Request Sent");
+                }
+                if (res.data.message === "Already have a team with this member") {
+                    toast.warn("Already joined");
+                }
+            })
     }
+
+    const handleRemove = (email: string, teamId: string) => {
+
+        const data = { email, id: challengeId, teamId: teamId };
+
+        axiosPublic
+            .post("/remove-team-member", data)
+            .then((res) => {
+                if (res.data.message === "Member removed successfully") {
+                    toast.success("Member remove successfully", {
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        position: "top-center",
+                    });
+
+                } else {
+                    toast.warn("Remove failed");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.warn("Something went wrong");
+            });
+    };
+
+
+
 
     return (
         <div className="my-5  rounded-lg">
@@ -56,7 +90,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                             <div className='flex justify-between items-center'>
                                 <p className="font-medium text-lg ">{data?.teamName}</p>
 
-                                {/* <div className="avatar-group -space-x-6 rtl:space-x-reverse">
+                                <div className="avatar-group -space-x-6 rtl:space-x-reverse">
                                     {data?.members?.map((member: { img: string | undefined; }, idx: React.Key | null | undefined) => (
                                         <div key={idx} className="avatar">
                                             <div className="w-8">
@@ -64,8 +98,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                             </div>
                                         </div>
                                     ))}
-
-                                </div> */}
+                                </div>
 
 
 
@@ -82,12 +115,16 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                             <div className={` p-6  `}>
                                 <div className="flex justify-between items-center">
                                     <p className="text-lg font-semibold">Team Members</p>
-                                    <button onClick={() => handleJoin(data._id)} className="btn btn-sm bg-blue-400">Join Request</button>
+                                    {
+                                        user ?
+                                            <button onClick={() => handleJoin(data._id)} className="btn btn-sm bg-blue-400">Join Request</button> :
+                                            <button className="btn btn-sm bg-blue-400 disabled">Join Request</button>
+                                    }
                                 </div>
                                 {
                                     data?.members?.map((member: {
-                                        title: string | undefined;
-                                        img: string | undefined; name: string | undefined; designation: string | undefined; status: string | undefined
+                                        img: string | undefined; name: string | undefined; email: string | undefined; designation: string | undefined; status: string | undefined; title: string | undefined
+
                                     }, idx: React.Key | null | undefined) => (
                                         <div>
                                             {
@@ -108,12 +145,15 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                                             </div>
 
 
-                                                            {
 
-                                                                <div className='flex items-center gap-2'>
-                                                                    <button> ❌ </button>
+                                                            {
+                                                                leader ? <div className='flex items-center gap-2'>
+                                                                    <button onClick={() => member?.email && handleRemove(member.email, data._id)}> ❌ </button>
                                                                     <button> ✔️ </button>
-                                                                </div>
+                                                                </div> :
+                                                                    <div className="badge badge-primary">
+                                                                        Pending
+                                                                    </div>
                                                             }
 
 
@@ -137,6 +177,12 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                                             <div className="badge badge-primary">
                                                                 {member.designation}
                                                             </div>
+                                                            <div className='hidden'>
+                                                                {
+                                                                    `${user?.email === member?.email && member?.designation === "Leader" ?
+                                                                        useEffect(() => { setLeader(true) }) : useEffect(() => { setLeader(false) })}`
+                                                                }
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -149,8 +195,10 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                         </div>
                     </div>
                 </div>
-            ))}
-        </div>
+            ))
+            }
+            <ToastContainer />
+        </div >
     );
 };
 
