@@ -6,6 +6,7 @@ import { useState } from "react";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface Company {
   _id: string;
@@ -17,6 +18,7 @@ interface Company {
 }
 const ManageCompany = () => {
   const axiosPublic = useAxiosPublic();
+  const axiosSecure= useAxiosSecure();
   const [companyData, refetch] = useCompanyData();
 
   // pagination
@@ -45,7 +47,7 @@ const ManageCompany = () => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/delete-company-postedJob/${email}`);
 
-        axiosPublic.delete(`/delete-company/${id}`).then((res) => {
+        axiosSecure.delete(`/delete-company/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({

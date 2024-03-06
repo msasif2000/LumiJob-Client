@@ -6,12 +6,14 @@ import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GoToTop from "../../component/GoToTop/GoToTop";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SubscriptionsUiCandidate = () => {
   const [plans, setPlans] = useState<any | null>(null);
   const [subscription, setSubscription] = useState<any | null>(null);
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     axiosPublic
@@ -25,7 +27,7 @@ const SubscriptionsUiCandidate = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic.get(`/payment/${user.email}`)
+      axiosSecure.get(`/payment/${user.email}`)
         .then((res) => {
           console.log(res.data);
           setSubscription(res.data);

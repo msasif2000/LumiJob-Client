@@ -13,6 +13,7 @@ import { SiGooglemeet } from "react-icons/si";
 import { Helmet } from "react-helmet-async";
 import { MdOutlineContactPage } from "react-icons/md";
 import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface Comments {
   // anyCements: string;
@@ -27,6 +28,7 @@ interface Comments {
 
 const ManageApplicants = () => {
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [openModal, setOpenModal] = useState(false);
   const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
@@ -49,7 +51,7 @@ const ManageApplicants = () => {
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-applicants/${id}`);
+      const res = await axiosSecure.get(`/dnd-applicants/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -59,7 +61,7 @@ const ManageApplicants = () => {
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
     queryKey: ["preSelected", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-pre-select/${id}`);
+      const res = await axiosSecure.get(`/dnd-pre-select/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -69,7 +71,7 @@ const ManageApplicants = () => {
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-interview/${id}`);
+      const res = await axiosSecure.get(`/dnd-interview/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -78,7 +80,7 @@ const ManageApplicants = () => {
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-selected/${id}`);
+      const res = await axiosSecure.get(`/dnd-selected/${id}`);
       return res.data;
     },
     enabled: !!id,

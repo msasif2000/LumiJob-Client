@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import EmployeeCard from "./EmployeeCard";
 import Employee from "./Employee";
 import useAuth from "../hooks/useAuth";
 import NoData from "../component/NoData/NoData";
 
 const Employees = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
   const { data: employees = [] } = useQuery({
     queryKey: ["employees"],
     queryFn: async () => {
-      const res = await axiosPublic.get(
+      const res = await axiosSecure.get(
         `/selectedApplicants?companiEmail=${user.email}`
       );
       return res.data;
