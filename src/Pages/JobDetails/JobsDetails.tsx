@@ -601,9 +601,9 @@ const JobsDetails: React.FC = () => {
                         ></Share>
                       </>
                     ) : (
-                      <button className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700">
+                          <Link className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700" to={"/login"}>
                         Login to get your link
-                      </button>
+                      </Link>
                     )}
                   </div>
 

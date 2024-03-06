@@ -14,7 +14,6 @@ const ChallengeDetails = () => {
     const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
     const { challengeTitle, description, img, time, type } = challengeData || {};
-    console.log(challengeData);
     const formatDateTime = (dateTimeString: any) => {
         const date = new Date(dateTimeString);
 

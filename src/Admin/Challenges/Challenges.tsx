@@ -9,6 +9,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const Challenges = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -21,6 +22,14 @@ const Challenges = () => {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+
+  const { refetch, data: challenges = [] } = useQuery({
+    queryKey: ["candidates"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/challenges`);
+      return res.data;
+    },
+  });
 
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
@@ -71,25 +80,26 @@ const Challenges = () => {
         if (imageUploadResponse.data.status === 200) {
           const imageUrl = imageUploadResponse.data.data.url;
 
-          //set image to the field
-          const updateChallenge = {
-            ...addChallenge,
-            img: imageUrl,
-          };
-          axiosPublic.post("/add-challenge", updateChallenge)
-            .then(res => {
-              //console.log(res.data);
-              if (res.data.insertedId) {
-                toast.success("Challenge Posted Successfully");
-                toggleModal();
-                navigate("/dashboard/admin/challenges");
-                reset()
-              }
-            })
-            .catch(err => {
-              console.log(err);
-              toast.error("Failed to post Blog");
-            })
+        //set image to the field
+        const updateChallenge = {
+          ...addChallenge,
+          img: imageUrl,
+        };
+        axiosPublic.post("/add-challenge", updateChallenge)
+          .then(res => {
+            //console.log(res.data);
+            if (res.data.insertedId) {
+              toast.success("Challenge Posted Successfully");
+              toggleModal();
+              navigate("/dashboard/admin/challenges");
+              reset()
+              refetch();
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            toast.error("Failed to post Blog");
+          })
 
         } else {
           toast.error("Failed to upload photo");
@@ -119,13 +129,12 @@ const Challenges = () => {
             </button>
           </div>
           <div className="grid grid-cols-1 2xl:grid-cols-4 gap-5 mt-12">
-            <ChallengeCard />
-            <ChallengeCard />
-            <ChallengeCard />
-            <ChallengeCard />
-            <ChallengeCard />
-            <ChallengeCard />
-            <ChallengeCard />
+            {
+              challenges.map((challenge: any) => (
+                <ChallengeCard key={challenge._id} challenge={challenge} />
+              ))
+            }
+          
           </div>
           {/* Modal */}
           {showModal && (

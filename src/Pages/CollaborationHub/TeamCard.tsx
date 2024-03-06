@@ -33,8 +33,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
     const handleJoin = (id: string) => {
         const memberName = name;
         const memberEmail = user.email;
-        const memberImg = photo;
-
+        const memberImg = photo || user.photoURL;
         const designation = "Member";
         const teamId = id;
         const cId = challengeId;
