@@ -96,7 +96,7 @@ const AdminDashboard: React.FC = () => {
 
     fetchData();
     fetchUserData();
-  }, [axiosPublic]);
+  }, [axiosSecure]);
 
   // console.log(userData);
 

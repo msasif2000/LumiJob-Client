@@ -19,7 +19,7 @@ const PostedJobs = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/get-company-posted-jobs/${user?.email}`)
         .then((res) => {
           setCompanyPostedJobs(res.data);

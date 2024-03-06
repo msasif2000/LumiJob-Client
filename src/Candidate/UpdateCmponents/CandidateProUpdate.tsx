@@ -179,7 +179,7 @@ const CandidateProUpdate: React.FC = () => {
         console.log(candidateData);
 
         // Send the updated candidate data to your database
-        const updateUserDataResponse = await axiosPublic.put(
+        const updateUserDataResponse = await axiosSecure.put(
           `/user-update/${user?.email}`,
           candidateData
         );
@@ -204,7 +204,7 @@ const CandidateProUpdate: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);

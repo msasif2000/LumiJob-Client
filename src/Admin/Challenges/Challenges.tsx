@@ -4,12 +4,13 @@ import ChallengeCard from "./ChallengeCard";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+
 
 const Challenges = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<any>(null);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -34,7 +35,7 @@ const Challenges = () => {
 
     // console.log(addChallenge);
 
-    const Res = await axiosPublic.post("/add-challenge", addChallenge);
+    const Res = await axiosSecure.post("/add-challenge", addChallenge);
     console.log(Res.data);
     if (Res.data.insertedId) {
       toggleModal();

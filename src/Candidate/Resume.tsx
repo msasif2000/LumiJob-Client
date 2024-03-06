@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from "react";
 import CandidateNav from "./CommonNavbar/CandidateNav";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAuth from "../hooks/useAuth"; 
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface Candidate {
   name: string;
@@ -32,11 +32,11 @@ const Resume: React.FC = () => {
   const [candidate, setCandidates] = useState<Candidate | null>(null);
   const { user } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCandidates(res.data);

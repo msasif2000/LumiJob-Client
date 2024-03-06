@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import { GoVerified } from "react-icons/go";
 import { BiEdit } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
@@ -11,6 +10,7 @@ import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { MdOutlineContactPage } from "react-icons/md";
 import { storage } from "../config/Firebase.config";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface UserProfile {
   _id: string;
@@ -56,7 +56,7 @@ const CandidateProfile = () => {
   const { user, premium } = useAuth();
   const [activeTab, setActiveTab] = useState("experience");
   const [profile, setProfile] = useState<UserProfile | null>(null);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [resume, setResume] = useState<any | null>(null);
   const [showResumeModal, setShowResumeModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -75,8 +75,7 @@ const CandidateProfile = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
-        .get(`/specific-candidate/${user.email}`)
+      axiosSecure.get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setProfile(res.data);
           setResume(res.data.resume);
@@ -214,7 +213,7 @@ const CandidateProfile = () => {
                 resume: downloadURL,
                 user: user?.email,
               };
-              axiosPublic
+              axiosSecure
                 .post("/set-resume", data)
                 .then((res) => {
                   console.log(res.data);

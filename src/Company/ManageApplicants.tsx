@@ -39,7 +39,7 @@ const ManageApplicants = () => {
   const { data: infosJobs } = useQuery({
     queryKey: ["infosJobs", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/jobInfo/${id}`);
+      const res = await axiosSecure.get(`/jobInfo/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -116,7 +116,7 @@ const ManageApplicants = () => {
       dndStats: destination.droppableId,
     };
 
-    axiosPublic
+    axiosSecure
       .put(`/updateApplicantsStatus/${draggableId}`, payload)
       .then(() => {
         refetchInfo();
@@ -158,7 +158,7 @@ const ManageApplicants = () => {
       };
       //console.log(allText);
       // console.log(infosJobs)
-      axiosPublic
+      axiosSecure
         .post("/sendFeedback", allText)
         .then((response: any) => {
           // console.log(response.data);
@@ -197,7 +197,7 @@ const ManageApplicants = () => {
       };
       //console.log(allText);
       // console.log(infosJobs)
-      axiosPublic
+      axiosSecure
         .post("/sendFeedback", allText)
         .then((response: any) => {
           // console.log(response.data);
@@ -236,7 +236,7 @@ const ManageApplicants = () => {
       };
       //console.log(allText);
       // console.log(infosJobs)
-      axiosPublic
+      axiosSecure
         .post("/sendFeedback", allText)
         .then((response: any) => {
           //console.log(response.data);
@@ -274,7 +274,7 @@ const ManageApplicants = () => {
       };
       //console.log(allText);
       // console.log(infosJobs)
-      axiosPublic
+      axiosSecure
         .post("/sendFeedback", allText)
         .then((response: any) => {
           //console.log(response.data);
@@ -326,7 +326,7 @@ const ManageApplicants = () => {
 
     //console.log(interviewData);
 
-    axiosPublic
+    axiosSecure
       .post("/schedule-interview", interviewData)
       .then((res) => {
         //console.log(res.data);

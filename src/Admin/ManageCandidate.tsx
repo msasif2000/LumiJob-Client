@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
 import CPagination from "../Pages/FindCandidate/CPagination";
@@ -23,7 +22,7 @@ const ManageCandidate = () => {
   const { refetch, data: candidates = [] } = useQuery({
     queryKey: ["candidates"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/user?role=candidate`);
+      const res = await axiosSecure.get(`/user?role=candidate`);
       return res.data;
     },
   });

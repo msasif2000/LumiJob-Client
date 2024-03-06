@@ -22,14 +22,14 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import UniLoader from "../component/err & loading/UniLoader";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import { GoCodeReview } from "react-icons/go";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const DashBoard = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [userData, setUserData] = useState({} as any);
   const [role, setRole] = useState("");
@@ -50,7 +50,7 @@ const DashBoard = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/check-which-role/${user?.email}`)
         .then((res) => {
           // console.log(res.data.role);

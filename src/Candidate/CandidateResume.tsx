@@ -2,11 +2,11 @@
 
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import { BiEdit } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface ExperienceData {
   company: string;
@@ -60,13 +60,14 @@ interface Candidate {
 const CandidateResume: React.FC = () => {
   const [candidate, setCandidates] = useState<Candidate | null>(null);
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  
 
   useEffect(() => {
     const fetchData = async () => {
       if (user?.email) {
         try {
-          const res = await axiosPublic.get(
+          const res = await axiosSecure.get(
             `/specific-candidate/${user.email}`
           );
           setCandidates(res.data);

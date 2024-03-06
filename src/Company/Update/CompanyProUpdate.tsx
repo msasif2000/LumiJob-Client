@@ -98,7 +98,7 @@ const CompanyProUpdate = () => {
         };
 
         // Send the updated company data to your database
-        const updateUserDataResponse = await axiosPublic.put(
+        const updateUserDataResponse = await axiosSecure.put(
           `/user-update/${user?.email}`,
           updatedCompanyData
         );

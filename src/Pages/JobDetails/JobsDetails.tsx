@@ -17,6 +17,7 @@ import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import { storage } from "../../config/Firebase.config";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface JobDetails {
   _id: string;
@@ -45,6 +46,7 @@ interface JobDetails {
 const JobsDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [job, setJobs] = useState<JobDetails>();
   const { user, role, premium } = useAuth();
   const [showProfileModal, setShowProfileModal] = useState(false);
@@ -129,9 +131,8 @@ const JobsDetails: React.FC = () => {
       status: "unopened",
     };
 
-    //console.log(jobDetails);
 
-    axiosPublic
+    axiosSecure
       .post(`/apply-to-jobs`, jobDetails)
       .then((res) => {
         //console.log(res.data);
@@ -232,7 +233,7 @@ const JobsDetails: React.FC = () => {
                 resume: downloadURL,
                 user: user?.email,
               };
-              axiosPublic
+              axiosSecure
                 .post("/set-resume", data)
                 .then((res) => {
                   console.log(res.data);
@@ -249,7 +250,7 @@ const JobsDetails: React.FC = () => {
 
                     //console.log(jobDetails);
 
-                    axiosPublic
+                    axiosSecure
                       .post(`/apply-to-jobs`, jobDetails)
                       .then((res) => {
                         //console.log(res.data);
