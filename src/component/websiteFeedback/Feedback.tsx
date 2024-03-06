@@ -1,9 +1,9 @@
 import React, { FormEvent, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface FeedbackFormData {
   anyComments: string;
@@ -21,7 +21,7 @@ const Feedback: React.FC = () => {
   const [anyComments, setAnyComments] = useState<string>("");
 
   const { user, role } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
  
 
@@ -52,7 +52,7 @@ const Feedback: React.FC = () => {
       PostedDate: new Date(),
     };
 
-    axiosPublic
+    axiosSecure
       .post("/websiteFeedback", formData)
       .then((response: any) => {
        

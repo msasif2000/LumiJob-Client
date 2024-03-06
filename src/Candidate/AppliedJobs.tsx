@@ -1,4 +1,3 @@
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
 import AppliedCard from "./AppliedCard";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,17 +6,18 @@ import GoToTop from "../component/GoToTop/GoToTop";
 import { Helmet } from "react-helmet-async";
 import NoData from "../component/NoData/NoData";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AppliedJobs = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const userEmail = user?.email;
 
   const { data: jobs, refetch: jobsRefetch } = useQuery({
     queryKey: ["jobs"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/get-applied-jobs/${userEmail}`);
+      const res = await axiosSecure.get(`/get-applied-jobs/${userEmail}`);
       return res.data;
     },
   });
@@ -42,7 +42,7 @@ const AppliedJobs = () => {
     };
   
 
-    axiosPublic
+    axiosSecure
       .post("/delete-jobs-from-candidate", data)
       .then((res) => {
       
@@ -76,7 +76,7 @@ const AppliedJobs = () => {
         </h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4  gap-6">
         {jobs?.map((job: any) => (
           <AppliedCard key={job._id} job={job} handleDelete={handleDelete} />
         ))}

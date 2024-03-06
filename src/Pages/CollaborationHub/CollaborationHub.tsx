@@ -38,7 +38,11 @@ const CollaborationHub = () => {
                     </div>
                 </div>
             </div>
-            <div className=" max-w-screen-2xl mx-auto px-4 py-20 min-h-[70vh] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
+            {/* <div className="mb-5">
+                <img className="rounded-lg opacity-70" src={collabBg} alt="" />
+                
+            </div> */}
+            <div className=" max-w-screen-2xl mx-auto px-4 lg:px-20 py-20 min-h-[70vh] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3  2xl:grid-cols-4 gap-5">
 
                 {
                     loading ? <Loading /> : taskData?.map((task, idx) =>

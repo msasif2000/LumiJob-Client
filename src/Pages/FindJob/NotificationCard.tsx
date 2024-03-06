@@ -3,11 +3,11 @@ import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const NotificationCard = () => {
   const { premium } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const recJobsDemo = [1, 2, 3, 4, 5, 6];
   const [recJobs, setRecJobs] = useState<any[]>([]);
 
@@ -15,7 +15,7 @@ const NotificationCard = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/matchingJobs?email=${user.email}`)
         .then((res: any) => {
           setRecJobs(res.data);
@@ -136,7 +136,7 @@ const NotificationCard = () => {
               </div>
             ))}
           </div>
-          <p className="absolute top-20 left-20 text-md">
+          <p className="absolute top-24 text-center text-md">
             For premium users only.
           </p>
         </div>

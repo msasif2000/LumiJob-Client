@@ -4,8 +4,9 @@ import ChallengeCard from "./ChallengeCard";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import {ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -13,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 const Challenges = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<any>(null);
+  const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
@@ -51,28 +53,32 @@ const Challenges = () => {
 
     console.log(addChallenge);
 
-    try {
-      // Upload image to ImageBB
-      const imageData = new FormData();
-      imageData.append("image", data.photo);
+    const Res = await axiosSecure.post("/add-challenge", addChallenge);
+    console.log(Res.data);
+    if (Res.data.insertedId) {
+      toggleModal();
+      try {
+        // Upload image to ImageBB
+        const imageData = new FormData();
+        imageData.append("image", data.photo);
 
-      //console.log(imageData);
+        //console.log(imageData);
 
-      const imageUploadResponse = await axios.post(
-        "https://api.imgbb.com/1/upload",
-        imageData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          params: {
-            key: api,
-          },
-        }
-      );
-      // Check if image upload was successful
-      if (imageUploadResponse.data.status === 200) {
-        const imageUrl = imageUploadResponse.data.data.url;
+        const imageUploadResponse = await axios.post(
+          "https://api.imgbb.com/1/upload",
+          imageData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            params: {
+              key: api,
+            },
+          }
+        );
+        // Check if image upload was successful
+        if (imageUploadResponse.data.status === 200) {
+          const imageUrl = imageUploadResponse.data.data.url;
 
         //set image to the field
         const updateChallenge = {
@@ -95,16 +101,16 @@ const Challenges = () => {
             toast.error("Failed to post Blog");
           })
 
-      } else {
-        toast.error("Failed to upload photo");
+        } else {
+          toast.error("Failed to upload photo");
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("An error occurred while uploading Image");
       }
-    } catch (error) {
-      console.log(error);
-      toast.error("An error occurred while uploading Image");
-    }
 
-  };
-
+    };
+  }
   return (
     <>
       <Helmet>

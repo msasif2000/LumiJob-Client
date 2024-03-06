@@ -6,12 +6,14 @@ import { Helmet } from "react-helmet-async";
 import GoToTop from "../../component/GoToTop/GoToTop";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SubscriptionsUiCompany = () => {
   const { user } = useAuth();
   const [companyPlan, setCompanyPlan] = useState<any | null>(null);
   const [subscription, setSubscription] = useState<any | null>(null);
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     axiosPublic
@@ -26,7 +28,7 @@ const SubscriptionsUiCompany = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic.get(`/payment/${user.email}`)
+      axiosSecure.get(`/payment/${user.email}`)
         .then((res) => {
           setSubscription(res.data);
         })
@@ -70,9 +72,8 @@ const SubscriptionsUiCompany = () => {
               {companyPlan?.map((plan: any, index: number) => (
                 <div
                   key={index}
-                  className={`flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 ${
-                    plan.popular ? "scale-110" : "scale-100"
-                  } border-gray-100 xl:p-8`}
+                  className={`flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 ${plan.popular ? "scale-110" : "scale-100"
+                    } border-gray-100 xl:p-8`}
                 >
                   {plan.popular && (
                     <p className="absolute top-2 right-2 bg-blue-200 p-1 px-2 rounded-2xl font-semibold">
@@ -110,7 +111,7 @@ const SubscriptionsUiCompany = () => {
                     ))}
                   </ul>
                   <div className="action">
-                  <div className="flex justify-center">
+                    <div className="flex justify-center">
                       <button className="button" onClick={() => handleChoosePlan(plan)}>
                         {subscription && subscription?.packages === plan.name ? 'Choose Plan' : 'Choose Plan'}
                       </button>

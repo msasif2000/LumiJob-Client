@@ -79,12 +79,12 @@ const Contact = () => {
             </div>
 
             {/* main section  */}
-            <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-8 mt-10 bg-white rounded-lg border shadow mx-2 px-3">
+            <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-8 mt-10 bg-white rounded-lg border shadow mx-4 lg:mx-20 px-4 mb-12">
               <div className="col-span-1 ">
                 <div className="flex flex-col justify-center items-center gap-3">
                   <div className="lg:mt-12 xl:mt-16 py-10">
-                    <p className="-rotate-90 font-bold text-accentTwo">
-                      Follow us
+                    <p className="-rotate-90 font-bold text-accentTwo flex gap-1">
+                      <span>Follow</span> <span>us</span>
                     </p>
                   </div>
                   <div className="rotate-90 py-8">
@@ -125,7 +125,7 @@ const Contact = () => {
 
               {/* contact details  */}
 
-              <div className=" parent col-span-5 lg:col-span-4 bg-accent p-8 py-12 space-y-24 text-black rounded-lg">
+              <div className=" parent col-span-5 lg:col-span-4 bg-accent p-8 py-12 space-y-24 text-black">
                 <div>
                   <h3 className="text-4xl font-heading font-semibold text-white">
                     Contact Information

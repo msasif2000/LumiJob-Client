@@ -6,8 +6,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useSectorAndSkills from "../../hooks/useSectorAndSkills";
 
 interface EducationData {
@@ -57,19 +58,16 @@ interface Sector {
 }
 
 const CandidateProUpdate: React.FC = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [loading, setLoading] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<any | null>(null);
   const [userData, setUserData] = useState<UserData | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
-  const [additionalExperiences, setAdditionalExperiences] = useState<
-    ExperienceData[]
-  >([]);
-  const [additionalEducations, setAdditionalEducations] = useState<
-    EducationData[]
-  >([]);
+  const [additionalExperiences, setAdditionalExperiences] = useState<ExperienceData[]>([]);
+  const [additionalEducations, setAdditionalEducations] = useState<EducationData[]>([]);
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
   const { sectors } = useSectorAndSkills();
 
@@ -141,8 +139,7 @@ const CandidateProUpdate: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
-        .get(`/user-profile/${user.email}`)
+      axiosSecure.get(`/user-profile/${user.email}`)
         .then((res) => {
           setUserData(res.data);
         })
@@ -187,7 +184,7 @@ const CandidateProUpdate: React.FC = () => {
 
 
         // Send the updated candidate data to your database
-        const updateUserDataResponse = await axiosPublic.put(
+        const updateUserDataResponse = await axiosSecure.put(
           `/user-update/${user?.email}`,
           candidateData
         );
@@ -212,7 +209,7 @@ const CandidateProUpdate: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);

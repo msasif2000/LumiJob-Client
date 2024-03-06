@@ -5,10 +5,11 @@ import { IoMdTime } from "react-icons/io";
 import { PiMoney } from "react-icons/pi";
 import useBookmark from "../hooks/useBookmarks";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
 import NoData from "../component/NoData/NoData";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 interface Bookmark {
@@ -27,7 +28,8 @@ interface Bookmark {
 
 const Bookmarks: React.FC = () => {
   const [bookmarks, refetch] = useBookmark();
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const handleDelete = (id: string) => {
     Swal.fire({
@@ -40,7 +42,7 @@ const Bookmarks: React.FC = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/bookmarks/${id}`).then((res) => {
+        axiosSecure.delete(`/bookmarks/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({

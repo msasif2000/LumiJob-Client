@@ -45,7 +45,7 @@ const FeaturedArticle = () => {
 
   return (
     <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
-      <div className="max-w-screen-2xl mx-auto px-4">
+      <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
         <h1 className="text-3xl lg:text-6xl font-heading font-semibold py-8">
           Featured Articles
         </h1>

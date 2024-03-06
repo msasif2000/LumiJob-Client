@@ -10,6 +10,7 @@ import {
 import { PiBagSimpleFill } from "react-icons/pi";
 import { IoIosPeople } from "react-icons/io";
 import { GiConfirmed } from "react-icons/gi";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface JobData {
     name: string;
@@ -18,6 +19,7 @@ interface JobData {
 
 const CompanyAnalytics: FunctionComponent = () => {
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [profile, setProfile] = useState<any>(null);
     const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
     const { user } = useAuth();
@@ -39,7 +41,7 @@ const CompanyAnalytics: FunctionComponent = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axiosPublic
+            axiosSecure
                 .get(`/get-applied-jobs-com/${user?.email}`)
                 .then((res) => {
                     setProfile(res.data);

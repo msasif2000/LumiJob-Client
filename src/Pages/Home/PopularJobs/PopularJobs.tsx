@@ -16,8 +16,7 @@ const PopularJobs = () => {
   const { sectors } = useSectorAndSkills();
 
   useEffect(() => {
-    axiosPublic
-      .get("/all-job-posts")
+    axiosPublic.get("/all-job-posts")
       .then((res) => {
         setPopularJobs(res.data);
     
@@ -38,7 +37,7 @@ const PopularJobs = () => {
 
   return (
     <>
-      <div className="max-w-screen-2xl mx-auto py-16 px-4 pjob">
+      <div className="max-w-screen-2xl mx-auto py-16 px-4 lg:px-20 pjob">
         <div className="mb-14">
           <h3 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold text-center mb-4 xl:mb-7">
             Most <span className="text-accentTwo">popular</span> jobs for you

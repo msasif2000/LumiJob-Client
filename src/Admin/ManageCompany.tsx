@@ -1,4 +1,4 @@
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import useCompanyData from "../hooks/useCompanyData";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface Company {
   _id: string;
@@ -16,7 +17,8 @@ interface Company {
   status: string;
 }
 const ManageCompany = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [companyData, refetch] = useCompanyData();
 
   // pagination
@@ -41,22 +43,25 @@ const ManageCompany = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosPublic.delete(`/delete-company-postedJob/${email}`);
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure.delete(`/delete-company-postedJob/${email}`)
 
-        axiosPublic.delete(`/delete-company/${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Deleted!",
-              text: "Company and its all information has been deleted.",
-              icon: "success",
-            });
-          }
-        });
-      }
-    });
+            .then(() => {
+              axiosSecure.delete(`/delete-company/${id}`).then((res) => {
+                if (res.data.deletedCount > 0) {
+                  refetch();
+                  Swal.fire({
+                    title: "Deleted!",
+                    text: "Company and its all information has been deleted.",
+                    icon: "success",
+                  });
+                }
+              });
+            })
+        }
+      });
   };
 
   return (
@@ -129,7 +134,7 @@ const ManageCompany = () => {
 
         )}
         <div className="flex justify-end py-12 items-center">
-          
+
           <select
             id="dataPerPage"
             value={dataPerPage}

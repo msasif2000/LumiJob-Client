@@ -5,7 +5,8 @@ import useAuth from "../../hooks/useAuth";
 import useBookmark from "../../hooks/useBookmarks";
 import Job from "../../Pages/Home/PopularJobs/Job";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface BookmarkButtonProps {
   job: Job;
@@ -24,7 +25,8 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
   const navigate = useNavigate();
   const pageLocation = useLocation();
   const [bookmarks, refetch] = useBookmark(); // Get all bookmarks of the user
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     // Check if the job is already bookmarked by the user
@@ -50,8 +52,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
       };
       if (!isBookmarked) {
         // If the job is not bookmarked, add it to bookmarks
-        axiosPublic
-          .post("/bookmarks", bookmarkItem)
+        axiosSecure.post("/bookmarks", bookmarkItem)
           .then((res) => {
           
             if (res.data.insertedId) {
@@ -77,8 +78,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
       } else {
         // If the job is already bookmarked, removing it from bookmarks
         const bookmarkIdToRemove = bookmarks.find((bookmark : Bookmark) => bookmark.userId === _id)?._id;
-        axiosPublic
-          .delete(`/bookmarks/${bookmarkIdToRemove}`)
+        axiosSecure.delete(`/bookmarks/${bookmarkIdToRemove}`)
           .then((res) => {
            
             if (res.data.deletedCount === 1) {
