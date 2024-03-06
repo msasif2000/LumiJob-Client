@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useBookmark = () => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { user} = useAuth();
     const { refetch, data: bookmark = [] } = useQuery({
         queryKey: ['bookmark', user?.email],
         queryFn: async() => {
-            const res = await axiosPublic.get(`/bookmarks?email=${user.email}`);
+            const res = await axiosSecure.get(`/bookmarks?email=${user.email}`);
             return res.data;
         }
     })

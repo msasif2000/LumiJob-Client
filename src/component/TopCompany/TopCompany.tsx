@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import TopCompanyCard from "./TopCompanyCard";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const TopCompany = () => {
   const [allCompany, setAllCompany] = useState([]);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get('/company-data');
+        const response = await axiosSecure.get('/company-data');
         setAllCompany(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -17,7 +17,7 @@ const TopCompany = () => {
     };
 
     fetchData();
-  }, [axiosPublic]);
+  }, [axiosSecure]);
 
   const filterJob = allCompany.slice(2, 8);
 

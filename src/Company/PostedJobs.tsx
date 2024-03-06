@@ -30,8 +30,7 @@ const PostedJobs = () => {
   }, [user]);
 
   const handleDelete = (jobId: string) => {
-    axiosPublic
-      .delete(`/delete-job/${jobId}`)
+    axiosSecure.delete(`/delete-job/${jobId}`)
       .then((res) => {
         //console.log(res.data);
         if (res.data.message === 'true') {

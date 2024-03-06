@@ -51,7 +51,7 @@ const ManageApplicants = () => {
   const { data: infos, refetch: refetchInfo } = useQuery({
     queryKey: ["infos", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-applicants/${id}`);
+      const res = await axiosSecure.get(`/dnd-applicants/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -61,7 +61,7 @@ const ManageApplicants = () => {
   const { data: preSelected, refetch: refetchPreSelect } = useQuery({
     queryKey: ["preSelected", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-pre-select/${id}`);
+      const res = await axiosSecure.get(`/dnd-pre-select/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -71,7 +71,7 @@ const ManageApplicants = () => {
   const { data: interviews, refetch: refetchInterview } = useQuery({
     queryKey: ["interview", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-interview/${id}`);
+      const res = await axiosSecure.get(`/dnd-interview/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -80,7 +80,7 @@ const ManageApplicants = () => {
   const { data: selected, refetch: refetchSelect } = useQuery({
     queryKey: ["select", id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/dnd-selected/${id}`);
+      const res = await axiosSecure.get(`/dnd-selected/${id}`);
       return res.data;
     },
     enabled: !!id,

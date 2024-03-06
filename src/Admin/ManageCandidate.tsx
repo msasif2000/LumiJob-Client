@@ -8,6 +8,7 @@ import GoToTop from "../component/GoToTop/GoToTop";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageCandidate = () => {
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [dataPerPage, setDataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);

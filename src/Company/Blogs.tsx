@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
 import NoData from "../component/NoData/NoData";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface Blog {
     _id: string,
@@ -21,6 +22,7 @@ const Blogs = () => {
     const [companyPostedBlogs, setCompanyPostedBlogs] = useState<any | null>(null);
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         if (user?.email) {
@@ -40,7 +42,7 @@ const Blogs = () => {
     const length = companyPostedBlogs?.length;
 
     const handleDelete = (blogId: string) => {
-        axiosPublic
+        axiosSecure
             .delete(`/delete-blog/${blogId}`)
             .then((res) => {
                 //console.log(res.data);
