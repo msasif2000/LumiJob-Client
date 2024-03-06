@@ -58,13 +58,12 @@ const FindJob: React.FC = () => {
             Navigate <span className="text-[#4869DD]">Opportunities</span> and
             Find Your Perfect Job Today!
           </h3>
-
           {/*=======> Search <============= */}
           <Search onSearchResult={handleSearchResult}></Search>
         </div>
 
         <div className="bg-[#FAFAFA]">
-          <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:gap-6 lg:px-20">
+          <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:gap-6 px-4 lg:px-20">
             <div className="lg:w-1/4 md:w-1/3">
               {/*=======> Left column <============= */}
               <Filters onFilterChange={handleFilterChange} />

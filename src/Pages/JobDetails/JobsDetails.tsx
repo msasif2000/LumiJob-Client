@@ -71,7 +71,6 @@ const JobsDetails: React.FC = () => {
       .get(`/single-job/${id}`)
       .then((res) => {
         setJobs(res.data);
-        
       })
       .catch((error) => console.log(error));
   }, []);
@@ -85,7 +84,7 @@ const JobsDetails: React.FC = () => {
     requirements,
     platform,
     post_time,
-    aboutUs,
+    // aboutUs,
     positionOverview,
     responsibilities,
     skills,
@@ -357,7 +356,7 @@ const JobsDetails: React.FC = () => {
         <title> {`${title}`} | LumiJobs</title>
       </Helmet>
       <GoToTop />
-      <div className="max-w-screen-2xl mx-auto py-8 px-4">
+      <div className="max-w-screen-2xl mx-auto py-8 px-4 lg:px-20">
         <div>
           {/* Display jobs */}
           {job ? (
@@ -402,10 +401,10 @@ const JobsDetails: React.FC = () => {
                   </p>
                 </div>
 
-                <div>
+                {/* <div>
                   <p className=" font-semibold text-xl mt-5 mb-2">About Us</p>
                   <p className="text-lg opacity-90">{aboutUs}</p>
-                </div>
+                </div> */}
                 <div>
                   <p className="font-semibold text-xl mt-5 mb-2">
                     Position Overview
