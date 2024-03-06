@@ -136,7 +136,7 @@ const NotificationCard = () => {
               </div>
             ))}
           </div>
-          <p className="absolute top-20 left-20 text-md">
+          <p className="absolute top-24 text-center text-md">
             For premium users only.
           </p>
         </div>

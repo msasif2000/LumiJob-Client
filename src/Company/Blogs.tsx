@@ -75,7 +75,7 @@ const Blogs = () => {
                         handleClick={() => { handleBlogPosts() }}
                         handleClick2={() => { }}
                     />
-                    <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+                    <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                         {companyPostedBlogs?.map((blog: Blog) => (
                             <BlogCard key={blog._id} blog={blog} handleDelete={handleDelete} />
                         ))}

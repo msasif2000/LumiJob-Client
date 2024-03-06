@@ -22,7 +22,7 @@ const TopCompany = () => {
   const filterJob = allCompany.slice(2, 8);
 
   return (
-    <div className="max-w-screen-2xl mx-auto py-16 px-4">
+    <div className="max-w-screen-2xl mx-auto py-16 px-4 lg:px-20">
       <div className="mb-8">
         <h3 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold text-center mb-4 xl:mb-7">
           Most <span className="text-accentTwo">recruited</span> company

@@ -101,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           : ""
       }`}
     >
-      <div className="navbar max-w-screen-2xl mx-auto px-4">
+      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
