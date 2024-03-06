@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useSectorAndSkills from "../../hooks/useSectorAndSkills";
@@ -58,7 +58,7 @@ interface Sector {
 }
 
 const CandidateProUpdate: React.FC = () => {
-  // const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -139,7 +139,7 @@ const CandidateProUpdate: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosSecure.get(`/user-profile/${user.email}`)
+      axiosPublic.get(`/user-profile/${user.email}`)
         .then((res) => {
           setUserData(res.data);
         })

@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-// import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
@@ -27,7 +27,7 @@ const Post_A_Blog = () => {
     const navigate = useNavigate();
     const loading = false;
     const { user } = useAuth();
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [company, setCompany] = useState<BlogData | null>(null);
     const { register, handleSubmit, setValue } = useForm<FormData>();
@@ -38,7 +38,7 @@ const Post_A_Blog = () => {
  
     useEffect(() => {
         if (user?.email) {
-            axiosSecure.get(`/user-profile/${user.email}`)
+            axiosPublic.get(`/user-profile/${user.email}`)
                 .then((res) => {
                     setCompany(res.data);
                    
