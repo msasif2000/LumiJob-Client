@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 interface TeamData {
     teamName: string;
     coloredText: any;
@@ -17,12 +17,12 @@ interface TeamData {
 
 interface Prop {
     teams: TeamData[],
-    challengeId: any | null,
+    challengeId: any | null
 
 }
 
 const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
-    const { user, name } = useAuth()
+    const { user, name, photo } = useAuth()
     const [isOpen, setIsOpen] = useState<number | null>(null);
     const axiosPublic = useAxiosPublic()
     const [leader, setLeader] = useState(false)
@@ -33,7 +33,8 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
     const handleJoin = (id: string) => {
         const memberName = name;
         const memberEmail = user.email;
-        const memberImg = user.photoURL;
+        const memberImg = photo;
+
         const designation = "Member";
         const teamId = id;
         const cId = challengeId;
@@ -48,8 +49,9 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                     toast.success("Join Request Sent");
                 }
                 if (res.data.message === "Already have a team with this member") {
-                    toast.warn("Already joined");
+                    toast.error("Already joined");
                 }
+              
             })
     }
 
@@ -61,22 +63,38 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
             .post("/remove-team-member", data)
             .then((res) => {
                 if (res.data.message === "Member removed successfully") {
-                    toast.success("Member remove successfully", {
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        position: "top-center",
-                    });
+                    toast.success("Member remove successfully",)
 
                 } else {
-                    toast.warn("Remove failed");
+                    toast.error("Remove failed");
                 }
+              
             })
             .catch((error) => {
                 console.log(error);
-                toast.warn("Something went wrong");
+                toast.error("Something went wrong");
             });
     };
+
+    const handleAccept = (email: string, teamId: string) => {
+        const data = { email, id: challengeId, teamId: teamId };
+        console.log(data);
+        axiosPublic
+            .post("/approveMember", data)
+            .then((res) => {
+                if (res.data.message === "Member approved successfully") {
+                    toast.success("Member approved successfully",)
+
+                } else {
+                    toast.error("Add failed");
+                }
+
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Something went wrong");
+            });
+    }
 
 
 
@@ -84,7 +102,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
     return (
         <div className="my-5  rounded-lg">
             {teams?.map((data, idx) => (
-                <div key={idx} className='border-2 rounded-lg my-2'>
+                <div key={data._id} className='border-2 rounded-lg my-2'>
                     <div onClick={() => handleToggle(idx)} className={`${idx === teams.length - 1 ? "border-none" : "border-b border-gray-400/10"} py-4 px-6 flex items-center gap-4`}>
                         <div className="flex-1">
                             <div className='flex justify-between items-center'>
@@ -149,7 +167,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                                             {
                                                                 leader ? <div className='flex items-center gap-2'>
                                                                     <button onClick={() => member?.email && handleRemove(member.email, data._id)}> ❌ </button>
-                                                                    <button> ✔️ </button>
+                                                                    <button onClick={() => member?.email && handleAccept(member.email, data._id)}> ✔️ </button>
                                                                 </div> :
                                                                     <div className="badge badge-primary">
                                                                         Pending
@@ -174,7 +192,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                                                     <div className="text-sm opacity-50">{member.title}</div>
                                                                 </div>
                                                             </div>
-                                                            <div className="badge badge-primary">
+                                                            <div className="badge badge-primary badge-sm">
                                                                 {member.designation}
                                                             </div>
                                                             <div className='hidden'>
@@ -197,7 +215,10 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                 </div>
             ))
             }
-            <ToastContainer />
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </div >
     );
 };
