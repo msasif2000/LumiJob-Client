@@ -53,7 +53,7 @@ const Roles = () => {
                 you.
               </p>
 
-              <div className="flex space-x-5">
+              <div className="flex space-x-5 justify-center">
                 {/* card 1 */}
                 <div
                   onClick={() => handleCompany()}
