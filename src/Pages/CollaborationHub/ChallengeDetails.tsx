@@ -76,7 +76,7 @@ const ChallengeDetails = () => {
                     setOpenModal(false)
                 }
                 else {
-                    toast.error("You have already create a team");
+                    toast.error("You have already in a team");
 
                 }
             })
