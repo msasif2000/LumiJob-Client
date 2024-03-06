@@ -15,7 +15,7 @@ const ManageCandidate = () => {
 
   const handleDataPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setDataPerPage(Number(event.target.value));
-    setCurrentPage(1); // Reset to the first page when changing data per page
+    setCurrentPage(1); 
   };
 
   const { refetch, data: candidates = [] } = useQuery({
