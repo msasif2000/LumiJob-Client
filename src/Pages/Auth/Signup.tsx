@@ -137,7 +137,7 @@ const Signup: React.FC = () => {
                     required: "Password is required",
                     pattern: {
                       value:
-                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^/\|])[A-Za-z\d@$!%*?&#^/\|]{6,}$/,
                       message:
                         "Password must meet the requirements: at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 6 characters long.",
                     },

@@ -1,11 +1,10 @@
-// import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import CandidateNav from "../../Candidate/CommonNavbar/CandidateNav";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
@@ -34,7 +33,6 @@ interface CompanyData {
 const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
-  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
