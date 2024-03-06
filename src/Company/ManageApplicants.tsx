@@ -1,7 +1,7 @@
 import { CiLocationOn } from "react-icons/ci";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link, useParams } from "react-router-dom";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { GoVerified } from "react-icons/go";
@@ -27,7 +27,7 @@ interface Comments {
 }
 
 const ManageApplicants = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [openModal, setOpenModal] = useState(false);

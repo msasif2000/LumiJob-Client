@@ -16,8 +16,7 @@ const PopularJobs = () => {
   const { sectors } = useSectorAndSkills();
 
   useEffect(() => {
-    axiosPublic
-      .get("/all-job-posts")
+    axiosPublic.get("/all-job-posts")
       .then((res) => {
         setPopularJobs(res.data);
         //console.log(res.data);
