@@ -6,9 +6,11 @@ import CPagination from "../Pages/FindCandidate/CPagination";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageCandidate = () => {
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [dataPerPage, setDataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -42,7 +44,7 @@ const ManageCandidate = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/delCandidate/${id}`)
+        axiosSecure.delete(`/delCandidate/${id}`)
           .then((res) => {
             // console.log(res);
             if (res.data.deletedCount > 0) {
