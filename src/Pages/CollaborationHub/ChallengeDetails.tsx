@@ -112,6 +112,7 @@ const ChallengeDetails = () => {
                                     {description}
                                 </p>
                             </div>
+                            
                         </div>
                         {/* article */}
                         <div className="lg:w-1/4 lg:ml-10 ">
