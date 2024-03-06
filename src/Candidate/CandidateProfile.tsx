@@ -79,7 +79,6 @@ const CandidateProfile = () => {
         .then((res) => {
           setProfile(res.data);
           setResume(res.data.resume);
-          // console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -216,7 +215,7 @@ const CandidateProfile = () => {
               axiosSecure
                 .post("/set-resume", data)
                 .then((res) => {
-                  console.log(res.data);
+                
                   if (res.data.message === "true") {
                     toast.success("Resume update successfull", {
                       position: "top-center",
@@ -295,7 +294,7 @@ const CandidateProfile = () => {
                     <BiEdit></BiEdit>
                     Update resume
                   </button>
-                  <Link to={resume} className="btn" title="Download resume">
+                  <Link to={resume} target="_blank" className="btn" title="Download resume">
                     <MdOutlineContactPage></MdOutlineContactPage>
                   </Link>
                 </>

@@ -42,8 +42,6 @@ const CompanyProUpdate = () => {
 
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
-  //console.log(api);
-
   const handleBack = () => {
     navigate(-1);
   };
@@ -53,14 +51,13 @@ const CompanyProUpdate = () => {
       axiosSecure.get(`/user-profile/${user.email}`)
         .then((res) => {
           setCompany(res.data);
-          console.log(res.data);
+        
         })
         .catch((err) => console.log(err));
     }
   }, [user]);
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-    console.log(data);
 
     const companyData = {
       ...data,

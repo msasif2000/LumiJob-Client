@@ -6,9 +6,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useSectorAndSkills from "../../hooks/useSectorAndSkills";
 
 interface EducationData {
   university: string;
@@ -51,8 +52,13 @@ interface UserData {
   role: string;
 }
 
+interface Sector {
+  _id: string;
+  sectorType: string;
+}
+
 const CandidateProUpdate: React.FC = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -63,7 +69,7 @@ const CandidateProUpdate: React.FC = () => {
   const [additionalExperiences, setAdditionalExperiences] = useState<ExperienceData[]>([]);
   const [additionalEducations, setAdditionalEducations] = useState<EducationData[]>([]);
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
-
+  const { sectors } = useSectorAndSkills();
 
   const {
     register,
@@ -165,7 +171,7 @@ const CandidateProUpdate: React.FC = () => {
       // Check if image upload was successful
       if (imageUploadResponse.data.status === 200) {
         const imageUrl = imageUploadResponse.data.data.url;
-        //console.log("ImageBB Response:", imageUploadResponse.data);
+
 
         // Prepare candidate data with the image URL
         const candidateData = {
@@ -176,7 +182,6 @@ const CandidateProUpdate: React.FC = () => {
           photo: imageUrl,
         };
 
-        console.log(candidateData);
 
         // Send the updated candidate data to your database
         const updateUserDataResponse = await axiosSecure.put(
@@ -208,7 +213,7 @@ const CandidateProUpdate: React.FC = () => {
         .get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);
-          console.log(res.data);
+
         })
         .catch((error) => console.log(error));
     }
@@ -346,14 +351,17 @@ const CandidateProUpdate: React.FC = () => {
               </div>
 
               <div className="form-control w-full">
-              <input
-                  type="text"
+                <select
                   {...register("position", {
                     required: "position is required",
                   })}
-                  placeholder="Desired Job Position"
-                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500"
-                />
+                  className="py-4 outline-none font-bold bg-transparent border-b-2 w-full border-gray-300 text-xs md:text-xl hover:border-accent duration-500">
+                  {sectors.map((sector : Sector) => (
+                    <option key={sector._id} value={sector.sectorType}>
+                      {sector.sectorType}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="form-control w-full">
                 <input

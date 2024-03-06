@@ -23,7 +23,7 @@ const Contact = () => {
         formDataObject[key] = value;
       });
 
-      //console.log("Form Data:", formDataObject);
+     
 
       emailjs
         .sendForm(
@@ -43,7 +43,7 @@ const Contact = () => {
               timer: 1500,
             });
             navigate("/");
-            //console.log(result.text);
+           
           },
           (error) => {
             console.log(error.text);

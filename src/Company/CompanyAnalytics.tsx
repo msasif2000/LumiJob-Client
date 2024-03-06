@@ -31,7 +31,7 @@ const CompanyAnalytics: FunctionComponent = () => {
                 .get(`/get-company-posted-jobs/${user?.email}`)
                 .then((res) => {
                     setCompanyPostedJobs(res.data);
-                    //console.log(res.data);
+                   
                 })
                 .catch((err) => console.log(err));
         }

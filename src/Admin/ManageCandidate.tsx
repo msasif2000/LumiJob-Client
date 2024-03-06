@@ -31,7 +31,6 @@ const ManageCandidate = () => {
     setCurrentPage(pageNumber);
   };
 
-  // console.log(candidates);
   const handleDelete = (id: string) => {
     Swal.fire({
       title: "Are you sure?",
@@ -45,7 +44,7 @@ const ManageCandidate = () => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/delCandidate/${id}`)
           .then((res) => {
-            // console.log(res);
+
             if (res.data.deletedCount > 0) {
               refetch();
               Swal.fire({
@@ -136,7 +135,7 @@ const ManageCandidate = () => {
 
         )}
         <div className="flex justify-end py-12 items-center">
-          
+
           <select
             id="dataPerPage"
             value={dataPerPage}

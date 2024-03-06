@@ -2,28 +2,28 @@ import { Link } from "react-router-dom";
 import CollaborationHubCard from "./CollaborationHubCard";
 import collabBg from "../../assets/image/collab-bg.webp";
 import { useEffect, useState } from "react";
-
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Loading from "../Blogs/components/err/Loading";
 interface TaskData {
-    id: number;
+    _id: number;
     title: string;
     description: string;
     date: number;
     img: string;
 }
 const CollaborationHub = () => {
-
     const [taskData, setTaskData] = useState<TaskData[] | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const axiosPublic = useAxiosPublic()
+    console.log(taskData);
 
     useEffect(() => {
-        fetch("../../../public/collabProject.json")
-            .then((res) => res.json())
-            .then((data) => {
-                setTaskData(data);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
+        axiosPublic.get("/challenges").then((res) => {
+            setTaskData(res.data);
+            setLoading(false);
+        });
     }, []);
+
 
 
 
@@ -45,26 +45,12 @@ const CollaborationHub = () => {
             <div className=" max-w-screen-2xl mx-auto px-4 lg:px-20 py-20 min-h-[70vh] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3  2xl:grid-cols-4 gap-5">
 
                 {
-                    taskData?.map((task, idx) =>
-                    <Link to={`/task-details/${task.id}`} key={idx} >
+                    loading ? <Loading /> : taskData?.map((task, idx) =>
+                        <Link to={`/task-details/${task._id}`} key={idx} >
                             <CollaborationHubCard task={task} ></CollaborationHubCard>
                         </Link>
                     )
                 }
-
-                {/* <Link to="/task-details">
-                    <CollaborationHubCard></CollaborationHubCard>
-                </Link>
-                <Link to="/task-details">
-                    <CollaborationHubCard></CollaborationHubCard>
-                </Link>
-                <Link to="/task-details">
-                    <CollaborationHubCard></CollaborationHubCard>
-                </Link>
-                <Link to="/task-details">
-                    <CollaborationHubCard></CollaborationHubCard>
-                </Link> */}
-
             </div>
         </div>
     );

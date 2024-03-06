@@ -35,19 +35,19 @@ const Post_A_Blog = () => {
 
     const date = new Date().toISOString();
 
-    //console.log(date);
+ 
     useEffect(() => {
         if (user?.email) {
             axiosSecure.get(`/user-profile/${user.email}`)
                 .then((res) => {
                     setCompany(res.data);
-                    //console.log(res.data);
+                   
                 })
                 .catch((err) => console.log(err));
         }
     }, [user]);
 
-    //console.log(company);
+ 
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         const blogData = {
             ...data,
@@ -63,7 +63,7 @@ const Post_A_Blog = () => {
             const imageData = new FormData();
             imageData.append("image", data.photo);
 
-            //console.log(imageData);
+          
 
             const imageUploadResponse = await axios.post(
                 "https://api.imgbb.com/1/upload",
@@ -89,7 +89,7 @@ const Post_A_Blog = () => {
 
                 axiosSecure.post("/post-the-blog", updateBlog)
                     .then(res => {
-                        //console.log(res.data);
+                       
                         if (res.data.insertedId) {
                             toast.success("Blog Posted Successfully");
                             navigate("/dashboard/blog-posted");

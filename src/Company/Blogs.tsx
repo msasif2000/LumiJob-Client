@@ -45,7 +45,7 @@ const Blogs = () => {
         axiosSecure
             .delete(`/delete-blog/${blogId}`)
             .then((res) => {
-                //console.log(res.data);
+             
                 if (res.data.acknowledged) {
                     toast.success(`Blog post deleted successfully`, {
                         hideProgressBar: true,

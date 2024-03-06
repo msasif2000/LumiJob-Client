@@ -113,7 +113,7 @@ const Bookmarks: React.FC = () => {
                         </button>
                         <Link className="" to={`/details/${bookmark.userId}`}>
                           <button className="py-1 px-3 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-sm rounded-lg">
-                            Quick Apply
+                           Details
                           </button>
                         </Link>
                       </div>

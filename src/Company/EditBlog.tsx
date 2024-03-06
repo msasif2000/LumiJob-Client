@@ -23,7 +23,6 @@ const EditBlog = () => {
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         axiosSecure.patch(`/update-blog/${blog._id}`, data)
             .then(res => {
-                //console.log(res.data);
                 if (res.data._id) {
                     toast.success(`Blog post updated successfully`, {
                         hideProgressBar: true,

@@ -1,8 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
@@ -24,7 +23,7 @@ const Feedback: React.FC = () => {
   const { user, role } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  // console.log(user.displayName, user.email);
+ 
 
   const handleInterfaceRatingChange = (value: number) => {
     setInterfaceRating(value);
@@ -49,44 +48,40 @@ const Feedback: React.FC = () => {
       supportRating,
       UserNames: user?.displayName,
       email: user?.email,
-      role : role,
-      PostedDate :  new Date(),
+      role: role,
+      PostedDate: new Date(),
     };
 
     axiosSecure
-    .post("/websiteFeedback", formData)
-    .then((response: any) => {
-      // console.log(response.data);
-      if (response.data.insertedId) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Thank for Your Feedback",
-          showConfirmButton: false,
-          timer: 1500,
+      .post("/websiteFeedback", formData)
+      .then((response: any) => {
+       
+        if (response.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thank for Your Feedback",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setInterfaceRating(0);
+          setSupportRating(0);
+          setAnyComments("");
+        
+        } else {
+          toast.error("didn't receive  your  feedback");
+        }
+      })
+
+      .catch((error: any) => {
+        console.log(error);
+        toast.error("Failed your feedback", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
         });
-        setInterfaceRating(0);
-        setSupportRating(0);
-        setAnyComments("");
-        console.log(response.data);
-      }
-       else {
-        toast.error("didn't receive  your  feedback");
-      }
-
-      
-    })
-
-    .catch((error: any) => {
-      console.log(error);
-      toast.error("Failed your feedback", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
       });
-    });
-    
   };
 
   const renderStarRating = (
@@ -158,6 +153,7 @@ const Feedback: React.FC = () => {
           value="Submit"
         />
       </form>
+      <ToastContainer />
     </div>
   );
 };

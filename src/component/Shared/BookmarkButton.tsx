@@ -54,7 +54,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
         // If the job is not bookmarked, add it to bookmarks
         axiosSecure.post("/bookmarks", bookmarkItem)
           .then((res) => {
-            // console.log(res.data);
+          
             if (res.data.insertedId) {
               setIsBookmarked(true);
               Swal.fire({
@@ -80,7 +80,7 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ job }) => {
         const bookmarkIdToRemove = bookmarks.find((bookmark : Bookmark) => bookmark.userId === _id)?._id;
         axiosSecure.delete(`/bookmarks/${bookmarkIdToRemove}`)
           .then((res) => {
-            //console.log(res.data);
+           
             if (res.data.deletedCount === 1) {
               setIsBookmarked(false);
               Swal.fire({

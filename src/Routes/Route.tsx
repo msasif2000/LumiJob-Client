@@ -44,11 +44,10 @@ import Seminars from "../Company/Seminars";
 // import Post_A_Seminar from "../Company/Post_A_Seminar";
 import ManageApplicants from "../Company/ManageApplicants";
 // import CandidateResume from "../Candidate/CandidateResume";
-import CandidateResumeUpdate from "../Candidate/UpdateCmponents/CandidateResumeUpdate";
 import Add_Data from "../Admin/Add_Data";
 import Challenges from "../Admin/Challenges/Challenges";
 import CollaborationHub from "../Pages/CollaborationHub/CollaborationHub";
-import TaskDetails from "../Pages/CollaborationHub/TaskDetails";
+import ChallengeDetails from "../Pages/CollaborationHub/ChallengeDetails";
 import AboutUs from "../component/Footer/FooterPages/AboutUs";
 import TermsConditions from "../component/Footer/FooterPages/TermsConditions";
 import PrivacyPolicy from "../component/Footer/FooterPages/PrivacyPolicy";
@@ -56,6 +55,7 @@ import Features from "../component/Footer/FooterPages/Features";
 import ProductAndService from "../component/Footer/FooterPages/ProductAndService";
 import FAQs from "../component/Footer/FooterPages/FAQs";
 import Supports from "../component/Footer/FooterPages/Supports";
+import Feedback from "../component/websiteFeedback/Feedback";
 
 export const router = createBrowserRouter([
   {
@@ -87,23 +87,19 @@ export const router = createBrowserRouter([
         path: "/optionsSubscribe",
         element: <OptionSubscribe></OptionSubscribe>,
       },
-      
 
       {
         path: "/insights",
         element: <Insights />,
       },
-      {
-        path: "/insights/:_id",
-        element: <ArticleDetails />,
-      },
+
       {
         path: "/collaboration-hub",
-        element: <CollaborationHub />
+        element: <CollaborationHub />,
       },
       {
         path: "/task-details/:id",
-        element: <TaskDetails />
+        element: <ChallengeDetails />,
       },
       {
         path: "/contact",
@@ -133,7 +129,7 @@ export const router = createBrowserRouter([
         path: "/candidate-detailsProfile/:id",
         element: <CandidateDetails></CandidateDetails>,
       },
-      // footer 
+      // footer
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
@@ -160,7 +156,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/supports",
-        element: <Supports></Supports>
+        element: <Supports></Supports>,
       },
     ],
   },
@@ -184,6 +180,10 @@ export const router = createBrowserRouter([
     element: <Login />,
   },
 
+  {
+    path: "/insights/:_id",
+    element: <ArticleDetails />,
+  },
   //SignUp
   {
     path: "/signup",
@@ -245,14 +245,6 @@ export const router = createBrowserRouter([
         path: "resume",
         element: <Resume></Resume>,
       },
-      // {
-      //   path: "resume",
-      //   element: <CandidateResume></CandidateResume>,
-      // },
-      {
-        path: "resume/update",
-        element: <CandidateResumeUpdate></CandidateResumeUpdate>,
-      },
       {
         path: "appliedJobs",
         element: <AppliedJobs />,
@@ -264,6 +256,10 @@ export const router = createBrowserRouter([
       {
         path: "candidateAnalytics",
         element: <CompanyAnalytics />,
+      },
+      {
+        path: "feedback",
+        element: <Feedback></Feedback>,
       },
 
       // Company Dashboard Routes
@@ -299,10 +295,6 @@ export const router = createBrowserRouter([
         path: "seminar-posted",
         element: <Seminars />,
       },
-      // {
-      //   path: "post-a-seminar",
-      //   element: <Post_A_Seminar />
-      // },
       {
         path: "companyAnalytics",
         element: <CompanyAnalytics />,
@@ -311,6 +303,13 @@ export const router = createBrowserRouter([
         path: "employees",
         element: <Employees />,
       },
+
+
+      {
+        path: "feedback",
+        element: <Feedback></Feedback>,
+      },
+
 
       // {
       //   path: "feedback",

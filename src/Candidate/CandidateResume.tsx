@@ -96,7 +96,7 @@ const CandidateResume: React.FC = () => {
     city,
     country,
   } = candidate || {};
-  //console.log(candidate);
+ 
 
   return (
     <>
