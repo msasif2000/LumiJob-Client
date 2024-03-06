@@ -54,8 +54,8 @@ const FindCandidate: React.FC = () => {
           <hr />
         </div>
 
-        <div className="">
-          <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:px-5 xl:gap-6">
+        <div className="bg-[#FAFAFA]">
+          <div className="max-w-screen-2xl mx-auto md:flex justify-center xl:gap-6 px-4 lg:px-20">
             {/* <div className="lg:w-1/4 md:w-1/3">
               {/*=======> Left column <============= */}
             {/* <CFIlters onFilterChange={handleFilterChange} /> */}
