@@ -5,10 +5,10 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import SmallCards from "./SmallCards"
 import Job from "../../Pages/Home/PopularJobs/Job";
 //import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
-import Seminers from "../../Pages/Blogs/components/Seminers";
 import TopCompanyBlogs from "./TopCompanyBlogs";
 import { Helmet } from "react-helmet-async";
 import "./styles.css";
+import TopCompanySeminar from "./TopCompanySeminar";
 // import TopCompanyBlogs from "./TopCompanyBlogs";
 
 const TopCompanyProfile = () => {
@@ -25,7 +25,7 @@ const TopCompanyProfile = () => {
         // console.log(res.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [id]);
 
   // company posted jobs
   useEffect(() => {
@@ -157,12 +157,13 @@ const TopCompanyProfile = () => {
             </TabPanel>
             <TabPanel>
               {CompanyProfile?.email && (
-                <TopCompanyBlogs key={CompanyProfile._id} email={CompanyProfile.email} />
+                <TopCompanyBlogs key={CompanyProfile?._id} email={CompanyProfile?.email} />
               )}
               {/* <FeaturedArticle /> */}
             </TabPanel>
             <TabPanel>
-              <Seminers />
+              <TopCompanySeminar key={CompanyProfile?._id} email={CompanyProfile?.email}/>
+              
             </TabPanel>
           </Tabs>
         </div>
