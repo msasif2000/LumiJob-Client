@@ -53,7 +53,7 @@ const SubscriptionsUiCompany = () => {
       </Helmet>
       <ToastContainer />
       <GoToTop />
-      <div className="max-w-screen-2xl mx-auto px-4">
+      <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
         <section className="bg-white">
           <div className="py-8 lg:py-16">
             <div className="mx-auto max-w-screen-lg text-center mb-8 lg:mb-12">
@@ -69,9 +69,9 @@ const SubscriptionsUiCompany = () => {
             </div>
             <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
               {/* Render subscription cards dynamically */}
-              {companyPlan?.map((plan: any, index: number) => (
+              {companyPlan?.map((plan: any) => (
                 <div
-                  key={index}
+                  key={plan._id}
                   className={`flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 ${plan.popular ? "scale-110" : "scale-100"
                     } border-gray-100 xl:p-8`}
                 >

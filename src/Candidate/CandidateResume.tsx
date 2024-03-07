@@ -6,7 +6,7 @@ import { BiEdit } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import GoToTop from "../component/GoToTop/GoToTop";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface ExperienceData {
   company: string;
@@ -60,16 +60,14 @@ interface Candidate {
 const CandidateResume: React.FC = () => {
   const [candidate, setCandidates] = useState<Candidate | null>(null);
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  
+  const axiosPublic = useAxiosPublic();
+
 
   useEffect(() => {
     const fetchData = async () => {
       if (user?.email) {
         try {
-          const res = await axiosSecure.get(
-            `/specific-candidate/${user.email}`
-          );
+          const res = await axiosPublic.get(`/specific-candidate/${user.email}`);
           setCandidates(res.data);
         } catch (err) {
           console.log(err);
@@ -96,7 +94,7 @@ const CandidateResume: React.FC = () => {
     city,
     country,
   } = candidate || {};
- 
+
 
   return (
     <>

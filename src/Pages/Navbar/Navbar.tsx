@@ -3,6 +3,7 @@ import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface NavbarProps {
   color?: string;
@@ -11,6 +12,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = () => {
   const { user, logOut, premium, role, photo } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const [userData, setUserData] = useState<{ _id: string; value: number }>();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isPremium, setIsPremium] = useState(false);
@@ -25,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     if (role === "candidate") {
-      axiosSecure.get(`/specific-candidate/${user?.email}`).then((res) => {
+      axiosPublic.get(`/specific-candidate/${user?.email}`).then((res) => {
         setUserData(res.data);
       });
     } else if (role === "company") {
@@ -136,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         </div>
         <div className="navbar-end">
           {!isPremium ? (
-            <div className="xl:mr-24 hidden md:block ">
+            <div className="xl:mr-24 mr-2 hidden md:block ">
               {role === "candidate" ? (
                 <Link to="/subscriptionsUiCandidate">
                   <button className="button ">
