@@ -19,7 +19,7 @@ const Banner = () => {
           }}
           className="flex flex-col justify-center items-center text-center min-h-[60svh] md:min-h-[40vh] lg:min-h-[80vh] 2xl:min-h-[78vh] z-20 mt-12 2xl:mt-0 "
         >
-          <h2 className="text-[#3F3F46] text-[1.4rem] md:text-4xl xl:text-6xl 2xl:text-6xl font-heading font-semibold my-12 z-10 flex flex-wrap items-center justify-center">
+          <h2 className="text-[#3F3F46] text-3xl md:text-4xl xl:text-6xl 2xl:text-6xl font-heading font-semibold mb-4 md:my-12 z-10 flex flex-wrap items-center justify-center">
 
             Empowering
             <img
@@ -52,7 +52,7 @@ const Banner = () => {
           >
             <motion.button
               whileTap={{ scale: 0.85 }}
-              className="btn  text-light text-lg font-heading font-bold  border-none px-12 lg:px-20 my-12 bg-accent hover:bg-accent rounded-full"
+              className="btn  text-light text-sm md:text-lg font-heading font-bold  border-none px-12 lg:px-20 my-12 bg-accent hover:bg-accent rounded-full"
             >
               {user && role === "company"
                 ? "Find Skilled Candidates"
