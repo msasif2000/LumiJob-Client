@@ -59,19 +59,20 @@ const Navbar: React.FC<NavbarProps> = () => {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink className="text-lg font-heading font-base" to="/find-job">
+          Jobs
+        </NavLink>
+      </li>
       <li key="Job">
-        {user && role === "company" ? (
-          <NavLink
-            className="text-lg font-heading font-base"
-            to="/find-candidate"
-          >
-            Candidates
-          </NavLink>
-        ) : (
-          <NavLink className="text-lg font-heading font-base" to="/find-job">
-            Jobs
-          </NavLink>
-        )}
+        <NavLink className="text-lg font-heading font-base" to="/find-candidate">
+          Candidates
+        </NavLink>
+      </li>
+      <li key="CollaborationHub">
+        <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
+          Co-Hub
+        </NavLink>
       </li>
       <li key="Insights">
         <NavLink className="text-lg font-heading font-base" to="/insights">
@@ -79,13 +80,9 @@ const Navbar: React.FC<NavbarProps> = () => {
         </NavLink>
       </li>
 
-      <li key="CollaborationHub">
-        <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
-          Co-Hub
-        </NavLink>
-      </li>
 
-      <li key="Contact">
+
+      <li key="Contact" className="lg:hidden xl:flex">
         <NavLink className="text-lg font-heading font-base" to="/Contact">
           Contact
         </NavLink>
@@ -95,13 +92,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <div
-      className={`sticky top-0 z-30 ${
-        scrollPosition > 30
-          ? `backdrop-blur-md bg-white/30 border-b border-b-[#e4e5e7]`
-          : ""
-      }`}
+      className={`sticky top-0 z-30 ${scrollPosition > 30
+        ? `backdrop-blur-md bg-white/30 border-b border-b-[#e4e5e7]`
+        : ""
+        }`}
     >
-      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-20">
+      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-16">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">
@@ -219,6 +215,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         ? "ring-4 ring-blue-400 ring-offset-2"
                         : ""
                     }`}
+
                   >
                     {user ? (
                       <img

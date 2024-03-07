@@ -15,10 +15,14 @@ const TopCompanySeminar: React.FC<Props> = ({ email }) => {
       .then((res) => setSeminars(res.data));
   }, []);
 
+  const length = seminars?.length;
+
   return (
     <div className="min-h-screen  pb-10">
       <div className="max-w-screen-2xl mx-auto  lg:flex lg:space-x-10">
-        <div className="pt-10 lg:w-1/3 lg:pt-8">
+        {
+          length ? 
+          <div className="pt-10 lg:w-1/3 lg:pt-8">
           <div className="space-y-8">
             <h1 className="text-3xl md:text-6xl font-heading font-semibold">
               Seminars
@@ -29,7 +33,8 @@ const TopCompanySeminar: React.FC<Props> = ({ email }) => {
               your professional journey.
             </p>
           </div>
-        </div>
+        </div> : null
+        }
         {/* actual seminars part */}
         <div className=" pt-10 lg:w-2/3 lg:pt-8">
           <div className="space-y-16 w-full">

@@ -36,7 +36,7 @@ const NotificationCard = () => {
       </div> */}
 
       {premium === "premium" ? (
-        <div className="bg-white p-2 xl:p-5 rounded border mx-3 mb-8 mt-4 min-h-64">
+        <div className="bg-white p-2 xl:p-5 rounded border mx-3 mb-8 mt-3 min-h-64">
           <h2 className="font-heading font-semibold text-2xl my-3 text-center">
             Recommended for you
           </h2>

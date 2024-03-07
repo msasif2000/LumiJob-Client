@@ -34,34 +34,40 @@ const ManageCompany = () => {
     setCurrentPage(1); // Reset to the first page when changing data per page
   };
 
-  const handleDelete = (id: string, email: string) => {
-    Swal.fire({
-      title: "Are you want to delete this company from database?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          axiosSecure.delete(`/delete-company-postedJob/${email}`)
-
-            .then(() => {
-              axiosSecure.delete(`/delete-company/${id}`).then((res) => {
-                if (res.data.deletedCount > 0) {
-                  refetch();
-                  Swal.fire({
-                    title: "Deleted!",
-                    text: "Company and its all information has been deleted.",
-                    icon: "success",
-                  });
-                }
-              });
-            })
-        }
+  const handleDelete = async (id: string, email: string) => {
+    console.log(id, email);
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure you want to delete this company from the database?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
       });
+
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(`/delete-company/${id}`);
+        if (res.data.deletedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Company and its information have been deleted.",
+            icon: "success",
+          });
+          await axiosSecure.delete(`/delete-company-from-companies/${email}`)
+          await axiosSecure.delete(`/delete-company-postedJob/${email}`);
+        }
+      }
+    } catch (error) {
+      console.error("Error deleting company:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to delete the company. Please try again later.",
+        icon: "error",
+      });
+    }
   };
 
   return (

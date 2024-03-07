@@ -37,6 +37,7 @@ const FeedbackForWebsiteHome = () => {
   const candidateData: Data[] = filteredData?.candidates;
   const companyData: Data[] = filteredData?.companies;
 
+
   console.log(candidateData);
   console.log(companyData);
 

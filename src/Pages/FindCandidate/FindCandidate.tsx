@@ -28,7 +28,7 @@ const FindCandidate: React.FC = () => {
       return res.data;
     },
   });
-  
+
   useEffect(() => {
     setCurrentCandidates(allCandidates);
   }, [allCandidates]);
@@ -54,7 +54,11 @@ const FindCandidate: React.FC = () => {
       </Helmet>
       <GoToTop />
       <div className="">
-        <div className=" my-4 md:my-8 xl:my-12  w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
+        <div className="mt-14 mb-5 w-full lg:w-[70%] 2xl:w-[50%] mx-auto px-1">
+          <h3 className="text-4xl md:text-4xl xl:text-5xl font-hanken font-semibold text-center mb-4 xl:mb-12">
+            Find your expected <span className="text-[#4869DD]">Skilled</span> and <span className="text-[#4869DD]">Talented </span>
+             people here!
+          </h3>
           {/*=======> Search <============= */}
           <CSearch onSearchResult={handleSearchResult}></CSearch>
         </div>

@@ -28,6 +28,7 @@ const TopCompany = () => {
           Most <span className="text-accentTwo">recruited</span> company
         </h3>
         <p className="text-sm md:text-lg xl:text-xl 2xl:text-2xl text-[#999999] text-center mx-4">
+
           Elevate Your Career with the Most Coveted Companies
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 lg:gap-6 xl:gap-4 mt-10">

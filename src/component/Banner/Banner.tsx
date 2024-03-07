@@ -20,6 +20,7 @@ const Banner = () => {
           className="flex flex-col justify-center items-center text-center min-h-[60svh] md:min-h-[40vh] lg:min-h-[80vh] 2xl:min-h-[78vh] z-20 mt-12 2xl:mt-0 "
         >
           <h2 className="text-[#3F3F46] text-[1.4rem] md:text-4xl xl:text-6xl 2xl:text-6xl font-heading font-semibold my-12 z-10 flex flex-wrap items-center justify-center">
+
             Empowering
             <img
               src={empowering}
