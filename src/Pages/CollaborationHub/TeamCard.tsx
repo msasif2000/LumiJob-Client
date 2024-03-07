@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import toast, { Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 interface TeamData {
     teamName: string;
     coloredText: any;
@@ -135,7 +136,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                     {
                                         user ?
                                             <button onClick={() => handleJoin(data._id)} className="btn btn-sm bg-blue-400">Join Request</button> :
-                                            <button className="btn btn-sm bg-blue-400 disabled">Join Request</button>
+                                            <Link to={"/login"} className="btn btn-sm bg-blue-400 disabled">Login to join</Link>
                                     }
                                 </div>
                                 {
