@@ -1,7 +1,8 @@
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FaXTwitter } from "react-icons/fa6";
 
 const FooterTwo = () => {
   const { user } = useAuth();
@@ -46,13 +47,6 @@ const FooterTwo = () => {
                       Privacy Policy
                     </a>
                   </li>
-
-                  <li>
-                    <Link to={"/"} className=" transition hover:/75" >
-                      Feedback
-                    </Link>
-                  </li>
-
                 </ul>
               </nav>
             </div>
@@ -151,33 +145,37 @@ const FooterTwo = () => {
               reserved
             </p>
             <div className="flex justify-end items-center gap-3 ">
-              <Link
-                to="/"
+              <a
+                href="https://www.facebook.com"
                 target="_blank"
                 className="rounded-full bg-white duration-200 p-3 hover:bg-gray-100"
               >
                 <FaFacebookF className="text-[#1877F2] transition duration-200 hover:text-black" />
-              </Link>
-              <Link
-                to="#"
-                className="rounded-full bg-white duration-200 p-3 hover:bg-gray-100"
-              >
-                <AiFillYoutube className="text-[#FF0000] transition duration-200 hover:text-black" />
-              </Link>
+              </a>
 
-              <Link
-                to="#"
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
                 className="rounded-full bg-white duration-200 p-3 hover:bg-gray-100"
               >
-                <AiFillInstagram className="text-[#E4405F] transition duration-200 hover:text-black" />
-              </Link>
+                <AiFillYoutube className="text-red-500 transition duration-200 hover:text-black" />
+              </a>
 
-              <Link
-                to="#"
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
                 className="rounded-full bg-white duration-200 p-3 hover:bg-gray-100"
               >
-                <FaTwitter className="text-[#1DA1F2] transition duration-200 hover:text-black" />
-              </Link>
+                <AiFillInstagram className="text-[#E1306C] transition duration-200 hover:text-black" />
+              </a>
+
+              <a
+                href="https://www.twitter.com"
+                target="_blank"
+                className="rounded-full bg-white duration-200 p-3 hover:bg-gray-100"
+              >
+                <FaXTwitter className="text-[#1DA1F2] transition duration-200 hover:text-black" />
+              </a>
             </div>
           </div>
 
