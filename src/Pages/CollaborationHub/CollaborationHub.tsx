@@ -30,7 +30,7 @@ const CollaborationHub = () => {
     return (
         <div className=" pb-10 min-h-[70vh]">
             <div className="hero min-h-40 mb-7 " style={{ backgroundImage: `url(${collabBg})` }}>
-                <div className="hero-overlay opacity-95 bg-[#d4a8f8]"></div>
+                <div className="hero-overlay opacity-95 bg-[#f2e2ff]"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-2xl">
                         <h1 className="mb-5 text-6xl text-black font-bold">Collabration Hub</h1>
