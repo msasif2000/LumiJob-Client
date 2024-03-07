@@ -12,7 +12,7 @@ interface BlogData {
   img: string;
   title: string;
   category: string;
-  date: string;
+  postTime: string;
   details: string;
   readTime: string;
   author: string;
@@ -20,7 +20,7 @@ interface BlogData {
 
 const ArticleDetails = () => {
   const { _id } = useParams();
-  
+
   const [data, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
   const [readingTime, setReadingTime] = useState("");
@@ -41,7 +41,7 @@ const ArticleDetails = () => {
       .get(`/single-blog/${_id}`)
 
       .then((res) => {
-       
+
         setData(res.data);
         setLoading(false);
         const readingTime = calculateReadingTime(res.data.details);
@@ -53,7 +53,7 @@ const ArticleDetails = () => {
       });
   }, [_id]);
 
-  
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -126,7 +126,7 @@ const ArticleDetails = () => {
             style={{ width: `${scrollPercentage}%` }}
           ></div>
           <GoToTop />
-          <div className="max-w-screen-2xl mx-auto py-20 px-4">
+          <div className="max-w-screen-2xl mx-auto py-20 px-4 lg:px-20">
             {data ? (
               <div className="lg:flex py-6">
                 <div className="flex flex-col lg:w-1/4 space-y-5 lg:fixed pb-10 lg:pb-0">
@@ -136,13 +136,13 @@ const ArticleDetails = () => {
                   </h2>
                   <div>
                     <p className="flex items-center gap-2 text-gray-600 text-lg font-medium">
-                      <FaCircleUser /> {data.author}
+                      <FaCircleUser className="text-xl" /> {data.author}
                     </p>
                   </div>
                   <div className="flex justify-between items-center text-lg font-normal text-gray-500">
-                    <p>{data.date}</p>
+                    <p className="text-accentTwo">{data?.postTime?.split("T")[0]}</p>
                     <p className="text-accentTwo  font-semibold">
-                      {readingTime} 
+                      {readingTime}
                     </p>
                   </div>
                 </div>

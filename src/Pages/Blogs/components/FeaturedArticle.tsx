@@ -46,7 +46,7 @@ const FeaturedArticle = () => {
   return (
     <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
       <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
-        <h1 className="text-3xl lg:text-6xl font-heading font-semibold py-8">
+        <h1 className="text-3xl lg:text-6xl font-heading font-semibold pb-8">
           Featured Articles
         </h1>
         {/* for computer */}
@@ -64,8 +64,8 @@ const FeaturedArticle = () => {
                         : "col-span-1 row-span-1"
                         }`}
                     >
-                      <div>
-                        <div className=" p-2 bg-white hover:shadow-xl duration-700">
+                      <div className="">
+                        <div className=" p-2 hover:bg-white hover:shadow-xl duration-700 h-full">
                           <figure className="relative">
                             {idx === 0 ? (
                               <img
@@ -96,8 +96,8 @@ const FeaturedArticle = () => {
                           </div>
                           <div
                             className={`${idx === 0
-                              ? " bg-white p-2"
-                              : "bg-white p-2 space-y-2"
+                              ? " p-2"
+                              : "p-2 space-y-2"
                               }`}
                           >
                             {idx === 0 ? (
@@ -140,7 +140,7 @@ const FeaturedArticle = () => {
                 return (
                   <Link to={`/insights/${item.id}`} key={idx}>
                     <div>
-                      <div className=" p-2 bg-white hover:shadow-xl duration-700">
+                      <div className=" p-2 hover:bg-white hover:shadow-xl duration-700">
                         <figure className="relative">
                           <img
                             src={item.img}

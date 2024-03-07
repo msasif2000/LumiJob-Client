@@ -24,7 +24,7 @@ const Home = () => {
       {/* <Step></Step> */}
       <PopularJobs />
       <TopCompany />
-      <FeedbackForWebsiteHome></FeedbackForWebsiteHome>
+      <FeedbackForWebsiteHome />
       {user ? null : <CallToAction />}
       
     </div>

@@ -209,7 +209,7 @@ const DashBoard = () => {
         <UniLoader />
       ) : (
         <div className="md:flex">
-          <div className="lg:w-2/12 xl:max-w-[18rem] border-r">
+          <div className="lg:w-2/11 xl:max-w-[20rem] 2xl:w-[22rem] border-r">
             {/* === Mobile Menu */}
             <div className="dash navbar-start lg:hidden">
               <div className="dropdown">
@@ -258,7 +258,7 @@ const DashBoard = () => {
             </div>
 
             {/* === Large Screen Menu */}
-            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen  lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen  lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20 ">
               <div>
                 <h3 className="text-3xl font-bold text-center">
                   Lumi<span className="text-[#4869DD]">Jobs</span>

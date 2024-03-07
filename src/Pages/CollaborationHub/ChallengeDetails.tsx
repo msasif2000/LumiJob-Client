@@ -87,11 +87,11 @@ const ChallengeDetails = () => {
     }
 
     return (
-        <div className="max-w-screen-2xl mx-auto py-3 px-4">
+        <div className=" max-w-screen-2xl mx-auto px-4 lg:px-20 py-3">
             {
                 loading ? <Loading /> :
                     <div className="lg:flex py-6">
-                        <div className="flex flex-col lg:w-3/4 space-y-3 pb-10 lg:pb-0">
+                        <div className="flex flex-col lg:w-3/5 2xl:w-3/4  space-y-3 pb-10 lg:pb-0">
                             <img src={img} className="w-full" alt="" />
                             <h2 className="text-3xl font-heading font-semibold">
                                 {challengeTitle}
@@ -114,7 +114,7 @@ const ChallengeDetails = () => {
 
                         </div>
                         {/* article */}
-                        <div className="lg:w-1/4 lg:ml-10 ">
+                        <div className="lg:w-2/5 2xl:w-1/4 lg:ml-10">
                             <div className="p-4 border-2 rounded-lg flex justify-between items-center">
                                 <div>
                                     <p className="text-lg font-semibold">Create Team</p>
@@ -140,9 +140,9 @@ const ChallengeDetails = () => {
                                                 </div>
 
                                                 {/* Link  */}
-                                                <label htmlFor="discordLink" className="block">Discode Channel Link</label>
+                                                <label htmlFor="discordLink" className="block">Discord Channel Link</label>
                                                 <div className="relative">
-                                                    <input id="discordLink" name="discordLink" type="text" placeholder="Enter Discode Channel Link" className="p-3 block w-full  drop-shadow-lg rounded-lg outline-none" />
+                                                    <input id="discordLink" name="discordLink" type="text" placeholder="Enter Discord Channel Link" className="p-3 block w-full  drop-shadow-lg rounded-lg outline-none" />
                                                 </div>
 
 
@@ -163,9 +163,6 @@ const ChallengeDetails = () => {
                             <p className="text-lg font-semibold text-center">Rules</p>
                         </div>
                     </div> */}
-
-
-
                             <p className="text-lg font-semibold mt-6 mb-1">Available Team</p>
                             <div className="space-y-4">
                                 <TeamCard teams={challengeData?.teams} challengeId={id} />

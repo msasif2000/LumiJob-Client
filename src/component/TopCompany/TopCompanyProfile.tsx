@@ -116,7 +116,7 @@ const TopCompanyProfile = () => {
             </TabList>
             <div className=" border border-b-2 mx-4 lg:mx-20"></div>
             <TabPanel>
-              <div className="flex-1 bg-[#ffffff] pt-16 mb-5 px-4 lg:px-20  rounded-2xl">
+              <div className="flex-1 bg-[#ffffff] pt-8 mb-5 px-4 lg:px-20  rounded-2xl">
                 <p className=" text-sm md:text-base text-justify text-[#282829] ">
                   Established on {CompanyProfile?.founding},{" "}
                   {CompanyProfile?.name} is a leading force in the{" "}
