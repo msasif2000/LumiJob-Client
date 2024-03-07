@@ -79,7 +79,7 @@ const Contact = () => {
             </div>
 
             {/* main section  */}
-            <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-8 mt-10 bg-white rounded-lg border shadow mx-4 lg:mx-20 px-4 mb-12">
+            <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-6 mt-10 bg-white rounded-lg border shadow mx-4 lg:mx-20 px-4 mb-12">
               <div className="col-span-1 ">
                 <div className="flex flex-col justify-center items-center gap-3">
                   <div className="lg:mt-12 xl:mt-16 py-10">
@@ -125,7 +125,7 @@ const Contact = () => {
 
               {/* contact details  */}
 
-              <div className=" parent col-span-5 lg:col-span-4 bg-accent p-8 py-12 space-y-24 text-black">
+              <div className=" parent col-span-5 lg:col-span-4 bg-accent py-8 px-4 space-y-24 text-black">
                 <div>
                   <h3 className="text-4xl font-heading font-semibold text-white">
                     Contact Information
@@ -169,7 +169,7 @@ const Contact = () => {
                       ref={form}
                       className="card-body space-y-5 contactForm"
                     >
-                      <div className="flex flex-col md:flex-row gap-10">
+                      <div className="flex flex-col xl:flex-row gap-10">
                         <div
                           className="form-control w-full"
                           style={{ borderBottom: "1px solid gray" }}
@@ -201,7 +201,7 @@ const Contact = () => {
                           />
                         </div>
                       </div>
-                      <div className="flex flex-col md:flex-row gap-10 ">
+                      <div className="flex flex-col xl:flex-row gap-10 ">
                         <div
                           className="form-control w-full"
                           style={{ borderBottom: "1px solid gray" }}
