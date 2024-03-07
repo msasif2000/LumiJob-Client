@@ -1,7 +1,7 @@
 import PostedJobsCard from "./PostedJobsCard";
 import Job from "../Pages/Home/PopularJobs/Job";
 import useAuth from "../hooks/useAuth";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,7 +10,7 @@ import NoData from "../component/NoData/NoData";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const PostedJobs = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
