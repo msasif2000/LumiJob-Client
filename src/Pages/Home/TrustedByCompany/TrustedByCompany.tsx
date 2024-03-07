@@ -26,7 +26,7 @@ const TrustedByCompany = () => {
 
   return (
     <>
-      <div className="w-full max-w-screen-2xl min-h-20 bg-gray-50 flex items-center py-6 px-4 lg:px-20">
+      <div className="w-full max-w-screen-2xl mx-auto min-h-20 bg-gray-50 flex items-center py-6 px-4 lg:px-20">
         <div className="flex w-full flex-wrap items-center justify-center mx-auto">
           <h3 className="text-xl font-semibold underline mb-3 -mt-28">
             Trusted By
