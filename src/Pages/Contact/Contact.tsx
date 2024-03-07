@@ -70,10 +70,10 @@ const Contact = () => {
         <div className="max-w-screen-2xl mx-auto">
           <div>
             <div className="text-center pt-20 ">
-              <h3 className="text-5xl lg:text-7xl font-heading font-semibold text-center mb-4 lg:mb-5">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl 2xl:6xl font-heading font-semibold text-center mb-4 xl:mb-7">
                 Contact <span className="text-accentTwo">Us</span>
               </h3>
-              <p className="text-sm md:text-lg lg:text-xl text-[#707070] text-center">
+              <p className="text-sm md:text-lg lg:text-xl 2xl:text-2xl text-[#999999] text-center mx-4">
                 Any question or remarks? Just write us a message!
               </p>
             </div>
