@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 
 export const axiosSecure = axios.create({
-   baseURL: 'http://localhost:5000',
-   // baseURL: 'https://lumi-job-server.vercel.app',
+    baseURL: 'http://localhost:5000',
+    //baseURL: "https://lumi-job-server.vercel.app" /* Main server */,
 });
 
 const useAxiosSecure = () => {
