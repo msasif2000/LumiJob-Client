@@ -87,7 +87,7 @@ const ChallengeDetails = () => {
     }
 
     return (
-        <div className="max-w-screen-2xl mx-auto py-3 px-4">
+        <div className=" max-w-screen-2xl mx-auto px-4 lg:px-20 py-3">
             {
                 loading ? <Loading /> :
                     <div className="lg:flex py-6">

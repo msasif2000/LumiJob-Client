@@ -39,10 +39,10 @@ const PopularJobs = () => {
     <>
       <div className="max-w-screen-2xl mx-auto py-16 px-4 lg:px-20 pjob">
         <div className="mb-14">
-          <h3 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold text-center mb-4 xl:mb-7">
+          <h3 className="text-3xl md:text-4xl lg:text-5xl 2xl:6xl font-heading font-semibold text-center mb-4 xl:mb-7">
             Most <span className="text-accentTwo">popular</span> jobs for you
           </h3>
-          <p className="text-sm md:text-lg xl:text-2xl text-[#999999] text-center mx-4">
+          <p className="text-sm md:text-lg lg:text-xl 2xl:text-2xl text-[#999999] text-center mx-4">
             The most updated platform about jobs that are open
           </p>
         </div>
