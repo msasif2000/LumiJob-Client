@@ -1,20 +1,18 @@
-import green from "../../../assets/GlowShadow/Green.svg";
-import aqua from "../../../assets/GlowShadow/Aqua.svg";
-import purple from "../../../assets/GlowShadow/Purple.svg";
-import yellow from "../../../assets/GlowShadow/Yellow.svg";
+// import green from "../../../assets/GlowShadow/Green.svg";
+// import aqua from "../../../assets/GlowShadow/Aqua.svg";
+// import purple from "../../../assets/GlowShadow/Purple.svg";
+// import yellow from "../../../assets/GlowShadow/Yellow.svg";
 
 const Hero = () => {
   return (
-    <div className="h-[440px] md:h-[560px] lg:min-h-screen bg-[#F2F8F5] relative overflow-hidden">
-      <div className="max-w-screen-2xl mx-auto px-4">
-        <div className="space-y-10 lg:space-y-20 relative z-10">
-          <h3 className="text-4xl md:text-7xl lg:text-9xl font-heading font-bold pt-20 relative z-10">
+    <div className="h-[440px] md:h-[600px] lg:h-[700px]  relative overflow-hidden bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pt-8 lg:pt-20 -mt-20">
+      <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
+        <div className="space-y-10  relative z-10">
+          <h3 className="text-4xl md:text-5xl lg:text-7xl 2xl:text-8xl font-heading font-bold pt-20 relative z-10">
             News, Seminars & <br /> Insides of Tech <br /> Fields.
           </h3>
-          {/* <h1 className="xl:hidden block text-3xl md:text-7xl px-3 font-heading font-bold pt-10 relative z-10">
-            News, Seminars & <br /> Insides of Tech <br /> Fields.
-          </h1> */}
-          <img
+
+          {/* <img
             src={green}
             alt="blogBg"
             className="absolute -left-52 -top-72 w-[1000px]"
@@ -33,7 +31,7 @@ const Hero = () => {
             src={purple}
             alt="blogBg"
             className="absolute -right-96 top-5 w-[1000px]"
-          />
+          /> */}
 
           <p className="text-xs lg:px-3 md:text-lg  lg:text-xl font-normal relative z-10">
             Discover cutting-edge advancements in rapidly growing industries.

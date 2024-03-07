@@ -1,90 +1,111 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface NavbarProps {
   color?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ color }) => {
-  const { user, logOut, premium, role, photo } = useAuth();
+const Navbar: React.FC<NavbarProps> = () => {
+  const { user, logOut, premium, role, photo, userRefetch } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+  const [userData, setUserData] = useState<{ _id: string; value: number }>();
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    if (user && premium === "premium") {
+      setIsPremium(true);
+    } else {
+      setIsPremium(false);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (role === "candidate") {
+      axiosPublic.get(`/specific-candidate/${user?.email}`).then((res) => {
+        setUserData(res.data);
+      });
+    } else if (role === "company") {
+      axiosSecure.get(`/specific-company/${user?.email}`).then((res) => {
+        setUserData(res.data);
+      });
+    }
+  }, [user?.email, role, axiosSecure]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setScrollPosition(position);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleLogout = () => {
     logOut();
+    userRefetch();
   };
 
   const Linking = (
     <>
       <li key="home">
-        <NavLink className="text-lg font-heading font-medium" to="/">
+        <NavLink className="text-lg font-heading font-base" to="/">
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink className="text-lg font-heading font-base" to="/find-job">
+          Jobs
+        </NavLink>
+      </li>
       <li key="Job">
-        {role === "company" ? (
-          <NavLink
-            className="text-lg font-heading font-medium"
-            to="/find-candidate"
-          >
-            Candidates
-          </NavLink>
-        ) : (
-          <NavLink className="text-lg font-heading font-medium" to="/find-job">
-            Jobs
-          </NavLink>
-        )}
+        <NavLink
+          className="text-lg font-heading font-base"
+          to="/find-candidate"
+        >
+          Candidates
+        </NavLink>
+      </li>
+      <li key="CollaborationHub">
+        <NavLink
+          className="text-lg font-heading font-base"
+          to="/collaboration-hub"
+        >
+          Co-Hub
+        </NavLink>
       </li>
       <li key="Insights">
-        <NavLink className="text-lg font-heading font-medium" to="/insights">
+        <NavLink className="text-lg font-heading font-base" to="/insights">
           Insights
         </NavLink>
       </li>
 
-      {user && role === "admin" ? (
-        <li key="adminDashboard">
-          <NavLink
-            className="text-lg font-heading font-medium"
-            to="/dashboard/adminDashboard"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-      ) : user && role === "candidate" ? (
-        <li key="candidateDashboard">
-          <NavLink
-            className="text-lg font-heading font-medium"
-            to="/dashboard/candidateProfile"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-      ) : user && role === "company" ? (
-        <li key="companyDashboard">
-          <NavLink
-            className="text-lg font-heading font-medium"
-            to="/dashboard/companyProfile"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-      ) : (
-        ""
-      )}
-
-      <li key="Contact">
-        <NavLink className="text-lg font-heading font-medium" to="/Contact">
+      <li key="Contact" className="lg:hidden xl:flex">
+        <NavLink className="text-lg font-heading font-base" to="/Contact">
           Contact
         </NavLink>
       </li>
     </>
   );
 
-  // for dynamic bg color of navbar
-  const bgColor = color ? color : "bg-white";
-
   return (
-    <div className={`border-b sticky top-0 z-30 ${bgColor}`}>
-      <div className="navbar max-w-screen-2xl mx-auto px-4">
+    <div
+      className={`sticky top-0 z-30 ${
+        scrollPosition > 30
+          ? `backdrop-blur-md bg-white/30 border-b border-b-[#e4e5e7]`
+          : ""
+      }`}
+    >
+      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-16">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -122,66 +143,70 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="mr-24 hidden md:block ">
-            {role === "candidate" ? (
-              <Link to="/subscriptionsUiCandidate">
-                <button className="button ">
-                  <div className="flex items-center gap-2 ">
-                    Upgrade
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="icon"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </button>
-              </Link>
-            ) : role === "company" ? (
-              <Link to="/subscriptionsUiCompany">
-                <button className="button ">
-                  <div className="flex items-center gap-2 ">
-                    Upgrade
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="icon"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </button>
-              </Link>
-            ) : (
-              <Link to="/optionsSubscribe">
-                <button className="button ">
-                  <div className="flex items-center gap-2 ">
-                    Upgrade
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="icon"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </button>
-              </Link>
-            )}
-          </div>
+          {!isPremium ? (
+            <div className="xl:mr-24 mr-2 hidden md:block ">
+              {role === "candidate" ? (
+                <Link to="/subscriptionsUiCandidate">
+                  <button className="button ">
+                    <div className="flex items-center gap-2 ">
+                      Upgrade
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        className="icon"
+                      >
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </button>
+                </Link>
+              ) : role === "company" ? (
+                <Link to="/subscriptionsUiCompany">
+                  <button className="button ">
+                    <div className="flex items-center gap-2 ">
+                      Upgrade
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        className="icon"
+                      >
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/optionsSubscribe">
+                  <button className="button ">
+                    <div className="flex items-center gap-2 ">
+                      Upgrade
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        className="icon"
+                      >
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </button>
+                </Link>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
 
           <div>
             {user ? (
@@ -193,7 +218,7 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div
-                    className={`w-20 rounded-full ${
+                    className={` w-6 md:w-8 xl:w-16 rounded-full ${
                       premium === "premium"
                         ? "ring-4 ring-blue-400 ring-offset-2"
                         : ""
@@ -220,15 +245,58 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                   tabIndex={0}
                   className="mt-3 z-50 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
-                  <li>
-                    <NavLink
-                      className="mr-2 font-semibold text-lg"
-                      to="/Profile"
-                    >
-                      Profile
-                    </NavLink>
-                  </li>
-                  ,
+                  {user && role === "candidate" ? (
+                    <li key="candidateProfile View">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to={`/candidate-detailsProfile/${userData?._id}`}
+                      >
+                        Profile View
+                      </NavLink>
+                    </li>
+                  ) : user && role === "company" ? (
+                    <li key="companyProfile View">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to={`/company-details-profile/${userData?._id}`}
+                      >
+                        Profile View
+                      </NavLink>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+
+                  {user && role === "admin" ? (
+                    <li key="adminDashboard">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to="/dashboard/adminDashboard"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ) : user && role === "candidate" ? (
+                    <li key="candidateDashboard">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to="/dashboard/candidateProfile"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ) : user && role === "company" ? (
+                    <li key="companyDashboard">
+                      <NavLink
+                        className="mr-2 font-semibold text-lg"
+                        to="/dashboard/companyProfile"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ) : (
+                    ""
+                  )}
                   <li>
                     <button
                       className="mr-2 font-semibold text-lg"
@@ -237,7 +305,6 @@ const Navbar: React.FC<NavbarProps> = ({ color }) => {
                       Logout
                     </button>
                   </li>
-                  ,
                 </ul>
               </div>
             ) : (

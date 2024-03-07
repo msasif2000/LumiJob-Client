@@ -1,12 +1,12 @@
-// import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import CandidateNav from "../../Candidate/CommonNavbar/CandidateNav";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 interface FormData {
   photo: File;
@@ -33,14 +33,12 @@ interface CompanyData {
 const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const { register, handleSubmit, setValue } = useForm<FormData>();
 
   const api = import.meta.env.VITE_IMAGEBB_API_KEY;
-
-  console.log(api);
 
   const handleBack = () => {
     navigate(-1);
@@ -48,18 +46,16 @@ const CompanyProUpdate = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
-        .get(`/user-profile/${user.email}`)
+      axiosSecure.get(`/user-profile/${user.email}`)
         .then((res) => {
           setCompany(res.data);
-          console.log(res.data);
+        
         })
         .catch((err) => console.log(err));
     }
   }, [user]);
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-    console.log(data);
 
     const companyData = {
       ...data,
@@ -97,7 +93,7 @@ const CompanyProUpdate = () => {
         };
 
         // Send the updated company data to your database
-        const updateUserDataResponse = await axiosPublic.put(
+        const updateUserDataResponse = await axiosSecure.put(
           `/user-update/${user?.email}`,
           updatedCompanyData
         );

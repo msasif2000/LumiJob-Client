@@ -13,7 +13,7 @@ interface SearchProps {
         e.preventDefault();
         try {
             const response = await axiosPublic.get(`/job-Search?search=${searchText}`); 
-            console.log("Search Result:", response.data);
+          
             onSearchResult(response.data);
         } catch (error) {
             console.error('Error:', error);
@@ -23,7 +23,6 @@ interface SearchProps {
     const handleChange = (e:any) => {
         setSearchText(e.target.value);
     };
-
 
     return (
         <div className="">
@@ -42,8 +41,8 @@ interface SearchProps {
                                 type="text"
                                 value={searchText}
                                 onChange={handleChange}
-                                className="p-2 w-11/12 bg-white pl-2 text-base font-semibold outline-0"
-                                placeholder="Search company, job title..."
+                                className="p-2 w-11/12 bg-white pl-2 text-xs md:text-base font-semibold outline-0"
+                                placeholder="company, job title..."
                             />
                             <button
                                 onClick={handleSearch}

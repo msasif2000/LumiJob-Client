@@ -1,8 +1,7 @@
-import { GrUserManager } from "react-icons/gr"; 
+import { SiTeamspeak } from "react-icons/si"; 
 import { ImLocation } from "react-icons/im";
 import { CgTime } from "react-icons/cg";
 import { MdDateRange } from "react-icons/md";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 interface prop {
@@ -13,6 +12,15 @@ interface prop {
 const SeminarCard: React.FC<prop> = ({ seminar, handleDelete }) => {
     const [showDeleteIcon, setShowDeleteIcon] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const confirmDelete = () => {
         setShowConfirmation(true);
@@ -34,22 +42,18 @@ const SeminarCard: React.FC<prop> = ({ seminar, handleDelete }) => {
             }}
             onMouseLeave={() => setShowDeleteIcon(false)}
         >
-            <Link key={seminar._id} to={`/insights/${seminar._id}`}>
-                <div className="card shadow-md hover:shadow-xl duration-1000 h-full">
-                    <div className="card-body space-y-2">
-                        <h2 className="text-2xl font-bold">{seminar?.title}</h2>
-                        <div className="flex justify-between items-center">
-                            <p className="font-semibold flex items-center gap-1 "><ImLocation className="text-xl text-violet-500" />{seminar?.location}</p>
-                        </div>
-                        <p className="flex items-center gap-1 font-semibold text-violet-500"><MdDateRange className="text-xl" /> {seminar?.date}</p>
-                        <p className="flex items-center gap-1 font-semibold text-violet-500"><CgTime className="text-xl" />{seminar?.startTime} - {seminar?.endTime}</p>
-                        <p className="flex items-center gap-1 font-semibold text-violet-500"><GrUserManager className="text-xl"/>{seminar?.speaker} </p>
-                        <p>{seminar?.description.slice(0, 60)}...</p>
-                    </div>
+            <div className="card shadow-md hover:shadow-xl duration-1000 h-full">
+                <div className="card-body lg:p-4 xl:p-6">
+                    <h2 className="text-2xl font-bold">{seminar?.title}</h2>
+                    <p className="flex items-center gap-1 font-semibold text-violet-500"><ImLocation className="text-xl text-violet-500" />{seminar?.location}</p>
+                    <p className="flex justify-end items-center gap-1 font-semibold text-violet-500"> {seminar?.date}<MdDateRange className="text-xl" /></p>
+                    <p className="flex items-center gap-1 font-semibold text-violet-500"><CgTime className="text-xl" />{seminar?.startTime} - {seminar?.endTime}</p>
+                    <p className="flex justify-end items-center gap-1 font-semibold text-violet-500">{seminar?.speaker} <SiTeamspeak className="text-2xl"/></p>
+                    <a href="#seminar_details" onClick={openModal} className="btn btn-sm bg-black text-white hover:bg-slate-950">Details</a>
                 </div>
-            </Link>
+            </div>
             {showDeleteIcon && (
-                <div className="absolute top-8 right-4 ">
+                <div className="absolute top-2 right-2 ">
                     <div className="bg-red-600 p-2 rounded">
                         <RiDeleteBinLine
                             className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
@@ -71,6 +75,26 @@ const SeminarCard: React.FC<prop> = ({ seminar, handleDelete }) => {
                     </div>
                 </div>
             )}
+
+            {
+                isModalOpen && (
+                    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
+                        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-md shadow-2xl w-96">
+                            <div className="flex justify-end">
+                                <button onClick={closeModal}>X</button>
+                            </div>
+                            <div className="flex flex-col gap-4">
+                                <h1 className="text-2xl font-bold">Seminar on "{seminar?.title}"</h1>
+                                <p className="flex items-center gap-1 font-semibold text-violet-500"><ImLocation className="text-xl text-violet-500" />{seminar?.location}</p>
+                                <p className="flex justify-end items-center gap-1 font-semibold text-violet-500"> {seminar?.date}<MdDateRange className="text-xl" /></p>
+                                <p className="flex items-center gap-1 font-semibold text-violet-500"><CgTime className="text-xl" />{seminar?.startTime} - {seminar?.endTime}</p>
+                                <p className="flex justify-end items-center gap-1 font-semibold text-violet-500">{seminar?.speaker} <SiTeamspeak className="text-2xl"/></p>
+                                <p>{seminar?.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         </div>
     );
 };

@@ -14,25 +14,27 @@ import {
   MdOutlineEventAvailable,
   MdManageAccounts,
 } from "react-icons/md";
-import { AiOutlineUsergroupAdd, AiOutlineFileDone } from "react-icons/ai";
+import { TbTargetArrow } from "react-icons/tb";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GrGroup, GrBlog, GrWorkshop } from "react-icons/gr";
 import { RxAvatar } from "react-icons/rx";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import UniLoader from "../component/err & loading/UniLoader";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import { GoCodeReview } from "react-icons/go";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const DashBoard = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [userData, setUserData] = useState({} as any);
   const [role, setRole] = useState("");
 
-  //console.log(user);
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isNavOpen) {
@@ -48,10 +50,10 @@ const DashBoard = () => {
   useEffect(() => {
     setLoading(true);
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/check-which-role/${user?.email}`)
         .then((res) => {
-          // console.log(res.data.role);
+         
           setRole(res.data.role);
           setUserData(res.data);
           setLoading(false);
@@ -77,12 +79,12 @@ const DashBoard = () => {
             Profile
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/dashboard/resume">
             <AiOutlineFileDone className="text-2xl" />
             Resume
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/dashboard/appliedJobs">
             <GrWorkshop className="text-xl" />
@@ -95,6 +97,13 @@ const DashBoard = () => {
             Bookmarks
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/dashboard/feedback">
+          <GoCodeReview className="text-xl" />
+            Website Feedback
+          </NavLink>
+        </li>
+        
         {/* <li>
           <NavLink to="/dashboard/candidateAnalytics">Analytics</NavLink>
         </li> */}
@@ -125,16 +134,23 @@ const DashBoard = () => {
             Seminars
           </NavLink>
         </li>
-        <li>
+        {/* ##########hide company analytics */}
+        {/* <li>
           <NavLink to="/dashboard/companyAnalytics">
             <BiLineChart className="text-xl" />
             Analytics
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/dashboard/employees">
             <GrGroup className="text-xl" />
             Hired Employees
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/feedback">
+          <GoCodeReview className="text-xl" />
+            Website Feedback
           </NavLink>
         </li>
       </>
@@ -171,6 +187,12 @@ const DashBoard = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/dashboard/admin/challenges">
+            <TbTargetArrow className="text-2xl" />
+            Challenges
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/dashboard/admin/add-data">
             <BsDatabaseAdd className="text-2xl" />
             Add Data
@@ -187,7 +209,7 @@ const DashBoard = () => {
         <UniLoader />
       ) : (
         <div className="md:flex">
-          <div className="lg:w-2/12 xl:max-w-[18rem] border-r">
+          <div className="lg:w-2/11 xl:max-w-[20rem] 2xl:w-[22rem] border-r">
             {/* === Mobile Menu */}
             <div className="dash navbar-start lg:hidden">
               <div className="dropdown">
@@ -207,6 +229,7 @@ const DashBoard = () => {
                     />
                   </svg>
                 </label>
+
                 <ul
                   tabIndex={0}
                   className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-600 rounded-box  w-52 "
@@ -235,7 +258,7 @@ const DashBoard = () => {
             </div>
 
             {/* === Large Screen Menu */}
-            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen p-2 lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20">
+            <div className="dash hidden lg:flex lg:flex-col lg:justify-between min-h-screen  lg:sticky  lg:top-0 lg:inset-x-0 lg:z-20 ">
               <div>
                 <h3 className="text-3xl font-bold text-center">
                   Lumi<span className="text-[#4869DD]">Jobs</span>
@@ -259,8 +282,7 @@ const DashBoard = () => {
                     </h6>
                   </div>
                 </div>
-
-                <ul className="menu text-xl">{Links}</ul>
+                <ul className="menu text-xl ">{Links}</ul>
               </div>
               <div>
                 <div className="divider mx-4"></div>

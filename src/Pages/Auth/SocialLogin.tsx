@@ -29,7 +29,7 @@ const SocialLogin: React.FC = () => {
 
   const handleGoogleSignin = () => {
     googleSignIn().then((res: any) => {
-      console.log(res);
+   
 
       const userInfo = {
         email: res.user?.email,
@@ -37,13 +37,14 @@ const SocialLogin: React.FC = () => {
         photo: res.user?.photoURL,
       };
 
-      console.log(userInfo);
+  
 
       // for dev
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-        checkRole(userInfo.email);
-      });
+      axiosPublic.post("/users", userInfo)
+        .then(() => {
+         
+          checkRole(userInfo.email);
+        });
 
       navigate("/");
     });
@@ -51,7 +52,7 @@ const SocialLogin: React.FC = () => {
 
   const handleGithubSignin = () => {
     githubSignIn().then((res: any) => {
-      console.log(res);
+    
 
       const userInfo = {
         email: res.user?.email,
@@ -59,13 +60,14 @@ const SocialLogin: React.FC = () => {
         photo: res.user?.photoURL,
       };
 
-      console.log(userInfo);
+     
 
       // for dev
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-        checkRole(userInfo.email);
-      });
+      axiosPublic.post("/users", userInfo)
+        .then(() => {
+       
+          checkRole(userInfo.email);
+        });
       navigate("/");
     });
   };

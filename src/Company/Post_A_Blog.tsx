@@ -5,6 +5,8 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 interface FormData {
@@ -26,25 +28,26 @@ const Post_A_Blog = () => {
     const loading = false;
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [company, setCompany] = useState<BlogData | null>(null);
     const { register, handleSubmit, setValue } = useForm<FormData>();
     const api = import.meta.env.VITE_IMAGEBB_API_KEY;
 
     const date = new Date().toISOString();
 
-    //console.log(date);
+ 
     useEffect(() => {
         if (user?.email) {
             axiosPublic.get(`/user-profile/${user.email}`)
                 .then((res) => {
                     setCompany(res.data);
-                    //console.log(res.data);
+                   
                 })
                 .catch((err) => console.log(err));
         }
     }, [user]);
 
-    //console.log(company);
+ 
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         const blogData = {
             ...data,
@@ -60,7 +63,7 @@ const Post_A_Blog = () => {
             const imageData = new FormData();
             imageData.append("image", data.photo);
 
-            console.log(imageData);
+          
 
             const imageUploadResponse = await axios.post(
                 "https://api.imgbb.com/1/upload",
@@ -84,9 +87,9 @@ const Post_A_Blog = () => {
                     img: imageUrl,
                 };
 
-                axiosPublic.post("/post-the-blog", updateBlog)
+                axiosSecure.post("/post-the-blog", updateBlog)
                     .then(res => {
-                        //console.log(res.data);
+                       
                         if (res.data.insertedId) {
                             toast.success("Blog Posted Successfully");
                             navigate("/dashboard/blog-posted");
@@ -106,8 +109,18 @@ const Post_A_Blog = () => {
         }
     };
 
+    const handlePostedBlog = () => {
+        navigate('/dashboard/blog-posted');
+    }
     return (
         <div>
+            <CandidateNav
+                text="Post Your Blog"
+                btn="Go Back"
+                btn2=""
+                handleClick={() => { handlePostedBlog() }}
+                handleClick2={() => { }}
+            />
             <div className=" bg-white px-2 py-5">
                 <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
 

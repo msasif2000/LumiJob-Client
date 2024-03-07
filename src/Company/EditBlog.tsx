@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface FormData {
     photo: File;
@@ -16,14 +16,13 @@ const EditBlog = () => {
     const navigate = useNavigate();
     const loading = false;
     const blog = location.state.blog;
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     //console.log(blog);
     const { register, handleSubmit} = useForm<FormData>();
 
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-        axiosPublic.patch(`/update-blog/${blog._id}`, data)
+        axiosSecure.patch(`/update-blog/${blog._id}`, data)
             .then(res => {
-                console.log(res.data);
                 if (res.data._id) {
                     toast.success(`Blog post updated successfully`, {
                         hideProgressBar: true,

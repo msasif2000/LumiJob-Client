@@ -4,13 +4,15 @@ import Nodata from "./err/Nodata";
 import Loading from "./err/Loading";
 import { FaCircleUser } from "react-icons/fa6";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import GoToTop from "../../../component/GoToTop/GoToTop";
+import { Helmet } from "react-helmet-async";
 
 interface BlogData {
   id: number;
   img: string;
   title: string;
   category: string;
-  date: string;
+  postTime: string;
   details: string;
   readTime: string;
   author: string;
@@ -18,12 +20,20 @@ interface BlogData {
 
 const ArticleDetails = () => {
   const { _id } = useParams();
-  //console.log(_id); // Log _id to the console
 
   const [data, setData] = useState<BlogData>();
   const [isLoading, setLoading] = useState(false);
+  const [readingTime, setReadingTime] = useState("");
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const axiosPublic = useAxiosPublic();
+
+  const calculateReadingTime = (text: string): string => {
+    const wordsPerMinute = 200; // Average reading speed in words per minute
+    const words = text.split(/\s+/).length; // Split text by spaces to count words
+    const minutes = words / wordsPerMinute; // Calculate reading time in minutes
+    const readingTime = Math.ceil(minutes); // Round up to the nearest minute
+    return `${readingTime} min read`; // Format the reading time
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -31,9 +41,11 @@ const ArticleDetails = () => {
       .get(`/single-blog/${_id}`)
 
       .then((res) => {
-        // console.log(res.data);
+
         setData(res.data);
         setLoading(false);
+        const readingTime = calculateReadingTime(res.data.details);
+        setReadingTime(readingTime);
       })
       .catch((error) => {
         console.error("Error fetching blog details:", error);
@@ -41,7 +53,7 @@ const ArticleDetails = () => {
       });
   }, [_id]);
 
-  //console.log(`/single-blog/${_id}`);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,8 +77,8 @@ const ArticleDetails = () => {
         "pageYOffset" in window
           ? window.pageYOffset
           : "scrollTop" in document.documentElement
-          ? document.documentElement.scrollTop
-          : document.body.scrollTop;
+            ? document.documentElement.scrollTop
+            : document.body.scrollTop;
 
       const scrollPercentage =
         (scrollTop / (documentHeight - windowHeight)) * 100;
@@ -106,11 +118,15 @@ const ArticleDetails = () => {
       ) : (
         <>
           <div className="fixed w-full"></div>
+          <Helmet>
+            <title>{data ? data.title : "Article Details"}</title>
+          </Helmet>
           <div
-            className="h-[6px] bg-gradient-to-r from-[#98ff98] via-[#fff45c] to-[#ff4739] fixed"
+            className="h-[4px] bg-accentTwo backdrop-blur-md fixed"
             style={{ width: `${scrollPercentage}%` }}
           ></div>
-          <div className="max-w-screen-2xl mx-auto py-20 px-4">
+          <GoToTop />
+          <div className="max-w-screen-2xl mx-auto py-20 px-4 lg:px-20">
             {data ? (
               <div className="lg:flex py-6">
                 <div className="flex flex-col lg:w-1/4 space-y-5 lg:fixed pb-10 lg:pb-0">
@@ -120,13 +136,13 @@ const ArticleDetails = () => {
                   </h2>
                   <div>
                     <p className="flex items-center gap-2 text-gray-600 text-lg font-medium">
-                      <FaCircleUser /> {data.author}
+                      <FaCircleUser className="text-xl" /> {data.author}
                     </p>
                   </div>
                   <div className="flex justify-between items-center text-lg font-normal text-gray-500">
-                    <p>{data.date}</p>
+                    <p className="text-accentTwo">{data?.postTime?.split("T")[0]}</p>
                     <p className="text-accentTwo  font-semibold">
-                      {data.readTime} read
+                      {readingTime}
                     </p>
                   </div>
                 </div>

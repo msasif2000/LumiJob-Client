@@ -1,36 +1,36 @@
 import PostedJobsCard from "./PostedJobsCard";
 import Job from "../Pages/Home/PopularJobs/Job";
 import useAuth from "../hooks/useAuth";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
 import CandidateNav from "../Candidate/CommonNavbar/CandidateNav";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import NoData from "../component/NoData/NoData";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const PostedJobs = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  //console.log(user?.email);
   const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
   const navigate = useNavigate()
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/get-company-posted-jobs/${user?.email}`)
         .then((res) => {
           setCompanyPostedJobs(res.data);
-          //console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
   }, [user]);
 
   const handleDelete = (jobId: string) => {
-    axiosPublic
-      .delete(`/delete-job/${jobId}`)
+    axiosSecure.delete(`/delete-job/${jobId}`)
       .then((res) => {
-        console.log(res.data);
+      
         if (res.data.message === 'true') {
           toast.success(`Job post deleted successfully`, {
             hideProgressBar: true,
@@ -48,28 +48,37 @@ const PostedJobs = () => {
       });
   };
 
-  const length = companyPostedJobs?.length;
-
-  const handlePostJob = () =>{
-    navigate('/dashboard/postJob')
+  const handlePostJob = () => {
+    navigate('/dashboard/postJob');
   }
 
+  const length = companyPostedJobs?.length;
+
   return (
-    <div>
-      <CandidateNav
-        text="Your Posted Jobs"
-        btn="Post Jobs"
-        btn2={length}
-        handleClick={() => {handlePostJob()}}
-        handleClick2={() => {}}
-      />
-      <div className="grid grid-cols-4 gap-6">
-        {companyPostedJobs?.map((job: Job) => (
-          <PostedJobsCard key={job._id} job={job} handleDelete={handleDelete} />
-        ))}
-      </div>
-      <ToastContainer/>
-    </div>
+    <>
+      {
+        length ? (
+          <div>
+            <CandidateNav
+              text="Your Posted Jobs"
+              btn="Post Jobs"
+              btn2={length}
+              handleClick={() => { handlePostJob() }}
+              handleClick2={() => { }}
+            />
+            <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+              {companyPostedJobs?.map((job: Job) => (
+                <PostedJobsCard key={job._id} job={job} handleDelete={handleDelete} />
+              ))}
+            </div>
+            <ToastContainer />
+          </div >
+        )
+          :
+          (
+            <NoData text="You have not posted any jobs yet" btn="Post Job" noDataClick={handlePostJob} />
+          )
+      }</>
   );
 };
 

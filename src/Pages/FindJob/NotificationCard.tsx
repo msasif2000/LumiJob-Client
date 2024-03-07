@@ -3,11 +3,11 @@ import { PiMoney, PiSuitcaseSimpleLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const NotificationCard = () => {
   const { premium } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const recJobsDemo = [1, 2, 3, 4, 5, 6];
   const [recJobs, setRecJobs] = useState<any[]>([]);
 
@@ -15,7 +15,7 @@ const NotificationCard = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic
+      axiosSecure
         .get(`/matchingJobs?email=${user.email}`)
         .then((res: any) => {
           setRecJobs(res.data);
@@ -26,17 +26,17 @@ const NotificationCard = () => {
 
   return (
     <>
-      <div className="bg-white xl:p-5 p-3 rounded border m-3">
+      {/* <div className="bg-white xl:p-5 p-3 rounded border m-3">
         <h4 className="font-semibold font-heading text-2xl text-center">
           Get Noticed Faster
         </h4>
         <button className="w-full rounded py-2 xl:px-5 px-3 bg-accent text-white mt-5">
           Turn on notifications
         </button>
-      </div>
+      </div> */}
 
       {premium === "premium" ? (
-        <div className="bg-white p-2 xl:p-5 rounded border mx-3 my-8 min-h-64">
+        <div className="bg-white p-2 xl:p-5 rounded border mx-3 mb-8 mt-3 min-h-64">
           <h2 className="font-heading font-semibold text-2xl my-3 text-center">
             Recommended for you
           </h2>
@@ -86,7 +86,7 @@ const NotificationCard = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-white p-2 xl:p-5 rounded border mx-3 my-8 min-h-64 relative">
+        <div className="bg-white p-2 xl:p-5 rounded border mx-3 mb-8 min-h-64 relative">
           <h2 className="font-heading font-semibold text-2xl my-3 text-center">
             Recommended for you
           </h2>
@@ -136,7 +136,7 @@ const NotificationCard = () => {
               </div>
             ))}
           </div>
-          <p className="absolute top-20 left-20 text-md">
+          <p className="absolute top-24 text-center text-md">
             For premium users only.
           </p>
         </div>

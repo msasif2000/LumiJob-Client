@@ -1,87 +1,28 @@
-import { FcFlashOn, FcFactory, FcEmptyFilter, FcWorkflow, FcAndroidOs, FcApprove, FcDebt, FcConferenceCall, FcCollaboration, FcCalendar, FcBusinessman, FcApproval, FcBullish, FcBriefcase, FcBiotech, FcAssistant } from "react-icons/fc";
-import { MdOutlineTroubleshoot, MdMonetizationOn } from "react-icons/md";
-import { GiNetworkBars } from "react-icons/gi";
-import { FaBattleNet } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import backgroundImage from "../../../assets/image/banner-bg1.jpg";
+import actionImg from "../../../assets/image/action.jpg";
 
 const CallToAction = () => {
-    const icons = [
-        <FaBattleNet />,
-        <GiNetworkBars />,
-        <MdMonetizationOn />,
-        <MdOutlineTroubleshoot />,
-        <FcWorkflow />,
-        <FcAndroidOs />,
-        <FcApprove />,
-        <FcApproval />,
-        <FcAssistant />,
-        <FcBiotech />,
-        <FcBriefcase />,
-        <FcBullish />,
-        <FcBusinessman />,
-        <FcCalendar />,
-        <FcCollaboration />,
-        <FcConferenceCall />,
-        <FcDebt />,
-        <FcEmptyFilter />,
-        <FcFactory />,
-        <FcFlashOn />
-    ];
-
-    const getRandomNumber = (min: number, max: number, exclude: number[] = []): number => {
-        let num: number = Math.floor(Math.random() * (max - min)) + min;
-        if (exclude.includes(num)) {
-            return getRandomNumber(min, max, exclude);
-        }
-        return num;
-    };
-
-    const randomNumbers: number[] = [];
-    for (let i = 0; i < icons.length; i++) {
-        const num: number = getRandomNumber(0, 100, randomNumbers);
-        randomNumbers.push(num);
-    }
-
     return (
-        <section className="bg-gray-50 max-w-7xl lg:my-4 mx-auto rounded-b-xl" style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-        }}>
-            <div className="md:flex justify-between items-center lg:px-20 px-4 py-4">
-                <div className="w-full">
-                    <h2 className="text-4xl font-bold font-heading mt-10 md:text-left text-center">
+        <div className="max-w-screen-2xl mx-auto py-16 px-4 lg:px-20">
+            <div className="md:flex justify-center gap-20 bg-accent rounded-xl">
+                <div className=" flex flex-col items-start justify-center w-full lg:px-12 md:px-4 px-2">
+                    <h2 className="text-4xl font-bold font-heading mt-10 md:text-left text-center text-white">
                         Ready to get started?
                     </h2>
-                    <p className="mt-2">
-                        "The secret of getting ahead is getting started."
+                    <p className="my-2 text-sm md:text-lg xl:text-2xl text-slate-300">
+                        "Ready to revolutionize your hiring process and enhance communication? Join us today and unlock the power of seamless recruitment and effective collaboration!"
                     </p>
-                    <Link to="/signup" className="flex justify-center md:justify-start">
-                        <button className="bg-btnbg text-white px-8 py-2 rounded-lg mt-6">
+                    <Link to="/signup" className="flex  pl-0 mb-8">
+                        <button className="bg-btnbg text-white px-8 py-2 rounded-lg mt-2">
                             Start Now
                         </button>
                     </Link>
                 </div>
-                <div className="flex justify-center h-96 w-full rounded-full py-4 ">
-                    <div className="w-full relative grid grid-cols-4">
-                        {icons.map((Icon, index) => (
-                            <div
-                                key={index}
-                                className="absolute text-5xl p-2"
-                                style={{
-                                    top: `${randomNumbers[index] - 6}%`,
-                                    left: `${getRandomNumber(0, 80, randomNumbers)}%`,
-                                    transform: `translate(-${getRandomNumber(0, 10)}%, -${getRandomNumber(0, 10)}%)`
-                                }}
-                            >
-                                {Icon}
-                            </div>
-                        ))}
-                    </div>
+                <div className="flex items-center justify-center py-2 w-full lg:px-12 px-2">
+                    <img src={actionImg} alt="" className="xl:h-[350px] h-[300px]  w-full" />
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

@@ -7,8 +7,7 @@ interface BlogData {
   img: string;
   title: string;
   category: string;
-  date: string;
-  readTime: string;
+  postTime: string;
   details: string;
 }
 
@@ -23,7 +22,6 @@ const TopCompanyBlogs: React.FC<Props> = ({ email }) => {
   useEffect(() => {
     axiosPublic.get(`/get-posted-blogs/${email}`).then((res) => {
       setData(res.data);
-      console.log(res.data)
     });
   }, []);
 
@@ -38,12 +36,12 @@ const TopCompanyBlogs: React.FC<Props> = ({ email }) => {
 
   return (
     <div className="min-h-screen pb-10">
-      <div className="max-w-screen-xl mx-auto px-4">
-        <div className="grid gap-5 md:grid-cols-3">
+      <div className="max-w-screen-2xl mx-auto ">
+        <div className="grid gap-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 ">
           {datas &&
             datas.map((item: BlogData) => (
               <Link to={`/insights/${item._id}`} key={item._id}>
-                <div className="p-4 bg-white hover:shadow-md duration-300 rounded-lg">
+                <div className="p-2 bg-white hover:shadow-md duration-300 rounded-lg">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -53,8 +51,7 @@ const TopCompanyBlogs: React.FC<Props> = ({ email }) => {
                     {item.category}
                   </p>
                   <div className="flex justify-between text-sm text-gray-400">
-                    <p>{item.date}</p>
-                    <p>{item.readTime} read</p>
+                    <p>{item?.postTime.split("T")[0]}</p>
                   </div>
                   <h2 className="text-lg font-semibold mb-2">{item.title}</h2>
                   <p className="text-sm text-gray-600">

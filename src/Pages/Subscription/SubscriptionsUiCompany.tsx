@@ -1,39 +1,49 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import "./SubScriptions.css";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+import GoToTop from "../../component/GoToTop/GoToTop";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SubscriptionsUiCompany = () => {
   const { user } = useAuth();
   const [companyPlan, setCompanyPlan] = useState<any | null>(null);
-  const navigate = useNavigate();
+  const [subscription, setSubscription] = useState<any | null>(null);
   const axiosPublic = useAxiosPublic();
-
-  const userEmail = user?.email;
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axios.get("/companyPlans.json").then((res) => {
-      setCompanyPlan(res.data);
-      //console.log(res.data);
-    });
+    axiosPublic
+      .get("/packages/company")
+      .then((res) => {
+       
+        setCompanyPlan(res.data);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
-  const handleSelectPlan = (selectedPlan: any) => {
-    const paymentInfo = {
-      selectedPlan,
-      user: userEmail,
-    };
-    console.log(paymentInfo);
 
-    axiosPublic.post("/subscription", paymentInfo)
-    .then((res) => {
-      if (res.data) {
-        navigate("/payment");
-      }
-    });
+  useEffect(() => {
+    if (user?.email) {
+      axiosSecure.get(`/payment/${user.email}`)
+        .then((res) => {
+          setSubscription(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
+
+  const handleChoosePlan = (plan: any) => {
+    if (subscription && subscription?.packages === plan?.name) {
+      toast.error('You already have this plan!', {
+        position: 'top-center' // Adjust the position as needed
+      });
+    } else {
+      window.location.href = user ? `/payment/${plan._id}` : '/login';
+    }
   };
 
   return (
@@ -41,7 +51,9 @@ const SubscriptionsUiCompany = () => {
       <Helmet>
         <title>Company Subscription | LumiJobs</title>
       </Helmet>
-      <div className="max-w-screen-2xl mx-auto px-4">
+      <ToastContainer />
+      <GoToTop />
+      <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
         <section className="bg-white">
           <div className="py-8 lg:py-16">
             <div className="mx-auto max-w-screen-lg text-center mb-8 lg:mb-12">
@@ -57,12 +69,11 @@ const SubscriptionsUiCompany = () => {
             </div>
             <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
               {/* Render subscription cards dynamically */}
-              {companyPlan?.map((plan: any, index: number) => (
+              {companyPlan?.map((plan: any) => (
                 <div
-                  key={index}
-                  className={`flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 ${
-                    plan.popular ? "scale-110" : "scale-100"
-                  } border-gray-100 xl:p-8`}
+                  key={plan._id}
+                  className={`flex flex-col p-6 mx-auto max-w-lg text-center relative text-gray-900 bg-white rounded-lg border-2 ${plan.popular ? "scale-110" : "scale-100"
+                    } border-gray-100 xl:p-8`}
                 >
                   {plan.popular && (
                     <p className="absolute top-2 right-2 bg-blue-200 p-1 px-2 rounded-2xl font-semibold">
@@ -100,19 +111,11 @@ const SubscriptionsUiCompany = () => {
                     ))}
                   </ul>
                   <div className="action">
-                    {index === 0 ? (
-                      <button className="button w-full">Current Plan</button>
-                    ) : (
-                      <Link
-                        to={{
-                          pathname: user ? "/payment" : "/login",
-                        }}
-                        className="button"
-                        onClick={() => handleSelectPlan(plan)}
-                      >
-                        Choose plan
-                      </Link>
-                    )}
+                    <div className="flex justify-center">
+                      <button className="button" onClick={() => handleChoosePlan(plan)}>
+                        {subscription && subscription?.packages === plan.name ? 'Choose Plan' : 'Choose Plan'}
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}

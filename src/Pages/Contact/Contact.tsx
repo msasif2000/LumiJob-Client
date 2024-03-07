@@ -9,9 +9,10 @@ import { MdEmail } from "react-icons/md";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import GoToTop from "../../component/GoToTop/GoToTop";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const handlefrom = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -22,7 +23,7 @@ const Contact = () => {
         formDataObject[key] = value;
       });
 
-      console.log("Form Data:", formDataObject);
+     
 
       emailjs
         .sendForm(
@@ -32,17 +33,17 @@ const Contact = () => {
           "0N8CKLdWb0pnRf50u"
         )
         .then(
-          (result) => {
+          () => {
             resetForm();
             Swal.fire({
               position: "top-end",
               icon: "success",
               title: `Message send successfully .`,
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
             });
-            navigate('/')
-            console.log(result.text);
+            navigate("/");
+           
           },
           (error) => {
             console.log(error.text);
@@ -64,25 +65,26 @@ const Contact = () => {
       <Helmet>
         <title>Contacts | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="min-h-screen bg-[#fdfdfd]">
         <div className="max-w-screen-2xl mx-auto">
           <div>
             <div className="text-center pt-20 ">
-              <h3 className="text-5xl lg:text-7xl font-heading font-semibold text-center mb-4 lg:mb-5">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl 2xl:6xl font-heading font-semibold text-center mb-4 xl:mb-7">
                 Contact <span className="text-accentTwo">Us</span>
               </h3>
-              <p className="text-sm md:text-lg lg:text-xl text-[#707070] text-center">
+              <p className="text-sm md:text-lg lg:text-xl 2xl:text-2xl text-[#999999] text-center mx-4">
                 Any question or remarks? Just write us a message!
               </p>
             </div>
 
             {/* main section  */}
-            <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-8 mt-10 bg-white rounded-lg border shadow mx-2 px-3">
+            <div className="grid grid-cols-6 lg:grid-cols-12 justify-center gap-6 mt-10 bg-white rounded-lg border shadow mx-4 lg:mx-20 px-4 mb-12">
               <div className="col-span-1 ">
                 <div className="flex flex-col justify-center items-center gap-3">
                   <div className="lg:mt-12 xl:mt-16 py-10">
-                    <p className="-rotate-90 font-bold text-accentTwo">
-                      Follow us
+                    <p className="-rotate-90 font-bold text-accentTwo flex gap-1">
+                      <span>Follow</span> <span>us</span>
                     </p>
                   </div>
                   <div className="rotate-90 py-8">
@@ -123,7 +125,7 @@ const Contact = () => {
 
               {/* contact details  */}
 
-              <div className=" parent col-span-5 lg:col-span-4 bg-accent p-8 py-12 space-y-24 text-black rounded-lg">
+              <div className=" parent col-span-5 lg:col-span-4 bg-accent py-8 px-4 space-y-24 text-black">
                 <div>
                   <h3 className="text-4xl font-heading font-semibold text-white">
                     Contact Information
@@ -167,7 +169,7 @@ const Contact = () => {
                       ref={form}
                       className="card-body space-y-5 contactForm"
                     >
-                      <div className="flex flex-col md:flex-row gap-10">
+                      <div className="flex flex-col xl:flex-row gap-10">
                         <div
                           className="form-control w-full"
                           style={{ borderBottom: "1px solid gray" }}
@@ -199,7 +201,7 @@ const Contact = () => {
                           />
                         </div>
                       </div>
-                      <div className="flex flex-col md:flex-row gap-10 ">
+                      <div className="flex flex-col xl:flex-row gap-10 ">
                         <div
                           className="form-control w-full"
                           style={{ borderBottom: "1px solid gray" }}

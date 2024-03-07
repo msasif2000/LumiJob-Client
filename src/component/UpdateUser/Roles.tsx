@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Roles = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const handleCompany = () => {
     // for dev
-    axiosPublic
+    axiosSecure
       .put(`/roles/${user?.email}`, { role: "company", canPost: 5 })
       .then((res) => {
-        console.log(res.data);
+      
         if (res.data.message === "true") {
           toast.success("Role changed successfully");
           navigate("/dashboard/companyProfile/update");
@@ -25,10 +25,10 @@ const Roles = () => {
  
   const handleCandidate = () => {
     // for dev
-    axiosPublic
+    axiosSecure
       .put(`/roles/${user?.email}`, { role: "candidate", canApply: 20 })
       .then((res) => {
-        console.log(res.data);
+       
         if (res.data.message === "true") {
           toast.success("Role changed successfully");
           navigate("/dashboard/candidateProfile/update");
@@ -53,7 +53,7 @@ const Roles = () => {
                 you.
               </p>
 
-              <div className="flex space-x-5">
+              <div className="flex space-x-5 justify-center">
                 {/* card 1 */}
                 <div
                   onClick={() => handleCompany()}

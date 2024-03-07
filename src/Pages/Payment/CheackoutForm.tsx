@@ -1,12 +1,14 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import bgimg from "../../assets/svg/bg-glow.svg";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import Payment from './Payment';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+
 
 interface Payment {
   name: string;
@@ -29,37 +31,36 @@ const CheackoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const { planId } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { user, role } = useAuth();
   const [subs, setSubs] = useState<any | null>(null);
 
-  const price = subs?.selectedPlan?.price;
+
+  const price = subs?.price;
 
   useEffect(() => {
     price > 0 &&
-      axiosPublic
-        .post("/create-payment-intent", { price: price })
+      axiosSecure.post("/create-payment-intent", { price: price })
         .then((res) => {
-          // console.log(res.data.clientSecret);
+        
           setClientSecret(res.data.clientSecret);
         });
   }, [axiosPublic, price]);
 
   useEffect(() => {
-    if (user?.email) {
-      axiosPublic
-        .get(`/get-subs-details/${user.email}`)
-        .then((res) => {
-          setSubs(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [user]);
+    axiosPublic.get(`/subscriptions/${planId}`)
+      .then((res) => {
+        setSubs(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [user, planId]);
 
-  //console.log(subs);
+
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -106,17 +107,17 @@ const CheackoutForm = () => {
     if (confirmError) {
       console.log("confirm error");
     } else {
-      //   console.log("payment intent", paymentIntent);
+    
       if (paymentIntent.status === "succeeded") {
-        // console.log("transaction Id", paymentIntent.id);
+      
         setTransactionId(paymentIntent.id);
 
         const payment: Payment = {
           name: user?.displayName,
-          packages: subs?.selectedPlan?.name,
+          packages: subs?.name,
           email: user?.email,
-          price: subs?.selectedPlan?.price,
-          Features: subs?.selectedPlan?.features,
+          price: subs?.price,
+          Features: subs?.features,
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js
           userStatus: "premium",
@@ -125,14 +126,14 @@ const CheackoutForm = () => {
 
         // Depending on the user's role, set the appropriate permission
         if (role === "company") {
-          payment.canPost = subs?.selectedPlan?.canPost;
+          payment.canPost = subs?.canPost;
         } else {
-          payment.canApply = subs?.selectedPlan?.canApply;
+          payment.canApply = subs?.canApply;
         }
 
-        // console.log(payment)
+       
 
-        const res = await axiosPublic.post("/payments", payment);
+        const res = await axiosSecure.post("/payments", payment);
         console.log("payment saved", res.data);
         if (res.data?.paymentResult?.insertedId) {
           Swal.fire({
@@ -149,19 +150,17 @@ const CheackoutForm = () => {
     setLoading(false);
   };
 
-  const handleCancel = (id: string) => {
-    axiosPublic.delete(`/delete-subs-plan/${id}`).then((res) => {
-      if (res.data.deletedCount > 0) {
-        if (role === "company") {
-          navigate(`/subscriptionsUiCompany`);
-        } else {
-          navigate("/subscriptionsUiCandidate");
-        }
-      } else {
-        toast.warn("Something went wrong");
-      }
-    });
+
+  const handleCancel = () => {
+    // Go back to the previous route
+    navigate(-1);
   };
+
+  const handlePaymentConfirmation = () => {
+    toast.success('Payment confirmed!');
+    navigate('/');
+  };
+
   return (
     <div className=" bg-white rounded-sm border flex flex-col md:flex-row p-4">
       <div className="w-full md:w-1/2 rounded-md">
@@ -189,16 +188,16 @@ const CheackoutForm = () => {
                 </figure>
                 <div>
                   <h3 className="text-gray-500 text-xl">
-                    {subs?.selectedPlan?.name}
+                    {subs?.name}
                   </h3>
                   <h3 className="font-bold">
-                    Price: ${subs?.selectedPlan?.price}
+                    Price: ${subs?.price}
                   </h3>
                 </div>
               </div>
             </div>
             <ul role="list" className="my-8  space-y-4 text-left">
-              {subs?.selectedPlan?.features?.map(
+              {subs?.features?.map(
                 (feature: any, index: number) => (
                   <li key={index} className="flex items-center space-x-3">
                     {/* Icon */}
@@ -220,12 +219,11 @@ const CheackoutForm = () => {
               )}
             </ul>
             <div className="flex justify-center">
-              <button
-                onClick={() => handleCancel(subs?._id)}
-                className="underline text-violet-400"
-              >
-                Cancel Plan
-              </button>
+              <Link to={"/subscriptionsUiCandidate"}>
+                <button className="underline text-violet-400" onClick={handleCancel} >
+                  Cancel Plan
+                </button>
+              </Link>
             </div>
           </div>
         )}
@@ -237,42 +235,54 @@ const CheackoutForm = () => {
           </h3>
           <div className="divider w-2/3 mx-auto"></div>
         </Link>
-        <div className="pt-14 md:pt-[10rem]">
-          <form onSubmit={handleSubmit}>
-            <CardElement
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#424770",
-                    "::placeholder": {
-                      color: "#aab7c4",
-                    },
-                  },
-                  invalid: {
-                    color: "#9e2146",
-                  },
-                },
-              }}
-            ></CardElement>
-
-            <div className="w-full pt-8 flex justify-center">
-              <button
-                type="submit"
-                disabled={!stripe || !clientSecret || loading}
-                className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
-              >
-                {loading ? "Processing..." : "Pay Now"}
+        {subs?.price === 0 ? (
+          <div>
+            <p className=" text:sm md:text-xl font-semibold opacity-90 mt-10">Confirm Subscription for free</p>
+            <div className="flex justify-center">
+              <button onClick={handlePaymentConfirmation} className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-6">
+                Confirm
               </button>
             </div>
-            <p className="text-red-600 mt-5">{error}</p>
-            {transactionId && (
-              <p className="text-green-600 mt-5">
-                Transaction Id: {transactionId}
-              </p>
-            )}
-          </form>
-        </div>
+          </div>
+        ) : (
+          <div className="pt-14 md:pt-[10rem]">
+            <form onSubmit={handleSubmit}>
+              <CardElement
+                options={{
+                  style: {
+                    base: {
+                      fontSize: "16px",
+                      color: "#424770",
+                      "::placeholder": {
+                        color: "#aab7c4",
+                      },
+                    },
+                    invalid: {
+                      color: "#9e2146",
+                    },
+                  },
+                }}
+              ></CardElement>
+
+              <div className="w-full pt-8 flex justify-center">
+                <button
+                  type="submit"
+                  disabled={!stripe || !clientSecret || loading}
+                  className="btn w-2/3 bg-accent hover:bg-accentTwo text-white mt-10"
+                >
+                  {loading ? "Processing..." : "Pay Now"}
+                </button>
+              </div>
+              <p className="text-red-600 mt-5">{error}</p>
+              {transactionId && (
+                <p className="text-green-600 mt-5">
+                  Transaction Id: {transactionId}
+                </p>
+              )}
+            </form>
+          </div>
+        )}
+
       </div>
       <ToastContainer />
     </div>

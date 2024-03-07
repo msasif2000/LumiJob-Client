@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
+import NoData from "../component/NoData/NoData";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface Blog {
     _id: string,
@@ -20,6 +22,7 @@ const Blogs = () => {
     const [companyPostedBlogs, setCompanyPostedBlogs] = useState<any | null>(null);
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         if (user?.email) {
@@ -32,13 +35,17 @@ const Blogs = () => {
                 })
         }
     }, [user]);
+    const handleBlogPosts = () => {
+        navigate('/dashboard/post-a-blog')
+    }
+
     const length = companyPostedBlogs?.length;
 
     const handleDelete = (blogId: string) => {
-        axiosPublic
+        axiosSecure
             .delete(`/delete-blog/${blogId}`)
             .then((res) => {
-                //console.log(res.data);
+             
                 if (res.data.acknowledged) {
                     toast.success(`Blog post deleted successfully`, {
                         hideProgressBar: true,
@@ -56,25 +63,31 @@ const Blogs = () => {
                 toast.error("An error occurred while deleting the Blog.");
             });
     };
-    const handleBlogPosts = () => {
-        navigate('/dashboard/post-a-blog')
-    }
+
     return (
-        <div>
-            <CandidateNav
-                text="Your Posted Blogs"
-                btn="Post Blog"
-                btn2={length}
-                handleClick={() => { handleBlogPosts() }}
-                handleClick2={() => { }}
-            />
-            <div className="grid grid-cols-4 gap-6">
-                {companyPostedBlogs?.map((blog: Blog) => (
-                    <BlogCard key={blog._id} blog={blog} handleDelete={handleDelete} />
-                ))}
-            </div>
-            <ToastContainer />
-        </div>
+        <>
+            {length ? (
+                <div>
+                    <CandidateNav
+                        text="Your Posted Blogs"
+                        btn="Post Blog"
+                        btn2={length}
+                        handleClick={() => { handleBlogPosts() }}
+                        handleClick2={() => { }}
+                    />
+                    <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+                        {companyPostedBlogs?.map((blog: Blog) => (
+                            <BlogCard key={blog._id} blog={blog} handleDelete={handleDelete} />
+                        ))}
+                    </div>
+                    <ToastContainer />
+                </div>
+            )
+                :
+                (
+                    <NoData text="You have not posted any blogs yet" btn="Post Blog" noDataClick={handleBlogPosts} />
+                )}
+        </>
     );
 };
 

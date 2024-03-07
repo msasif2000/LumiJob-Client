@@ -3,7 +3,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Seminers = () => {
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const [seminars, setSeminars] = useState([]);
 
   useEffect(() => {
@@ -11,8 +11,8 @@ const Seminers = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-[#abf1c0] from-5% via-[#D0FBD0] via-20% to-[#F2F8F5] to-65% ... pb-10">
-      <div className="max-w-screen-2xl mx-auto lg:flex lg:space-x-10 px-4">
+    <div className="min-h-screen bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
+      <div className="max-w-screen-2xl mx-auto lg:flex lg:space-x-10 px-4 lg:px-20">
         <div className="pt-10 lg:w-1/3 lg:pt-32">
           <div className="space-y-8">
             <h1 className="text-3xl md:text-6xl xl:text-7xl font-heading font-semibold">

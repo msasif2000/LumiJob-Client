@@ -20,7 +20,7 @@ interface SignUpFormData {
 }
 const Signup: React.FC = () => {
   const axiosPublic = useAxiosPublic();
-  const { createUser, updateUserProfile, loading, setLoading } = useAuth();
+  const { createUser, updateUserProfile, loading, setLoading, userRefetch } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -45,14 +45,16 @@ const Signup: React.FC = () => {
       };
 
       // for dev Delete in prod
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
+      axiosPublic.post("/users", userInfo)
+      .then(() => {
+      
         toast.success("User created successfully", {
           position: "top-center",
           hideProgressBar: true,
           autoClose: 2000,
         });
       });
+      userRefetch()
 
       setLoading(false);
       navigate("/signup/role");
@@ -83,15 +85,15 @@ const Signup: React.FC = () => {
       <Helmet>
         <title>SignUp | LumiJobs</title>
       </Helmet>
-      <div className="w-full min-h-screen flex px-3 mb-4">
+      <div className="w-full min-h-screen flex lg:px-3 md:px-12 px-8  mb-4 mt-8">
         {/* form Div */}
         <div className="lg:w-1/2 flex flex-col items-center justify-center">
           <div className="w-full md:px-10 lg:px-4 xl:px-28">
-            <div className="space-y-6">
+            <div className="space-y-3">
               <h1 className="text-2xl md:text-4xl xl:text-5xl font-semibold">
                 Hey There
               </h1>
-              <p className="xl:text-2xl text-gray-500 pb-3">
+              <p className="xl:text-2xl lg:text-xl text-gray-500 pb-3">
                 Create an account and start you career journey with us &
                 recruiters from all around globe.
               </p>
@@ -136,7 +138,7 @@ const Signup: React.FC = () => {
                     required: "Password is required",
                     pattern: {
                       value:
-                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^/\|])[A-Za-z\d@$!%*?&#^/\|]{6,}$/,
                       message:
                         "Password must meet the requirements: at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 6 characters long.",
                     },

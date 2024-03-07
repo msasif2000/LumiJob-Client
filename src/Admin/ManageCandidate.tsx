@@ -1,30 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
 import CPagination from "../Pages/FindCandidate/CPagination";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import GoToTop from "../component/GoToTop/GoToTop";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageCandidate = () => {
-  const axiosPublic = useAxiosPublic();
-  const [dataPerPage] = useState<number>(10);
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const [dataPerPage, setDataPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+
+  const handleDataPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setDataPerPage(Number(event.target.value));
+    setCurrentPage(1); 
+  };
 
   const { refetch, data: candidates = [] } = useQuery({
     queryKey: ["candidates"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/user?role=candidate`);
+      const res = await axiosSecure.get(`/user?role=candidate`);
       return res.data;
     },
   });
-
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
-  // console.log(candidates);
   const handleDelete = (id: string) => {
     Swal.fire({
       title: "Are you sure?",
@@ -36,26 +42,28 @@ const ManageCandidate = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/delCandidate/${id}`).then((res) => {
-          // console.log(res);
-          if (res.data.deletedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Deleted!",
-              text: "Delete Successfully",
-              icon: "success",
-            });
-          }
-        });
+        axiosSecure.delete(`/delCandidate/${id}`)
+          .then((res) => {
+
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Delete Successfully",
+                icon: "success",
+              });
+            }
+          });
       }
     });
   };
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Manage Candidate | LumiJobs</title>
       </Helmet>
+      <GoToTop />
       <div className="flex flex-col md:flex-row justify-between users-center max-w-screen-xl border mx-auto p-6 bg-white rounded-t-lg my-2">
         <h2 className="text-3xl">
           <b>Manage Candidates</b>
@@ -78,32 +86,42 @@ const ManageCandidate = () => {
           </thead>
           <tbody>
             {candidates
-              .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage).map((candidate: any, index: number) => (
-              <tr key={candidate._id}>
-                <th>{index + 1}</th>
+              .slice((currentPage - 1) * dataPerPage, currentPage * dataPerPage)
+              .map((candidate: any, index: number) => (
+                <tr key={candidate._id}>
+                  <th>{index + 1}</th>
 
-                <td>
-                  <div className="font-bold">{candidate?.name}</div>
-                </td>
-                <td>
-                  <h3 className="font-semibold text-lg">{candidate?.email}</h3>
-                </td>
-                <td>
-                  <h3 className="font-semibold text-lg">{candidate?.status}</h3>
-                </td>
-                {/* <td>{company?.subscription}</td> */}
                   <td>
-                    <button onClick={() => handleDelete(candidate?._id)} className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group">
+                    <div className="font-bold">{candidate?.name}</div>
+                  </td>
+                  <td>
+                    <h3 className="font-semibold text-lg">
+                      {candidate?.email}
+                    </h3>
+                  </td>
+                  <td>
+                    <h3 className="font-semibold text-lg">
+                      {candidate?.status}
+                    </h3>
+                  </td>
+                  {/* <td>{company?.subscription}</td> */}
+                  <td>
+                    <button
+                      onClick={() => handleDelete(candidate?._id)}
+                      className="text-white bg-red-600 hover:bg-red-500 p-3 rounded text-md mr-4 inline-block relative group"
+                    >
                       <MdDelete className="text-2xl" />
                       <span className="opacity-0 group-hover:opacity-100 absolute top-full left-1/2 transform -translate-x-1/2 text-black  px-3 text-sm z-10 transition-opacity duration-300">
                         Delete
                       </span>
                     </button>
                   </td>
-              </tr>
-            ))}
+                </tr>
+              ))}
           </tbody>
         </table>
+      </div>
+      <div className="flex justify-center gap-12">
         {candidates.length > dataPerPage && (
           <div className="py-12">
             {/* ==>  Pagination <== */}
@@ -114,7 +132,21 @@ const ManageCandidate = () => {
               onPageChange={handlePageChange}
             ></CPagination>
           </div>
+
         )}
+        <div className="flex justify-end py-12 items-center">
+
+          <select
+            id="dataPerPage"
+            value={dataPerPage}
+            onChange={handleDataPerPageChange}
+            className="px-2 py-1 border rounded-md"
+          >
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={30}>30</option>
+          </select>
+        </div>
       </div>
     </>
   );

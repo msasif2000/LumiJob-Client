@@ -26,7 +26,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
   return (
     <div className="">
       <div>
-        <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded-lg border hover:border-accent py-8 text-gray-700 bg-white ">
+        <div className="group grid grid-cols-12 space-x-8 overflow-hidden rounded border hover:border-accent py-8 text-gray-700 bg-white ">
           <div className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4">
             <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
               <img src={picture} alt="logo" className="w-full  text-gray-700" />
@@ -56,7 +56,7 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                 <PiSuitcaseSimpleLight className="mr-1" />{" "}
-                {experience.split("years")[0]} years
+                {experience.split("year")[0]} years
               </span>
               <span className="bg-[#E0E0E0] py-1 px-3 rounded flex items-center text-sm">
                 <PiMoney className="mr-1" /> $ {salaryRange.min} - ${" "}
@@ -65,14 +65,14 @@ const FindJobCard: React.FC<JobCardsProps> = ({ job }) => {
             </div>
             <Link className="md:flex justify-end hidden" to={`/details/${_id}`}>
               <button className="mt-4 py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
-                Apply
+                Details
               </button>
             </Link>
             <div className="flex items-center justify-center mt-4 gap-2 md:hidden">
               <BookmarkButton job={job} />
               <Link className="flex justify-end" to={`/details/${_id}`}>
                 <button className=" py-1 px-8 border border-gray-300 hover:bg-accent hover:text-white font-semibold text-base rounded-lg">
-                  Apply
+                 Details
                 </button>
               </Link>
             </div>

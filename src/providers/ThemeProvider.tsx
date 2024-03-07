@@ -11,8 +11,9 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import auth from "../config/Firebase.config";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { auth } from "../config/Firebase.config";
+import { useQuery } from "@tanstack/react-query";
 
 const GoogleProvider = new GoogleAuthProvider();
 const GithubProvider = new GithubAuthProvider();
@@ -32,6 +33,9 @@ interface ThemeInfo {
   premium: any;
   photo: any;
   packages: any;
+  name: any;
+
+  userRefetch: () => void;
 }
 
 export const ThemeContext = createContext<ThemeInfo | null>(null);
@@ -48,6 +52,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [photo, setPhoto] = useState(null);
   const [packages, setPackages] = useState(null);
   const axiosPublic = useAxiosPublic();
+  const [name, setName] = useState("");
 
   const createUser = (email: string, password: string): Promise<any> => {
     setLoading(true);
@@ -85,21 +90,32 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       });
   };
 
-  const logOut = (): Promise<void> => {
-    return signOut(auth);
-  };
-
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        //get token
+
+        const useInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", useInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("token", res.data.token);
+          }
+        });
+        setUser(currentUser);
+        setLoading(false);
+      } else {
+        localStorage.removeItem("token");
+        setUser(null);
+        setLoading(false);
+      }
+
       // console.log("Observed User:", currentUser);
     });
 
     return () => {
       unSubscribe();
     };
-  }, [user]);
+  }, [user, axiosPublic]);
 
   const updateUserProfile = (name: string): Promise<void> => {
     setLoading(true);
@@ -122,22 +138,28 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   };
 
+  const { data: infos, refetch: userRefetch } = useQuery({
+    queryKey: ["infos", user],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/user-profile/${user?.email}`);
+      return res.data;
+    },
+  });
+
   useEffect(() => {
-    if (user?.email) {
-      axiosPublic
-        .get(`/user-profile/${user?.email}`)
-        .then((res) => {
-          const { role, status, photo, packages } = res.data;
-          setRole(role);
-          setPremium(status);
-          setPhoto(photo);
-          setPackages(packages);
-        })
-        .catch((error) => {
-          console.error("Error checking user role:", error);
-        });
+    if (infos) {
+      setRole(infos?.role);
+      setPremium(infos?.status);
+      setPhoto(infos?.photo);
+      setPackages(infos?.packages);
+      setName(infos?.name);
     }
-  }, [user]);
+  }, [infos]);
+
+  const logOut = async (): Promise<void> => {
+    await signOut(auth);
+    await userRefetch();
+  };
 
   const themeInfo: ThemeInfo = {
     googleSignIn,
@@ -154,6 +176,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     premium,
     photo,
     packages,
+    userRefetch,
+    name,
   };
 
   return (

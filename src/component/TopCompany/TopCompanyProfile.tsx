@@ -5,10 +5,10 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import SmallCards from "./SmallCards"
 import Job from "../../Pages/Home/PopularJobs/Job";
 //import FeaturedArticle from "../../Pages/Blogs/components/FeaturedArticle";
-import Seminers from "../../Pages/Blogs/components/Seminers";
 import TopCompanyBlogs from "./TopCompanyBlogs";
 import { Helmet } from "react-helmet-async";
 import "./styles.css";
+import TopCompanySeminar from "./TopCompanySeminar";
 // import TopCompanyBlogs from "./TopCompanyBlogs";
 
 const TopCompanyProfile = () => {
@@ -22,10 +22,10 @@ const TopCompanyProfile = () => {
       .get(`/company-profile/${id}`)
       .then((res) => {
         setCompanyProfile(res.data);
-        console.log(res.data);
+       
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [id]);
 
   // company posted jobs
   useEffect(() => {
@@ -34,7 +34,7 @@ const TopCompanyProfile = () => {
         .get(`/company-postedJobs/${CompanyProfile?.email}`)
         .then((res) => {
           setCompanyPostedJobs(res.data);
-          console.log(res.data);
+         
         })
         .catch((err) => console.log(err));
     }
@@ -49,7 +49,7 @@ const TopCompanyProfile = () => {
       <div className="">
 
         {/* company details pages  */}
-        <div className=" pt-5 pb-5  px-7 bg-[#e1e8ff]">
+        <div className=" pt-5 pb-5  px-4 lg:px-20 bg-[#e1e8ff]">
           {/* company information */}
           <div className="max-w-screen-xl mx-auto flex gap-4 md:gap-10 my-10">
             <img
@@ -108,15 +108,15 @@ const TopCompanyProfile = () => {
         {/* tab sessions */}
         <div className="max-w-screen-xl mx-auto">
           <Tabs>
-            <TabList className={`text-lg font-bold pt-4 mt-12`}>
+            <TabList className={`text-lg font-bold pt-4 mt-12 px-4 lg:px-20`}>
               <Tab>About</Tab>
               <Tab>Posted Jobs</Tab>
               <Tab>Blogs</Tab>
               <Tab>Seminar</Tab>
             </TabList>
-            <div className=" border border-b-2"></div>
+            <div className=" border border-b-2 mx-4 lg:mx-20"></div>
             <TabPanel>
-              <div className="flex-1 bg-[#ffffff] pt-16 mb-5 px-10 rounded-2xl">
+              <div className="flex-1 bg-[#ffffff] pt-8 mb-5 px-4 lg:px-20  rounded-2xl">
                 <p className=" text-sm md:text-base text-justify text-[#282829] ">
                   Established on {CompanyProfile?.founding},{" "}
                   {CompanyProfile?.name} is a leading force in the{" "}
@@ -139,30 +139,33 @@ const TopCompanyProfile = () => {
             <TabPanel className={`pt-6`}>
               <div className=" items-center mb-3">
                 <div>
-                  <div>
-                    <h4 className="font-semibold font-heading">
-                      <span className="text-[#486DD9]">
-                        {companyPostedJobs?.length}
-                      </span>{" "}
-                      Jobs Available
-                    </h4>
-                  </div>
+                  <h4 className="font-semibold font-heading  px-4 lg:px-20">
+                    <span className="text-[#486DD9]">
+                      {companyPostedJobs?.length}
+                    </span>{" "}
+                    Jobs Available
+                  </h4>
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-8 mx-auto mb-8">
+              <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-6 2xl:gap-8 mx-auto mb-8 px-4 lg:px-20">
                 {companyPostedJobs?.map((job: Job) => (
                   <SmallCards key={job._id} job={job}></SmallCards>
                 ))}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel className="pt-6">
               {CompanyProfile?.email && (
-                <TopCompanyBlogs key={CompanyProfile._id} email={CompanyProfile.email} />
+                <div className="mx-auto mb-3 px-4 lg:px-20">
+                  <TopCompanyBlogs key={CompanyProfile?._id} email={CompanyProfile?.email} />
+                </div>
               )}
               {/* <FeaturedArticle /> */}
             </TabPanel>
             <TabPanel>
-              <Seminers />
+              <div className=" mb-3 mx-auto px-4 lg:px-20">
+                <TopCompanySeminar key={CompanyProfile?._id} email={CompanyProfile?.email} />
+              </div>
+
             </TabPanel>
           </Tabs>
         </div>

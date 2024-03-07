@@ -1,3 +1,7 @@
+import { CgWorkAlt } from "react-icons/cg"; 
+import { HiUserGroup } from "react-icons/hi";
+import { BiTime } from "react-icons/bi";
+import { GoLocation } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -16,10 +20,8 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
     return formattedDate;
   };
 
-  const applicants = job.applicants?.length  
-  //console.log(applicants)
+  const applicants = job.applicants?.length
  
-
   const confirmDelete = () => {
     setShowConfirmation(true);
   };
@@ -41,39 +43,39 @@ const PostedJobsCard: React.FC<prop> = ({ job, handleDelete }) => {
     >
       <Link key={job._id} to={`/details/${job._id}`}>
         <div className="card shadow-md hover:shadow-xl duration-1000 h-full">
-          <div className="card-body space-y-2">
+          <div className="card-body lg:p-4 xl:p-6">
             <h2 className="text-2xl font-bold">{job?.platform}</h2>
             <div className="flex justify-between items-center">
               <p className="font-semibold">{job?.jobType}</p>
               <p className="text-right">${job?.salaryRange.min}</p>
             </div>
             <p>{job?.description}</p>
-            <div className="flex justify-between items-center">
-              <p className="">{job?.sectorType}</p>
+            <div className="flex">
+            <p className="flex gap-1 items-center"><CgWorkAlt className="text-2xl"/>{job?.sectorType}</p>
               <p className="text-violet-500 text-right font-semibold">
-               {
-                job.applicants?
-                <>
-                <p>{applicants} Applicants</p>
-                </>
-                :
-                <>
-                <p>No Applicants</p>
-                </>                
-               }
+                {
+                  job.applicants ?
+                    <>
+                      <p className="flex gap-1 items-center justify-end">{applicants} Applicants <HiUserGroup className="text-xl" /></p>
+                    </>
+                    :
+                    <>
+                      <p className="flex gap-1 items-center justify-end">None<HiUserGroup className="text-xl" /></p>
+                    </>
+                }
               </p>
             </div>
-            <div className="flex justify-between items-center">
-              <p className="">{job?.location}</p>
-              <p className="text-right">
-                {formatDeadlineDate(job?.deadline)}
+            <div className="flex">
+              <p className="flex gap-1 items-center"><GoLocation className="text-xl" />{job?.location}</p>
+              <p className="flex items-center justify-end gap-1 text-violet-500 font-semibold">
+                {formatDeadlineDate(job?.deadline)} <BiTime className="text-xl" />
               </p>
             </div>
           </div>
         </div>
       </Link>
       {showDeleteIcon && (
-        <div className="absolute top-8 right-8 bg-red-600 p-2 rounded">
+        <div className="absolute top-4 right-6 bg-red-600 p-2 rounded">
           <RiDeleteBinLine
             className="text-white cursor-pointer transition duration-300 ease-in-out transform hover:scale-150"
             onClick={confirmDelete} // Show confirmation dialog on click
