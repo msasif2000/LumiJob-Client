@@ -116,7 +116,7 @@ const TopCompanyProfile = () => {
             </TabList>
             <div className=" border border-b-2 mx-4 lg:mx-20"></div>
             <TabPanel>
-              <div className="flex-1 bg-[#ffffff] pt-16 mb-5 px-4 lg:px-20  rounded-2xl">
+              <div className="flex-1 bg-[#ffffff] pt-8 mb-5 px-4 lg:px-20  rounded-2xl">
                 <p className=" text-sm md:text-base text-justify text-[#282829] ">
                   Established on {CompanyProfile?.founding},{" "}
                   {CompanyProfile?.name} is a leading force in the{" "}
@@ -147,7 +147,7 @@ const TopCompanyProfile = () => {
                   </h4>
                 </div>
               </div>
-              <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-6 2xl:gap-8 mx-auto mb-8 px-4 lg:px-20">
+              <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-6 2xl:gap-8 mx-auto mb-8 px-4 lg:px-20">
                 {companyPostedJobs?.map((job: Job) => (
                   <SmallCards key={job._id} job={job}></SmallCards>
                 ))}

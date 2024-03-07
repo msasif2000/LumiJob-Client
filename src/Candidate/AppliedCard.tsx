@@ -78,6 +78,8 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
     enabled: !!id,
   });
 
+  console.log(job)
+
   return (
     <div
       className="relative"
@@ -113,7 +115,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
                 <div className="flex  items-center font-medium">
                   <div className="flex justify-center  items-center space-x-4">
                     <p className="font-semibold">Interview at:</p>
-                    <div>
+                    <div className='flex items-center space-x-5'>
                       <Link
                         to={job?.scheduleInterview?.googleMeet}
                         target="_blank"
@@ -123,6 +125,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
                         <SiGooglemeet />
                       </Link>
                       <p>
+
                         {convertTo12HourFormat(
                           job?.scheduleInterview?.interviewTime
                         )}

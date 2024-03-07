@@ -90,27 +90,21 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       });
   };
 
-  const logOut = (): Promise<void> => {
-    return signOut(auth);
-  };
-
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         //get token
 
         const useInfo = { email: currentUser.email };
-        axiosPublic.post('/jwt', useInfo)
-          .then(res => {
-            if (res.data.token) {
-              localStorage.setItem('token', res.data.token);
-            }
-          })
+        axiosPublic.post("/jwt", useInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("token", res.data.token);
+          }
+        });
         setUser(currentUser);
         setLoading(false);
-      }
-      else {
-        localStorage.removeItem('token');
+      } else {
+        localStorage.removeItem("token");
         setUser(null);
         setLoading(false);
       }
@@ -163,6 +157,13 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   }, [infos]);
 
+<<<<<<< HEAD
+=======
+  const logOut = async (): Promise<void> => {
+    await signOut(auth);
+    await userRefetch();
+  };
+>>>>>>> 75051edb22410bb5b063af8e92d0c20b5f745e26
 
   const themeInfo: ThemeInfo = {
     googleSignIn,
@@ -180,7 +181,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     photo,
     packages,
     userRefetch,
-    name
+    name,
   };
 
   return (

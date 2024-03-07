@@ -209,8 +209,7 @@ const CandidateProUpdate: React.FC = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosSecure
-        .get(`/specific-candidate/${user.email}`)
+      axiosPublic.get(`/specific-candidate/${user.email}`)
         .then((res) => {
           setCurrentUser(res.data);
 

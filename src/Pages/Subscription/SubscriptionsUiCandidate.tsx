@@ -54,7 +54,7 @@ const SubscriptionsUiCandidate = () => {
         <title>Candidate Subscription | LumiJobs</title>
       </Helmet>
       <GoToTop />
-      <div className="max-w-screen-2xl mx-auto px-4">
+      <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
         <section className="bg-white ">
           <div className="py-8 lg:py-16 ">
             <div className="mx-auto max-w-screen-lg text-center mb-8 lg:mb-12">

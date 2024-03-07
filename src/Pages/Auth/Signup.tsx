@@ -20,7 +20,7 @@ interface SignUpFormData {
 }
 const Signup: React.FC = () => {
   const axiosPublic = useAxiosPublic();
-  const { createUser, updateUserProfile, loading, setLoading } = useAuth();
+  const { createUser, updateUserProfile, loading, setLoading, userRefetch } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -54,6 +54,7 @@ const Signup: React.FC = () => {
           autoClose: 2000,
         });
       });
+      userRefetch()
 
       setLoading(false);
       navigate("/signup/role");

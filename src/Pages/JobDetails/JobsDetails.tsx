@@ -71,7 +71,6 @@ const JobsDetails: React.FC = () => {
       .get(`/single-job/${id}`)
       .then((res) => {
         setJobs(res.data);
-        
       })
       .catch((error) => console.log(error));
   }, []);
@@ -85,13 +84,13 @@ const JobsDetails: React.FC = () => {
     requirements,
     platform,
     post_time,
-    aboutUs,
+    // aboutUs,
     positionOverview,
     responsibilities,
     skills,
     experience,
     perks,
-    application
+    application,
   } = job || {};
 
   const formatDateTime = (dateTimeString: any) => {
@@ -134,7 +133,6 @@ const JobsDetails: React.FC = () => {
     axiosSecure
       .post(`/apply-to-jobs`, jobDetails)
       .then((res) => {
-  
         if (res.data.insertedId) {
           toast.success("Applied Successfully", {
             position: "top-center",
@@ -235,7 +233,6 @@ const JobsDetails: React.FC = () => {
               axiosSecure
                 .post("/set-resume", data)
                 .then((res) => {
-                
                   if (res.data.message === "true") {
                     const { _id, ...jobWithoutId } = job as JobDetails;
 
@@ -247,11 +244,9 @@ const JobsDetails: React.FC = () => {
                       status: "unopened",
                     };
 
-
                     axiosSecure
                       .post(`/apply-to-jobs`, jobDetails)
                       .then((res) => {
-                       
                         if (res.data.insertedId) {
                           toast.success("Applied Successfully", {
                             position: "top-center",
@@ -357,7 +352,7 @@ const JobsDetails: React.FC = () => {
         <title> {`${title}`} | LumiJobs</title>
       </Helmet>
       <GoToTop />
-      <div className="max-w-screen-2xl mx-auto py-8 px-4">
+      <div className="max-w-screen-2xl mx-auto py-8 px-4 lg:px-20">
         <div>
           {/* Display jobs */}
           {job ? (
@@ -402,10 +397,10 @@ const JobsDetails: React.FC = () => {
                   </p>
                 </div>
 
-                <div>
+                {/* <div>
                   <p className=" font-semibold text-xl mt-5 mb-2">About Us</p>
                   <p className="text-lg opacity-90">{aboutUs}</p>
-                </div>
+                </div> */}
                 <div>
                   <p className="font-semibold text-xl mt-5 mb-2">
                     Position Overview
@@ -551,14 +546,23 @@ const JobsDetails: React.FC = () => {
                         </div>
                       )}
                       <div>
-                        <button
-                          onClick={() => {
-                            setShowResumeModal(true);
-                          }}
-                          className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
-                        >
-                          Apply
-                        </button>
+                        {user ? (
+                          <button
+                            onClick={() => {
+                              setShowResumeModal(true);
+                            }}
+                            className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                          >
+                            Apply
+                          </button>
+                        ) : (
+                          <Link
+                            to={"/login"}
+                            className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                          >
+                            Apply
+                          </Link>
+                        )}
                       </div>
                     </>
                   )}
@@ -601,7 +605,10 @@ const JobsDetails: React.FC = () => {
                         ></Share>
                       </>
                     ) : (
-                          <Link className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700" to={"/login"}>
+                      <Link
+                        className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700"
+                        to={"/login"}
+                      >
                         Login to get your link
                       </Link>
                     )}

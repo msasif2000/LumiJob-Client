@@ -7,7 +7,6 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface FormData {
   photo: File;
@@ -35,7 +34,6 @@ const CompanyProUpdate = () => {
   const navigate = useNavigate();
   const loading = false;
   const axiosSecure = useAxiosSecure();
-  const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const [company, setCompany] = useState<CompanyData | null>(null);
   const { register, handleSubmit, setValue } = useForm<FormData>();
@@ -48,7 +46,7 @@ const CompanyProUpdate = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosPublic.get(`/user-profile/${user.email}`)
+      axiosSecure.get(`/user-profile/${user.email}`)
         .then((res) => {
           setCompany(res.data);
         

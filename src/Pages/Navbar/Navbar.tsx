@@ -3,14 +3,16 @@ import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 interface NavbarProps {
   color?: string;
 }
 
 const Navbar: React.FC<NavbarProps> = () => {
-  const { user, logOut, premium, role, photo } = useAuth();
+  const { user, logOut, premium, role, photo, userRefetch } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const [userData, setUserData] = useState<{ _id: string; value: number }>();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isPremium, setIsPremium] = useState(false);
@@ -25,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     if (role === "candidate") {
-      axiosSecure.get(`/specific-candidate/${user?.email}`).then((res) => {
+      axiosPublic.get(`/specific-candidate/${user?.email}`).then((res) => {
         setUserData(res.data);
       });
     } else if (role === "company") {
@@ -50,6 +52,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   const handleLogout = () => {
     logOut();
+    userRefetch();
   };
 
   const Linking = (
@@ -59,19 +62,26 @@ const Navbar: React.FC<NavbarProps> = () => {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink className="text-lg font-heading font-base" to="/find-job">
+          Jobs
+        </NavLink>
+      </li>
       <li key="Job">
-        {user && role === "company" ? (
-          <NavLink
-            className="text-lg font-heading font-base"
-            to="/find-candidate"
-          >
-            Candidates
-          </NavLink>
-        ) : (
-          <NavLink className="text-lg font-heading font-base" to="/find-job">
-            Jobs
-          </NavLink>
-        )}
+        <NavLink
+          className="text-lg font-heading font-base"
+          to="/find-candidate"
+        >
+          Candidates
+        </NavLink>
+      </li>
+      <li key="CollaborationHub">
+        <NavLink
+          className="text-lg font-heading font-base"
+          to="/collaboration-hub"
+        >
+          Co-Hub
+        </NavLink>
       </li>
       <li key="Insights">
         <NavLink className="text-lg font-heading font-base" to="/insights">
@@ -79,13 +89,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         </NavLink>
       </li>
 
-      <li key="CollaborationHub">
-        <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
-          Co-Hub
-        </NavLink>
-      </li>
-
-      <li key="Contact">
+      <li key="Contact" className="lg:hidden xl:flex">
         <NavLink className="text-lg font-heading font-base" to="/Contact">
           Contact
         </NavLink>
@@ -101,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           : ""
       }`}
     >
-      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-20">
+      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-16">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -140,7 +144,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         </div>
         <div className="navbar-end">
           {!isPremium ? (
-            <div className="mr-24 hidden md:block ">
+            <div className="xl:mr-24 mr-2 hidden md:block ">
               {role === "candidate" ? (
                 <Link to="/subscriptionsUiCandidate">
                   <button className="button ">
@@ -214,7 +218,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div
-                    className={`w-20 rounded-full ${
+                    className={` w-6 md:w-8 xl:w-16 rounded-full ${
                       premium === "premium"
                         ? "ring-4 ring-blue-400 ring-offset-2"
                         : ""
