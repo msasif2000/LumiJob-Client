@@ -69,19 +69,20 @@ const Navbar: React.FC<NavbarProps> = () => {
           Candidates
         </NavLink>
       </li>
+      <li key="CollaborationHub">
+        <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
+          Co-Hub
+        </NavLink>
+      </li>
       <li key="Insights">
         <NavLink className="text-lg font-heading font-base" to="/insights">
           Insights
         </NavLink>
       </li>
 
-      <li key="CollaborationHub">
-        <NavLink className="text-lg font-heading font-base" to="/collaboration-hub">
-          Co-Hub
-        </NavLink>
-      </li>
 
-      <li key="Contact">
+
+      <li key="Contact" className="lg:hidden xl:flex">
         <NavLink className="text-lg font-heading font-base" to="/Contact">
           Contact
         </NavLink>
@@ -96,7 +97,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         : ""
         }`}
     >
-      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-20">
+      <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-16">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
