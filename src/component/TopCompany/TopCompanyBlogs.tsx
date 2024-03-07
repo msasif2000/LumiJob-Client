@@ -37,7 +37,7 @@ const TopCompanyBlogs: React.FC<Props> = ({ email }) => {
   return (
     <div className="min-h-screen pb-10">
       <div className="max-w-screen-2xl mx-auto ">
-        <div className="grid gap-4 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 ">
+        <div className="grid gap-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 ">
           {datas &&
             datas.map((item: BlogData) => (
               <Link to={`/insights/${item._id}`} key={item._id}>
