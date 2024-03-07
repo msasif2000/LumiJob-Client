@@ -90,7 +90,7 @@ const JobsDetails: React.FC = () => {
     skills,
     experience,
     perks,
-    application
+    application,
   } = job || {};
 
   const formatDateTime = (dateTimeString: any) => {
@@ -133,7 +133,6 @@ const JobsDetails: React.FC = () => {
     axiosSecure
       .post(`/apply-to-jobs`, jobDetails)
       .then((res) => {
-  
         if (res.data.insertedId) {
           toast.success("Applied Successfully", {
             position: "top-center",
@@ -234,7 +233,6 @@ const JobsDetails: React.FC = () => {
               axiosSecure
                 .post("/set-resume", data)
                 .then((res) => {
-                
                   if (res.data.message === "true") {
                     const { _id, ...jobWithoutId } = job as JobDetails;
 
@@ -246,11 +244,9 @@ const JobsDetails: React.FC = () => {
                       status: "unopened",
                     };
 
-
                     axiosSecure
                       .post(`/apply-to-jobs`, jobDetails)
                       .then((res) => {
-                       
                         if (res.data.insertedId) {
                           toast.success("Applied Successfully", {
                             position: "top-center",
@@ -550,14 +546,23 @@ const JobsDetails: React.FC = () => {
                         </div>
                       )}
                       <div>
-                        <button
-                          onClick={() => {
-                            setShowResumeModal(true);
-                          }}
-                          className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
-                        >
-                          Apply
-                        </button>
+                        {user ? (
+                          <button
+                            onClick={() => {
+                              setShowResumeModal(true);
+                            }}
+                            className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                          >
+                            Apply
+                          </button>
+                        ) : (
+                          <Link
+                            to={"/login"}
+                            className="btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-5"
+                          >
+                            Apply
+                          </Link>
+                        )}
                       </div>
                     </>
                   )}
@@ -600,7 +605,10 @@ const JobsDetails: React.FC = () => {
                         ></Share>
                       </>
                     ) : (
-                          <Link className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700" to={"/login"}>
+                      <Link
+                        className=" hover:text-white py-2 border-2 text-blue-700 border-blue-700 px-4 rounded hover:bg-blue-700"
+                        to={"/login"}
+                      >
                         Login to get your link
                       </Link>
                     )}
