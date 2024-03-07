@@ -147,7 +147,7 @@ const TopCompanyProfile = () => {
                   </h4>
                 </div>
               </div>
-              <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-6 2xl:gap-8 mx-auto mb-8 px-4 lg:px-20">
+              <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-6 2xl:gap-8 mx-auto mb-8 px-4 lg:px-20">
                 {companyPostedJobs?.map((job: Job) => (
                   <SmallCards key={job._id} job={job}></SmallCards>
                 ))}
