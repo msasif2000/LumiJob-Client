@@ -148,6 +148,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     if (infos) {
+      
       setRole(infos?.role);
       setPremium(infos?.status);
       setPhoto(infos?.photo);
@@ -156,10 +157,13 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   }, [infos]);
 
+<<<<<<< HEAD
+=======
   const logOut = async (): Promise<void> => {
     await signOut(auth);
     await userRefetch();
   };
+>>>>>>> 75051edb22410bb5b063af8e92d0c20b5f745e26
 
   const themeInfo: ThemeInfo = {
     googleSignIn,
