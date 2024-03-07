@@ -16,10 +16,10 @@ const TopCompanyCard: React.FC<{ company: Company }> = ({ company }) => {
   return (
     <Link to={`/company-details-profile/${_id}`}>
       <div className="border p-4 rounded-lg shadow-md transform transition-transform hover:translate-y-[-3px] ease-in-out duration-300 hover:border-accent cursor-pointer">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-2 items-center">
           <img src={photo} className="w-20 rounded-full" alt={name} />
           <div className="flex flex-col justify-between flex-grow">
-            <p className="text-xl font-bold text-gray-700 lg:text-left">
+            <p className=" text-lg 2xl:text-xl font-bold text-gray-700 lg:text-left">
               {name}
             </p>
             <p className="font-normal text-gray-500 md:flex hidden">
@@ -30,10 +30,10 @@ const TopCompanyCard: React.FC<{ company: Company }> = ({ company }) => {
               <p className="font-normal text-gray-500">{country}</p>
             </div>
             <p className="font-normal text-gray-500 md:flex hidden">
-              Registration: <b>{registration}</b>
+              Registration: {registration}
             </p>
             <p className="font-normal text-gray-500 md:hidden">
-              Reg <b>{registration}</b>
+              Reg{registration}
             </p>
           </div>
         </div>

@@ -9,14 +9,9 @@ interface Data {
 
 const FeedbackCard: React.FC<Data> = ({ info }) => {
   const {
-    // _id,
     anyComments,
     interfaceRating,
-    // supportRating,
     UserNames,
-    // email,
-    role,
-
   } = info;
   
 
@@ -62,19 +57,16 @@ const FeedbackCard: React.FC<Data> = ({ info }) => {
   return (
     <div className="mx-8 ">
       <div className="card1 backdrop-blur-xl">
-        
-        
-        <p className="message text-justify ">
+        <p className="message text-sm text-justify ">
           { top } 
         </p>
         <div className="header1 mt-4">
-          
           <div className="">
             <div className="">
               {/* rating */}
               {renderStarRating(interfaceRating)}
             </div>
-            <p className="name1 grid "> <span>{UserNames}, {role}.</span></p>
+            <p className="name1 grid "> <span>{UserNames}</span></p>
           </div>
         </div>
       </div>

@@ -37,22 +37,23 @@ const FeedbackForWebsiteHome = () => {
   const candidateData: Data[] = filteredData?.candidates;
   const companyData: Data[] = filteredData?.companies;
 
- // console.log(candidateData);
- // console.log(companyData);
+
+  console.log(candidateData);
+  console.log(companyData);
 
   return (
-    <div className="max-w-screen-2xl mx-auto py-16 px-4 lg:px-20">
+    <div className="max-w-screen-2xl mx-auto lg:px-20">
       <div className="mb-10">
-        <h3 className="text-3xl md:text-4xl lg:text-5xl 2xl:6xl font-heading font-semibold text-center mb-4 xl:mb-7">
+        <h3 className="text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl font-heading font-semibold text-center mb-4 xl:mb-7">
           Customer <span className="text-accentTwo">Reviews</span>
         </h3>
-        <p className="text-sm md:text-lg lg:text-xl 2xl:text-2xl text-[#999999] text-center mx-4">
+        <p className="text-sm md:text-lg xl:text-xl 2xl:text-2xl text-[#999999] text-center mx-4">
           Lumijob exceeded my expectations with its intuitive interface and vast job opportunities
         </p>
       </div>
       <div className="space-y-10">
         <Marquee pauseOnHover={true} direction="right" gradient gradientWidth={50}>
-          <div className="flex  ">
+          <div className="flex ">
             {companyData?.map((info) => (
               <FeedbackCard key={info._id} info={info}></FeedbackCard>
             ))}

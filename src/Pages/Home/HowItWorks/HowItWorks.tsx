@@ -9,7 +9,7 @@ const HowItWorks = () => {
       {/* =========> Section Title <========= */}
       <div className="py-12 grid grid-cols-1 lg:grid-cols-2 gap-4 ">
         <div>
-          <h4 className="text-[2.25rem] md:text-[2.7rem] lg:text-[2.8rem] xl:text-[3.15rem] leading-none font-heading font-semibold text-center lg:text-left">
+          <h4 className="text-4xl md:text-5xl 2xl:text-6xl font-heading font-semibold text-center lg:text-left">
             Navigating
             <span className="font-bold text-accentTwo"> Success </span> Through
             LumiJobs in 4

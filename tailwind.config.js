@@ -20,6 +20,9 @@ export default {
         'body': ['Inter', 'sans-serif'],
         "Macan": ['MacanPanWeb-Book', 'sans-serif'],
       },
+      screens: {
+        '2xl': '1600px',
+      },
     },
   },
   plugins: [require("daisyui"),],
