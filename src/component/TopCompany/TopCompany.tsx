@@ -31,7 +31,7 @@ const TopCompany = () => {
 
           Elevate Your Career with the Most Coveted Companies
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 lg:gap-6 xl:gap-4 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 lg:gap-6 gap-4 mt-10">
           {filterJob?.map((company, _id) => (
             <TopCompanyCard key={_id} company={company}></TopCompanyCard> /* Changed key={job._id} to key={idx} */
           ))}
