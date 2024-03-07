@@ -18,7 +18,7 @@ interface LoginData {
 }
 
 const Login: React.FC = () => {
-  const { signInUser, loading, setLoading } = useAuth();
+  const { signInUser, loading, setLoading, userRefetch } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -36,6 +36,7 @@ const Login: React.FC = () => {
         hideProgressBar: true,
         autoClose: 2000,
       });
+      userRefetch()
       setLoading(false);
      
       navigate("/");
