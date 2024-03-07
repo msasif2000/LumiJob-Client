@@ -19,7 +19,7 @@ const PopularJobs = () => {
     axiosPublic.get("/all-job-posts")
       .then((res) => {
         setPopularJobs(res.data);
-    
+
         setLoading(false);
       })
       .catch((error) => console.log(error));
@@ -32,8 +32,13 @@ const PopularJobs = () => {
   const filterJob = popularJobs?.filter(
     (job) => job.sectorType === sectors[tabIndex]?.sectorType
   );
-
-  const slicedJobs = filterJob?.slice(0, 6);
+   
+  //slice responsive
+  let sliceEnd = 6;
+  if (window.innerWidth >= 1600) {
+    sliceEnd = 8;
+  }
+  const slicedJobs = filterJob?.slice(0, sliceEnd);
 
   return (
     <>
