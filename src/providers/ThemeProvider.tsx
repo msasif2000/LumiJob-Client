@@ -154,6 +154,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     if (infos) {
+      
       setRole(infos?.role);
       setPremium(infos?.status);
       setPhoto(infos?.photo);
@@ -161,6 +162,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       setName(infos?.name);
     }
   }, [infos]);
+
 
   const themeInfo: ThemeInfo = {
     googleSignIn,

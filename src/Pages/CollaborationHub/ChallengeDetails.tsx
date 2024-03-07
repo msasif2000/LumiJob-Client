@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../Blogs/components/err/Loading";
 import toast, { Toaster } from 'react-hot-toast';
-
 const ChallengeDetails = () => {
     const { id } = useParams()
     const { user, photo } = useAuth()
@@ -14,6 +13,9 @@ const ChallengeDetails = () => {
     const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
     const { challengeTitle, description, img, time, type } = challengeData || {};
+
+
+
     const formatDateTime = (dateTimeString: any) => {
         const date = new Date(dateTimeString);
 
@@ -56,6 +58,8 @@ const ChallengeDetails = () => {
                 setLoading(false);
             });
     }, [id]);
+
+
 
 
     const handleSubmitTeamForm = (e: any) => {
