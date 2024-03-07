@@ -38,11 +38,11 @@ const FeedbackForWebsiteHome = () => {
   const companyData: Data[] = filteredData?.companies;
 
 
-  console.log(candidateData);
-  console.log(companyData);
+ // console.log(candidateData);
+ // console.log(companyData);
 
   return (
-    <div className="max-w-screen-2xl mx-auto lg:px-20">
+    <div className="max-w-screen-2xl mx-auto lg:px-20 mb-16">
       <div className="mb-10">
         <h3 className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl font-heading font-semibold text-center mb-4 xl:mb-7">
           Customer <span className="text-accentTwo">Reviews</span>

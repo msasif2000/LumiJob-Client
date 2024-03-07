@@ -23,10 +23,10 @@ const NoData: React.FC<NoDataProps> = ({ text, btn, noDataClick }) => {
                 </div>
             </div>
             {/* for large device  */}
-            <div className="lg:w-2/3 xl:w-3/5 hidden md:flex flex-col items-center justify-center mx-auto mt-2">
-                <img src={noDataImg} alt="" className='w-full'/>
-                <a className="text-xl md:text-3xl font-semibold pb-2">{text}!</a>
-                <ul className="menu menu-horizontal px-1 gap-2">
+            <div className="lg:w-2/3 xl:w-3/5 hidden md:flex flex-col items-center justify-center mx-auto mt-12">
+                <img src={noDataImg} alt="" className='md:h-[400px] 2xl:h-[600px] 2xl:w-[600px] xl:h-[490px] xl:w-2/3'/>
+                <a className="text-xl md:text-3xl font-semibold mt-1">{text}!</a>
+                <ul className="menu menu-horizontal px-1">
                     {
                         btn ? <a onClick={noDataClick} className="btn bg-accent text-white">{btn}</a>: null
                     }
