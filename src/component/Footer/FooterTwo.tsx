@@ -144,7 +144,7 @@ const FooterTwo = () => {
               <b>LumiJobs</b> &copy; {new Date().getFullYear()} all rights
               reserved
             </p>
-            <div className="flex justify-end items-center gap-3 ">
+            <div className="flex justify-center md:justify-end items-center gap-3 ">
               <a
                 href="https://www.facebook.com"
                 target="_blank"
