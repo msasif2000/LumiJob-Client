@@ -26,9 +26,6 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
     const { user, name, photo } = useAuth()
     const [isOpen, setIsOpen] = useState<number | null>(null);
     const axiosPublic = useAxiosPublic()
-    const [leader, setLeader] = useState(false)
-    console.log(leader);
-
     const handleToggle = (idx: number) => setIsOpen(prevIdx => prevIdx === idx ? null : idx);
 
     const handleJoin = (id: string) => {
@@ -51,7 +48,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                 if (res.data.message === "Already have a team with this member") {
                     toast.error("Already joined");
                 }
-              
+
             })
     }
 
@@ -68,7 +65,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                 } else {
                     toast.error("Remove failed");
                 }
-              
+
             })
             .catch((error) => {
                 console.log(error);
@@ -147,13 +144,20 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                         <div>
                                             {
                                                 member?.status === "pending" ?
-
                                                     <div key={idx} className='opacity-30'>
                                                         <div className="flex justify-between items-center my-3 border-2 rounded-lg  p-2">
+
+                                                            {/* <div className='hidden'>
+                                                                {
+                                                                    `?
+                                                                        useEffect(() => { setLeader(true) }) : useEffect(() => { setLeader(false) })}`
+                                                                }
+                                                            </div> */}
+
                                                             <div className="flex items-center gap-3">
                                                                 <div className="avatar">
                                                                     <div className="mask mask-squircle w-12 h-12">
-                                                                        <img src={member.img} alt="Avatar Tailwind CSS Component" />
+                                                                        <img src={member?.img} alt="Avatar Tailwind CSS Component" />
                                                                     </div>
                                                                 </div>
                                                                 <div>
@@ -165,7 +169,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
 
 
                                                             {
-                                                                leader ? <div className='flex items-center gap-2'>
+                                                                `${user?.email === member?.email && member?.designation === "Leader"}` ? <div className='flex items-center gap-2'>
                                                                     <button onClick={() => member?.email && handleRemove(member.email, data._id)}> ❌ </button>
                                                                     <button onClick={() => member?.email && handleAccept(member.email, data._id)}> ✔️ </button>
                                                                 </div> :
@@ -184,7 +188,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                                             <div className="flex items-center gap-3">
                                                                 <div className="avatar">
                                                                     <div className="mask mask-squircle w-12 h-12">
-                                                                        <img src={member.img} alt="Avatar Tailwind CSS Component" />
+                                                                        <img src={member?.img} alt="Avatar Tailwind CSS Component" />
                                                                     </div>
                                                                 </div>
                                                                 <div>
@@ -195,12 +199,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                                             <div className="badge badge-primary badge-sm">
                                                                 {member.designation}
                                                             </div>
-                                                            <div className='hidden'>
-                                                                {
-                                                                    `${user?.email === member?.email && member?.designation === "Leader" ?
-                                                                        useEffect(() => { setLeader(true) }) : useEffect(() => { setLeader(false) })}`
-                                                                }
-                                                            </div>
+
                                                         </div>
 
                                                     </div>
