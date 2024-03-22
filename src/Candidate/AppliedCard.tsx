@@ -72,7 +72,7 @@ const AppliedCard: React.FC<prop> = ({ job, handleDelete }) => {
   const { data: companyFeedbacks } = useQuery({
     queryKey: ["companyFeedbacks", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/companyFeedback/${job._id}`);
+      const res = await axiosSecure.get(`/companyFeedback/${job?.jobId}`);
       return res.data;
     },
     enabled: !!id,

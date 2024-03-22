@@ -13,7 +13,7 @@ const CallToAction = () => {
                         "Ready to revolutionize your hiring process and enhance communication? Join us today and unlock the power of seamless recruitment and effective collaboration!"
                     </p>
                     <Link to="/signup" className="flex  pl-0 mb-8">
-                        <button className="bg-btnbg text-white px-8 py-2 rounded-lg mt-2">
+                        <button className="bg-white text-accent hover:bg-btnbg hover:text-white font-bold px-8 py-2 rounded-lg mt-2">
                             Start Now
                         </button>
                     </Link>

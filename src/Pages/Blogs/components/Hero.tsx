@@ -5,11 +5,11 @@
 
 const Hero = () => {
   return (
-    <div className="h-[440px] md:h-[600px] lg:h-[700px]  relative overflow-hidden bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pt-8 lg:pt-20 -mt-20">
+    <div className="h-[440px] md:h-[600px] lg:h-[700px]  relative overflow-hidden pt-8 lg:pt-20 -mt-20">
       <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
         <div className="space-y-10  relative z-10">
           <h3 className="text-4xl md:text-5xl lg:text-7xl 2xl:text-8xl font-heading font-bold pt-20 relative z-10">
-            News, Seminars & <br /> Insides of Tech <br /> Fields.
+          <span className="text-accentTwo">News</span>,  <span className="text-accentTwo">Seminars</span>  & <br />Insides of  <span className="text-accentTwo"> Tech</span> <br /> <span className="text-accentTwo">Fields</span> .
           </h3>
 
           {/* <img

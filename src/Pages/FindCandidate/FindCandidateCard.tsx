@@ -23,11 +23,11 @@ const FindCandidateCard: React.FC<CandidateCardsProps> = ({ candidate }) => {
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <button className="hidden md:inline-block p-1 -mt-12 border border-gray-300 bg-white hover:bg-accent hover:text-white font-semibold text-sm rounded-lg ml-1">
-                        <MdArrowOutward />
+                    <button className="hidden md:inline-block p-1 -mt-12 border border-gray-300 hover:bg-btnbg bg-accent text-white font-semibold text-sm rounded-lg ml-1">
+                        <MdArrowOutward className="text-xl"/>
                     </button>
-                    <button className="md:hidden p-2 border border-gray-300 bg-white hover:bg-accent hover:text-white rounded-lg">
-                        <MdArrowOutward />
+                    <button className="md:hidden p-2 border border-gray-300 bg-accent hover:bg-btnbg text-white rounded-lg">
+                        <MdArrowOutward className="text-xl"/>
                     </button>
                 </div>
             </Link>

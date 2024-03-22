@@ -1,3 +1,4 @@
+import { AiFillEye } from "react-icons/ai"; 
 import React, { useState } from "react";
 // import LoginArt from "../../assets/Login Art.svg";
 import LoginArt from "../../assets/image/auth.jpg";
@@ -7,7 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SocialLogin from "./SocialLogin";
 import { LuEyeOff } from "react-icons/lu";
-import { GiBleedingEye } from "react-icons/gi";
 import useAuth from "../../hooks/useAuth";
 import { TbHomeShare } from "react-icons/tb";
 import { Helmet } from "react-helmet-async";
@@ -79,7 +79,7 @@ const Login: React.FC = () => {
                   type="email"
                   {...register("email", { required: "Email is required" })}
                   placeholder="Example@gmail.com"
-                  className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-teal-500 duration-500 outline-none bg-[#F7FBFF]"
+                  className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-accent duration-500 outline-none bg-[#F7FBFF]"
                 />
               </div>
               <div className="form-control w-full relative">
@@ -98,13 +98,13 @@ const Login: React.FC = () => {
                     },
                   })}
                   placeholder="at least 6 character"
-                  className="input-md md:input-lg border-b-4 outline-none rounded-lg  bg-[#F7FBFF] hover:border-b-teal-500 duration-500"
+                  className="input-md md:input-lg border-b-4 outline-none rounded-lg  bg-[#F7FBFF] hover:border-b-accent duration-500"
                 />
                 <span
                   className="absolute top-[44px] md:top-[48px] md:text-lg right-3 cursor-pointer lg:text-2xl"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <GiBleedingEye /> : <LuEyeOff />}
+                  {showPassword ? <AiFillEye /> : <LuEyeOff />}
                 </span>
                 {errors.password && (
                   <p className="text-red-500">{errors.password.message}</p>
@@ -118,7 +118,7 @@ const Login: React.FC = () => {
               <button
                 type="submit"
                 value=""
-                className="btn md:btn-lg w-full bg-[#162D3A] text-white hover:bg-green-400 hover:text-black duration-500 "
+                className="btn md:btn-lg w-full bg-btnbg text-white hover:bg-accent duration-500 "
               >
                 {loading ? (
                   <span className="loading loading-dots loading-md"></span>
@@ -128,7 +128,7 @@ const Login: React.FC = () => {
               </button>
             </form>
             <div className="divider divider-neutral">
-              <Link to="/" className="text-2xl">
+              <Link to="/" className="text-2xl text-accentTwo">
                 <TbHomeShare />
               </Link>
             </div>
@@ -138,7 +138,7 @@ const Login: React.FC = () => {
             <div className="flex justify-between lg:text-xl">
               <p>Don't have an account?</p>
               <Link to="/signup">
-                <p className="hover:text-green-500 cursor-pointer text-violet-400 font-semibold underline">
+                <p className="hover:text-accent cursor-pointer text-violet-400 font-semibold underline">
                   Sign up
                 </p>
               </Link>

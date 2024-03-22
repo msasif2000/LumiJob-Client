@@ -23,7 +23,7 @@ const Feedback: React.FC = () => {
   const { user, role } = useAuth();
   const axiosSecure = useAxiosSecure();
 
- 
+
 
   const handleInterfaceRatingChange = (value: number) => {
     setInterfaceRating(value);
@@ -55,7 +55,7 @@ const Feedback: React.FC = () => {
     axiosSecure
       .post("/websiteFeedback", formData)
       .then((response: any) => {
-       
+
         if (response.data.insertedId) {
           Swal.fire({
             position: "center",
@@ -67,7 +67,7 @@ const Feedback: React.FC = () => {
           setInterfaceRating(0);
           setSupportRating(0);
           setAnyComments("");
-        
+
         } else {
           toast.error("didn't receive  your  feedback");
         }
@@ -147,11 +147,13 @@ const Feedback: React.FC = () => {
             onChange={handleCommentsChange}
           />
         </div>
-        <input
-          className="w-full btn bg-[#4869DD] hover:bg-[#3150c0] text-white"
-          type="submit"
-          value="Submit"
-        />
+        <div className="mx-4">
+          <input
+            className="w-full btn bg-[#4869DD] hover:bg-[#3150c0] text-white"
+            type="submit"
+            value="Submit"
+          />
+        </div>
       </form>
       <ToastContainer />
     </div>

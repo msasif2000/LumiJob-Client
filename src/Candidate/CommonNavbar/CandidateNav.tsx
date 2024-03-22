@@ -22,9 +22,9 @@ const CandidateNav: React.FC<CandidateNavProps> = ({
           <a className="text-xl md:text-3xl font-semibold">{text}</a>
           <div className=" flex justify-end gap-2 text-xs mb-5 md:hidden">
             {
-              btn2 && <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200"><a onClick={handleClick2} className="">{btn2}</a></button>
+              btn2 && <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200 text-accent font-bold text-xl"><a onClick={handleClick2} className="">{btn2}</a></button>
             }
-            <button className="border-2 bg-slate-100 py-1 px-2 hover:bg-slate-200"><a onClick={handleClick} className="">{btn}</a></button>
+            <button className="border-2 bg-accentTwo hover:bg-btnbg text-white py-1 px-2"><a onClick={handleClick} className="">{btn}</a></button>
           </div>
         </div>
       </div>
@@ -32,9 +32,9 @@ const CandidateNav: React.FC<CandidateNavProps> = ({
       <div className="navbar-end hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-2">
           {
-            btn2 && <a onClick={handleClick2} className="btn">{btn2}</a>
+            btn2 && <a onClick={handleClick2} className="btn text-accent font-bold text-xl">{btn2}</a>
           }
-          <a onClick={handleClick} className="btn">{btn}</a>
+          <a onClick={handleClick} className="btn bg-accentTwo hover:bg-btnbg text-white">{btn}</a>
         </ul>
       </div>
     </div>

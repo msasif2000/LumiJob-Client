@@ -70,7 +70,7 @@ const JobCard: React.FC<JobCardsProps> = ({ job }) => {
         <div>
           <Link
             to={`details/${jobPostId}`}
-            className="py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold text-xs rounded-full transition duration-300 ease-in-out"
+            className="py-2 px-4 bg-accent hover:bg-black text-white font-semibold text-xs rounded-full transition duration-300 ease-in-out"
           >
             Details
           </Link>

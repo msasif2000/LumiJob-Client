@@ -30,7 +30,7 @@ interface CSearchProps {
         <div className="">
             <form>
                 <div className="flex items-center justify-center p-5">
-                    <div className="border-2 w-11/12 rounded-tr-lg rounded-br-lg">
+                    <div className="border-2 w-11/12 rounded-tr-lg rounded-lg">
                         <div className="flex">
                             <div className="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-5">
                                 <svg viewBox="0 0 20 20" aria-hidden="true" className="pointer-events-none absolute w-5 fill-gray-500 transition">
@@ -48,7 +48,7 @@ interface CSearchProps {
                             />
                             <button
                                 onClick={handleSearch}
-                                className="bg-blue-500 px-10 py-4 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors
+                                className="bg-accentTwo px-10 py-2 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors
                                 text-xs md:text-base"
                             >
                                 Search
