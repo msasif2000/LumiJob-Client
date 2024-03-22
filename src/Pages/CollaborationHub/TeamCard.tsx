@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 interface TeamData {
     teamName: string;
     coloredText: any;
@@ -25,6 +24,8 @@ interface Prop {
 const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
     const { user, name, photo } = useAuth()
     const [isOpen, setIsOpen] = useState<number | null>(null);
+    // const [leader, setLeader] = useState<any>(null);
+    // console.log(leader);
     const axiosPublic = useAxiosPublic()
     const handleToggle = (idx: number) => setIsOpen(prevIdx => prevIdx === idx ? null : idx);
 
@@ -133,7 +134,7 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                     {
                                         user ?
                                             <button onClick={() => handleJoin(data._id)} className="btn btn-sm bg-blue-400">Join Request</button> :
-                                            <Link to={"/login"} className="btn btn-sm bg-blue-400 disabled">Login to join</Link>
+                                            <button className="btn btn-sm bg-blue-400 disabled">Join Request</button>
                                     }
                                 </div>
                                 {
@@ -142,18 +143,16 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
 
                                     }, idx: React.Key | null | undefined) => (
                                         <div>
+                                            {/* <div className='hidden'>
+                                                {
+                                                    `${user?.email === member?.email && member?.designation === "Leader" ? useEffect(() => setLeader(), []) : useEffect(() => setLeader(false), [])}`
+
+                                                }
+                                            </div> */}
                                             {
                                                 member?.status === "pending" ?
                                                     <div key={idx} className='opacity-30'>
                                                         <div className="flex justify-between items-center my-3 border-2 rounded-lg  p-2">
-
-                                                            {/* <div className='hidden'>
-                                                                {
-                                                                    `?
-                                                                        useEffect(() => { setLeader(true) }) : useEffect(() => { setLeader(false) })}`
-                                                                }
-                                                            </div> */}
-
                                                             <div className="flex items-center gap-3">
                                                                 <div className="avatar">
                                                                     <div className="mask mask-squircle w-12 h-12">
@@ -166,21 +165,19 @@ const TeamCard: React.FC<Prop> = ({ teams, challengeId }) => {
                                                                 </div>
                                                             </div>
 
-
-
-                                                            {
-                                                                `${user?.email === member?.email && member?.designation === "Leader"}` ? <div className='flex items-center gap-2'>
+                                                            {data.members.find((member: {
+                                                                designation: string; email: string
+                                                            }) => member.email === user.email && member?.designation === "Leader") ?
+                                                                <div className='flex items-center gap-2'>
                                                                     <button onClick={() => member?.email && handleRemove(member.email, data._id)}> ❌ </button>
                                                                     <button onClick={() => member?.email && handleAccept(member.email, data._id)}> ✔️ </button>
-                                                                </div> :
-                                                                    <div className="badge badge-primary">
-                                                                        Pending
-                                                                    </div>
+                                                                </div>
+                                                                : <div className="badge badge-primary">Pending</div>
                                                             }
 
 
-                                                        </div>
 
+                                                        </div>
                                                     </div>
                                                     :
                                                     <div key={idx} >

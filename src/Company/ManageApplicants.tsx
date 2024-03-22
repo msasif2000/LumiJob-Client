@@ -381,7 +381,7 @@ const ManageApplicants = () => {
         <title>Manage Applicants</title>
       </Helmet>
       <GoToTop />
-      <div className=" mx-auto my-3">
+      <div className=" mx-auto my-3 px-2">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2 px-1">
             <Droppable droppableId="applicant">
@@ -389,7 +389,7 @@ const ManageApplicants = () => {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="flex-1 bg-base-300 min-h-screen"
+                  className="flex-1 bg-base-300 min-h-screen rounded-xl"
                 >
                   <h1 className="text-center bg-violet-300 p-3 font-bold text-base-100 rounded-t-xl">
                     {infos?.length > 0
@@ -411,11 +411,11 @@ const ManageApplicants = () => {
                             className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                           >
                             <div className="space-x-3 flex p-2">
-                              <div className="p-5 bg-blue-100 rounded-xl">
+                              <div className="2xl:p-5 bg-blue-100 rounded-xl">
                                 <img
                                   src={info?.profile}
                                   alt=""
-                                  className=" rounded-full h-[80px] w-[80px] p-2"
+                                  className=" rounded-full h-[80px] w-[80px] md:p-1 2xl:p-2"
                                 />
                               </div>
                               <div className="space-y-1 relative">
@@ -526,7 +526,7 @@ const ManageApplicants = () => {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="flex-1 bg-base-300 min-h-screen"
+                  className="flex-1 bg-base-300 min-h-screen rounded-xl"
                 >
                   <h1 className="text-center bg-violet-400 p-3 font-bold text-base-300 rounded-t-xl">
                     {preSelected?.length > 0
@@ -548,11 +548,11 @@ const ManageApplicants = () => {
                             className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                           >
                             <div className="space-x-3 flex p-2">
-                              <div className="p-5 bg-blue-100 rounded-xl">
+                              <div className="2xl:p-5 bg-blue-100 rounded-xl">
                                 <img
                                   src={info?.profile}
                                   alt=""
-                                  className=" rounded-full h-[80px] w-[80px] p-2"
+                                  className=" rounded-full h-[80px] w-[80px] md:p-1 2xl:p-2"
                                 />
                               </div>
                               <div className="space-y-1">
@@ -663,7 +663,7 @@ const ManageApplicants = () => {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="flex-1 bg-base-300 min-h-screen"
+                  className="flex-1 bg-base-300 min-h-screen rounded-xl"
                 >
                   <h1 className="text-center bg-violet-500 p-3 font-bold text-base-300 rounded-t-xl">
                     {interviews?.length > 0
@@ -686,7 +686,7 @@ const ManageApplicants = () => {
                           >
                             <div className="space-x-3 flex p-2 relative">
                               <div
-                                className={`p-5 ${
+                                className={`2xl:p-5 ${
                                   info?.scheduleInterview
                                     ? "bg-green-100"
                                     : "bg-blue-100"
@@ -695,7 +695,7 @@ const ManageApplicants = () => {
                                 <img
                                   src={info?.profile}
                                   alt=""
-                                  className=" rounded-full h-[80px] w-[80px] p-2"
+                                  className=" rounded-full h-[80px] w-[80px] md:p-1 2xl:p-2"
                                 />
                               </div>
                               <div className="space-y-1">
@@ -711,7 +711,7 @@ const ManageApplicants = () => {
                                 <div className="flex space-x-1 items-center">
                                   <p className="font-bold p-1">{info?.name}</p>
                                   {info?.premium === "premium" ? (
-                                    <GoVerified />
+                                    <GoVerified className="text-accent"/>
                                   ) : (
                                     ""
                                   )}
@@ -908,7 +908,7 @@ const ManageApplicants = () => {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="flex-1 bg-base-300 min-h-screen"
+                  className="flex-1 bg-base-300 min-h-screen rounded-xl"
                 >
                   <h1 className="text-center bg-violet-600 p-3 font-bold text-base-300 rounded-t-xl">
                     {selected?.length > 0
@@ -930,11 +930,11 @@ const ManageApplicants = () => {
                             className="card card-compact m-2 bg-base-100 bg-opacity-50 duration-500 hover:shadow-xl"
                           >
                             <div className="space-x-3 flex p-2">
-                              <div className="p-5 bg-blue-100 rounded-xl">
+                              <div className="2xl:p-5 bg-blue-100 rounded-xl">
                                 <img
                                   src={info?.profile}
                                   alt=""
-                                  className=" rounded-full h-[80px] w-[80px] p-2"
+                                  className=" rounded-full h-[80px] w-[80px] md:p-1 2xl:p-2"
                                 />
                               </div>
                               <div className="space-y-1">

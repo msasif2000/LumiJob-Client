@@ -116,19 +116,19 @@ const Challenges = () => {
       <Helmet>
         <title>Challenges | Dashboard</title>
       </Helmet>
-      <div className="p-12">
+      <div className="p-2 md:p-4 lg:p-12">
         <div className="bg-white border rounded-md min-h-[70vh] p-6">
           <div className="flex justify-between">
             <h2 className="text-2xl">All Challenges</h2>
             <button
               onClick={toggleModal}
-              className="btn text-light text-md font-heading font-bold border-none px-6 lg:px-7 bg-accent hover:bg-accent rounded-full flex"
+              className="btn text-light text-md font-heading font-bold border-none px-6 lg:px-7 bg-accent hover:bg-btnbg rounded-full flex"
             >
               <FaPlusSquare />
               <span>Add New</span>
             </button>
           </div>
-          <div className="grid grid-cols-1 2xl:grid-cols-4 gap-5 mt-12">
+          <div className="grid grid-cols-1 2xl:grid-cols-3 gap-5 mt-12">
             {
               challenges.map((challenge: any) => (
                 <ChallengeCard key={challenge._id} challenge={challenge} />

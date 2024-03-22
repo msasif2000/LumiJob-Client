@@ -93,14 +93,14 @@ const Contact = () => {
                   <Link
                     to="https://www.facebook.com/"
                     target="_blank"
-                    className="rounded-full w-10 hover:bg-accentTwo bg-black text-white duration-200 p-3"
+                    className="rounded-full w-10 hover:bg-btnbg bg-accentTwo text-white duration-200 p-3"
                   >
                     <FaFacebookF />
                   </Link>
                   <Link
                     to="https://youtube.com/"
                     target="_blank"
-                    className="rounded-full w-10 hover:bg-accentTwo bg-black text-white duration-200 p-3"
+                    className="rounded-full w-10 hover:bg-btnbg bg-accentTwo text-white duration-200 p-3"
                   >
                     <AiFillYoutube />
                   </Link>
@@ -108,7 +108,7 @@ const Contact = () => {
                   <Link
                     to="https://www.instagram.com/"
                     target="_blank"
-                    className="rounded-full w-10 hover:bg-accentTwo bg-black text-white duration-200 p-3"
+                    className="rounded-full w-10 hover:bg-btnbg bg-accentTwo text-white duration-200 p-3"
                   >
                     <AiFillInstagram />
                   </Link>
@@ -116,7 +116,7 @@ const Contact = () => {
                   <Link
                     to="https://twitter.com/"
                     target="_blank"
-                    className="rounded-full w-10 hover:bg-accentTwo bg-black text-white duration-200 p-3"
+                    className="rounded-full w-10 hover:bg-btnbg bg-accentTwo text-white duration-200 p-3"
                   >
                     <FaTwitter />
                   </Link>
@@ -304,7 +304,7 @@ const Contact = () => {
                         <div className="form-control mt-2">
                           <button
                             type="submit"
-                            className="btn w-48 font-semibold bg-black text-white hover:bg-accentTwo rounded"
+                            className="btn w-48 font-semibold hover:bg-black text-white bg-accent rounded"
                           >
                             Send Message
                           </button>

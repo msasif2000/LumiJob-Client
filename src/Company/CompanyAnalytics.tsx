@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import {
     Pie,
     PieChart,
@@ -10,7 +10,6 @@ import {
 import { PiBagSimpleFill } from "react-icons/pi";
 import { IoIosPeople } from "react-icons/io";
 import { GiConfirmed } from "react-icons/gi";
-import useAxiosSecure from "../hooks/useAxiosSecure";
 
 interface JobData {
     name: string;
@@ -18,7 +17,6 @@ interface JobData {
 }
 
 const CompanyAnalytics: FunctionComponent = () => {
-    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [profile, setProfile] = useState<any>(null);
     const [companyPostedJobs, setCompanyPostedJobs] = useState<any | null>(null);
@@ -27,7 +25,7 @@ const CompanyAnalytics: FunctionComponent = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axiosPublic
+            axiosSecure
                 .get(`/get-company-posted-jobs/${user?.email}`)
                 .then((res) => {
                     setCompanyPostedJobs(res.data);

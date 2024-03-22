@@ -6,13 +6,15 @@ import GoToTop from "../../component/GoToTop/GoToTop";
 
 const Insights = () => {
   return (
-    <div className="Background">
+    <div className="">
       <Helmet>
         <title>Insights | LumiJobs</title>
       </Helmet>
       <Hero />
-      <FeaturedArticle />
-      <Seminers />
+      <div className="bg-[#FAFAFA] pt-12">
+        <FeaturedArticle />
+        <Seminers />
+      </div>
       <GoToTop />
     </div>
   );

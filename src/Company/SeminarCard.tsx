@@ -49,7 +49,7 @@ const SeminarCard: React.FC<prop> = ({ seminar, handleDelete }) => {
                     <p className="flex justify-end items-center gap-1 font-semibold text-violet-500"> {seminar?.date}<MdDateRange className="text-xl" /></p>
                     <p className="flex items-center gap-1 font-semibold text-violet-500"><CgTime className="text-xl" />{seminar?.startTime} - {seminar?.endTime}</p>
                     <p className="flex justify-end items-center gap-1 font-semibold text-violet-500">{seminar?.speaker} <SiTeamspeak className="text-2xl"/></p>
-                    <a href="#seminar_details" onClick={openModal} className="btn btn-sm bg-black text-white hover:bg-slate-950">Details</a>
+                    <a href="#seminar_details" onClick={openModal} className="btn btn-sm bg-accentTwo text-white hover:bg-btnbg">Details</a>
                 </div>
             </div>
             {showDeleteIcon && (

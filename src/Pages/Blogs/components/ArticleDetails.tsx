@@ -126,28 +126,30 @@ const ArticleDetails = () => {
             style={{ width: `${scrollPercentage}%` }}
           ></div>
           <GoToTop />
-          <div className="max-w-screen-2xl mx-auto py-20 px-4 lg:px-20">
+          <div className="max-w-screen-2xl mx-auto pb-20 pt-2 px-4 lg:px-20">
             {data ? (
-              <div className="lg:flex py-6">
-                <div className="flex flex-col lg:w-1/4 space-y-5 lg:fixed pb-10 lg:pb-0">
-                  <img src={data.img} className="w-full" alt="" />
-                  <h2 className="text-3xl font-heading font-semibold">
-                    {capitalizeFirstLetter(data.title)}
-                  </h2>
-                  <div>
-                    <p className="flex items-center gap-2 text-gray-600 text-lg font-medium">
-                      <FaCircleUser className="text-xl" /> {data.author}
-                    </p>
-                  </div>
-                  <div className="flex justify-between items-center text-lg font-normal text-gray-500">
-                    <p className="text-accentTwo">{data?.postTime?.split("T")[0]}</p>
-                    <p className="text-accentTwo  font-semibold">
-                      {readingTime}
-                    </p>
+              <div className="lg:flex py-6 gap-8">
+                <div className="flex justify-between lg:w-2/5  space-y-5 pb-10 lg:pb-0">
+                  <div className="flex flex-col">
+                    <img src={data.img} className="w-full" alt="" />
+                    <h2 className="text-3xl font-heading font-semibold">
+                      {capitalizeFirstLetter(data.title)}
+                    </h2>
+                    <div>
+                      <p className="flex items-center gap-2 text-gray-600 text-lg font-medium">
+                        <FaCircleUser className="text-xl" /> {data.author}
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center text-lg font-normal text-gray-500">
+                      <p className="text-accentTwo">{data?.postTime?.split("T")[0]}</p>
+                      <p className="text-accentTwo  font-semibold">
+                        {readingTime}
+                      </p>
+                    </div>
                   </div>
                 </div>
                 {/* article */}
-                <div className="lg:w-3/4 lg:ml-[530px] ">
+                <div className="lg:w-3/5  ">
                   <p
                     className="text-lg xl:text-xl "
                     style={{ whiteSpace: "pre-line" }}

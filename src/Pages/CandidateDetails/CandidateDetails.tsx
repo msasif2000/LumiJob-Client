@@ -142,12 +142,26 @@ const CandidateDetails = () => {
                   {candidate.education.map((edu, index) => (
                     <li className="my-2" key={index}>
                       <p className="text-sm">
-                        {edu.degree} in {edu.subject}
+                        {
+                          edu.degree ?
+                            <>
+                              {edu.degree} in {edu.subject}
+                            </>
+                            :
+                            null
+                        }
+
                       </p>
                       <p className="text-sm opacity-90">{edu.university}</p>
                       <p className=" opacity-80 text-sm">
-                        From {formatDate(edu.fromDate)} to{" "}
-                        {formatDate(edu.toDate)}
+                        {edu.fromDate ?
+                          <>
+                            From {formatDate(edu.fromDate)} to{" "}
+                            {formatDate(edu.toDate)}
+                          </>
+                          :
+                          null
+                        }
                       </p>
                     </li>
                   ))}
@@ -157,11 +171,24 @@ const CandidateDetails = () => {
                   {candidate.experienceDetails.map((exp, index) => (
                     <li className="my-2" key={index}>
                       <p className="text-sm">
-                        {exp.position} at {exp.company}
+                        {
+                          exp.position ?
+                            <>
+                              {exp.position} at {exp.company}
+                            </>
+                            :
+                            null
+                        }
+
                       </p>
                       <p className=" opacity-80 text-sm">
-                        From {formatDate(exp.fromDate)} to{" "}
-                        {formatDate(exp.toDate)}
+                        {exp.fromDate ?
+                          <>
+                            From {formatDate(exp.fromDate)} to{" "}
+                            {formatDate(exp.toDate)}</>
+                          :
+                          null
+                        }
                       </p>
                     </li>
                   ))}

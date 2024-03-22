@@ -99,7 +99,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/task-details/:id",
-        element: <ChallengeDetails />,
+        element: <PrivateRoute><ChallengeDetails /></PrivateRoute>,
       },
       {
         path: "/contact",
@@ -223,7 +223,7 @@ export const router = createBrowserRouter([
         element: <ManagePayments />,
       },
       {
-        path: "admin/challenges",
+        path: "company/challenges",
         element: <Challenges />,
       },
       {

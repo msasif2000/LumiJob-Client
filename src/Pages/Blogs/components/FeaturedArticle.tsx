@@ -8,7 +8,7 @@ interface BlogData {
   img: string;
   title: string;
   category: string;
-  date: string;
+  postTime: string;
   details: string;
   readTime: string;
 }
@@ -44,15 +44,15 @@ const FeaturedArticle = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-gradient-to-r from-[#F2F8F5] from-35% via-[#F5DED9] via-60% to-[#F2F8F5] to-100% ... pb-10">
+    <div className="min-h-screen pb-10">
       <div className="max-w-screen-2xl mx-auto px-4 lg:px-20">
         <h1 className="text-3xl lg:text-6xl font-heading font-semibold pb-8">
-          Featured Articles
+          Featured  <span className="text-accentTwo">Articles</span> 
         </h1>
         {/* for computer */}
         <div className="hidden xl:block">
           {loading ? <InsidesLoading /> :
-            <div className="grid grid-cols-4 gap-5">
+            <div className="grid grid-cols-4 gap-4">
               {slicedData &&
                 slicedData.map((item: any, idx: Key | null | undefined) => {
                   return (
@@ -60,23 +60,23 @@ const FeaturedArticle = () => {
                       to={`/insights/${item._id}`}
                       key={idx}
                       className={`${idx === 0
-                        ? "col-span-2 row-span-2"
-                        : "col-span-1 row-span-1"
+                        ? "col-span-2 row-span-2 h-full rounded-xl bg-white shadow-xl"
+                        : "col-span-1 row-span-1 h-full rounded-xl bg-white shadow-xl"
                         }`}
                     >
                       <div className="">
-                        <div className=" p-2 hover:bg-white hover:shadow-xl duration-700 h-full">
+                        <div className="duration-700 h-full">
                           <figure className="relative">
                             {idx === 0 ? (
                               <img
                                 src={item.img}
-                                className=" w-full h-[490px] p-2 rounded-2xl"
+                                className=" w-full h-[490px] p-2 rounded-xl"
                                 alt=""
                               />
                             ) : (
                               <img
                                 src={item.img}
-                                className="w-96 h-[260px] p-2"
+                                className="w-96 h-[260px] p-2 rounded-xl"
                                 alt=""
                               />
                             )}
@@ -91,12 +91,12 @@ const FeaturedArticle = () => {
                             )}
                           </figure>
                           <div className="flex justify-between font-normal text-gray-400 px-2">
-                            <p>{item.date}</p>
-                            <p>{item.readTime} read</p>
+                            <p>{item?.postTime?.split("T")[0]}</p>
+                            <p>{item?.readTime} read</p>
                           </div>
                           <div
                             className={`${idx === 0
-                              ? " p-2"
+                              ? "p-2"
                               : "p-2 space-y-2"
                               }`}
                           >
@@ -138,13 +138,13 @@ const FeaturedArticle = () => {
             {slicedData &&
               slicedData.map((item: any, idx: Key | null | undefined) => {
                 return (
-                  <Link to={`/insights/${item.id}`} key={idx}>
-                    <div>
-                      <div className=" p-2 hover:bg-white hover:shadow-xl duration-700">
+                  <Link to={`/insights/${item._id}`} key={idx}>
+                    <div className=" h-full bg-white shadow-xl">
+                      <div className=" duration-700">
                         <figure className="relative">
                           <img
                             src={item.img}
-                            className="w-96 h-[260px] p-2"
+                            className="w-96 h-[260px] py-2 px-1 md:px-2 mx-auto"
                             alt=""
                           />
 
@@ -153,8 +153,8 @@ const FeaturedArticle = () => {
                           </p>
                         </figure>
                         <div className="flex justify-between font-normal text-gray-400 px-2">
-                          <p>{item.date}</p>
-                          <p>{item.readTime} read</p>
+                          <p>{item?.postTime?.split("T")[0]}</p>
+                          <p>{item?.readTime} read</p>
                         </div>
                         <div>
                           <h1 className=" text-xl p-2 font-heading font-semibold">

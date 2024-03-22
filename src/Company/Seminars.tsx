@@ -154,11 +154,11 @@ const Seminars = () => {
                             <div className="navbar-end hidden md:flex">
                                 <ul className="menu menu-horizontal px-1 gap-2">
                                     {
-                                        length ? <a className="btn ">
+                                        length ? <a className="btn text-accent font-bold text-xl">
                                             {length}
                                         </a> : null
                                     }
-                                    <a href="#seminar_modal" onClick={openModal} className="btn">
+                                    <a href="#seminar_modal" onClick={openModal} className="btn bg-accentTwo hover:bg-btnbg text-white">
                                         Post Seminar
                                     </a>
                                 </ul>
@@ -241,12 +241,12 @@ const Seminars = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <button type="submit" className="btn btn-accent mb-10 w-full ">
+                                        <button type="submit" className="btn bg-accentTwo text-white hover:bg-accent mb-10 w-full ">
                                             {loading ? <span className="loading loading-ring loading-lg"></span> : "Submit"}
                                         </button>
                                     </form>
                                     <div className="flex items-center mt-2 justify-end ">
-                                        <button onClick={closeModal} className="btn bg-red-600 text-white hover:bg-red-500">
+                                        <button onClick={closeModal} className="btn bg-btnbg text-white hover:bg-red-500">
                                             Close
                                         </button>
                                     </div>

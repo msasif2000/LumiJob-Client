@@ -123,6 +123,12 @@ const DashBoard = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/dashboard/company/challenges">
+            <TbTargetArrow className="text-2xl" />
+            Challenges
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/dashboard/blog-posted">
             <GrBlog />
             Blogs
@@ -141,6 +147,7 @@ const DashBoard = () => {
             Analytics
           </NavLink>
         </li> */}
+
         <li>
           <NavLink to="/dashboard/employees">
             <GrGroup className="text-xl" />
@@ -184,12 +191,6 @@ const DashBoard = () => {
           <NavLink to="/dashboard/admin/manage-payments">
             <MdOutlinePayments className="text-2xl" />
             Manage Payments
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/dashboard/admin/challenges">
-            <TbTargetArrow className="text-2xl" />
-            Challenges
           </NavLink>
         </li>
         <li>
